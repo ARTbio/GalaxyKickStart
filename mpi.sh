@@ -1,4 +1,4 @@
-export i=$1
+export i=$1 #ignore the first $i lines 
 export jobFile=$2
 export nodeFile=$OAR_NODEFILE
 export jobId=${OAR_JOB_ID}
