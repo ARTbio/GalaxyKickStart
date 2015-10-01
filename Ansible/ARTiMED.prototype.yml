@@ -1,10 +1,10 @@
 - hosts: ARTiMED_host_servers
-  remote_user: fabiorjvieira
+  remote_user: root
   sudo: yes
 
   vars:
     local_home: "{{ lookup('env','HOME') }}"
-    vm_dir: galaxy_install
+    vm_dir: ???vm_dir???
     vagrant_package: vagrant
     virtualbox_package: virtualbox
     vagrant_box: https://dl.dropboxusercontent.com/u/3523744/boxes/debian-8.1-amd64-lxc-puppet/debian-8.1-lxc-puppet.box
