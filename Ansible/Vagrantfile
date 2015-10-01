@@ -1,0 +1,10 @@
+VAGRANTFILE_API_VERSION = "2"
+   Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+      config.vm.box = "precise32"
+      config.vm.box_url = "{{ vagrant_box }}"
+      config.vm.network :public_network
+      config.vm.provision "ansible" do |ansible|
+         ansible.playbook = "galaxy.yml"
+      end
+   end
+

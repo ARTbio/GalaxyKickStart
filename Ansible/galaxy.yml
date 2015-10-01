@@ -1,0 +1,49 @@
+#before vagant up, write the code for:
+#   galaxy requirements intalation 
+#   galaxy instalation
+#   galaxy configurations
+#   tools instalation
+#   tools test
+#Docker?
+
+- hosts: all
+  vars:
+    local_home: "{{ lookup('env','HOME') }}"
+    galaxy_relative_dir: galaxy_ARTiMED
+    galaxy_ip: 0.0.0.0
+    galaxy_port: 80
+    toolshed_ip: 0.0.0.0
+    toolshed_port: 200
+    postgresql_package: postgresql
+    build_packages: python-dev build-essential python-virtualenv
+    apache_package: apache2
+    git_package: git
+    
+  tasks:
+  - name: install dev on Debian VM
+    apt: pkg={{ build_packages }} state=latest update_cache=yes
+    register: dev_result
+
+  - name: install git on Debian VM
+    apt: pkg={{ git_package }} state=latest update_cache=yes
+    when: dev_result == "success"
+    register: git_result
+
+  - name: install postgresql on Debian VM
+    apt: pkg={{ postgresql_package }} state=latest update_cache=yes
+    when: git_result == "success"
+    register: postgresql_result
+
+  - name: install apache on Debian VM
+    apt: pkg={{ apache_package }} state=latest update_cache=yes
+    when: postgresql_result == "success"
+    register: apache_result
+
+  - git: repo=https://github.com/galaxyproject/galaxy/ dest={{ local_home }}/{{ galaxy_relative_dir }}/ clone=yes update=yes
+    when: apache_result == "success"
+    register: git_result
+
+  - pip: name=planemo
+    when: git_result == "success"
+
+    #config galaxy.ini and posgresql and toolsheds ans (toolshed?)
