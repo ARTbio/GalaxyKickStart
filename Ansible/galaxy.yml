@@ -7,6 +7,9 @@
 #Docker?
 
 - hosts: all
+  remote_user: vagrant
+  sudo: yes
+
   vars:
     local_home: "{{ lookup('env','HOME') }}"
     galaxy_relative_dir: galaxy_ARTiMED
@@ -15,23 +18,17 @@
     toolshed_ip: 0.0.0.0
     toolshed_port: 200
     postgresql_package: postgresql
-    build_packages: python-dev build-essential python-virtualenv
     apache_package: apache2
-    git_package: git
+    dev_packages: git python-2.7 python-pip python-dev build-essential python-virtualenv software-properties-common
     
   tasks:
   - name: install dev on Debian VM
-    apt: pkg={{ build_packages }} state=latest update_cache=yes
+    apt: pkg={{ dev_packages }} state=latest update_cache=yes
     register: dev_result
-
-  - name: install git on Debian VM
-    apt: pkg={{ git_package }} state=latest update_cache=yes
-    when: dev_result == "success"
-    register: git_result
 
   - name: install postgresql on Debian VM
     apt: pkg={{ postgresql_package }} state=latest update_cache=yes
-    when: git_result == "success"
+    when: dev_result == "success"
     register: postgresql_result
 
   - name: install apache on Debian VM
