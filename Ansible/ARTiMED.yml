@@ -19,7 +19,7 @@
     when: ansible_os_family == "RedHat"
     
   - name: install virtualbox on Debian
-    apt: pkg={{ virtualbox__package }} state=latest 
+    apt: pkg={{ virtualbox_package }} state=latest 
     when: ansible_os_family == "Debian"
     
   - name: install virtualbox on RedHat
