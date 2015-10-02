@@ -3,7 +3,7 @@
   sudo: yes
 
   vars:
-    vm_dir: {{ VM_DIR }}
+    vm_dir: "{{ VM_DIR }}"
     vagrant_package: vagrant
     virtualbox_package: virtualbox
     vagrant_box: https://dl.dropboxusercontent.com/u/3523744/boxes/debian-8.1-amd64-lxc-puppet/debian-8.1-lxc-puppet.box
