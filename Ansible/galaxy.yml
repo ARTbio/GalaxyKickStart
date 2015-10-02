@@ -24,23 +24,15 @@
   tasks:
   - name: install dev on Debian VM
     apt: pkg={{ dev_packages }} state=latest update_cache=yes
-    register: dev_result
 
   - name: install postgresql on Debian VM
     apt: pkg={{ postgresql_package }} state=latest update_cache=yes
-    when: dev_result == "success"
-    register: postgresql_result
 
   - name: install apache on Debian VM
     apt: pkg={{ apache_package }} state=latest update_cache=yes
-    when: postgresql_result == "success"
-    register: apache_result
 
   - git: repo=https://github.com/galaxyproject/galaxy/ dest={{ local_home }}/{{ galaxy_relative_dir }}/ clone=yes update=yes
-    when: apache_result == "success"
-    register: git_result
 
   - pip: name=planemo
-    when: git_result == "success"
 
     #config galaxy.ini and posgresql and toolsheds ans (toolshed?)

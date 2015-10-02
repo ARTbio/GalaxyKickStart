@@ -14,30 +14,22 @@
   - name: install vagrant on Debian
     apt: pkg={{ vagrant_package }} state=latest update_cache=yes
     when: ansible_os_family == "Debian"
-    register: vagrant_result
     
   - name: install vagrant on RedHat
     yum: name={{ vagrant_package }} state=latest
     when: ansible_os_family == "RedHat"
-    register: vagrant_result
     
   - name: install virtualbox on Debian
     apt: pkg={{ virtualbox__package }} state=latest 
-    when: ansible_os_family == "Debian" and vagrant_result == "success"
-    register: virtualbox_result
+    when: ansible_os_family == "Debian"
     
   - name: install virtualbox on RedHat
     yum: name={{ virtualbox_package }} state=latest
-    when: ansible_os_family == "RedHat" and vagrant_result == "success"
-    register: virtualbox_result
+    when: ansible_os_family == "RedHat"
 
   - name: Assures vm dir exists
     file: path={{ local_home }}/{{ vm_dir }} state=directory
-    when: virtualbox_result == "success"
-    register: vm_dir_result
 
   - copy: src=./{{ vagrant_file }} dest={{ local_home }}/{{ vm_dir }}/
 
   - command: cd {{ local_home }}/{{ vm_dir }}/; vagrant up    
-    when: vm_dir_result == "success"
-    register: vagrant_up_result

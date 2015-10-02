@@ -1,3 +1,5 @@
+#sudo ansible-playbook -i /home/fabiorjvieira/Cloud/GitHub/general/Ansible/ansible_hosts /home/fabiorjvieira/Cloud/GitHub/general/Ansible/test.yml
+
 - hosts: ARTiMED_host_servers
   remote_user: root
   sudo: yes
@@ -15,3 +17,11 @@
     apt: pkg={{ vagrant_package }} state=latest update_cache=yes
     when: ansible_os_family == "Debian"
     register: vagrant_result
+
+  - shell: echo "{{ vagrant_result }}" > ./result.output
+    when: vagrant_result | success
+
+  - shell: rm ./result.output
+    when: vagrant_result | failed
+#  - shell: echo "abc" >> ./result.output; echo "cde"
+#    when: vagrant_result.stderr_lines == "" 
