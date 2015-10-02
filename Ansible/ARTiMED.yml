@@ -37,6 +37,8 @@
   - name: Assures vm dir exists
     file: path={{ vm_dir }} state=directory
     
+  - replace: dest={{ vm_dir }}/{{ vagrant_file }} regexp='VAGRANT_BOX' replace='{{ vagrant_box }}' backup=yes
+
   - shell: vagrant up
     args:
       chdir: "{{ vm_dir }}"
