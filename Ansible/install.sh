@@ -19,5 +19,7 @@ if git clone https://github.com/fabiorjvieira/general.git
 then
 	mv -f $vm_dir/general/Ansible/* $vm_dir/; rm -rf $vm_dir/general/ #to be removed, however git must be corrected
 	sed "s/???vm_dir???/$vm_dir/" $vm_dir/ARTiMED.prototype.yml > $vm_dir/ARTiMED.yml
-	sudo ansible-playbook -i $vm_dir/ansible_hosts $vm_dir/ARTiMED.yml
+	sudo ansible-playbook -i $vm_dir/ansible_hosts "-e 'VM_DIR=$vm_dir'" $vm_dir/ARTiMED.yml
 fi
+
+
