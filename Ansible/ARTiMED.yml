@@ -18,13 +18,13 @@
     yum: name={{ vagrant_package }} state=latest
     when: ansible_os_family == "RedHat"
     
-  - name: install virtualbox on Debian
-    apt: pkg={{ virtualbox_package }} state=latest 
-    when: ansible_os_family == "Debian"
+#  - name: install virtualbox on Debian
+#    apt: pkg={{ virtualbox_package }} state=latest 
+#    when: ansible_os_family == "Debian"
     
-  - name: install virtualbox on RedHat
-    yum: name={{ virtualbox_package }} state=latest
-    when: ansible_os_family == "RedHat"
+#  - name: install virtualbox on RedHat
+#    yum: name={{ virtualbox_package }} state=latest
+#    when: ansible_os_family == "RedHat"
 
   - name: Assures vm dir exists
     file: path={{ vm_dir }} state=directory
