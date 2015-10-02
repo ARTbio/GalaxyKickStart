@@ -1,12 +1,13 @@
 #!/bin/bash
-vm_dir=galaxy_install
+cd
+export vm_dir=galaxy_install
 mkdir $HOME/$vm_dir
 cd $HOME/$vm_dir
 
-sudo apt-get install git python2.7 software-properties-common
-sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get install vim git python2.7 software-properties-common -y
+sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update
-sudo apt-get install ansible
+sudo apt-get install ansible -y
 
 echo "[ARTiMED_host_servers]" > $HOME/$vm_dir/ansible_hosts
 echo "127.0.0.1" >> $HOME/$vm_dir/ansible_hosts
