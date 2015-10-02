@@ -3,7 +3,6 @@
   sudo: yes
 
   vars:
-    local_home: "{{ lookup('env','HOME') }}"
     vm_dir: ???vm_dir???
     vagrant_package: vagrant
     virtualbox_package: virtualbox
@@ -28,8 +27,6 @@
     when: ansible_os_family == "RedHat"
 
   - name: Assures vm dir exists
-    file: path={{ local_home }}/{{ vm_dir }} state=directory
+    file: path={{ vm_dir }} state=directory
 
-  - copy: src=./{{ vagrant_file }} dest={{ local_home }}/{{ vm_dir }}/
-
-  - command: cd {{ local_home }}/{{ vm_dir }}/; vagrant up    
+  - command: cd {{ vm_dir }}/; vagrant up    
