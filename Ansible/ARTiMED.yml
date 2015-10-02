@@ -1,5 +1,5 @@
 - hosts: ARTiMED_host_servers
-  remote_user: LOCAL_USER
+  remote_user: "{{ LOCAL_USER }}"
   sudo: yes
 
   vars:
