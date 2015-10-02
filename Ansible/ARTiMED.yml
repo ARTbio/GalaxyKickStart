@@ -28,9 +28,8 @@
 
   - name: Assures vm dir exists
     file: path={{ vm_dir }} state=directory
-
-  - shell: vagrant up
+    
+  - shell: sudo -u vagrant vagrant up
     args:
-    chdir: {{ vm_dir }}
-    become: yes
-    become_method: vagrant
+      chdir: "{{ vm_dir }}"
+    
