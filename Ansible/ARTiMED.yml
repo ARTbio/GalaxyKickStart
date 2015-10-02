@@ -5,7 +5,7 @@
   vars:
     vm_dir: "{{ VM_DIR }}"
     vagrant_package: vagrant
-    virtualbox_package: virtualbox
+#    virtualbox_package: virtualbox
     vagrant_box: https://dl.dropboxusercontent.com/u/3523744/boxes/debian-8.1-amd64-lxc-puppet/debian-8.1-lxc-puppet.box
     vagrant_file: Vagrantfile
     
@@ -18,13 +18,13 @@
     yum: name={{ vagrant_package }} state=latest
     when: ansible_os_family == "RedHat"
     
-  - name: install virtualbox on Debian
-    apt: pkg={{ virtualbox_package }} state=latest 
-    when: ansible_os_family == "Debian"
+#  - name: install virtualbox on Debian
+#    apt: pkg={{ virtualbox_package }} state=latest 
+#    when: ansible_os_family == "Debian"
     
-  - name: install virtualbox on RedHat
-    yum: name={{ virtualbox_package }} state=latest
-    when: ansible_os_family == "RedHat"
+#  - name: install virtualbox on RedHat
+#    yum: name={{ virtualbox_package }} state=latest
+#    when: ansible_os_family == "RedHat"
 
   - name: Assures vm dir exists
     file: path={{ vm_dir }} state=directory
