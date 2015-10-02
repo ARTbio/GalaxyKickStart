@@ -3,6 +3,7 @@
   sudo: yes
 
   vars:
+    local_user: "{{ lookup('env','USER') }}"
     vm_dir: "{{ VM_DIR }}"
     vagrant_package: vagrant
     virtualbox_package: virtualbox
@@ -29,7 +30,7 @@
   - name: Assures vm dir exists
     file: path={{ vm_dir }} state=directory
     
-  - shell: sudo -u vagrant vagrant up
+  - shell: sudo -u "{{ local_user }}" vagrant up
     args:
       chdir: "{{ vm_dir }}"
     
