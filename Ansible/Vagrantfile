@@ -1,10 +1,10 @@
 VAGRANTFILE_API_VERSION = "2"
    Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       config.vm.box = "ARTACK/debian-jessie"
-      config.vm.box_url = VAGRANT_BOX
-      config.vm.network :public_network
+      config.vm.box_url = "VAGRANT_BOX"
+      config.vm.network "forwarded_port", guest: 8080, host: 8080
+      config.vm.network "forwarded_port", guest: 9009, host: 9009
       config.vm.provision "ansible" do |ansible|
          ansible.playbook = "galaxy.yml"
       end
    end
-
