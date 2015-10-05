@@ -7,7 +7,7 @@
 #Docker?
 
 - hosts: all
-  remote_user: root
+  remote_user: vagrant
   sudo: yes
 
   vars:
@@ -24,15 +24,25 @@
   tasks:
   - name: install dev on Debian VM
     apt: pkg={{ dev_packages }} state=latest update_cache=yes
+    become_user: root
+    become_method: sudo    
 
   - name: install postgresql on Debian VM
     apt: pkg={{ postgresql_package }} state=latest update_cache=yes
+    become_user: root
+    become_method: sudo    
 
   - name: install apache on Debian VM
     apt: pkg={{ apache_package }} state=latest update_cache=yes
+    become_user: root
+    become_method: sudo    
 
   - git: repo=https://github.com/galaxyproject/galaxy/ dest={{ local_home }}/{{ galaxy_relative_dir }}/ clone=yes update=yes
+    become_user: root
+    become_method: sudo    
 
   - pip: name=planemo
+    become_user: root
+    become_method: sudo    
 
     #config galaxy.ini and posgresql and toolsheds ans (toolshed?)
