@@ -28,12 +28,12 @@
     become_method: sudo    
 
   - name: install postgresql on Debian VM
-    apt: pkg={{ postgresql_package }} state=latest update_cache=yes
+    apt: pkg={{ postgresql_package }} state=latest update_cache=no
     become_user: root
     become_method: sudo    
 
   - name: install apache on Debian VM
-    apt: pkg={{ apache_package }} state=latest update_cache=yes
+    apt: pkg={{ apache_package }} state=latest update_cache=no
     become_user: root
     become_method: sudo    
 
