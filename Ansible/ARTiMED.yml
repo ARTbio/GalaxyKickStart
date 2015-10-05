@@ -3,6 +3,7 @@
   sudo: yes
 
   vars:
+    local_home: "{{ lookup('env','HOME') }}"
     local_user: "{{ LOCAL_USER }}"
     vm_dir: "{{ VM_DIR }}"
     vagrant_package: vagrant
@@ -28,6 +29,10 @@
 
   - name: Assures vm dir exists
     file: path={{ vm_dir }} state=directory
+    become_user: "{{ local_user }}"
+    become_method: sudo    
+
+  - replace: dest={{ vm_dir }}/Vagrantfile regexp='\$HOME' replace='{{ local_home }}' backup=yes
     become_user: "{{ local_user }}"
     become_method: sudo    
     

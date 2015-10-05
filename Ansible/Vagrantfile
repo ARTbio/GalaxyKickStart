@@ -9,6 +9,7 @@ VAGRANTFILE_API_VERSION = "2"
             ntp_server: "pool.ntp.org",
             ansible_ssh_private_key_file: "$HOME/.vagrant.d/insecure_private_key"
          }
+         ansible.verbose = 'vvvv'
          ansible.playbook = "galaxy.yml"
       end
    end

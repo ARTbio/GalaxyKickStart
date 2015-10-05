@@ -19,11 +19,47 @@
     toolshed_port: 200
     postgresql_package: postgresql
     apache_package: apache2
-    dev_packages: git python-2.7 python-pip python-dev build-essential python-virtualenv software-properties-common
+    git_package: git 
+    python27_package: python2.7
+    pip_package: python-pip
+    pythondev_package: python-dev
+    build_package: build-essential
+    ve_package: python-virtualenv
+    software_package: software-properties-common
     
   tasks:
-  - name: install dev on Debian VM
-    apt: pkg={{ dev_packages }} state=latest update_cache=yes
+  - name: install git on Debian VM
+    apt: pkg={{ git_package }} state=latest update_cache=yes
+    become_user: root
+    become_method: sudo    
+
+  - name: install Python 2.7 on Debian VM
+    apt: pkg={{ python27_package }} state=latest update_cache=yes
+    become_user: root
+    become_method: sudo    
+
+  - name: install pip on Debian VM
+    apt: pkg={{ pip_package }} state=latest update_cache=yes
+    become_user: root
+    become_method: sudo    
+
+  - name: install Python dev on Debian VM
+    apt: pkg={{ pythondev_package }} state=latest update_cache=yes
+    become_user: root
+    become_method: sudo    
+
+  - name: install build essentials on Debian VM
+    apt: pkg={{ build_package }} state=latest update_cache=yes
+    become_user: root
+    become_method: sudo    
+
+  - name: install virtualenv on Debian VM
+    apt: pkg={{ ve_package }} state=latest update_cache=yes
+    become_user: root
+    become_method: sudo    
+
+  - name: install Python commons on Debian VM
+    apt: pkg={{ software_package }} state=latest update_cache=yes
     become_user: root
     become_method: sudo    
 
