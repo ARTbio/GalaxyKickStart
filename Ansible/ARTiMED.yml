@@ -31,7 +31,7 @@
     become_user: "{{ local_user }}"
     become_method: sudo    
     
-  - shell: vagrant up
+  - shell: VAGRANT_LOG=info vagrant upvagrant up
     args:
       chdir: "{{ vm_dir }}"
     become_user: "{{ local_user }}"
