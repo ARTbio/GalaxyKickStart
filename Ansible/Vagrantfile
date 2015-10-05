@@ -7,7 +7,7 @@ VAGRANTFILE_API_VERSION = "2"
       config.vm.provision "ansible" do |ansible|
          ansible.extra_vars = {
             ntp_server: "pool.ntp.org",
-            ansible_ssh_private_key_file: "$HOME/.vagrant//machines/default/virtualbox/private_key"
+            ansible_ssh_private_key_file: "$HOME/.vagrant.d/insecure_private_key"
          }
          ansible.playbook = "galaxy.yml"
       end
