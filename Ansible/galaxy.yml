@@ -34,32 +34,32 @@
     become_method: sudo    
 
   - name: install Python 2.7 on Debian VM
-    apt: pkg={{ python27_package }} state=latest update_cache=yes
+    apt: pkg={{ python27_package }} state=latest update_cache=no
     become_user: root
     become_method: sudo    
 
   - name: install pip on Debian VM
-    apt: pkg={{ pip_package }} state=latest update_cache=yes
+    apt: pkg={{ pip_package }} state=latest update_cache=no
     become_user: root
     become_method: sudo    
 
   - name: install Python dev on Debian VM
-    apt: pkg={{ pythondev_package }} state=latest update_cache=yes
+    apt: pkg={{ pythondev_package }} state=latest update_cache=no
     become_user: root
     become_method: sudo    
 
   - name: install build essentials on Debian VM
-    apt: pkg={{ build_package }} state=latest update_cache=yes
+    apt: pkg={{ build_package }} state=latest update_cache=no
     become_user: root
     become_method: sudo    
 
   - name: install virtualenv on Debian VM
-    apt: pkg={{ ve_package }} state=latest update_cache=yes
+    apt: pkg={{ ve_package }} state=latest update_cache=no
     become_user: root
     become_method: sudo    
 
   - name: install Python commons on Debian VM
-    apt: pkg={{ software_package }} state=latest update_cache=yes
+    apt: pkg={{ software_package }} state=latest update_cache=no
     become_user: root
     become_method: sudo    
 
