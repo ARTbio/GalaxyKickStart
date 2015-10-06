@@ -17,6 +17,7 @@ echo "127.0.0.1" >> $vm_dir/ansible_hosts
 #export ANSIBLE_INVENTORY=$vm_dir/ansible_hosts
 if git clone https://github.com/fabiorjvieira/general.git 
 then
+	ssh -p 2222 -i $HOME/.vagrant.d/insecure_private_key vagrant@localhost
 	mv -f $vm_dir/general/Ansible/* $vm_dir/; rm -rf $vm_dir/general/ #to be removed, however git must be corrected
 	sudo ansible-playbook -vvvv -i $vm_dir/ansible_hosts -e "VM_DIR=$vm_dir LOCAL_USER=$USER" $vm_dir/ARTiMED.yml
 fi

@@ -17,7 +17,7 @@
     galaxy_port: 80
     toolshed_ip: 0.0.0.0
     toolshed_port: 200
-    postgresql_package: postgresql
+    postgresql_package: postgresql-9.4
     git_package: git 
     python27_package: python2.7
     pip_package: python-pip
@@ -67,10 +67,59 @@
     become_user: root
     become_method: sudo    
 
+#  - replace: dest=/etc/postgresql/9.3/main/pg_hba.conf regexp='host    all             all             127.0.0.1/32            md5' replace='host    all             all             127.0.0.1/32            trust' backup=no
+#    become_user: postgres
+#    become_method: sudo    
+
+  - shell: pg_createcluster 9.4 main --start
+    become_user: root
+    become_method: sudo    
+
   - pip: name=planemo
     become_user: root
     become_method: sudo    
 
-  - git: repo=https://github.com/galaxyproject/galaxy/ dest={{ local_home }}/{{ galaxy_relative_dir }}/ clone=yes update=yes
+  - user: name=galaxy shell=/bin/bash groups=admins password=galaxy home=/home/galaxy/ createhome=yes append=yes
+    become_user: root
+    become_method: sudo    
 
-    #config galaxy.ini and posgresql and toolsheds ans (toolshed?)
+  - postgresql_user: db=galaxy name=galaxy
+    become_user: postgres
+    become_method: sudo    
+
+  - postgresql_db: name=galaxy owner=galaxy
+    become_user: postgres
+    become_method: sudo    
+
+  - git: repo=https://github.com/galaxyproject/galaxy/ dest=/home/galaxy/{{ galaxy_relative_dir }}/ clone=yes update=yes
+    become_user: galaxy
+    become_method: sudo    
+  
+  - copy: src=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini.sample dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini
+    become_user: galaxy
+    become_method: sudo    
+
+  - copy: src=/home/galaxy/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml.sample dest=/home/galaxy/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml
+    become_user: galaxy
+    become_method: sudo    
+
+  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#host = 127.0.0.1' replace='host = 0.0.0.0' backup=no
+    become_user: galaxy
+    become_method: sudo    
+
+  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#tool_dependency_dir = None' replace='tool_dependency_dir = ../dependencies/' backup=no
+    become_user: galaxy
+    become_method: sudo    
+   
+  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#admin_users = None' replace='admin_users = fabiorjvieira@gmail.com' backup=no
+    become_user: galaxy
+    become_method: sudo    
+
+  #config posgresql
+  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#database_connection = sqlite:///./database/universe.sqlite?isolation_level=IMMEDIATE' replace='database_connection = postgresql:///galaxy?host=/var/run/postgresql' backup=no
+    become_user: galaxy
+    become_method: sudo    
+
+  - lineinfile: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml line='   <tool_shed name="ARTbio Tool Shed" url="https://lbcd41.snv.jussieu.fr/toolshed/"/>' regexp='<tool_sheds>' state=present insertafter=yes
+    become_user: galaxy
+    become_method: sudo    
