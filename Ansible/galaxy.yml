@@ -12,7 +12,7 @@
 
   vars:
     local_home: "{{ lookup('env','HOME') }}"
-    galaxy_relative_dir: galaxy_ARTiMED
+    galaxy_relative_dir: galaxy_dist
     galaxy_ip: 0.0.0.0
     galaxy_port: 80
     toolshed_ip: 0.0.0.0
@@ -115,7 +115,6 @@
     become_user: galaxy
     become_method: sudo    
 
-  #config posgresql
   - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#database_connection = sqlite:///./database/universe.sqlite?isolation_level=IMMEDIATE' replace='database_connection = postgresql:///galaxy?host=/var/run/postgresql' backup=no
     become_user: galaxy
     become_method: sudo    
