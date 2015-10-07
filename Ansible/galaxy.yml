@@ -14,9 +14,7 @@
     local_home: "{{ lookup('env','HOME') }}"
     galaxy_relative_dir: galaxy_dist
     galaxy_ip: 0.0.0.0
-    galaxy_port: 80
-    toolshed_ip: 0.0.0.0
-    toolshed_port: 200
+    galaxy_port: 8080
     postgresql_package: postgresql-9.3
     git_package: git 
     build_package: build-essential
@@ -41,12 +39,8 @@
     become_user: root
     become_method: sudo    
 
-#  - pip: name=planemo
-#    become_user: root
-#    become_method: sudo    
-
 #useradd galaxy; mkdir /home/galaxy; chown -R galaxy:galaxy /home/galaxy
-  - user: name=galaxy shell=/bin/bash groups=admins password=galaxy home=/home/galaxy/ createhome=yes append=yes
+  - user: name=galaxy shell=/bin/bash groups=admin password=galaxy home=/home/galaxy/ createhome=yes append=yes
     become_user: root
     become_method: sudo    
 
@@ -70,7 +64,11 @@
     become_user: galaxy
     become_method: sudo    
 
-  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#host = 127.0.0.1' replace='host = 0.0.0.0' backup=no
+  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#host = 127.0.0.1' replace='host = {{ galaxy_ip }}' backup=no
+    become_user: galaxy
+    become_method: sudo    
+
+  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#port = 8080' replace='port = {{ galaxy_port }}' backup=no
     become_user: galaxy
     become_method: sudo    
 
