@@ -19,12 +19,7 @@
     toolshed_port: 200
     postgresql_package: postgresql-9.4
     git_package: git 
-#    python27_package: python2.7
-#    pip_package: python-pip
-#    pythondev_package: python-dev
     build_package: build-essential
-#    ve_package: python-virtualenv
-#    software_package: software-properties-common
     
   tasks:
   - name: install build essentials on Debian VM
@@ -37,39 +32,10 @@
     become_user: root
     become_method: sudo    
 
-#  - name: install Python 2.7 on Debian VM
-#    apt: pkg={{ python27_package }} state=latest update_cache=no
-#    become_user: root
-#    become_method: sudo    
-
-#  - name: install pip on Debian VM
-#    apt: pkg={{ pip_package }} state=latest update_cache=no
-#    become_user: root
-#    become_method: sudo    
-
-#  - name: install Python dev on Debian VM
-#    apt: pkg={{ pythondev_package }} state=latest update_cache=no
-#    become_user: root
-#    become_method: sudo    
-
-#  - name: install virtualenv on Debian VM
-#    apt: pkg={{ ve_package }} state=latest update_cache=no
-#    become_user: root
-#    become_method: sudo    
-
-#  - name: install Python commons on Debian VM
-#    apt: pkg={{ software_package }} state=latest update_cache=no
-#    become_user: root
-#    become_method: sudo    
-
   - name: install postgresql on Debian VM
     apt: pkg={{ postgresql_package }} state=latest update_cache=no
     become_user: root
     become_method: sudo    
-
-#  - replace: dest=/etc/postgresql/9.3/main/pg_hba.conf regexp='host    all             all             127.0.0.1/32            md5' replace='host    all             all             127.0.0.1/32            trust' backup=no
-#    become_user: postgres
-#    become_method: sudo    
 
   - shell: pg_createcluster 9.4 main --start
     become_user: root
@@ -128,9 +94,9 @@
     become_user: root
     become_method: sudo    
  
-  - service: name=galaxy state=started
-    become_user: root
-    become_method: sudo    
+#  - service: name=galaxy state=started
+#    become_user: root
+#    become_method: sudo    
     
 #No handlers could be found for logger "galaxy.config"
 #galaxy.eggs WARNING 2015-10-07 12:35:38,509 Warning: pbr (a dependent egg of sqlalchemy-migrate) cannot be fetched
