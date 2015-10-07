@@ -19,48 +19,48 @@
     toolshed_port: 200
     postgresql_package: postgresql-9.4
     git_package: git 
-    python27_package: python2.7
-    pip_package: python-pip
-    pythondev_package: python-dev
+#    python27_package: python2.7
+#    pip_package: python-pip
+#    pythondev_package: python-dev
     build_package: build-essential
-    ve_package: python-virtualenv
-    software_package: software-properties-common
+#    ve_package: python-virtualenv
+#    software_package: software-properties-common
     
   tasks:
-  - name: install git on Debian VM
-    apt: pkg={{ git_package }} state=latest update_cache=yes
-    become_user: root
-    become_method: sudo    
-
-  - name: install Python 2.7 on Debian VM
-    apt: pkg={{ python27_package }} state=latest update_cache=no
-    become_user: root
-    become_method: sudo    
-
-  - name: install pip on Debian VM
-    apt: pkg={{ pip_package }} state=latest update_cache=no
-    become_user: root
-    become_method: sudo    
-
-  - name: install Python dev on Debian VM
-    apt: pkg={{ pythondev_package }} state=latest update_cache=no
-    become_user: root
-    become_method: sudo    
-
   - name: install build essentials on Debian VM
     apt: pkg={{ build_package }} state=latest update_cache=no
     become_user: root
     become_method: sudo    
 
-  - name: install virtualenv on Debian VM
-    apt: pkg={{ ve_package }} state=latest update_cache=no
+  - name: install git on Debian VM
+    apt: pkg={{ git_package }} state=latest update_cache=yes
     become_user: root
     become_method: sudo    
 
-  - name: install Python commons on Debian VM
-    apt: pkg={{ software_package }} state=latest update_cache=no
-    become_user: root
-    become_method: sudo    
+#  - name: install Python 2.7 on Debian VM
+#    apt: pkg={{ python27_package }} state=latest update_cache=no
+#    become_user: root
+#    become_method: sudo    
+
+#  - name: install pip on Debian VM
+#    apt: pkg={{ pip_package }} state=latest update_cache=no
+#    become_user: root
+#    become_method: sudo    
+
+#  - name: install Python dev on Debian VM
+#    apt: pkg={{ pythondev_package }} state=latest update_cache=no
+#    become_user: root
+#    become_method: sudo    
+
+#  - name: install virtualenv on Debian VM
+#    apt: pkg={{ ve_package }} state=latest update_cache=no
+#    become_user: root
+#    become_method: sudo    
+
+#  - name: install Python commons on Debian VM
+#    apt: pkg={{ software_package }} state=latest update_cache=no
+#    become_user: root
+#    become_method: sudo    
 
   - name: install postgresql on Debian VM
     apt: pkg={{ postgresql_package }} state=latest update_cache=no
@@ -79,6 +79,7 @@
     become_user: root
     become_method: sudo    
 
+#useradd galaxy; mkdir /home/galaxy; chown -R galaxy:galaxy /home/galaxy
   - user: name=galaxy shell=/bin/bash groups=admins password=galaxy home=/home/galaxy/ createhome=yes append=yes
     become_user: root
     become_method: sudo    
@@ -122,3 +123,21 @@
   - lineinfile: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml line='   <tool_shed name="ARTbio Tool Shed" url="https://lbcd41.snv.jussieu.fr/toolshed/"/>' regexp='<tool_sheds>' state=present insertafter=yes
     become_user: galaxy
     become_method: sudo    
+  
+  - copy: src=/home/galaxy/{{ galaxy_relative_dir }}/contrib/contrib/galaxy.debian-init dest=/etc/init.d/contrib/galaxy mode="+r" 
+    become_user: root
+    become_method: sudo    
+ 
+  - service: name=galaxy state=started
+    become_user: root
+    become_method: sudo    
+
+    
+    
+    No handlers could be found for logger "galaxy.config"
+galaxy.queue_worker INFO 2015-10-07 12:35:33,197 Initalizing main Galaxy Queue Worker on sqlalchemy+postgresql:///galaxy?host=/var/run/postgresql
+tool_shed.tool_shed_registry DEBUG 2015-10-07 12:35:33,295 Loading references to tool sheds from ./config/tool_sheds_conf.xml.sample
+tool_shed.tool_shed_registry DEBUG 2015-10-07 12:35:33,296 Loaded reference to tool shed: Galaxy Main Tool Shed
+galaxy.app DEBUG 2015-10-07 12:35:33,298 Using "galaxy.ini" config file: /home/galaxy/galaxy/config/galaxy.ini
+galaxy.eggs WARNING 2015-10-07 12:35:38,509 Warning: pbr (a dependent egg of sqlalchemy-migrate) cannot be fetched
+migrate.versioning.repository DEBUG 2015-10-07 12:35:38,681 Loading repository lib/galaxy/model/migrate...
