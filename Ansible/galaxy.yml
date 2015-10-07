@@ -35,21 +35,28 @@
     become_user: root
     become_method: sudo    
 
-  - shell: pg_createcluster 9.3 main --start
+#      - libpq-dev
+  - name: install postgresql ansible on Debian VM
+    apt: pkg=python-psycopg2 state=latest update_cache=no
     become_user: root
     become_method: sudo    
 
+  - shell: pg_createcluster 9.3 main --start
+    become_user: root
+    become_method: sudo    
+    ignore_errors: yes
+    
 #useradd galaxy; mkdir /home/galaxy; chown -R galaxy:galaxy /home/galaxy
   - user: name=galaxy shell=/bin/bash groups=admin password=galaxy home=/home/galaxy/ createhome=yes append=yes
     become_user: root
     become_method: sudo    
 
-  - postgresql_user: db=galaxy name=galaxy
+  - postgresql_user: name=galaxy
     become_user: postgres
     become_method: sudo    
 
-    become_user: postgres
   - postgresql_db: name=galaxy owner=galaxy
+    become_user: postgres
     become_method: sudo    
 
   - git: repo=https://github.com/galaxyproject/galaxy/ dest=/home/galaxy/{{ galaxy_relative_dir }}/ clone=yes update=yes
