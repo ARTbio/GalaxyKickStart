@@ -17,7 +17,7 @@
     galaxy_port: 80
     toolshed_ip: 0.0.0.0
     toolshed_port: 200
-    postgresql_package: postgresql-9.4
+    postgresql_package: postgresql-9.3
     git_package: git 
     build_package: build-essential
     
@@ -37,7 +37,7 @@
     become_user: root
     become_method: sudo    
 
-  - shell: pg_createcluster 9.4 main --start
+  - shell: pg_createcluster 9.3 main --start
     become_user: root
     become_method: sudo    
 
