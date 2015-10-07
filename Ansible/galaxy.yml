@@ -131,13 +131,6 @@
   - service: name=galaxy state=started
     become_user: root
     become_method: sudo    
-
     
-    
-    No handlers could be found for logger "galaxy.config"
-galaxy.queue_worker INFO 2015-10-07 12:35:33,197 Initalizing main Galaxy Queue Worker on sqlalchemy+postgresql:///galaxy?host=/var/run/postgresql
-tool_shed.tool_shed_registry DEBUG 2015-10-07 12:35:33,295 Loading references to tool sheds from ./config/tool_sheds_conf.xml.sample
-tool_shed.tool_shed_registry DEBUG 2015-10-07 12:35:33,296 Loaded reference to tool shed: Galaxy Main Tool Shed
-galaxy.app DEBUG 2015-10-07 12:35:33,298 Using "galaxy.ini" config file: /home/galaxy/galaxy/config/galaxy.ini
-galaxy.eggs WARNING 2015-10-07 12:35:38,509 Warning: pbr (a dependent egg of sqlalchemy-migrate) cannot be fetched
-migrate.versioning.repository DEBUG 2015-10-07 12:35:38,681 Loading repository lib/galaxy/model/migrate...
+#No handlers could be found for logger "galaxy.config"
+#galaxy.eggs WARNING 2015-10-07 12:35:38,509 Warning: pbr (a dependent egg of sqlalchemy-migrate) cannot be fetched
