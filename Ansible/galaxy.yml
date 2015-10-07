@@ -41,9 +41,9 @@
     become_user: root
     become_method: sudo    
 
-  - pip: name=planemo
-    become_user: root
-    become_method: sudo    
+#  - pip: name=planemo
+#    become_user: root
+#    become_method: sudo    
 
 #useradd galaxy; mkdir /home/galaxy; chown -R galaxy:galaxy /home/galaxy
   - user: name=galaxy shell=/bin/bash groups=admins password=galaxy home=/home/galaxy/ createhome=yes append=yes
@@ -54,8 +54,8 @@
     become_user: postgres
     become_method: sudo    
 
-  - postgresql_db: name=galaxy owner=galaxy
     become_user: postgres
+  - postgresql_db: name=galaxy owner=galaxy
     become_method: sudo    
 
   - git: repo=https://github.com/galaxyproject/galaxy/ dest=/home/galaxy/{{ galaxy_relative_dir }}/ clone=yes update=yes
