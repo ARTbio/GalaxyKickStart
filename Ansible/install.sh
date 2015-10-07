@@ -1,5 +1,4 @@
 #!/bin/bash
-#fabio
 galaxy_relative_dir=$1
 git_repo=$2
 
