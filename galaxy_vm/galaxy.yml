@@ -23,7 +23,7 @@
   - locale_gen: name=en_US.UTF-8 state=present
 
   - name: install dependencies packages
-    action: apt pkg=$item state=latest update_cache=yes
+    action: apt pkg={{ item }} state=latest update_cache=yes
     with_items:
        - "{{ build_package }}"
        - "{{ git_package }}"
