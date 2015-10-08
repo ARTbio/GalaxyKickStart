@@ -9,8 +9,10 @@
     git_package: git 
     build_package: build-essential
     python_postgres: python-psycopg2
-#    postgresql_package: postgresql-9.3
-    
+    postgresql_package: postgresql
+  roles:
+    - postgresql
+        
   tasks:
   - locale_gen: name=en_US.UTF-8 state=present
 
@@ -23,7 +25,8 @@
        - "{{ python_postgres }}"
     become_user: root
     become_method: sudo
-  
+
+#galaxy and user
   - user: name=galaxy shell=/bin/bash groups=admin password=galaxy home=/home/galaxy/ createhome=yes append=yes
     become_user: root
     become_method: sudo    
@@ -34,7 +37,9 @@
   
 #postgresql
   - name: install dependencies packages
-    action: apt pkg={{ item }} state=latest update_cache=yes
+    apt: pkg={{ python_postgres }} state=latest update_cache=no
+    become_user: root
+    become_method: sudo    
 
   - postgresql_user: name=galaxy
     become_user: postgres
@@ -70,11 +75,12 @@
     become_user: galaxy
     become_method: sudo
 
-  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#database_connection = sqlite:///./database/universe.sqlite?isolation_level=IMMEDIATE' replace='database_connection = postgresql:///galaxy?host=/var/run/postgresql' backup=no
+  - lineinfile: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini line='database_connection = postgresql:///galaxy?host=/var/run/postgresql' insertafter='^#database_connection = ' state=present
     become_user: galaxy
     become_method: sudo
 
-  - lineinfile: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml line='   <tool_shed name="ARTbio Tool Shed" url="https://lbcd41.snv.jussieu.fr/toolshed/"/>' regexp='<tool_sheds>' state=present insertafter=yes
+#tirou a linha
+  - lineinfile: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml line='    <tool_shed name="ARTbio Tool Shed" url="https://lbcd41.snv.jussieu.fr/toolshed/"/>' insertafter='<tool_sheds>' state=present
     become_user: galaxy
     become_method: sudo
 
