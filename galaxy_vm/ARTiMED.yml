@@ -8,24 +8,25 @@
     vm_dir: "{{ VM_DIR }}"
     vagrant_package: vagrant
     virtualbox_package: virtualbox
-    vagrant_file: Vagrantfile
     
   tasks:
-  - name: install vagrant on Debian
-    apt: pkg={{ vagrant_package }} state=latest update_cache=yes
+  - name: install dependencies packages on debian
+    action: apt pkg={{ item }} state=latest update_cache=yes
+    with_items:
+       - "{{ vagrant_package }}"
+       - "{{ virtualbox_package }}"
     when: ansible_os_family == "Debian"
+    become_user: root
+    become_method: sudo
 
-  - name: install vagrant on RedHat
-    yum: name={{ vagrant_package }} state=latest update_cache=no
+  - name: install dependencies packages on debian
+    action: yum pkg={{ item }} state=latest update_cache=yes
+    with_items:
+       - "{{ vagrant_package }}"
+       - "{{ virtualbox_package }}"
     when: ansible_os_family == "RedHat"
-    
-  - name: install virtualbox on Debian
-    apt: pkg={{ virtualbox_package }} state=latest update_cache=no
-    when: ansible_os_family == "Debian"
-    
-  - name: install virtualbox on RedHat
-    yum: name={{ virtualbox_package }} state=latest update_cache=no
-    when: ansible_os_family == "RedHat"
+    become_user: root
+    become_method: sudo
 
   - name: Assures vm dir exists
     file: path={{ vm_dir }} state=directory

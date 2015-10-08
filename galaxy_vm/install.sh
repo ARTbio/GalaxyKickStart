@@ -1,4 +1,5 @@
 #!/bin/bash
+#wget https://raw.githubusercontent.com/fabiorjvieira/ansible-artimed/master/galaxy_vm/install.sh?token=AIqEJXyH_Z5PNAo_4Ff6Sr3UszgqqTAbks5WH5fewA%3D%3D
 galaxy_relative_dir=$1
 git_repo=$2
 artimed=$3

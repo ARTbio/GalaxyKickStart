@@ -6,10 +6,10 @@
     galaxy_relative_dir: galaxy_dist
     galaxy_ip: 0.0.0.0
     galaxy_port: 8080
-    postgresql_package: postgresql-9.3
     git_package: git 
     build_package: build-essential
     python_postgres: python-psycopg2
+#    postgresql_package: postgresql-9.3
     
   tasks:
   - locale_gen: name=en_US.UTF-8 state=present
@@ -19,19 +19,22 @@
     with_items:
        - "{{ build_package }}"
        - "{{ git_package }}"
-       - "{{ postgresql_package }}"
+#       - "{{ postgresql_package }}"
        - "{{ python_postgres }}"
     become_user: root
     become_method: sudo
   
-  - shell: pg_createcluster 9.3 main --start
-    become_user: root
-    become_method: sudo    
-    ignore_errors: yes
-    
   - user: name=galaxy shell=/bin/bash groups=admin password=galaxy home=/home/galaxy/ createhome=yes append=yes
     become_user: root
     become_method: sudo    
+
+  - git: repo=https://github.com/galaxyproject/galaxy/ dest=/home/galaxy/{{ galaxy_relative_dir }}/ clone=yes update=yes
+    become_user: galaxy
+    become_method: sudo    
+  
+#postgresql
+  - name: install dependencies packages
+    action: apt pkg={{ item }} state=latest update_cache=yes
 
   - postgresql_user: name=galaxy
     become_user: postgres
@@ -41,10 +44,12 @@
     become_user: postgres
     become_method: sudo    
 
-  - git: repo=https://github.com/galaxyproject/galaxy/ dest=/home/galaxy/{{ galaxy_relative_dir }}/ clone=yes update=yes
-    become_user: galaxy
-    become_method: sudo    
-  
+#  - shell: pg_createcluster 9.3 main --start
+#    become_user: root
+#    become_method: sudo    
+#    ignore_errors: yes
+    
+#config galaxy
   - shell: cp /home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini.sample /home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini
     become_user: galaxy
     become_method: sudo
@@ -53,7 +58,7 @@
     become_user: galaxy
     become_method: sudo
 
-  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#host = 127.0.0.1' replace='host = 0.0.0.0' backup=no
+  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#host = 127.0.0.1' replace='host = {{ galaxy_ip }}' backup=no
     become_user: galaxy
     become_method: sudo
 
@@ -61,7 +66,7 @@
     become_user: galaxy
     become_method: sudo
 
-  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#admin_users = None' replace='admin_users = fabiorjvieira@gmail.com' backup=no
+  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#admin_users = None' replace='admin_users = artimed@gmail.com' backup=no
     become_user: galaxy
     become_method: sudo
 
