@@ -22,8 +22,9 @@ export vm_dir=$HOME/$galaxy_relative_dir
 mkdir -p $vm_dir
 cd $vm_dir
 
-sudo echo -e  'y/n' | ssh-keygen -q -f /root/.ssh/id_rsa -t rsa -N ''
-sudo cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys
+
+sudo sh -c "echo -e  'y/n' | ssh-keygen -q -f /root/.ssh/id_rsa -t rsa -N ''"
+sudo sh -c "cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys"
 sudo apt-get install vim git python2.7 software-properties-common -y
 sudo apt-get install ansible -y
 
