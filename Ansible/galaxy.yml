@@ -11,36 +11,25 @@
   sudo: yes
 
   vars:
-    local_home: "{{ lookup('env','HOME') }}"
     galaxy_relative_dir: galaxy_dist
     galaxy_ip: 0.0.0.0
     galaxy_port: 8080
     postgresql_package: postgresql-9.3
     git_package: git 
     build_package: build-essential
+    python_postgres: python-psycopg2
     
   tasks:
-  - name: install build essentials on Debian VM
-    apt: pkg={{ build_package }} state=latest update_cache=no
-    become_user: root
-    become_method: sudo    
+  - locale_gen: name=en_US.UTF-8 state=present
 
-  - name: install git on Debian VM
-    apt: pkg={{ git_package }} state=latest update_cache=yes
-    become_user: root
-    become_method: sudo    
-
-  - name: install postgresql on Debian VM
-    apt: pkg={{ postgresql_package }} state=latest update_cache=no
-    become_user: root
-    become_method: sudo    
-
-#      - libpq-dev
-  - name: install postgresql ansible on Debian VM
-    apt: pkg=python-psycopg2 state=latest update_cache=no
-    become_user: root
-    become_method: sudo    
-
+  - name: install dependencies packages
+      action: apt pkg=$item state=latest update_cache=yes
+      with_items:
+        - {{ build_package }}
+        - {{ git_package }}
+        - {{ postgresql_package }}
+        - python_postgres  
+  
   - shell: pg_createcluster 9.3 main --start
     become_user: root
     become_method: sudo    
