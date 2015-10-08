@@ -1,0 +1,195 @@
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <unistd.h>
+#include <string.h>
+#include <sstream>
+#include <fstream>
+#include <sys/file.h>
+
+char startData = '#', stopData = '*';
+std::string cognatorPrefix = "COG";
+std::string simulatorPrefix = "SIM";
+
+void simulator(key_t globalKey)
+{
+   int loop = 10;
+
+   //Memory size in pages
+   size_t memorySize = 1024;
+   //Shared memory I/O port
+   char * sharedMemory, * sharedMemoryBeginning;
+   char sharedMemoryChar = ' ';
+   //Request a shared memory segment
+   int memoryId;
+   //Lock file mechanism
+   std::stringstream lockFileName, syncFileName, readWriteOn;
+   int lockFile;
+
+   //Getting shared memory
+   memoryId = shmget(globalKey, memorySize, IPC_CREAT | 0666);
+   if (memoryId < 0)
+   {
+      std::cout << "Error getting shared memory id" << std::endl;
+      exit(1);
+   }
+
+   //Attached shared memory
+   sharedMemory = (char *) shmat(memoryId, NULL, 0);
+   if (sharedMemory == (char *) -1)
+   {
+      std::cout << "Error attaching shared memory id" << std::endl;
+      exit(1);
+   }
+   sharedMemoryBeginning = sharedMemory;
+
+   //Create file lock mechanism
+   lockFileName.str("");
+   lockFileName << "/tmp/lockFile" << globalKey;
+   lockFile = open(lockFileName.str().data(), O_CREAT, S_IRUSR | S_IWUSR);
+   if (lockFile == -1)
+   {
+      std::cout << "Error creating locking file" << std::endl;
+      exit(1);
+   }
+
+   //Write on the shared memory segment
+   flock(lockFile,LOCK_EX);
+   syncFileName.str("");
+   syncFileName << "/tmp/" << simulatorPrefix << globalKey;
+   open(syncFileName.str().data(), O_CREAT);
+   readWriteOn.str("");
+   readWriteOn << startData << "Hello World" << stopData;
+   memcpy(sharedMemory, readWriteOn.str().data(), readWriteOn.str().size());
+   flock(lockFile,LOCK_UN);
+
+   //Waiting for cognator
+   syncFileName.str("");
+   syncFileName << "/tmp/" << cognatorPrefix << globalKey;
+   while (fopen(syncFileName.str().data(), "r") == NULL)
+   {
+      std::cout << "waiting for cognator" << std::endl;
+      sleep(3);
+   }
+
+   while (--loop > 0)
+   {
+      flock(lockFile,LOCK_EX);
+
+      //Reading from the shared memory segment.
+      readWriteOn.str("");
+      sharedMemory = sharedMemoryBeginning;
+      do
+      {
+         memcpy(&sharedMemoryChar, sharedMemory++, 1);
+         readWriteOn << sharedMemoryChar;
+      }
+      while (sharedMemoryChar != stopData);
+
+      //Write on the shared memory segment
+      std::cout << readWriteOn.str() << std::endl;
+      readWriteOn.str("");
+      readWriteOn << startData << "Hello World" << loop << stopData;
+      memcpy(sharedMemoryBeginning, readWriteOn.str().data(), readWriteOn.str().size());
+
+      flock(lockFile,LOCK_UN);
+   }
+
+   // Detach and remove shared memory
+   shmdt(sharedMemory);
+}
+
+void cognator(key_t globalKey)
+{
+   int loop = 10;
+
+   //Memory size in pages
+   size_t memorySize = 1024;
+   //Shared memory I/O port
+   char * sharedMemory, * sharedMemoryBeginning;
+   char sharedMemoryChar = ' ';
+   //Request a shared memory segment
+   int memoryId;
+   //Lock file mechanism
+   std::stringstream lockFileName, syncFileName, readWriteOn;
+   int lockFile;
+
+   //Getting shared memory
+   memoryId = shmget(globalKey, memorySize, 0666);
+   if (memoryId < 0)
+   {
+      std::cout << "Error getting shared memory id" << std::endl;
+      exit(1);
+   }
+
+   //Attached shared memory
+   sharedMemory = (char *) shmat(memoryId, NULL, 0);
+   if (sharedMemory == (char *) -1)
+   {
+      std::cout << "Error attaching shared memory id" << std::endl;
+      exit(1);
+   }
+   sharedMemoryBeginning = sharedMemory;
+
+   //Create file lock mechanism
+   lockFileName.str("");
+   lockFileName << "/tmp/lockFile" << globalKey;
+   lockFile = open(lockFileName.str().data(), O_CREAT, S_IRUSR | S_IWUSR);
+   if (lockFile == -1)
+   {
+      std::cout << "Error creating locking file" << std::endl;
+      exit(1);
+   }
+
+   //Waiting simulator
+   syncFileName.str("");
+   syncFileName << "/tmp/" << simulatorPrefix << globalKey;
+   while (fopen(syncFileName.str().data(), "r") == NULL)
+   {
+      std::cout << "waiting for simulator" << std::endl;
+      sleep(3);
+   }
+
+   /*debug is on the table*/flock(lockFile,LOCK_UN);
+
+   flock(lockFile,LOCK_EX);
+   syncFileName.str("");
+   syncFileName << "/tmp/" << cognatorPrefix << globalKey;
+   open(syncFileName.str().data(), O_CREAT);
+
+   //Write on the shared memory segment
+   while (--loop > 0)
+   {
+      //Reading from the shared memory segment.
+      readWriteOn.str("");
+      sharedMemory = sharedMemoryBeginning;
+      do
+      {
+         memcpy(&sharedMemoryChar, sharedMemory++, 1);
+         readWriteOn << sharedMemoryChar;
+      }
+      while (sharedMemoryChar != stopData);
+
+      //Write on the shared memory segment
+      std::cout << readWriteOn.str() << std::endl;
+      readWriteOn.str("");
+      readWriteOn << startData << "Bye World" << loop << stopData;
+      memcpy(sharedMemoryBeginning, readWriteOn.str().data(), readWriteOn.str().size());
+
+      flock(lockFile,LOCK_UN);
+      flock(lockFile,LOCK_EX);
+   }
+
+   // Detach and remove shared memory
+   shmdt(sharedMemory);
+}
+
+int main(int argc, const char **argv)
+{
+   if (argc > 1) cognator(123456);
+   else simulator(123456);
+   return 0;
+}
