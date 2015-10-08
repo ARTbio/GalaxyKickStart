@@ -10,6 +10,11 @@
     git_package: git 
     build_package: build-essential
     python_postgres: python-psycopg2
+    postgresql_conf:
+      listen_addresses: "''"    # disable network listening (listen on unix socket only)
+    postgresql_pg_hba_conf:
+      - host all all 10.0.0.0/8 md5
+
   roles:
     - postgresql
         
@@ -31,11 +36,7 @@
     become_method: sudo    
 
 #PostgreSQL
-  - git: repo=https://github.com/galaxyproject/ansible-postgresql.git clone=yes update=yes
-    become_user: {{ galaxy_user }}
-    become_method: sudo    
-
-  - include: /home/{{ galaxy_user }}/ansible-postgresql/handlers/main.yml 
+  - include: ./postgresql/handlers/main.yml 
 
   - postgresql_user: name={{ galaxy_user }}
     become_user: postgres
@@ -47,35 +48,35 @@
 
 #Galaxy
   - git: repo=https://github.com/galaxyproject/galaxy.git dest=/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/ clone=yes update=yes
-    become_user: {{ galaxy_user }}
+    become_user: "{{ galaxy_user }}"
     become_method: sudo    
 
   - shell: cp /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/galaxy.ini.sample /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/galaxy.ini
-    become_user: {{ galaxy_user }}
+    become_user: "{{ galaxy_user }}"
     become_method: sudo
 
   - shell: cp /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml.sample /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml
-    become_user: {{ galaxy_user }}
+    become_user: "{{ galaxy_user }}"
     become_method: sudo
 
   - replace: dest=/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#host = 127.0.0.1' replace='host = {{ galaxy_ip }}' backup=no
-    become_user: {{ galaxy_user }}
+    become_user: "{{ galaxy_user }}"
     become_method: sudo
 
   - replace: dest=/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#tool_dependency_dir = None' replace='tool_dependency_dir = ../dependencies/' backup=no
-    become_user: {{ galaxy_user }}
+    become_user: "{{ galaxy_user }}"
     become_method: sudo
 
   - replace: dest=/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#admin_users = None' replace='admin_users = artimed@gmail.com' backup=no
-    become_user: {{ galaxy_user }}
+    become_user: "{{ galaxy_user }}"
     become_method: sudo
 
   - lineinfile: dest=/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/galaxy.ini line='database_connection = postgresql:///{{ galaxy_user }}?host=/var/run/postgresql' insertafter='^#database_connection = ' state=present
-    become_user: {{ galaxy_user }}
+    become_user: "{{ galaxy_user }}"
     become_method: sudo
 
   - lineinfile: dest=/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml line='    <tool_shed name="ARTbio Tool Shed" url="https://lbcd41.snv.jussieu.fr/toolshed/"/>' insertafter='<tool_sheds>' state=present
-    become_user: {{ galaxy_user }}
+    become_user: "{{ galaxy_user }}"
     become_method: sudo
 
   - shell: cp /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/contrib/galaxy.debian-init /etc/init.d/{{ galaxy_user }}
