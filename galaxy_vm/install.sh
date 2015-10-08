@@ -2,6 +2,16 @@
 galaxy_relative_dir=$1
 git_repo=$2
 
+if [ "$git_repo" == "" ]
+then
+	git_repo="https://github.com/ARTbio/ansible-artimed.git"
+fi
+
+if [ "$galaxy_relative_dir" == "" ]
+then
+	galaxy_relative_dir="galaxy_install"
+fi
+
 cd
 export vm_dir=$HOME/$galaxy_relative_dir
 mkdir -p $vm_dir
@@ -17,7 +27,7 @@ echo "[ARTiMED_host_servers]" >> $vm_dir/ansible_hosts
 echo "127.0.0.1" >> $vm_dir/ansible_hosts
 if git clone $git_repo 
 then
+	cd $galaxy_relative_dir
 	ssh-keygen -f "$HOME/.ssh/known_hosts" -R [localhost]:2222
-	mv -f $vm_dir/general/Ansible/* $vm_dir/; rm -rf $vm_dir/general/ #to be removed, however git must be corrected
 	sudo ansible-playbook -vvvv -i $vm_dir/ansible_hosts -e "VM_DIR=$vm_dir LOCAL_USER=$USER" $vm_dir/ARTiMED.yml
 fi
