@@ -9,7 +9,6 @@
     galaxy_port: 8080
     git_package: git 
     build_package: build-essential
-    python_postgres: python-psycopg2
     postgresql_conf:
       listen_addresses: "''"    # disable network listening (listen on unix socket only)
     postgresql_pg_hba_conf:
@@ -26,7 +25,6 @@
     with_items:
        - "{{ build_package }}"
        - "{{ git_package }}"
-       - "{{ python_postgres }}"
     become_user: root
     become_method: sudo
 
@@ -37,6 +35,8 @@
 
 #PostgreSQL
   - include: ./postgresql/handlers/main.yml 
+    become_user: root
+    become_method: sudo
 
   - postgresql_user: name={{ galaxy_user }}
     become_user: postgres
