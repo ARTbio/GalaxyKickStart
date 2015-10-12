@@ -6,7 +6,6 @@
     galaxy_user: galaxy
     galaxy_relative_dir: galaxy_dist
     galaxy_ip: 0.0.0.0
-    galaxy_port: 8080
     git_package: git 
     build_package: build-essential
     python_postgres: python-psycopg2

@@ -1,0 +1,95 @@
+- hosts: all
+  remote_user: vagrant
+  sudo: yes
+
+  vars:
+    galaxy_relative_dir: galaxy_dist
+    galaxy_ip: 0.0.0.0
+    galaxy_port: 8080
+    git_package: git 
+    build_package: build-essential
+    python_postgres: python-psycopg2
+    postgresql_package: postgresql
+    pip_package: python-pip
+    
+  tasks:
+  - locale_gen: name=en_US.UTF-8 state=present
+
+  - name: install dependencies packages
+    action: apt pkg={{ item }} state=latest update_cache=yes
+    with_items:
+       - "{{ build_package }}"
+       - "{{ git_package }}"
+       - "{{ postgresql_package }}"
+       - "{{ python_postgres }}"
+       - "{{ python_pip }}"
+    become_user: root
+    become_method: sudo
+
+#galaxy user
+  - user: name=galaxy shell=/bin/bash groups=admin password=galaxy home=/home/galaxy/ createhome=yes append=yes
+    become_user: root
+    become_method: sudo    
+
+#postgresql
+  - name: Get installed version
+    command: dpkg-query -f='${Version;3}' -W {{ postgresql_package }}
+    register: postgresql_version
+
+  - shell: pg_createcluster {{ postgresql_version.stdout }} main --start
+    become_user: root
+    become_method: sudo    
+    ignore_errors: yes
+
+  - postgresql_user: name=galaxy
+    become_user: postgres
+    become_method: sudo    
+
+  - postgresql_db: name=galaxy owner=galaxy
+    become_user: postgres
+    become_method: sudo    
+
+#galaxy
+  - git: repo=https://github.com/galaxyproject/galaxy/galaxy.git dest=/home/galaxy/{{ galaxy_relative_dir }}/ clone=yes update=yes
+    become_user: galaxy
+    become_method: sudo    
+    
+  - shell: cp /home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini.sample /home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini
+    become_user: galaxy
+    become_method: sudo
+
+  - shell: cp /home/galaxy/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml.sample /home/galaxy/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml
+    become_user: galaxy
+    become_method: sudo
+
+  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#host = 127.0.0.1' replace='host = {{ galaxy_ip }}' backup=no
+    become_user: galaxy
+    become_method: sudo
+
+  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#tool_dependency_dir = None' replace='tool_dependency_dir = ../dependencies/' backup=no
+    become_user: galaxy
+    become_method: sudo
+
+  - replace: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#admin_users = None' replace='admin_users = artimed@gmail.com' backup=no
+    become_user: galaxy
+    become_method: sudo
+
+  - lineinfile: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/galaxy.ini line='database_connection = postgresql:///galaxy?host=/var/run/postgresql' insertafter='^#database_connection = ' state=present
+    become_user: galaxy
+    become_method: sudo
+
+  - lineinfile: dest=/home/galaxy/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml line='    <tool_shed name="ARTbio Tool Shed" url="https://lbcd41.snv.jussieu.fr/toolshed/"/>' insertafter='<tool_sheds>' state=present
+    become_user: galaxy
+    become_method: sudo
+
+  - shell: cp /home/galaxy/{{ galaxy_relative_dir }}/contrib/galaxy.debian-init /etc/init.d/galaxy
+    become_user: root
+    become_method: sudo
+ 
+  - pip: name=poster
+    become_user: root
+    become_method: sudo    
+ 
+#  - service: name=galaxy state=started
+#    become_user: root
+#    become_method: sudo    
