@@ -29,9 +29,9 @@
     become_user: "{{ local_user }}"
     become_method: sudo    
 
-  - replace: dest={{ vm_dir }}/Vagrantfile regexp='\$HOME' replace='{{ local_home }}' backup=yes
-    become_user: "{{ local_user }}"
-    become_method: sudo    
+#  - replace: dest={{ vm_dir }}/Vagrantfile regexp='\$HOME' replace='{{ local_home }}' backup=yes
+#    become_user: "{{ local_user }}"
+#    become_method: sudo    
 
   - git: repo=https://github.com/galaxyproject/ansible-postgresql.git dest={{ vm_dir }}/roles/postgresql clone=yes update=yes
     become_user: "{{ local_user }}"
@@ -40,6 +40,8 @@
   - lineinfile: dest={{ vm_dir }}/roles/postgresql/tasks/debian.yml line="- shell: pg_createcluster \{\{ postgresql_version \}\} main --start \n  ignore_errors: yes" insertafter="EOF" state=present
     become_user: "{{ local_user }}"
     become_method: sudo
+
+  - src: galaxyprojectdotorg.galaxy
    
   - shell: VAGRANT_LOG=info vagrant up
     args:

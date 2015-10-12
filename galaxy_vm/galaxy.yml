@@ -9,7 +9,7 @@
     git_package: git 
     build_package: build-essential
     python_postgres: python-psycopg2
-    pip_package: python-pip
+#    pip_package: python-pip
 
   roles:
     - postgresql
@@ -23,7 +23,7 @@
        - "{{ build_package }}"
        - "{{ git_package }}"
        - "{{ python_postgres }}"
-       - "{{ python_pip }}"
+#       - "{{ pip_package }}"
     become_user: root
     become_method: sudo    
 
@@ -78,9 +78,9 @@
     become_user: root
     become_method: sudo    
 
-  - pip: name=poster
-    become_user: root
-    become_method: sudo    
+#  - pip: name=poster
+#    become_user: root
+#    become_method: sudo    
  
 #  - service: name={{ galaxy_user }} state=started
 #    become_user: root

@@ -33,10 +33,6 @@
     become_user: "{{ local_user }}"
     become_method: sudo    
 
-  - replace: dest={{ vm_dir }}/Vagrantfile regexp='\$HOME' replace='{{ local_home }}' backup=yes
-    become_user: "{{ local_user }}"
-    become_method: sudo    
-    
   - shell: VAGRANT_LOG=info vagrant up
     args:
       chdir: "{{ vm_dir }}"

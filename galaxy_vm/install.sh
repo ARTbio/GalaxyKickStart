@@ -35,6 +35,6 @@ then
 	echo "[ARTiMED_host_servers]" >> $vm_dir/ansible_hosts
 	echo "localhost" >> $vm_dir/ansible_hosts
 
-	ssh-keygen -f "$HOME/.ssh/known_hosts" -R [localhost]:2222
+#	ssh-keygen -f "$HOME/.ssh/known_hosts" -R [localhost]:2222
 	sudo ansible-playbook -vvvv -i $vm_dir/ansible_hosts -e "VM_DIR=$vm_dir/$artimed/ LOCAL_USER=$USER" $vm_dir/$artimed/ARTiMED.yml
 fi
