@@ -16,8 +16,6 @@
        - "{{ vagrant_package }}"
        - "{{ virtualbox_package }}"
     when: ansible_os_family == "Debian"
-    become_user: root
-    become_method: sudo
 
   - name: install dependencies packages on debian
     action: yum pkg={{ item }} state=latest update_cache=yes
@@ -25,8 +23,6 @@
        - "{{ vagrant_package }}"
        - "{{ virtualbox_package }}"
     when: ansible_os_family == "RedHat"
-    become_user: root
-    become_method: sudo
 
   - name: Assures vm dir exists
     file: path={{ vm_dir }} state=directory
@@ -37,9 +33,13 @@
     become_user: "{{ local_user }}"
     become_method: sudo    
 
-  - git: repo=https://github.com/galaxyproject/ansible-postgresql.git dest={{ vm_dir }}/postgresql clone=yes update=yes
+  - git: repo=https://github.com/galaxyproject/ansible-postgresql.git dest={{ vm_dir }}/roles/postgresql clone=yes update=yes
     become_user: "{{ local_user }}"
     become_method: sudo    
+
+  - lineinfile: dest={{ vm_dir }}/roles/postgresql/tasks/debian.yml line="- shell: pg_createcluster \{\{ postgresql_version \}\} main --start \n  ignore_errors: yes" insertafter="EOF" state=present
+    become_user: "{{ local_user }}"
+    become_method: sudo
    
   - shell: VAGRANT_LOG=info vagrant up
     args:

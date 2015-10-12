@@ -9,10 +9,8 @@
     galaxy_port: 8080
     git_package: git 
     build_package: build-essential
-    postgresql_conf:
-      listen_addresses: "''"    # disable network listening (listen on unix socket only)
-    postgresql_pg_hba_conf:
-      - host all all 10.0.0.0/8 md5
+    python_postgres: python-psycopg2
+    pip_package: python-pip
 
   roles:
     - postgresql
@@ -25,19 +23,17 @@
     with_items:
        - "{{ build_package }}"
        - "{{ git_package }}"
+       - "{{ python_postgres }}"
+       - "{{ python_pip }}"
     become_user: root
-    become_method: sudo
+    become_method: sudo    
 
-#Linux user
+#Linux galaxy user
   - user: name={{ galaxy_user }} shell=/bin/bash groups=admin password={{ galaxy_user }} home=/home/{{ galaxy_user }}/ createhome=yes append=yes
     become_user: root
     become_method: sudo    
 
 #PostgreSQL
-  - include: ./postgresql/handlers/main.yml 
-    become_user: root
-    become_method: sudo
-
   - postgresql_user: name={{ galaxy_user }}
     become_user: postgres
     become_method: sudo    
@@ -81,8 +77,15 @@
 
   - shell: cp /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/contrib/galaxy.debian-init /etc/init.d/{{ galaxy_user }}
     become_user: root
-    become_method: sudo
+    become_method: sudo    
+
+  - pip: name=poster
+    become_user: root
+    become_method: sudo    
  
 #  - service: name={{ galaxy_user }} state=started
 #    become_user: root
 #    become_method: sudo    
+
+#galaxy.eggs WARNING 2015-10-12 07:26:10,840 Warning: pbr (a dependent egg of sqlalchemy-migrate) cannot be fetched
+#No handlers could be found for logger "galaxy.config"
