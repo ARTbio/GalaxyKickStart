@@ -8,9 +8,8 @@
     galaxy_port: 8080
     git_package: git 
     build_package: build-essential
-    python_postgres: python-psycopg2
     postgresql_package: postgresql
-    pip_package: python-pip
+    python_postgres: python-psycopg2
     
   tasks:
   - locale_gen: name=en_US.UTF-8 state=present
@@ -22,7 +21,6 @@
        - "{{ git_package }}"
        - "{{ postgresql_package }}"
        - "{{ python_postgres }}"
-       - "{{ python_pip }}"
     become_user: root
     become_method: sudo
 
@@ -85,11 +83,7 @@
   - shell: cp /home/galaxy/{{ galaxy_relative_dir }}/contrib/galaxy.debian-init /etc/init.d/galaxy
     become_user: root
     become_method: sudo
- 
-  - pip: name=poster
-    become_user: root
-    become_method: sudo    
- 
+
 #  - service: name=galaxy state=started
 #    become_user: root
 #    become_method: sudo    

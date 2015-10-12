@@ -6,33 +6,57 @@
     galaxy_user: galaxy
     galaxy_relative_dir: galaxy_dist
     galaxy_ip: 0.0.0.0
+    admin_user: artimed@gmail.com
+
     git_package: git 
     build_package: build-essential
     python_postgres: python-psycopg2
-#    pip_package: python-pip
 
-  roles:
-    - postgresql
-        
-  tasks:
-  - locale_gen: name=en_US.UTF-8 state=present
+    galaxy_vcs: git
+    galaxy_server_dir: "/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/"
+    postgresql_objects_users:
+      - name: galaxy
+        password: null
+    postgresql_objects_databases:
+      - name: galaxy
+        owner: galaxy
+    galaxy_config:
+      "server:main":
+        host: "{{ galaxy_ip }}"
+      "app:main":
+        admin_users: "{{ admin_user }}"
+        database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
+        tool_dependency_dir: "../dependencies/"
 
-  - name: install dependencies packages
+  pre_tasks:
+  - name: install pre-dependencies packages
     action: apt pkg={{ item }} state=latest update_cache=yes
     with_items:
        - "{{ build_package }}"
        - "{{ git_package }}"
+    become_user: root
+    become_method: sudo    
+
+  #Linux galaxy user
+  - user: name={{ galaxy_user }} shell=/bin/bash groups=admin password={{ galaxy_user }} home=/home/{{ galaxy_user }}/ createhome=yes append=yes system=yes 
+    become_user: root
+    become_method: sudo    
+
+  roles:
+    - galaxyprojectdotorg.postgresql
+    - role: galaxyprojectdotorg.galaxy
+      sudo: yes
+      sudo_user: "{{ galaxy_user }}"
+        
+  tasks:
+  - name: install dependencies packages
+    action: apt pkg={{ item }} state=latest update_cache=no
+    with_items:
        - "{{ python_postgres }}"
-#       - "{{ pip_package }}"
     become_user: root
     become_method: sudo    
 
-#Linux galaxy user
-  - user: name={{ galaxy_user }} shell=/bin/bash groups=admin password={{ galaxy_user }} home=/home/{{ galaxy_user }}/ createhome=yes append=yes
-    become_user: root
-    become_method: sudo    
-
-#PostgreSQL
+  #PostgreSQL
   - postgresql_user: name={{ galaxy_user }}
     become_user: postgres
     become_method: sudo    
@@ -41,32 +65,8 @@
     become_user: postgres
     become_method: sudo    
 
-#Galaxy
-  - git: repo=https://github.com/galaxyproject/galaxy.git dest=/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/ clone=yes update=yes
-    become_user: "{{ galaxy_user }}"
-    become_method: sudo    
-
-  - shell: cp /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/galaxy.ini.sample /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/galaxy.ini
-    become_user: "{{ galaxy_user }}"
-    become_method: sudo
-
+  #Galaxy tool sheds
   - shell: cp /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml.sample /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml
-    become_user: "{{ galaxy_user }}"
-    become_method: sudo
-
-  - replace: dest=/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#host = 127.0.0.1' replace='host = {{ galaxy_ip }}' backup=no
-    become_user: "{{ galaxy_user }}"
-    become_method: sudo
-
-  - replace: dest=/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#tool_dependency_dir = None' replace='tool_dependency_dir = ../dependencies/' backup=no
-    become_user: "{{ galaxy_user }}"
-    become_method: sudo
-
-  - replace: dest=/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/galaxy.ini regexp='#admin_users = None' replace='admin_users = artimed@gmail.com' backup=no
-    become_user: "{{ galaxy_user }}"
-    become_method: sudo
-
-  - lineinfile: dest=/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/galaxy.ini line='database_connection = postgresql:///{{ galaxy_user }}?host=/var/run/postgresql' insertafter='^#database_connection = ' state=present
     become_user: "{{ galaxy_user }}"
     become_method: sudo
 
@@ -78,13 +78,6 @@
     become_user: root
     become_method: sudo    
 
-#  - pip: name=poster
-#    become_user: root
-#    become_method: sudo    
- 
 #  - service: name={{ galaxy_user }} state=started
 #    become_user: root
 #    become_method: sudo    
-
-#galaxy.eggs WARNING 2015-10-12 07:26:10,840 Warning: pbr (a dependent egg of sqlalchemy-migrate) cannot be fetched
-#No handlers could be found for logger "galaxy.config"

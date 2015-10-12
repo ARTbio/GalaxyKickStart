@@ -29,12 +29,13 @@ sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update
 sudo apt-get install ansible vim git python2.7 software-properties-common -y
 
+sudo ansible-galaxy install galaxyprojectdotorg.galaxy
+sudo ansible-galaxy install galaxyprojectdotorg.postgresql
+
 if git clone $git_repo
 then
 	echo "" >> $vm_dir/ansible_hosts
 	echo "[ARTiMED_host_servers]" >> $vm_dir/ansible_hosts
 	echo "localhost" >> $vm_dir/ansible_hosts
-
-#	ssh-keygen -f "$HOME/.ssh/known_hosts" -R [localhost]:2222
 	sudo ansible-playbook -vvvv -i $vm_dir/ansible_hosts -e "VM_DIR=$vm_dir/$artimed/ LOCAL_USER=$USER" $vm_dir/$artimed/ARTiMED.yml
 fi
