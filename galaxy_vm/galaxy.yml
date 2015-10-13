@@ -5,15 +5,16 @@
   vars:
     galaxy_user: galaxy
     galaxy_relative_dir: galaxy_dist
+    #Postgresql role variables
+    postgresql_users:
+      - name: "{{ galaxy_user }}"
+    postgresql_databases:
+      - name: "{{ galaxy_user }}"
+        owner: "{{ galaxy_user }}"
     #Galaxy role variables
     #galaxy_vcs: git
     galaxy_server_dir: "/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/"
-    postgresql_objects_users:
-      - name: galaxy
-        password: null
-    postgresql_objects_databases:
-      - name: galaxy
-        owner: galaxy
+    galaxy_config_dir: "/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/"
     galaxy_config:
       "server:main":
         host: "0.0.0.0"
@@ -23,9 +24,12 @@
         database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
         tool_dependency_dir: "../dependencies/"
     #Dependencies
-    git_package: git 
+    git_package: git
+    mercurial_package: mercurial
+    virtualenv_package: python-virtualenv
+    pip_package: python-pip
     build_package: build-essential
-    python_postgres: python-psycopg2
+    psycopg2_package: python-psycopg2
 
   pre_tasks:
   #Dependencies
@@ -34,6 +38,10 @@
     with_items:
        - "{{ build_package }}"
        - "{{ git_package }}"
+       - "{{ mercurial_package }}"
+       - "{{ virtualenv_package }}"
+       - "{{ pip_package }}"
+       - "{{ psycopg2_package }}"
     become_user: root
     become_method: sudo    
 
@@ -43,42 +51,16 @@
     become_method: sudo    
 
   roles:
-    - galaxyprojectdotorg.postgresql
+    - ANXS.postgresql
     - role: galaxyprojectdotorg.galaxy
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
         
-  tasks:
-  #Dependencies
-  - name: install dependencies packages
-    action: apt pkg={{ item }} state=latest update_cache=no
-    with_items:
-       - "{{ python_postgres }}"
-    become_user: root
-    become_method: sudo    
-
-  #PostgreSQL - didn't find any role to do this
-  - postgresql_user: name={{ galaxy_user }}
-    become_user: postgres
-    become_method: sudo    
-
-  - postgresql_db: name={{ galaxy_user }} owner={{ galaxy_user }}
-    become_user: postgres
-    become_method: sudo    
-
-#  #Galaxy tool sheds - didn't find any role to do this
-#  - shell: cp /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml.sample /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml
-#    become_user: "{{ galaxy_user }}"
-#    become_method: sudo
-
-#  - lineinfile: dest=/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml line='    <tool_shed name="ARTbio Tool Shed" url="https://lbcd41.snv.jussieu.fr/toolshed/"/>' insertafter='<tool_sheds>' state=present
-#    become_user: "{{ galaxy_user }}"
-#    become_method: sudo
-
+#Create a system service for galaxy
 #  - shell: cp /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/contrib/galaxy.debian-init /etc/init.d/{{ galaxy_user }}
 #    become_user: root
 #    become_method: sudo    
 
 #  - service: name={{ galaxy_user }} state=started
 #    become_user: root
-#    become_method: sudo    
+#    become_method: sudo  
