@@ -22,7 +22,7 @@
       "app:main":
         admin_users: "artimed@gmail.com"
         database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
-        tool_dependency_dir: "../dependencies/"
+        tool_dependency_dir: "/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/lib/tool_shed/dependencies/"
     #Dependencies
     git_package: git
     mercurial_package: mercurial
