@@ -1,6 +1,4 @@
 #!/bin/bash
-#wget https://raw.githubusercontent.com/fabiorjvieira/ansible-artimed/master/galaxy_vm/install.sh?token=AIqEJXyH_Z5PNAo_4Ff6Sr3UszgqqTAbks5WH5fewA%3D%3D
-
 #Parsing parameters 
 if [ "$1" == "-h" ]
 then
