@@ -1,5 +1,4 @@
 #!/bin/bash
-#            ansible_ssh_private_key_file: "#{ENV['HOME']}/.vagrant.d/insecure_private_key"
 #Parsing parameters 
 if [ "$1" == "-h" ]
 then
