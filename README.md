@@ -10,7 +10,7 @@ The install.sh file will:
  - install ansible roles for galaxy servers (galaxyprojectdotorg.galaxy and galaxyprojectdotorg.postgresql).
  - create the instalation directory for the Vagrant box.
  - git clone the galaxy server playbook for vagrant provision procedure.
- - Do a vagrant up to deploy the box.
+ - do a vagrant up to deploy the box.
  
 If you want to skip these steps please download the Vagrantfile and galaxy.yml provided in this repo and install the necessary packages and roles. Vagrantfile and galaxy.yml must be on the same directory to work.
 To run galaxy you have to "ssh" to the box, cd to the galaxy directory and do "sh run.sh".
