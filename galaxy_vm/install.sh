@@ -26,10 +26,6 @@ then
 	artimed_vm_relative_dir="ansible-artimed/"
 fi
 
-#check if it stills necessary
-sudo sh -c "echo -e  'y/n' | ssh-keygen -q -f /root/.ssh/id_rsa -t rsa -N ''"
-sudo sh -c "cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys"
-	
 #Dependencies
 sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update
