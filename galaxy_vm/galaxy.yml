@@ -6,7 +6,7 @@
     galaxy_user: galaxy
     galaxy_relative_dir: galaxy_dist
     #Galaxy role variables
-    galaxy_vcs: git
+    #galaxy_vcs: git
     galaxy_server_dir: "/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/"
     postgresql_objects_users:
       - name: galaxy
