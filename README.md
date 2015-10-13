@@ -25,7 +25,7 @@ vagrant up
 
 Note that, if your language environment variables are not correctly configured you must include one procedure on the postgresql role file /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml by executing:
 ```
-sudo echo "" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml
-sudo echo "- shell: pg_createcluster {{ postgresql_version }} main --start" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml 
-sudo echo "  ignore_errors: yes" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml
+sudo sh -c 'echo "" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml'
+sudo sh -c 'echo "- shell: pg_createcluster {{ postgresql_version }} main --start" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml'
+sudo sh -c 'echo "  ignore_errors: yes" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml'
 ```
