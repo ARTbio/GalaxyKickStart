@@ -9,7 +9,7 @@ The install.sh file will:
  - install git, ansible, vagrant and virtualbox SO packages on Debian distributions.
  - install ansible roles for galaxy servers (galaxyprojectdotorg.galaxy and galaxyprojectdotorg.postgresql).
  - create the instalation directory for the Vagrant box.
- - git clone the galaxy server playbook for vagrant provision procedure.
+ - git clone this galaxy server playbook for vagrant provision procedure.
  - do a vagrant up to deploy the box.
  
 If you want to skip these steps please download the Vagrantfile and galaxy.yml provided in this repo and install the necessary packages and roles. Vagrantfile and galaxy.yml must be on the same directory to work.
