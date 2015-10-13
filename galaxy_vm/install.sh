@@ -32,7 +32,7 @@ sudo apt-get update
 sudo apt-get install ansible vim git mercurial python2.7 software-properties-common virtualbox vagrant python-pip python-virtualenv -y
 
 #Can be moved to galaxy.yml as a pre task
-sudo ansible-galaxy install galaxyprojectdotorg.galaxy --force
+sudo ansible-galaxy install ANXS.postgresql --force
 sudo ansible-galaxy install galaxyprojectdotorg.postgresql --force
 
 #Can be moved to galaxy.yml as a pre task
