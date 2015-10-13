@@ -29,7 +29,7 @@ fi
 #Dependencies
 sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update
-sudo apt-get install ansible vim git python2.7 software-properties-common virtualbox vagrant -y
+sudo apt-get install ansible vim git python2.7 software-properties-common virtualbox vagrant python-pip python-virtualenv -y
 
 #Can be moved to galaxy.yml as a pre task
 sudo ansible-galaxy install galaxyprojectdotorg.galaxy --force
