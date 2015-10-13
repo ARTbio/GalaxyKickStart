@@ -6,13 +6,6 @@
     config_file: "{{ CONFIG_FILE }}"
     galaxy_user: galaxy
     galaxy_relative_dir: galaxy_dist
-    galaxy_ip: 0.0.0.0
-    galaxy_port: 8080
-    admin_user: artimed@gmail.com
-    #Dependencies
-    git_package: git 
-    build_package: build-essential
-    python_postgres: python-psycopg2
     #Galaxy role variables
     galaxy_vcs: git
     galaxy_server_dir: "/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/"
@@ -24,14 +17,19 @@
         owner: galaxy
     galaxy_config:
       "server:main":
-        host: "{{ galaxy_ip }}"
-        port: "{{ galaxy_port }}"
+        host: "{{ 0.0.0.0 }}"
+        port: "{{ 8080 }}"
       "app:main":
-        admin_users: "{{ admin_user }}"
+        admin_users: "{{ artimed@gmail.com }}"
         database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
         tool_dependency_dir: "../dependencies/"
+    #Dependencies
+    git_package: git 
+    build_package: build-essential
+    python_postgres: python-psycopg2
 
   pre_tasks:
+  #Dependencies
   - name: install pre-dependencies packages
     action: apt pkg={{ item }} state=latest update_cache=yes
     with_items:
@@ -52,6 +50,7 @@
       sudo_user: "{{ galaxy_user }}"
         
   tasks:
+  #Dependencies
   - name: install dependencies packages
     action: apt pkg={{ item }} state=latest update_cache=no
     with_items:
@@ -59,7 +58,7 @@
     become_user: root
     become_method: sudo    
 
-  #PostgreSQL
+  #PostgreSQL - didn't find any role to do this
   - postgresql_user: name={{ galaxy_user }}
     become_user: postgres
     become_method: sudo    
@@ -68,7 +67,7 @@
     become_user: postgres
     become_method: sudo    
 
-  #Galaxy tool sheds
+  #Galaxy tool sheds - didn't find any role to do this
   - shell: cp /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml.sample /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml
     become_user: "{{ galaxy_user }}"
     become_method: sudo
