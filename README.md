@@ -19,6 +19,7 @@ sudo sh -c 'echo "- shell: pg_createcluster {{ postgresql_version }} main --star
 sudo sh -c 'echo "  ignore_errors: yes" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml'
 ```
 
+# Running Galaxy
 To run galaxy you have to "ssh" to the box, cd to the galaxy directory and do "sh run.sh". Galaxy should be running on the default port (8080), listening all network cards and the admin user is artimed@gmail.com. Galaxy database is labeled as galaxy with owner galaxy.
 
 If you want to redo the process "cd" to the box directory (where the Vagrantfile is) and do the following steps:
