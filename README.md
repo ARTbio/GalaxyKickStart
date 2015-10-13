@@ -13,7 +13,8 @@ The install.sh file will:
  - do a vagrant up to deploy the box.
  
 If you want to skip these steps please download the Vagrantfile and galaxy.yml provided in this repo and install the necessary packages and roles. Vagrantfile and galaxy.yml must be on the same directory to work.
-To run galaxy you have to "ssh" to the box, cd to the galaxy directory and do "sh run.sh".
+
+To run galaxy you have to "ssh" to the box, cd to the galaxy directory and do "sh run.sh". Galaxy should be running on the default port (8080), listening all network cards and the admin user is artimed@gmail.com. Galaxy database is labeled as galaxy with owner galaxy.
 
 Note that, if your language environment variables are not correctly configured you must include one procedure on the postgresql role file /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml by executing:
 ```
