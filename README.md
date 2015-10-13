@@ -1,4 +1,4 @@
-# ansible-artimed
+# Ansible ARTiMED virtual machine
 Ansible playbooks for ARTiMED Virtual Machine
 Deploys ARTiMED Vagrant box (the virtual machine). It includes Galaxy with postgresql database. To deploy just download the install.sh file and run:
 ```
