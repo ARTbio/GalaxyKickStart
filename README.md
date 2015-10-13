@@ -16,6 +16,13 @@ If you want to skip these steps please download the Vagrantfile and galaxy.yml p
 
 To run galaxy you have to "ssh" to the box, cd to the galaxy directory and do "sh run.sh". Galaxy should be running on the default port (8080), listening all network cards and the admin user is artimed@gmail.com. Galaxy database is labeled as galaxy with owner galaxy.
 
+If you want to redo the process "cd" to the box directory (where the Vagrantfile is) and do the following steps:
+```
+vagrant package --output backup.box #backup your box
+vagrant destroy #it will destroy completelly your box, so do not miss the previous command
+vagrant up
+```
+
 Note that, if your language environment variables are not correctly configured you must include one procedure on the postgresql role file /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml by executing:
 ```
 sudo echo "" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml
