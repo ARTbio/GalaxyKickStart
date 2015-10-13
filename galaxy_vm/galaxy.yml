@@ -55,6 +55,7 @@
     - role: galaxyprojectdotorg.galaxy
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
+      galaxy_manage_database: no
         
 #Create a system service for galaxy
 #  - shell: cp /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/contrib/galaxy.debian-init /etc/init.d/{{ galaxy_user }}
