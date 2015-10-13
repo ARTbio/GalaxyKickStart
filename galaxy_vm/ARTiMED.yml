@@ -3,12 +3,13 @@
   sudo: yes
 
   vars:
+    config_file: "{{ CONFIG_FILE }}"
     local_home: "{{ lookup('env','HOME') }}"
     local_user: "{{ LOCAL_USER }}"
     vm_dir: "{{ VM_DIR }}"
     vagrant_package: vagrant
     virtualbox_package: virtualbox
-    
+
   tasks:
   - name: install dependencies packages on debian
     action: apt pkg={{ item }} state=latest update_cache=yes
@@ -29,9 +30,10 @@
     become_user: "{{ local_user }}"
     become_method: sudo    
 
-  - src: galaxyprojectdotorg.galaxy
-  - src: galaxyprojectdotorg.postgresql
+#  - src: galaxyprojectdotorg.galaxy
+#  - src: galaxyprojectdotorg.postgresql
 
+  #Fix the problem with language environment settings 
   - lineinfile: dest=/etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml line="- shell: pg_createcluster \{\{ postgresql_version \}\} main --start \n  ignore_errors: yes" insertafter="EOF" state=present
     become_user: "{{ local_user }}"
     become_method: sudo

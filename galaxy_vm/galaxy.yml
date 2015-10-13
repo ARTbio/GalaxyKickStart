@@ -3,15 +3,17 @@
   sudo: yes
 
   vars:
+    config_file: "{{ CONFIG_FILE }}"
     galaxy_user: galaxy
     galaxy_relative_dir: galaxy_dist
     galaxy_ip: 0.0.0.0
+    galaxy_port: 8080
     admin_user: artimed@gmail.com
-
+    #Dependencies
     git_package: git 
     build_package: build-essential
     python_postgres: python-psycopg2
-
+    #Galaxy role variables
     galaxy_vcs: git
     galaxy_server_dir: "/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/"
     postgresql_objects_users:
@@ -23,6 +25,7 @@
     galaxy_config:
       "server:main":
         host: "{{ galaxy_ip }}"
+        port: "{{ galaxy_port }}"
       "app:main":
         admin_users: "{{ admin_user }}"
         database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
