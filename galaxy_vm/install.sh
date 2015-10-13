@@ -20,7 +20,7 @@ fi
 
 if [ "$artimed_git_repo" == "" ]
 then
-	artimed_git_repo="https://github.com/ARTbio/ansible-artimed.git"
+	artimed_git_repo="https://github.com/fabiorjvieira/ansible-artimed.git"
 fi
 if [ "$artimed_vm_relative_dir" == "" ]
 then
