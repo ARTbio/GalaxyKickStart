@@ -16,10 +16,10 @@
         owner: galaxy
     galaxy_config:
       "server:main":
-        host: "{{ 0.0.0.0 }}"
-        port: "{{ 8080 }}"
+        host: "0.0.0.0"
+        port: "8080"
       "app:main":
-        admin_users: "{{ artimed@gmail.com }}"
+        admin_users: "artimed@gmail.com"
         database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
         tool_dependency_dir: "../dependencies/"
     #Dependencies
