@@ -6,7 +6,7 @@ bash install.sh
 ```
 
 The install.sh file will:
- - install git, ansible, vagrant and virtualbox SO packages on Debian distributions.
+ - install git, ansible (at least version 1.8), vagrant and virtualbox SO packages on Debian distributions.
  - install ansible roles for galaxy servers (galaxyprojectdotorg.galaxy and galaxyprojectdotorg.postgresql).
  - create the instalation directory for the Vagrant box ($HOME/ansible-artimed/galaxy_vm/).
  - git clone this galaxy server playbook for vagrant provision procedure.
@@ -25,7 +25,7 @@ vagrant up
 
 Note that, if your language environment variables are not correctly configured you must include one procedure on the postgresql role file /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml by executing:
 ```
-sudo echo "" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml
-sudo echo "- shell: pg_createcluster {{ postgresql_version }} main --start" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml 
-sudo echo "  ignore_errors: yes" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml
+sudo sh -c 'echo "" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml'
+sudo sh -c 'echo "- shell: pg_createcluster {{ postgresql_version }} main --start" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml'
+sudo sh -c 'echo "  ignore_errors: yes" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml'
 ```
