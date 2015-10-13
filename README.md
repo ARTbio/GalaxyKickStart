@@ -12,7 +12,7 @@ The install.sh file will:
  - git clone this galaxy server playbook for vagrant provision procedure.
  - do a vagrant up to deploy the box.
  
-If you want to skip these steps please download the Vagrantfile and galaxy.yml provided in this repo and install the necessary packages and roles listed above. Vagrantfile and galaxy.yml must be on the same directory to work.
+If you want to skip these steps please download the Vagrantfile and galaxy.yml provided in this repo and install the necessary packages and roles listed above and do a "vagrant up". Vagrantfile and galaxy.yml must be on the same directory to work.
 
 To run galaxy you have to "ssh" to the box, cd to the galaxy directory and do "sh run.sh". Galaxy should be running on the default port (8080), listening all network cards and the admin user is artimed@gmail.com. Galaxy database is labeled as galaxy with owner galaxy.
 
