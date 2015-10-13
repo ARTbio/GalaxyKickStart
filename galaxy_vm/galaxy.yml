@@ -3,7 +3,6 @@
   sudo: yes
 
   vars:
-    config_file: "{{ CONFIG_FILE }}"
     galaxy_user: galaxy
     galaxy_relative_dir: galaxy_dist
     #Galaxy role variables
@@ -67,18 +66,18 @@
     become_user: postgres
     become_method: sudo    
 
-  #Galaxy tool sheds - didn't find any role to do this
-  - shell: cp /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml.sample /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml
-    become_user: "{{ galaxy_user }}"
-    become_method: sudo
+#  #Galaxy tool sheds - didn't find any role to do this
+#  - shell: cp /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml.sample /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml
+#    become_user: "{{ galaxy_user }}"
+#    become_method: sudo
 
-  - lineinfile: dest=/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml line='    <tool_shed name="ARTbio Tool Shed" url="https://lbcd41.snv.jussieu.fr/toolshed/"/>' insertafter='<tool_sheds>' state=present
-    become_user: "{{ galaxy_user }}"
-    become_method: sudo
+#  - lineinfile: dest=/home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/config/tool_sheds_conf.xml line='    <tool_shed name="ARTbio Tool Shed" url="https://lbcd41.snv.jussieu.fr/toolshed/"/>' insertafter='<tool_sheds>' state=present
+#    become_user: "{{ galaxy_user }}"
+#    become_method: sudo
 
-  - shell: cp /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/contrib/galaxy.debian-init /etc/init.d/{{ galaxy_user }}
-    become_user: root
-    become_method: sudo    
+#  - shell: cp /home/{{ galaxy_user }}/{{ galaxy_relative_dir }}/contrib/galaxy.debian-init /etc/init.d/{{ galaxy_user }}
+#    become_user: root
+#    become_method: sudo    
 
 #  - service: name={{ galaxy_user }} state=started
 #    become_user: root
