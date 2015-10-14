@@ -23,30 +23,11 @@
         admin_users: "artimed@gmail.com"
         database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
         tool_dependency_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}/lib/tool_shed/dependencies/"
-    galaxy_tools_api_key: 379ab2a47d714a74b5cee4081703368e
-    galaxy_install_bootstrap_user: artimed
-    galaxy_tools_admin_user_password: artimed
-    #Dependencies
-#    git_package: git
-#    mercurial_package: mercurial
-#    virtualenv_package: python-virtualenv
-#    pip_package: python-pip
-#    build_package: build-essential
-#    psycopg2_package: python-psycopg2
-
-#  pre_tasks:
-  #Dependencies
-#  - name: install pre-dependencies packages
-#    action: apt pkg={{ item }} state=latest update_cache=yes
-#    with_items:
-#       - "{{ build_package }}"
-#       - "{{ git_package }}"
-#       - "{{ mercurial_package }}"
-#       - "{{ virtualenv_package }}"
-#       - "{{ pip_package }}"
-#       - "{{ psycopg2_package }}"
-#    become_user: root
-#    become_method: sudo    
+        master_api_key: 379ab2a47d714a74b5cee4081703368e
+    #Galaxy tools variables
+#    galaxy_tools_api_key: 379ab2a47d714a74b5cee4081703368e
+#    galaxy_install_bootstrap_user: artimed
+#    galaxy_tools_admin_user_password: artimed
 
 #  #Linux galaxy user
 #  - user: name={{ galaxy_user }} shell=/bin/bash groups=admin password={{ galaxy_user }} home=/home/{{ galaxy_user }}/ createhome=yes append=yes system=yes 
@@ -64,13 +45,8 @@
       sudo_user: "{{ galaxy_user }}"
       galaxy_manage_database: no      
     - role: galaxyprojectdotorg.galaxyextras
-    - role: galaxyprojectdotorg.tools
-
-#  tasks:
-#    - file: path=/home/{{ galaxy_user }} state=directory owner={{ galaxy_user }}
-#      become_user: root
-#      become_method: sudo    
-    
+#    - role: galaxyprojectdotorg.tools
+  
 #Create a system service for galaxy
 #  - shell: cp /home/{{ galaxy_user }}/{{ galaxy_user }}/contrib/galaxy.debian-init /etc/init.d/{{ galaxy_user }}
 #    become_user: root
