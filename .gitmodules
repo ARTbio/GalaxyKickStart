@@ -1,0 +1,9 @@
+[submodule "galaxy_vm/externals/galaxyprojectdotorg.galaxyextras"]
+	path = galaxy_vm/externals/galaxyprojectdotorg.galaxyextras
+	url = git://github.com/galaxyproject/ansible-galaxy-extras
+[submodule "galaxy_vm/externals/galaxyprojectdotorg.galaxy"]
+	path = galaxy_vm/externals/galaxyprojectdotorg.galaxy
+	url = git://github.com/galaxyproject/ansible-galaxy
+[submodule "galaxy_vm/externals/ANXS.postgresql"]
+	path = galaxy_vm/externals/ANXS.postgresql
+	url = git://github.com/ANXS/postgresql
