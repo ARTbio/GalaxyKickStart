@@ -45,6 +45,8 @@
       sudo_user: "{{ galaxy_user }}"
       galaxy_manage_database: no      
     - role: galaxyprojectdotorg.galaxyextras
+      galaxy_extras_config_nginx: yes
+      galaxy_extras_config_supervisor: yes
 #    - role: galaxyprojectdotorg.tools
   
 #Create a system service for galaxy
