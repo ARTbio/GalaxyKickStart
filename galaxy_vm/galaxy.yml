@@ -11,7 +11,8 @@
       - name: "{{ galaxy_user }}"
         owner: "{{ galaxy_user }}"
     #Galaxy role variables
-    #galaxy_vcs: git
+    galaxy_manage_clone:
+      galaxy_vcs: git
     galaxy_server_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}/"
     galaxy_config_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}/config/"
     galaxy_config:
@@ -22,6 +23,9 @@
         admin_users: "artimed@gmail.com"
         database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
         tool_dependency_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}/lib/tool_shed/dependencies/"
+    galaxy_tools_api_key: 379ab2a47d714a74b5cee4081703368e
+    galaxy_install_bootstrap_user: artimed
+    galaxy_tools_admin_user_password: artimed
     #Dependencies
 #    git_package: git
 #    mercurial_package: mercurial
@@ -50,16 +54,23 @@
 #    become_method: sudo    
 
   roles:
+    - role: ANXS.postgresql
+      postgresql_cluster_reset: yes
     - role: galaxyprojectdotorg.galaxy-os
       galaxy_user_name: "{{ galaxy_user }}"
       configure_docker: no
-    - ANXS.postgresql
     - role: galaxyprojectdotorg.galaxy
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
-      galaxy_manage_database: no
-    - galaxyprojectdotorg.galaxyextras
-        
+      galaxy_manage_database: no      
+    - role: galaxyprojectdotorg.galaxyextras
+    - role: galaxyprojectdotorg.tools
+
+#  tasks:
+#    - file: path=/home/{{ galaxy_user }} state=directory owner={{ galaxy_user }}
+#      become_user: root
+#      become_method: sudo    
+    
 #Create a system service for galaxy
 #  - shell: cp /home/{{ galaxy_user }}/{{ galaxy_user }}/contrib/galaxy.debian-init /etc/init.d/{{ galaxy_user }}
 #    become_user: root
