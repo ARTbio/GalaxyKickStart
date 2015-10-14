@@ -7,3 +7,6 @@
 [submodule "galaxy_vm/externals/ANXS.postgresql"]
 	path = galaxy_vm/externals/ANXS.postgresql
 	url = git://github.com/ANXS/postgresql
+[submodule "galaxy_vm/externals/galaxyprojectdotorg.galaxy-os"]
+	path = galaxy_vm/externals/galaxyprojectdotorg.galaxy-os
+	url = git://github.com/galaxyproject/ansible-galaxy-os
