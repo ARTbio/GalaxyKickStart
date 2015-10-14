@@ -31,17 +31,10 @@ sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update
 sudo apt-get install ansible vim git mercurial python2.7 software-properties-common virtualbox vagrant python-pip python-virtualenv -y
 
-#Can be moved to galaxy.yml as a pre task
 sudo ansible-galaxy install ANXS.postgresql --force
 sudo ansible-galaxy install galaxyprojectdotorg.postgresql --force
 
-#Can be moved to galaxy.yml as a pre task
-#Fix the problem with language environment settings 
-sudo sh -c 'echo "" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml'
-sudo sh -c 'echo "- shell: pg_createcluster {{ postgresql_version }} main --start" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml'
-sudo sh -c 'echo "  ignore_errors: yes" >> /etc/ansible/roles/galaxyprojectdotorg.postgresql/tasks/debian.yml'
-
-#VM dir
+#VM directory
 export vm_dir=$HOME/$artimed_vm_relative_dir
 mkdir -p $vm_dir
 rm -rf $vm_dir/*
