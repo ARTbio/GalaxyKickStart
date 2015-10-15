@@ -1,30 +1,6 @@
-[submodule "galaxy_vm/externals/galaxyprojectdotorg.galaxyextras"]
-	path = galaxy_vm/externals/galaxyprojectdotorg.galaxyextras
-	url = git://github.com/galaxyproject/ansible-galaxy-extras
-[submodule "galaxy_vm/externals/galaxyprojectdotorg.galaxy"]
-	path = galaxy_vm/externals/galaxyprojectdotorg.galaxy
-	url = git://github.com/galaxyproject/ansible-galaxy
-[submodule "galaxy_vm/externals/ANXS.postgresql"]
-	path = galaxy_vm/externals/ANXS.postgresql
-	url = git://github.com/ANXS/postgresql
-[submodule "galaxy_vm/externals/galaxyprojectdotorg.galaxy-os"]
-	path = galaxy_vm/externals/galaxyprojectdotorg.galaxy-os
-	url = git://github.com/galaxyproject/ansible-galaxy-os
-[submodule "galaxy_vm/externals/galaxyprojectdotorg.tools"]
-	path = galaxy_vm/externals/galaxyprojectdotorg.tools
-	url = git://github.com/galaxyproject/ansible-galaxy-tools
 [submodule "galaxy_vm/roles/galaxyprojectdotorg.tools"]
 	path = galaxy_vm/roles/galaxyprojectdotorg.tools
 	url = git://github.com/galaxyproject/ansible-galaxy-tools
-[submodule "galaxy_vm/ansible-postgresql"]
-	path = galaxy_vm/ansible-postgresql
-	url = git://github.com/galaxyproject/ansible-postgresql
-[submodule "galaxy_vm/ansible-galaxy"]
-	path = galaxy_vm/ansible-galaxy
-	url = git://github.com/galaxyproject/ansible-galaxy
-[submodule "galaxy_vm/ansible-galaxy-extras"]
-	path = galaxy_vm/ansible-galaxy-extras
-	url = git://github.com/galaxyproject/ansible-galaxy-extras
 [submodule "galaxy_vm/roles/galaxyprojectdotorg.galaxyextras"]
 	path = galaxy_vm/roles/galaxyprojectdotorg.galaxyextras
 	url = git://github.com/galaxyproject/ansible-galaxy-extras
