@@ -1,0 +1,15 @@
+api_key: <Admin user API key from galaxy_instance>
+galaxy_instance: <Galaxy instance IP>
+tools:
+- name: hisat2
+  owner: iuc
+  tool_panel_section_id: 'artimed'
+  tool_shed_url: https://testtoolshed.g2.bx.psu.edu
+- name: deseq2
+  owner: iuc
+  tool_panel_section_id: 'artimed'
+  tool_shed_url: https://testtoolshed.g2.bx.psu.edu
+- name: edger
+  owner: amawla
+  tool_panel_section_id: 'artimed'
+  tool_shed_url: https://testtoolshed.g2.bx.psu.edu

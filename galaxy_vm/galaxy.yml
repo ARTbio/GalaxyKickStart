@@ -3,43 +3,47 @@
   sudo: yes
 
   vars:
+    #Globals
     galaxy_user: galaxy
-    #Postgresql role variables
-    postgresql_users:
-      - name: "{{ galaxy_user }}"
-    postgresql_databases:
-      - name: "{{ galaxy_user }}"
-        owner: "{{ galaxy_user }}"
+    galaxy_port: 8080
+    galaxy_host: "0.0.0.0"
+    galaxy_admin: "artimed@gmail.com"
+    galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
     #Galaxy role variables
     galaxy_manage_clone:
       galaxy_vcs: git
-    galaxy_server_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}/"
-    galaxy_config_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}/config/"
+    galaxy_server_dir: "{{ galaxy_dir }}/"
+    galaxy_config_dir: "{{ galaxy_dir }}/config/"
     galaxy_config:
       "server:main":
-        host: "0.0.0.0"
-        port: "8080"
+        host: "{{ galaxy_host }}"
+        port: "{{ galaxy_port }}"
       "app:main":
-        admin_users: "artimed@gmail.com"
+        admin_users: "{{ galaxy_admin }}"
         database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
-        tool_dependency_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}/lib/tool_shed/dependencies/"
+        tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies/"
         master_api_key: 379ab2a47d714a74b5cee4081703368e
+    postgresql_objects_users:
+      - name: "{{ galaxy_user }}"
+        password: "{{ galaxy_user }}"
+    postgresql_objects_databases:
+      - name: "{{ galaxy_user }}"
+        owner: "{{ galaxy_user }}"
     #Galaxy tools variables
-#    galaxy_tools_api_key: 379ab2a47d714a74b5cee4081703368e
-#    galaxy_install_bootstrap_user: artimed
-#    galaxy_tools_admin_user_password: artimed
-
-#  #Linux galaxy user
-#  - user: name={{ galaxy_user }} shell=/bin/bash groups=admin password={{ galaxy_user }} home=/home/{{ galaxy_user }}/ createhome=yes append=yes system=yes 
-#    become_user: root
-#    become_method: sudo    
+    galaxy_tools_api_key: 379ab2a47d714a74b5cee4081703368e
+    galaxy_tools_admin_user: "{{ galaxy_admin }}"
+    galaxy_server_dir: "{{ galaxy_dir }}"
+    galaxy_tools_tool_list_files: [ "tool_list.yaml", "artimed_tool_list.yaml" ]
 
   roles:
-    - role: ANXS.postgresql
-      postgresql_cluster_reset: yes
     - role: galaxyprojectdotorg.galaxy-os
       galaxy_user_name: "{{ galaxy_user }}"
+      galaxy_user_uid: 1005
       configure_docker: no
+    - role: galaxyprojectdotorg.postgresql
+    - role: natefoo.postgresql_objects #this role is included in galaxyprojectdotorg.galaxy
+      sudo: yes
+      sudo_user: postgres
     - role: galaxyprojectdotorg.galaxy
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
@@ -47,8 +51,8 @@
     - role: galaxyprojectdotorg.galaxyextras
       galaxy_extras_config_nginx: yes
       galaxy_extras_config_supervisor: yes
-#    - role: galaxyprojectdotorg.tools
-  
+    - role: galaxyprojectdotorg.tools
+#TopHat/HISAT, BWA, FeatureCount, DESeq/EdgeR, SAM Tools, GATK, BALSA, Isaac, R packages  
 #Create a system service for galaxy
 #  - shell: cp /home/{{ galaxy_user }}/{{ galaxy_user }}/contrib/galaxy.debian-init /etc/init.d/{{ galaxy_user }}
 #    become_user: root
