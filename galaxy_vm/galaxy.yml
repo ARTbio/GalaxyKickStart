@@ -40,7 +40,7 @@
       galaxy_user_name: "{{ galaxy_user }}"
       galaxy_user_uid: 1005
       configure_docker: no
-    - role: galaxyprojectdotorg.postgresql
+    - role: galaxyprojectdotorg.galaxy-postgresql
     - role: natefoo.postgresql_objects #this role is included in galaxyprojectdotorg.galaxy
       sudo: yes
       sudo_user: postgres
@@ -48,10 +48,10 @@
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
       galaxy_manage_database: no      
-    - role: galaxyprojectdotorg.galaxyextras
+    - role: galaxyprojectdotorg.galaxy-extras
       galaxy_extras_config_nginx: yes
       galaxy_extras_config_supervisor: yes
-    - role: galaxyprojectdotorg.tools
+    - role: galaxyprojectdotorg.galaxy-tools
 #TopHat/HISAT, BWA, FeatureCount, DESeq/EdgeR, SAM Tools, GATK, BALSA, Isaac, R packages  
 #Create a system service for galaxy
 #  - shell: cp /home/{{ galaxy_user }}/{{ galaxy_user }}/contrib/galaxy.debian-init /etc/init.d/{{ galaxy_user }}
