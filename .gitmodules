@@ -16,6 +16,3 @@
 [submodule "galaxy_vm/roles/galaxyprojectdotorg.galaxy-posgresql"]
 	path = galaxy_vm/roles/galaxyprojectdotorg.galaxy-posgresql
 	url = git://github.com/galaxyproject/ansible-postgresql
-[submodule "roles/galaxyprojectdotorg.galaxyextras"]
-	path = roles/galaxyprojectdotorg.galaxyextras
-	url = git://github.com/galaxyproject/ansible-galaxy-extras
