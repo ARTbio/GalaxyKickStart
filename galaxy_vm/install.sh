@@ -29,11 +29,7 @@ fi
 #Dependencies
 sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update
-sudo apt-get install ansible vim git mercurial python2.7 software-properties-common virtualbox vagrant python-pip python-virtualenv -y
-
-#sudo ansible-galaxy install galaxyprojectdotorg.galaxy --force
-#sudo ansible-galaxy install galaxyprojectdotorg.galaxyextras --force
-#sudo ansible-galaxy install galaxyprojectdotorg.galaxy-os --force
+sudo apt-get install ansible vim git python2.7 software-properties-common virtualbox vagrant python-pip python-virtualenv -y
 
 #VM directory
 export vm_dir=$HOME/$artimed_vm_relative_dir

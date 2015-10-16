@@ -9,52 +9,87 @@
     galaxy_host: "0.0.0.0"
     galaxy_admin: "artimed@gmail.com"
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
-    #Galaxy role variables
-    galaxy_manage_clone:
-      galaxy_vcs: git
-    galaxy_server_dir: "{{ galaxy_dir }}/"
-    galaxy_config_dir: "{{ galaxy_dir }}/config/"
-    galaxy_config:
-      "server:main":
-        host: "{{ galaxy_host }}"
-        port: "{{ galaxy_port }}"
-      "app:main":
-        admin_users: "{{ galaxy_admin }}"
-        database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
-        tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies/"
-        master_api_key: 379ab2a47d714a74b5cee4081703368e
-    postgresql_objects_users:
-      - name: "{{ galaxy_user }}"
-        password: "{{ galaxy_user }}"
-    postgresql_objects_databases:
-      - name: "{{ galaxy_user }}"
-        owner: "{{ galaxy_user }}"
-    #Galaxy tools variables
-    galaxy_tools_api_key: 379ab2a47d714a74b5cee4081703368e
-    galaxy_tools_admin_user: "{{ galaxy_admin }}"
-    galaxy_server_dir: "{{ galaxy_dir }}"
-    galaxy_tools_tool_list_files: [ "tool_list.yaml", "artimed_tool_list.yaml" ]
+    galaxy_api: 379ab2a47d714a74b5cee4081703368e
 
   roles:
     - role: galaxyprojectdotorg.galaxy-os
+      configure_docker: no
       galaxy_user_name: "{{ galaxy_user }}"
       galaxy_user_uid: 1005
-      configure_docker: no
-    - role: galaxyprojectdotorg.galaxy-postgresql
-    - role: natefoo.postgresql_objects #this role is included in galaxyprojectdotorg.galaxy
+      LANGUAGE: "en_US.UTF-8"
+      LC_CTYPE: "en_US.UTF-8"
+      LC_NUMERIC: "en_US.UTF-8"
+      LC_TIME: "en_US.UTF-8"
+      LC_COLLATE: "en_US.UTF-8"
+      LC_MONETARY: "en_US.UTF-8"
+      LC_MESSAGES: "en_US.UTF-8"
+      LC_PAPER: "en_US.UTF-8"
+      LC_NAME: "en_US.UTF-8"
+      LC_ADDRESS: "en_US.UTF-8"
+      LC_TELEPHONE: "en_US.UTF-8"
+      LC_MEASUREMENT: "en_US.UTF-8"
+      LC_IDENTIFICATION: "en_US.UTF-8"
+      LC_ALL: "en_US.UTF-8"
+      LANG: "en_US.UTF-8"
+      LC_TIME: ""
+
+    - role: natefoo.postgresql_objects #this role included in galaxyprojectdotorg.galaxy to create galaxy user and its db
+      postgresql_objects_users:
+        - name: "{{ galaxy_user }}"
+          password: "{{ galaxy_user }}"
+      postgresql_objects_databases:
+        - name: "{{ galaxy_user }}"
+          owner: "{{ galaxy_user }}"
       sudo: yes
       sudo_user: postgres
+
     - role: galaxyprojectdotorg.galaxy
+      galaxy_manage_database: no
+      galaxy_fetch_eggs: no
+      #galaxy_manage_clone: no
+      #galaxy_vcs: git
+      galaxy_server_dir: "{{ galaxy_dir }}/"
+      galaxy_config_dir: "{{ galaxy_dir }}/config/"
+      galaxy_config:
+        "server:main":
+          host: "{{ galaxy_host }}"
+          port: "{{ galaxy_port }}"
+        "app:main":
+          admin_users: "{{ galaxy_admin }}"
+          database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
+          tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies/"
+          master_api_key: "{{ galaxy_api }}"
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
-      galaxy_manage_database: no      
-    - role: galaxyprojectdotorg.galaxy-extras
-      galaxy_extras_config_nginx: yes
-      galaxy_extras_config_supervisor: yes
-    - role: galaxyprojectdotorg.galaxy-tools
-#TopHat/HISAT, BWA, FeatureCount, DESeq/EdgeR, SAM Tools, GATK, BALSA, Isaac, R packages  
+
+    - role: galaxyprojectdotorg.galaxy-extras #Must be done after galaxy starts. Is this starting supervisor/nginx or not?
+      galaxy_extras_config_nginx: true
+      galaxy_extras_config_supervisor: true
+      galaxy_extras_config_proftpd: false
+      galaxy_extras_config_slurm: false
+      galaxy_extras_config_galaxy_root: false
+      galaxy_extras_config_galaxy_job_metrics: true
+      galaxy_extras_config_uwsgi: false
+      galaxy_extras_config_ie_proxy: false
+      galaxy_extras_config_scripts: false
+      galaxy_extras_config_startup: false
+      supervisor_manage_proftp: false
+      supervisor_manage_ie_proxy: false
+      supervisor_manage_docker: false
+      supervisor_manage_nodeproxy: false
+      galaxy_root: "{{ galaxy_dir }}/"
+      galaxy_venv_dir: "{{ galaxy_dir }}/.venv/"
+      galaxy_database_connection: "{{ database_connection }}"
+
+#  task:
 #Create a system service for galaxy
 #  - shell: cp /home/{{ galaxy_user }}/{{ galaxy_user }}/contrib/galaxy.debian-init /etc/init.d/{{ galaxy_user }}
+#    become_user: root
+#    become_method: sudo    
+
+#  - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="galaxy_dist" replace="{{ galaxy_user }}" backup=yes
+
+#  - command: update-rc.d galaxy defaults
 #    become_user: root
 #    become_method: sudo    
 

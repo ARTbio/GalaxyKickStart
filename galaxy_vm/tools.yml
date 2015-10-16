@@ -1,0 +1,23 @@
+- hosts: all
+  remote_user: vagrant
+  sudo: yes
+
+  vars:
+    #Globals
+    galaxy_user: galaxy
+    galaxy_port: 8080
+    galaxy_admin: "artimed@gmail.com"
+    galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
+    galaxy_api: 379ab2a47d714a74b5cee4081703368e
+
+  roles:
+    - role: galaxyprojectdotorg.galaxy-tools #Installs TopHat/HISAT, BWA, FeatureCount, DESeq/EdgeR, SAM Tools, GATK, BALSA (no wrapper yet), Isaac (no wrapper yet), R packages (no)
+      galaxy_tools_galaxy_instance_url: "localhost:{{ galaxy_port }}"
+      galaxy_user_name: "localhost:{{ galaxy_port }}"
+      galaxy_server_dir: "{{ galaxy_dir }}"
+      galaxy_tools_admin_user: "{{ galaxy_admin }}"
+      galaxy_tools_api_key: "{{ galaxy_api }}"
+      galaxy_tools_admin_user: "{{ galaxy_admin }}"
+      galaxy_server_dir: "{{ galaxy_dir }}"
+      galaxy_tools_tool_list_files: [ "tool_list.yaml", "artimed_tool_list.yaml" ]
+    
