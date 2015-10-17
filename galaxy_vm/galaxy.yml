@@ -12,26 +12,28 @@
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
 
   roles:
+    - role: galaxyprojectdotorg.galaxy-postgresql
+      #LANGUAGE: "en_US.UTF-8"
+      #LC_CTYPE: "en_US.UTF-8"
+      #LC_NUMERIC: "en_US.UTF-8"
+      #LC_TIME: "en_US.UTF-8"
+      #LC_COLLATE: "en_US.UTF-8"
+      #LC_MONETARY: "en_US.UTF-8"
+      #LC_MESSAGES: "en_US.UTF-8"
+      #LC_PAPER: "en_US.UTF-8"
+      #LC_NAME: "en_US.UTF-8"
+      #LC_ADDRESS: "en_US.UTF-8"
+      #LC_TELEPHONE: "en_US.UTF-8"
+      #LC_MEASUREMENT: "en_US.UTF-8"
+      #LC_IDENTIFICATION: "en_US.UTF-8"
+      #LC_ALL: "en_US.UTF-8"
+      #LANG: "en_US.UTF-8"
+      #LC_TIME: ""
+
     - role: galaxyprojectdotorg.galaxy-os
       configure_docker: no
       galaxy_user_name: "{{ galaxy_user }}"
       galaxy_user_uid: 1005
-      LANGUAGE: "en_US.UTF-8"
-      LC_CTYPE: "en_US.UTF-8"
-      LC_NUMERIC: "en_US.UTF-8"
-      LC_TIME: "en_US.UTF-8"
-      LC_COLLATE: "en_US.UTF-8"
-      LC_MONETARY: "en_US.UTF-8"
-      LC_MESSAGES: "en_US.UTF-8"
-      LC_PAPER: "en_US.UTF-8"
-      LC_NAME: "en_US.UTF-8"
-      LC_ADDRESS: "en_US.UTF-8"
-      LC_TELEPHONE: "en_US.UTF-8"
-      LC_MEASUREMENT: "en_US.UTF-8"
-      LC_IDENTIFICATION: "en_US.UTF-8"
-      LC_ALL: "en_US.UTF-8"
-      LANG: "en_US.UTF-8"
-      LC_TIME: ""
 
     - role: natefoo.postgresql_objects #this role included in galaxyprojectdotorg.galaxy to create galaxy user and its db
       postgresql_objects_users:
