@@ -16,7 +16,7 @@ If you want to skip these steps please download the Vagrantfile, galaxy.yml and 
 # Running Galaxy
 To run galaxy you have to "ssh" to the box, cd to the galaxy directory and execute "sh run.sh". Galaxy is configured to run on the default port (8080), to monitor all network cards and the admin user is artimed@gmail.com. Galaxy database is labeled as galaxy with owner galaxy.
 
-# Installing NGS
+# Installing NGS tools@
 To install Galaxy tools execute "PLAYBOOK='tools.yml' vagrant provision" on host machine. Note that Galaxy must be running on guest machine. 
 
 If you want to redo the installation process "cd" to the box directory (where the Vagrantfile is) and do the following steps:
