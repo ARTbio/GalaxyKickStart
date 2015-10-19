@@ -41,5 +41,5 @@ cd $vm_dir
 if git clone $artimed_git_repo $vm_dir/
 then
 	cd galaxy_vm/
-	VAGRANT_LOG=info vagrant up
+	PLAYBOOK="galaxy.yml" VAGRANT_LOG=info vagrant up
 fi
