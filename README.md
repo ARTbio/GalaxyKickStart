@@ -11,7 +11,7 @@ The install.sh file will:
  - git clone this galaxy server playbook for vagrant provision procedure.
  - do a vagrant up to deploy the box.
  
-If you want to skip these steps please download the Vagrantfile, galaxy.yml and the roles provided in this repo, install the necessary packages listed above and execute a "PLAYBOOK='galaxy.yml' vagrant up". Note that Vagrantfile, galaxy.yml and roles directory must be on the same directory to work.
+If you want to skip these steps please download the Vagrantfile, galaxy.yml and the roles provided in this repo (ansible-artimed/galaxy_vm directory), install the necessary packages listed above and execute a "PLAYBOOK='galaxy.yml' vagrant up". Note that Vagrantfile, galaxy.yml and roles directory must be on the same directory to work.
 
 # Running Galaxy
 To run galaxy you have to "ssh" to the box, execute:
