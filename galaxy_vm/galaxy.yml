@@ -12,12 +12,14 @@
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
 
   roles:
+    #installs system package requirements
     - role: galaxyprojectdotorg.galaxy-os
       configure_docker: no
       galaxy_user_name: "{{ galaxy_user }}"
       galaxy_user_uid: 1005
 
-    - role: natefoo.postgresql_objects #this role included in galaxyprojectdotorg.galaxy to create galaxy user and its db
+    #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db
+    - role: natefoo.postgresql_objects
       postgresql_objects_users:
         - name: "{{ galaxy_user }}"
           password: "{{ galaxy_user }}"
@@ -27,6 +29,7 @@
       sudo: yes
       sudo_user: postgres
 
+    #installs galaxy
     - role: galaxyprojectdotorg.galaxy
       galaxy_manage_database: no
       galaxy_fetch_eggs: no
@@ -46,6 +49,7 @@
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
 
+    #installs supervisor and nginx
     - role: galaxyprojectdotorg.galaxy-extras
       galaxy_extras_config_nginx: true
       galaxy_extras_config_supervisor: true

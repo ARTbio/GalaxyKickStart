@@ -10,9 +10,6 @@
 [submodule "galaxy_vm/roles/galaxyprojectdotorg.galaxy-tools"]
 	path = galaxy_vm/roles/galaxyprojectdotorg.galaxy-tools
 	url = git://github.com/galaxyproject/ansible-galaxy-tools
-[submodule "galaxy_vm/roles/galaxyprojectdotorg.galaxy-postgresql"]
-	path = galaxy_vm/roles/galaxyprojectdotorg.galaxy-postgresql
-	url = git://github.com/galaxyproject/ansible-postgresql
 [submodule "galaxy_vm/roles/natefoo.postgresql_objects"]
 	path = galaxy_vm/roles/natefoo.postgresql_objects
 	url = git://github.com/natefoo/ansible-postgresql-objects

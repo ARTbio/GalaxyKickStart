@@ -19,4 +19,4 @@
       galaxy_tools_api_key: "{{ galaxy_api }}"
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
       galaxy_server_dir: "{{ galaxy_dir }}"
-      galaxy_tools_tool_list_files: [ "tool_list.yaml", "artimed_tool_list.yaml" ]
+      galaxy_tools_tool_list_files: [ "artimed_tool_list.yaml" ]
