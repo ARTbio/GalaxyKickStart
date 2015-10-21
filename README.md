@@ -21,9 +21,6 @@ cd $HOME/galaxy/;
 sh run.sh;
 ```
 
-FYI, this repository has submodules, so to clone it with the roles "git clone --recursive" command must be used.
-Galaxy is configured to run on the default port (8080), to monitor all network cards and the admin user is artimed@gmail.com. Galaxy database is labeled as galaxy with owner galaxy.
-
 # Installing NGS tools
 To install Galaxy tools execute "PLAYBOOK='tools.yml' vagrant provision" on host machine. Note that Galaxy must be running on guest machine. 
 
@@ -33,3 +30,6 @@ vagrant package --output backup.box #backup your box;
 vagrant destroy #it will destroy completelly your box, so do not miss the previous command;
 vagrant up;
 ```
+
+FYI, this repository has submodules, so to clone it with the roles "git clone --recursive" command must be used.
+Galaxy is configured to run on the default port (8080), to monitor all network cards and the admin user is artimed@gmail.com. Galaxy database is labeled as galaxy with owner galaxy.
