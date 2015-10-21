@@ -53,11 +53,11 @@
     - role: galaxyprojectdotorg.galaxy-extras
       galaxy_extras_config_nginx: true
       galaxy_extras_config_supervisor: true
-      galaxy_extras_config_proftpd: false
+      galaxy_extras_config_proftpd: true
       galaxy_extras_config_slurm: false
       galaxy_extras_config_galaxy_root: false
       galaxy_extras_config_galaxy_job_metrics: true
-      galaxy_extras_config_uwsgi: false
+      galaxy_extras_config_uwsgi: true
       galaxy_extras_config_ie_proxy: false
       galaxy_extras_config_scripts: false
       galaxy_extras_config_startup: false
