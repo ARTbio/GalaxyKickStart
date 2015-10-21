@@ -20,6 +20,8 @@ sudo su galaxy;
 cd $HOME/galaxy/;
 sh run.sh;
 ```
+
+FYI, this repository has submodules, so to clone it with the roles "git clone --recursive" command must be used.
 Galaxy is configured to run on the default port (8080), to monitor all network cards and the admin user is artimed@gmail.com. Galaxy database is labeled as galaxy with owner galaxy.
 
 # Installing NGS tools
