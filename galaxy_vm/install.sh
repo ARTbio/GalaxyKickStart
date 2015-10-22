@@ -30,4 +30,8 @@ if git clone $artimed_git_repo $vm_dir/
 then
 	cd galaxy_vm/
 	PLAYBOOK="galaxy.yml" VAGRANT_LOG=info vagrant up
+	echo "ssh to the VM and start galaxy. Wait until galaxy provide the web service on port 8080."
+	echo -n "Press any key to continue..."
+	read
+	PLAYBOOK="tools.yml" VAGRANT_LOG=info vagrant provision
 fi
