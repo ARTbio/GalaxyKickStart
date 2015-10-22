@@ -6,12 +6,14 @@ VAGRANTFILE_API_VERSION = "2"
       config.vm.provider "virtualbox" do |v|
          v.memory = 4096
       end
-
-      config.vm.provision "ansible" do |ansible|
-         ansible.extra_vars = {
-            ntp_server: "pool.ntp.org",
-         }
-         ansible.verbose = 'vvvv'
-         ansible.playbook = "#{ENV['PLAYBOOK']}"
+      
+      if ENV['PLAYBOOK']
+         config.vm.provision "ansible" do |ansible|
+            ansible.extra_vars = {
+               ntp_server: "pool.ntp.org",
+            }
+            ansible.verbose = 'vvvv'
+            ansible.playbook = "#{ENV['PLAYBOOK']}"
+         end
       end
    end
