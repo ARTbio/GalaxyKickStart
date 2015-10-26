@@ -15,7 +15,7 @@ then
 fi
 
 #Dependencies
-sudo apt-get install vim git virtualbox vagrant -y
+sudo apt-get install ssh vim git virtualbox vagrant -y
 sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update
 sudo apt-get install python-pip python-virtualenv python2.7 software-properties-common ansible -y
