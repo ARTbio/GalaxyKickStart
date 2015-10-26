@@ -14,6 +14,7 @@
 #    - apt: name=pkg-config state=latest 
 #      sudo: yes
 #      sudo_user: root
+#zlib1g-dev
 
   roles:
     - role: galaxyprojectdotorg.galaxy-tools #Installs TopHat/HISAT, BWA, FeatureCount, DESeq/EdgeR, SAM Tools, GATK, BALSA (no wrapper yet), Isaac (no wrapper yet), R packages (no)
