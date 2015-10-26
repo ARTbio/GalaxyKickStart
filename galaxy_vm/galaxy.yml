@@ -46,11 +46,15 @@
           database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
           tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies/"
           master_api_key: "{{ galaxy_api }}"
+          #to be done only in production       
+          #debug: False
+          #use_interactive: False
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
 
     #installs supervisor and nginx
     - role: galaxyprojectdotorg.galaxy-extras
+      galaxy_extras_install_packages: true
       galaxy_extras_config_nginx: true
       galaxy_extras_config_supervisor: true
       galaxy_extras_config_proftpd: true
