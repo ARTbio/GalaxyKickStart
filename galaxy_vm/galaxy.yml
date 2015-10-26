@@ -58,10 +58,10 @@
       galaxy_extras_config_nginx: true
       galaxy_extras_config_supervisor: true
       galaxy_extras_config_proftpd: true
+      galaxy_extras_config_uwsgi: true
       galaxy_extras_config_galaxy_job_metrics: true
       galaxy_extras_config_slurm: false
       galaxy_extras_config_galaxy_root: false
-      galaxy_extras_config_uwsgi: false
       galaxy_extras_config_ie_proxy: false
       galaxy_extras_config_scripts: false
       galaxy_extras_config_startup: false
@@ -70,7 +70,7 @@
       supervisor_manage_docker: false
       supervisor_manage_nodeproxy: false
       galaxy_root: "{{ galaxy_dir }}/"
-      galaxy_venv_dir: "{{ galaxy_dir }}/venv/"
+      galaxy_venv_dir: "/home/{{ galaxy_user }}/venv/"
       galaxy_database_connection: "{{ database_connection }}"
 
 #  task:
