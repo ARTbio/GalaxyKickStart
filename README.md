@@ -13,7 +13,7 @@ The install.sh file will:
  
 If you want to skip these steps please clone this repository recussivelly (execute a "git clone --recursive"), install the necessary S.O. packages listed above and execute a "PLAYBOOK='galaxy.yml' vagrant up", that is:
 ```
-git clone --recursive 
+git clone --recursive https://github.com/ARTbio/ansible-artimed.git
 cd ansible-artimed/galaxy_vm
 PLAYBOOK='galaxy.yml' vagrant up
 ```
