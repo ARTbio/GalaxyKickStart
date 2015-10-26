@@ -15,9 +15,10 @@ then
 fi
 
 #Dependencies
+sudo apt-get install vim git virtualbox vagrant -y
 sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update
-sudo apt-get install ansible vim git python2.7 software-properties-common virtualbox vagrant python-pip python-virtualenv -y
+sudo apt-get install python-pip python-virtualenv python2.7 software-properties-common ansible -y
 
 #VM directory
 export vm_dir=$HOME/$artimed_vm_relative_dir
@@ -26,7 +27,7 @@ rm -rf $vm_dir/*
 cd $vm_dir
 
 #Installation
-if git clone $artimed_git_repo $vm_dir/
+if git clone --recursive $artimed_git_repo $vm_dir/
 then
 	cd galaxy_vm/
 	PLAYBOOK="galaxy.yml" VAGRANT_LOG=info vagrant up
