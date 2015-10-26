@@ -19,7 +19,7 @@ PLAYBOOK='galaxy.yml' vagrant up
 ```
 
 # Running Galaxy
-To run galaxy you have to "ssh" to the box, execute:
+To run galaxy you have to "ssh" to the box ("vagrant ssh") and execute:
 ```
 sudo su galaxy; 
 cd $HOME/galaxy/;
