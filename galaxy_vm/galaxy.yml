@@ -70,7 +70,7 @@
       supervisor_manage_docker: false
       supervisor_manage_nodeproxy: false
       galaxy_root: "{{ galaxy_dir }}/"
-      galaxy_venv_dir: "{{ galaxy_dir }}/.venv/"
+      galaxy_venv_dir: "{{ galaxy_dir }}/venv/"
       galaxy_database_connection: "{{ database_connection }}"
 
 #  task:
