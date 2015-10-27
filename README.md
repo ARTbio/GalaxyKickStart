@@ -13,21 +13,21 @@ The install.sh file will:
  
 If you want to skip these steps please clone this repository recussivelly (execute a "git clone --recursive"), install the necessary S.O. packages listed above and execute a "PLAYBOOK='galaxy.yml' vagrant up", that is:
 ```
+#Open one shell on host machine and execute:
 git clone --recursive https://github.com/ARTbio/ansible-artimed.git
 cd ansible-artimed/galaxy_vm
 PLAYBOOK='galaxy.yml' vagrant up
+echo "Run galaxy and wait until galaxy provide the web service on port 8080."
+echo "Press any key to continue..."
+read
+PLAYBOOK='tools.yml' vagrant provision
 ```
 
 # Running Galaxy
-To run galaxy you have to "ssh" to the box ("vagrant ssh") and execute:
+To run galaxy open another shell on host machine in the same directory (ansible-artimed/galaxy_vm) and execute:
 ```
-sudo su galaxy; 
-cd $HOME/galaxy/;
-sh run.sh;
+vagrant ssh -c "sudo -i -u galaxy sh /home/galaxy/galaxy/run.sh"
 ```
-
-# Installing NGS tools
-To install Galaxy tools execute "PLAYBOOK='tools.yml' vagrant provision" on host machine. Note that Galaxy must be running on guest machine. 
 
 # Re-doing
 If you want to redo the installation process "cd" to the box directory (where the Vagrantfile is) and do the following steps:
