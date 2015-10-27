@@ -19,7 +19,7 @@ If you want to skip these steps please clone this repository recussivelly (execu
 git clone --recursive https://github.com/ARTbio/ansible-artimed.git
 cd ansible-artimed/galaxy_vm
 PLAYBOOK='galaxy.yml' vagrant up
-echo "Run galaxy and wait until galaxy provide the web service on port 8080."
+echo "Run galaxy (see "Running Galaxy" next in this tutorial) and wait until galaxy provide the web service on port 8080."
 echo "Press any key to continue..."
 read
 PLAYBOOK='tools.yml' vagrant provision
