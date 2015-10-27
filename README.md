@@ -11,10 +11,15 @@ The install.sh file will:
  - git clone this galaxy server playbook for vagrant provision procedure.
  - do a vagrant up to deploy the box.
  
-If you want to skip these steps please clone this repository recussivelly (execute a "git clone --recursive"), install the necessary S.O. packages listed above and execute a "PLAYBOOK='galaxy.yml' vagrant up".
+If you want to skip these steps please clone this repository recussivelly (execute a "git clone --recursive"), install the necessary S.O. packages listed above and execute a "PLAYBOOK='galaxy.yml' vagrant up", that is:
+```
+git clone --recursive https://github.com/ARTbio/ansible-artimed.git
+cd ansible-artimed/galaxy_vm
+PLAYBOOK='galaxy.yml' vagrant up
+```
 
 # Running Galaxy
-To run galaxy you have to "ssh" to the box, execute:
+To run galaxy you have to "ssh" to the box ("vagrant ssh") and execute:
 ```
 sudo su galaxy; 
 cd $HOME/galaxy/;
@@ -24,6 +29,7 @@ sh run.sh;
 # Installing NGS tools
 To install Galaxy tools execute "PLAYBOOK='tools.yml' vagrant provision" on host machine. Note that Galaxy must be running on guest machine. 
 
+# Re-doing
 If you want to redo the installation process "cd" to the box directory (where the Vagrantfile is) and do the following steps:
 ```
 vagrant package --output backup.box #backup your box;
