@@ -31,8 +31,8 @@
 
     #installs galaxy
     - role: galaxyprojectdotorg.galaxy
-      galaxy_manage_database: yes
-      galaxy_fetch_eggs: yes
+      galaxy_manage_database: no
+      galaxy_fetch_eggs: no
       #galaxy_manage_clone: no
       galaxy_changeset_id: master
       galaxy_vcs: git
