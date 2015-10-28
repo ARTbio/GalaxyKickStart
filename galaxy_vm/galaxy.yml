@@ -9,7 +9,9 @@
     galaxy_host: "0.0.0.0"
     galaxy_admin: "artimed@gmail.com"
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
-    galaxy_venv: /home/{{ galaxy_user }}/venv/
+    galaxy_venv: "{{ galaxy_dir }}/venv/"
+    galaxy_ftp: "{{ galaxy_dir }}/database/files/"
+    ftp_port: 2121 
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
 
   roles:
@@ -49,6 +51,8 @@
           database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
           tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies/"
           master_api_key: "{{ galaxy_api }}"
+          ftp_upload_dir: "{{ galaxy_ftp }}" 
+          ftp_upload_site: "ftp {{ lookup('env','HOSTNAME') }} port {{ ftp_port }}"
           #to be done only in production       
           #debug: False
           #use_interactive: False
@@ -61,7 +65,7 @@
       galaxy_extras_config_nginx: true
       galaxy_extras_config_supervisor: true
       galaxy_extras_config_proftpd: true
-      galaxy_extras_config_uwsgi: true
+      galaxy_extras_config_uwsgi: false #verify what's the influence in nginx
       galaxy_extras_config_galaxy_job_metrics: true
       galaxy_extras_config_slurm: false
       galaxy_extras_config_galaxy_root: false
@@ -76,18 +80,62 @@
       galaxy_venv_dir:  "{{ galaxy_venv }}"
       galaxy_database_connection: "{{ database_connection }}"
 
-#  task:
-#Create a system service for galaxy
-#  - shell: cp /home/{{ galaxy_user }}/{{ galaxy_user }}/contrib/galaxy.debian-init /etc/init.d/{{ galaxy_user }}
-#    become_user: root
-#    become_method: sudo    
+  task:
+    #Create proftpd dir
+    - file: path="{{ galaxy_ftp }}" state=directory mode=0777
+      sudo: yes
+      sudo_user: "{{ galaxy_user }}"
 
-#  - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="galaxy_dist" replace="{{ galaxy_user }}" backup=yes
+    #Alter proftpdir settings 
+    - lineinfile: dest=/etc/proftpd/proftpd.conf regexp='^Port' line="Port {{ ftp_port }}" state=present 
+      sudo: yes
+      sudo_user: root
+    
+    - lineinfile: dest=/etc/proftpd/proftpd.conf regexp='^SQLPasswordEncoding' line='SQLPasswordEncoding base64' state=present 
+      sudo: yes
+      sudo_user: root
+    
+    - lineinfile: dest=/etc/proftpd/proftpd.conf regexp='^SQLAuthTypes' line='SQLAuthTypes PBKDF2' state=present 
+      sudo: yes
+      sudo_user: root
 
-#  - command: update-rc.d galaxy defaults
-#    become_user: root
-#    become_method: sudo    
+    - lineinfile: dest=/etc/proftpd/proftpd.conf regexp='^SQLNamedQuery' line='SQLNamedQuery LookupGalaxyUser SELECT "email, (CASE WHEN substring(password from 1 for 6) = \'PBKDF2\' THEN substring(password from 38 for 69) ELSE password END) AS password2,512,512,\'/home/galaxy/galaxy/database/files/%U\',\'/bin/bash\' FROM galaxy_user WHERE email=\'%U\'"' state=present 
+      sudo: yes
+      sudo_user: root
+    
+    - lineinfile: dest=/etc/proftpd/proftpd.conf line='SQLNamedQuery GetUserSalt SELECT "(CASE WHEN SUBSTRING (password from 1 for 6) = \'PBKDF2\' THEN SUBSTRING (password from 21 for 16) END) AS salt FROM galaxy_user WHERE email=\'%U\'"' insertafter=EOF state=present
+      sudo: yes
+      sudo_user: root
+    
+    - lineinfile: dest=/etc/proftpd/proftpd.conf line="SQLDefaultGID 1005" insertafter=EOF state=present
+      sudo: yes
+      sudo_user: root
+      
+    - lineinfile: dest=/etc/proftpd/proftpd.conf line="SQLDefaultUID 1005" insertafter=EOF state=present
+      sudo: yes
+      sudo_user: root
+      
+    - lineinfile: dest=/etc/proftpd/proftpd.conf line="SQLPasswordPBKDF2 SHA256 10000 24 " insertafter=EOF state=present
+      sudo: yes
+      sudo_user: root
+      
+    - lineinfile: dest=/etc/proftpd/proftpd.conf line="SQLPasswordUserSalt sql:/GetUserSalt" insertafter=EOF state=present
+      sudo: yes
+      sudo_user: root
 
-#  - service: name={{ galaxy_user }} state=started
-#    become_user: root
-#    become_method: sudo  
+   #Create a system service for galaxy
+   - shell: cp "{{ galaxy_dir }}/contrib/galaxy.debian-init" "/etc/init.d/{{ galaxy_user }}"
+     become_user: root
+     become_method: sudo    
+
+   - replace: dest="/etc/init.d/{{ galaxy_user }}" regexp="galaxy_dist" replace="{{ galaxy_user }}" backup=yes
+     become_user: root
+     become_method: sudo    
+
+   - command: update-rc.d galaxy defaults
+     become_user: root
+     become_method: sudo    
+
+   - service: name="{{ galaxy_user }}" state=started
+     become_user: root
+     become_method: sudo  

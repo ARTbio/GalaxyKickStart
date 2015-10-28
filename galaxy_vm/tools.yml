@@ -10,11 +10,11 @@
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
 
-#  pre_tasks:
-#    - apt: name=pkg-config state=latest 
-#      sudo: yes
-#      sudo_user: root
-#zlib1g-dev
+  pre_tasks:
+    - apt: name=pkg-config state=latest 
+      sudo: yes
+      sudo_user: root
+#zlib1g-dev?
 
   roles:
     - role: galaxyprojectdotorg.galaxy-tools #Installs TopHat/HISAT, BWA, FeatureCount, DESeq/EdgeR, SAM Tools, GATK, BALSA (no wrapper yet), Isaac (no wrapper yet), R packages (no)
