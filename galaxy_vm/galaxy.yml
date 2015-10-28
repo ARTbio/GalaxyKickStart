@@ -80,7 +80,7 @@
       galaxy_venv_dir:  "{{ galaxy_venv }}"
       galaxy_database_connection: "{{ database_connection }}"
 
-  task:
+  tasks:
     #Create proftpd dir
     - file: path="{{ galaxy_ftp }}" state=directory mode=0777
       sudo: yes
@@ -99,11 +99,11 @@
       sudo: yes
       sudo_user: root
 
-    - lineinfile: dest=/etc/proftpd/proftpd.conf regexp='^SQLNamedQuery' line='SQLNamedQuery LookupGalaxyUser SELECT "email, (CASE WHEN substring(password from 1 for 6) = \'PBKDF2\' THEN substring(password from 38 for 69) ELSE password END) AS password2,512,512,\'/home/galaxy/galaxy/database/files/%U\',\'/bin/bash\' FROM galaxy_user WHERE email=\'%U\'"' state=present 
+    - lineinfile: dest=/etc/proftpd/proftpd.conf regexp='^SQLNamedQuery' line="SQLNamedQuery LookupGalaxyUser SELECT \"email, (CASE WHEN substring(password from 1 for 6) = 'PBKDF2' THEN substring(password from 38 for 69) ELSE password END) AS password2,512,512,'/home/galaxy/galaxy/database/files/%U','/bin/bash' FROM galaxy_user WHERE email='%U'\"" state=present 
       sudo: yes
       sudo_user: root
     
-    - lineinfile: dest=/etc/proftpd/proftpd.conf line='SQLNamedQuery GetUserSalt SELECT "(CASE WHEN SUBSTRING (password from 1 for 6) = \'PBKDF2\' THEN SUBSTRING (password from 21 for 16) END) AS salt FROM galaxy_user WHERE email=\'%U\'"' insertafter=EOF state=present
+    - lineinfile: dest=/etc/proftpd/proftpd.conf line="SQLNamedQuery GetUserSalt SELECT \"(CASE WHEN SUBSTRING (password from 1 for 6) = 'PBKDF2' THEN SUBSTRING (password from 21 for 16) END) AS salt FROM galaxy_user WHERE email='%U'\"" insertafter=EOF state=present
       sudo: yes
       sudo_user: root
     
@@ -124,18 +124,30 @@
       sudo_user: root
 
    #Create a system service for galaxy
-   - shell: cp "{{ galaxy_dir }}/contrib/galaxy.debian-init" "/etc/init.d/{{ galaxy_user }}"
-     become_user: root
-     become_method: sudo    
+    - shell: cp "{{ galaxy_dir }}/contrib/galaxy.debian-init" "/etc/init.d/{{ galaxy_user }}" mode="+x"
+      become_user: root
+      become_method: sudo    
 
-   - replace: dest="/etc/init.d/{{ galaxy_user }}" regexp="galaxy_dist" replace="{{ galaxy_user }}" backup=yes
-     become_user: root
-     become_method: sudo    
+    - replace: dest="/etc/init.d/{{ galaxy_user }}" regexp="galaxy_dist" replace="{{ galaxy_user }}" backup=yes
+      become_user: root
+      become_method: sudo    
 
-   - command: update-rc.d galaxy defaults
-     become_user: root
-     become_method: sudo    
+    - replace: dest="/etc/init.d/{{ galaxy_user }}" regexp="/usr/bin/python" replace="/bin/sh" backup=yes
+      become_user: root
+      become_method: sudo    
 
-   - service: name="{{ galaxy_user }}" state=started
-     become_user: root
-     become_method: sudo  
+    - replace: dest="/etc/init.d/{{ galaxy_user }}" regexp="./scripts/paster.py serve" replace="run.sh --daemon" backup=yes
+      become_user: root
+      become_method: sudo    
+
+    - command: update-rc.d galaxy defaults
+      become_user: root
+      become_method: sudo    
+
+    - command: "/etc/init.d/{{ galaxy_user }} start"
+      become_user: root
+      become_method: sudo    
+
+#    - service: name="{{ galaxy_user }}" state=started
+#      become_user: root
+#      become_method: sudo  
