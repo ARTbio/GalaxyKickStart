@@ -14,6 +14,8 @@ The install.sh file will:
  - start galaxy
  - install the tools listed in into Galaxy
  
+Note that the minimum requirements are a OpenSSH client, Ansible >=1.8, Vagrant >=1.7.4, Virtual Box (compatible with vagrant - see vagrant site) and git. 
+
 # Running from the host machine Galaxy
 Galaxy is installed as a SO service, however if you want to run galaxy from the host machine as a shell application, open another shell on host machine on the same install directory (ansible-artimed/galaxy_vm) and execute:
 ```
@@ -32,4 +34,3 @@ vagrant up;
 FYI, this repository has submodules, so to clone it with the roles "git clone --recursive" command must be always used.
 Galaxy is configured to run on the default port (8080), to monitor all network cards and the admin user is artimed@gmail.com. 
 Galaxy database is labeled as galaxy with owner galaxy.
-Minimum requirements: OpenSSH client, Ansible >=1.8, Vagrant >=1.7.4, Virtual Box (compatible with vagrant - see vagrant site) and git. 
