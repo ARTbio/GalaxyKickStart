@@ -14,6 +14,11 @@
     ftp_port: 2121 
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
 
+  pre_tasks:
+    - command: locale-gen UTF-8
+      sudo: yes
+      sudo_user: root
+
   roles:
     #installs system package requirements
     - role: galaxyprojectdotorg.galaxy-os
