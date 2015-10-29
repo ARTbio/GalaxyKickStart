@@ -4,6 +4,7 @@
 
   vars:
     #Globals
+    galaxy_hostname: "{{ lookup('env','HOSTNAME') }}"
     galaxy_user: galaxy
     galaxy_port: 8080
     galaxy_host: "0.0.0.0"
@@ -13,11 +14,6 @@
     galaxy_ftp: "{{ galaxy_dir }}/database/files/"
     ftp_port: 2121 
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
-
-  pre_tasks:
-    - command: locale-gen UTF-8
-      sudo: yes
-      sudo_user: root
 
   roles:
     #installs system package requirements
@@ -57,7 +53,7 @@
           tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies/"
           master_api_key: "{{ galaxy_api }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
-          ftp_upload_site: "ftp {{ lookup('env','HOSTNAME') }} port {{ ftp_port }}"
+          ftp_upload_site: "ftp {{ galaxy_hostname }} port {{ ftp_port }}"
           #to be done only in production       
           #debug: False
           #use_interactive: False
@@ -66,6 +62,7 @@
 
     #installs supervisor, nginx, proftpd, uwsgi
     - role: galaxyprojectdotorg.galaxy-extras
+      galaxy_root: "{{ galaxy_dir }}/"
       galaxy_extras_install_packages: true
       galaxy_extras_config_nginx: true
       galaxy_extras_config_supervisor: true
@@ -81,7 +78,6 @@
       supervisor_manage_ie_proxy: yes
       supervisor_manage_docker: false
       supervisor_manage_nodeproxy: false
-      galaxy_root: "{{ galaxy_dir }}/"
       galaxy_venv_dir:  "{{ galaxy_venv }}"
       galaxy_database_connection: "{{ database_connection }}"
 
@@ -129,6 +125,10 @@
       sudo_user: root
 
    #Create a system service for galaxy
+    - service: name=proftpd state=restarted
+      sudo: yes
+      sudo_user: root
+
 #    - copy: src="{{ galaxy_dir }}/contrib/galaxy.debian-init" dest="/etc/init.d/{{ galaxy_user }}" owner=root mode="u+x"
     - command: cp "{{ galaxy_dir }}/contrib/galaxy.debian-init" "/etc/init.d/{{ galaxy_user }}"
       sudo: yes
