@@ -86,7 +86,7 @@
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
 
-    #Alter proftpdir settings 
+    #Correcting proftpdir settings for PBKDF2
     - lineinfile: dest=/etc/proftpd/proftpd.conf regexp='^Port' line="Port {{ ftp_port }}" state=present 
       sudo: yes
       sudo_user: root
@@ -124,30 +124,35 @@
       sudo_user: root
 
    #Create a system service for galaxy
-    - copy: src="{{ galaxy_dir }}/contrib/galaxy.debian-init" dest="/etc/init.d/{{ galaxy_user }}" owner=root mode="u+x"
-      become_user: root
-      become_method: sudo    
+#    - copy: src="{{ galaxy_dir }}/contrib/galaxy.debian-init" dest="/etc/init.d/{{ galaxy_user }}" owner=root mode="u+x"
+    - command: cp "{{ galaxy_dir }}/contrib/galaxy.debian-init" "/etc/init.d/{{ galaxy_user }}"
+      sudo: yes
+      sudo_user: root
 
-    - replace: dest="/etc/init.d/{{ galaxy_user }}" regexp="galaxy_dist" replace="{{ galaxy_user }}" backup=yes
-      become_user: root
-      become_method: sudo    
+    - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="galaxy_dist" replace="{{ galaxy_user }}"
+      sudo: yes
+      sudo_user: root
 
-    - replace: dest="/etc/init.d/{{ galaxy_user }}" regexp="/usr/bin/python" replace="/bin/sh" backup=yes
-      become_user: root
-      become_method: sudo    
+    - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="/usr/bin/python" replace="/bin/sh" 
+      sudo: yes
+      sudo_user: root
 
-    - replace: dest="/etc/init.d/{{ galaxy_user }}" regexp="./scripts/paster.py serve" replace="run.sh --daemon" backup=yes
-      become_user: root
-      become_method: sudo    
+    - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="./scripts/paster.py serve" replace="run.sh --daemon"
+      sudo: yes
+      sudo_user: root
+
+    - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="config/galaxy.ini" replace=" "
+      sudo: yes
+      sudo_user: root
 
     - command: update-rc.d galaxy defaults
-      become_user: root
-      become_method: sudo    
+      sudo: yes
+      sudo_user: root
 
-    - command: "/etc/init.d/{{ galaxy_user }} start"
-      become_user: root
-      become_method: sudo    
+    - command: "bash /etc/init.d/{{ galaxy_user }} start"
+      sudo: yes
+      sudo_user: root
 
 #    - service: name="{{ galaxy_user }}" state=started
-#      become_user: root
-#      become_method: sudo  
+#      sudo: yes
+#      sudo_user: root
