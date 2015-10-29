@@ -1,33 +1,25 @@
 # Ansible ARTiMED virtual machine
 Ansible playbooks for ARTiMED Virtual Machine
-Deploys ARTiMED Vagrant box (the virtual machine) on Debian distributions. It includes Galaxy with postgresql database. To deploy just download the ansible-artimed/galaxy_vm/install.sh file and run:
+Deploys ARTiMED Vagrant box (the virtual machine). It includes Galaxy with postgresql database. To deploy just download the ansible-artimed/galaxy_vm/install.sh file and run:
 ```
+#Download ansible-artimed/galaxy_vm/install.sh and execute:
 bash install.sh;
 ```
 
 The install.sh file will:
- - install the requirements SO packages (git, pip, virtualenv, ansible, vagrant, virtualbox, ...) on Debian distributions.
+ - install verify the requirements (git, pip, virtualenv, ansible, vagrant, virtualbox, ...).
  - create the instalation directory for the Vagrant box ($HOME/ansible-artimed/galaxy_vm/).
  - git clone this galaxy server playbook for vagrant provision procedure.
  - do a vagrant up to deploy the box.
+ - start galaxy
+ -install the tools listed in into Galaxy
  
-If you want to skip these steps please clone this repository recussivelly (execute a "git clone --recursive"), install the necessary S.O. packages listed above and execute a "PLAYBOOK='galaxy.yml' vagrant up", that is:
+# Running from the host machine Galaxy
+Galaxy is installed as a SO service, however if you want to run galaxy from the host machine as a shell application, open another shell on host machine on the same install directory (ansible-artimed/galaxy_vm) and execute:
 ```
-git clone --recursive https://github.com/ARTbio/ansible-artimed.git
-cd ansible-artimed/galaxy_vm
-PLAYBOOK='galaxy.yml' vagrant up
+vagrant ssh -c "sudo service galaxy stop"
+vagrant ssh -c "sudo -i -u galaxy sh /home/galaxy/galaxy/run.sh"
 ```
-
-# Running Galaxy
-To run galaxy you have to "ssh" to the box ("vagrant ssh") and execute:
-```
-sudo su galaxy; 
-cd $HOME/galaxy/;
-sh run.sh;
-```
-
-# Installing NGS tools
-To install Galaxy tools execute "PLAYBOOK='tools.yml' vagrant provision" on host machine. Note that Galaxy must be running on guest machine. 
 
 # Re-doing
 If you want to redo the installation process "cd" to the box directory (where the Vagrantfile is) and do the following steps:
@@ -37,5 +29,6 @@ vagrant destroy #it will destroy completelly your box, so do not miss the previo
 vagrant up;
 ```
 
-FYI, this repository has submodules, so to clone it with the roles "git clone --recursive" command must be used.
+FYI, this repository has submodules, so to clone it with the roles "git clone --recursive" command must be always used.
+Minimum requirements: Ansible >=1.8, Vagrant >=1.7.4, Virtual Box (compatible with vagrant - see vagrant site) and git. 
 Galaxy is configured to run on the default port (8080), to monitor all network cards and the admin user is artimed@gmail.com. Galaxy database is labeled as galaxy with owner galaxy.
