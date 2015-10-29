@@ -13,8 +13,9 @@ The install.sh file will:
  - git clone this galaxy server playbook for vagrant provision procedure.
  - do a vagrant up to deploy the box.
  
-If you want to skip these steps please clone this repository recussivelly (execute a "git clone --recursive"), install the necessary S.O. packages listed above and execute a "PLAYBOOK='galaxy.yml' vagrant up", that is:
+If you want to skip these steps please clone this repository recussivelly (execute a "git clone --recursive"), install the necessary S.O. packages (ssh, git, ansible, vagrant and virtualbox principally) and execute a "PLAYBOOK='galaxy.yml' vagrant up", that is:
 ```
+#Make sure that you have at least ssh, git, ansible, vagrant and virtualbox in your host system 
 #Open one shell on host machine and execute:
 git clone --recursive https://github.com/ARTbio/ansible-artimed.git
 cd ansible-artimed/galaxy_vm
