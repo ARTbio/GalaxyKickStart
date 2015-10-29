@@ -3,9 +3,8 @@ Ansible playbooks for ARTiMED Virtual Machine
 Deploys ARTiMED Vagrant box (the virtual machine) on Debian distributions. It includes Galaxy with postgresql database. To deploy just download the ansible-artimed/galaxy_vm/install.sh file and run:
 ```
 #On Debian distros do:
-git clone --recursive https://github.com/ARTbio/ansible-artimed.git
-cd ansible-artimed/galaxy_vm
 bash install.sh;
+cd ansible-artimed/galaxy_vm
 ```
 
 The install.sh file will:
