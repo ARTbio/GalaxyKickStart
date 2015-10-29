@@ -12,7 +12,7 @@ The install.sh file will:
  - git clone this galaxy server playbook for vagrant provision procedure.
  - do a vagrant up to deploy the box.
  - start galaxy
- -install the tools listed in into Galaxy
+ - install the tools listed in into Galaxy
  
 # Running from the host machine Galaxy
 Galaxy is installed as a SO service, however if you want to run galaxy from the host machine as a shell application, open another shell on host machine on the same install directory (ansible-artimed/galaxy_vm) and execute:
