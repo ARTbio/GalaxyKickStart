@@ -30,9 +30,6 @@ vagrant up;
 ```
 
 FYI, this repository has submodules, so to clone it with the roles "git clone --recursive" command must be always used.
-
 Galaxy is configured to run on the default port (8080), to monitor all network cards and the admin user is artimed@gmail.com. 
-
 Galaxy database is labeled as galaxy with owner galaxy.
-
 Minimum requirements: Ansible >=1.8, Vagrant >=1.7.4, Virtual Box (compatible with vagrant - see vagrant site) and git. 
