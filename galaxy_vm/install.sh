@@ -14,6 +14,7 @@ then
 fi
 
 #Test Dependencies
+echo "Minimum requirements: OpenSSH client, Ansible >=1.8, Vagrant >=1.7.4, Virtual Box (compatible with vagrant - see vagrant site) and git."
 #sshVersion=`ssh -V | grep -i "openssh"`
 #echo $sshVersion
 #if [ "$sshVersion" == "" ]
@@ -32,7 +33,7 @@ fi
 vagrantVersion=`vagrant --version | grep -i "^vagrant"`
 if [ "$vagrantVersion" == "" ]
 then
-	echo "vagrant not present, please install it."
+	echo "vagrant not present, please install it and install the compatible virtualbox."
 	exit 1
 fi
 
