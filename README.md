@@ -7,8 +7,8 @@ bash install.sh;
 ```
 
 The install.sh file will:
- - install verify the requirements (git, pip, virtualenv, ansible, vagrant, virtualbox, ...).
- - create the instalation directory for the Vagrant box ($HOME/ansible-artimed/galaxy_vm/).
+ - verify the requirements (git, pip, virtualenv, ansible, vagrant, virtualbox, ...).
+ - create the installation directory for the Vagrant box ($HOME/ansible-artimed/galaxy_vm/).
  - git clone this galaxy server playbook for vagrant provision procedure.
  - do a vagrant up to deploy the box.
  - start galaxy
