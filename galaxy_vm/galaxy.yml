@@ -1,10 +1,10 @@
 - hosts: all
-  remote_user: vagrant
+  remote_user: "{{ lookup('env','INSTALL_USER') }}"
   sudo: yes
 
   vars:
     #Globals
-    galaxy_hostname: "{{ lookup('env','HOSTNAME') }}"
+    galaxy_hostname: "{{ lookup('env','INSTALL_HOSTNAME') }}"
     galaxy_user: galaxy
     galaxy_port: 8080
     galaxy_host: "0.0.0.0"
