@@ -1,12 +1,21 @@
-# Ansible ARTiMED virtual machine
-Ansible playbooks for ARTiMED Virtual Machine
-Deploys ARTiMED Vagrant box (the virtual machine). It includes Galaxy with postgresql database. To deploy just download the ansible-artimed/galaxy_vm/install.sh file and run:
+# Ansible ARTiMED Galaxy instance
+Deploys a Galaxy instance on the host machine. 
+It includes Galaxy with postgresql database. 
+To deploy just download the ansible-artimed/galaxy_vm/install.sh file and run:
 ```
 #Download ansible-artimed/galaxy_vm/install.sh and execute:
 bash install.sh;
 ```
 
-The install.sh file will:
+# Ansible ARTiMED Virtual Machine
+Ansible playbooks for ARTiMED Virtual Machine
+Deploys ARTiMED Vagrant box (the virtual machine). It includes Galaxy with postgresql database. To deploy just download the ansible-artimed/galaxy_vm/install_vm.sh file and run:
+```
+#Download ansible-artimed/galaxy_vm/install_vm.sh and execute:
+bash install_vm.sh;
+```
+
+The install_vm.sh file will:
  - verify the requirements (git, pip, virtualenv, ansible, vagrant, virtualbox, ...).
  - create the installation directory for the Vagrant box ($HOME/ansible-artimed/galaxy_vm/).
  - git clone this galaxy server playbook for vagrant provision procedure.
@@ -16,7 +25,7 @@ The install.sh file will:
  
 Note that the minimum requirements are a OpenSSH client, Ansible >=1.8, Vagrant >=1.7.4, Virtual Box (compatible with vagrant - see vagrant site) and git. 
 
-# Running from the host machine Galaxy
+# Running Galaxy VM from the host machine 
 Galaxy is installed as a SO service, however if you want to run galaxy from the host machine as a shell application, open another shell on host machine on the same install directory (ansible-artimed/galaxy_vm) and execute:
 ```
 vagrant ssh -c "sudo service galaxy stop"
