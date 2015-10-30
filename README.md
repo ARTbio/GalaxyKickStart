@@ -7,6 +7,8 @@ To deploy just download the ansible-artimed/galaxy_vm/install.sh file and run:
 bash install.sh;
 ```
 
+Note that the minimum requirements are a OpenSSH client, Ansible >=1.8 and git.
+
 # Ansible ARTiMED Virtual Machine
 Ansible playbooks for ARTiMED Virtual Machine
 Deploys ARTiMED Vagrant box (the virtual machine). It includes Galaxy with postgresql database. To deploy just download the ansible-artimed/galaxy_vm/install_vm.sh file and run:
