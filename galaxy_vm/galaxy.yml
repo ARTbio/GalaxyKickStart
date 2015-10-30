@@ -1,5 +1,5 @@
 - hosts: all
-  remote_user: vagrant
+  remote_user: "{{ lookup('env','USER') }}"
   sudo: yes
 
   vars:
