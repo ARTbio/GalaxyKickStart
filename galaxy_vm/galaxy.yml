@@ -37,7 +37,7 @@
     - role: galaxyprojectdotorg.galaxy
       #galaxy_manage_clone: no
       galaxy_manage_database: no
-      galaxy_fetch_eggs: yes
+      galaxy_fetch_eggs: no
       galaxy_changeset_id: master
       galaxy_vcs: git
       galaxy_venv_dir: "{{ galaxy_venv }}"
