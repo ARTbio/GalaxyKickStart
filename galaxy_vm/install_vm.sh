@@ -55,9 +55,9 @@ fi
 if git clone --recursive $artimed_git_repo
 then
 	cd ansible-artimed/galaxy_vm/
-	PLAYBOOK="galaxy.yml" VAGRANT_LOG=info vagrant up
+	INSTALL_USER=vagrant PLAYBOOK="galaxy.yml" VAGRANT_LOG=info vagrant up
 	echo "Wait until galaxy provide the web service on http://localhost:8080"
 	echo -n "Press any key to install Galaxy tools..."
 	read
-	PLAYBOOK="tools.yml" VAGRANT_LOG=info vagrant provision
+	INSTALL_USER=vagrant PLAYBOOK="tools.yml" VAGRANT_LOG=info vagrant provision
 fi
