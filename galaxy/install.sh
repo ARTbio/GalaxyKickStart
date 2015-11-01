@@ -34,7 +34,7 @@ fi
 #Installation
 if git clone --recursive $artimed_git_repo
 then
-	cd ansible-artimed/galaxy_vm/
+	cd ansible-artimed/galaxy/
 	INSTALL_HOSTNAME=$HOSTNAME INSTALL_USER=$USER ansible-playbook -i "localhost," galaxy.yml -vvvv
 	echo "Wait until galaxy provide the web service on http://localhost:8080"
 	echo -n "Press any key to install Galaxy tools..."

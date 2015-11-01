@@ -7,5 +7,6 @@ To deploy just download the ansible-artimed/galaxy/install.sh file and run:
 bash install.sh;
 ```
 Warnings:
--you must be sudo to do this.
+-your S.O. user must be sudo to do this.
 -your S.O. must have apt packages candidates for OpenSSH client and git.
+-your S.O. must have at least 4GB of RAM
