@@ -10,7 +10,7 @@ artimed_git_repo=$1
 
 if [ "$artimed_git_repo" == "" ]
 then
-	artimed_git_repo="https://github.com/fabiorjvieira/ansible-artimed.git"
+	artimed_git_repo="https://github.com/artbio/ansible-artimed.git"
 fi
 
 #install Dependencies
