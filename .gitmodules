@@ -1,3 +1,15 @@
 [submodule "galaxy/roles/galaxyprojectdotorg.galaxy-os"]
 	path = galaxy/roles/galaxyprojectdotorg.galaxy-os
 	url = git://github.com/galaxyproject/galaxy-os.git
+[submodule "galaxy/roles/galaxyprojectdotorg.galaxy"]
+	path = galaxy/roles/galaxyprojectdotorg.galaxy
+	url = git://github.com/galaxyproject/ansible-galaxy.git
+[submodule "galaxy/roles/galaxyprojectdotorg.galaxy-extras"]
+	path = galaxy/roles/galaxyprojectdotorg.galaxy-extras
+	url = git://github.com/galaxyproject/ansible-galaxy-extras.git
+[submodule "galaxy/roles/galaxyprojectdotorg.galaxy-tools"]
+	path = galaxy/roles/galaxyprojectdotorg.galaxy-tools
+	url = git://github.com/galaxyproject/ansible-galaxy-tools.git
+[submodule "galaxy/roles/natefoo.postgresql_objects"]
+	path = galaxy/roles/natefoo.postgresql_objects
+	url = git://github.com/natefoo/ansible-postgresql-objects.git
