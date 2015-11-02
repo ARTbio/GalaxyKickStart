@@ -132,7 +132,7 @@
 #    - lineinfile: dest=/etc/nginx/nginx.conf line="" insertafter=EOF state=present
 #      sudo: yes
 #      sudo_user: root
-   
+
 #    - service: name=nginx state=restarted
 #      sudo: yes
 #      sudo_user: root
@@ -144,6 +144,10 @@
       sudo_user: root
 
     - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="galaxy_dist" replace="{{ galaxy_user }}"
+      sudo: yes
+      sudo_user: root
+
+    - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="start-stop-daemon --stop --pidfile $PIDFILE" replace="start-stop-daemon --stop --pidfile {{ galaxy_dir }}/paster.pid"
       sudo: yes
       sudo_user: root
 
