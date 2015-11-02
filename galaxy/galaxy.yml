@@ -171,6 +171,6 @@
       sudo: yes
       sudo_user: root
 
-    - service: name="{{ galaxy_user }}" state=started
-      sudo: yes
-      sudo_user: root
+#    - service: name="{{ galaxy_user }}" state=started
+#      sudo: yes
+#      sudo_user: root
