@@ -13,11 +13,41 @@ then
 	artimed_git_repo="https://github.com/artbio/ansible-artimed.git"
 fi
 
+
+OS=`head -n1 /etc/issue | cut -d " " -f 1`
+
+if [ "$OS" == "Debian" ]
+then
+	IM="apt"
+elif [ "$OS" == "Ubuntu" ]
+then
+	IM="apt"
+elif [ "$OS" == "CentOS" ]
+then
+	IM="yum"
+elif [ "$OS" == "Red" ]
+then
+	IM="yum"
+elif [ "$OS" == "Fedora" ]
+then
+	IM="yum"
+else
+	echo "Cannot determine the Operation System, so aborting."
+	exit 1
+fi
+
 #install Dependencies
 echo "Minimum requirements: OpenSSH client, Ansible >=1.8 and git."
-sudo apt-add-repository ppa:ansible/ansible -y
-sudo apt-get update -y
-sudo apt-get install software-properties-common git openssh-client ansible -y	
+if [ "$IM" == "apt" ]
+then
+	sudo apt-add-repository ppa:ansible/ansible -y
+	sudo apt-get update -y
+	sudo apt-get install software-properties-common git openssh-client ansible -y
+elif [ "$IM" == "yum" ]
+then
+	echo "This installation does not work on Red Hat like systems, so aborting."
+	exit 1
+fi
 
 #To be sure that the current user can ssh to the localhost without password 
 if cat /dev/zero | ssh-keygen -q -N ""
