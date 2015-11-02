@@ -147,7 +147,7 @@
       sudo: yes
       sudo_user: root
 
-    - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="start-stop-daemon --stop --pidfile $PIDFILE" replace="start-stop-daemon --stop --pidfile {{ galaxy_dir }}/paster.pid"
+    - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="start-stop-daemon --stop --pidfile \$PIDFILE" replace="start-stop-daemon --stop --pidfile {{ galaxy_dir }}/paster.pid"
       sudo: yes
       sudo_user: root
 
