@@ -60,12 +60,12 @@
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
 
-    #installs supervisor, nginx, proftpd, uwsgi
+    #installs nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
       galaxy_root: "{{ galaxy_dir }}/"
       galaxy_extras_install_packages: true
       galaxy_extras_config_nginx: true
-      galaxy_extras_config_supervisor: true
+      galaxy_extras_config_supervisor: false
       galaxy_extras_config_proftpd: true
       galaxy_extras_config_uwsgi: false #verify what's the influence in nginx
       galaxy_extras_config_galaxy_job_metrics: true
@@ -74,8 +74,8 @@
       galaxy_extras_config_ie_proxy: false
       galaxy_extras_config_scripts: false
       galaxy_extras_config_startup: false
-      supervisor_manage_proftp: yes
-      supervisor_manage_ie_proxy: yes
+      supervisor_manage_proftp: false
+      supervisor_manage_ie_proxy: false
       supervisor_manage_docker: false
       supervisor_manage_nodeproxy: false
       galaxy_venv_dir:  "{{ galaxy_venv }}"
@@ -138,7 +138,7 @@
 #      sudo_user: root
     
     #Create a system service for galaxy
-#    - copy: src="{{ galaxy_dir }}/contrib/galaxy.debian-init" dest="/etc/init.d/{{ galaxy_user }}" owner=root mode="u+x"
+    - copy: src="{{ galaxy_dir }}/contrib/galaxy.debian-init" dest="/etc/init.d/{{ galaxy_user }}" owner=root mode="u+x"
     - command: cp "{{ galaxy_dir }}/contrib/galaxy.debian-init" "/etc/init.d/{{ galaxy_user }}"
       sudo: yes
       sudo_user: root
@@ -171,6 +171,6 @@
       sudo: yes
       sudo_user: root
 
-#    - service: name="{{ galaxy_user }}" state=started
-#      sudo: yes
-#      sudo_user: root
+    - service: name="{{ galaxy_user }}" state=started
+      sudo: yes
+      sudo_user: root
