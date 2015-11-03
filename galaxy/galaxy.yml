@@ -137,7 +137,7 @@
       sudo: yes
       sudo_user: root
 
-    - htpasswd: path=/etc/nginx/.passwdfile name=artimed password=artimed owner=root group=www-data mode=0640
+    - htpasswd: path=/etc/nginx/.htpasswd name=artimed password=artimed owner=root group=root
       sudo: yes
       sudo_user: root
     
