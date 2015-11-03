@@ -129,7 +129,7 @@
       sudo_user: root
     
     #Correcting nginx settings
-    - command: cp "{{ role_path }}/nginx.conf" "/etc/nginx/nginx.conf"
+    - command: cp "nginx.conf" "/etc/nginx/nginx.conf"
       sudo: yes
       sudo_user: root
 
