@@ -129,16 +129,20 @@
       sudo_user: root
     
     #Correcting nginx settings
+    - command: cp "{{ role_path }}/nginx.conf" "/etc/nginx/nginx.conf"
+      sudo: yes
+      sudo_user: root
+
 #    - lineinfile: dest=/etc/nginx/nginx.conf line="" insertafter=EOF state=present
 #      sudo: yes
 #      sudo_user: root
 
-#    - service: name=nginx state=restarted
-#      sudo: yes
-#      sudo_user: root
+    - service: name=nginx state=restarted
+      sudo: yes
+      sudo_user: root
     
     #Create a system service for galaxy
-    - copy: src="{{ galaxy_dir }}/contrib/galaxy.debian-init" dest="/etc/init.d/{{ galaxy_user }}" owner=root mode="u+x"
+#    - copy: src="{{ galaxy_dir }}/contrib/galaxy.debian-init" dest="/etc/init.d/{{ galaxy_user }}" owner=root mode="u+x"
     - command: cp "{{ galaxy_dir }}/contrib/galaxy.debian-init" "/etc/init.d/{{ galaxy_user }}"
       sudo: yes
       sudo_user: root
@@ -167,10 +171,10 @@
       sudo: yes
       sudo_user: root
 
-    - command: "bash /etc/init.d/{{ galaxy_user }} start"
-      sudo: yes
-      sudo_user: root
-
-#    - service: name="{{ galaxy_user }}" state=started
+#    - command: "bash /etc/init.d/{{ galaxy_user }} start"
 #      sudo: yes
 #      sudo_user: root
+
+    - service: name="{{ galaxy_user }}" state=started
+      sudo: yes
+      sudo_user: root
