@@ -50,7 +50,7 @@ then
 	cd ansible-artimed/galaxy/
 	INSTALL_HOSTNAME=$HOSTNAME INSTALL_USER=$USER ansible-playbook -i "localhost," galaxy.yml -vvvv
 	echo "Wait until galaxy provide the web service on http://localhost:8080"
-	echo -n "Press control+c to stop here or any other key to install Galaxy tools..."
+	echo -n "Press control+c to stop here or enter key to install Galaxy tools..."
 	read
 	INSTALL_USER=$USER ansible-playbook -i "localhost," tools.yml -vvvv
 fi
