@@ -7,8 +7,8 @@
 # Ansible ARTiMED Galaxy instance
 Deploys a Galaxy instance on the host machine in Debian flavors. 
 It includes Galaxy with postgresql database and some extras (proftpd and nginx).
-To deploy just download the ansible-artimed/galaxy/install.sh file and run:
+To deploy just download the https://github.com/ARTbio/ansible-artimed/blob/master/galaxy/install.sh file and run:
 ```
-#Download ansible-artimed/galaxy/install.sh and execute:
+#Download https://github.com/ARTbio/ansible-artimed/blob/master/galaxy/install.sh and execute:
 bash install.sh;
 ```
