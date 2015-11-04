@@ -12,7 +12,8 @@
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
     galaxy_venv: "{{ galaxy_dir }}/venv/"
     galaxy_ftp: "{{ galaxy_dir }}/database/files/"
-    ftp_port: 2121 
+    ftp_port: 2121
+    galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
 
   roles:
@@ -49,7 +50,7 @@
           port: "{{ galaxy_port }}"
         "app:main":
           admin_users: "{{ galaxy_admin }}"
-          database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
+          database_connection: "{{ galaxy_db }}"
           tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies/"
           master_api_key: "{{ galaxy_api }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
@@ -79,4 +80,4 @@
       supervisor_manage_docker: false
       supervisor_manage_nodeproxy: false
       galaxy_venv_dir:  "{{ galaxy_venv }}"
-      galaxy_database_connection: "{{ database_connection }}"
+      galaxy_database_connection: "{{ galaxy_db }}"
