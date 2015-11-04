@@ -13,6 +13,6 @@ To deploy just download the https://github.com/ARTbio/ansible-artimed/blob/maste
 bash install.sh;
 ```
 
-# Use Galaxy instance
+# Using Galaxy instance
 Galaxy is provided in http://localhost and the nginx proxy user name and password are artimed and artimed.
 The administrator email of Galaxy is artimed@gmail.com.
