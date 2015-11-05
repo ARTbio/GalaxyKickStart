@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "To be sure that the current user can ssh to the localhost any user interactivity input." 
 if cat /dev/zero | ssh-keygen -q -N ""
 then
