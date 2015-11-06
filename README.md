@@ -15,9 +15,8 @@ This script will ask you 3 things in 3 different times: your login/password on g
 
 # Using Galaxy instance
 Galaxy is provided in http://localhost and the nginx proxy user name and password are artimed and artimed.
-The administrator email of Galaxy is artimed@gmail.com.
+The administrator email of Galaxy is artimed@gmail.com (you have to register it in Galaxy).
 If you restart the machine where Galaxy was installed, please start Galaxy service with:
 ```
 sudo bash /etc/init.d/galaxy start
 ```
-
