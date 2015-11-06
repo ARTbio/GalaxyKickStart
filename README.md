@@ -11,8 +11,13 @@ To deploy just download the https://github.com/ARTbio/ansible-artimed/blob/maste
 cd $HOME
 bash install.sh;
 ```
-This script will ask you 3 things in 3 different times: your login/password on githut, if you agree to "ssh localhost" and if you want to install galaxy tools.
+This script will ask you 3 things in 3 different times: your login/password on githut, if you agree to "ssh localhost" and if you want to install Galaxy tools.
 
 # Using Galaxy instance
 Galaxy is provided in http://localhost and the nginx proxy user name and password are artimed and artimed.
 The administrator email of Galaxy is artimed@gmail.com.
+If you restart the machine where Galaxy was installed, please start Galaxy service with:
+```
+sudo bash /etc/init.d/galaxy start
+```
+
