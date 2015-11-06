@@ -5,14 +5,14 @@
   vars:
     #Globals
     galaxy_hostname: "{{ lookup('env','INSTALL_HOSTNAME') }}"
-    galaxy_user: galaxy
-    galaxy_port: 8080
+    galaxy_user: "{{ lookup('env','GALAXY_USER') }}"
+    galaxy_port: "{{ lookup('env','GALAXY_PORT') }}"
     galaxy_host: "0.0.0.0"
     galaxy_admin: "artimed@gmail.com"
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
     galaxy_venv: "{{ galaxy_dir }}/venv/"
     galaxy_ftp: "{{ galaxy_dir }}/database/files/"
-    ftp_port: 2121 
+    ftp_port: "{{ lookup('env','FTP_PORT') }}"
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
 
   roles:

@@ -2,7 +2,7 @@
 #Parsing parameters 
 if [ "$1" == "-h" ]
 then
-	echo "Just one optional parameter: the git repository."
+	echo "Just 4 optional parameters: the git repository, galaxy user, galaxy port and ftp port."
 	exit 0
 fi
 
@@ -10,6 +10,24 @@ artimed_git_repo=$1
 if [ "$artimed_git_repo" == "" ]
 then
 	artimed_git_repo="https://github.com/artbio/ansible-artimed.git"
+fi
+
+galaxy_user=$2
+if [ "$galaxy_user" == "" ]
+then
+	galaxy_user="galaxy"
+fi
+
+galaxy_port=$2
+if [ "$galaxy_port" == "" ]
+then
+	galaxy_port="8080"
+fi
+
+ftp_port=$2
+if [ "$ftp_port" == "" ]
+then
+	ftp_port="2121"
 fi
 
 OS=`head -n1 /etc/issue | cut -d " " -f 1`
@@ -48,9 +66,9 @@ fi
 if git clone --recursive $artimed_git_repo
 then
 	cd ansible-artimed/galaxy/
-	INSTALL_HOSTNAME=$HOSTNAME INSTALL_USER=$USER ansible-playbook -i "localhost," galaxy.yml -vvvv
-	echo "Wait until galaxy provide the web service on http://localhost:8080"
+	FTP_PORT=$ftp_port GALAXY_USER=$galaxy_user GALAXY_PORT=$galaxy_port INSTALL_HOSTNAME=$HOSTNAME INSTALL_USER=$USER ansible-playbook -i "localhost," galaxy.yml -vvvv
+	echo "Wait until galaxy provide the web service on http://localhost"
 	echo -n "Press control+c to stop here or enter key to install Galaxy tools..."
 	read
-	INSTALL_USER=$USER ansible-playbook -i "localhost," tools.yml -vvvv
+	GALAXY_USER=$galaxy_user GALAXY_PORT=$galaxy_port INSTALL_USER=$USER ansible-playbook -i "localhost," tools.yml -vvvv
 fi
