@@ -14,6 +14,7 @@
     galaxy_ftp: "{{ galaxy_dir }}/database/files/"
     ftp_port: "{{ lookup('env','FTP_PORT') }}"
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
+    galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
 
   roles:
     #installs system package requirements
@@ -49,7 +50,7 @@
           port: "{{ galaxy_port }}"
         "app:main":
           admin_users: "{{ galaxy_admin }}"
-          database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
+          database_connection: "{{ galaxy_db }}"
           tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies/"
           master_api_key: "{{ galaxy_api }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
@@ -154,6 +155,10 @@
       sudo: yes
       sudo_user: root
 
+    - command: chmod +x /etc/init.d/"{{ galaxy_user }}"
+      sudo: yes
+      sudo_user: root
+
     - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="galaxy_dist" replace="{{ galaxy_user }}"
       sudo: yes
       sudo_user: root
@@ -182,3 +187,6 @@
       sudo: yes
       sudo_user: root
 
+#  'status')
+#           status_of_proc -p /home/galaxy/galaxy/paster.pid "$DAEMON" "$NAME" && exit 0 || exit $?
+#        ;;
