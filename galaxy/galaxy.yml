@@ -5,23 +5,23 @@
   vars:
     #Globals
     galaxy_hostname: "{{ lookup('env','INSTALL_HOSTNAME') }}"
-    galaxy_user: galaxy
-    galaxy_port: 8080
+    galaxy_user: "{{ lookup('env','GALAXY_USER') }}"
+    galaxy_port: "{{ lookup('env','GALAXY_PORT') }}"
     galaxy_host: "0.0.0.0"
     galaxy_admin: "artimed@gmail.com"
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
     galaxy_venv: "{{ galaxy_dir }}/venv/"
     galaxy_ftp: "{{ galaxy_dir }}/database/files/"
-    ftp_port: 2121
-    galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
+    ftp_port: "{{ lookup('env','FTP_PORT') }}"
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
+    galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
 
   roles:
     #installs system package requirements
     - role: galaxyprojectdotorg.galaxy-os
       configure_docker: no
       galaxy_user_name: "{{ galaxy_user }}"
-      galaxy_user_uid: 1005
+      galaxy_user_uid: 1055
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db
     - role: natefoo.postgresql_objects
@@ -64,13 +64,16 @@
     #installs nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
       galaxy_root: "{{ galaxy_dir }}/"
+      galaxy_venv_dir:  "{{ galaxy_venv }}"
+      galaxy_database_connection: "{{ galaxy_db }}"
+      galaxy_paste_handlers: true
       galaxy_extras_install_packages: true
       galaxy_extras_config_nginx: true
       galaxy_extras_config_supervisor: true
       galaxy_extras_config_proftpd: true
-      galaxy_extras_config_uwsgi: true #verify what's the influence in nginx
+      galaxy_extras_config_uwsgi: true
       galaxy_extras_config_galaxy_job_metrics: true
-      galaxy_extras_config_slurm: false
+      galaxy_extras_config_slurm: true
       galaxy_extras_config_galaxy_root: true
       galaxy_extras_config_ie_proxy: true
       galaxy_extras_config_scripts: false
@@ -78,6 +81,5 @@
       supervisor_manage_proftp: true
       supervisor_manage_ie_proxy: true
       supervisor_manage_docker: false
+      supervisor_manage_reports: true
       supervisor_manage_nodeproxy: false
-      galaxy_venv_dir:  "{{ galaxy_venv }}"
-      galaxy_database_connection: "{{ galaxy_db }}"
