@@ -86,8 +86,6 @@
       supervisor_manage_docker: false
       supervisor_manage_reports: true
       supervisor_manage_nodeproxy: false
-      galaxy_venv_dir:  "{{ galaxy_venv }}"
-      galaxy_database_connection: "{{ database_connection }}"
 
   tasks:
     #Create proftpd dir
