@@ -98,6 +98,6 @@
       galaxy_extras_config_startup: false
       supervisor_manage_proftp: true
       supervisor_manage_ie_proxy: true
-      supervisor_manage_docker: false
       supervisor_manage_reports: true
+      supervisor_manage_docker: false
       supervisor_manage_nodeproxy: false

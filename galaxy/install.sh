@@ -41,16 +41,6 @@ else
 	echo "Not a Debian like system. Cannot determine the Operation System, so aborting."
 fi
 
-#install Dependencies
-echo "Minimum requirements: OpenSSH client, Ansible >=1.8 and git (this script will try to install these)."
-if [ "$IM" == "apt" ]
-then
-	sudo apt-get install software-properties-common -y
-	sudo apt-add-repository ppa:ansible/ansible -y
-	sudo apt-get update -y
-	sudo apt-get install git openssh-client ansible -y
-fi
-
 echo "To be sure that the current user can ssh to the localhost without password" 
 if cat /dev/zero | ssh-keygen -q -N ""
 then
@@ -78,6 +68,16 @@ then
 else 
 	echo "This user does not have permission to ssh directly to the localhost without any user input, so this script cannot continue.";
 	exit 1
+fi
+
+#install Dependencies
+echo "Minimum requirements: OpenSSH client, Ansible >=1.8 and git (this script will try to install these)."
+if [ "$IM" == "apt" ]
+then
+	sudo apt-get install software-properties-common -y
+	sudo apt-add-repository ppa:ansible/ansible -y
+	sudo apt-get update -y
+	sudo apt-get install git openssh-client ansible -y
 fi
 
 #Installation
