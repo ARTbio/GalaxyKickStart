@@ -4,6 +4,7 @@
 
   vars:
     #Globals
+    galaxy_data: "{{ lookup('env','GALAXY_DATA') }}"
     galaxy_hostname: "{{ lookup('env','INSTALL_HOSTNAME') }}"
     galaxy_user: "{{ lookup('env','GALAXY_USER') }}"
     galaxy_port: "{{ lookup('env','GALAXY_PORT') }}"
@@ -49,8 +50,6 @@
           use_threadpool: True
           use: "egg:Paste#http"
           use_threadpool: True
-#          host: "{{ galaxy_host }}"
-#          port: "{{ galaxy_port }}"
         "server:handler0":
           use: "egg:Paste#http"
           use_threadpool: True
@@ -73,9 +72,21 @@
           #to be done only in production       
           #debug: False
           #use_interactive: False
-#      "uwsgi":
-#          "socket": "127.0.0.1:4001"
-#          "stats": "127.0.0.1:4001"
+        "uwsgi":
+          stats: "{{ galaxy_hostname }}:9191"
+          socket: "{{ galaxy_hostname }}:4001"
+          master: True
+          logto: "{{ galaxy_dir }}/uwsgi.log"
+          pythonpath: lib
+          threads: 4
+          processes: "{{ galaxy_web_processes }}"
+          #log-maxsize: 134217728
+          #single-interpreter: True
+          #log-master-bufsize: 15865856
+          #module: galaxy.webapps.galaxy.buildapp:uwsgi_app_factory()
+          #set: galaxy_config_file="{{ galaxy_dir }}/config/galaxy.ini"
+          #set: galaxy_root="{{ galaxy_dir }}"
+          #logdate: True
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
 
