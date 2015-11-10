@@ -19,5 +19,12 @@ The administrator email of Galaxy is artimed@gmail.com (you have to register it 
 
 If you restart the machine where Galaxy was installed, please start Galaxy service with:
 ```
-sudo bash /etc/init.d/galaxy start
+sudo service galaxy start
+```
+
+# Installing Galaxy NGS tools
+If you want to install only galaxy tools, donwload https://github.com/ARTbio/ansible-artimed/blob/master/galaxy/tools.yml and https://github.com/ARTbio/ansible-artimed/blob/master/galaxy/artimed_tool_list.yaml and execute:
+```
+cd $HOME/ansible-artimed/galaxy/
+GALAXY_USER=$galaxy_user GALAXY_PORT=$galaxy_port INSTALL_USER=$USER ansible-playbook -i "localhost," tools.yml -vvvv
 ```
