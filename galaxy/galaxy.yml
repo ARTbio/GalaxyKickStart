@@ -52,12 +52,12 @@
           use: egg:Paste\#http
           use_threadpool: True
           host: "{{ galaxy_host }}"
-          port: {{ galaxy_port | + 0 }}
+          port: "{{ galaxy_port | + 0 }}"
         "server:handler1":
           use: egg:Paste\#http
           use_threadpool: True
           host: "{{ galaxy_host }}"
-          port: {{ galaxy_port | + 1 }}
+          port: "{{ galaxy_port | + 1 }}"
         "app:main":
           admin_users: "{{ galaxy_admin }}"
           database_connection: "{{ galaxy_db }}"
