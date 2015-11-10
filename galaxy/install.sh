@@ -21,13 +21,13 @@ fi
 galaxy_port=$2
 if [ "$galaxy_port" == "" ]
 then
-	galaxy_port="10090"
+	galaxy_port="8080"
 fi
 
 ftp_port=$2
 if [ "$ftp_port" == "" ]
 then
-	ftp_port="2121"
+	ftp_port="21"
 fi
 
 OS=`head -n1 /etc/issue | cut -d " " -f 1`
