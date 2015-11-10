@@ -5,22 +5,23 @@
   vars:
     #Globals
     galaxy_hostname: "{{ lookup('env','INSTALL_HOSTNAME') }}"
-    galaxy_user: galaxy
-    galaxy_port: 8080
+    galaxy_user: "{{ lookup('env','GALAXY_USER') }}"
+    galaxy_port: "{{ lookup('env','GALAXY_PORT') }}"
     galaxy_host: "0.0.0.0"
     galaxy_admin: "artimed@gmail.com"
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
     galaxy_venv: "{{ galaxy_dir }}/venv/"
     galaxy_ftp: "{{ galaxy_dir }}/database/files/"
-    ftp_port: 2121 
+    ftp_port: "{{ lookup('env','FTP_PORT') }}"
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
+    galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
 
   roles:
     #installs system package requirements
     - role: galaxyprojectdotorg.galaxy-os
       configure_docker: no
       galaxy_user_name: "{{ galaxy_user }}"
-      galaxy_user_uid: 1005
+      galaxy_user_uid: 1055
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db
     - role: natefoo.postgresql_objects
@@ -44,12 +45,12 @@
       galaxy_server_dir: "{{ galaxy_dir }}/"
       galaxy_config_dir: "{{ galaxy_dir }}/config/"
       galaxy_config:
-        "server:main":
-          host: "{{ galaxy_host }}"
-          port: "{{ galaxy_port }}"
+#        "server:main":
+#          host: "{{ galaxy_host }}"
+#          port: "{{ galaxy_port }}"
         "app:main":
           admin_users: "{{ galaxy_admin }}"
-          database_connection: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
+          database_connection: "{{ galaxy_db }}"
           tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies/"
           master_api_key: "{{ galaxy_api }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
@@ -57,128 +58,31 @@
           #to be done only in production       
           #debug: False
           #use_interactive: False
+#      "uwsgi":
+#          "socket": "127.0.0.1:4001"
+#          "stats": "127.0.0.1:4001"
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
 
     #installs nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
       galaxy_root: "{{ galaxy_dir }}/"
+      galaxy_venv_dir:  "{{ galaxy_venv }}"
+      galaxy_database_connection: "{{ galaxy_db }}"
+      galaxy_paste_handlers: true
       galaxy_extras_install_packages: true
       galaxy_extras_config_nginx: true
-      galaxy_extras_config_supervisor: false
+      galaxy_extras_config_supervisor: true
       galaxy_extras_config_proftpd: true
-      galaxy_extras_config_uwsgi: false #verify what's the influence in nginx
+      galaxy_extras_config_uwsgi: true
       galaxy_extras_config_galaxy_job_metrics: true
-      galaxy_extras_config_slurm: false
-      galaxy_extras_config_galaxy_root: false
-      galaxy_extras_config_ie_proxy: false
+      galaxy_extras_config_slurm: true
+      galaxy_extras_config_galaxy_root: true
+      galaxy_extras_config_ie_proxy: true
       galaxy_extras_config_scripts: false
       galaxy_extras_config_startup: false
-      supervisor_manage_proftp: false
-      supervisor_manage_ie_proxy: false
+      supervisor_manage_proftp: true
+      supervisor_manage_ie_proxy: true
       supervisor_manage_docker: false
+      supervisor_manage_reports: true
       supervisor_manage_nodeproxy: false
-      galaxy_venv_dir:  "{{ galaxy_venv }}"
-      galaxy_database_connection: "{{ database_connection }}"
-
-  tasks:
-    #Create proftpd dir
-    - file: path="{{ galaxy_ftp }}" state=directory mode=0777
-      sudo: yes
-      sudo_user: "{{ galaxy_user }}"
-
-    #Correcting proftpdir settings for PBKDF2
-    - lineinfile: dest=/etc/proftpd/proftpd.conf regexp='^Port' line="Port {{ ftp_port }}" state=present 
-      sudo: yes
-      sudo_user: root
-    
-    - lineinfile: dest=/etc/proftpd/proftpd.conf regexp='^SQLPasswordEncoding' line='SQLPasswordEncoding base64' state=present 
-      sudo: yes
-      sudo_user: root
-    
-    - lineinfile: dest=/etc/proftpd/proftpd.conf regexp='^SQLAuthTypes' line='SQLAuthTypes PBKDF2' state=present 
-      sudo: yes
-      sudo_user: root
-
-    - lineinfile: dest=/etc/proftpd/proftpd.conf regexp='^SQLNamedQuery' line="SQLNamedQuery LookupGalaxyUser SELECT \"email, (CASE WHEN substring(password from 1 for 6) = 'PBKDF2' THEN substring(password from 38 for 69) ELSE password END) AS password2,512,512,'/home/galaxy/galaxy/database/files/%U','/bin/bash' FROM galaxy_user WHERE email='%U'\"" state=present 
-      sudo: yes
-      sudo_user: root
-    
-    - lineinfile: dest=/etc/proftpd/proftpd.conf line="SQLNamedQuery GetUserSalt SELECT \"(CASE WHEN SUBSTRING (password from 1 for 6) = 'PBKDF2' THEN SUBSTRING (password from 21 for 16) END) AS salt FROM galaxy_user WHERE email='%U'\"" insertafter=EOF state=present
-      sudo: yes
-      sudo_user: root
-    
-    - lineinfile: dest=/etc/proftpd/proftpd.conf line="SQLDefaultGID 1005" insertafter=EOF state=present
-      sudo: yes
-      sudo_user: root
-      
-    - lineinfile: dest=/etc/proftpd/proftpd.conf line="SQLDefaultUID 1005" insertafter=EOF state=present
-      sudo: yes
-      sudo_user: root
-      
-    - lineinfile: dest=/etc/proftpd/proftpd.conf line="SQLPasswordPBKDF2 SHA256 10000 24 " insertafter=EOF state=present
-      sudo: yes
-      sudo_user: root
-      
-    - lineinfile: dest=/etc/proftpd/proftpd.conf line="SQLPasswordUserSalt sql:/GetUserSalt" insertafter=EOF state=present
-      sudo: yes
-      sudo_user: root
-
-    - service: name=proftpd state=restarted
-      sudo: yes
-      sudo_user: root
-    
-    #Correcting nginx settings
-    - apt: name=python-passlib state=latest 
-      sudo: yes
-      sudo_user: root
-
-    - command: cp "ansible-artimed/galaxy/nginx.conf" "/etc/nginx/nginx.conf"
-      sudo: yes
-      sudo_user: root
-
-    - htpasswd: path=/etc/nginx/.htpasswd name=artimed password=artimed owner=root group=root
-      sudo: yes
-      sudo_user: root
-    
-#    - lineinfile: dest=/etc/nginx/nginx.conf line="" insertafter=EOF state=present
-#      sudo: yes
-#      sudo_user: root
-
-    - command: "/usr/sbin/nginx -s reload"
-      sudo: yes
-      sudo_user: root
-    
-    #Create a system service for galaxy
-    - command: cp "{{ galaxy_dir }}/contrib/galaxy.debian-init" "/etc/init.d/{{ galaxy_user }}"
-      sudo: yes
-      sudo_user: root
-
-    - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="galaxy_dist" replace="{{ galaxy_user }}"
-      sudo: yes
-      sudo_user: root
-
-    - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="start-stop-daemon --stop --pidfile \$PIDFILE" replace="start-stop-daemon --stop --pidfile {{ galaxy_dir }}/paster.pid"
-      sudo: yes
-      sudo_user: root
-
-    - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="/usr/bin/python" replace="/bin/sh" 
-      sudo: yes
-      sudo_user: root
-
-    - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="./scripts/paster.py serve" replace="run.sh --daemon"
-      sudo: yes
-      sudo_user: root
-
-    - replace: dest=/etc/init.d/{{ galaxy_user }} regexp="config/galaxy.ini" replace=" "
-      sudo: yes
-      sudo_user: root
-
-    - command: update-rc.d galaxy defaults
-      sudo: yes
-      sudo_user: root
-
-    - command: "bash /etc/init.d/{{ galaxy_user }} start"
-      sudo: yes
-      sudo_user: root
-
