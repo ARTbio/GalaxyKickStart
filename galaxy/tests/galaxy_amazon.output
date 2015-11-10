@@ -1,4 +1,3 @@
-Instance Configuration ------------------------------------------------------------------------------------
 Ubuntu Server 14.04 LTS (HVM), SSD Volume Type - ami-5189a661
 Ubuntu Server 14.04 LTS (HVM), EBS General Purpose (SSD) Volume Type. Support available from Canonical (http://www.ubuntu.com/cloud/services).
 Root device type: ebs Virtualization type: hvm
@@ -18,12 +17,7 @@ SSH
 TCP
 22
 0.0.0.0/0
-HTTP
-TCP
-80
-0.0.0.0/0
 
-Procedure ------------------------------------------------------------------------------------
 fabiorjvieira@lbcd-15 ~
 ssh -i ~/Downloads/amazon.pem -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ubuntu@ec2-52-33-32-208.us-west-2.compute.amazonaws.com
 Warning: Permanently added 'ec2-52-33-32-208.us-west-2.compute.amazonaws.com,52.33.32.208' (RSA) to the list of known hosts.
