@@ -21,7 +21,7 @@ fi
 galaxy_port=$2
 if [ "$galaxy_port" == "" ]
 then
-	galaxy_port="8080"
+	galaxy_port="10090"
 fi
 
 ftp_port=$2
