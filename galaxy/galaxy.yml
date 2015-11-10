@@ -23,7 +23,7 @@
       galaxy_user_name: "{{ galaxy_user }}"
       galaxy_user_uid: 1055
 
-    #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db
+    #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
       postgresql_objects_users:
         - name: "{{ galaxy_user }}"
