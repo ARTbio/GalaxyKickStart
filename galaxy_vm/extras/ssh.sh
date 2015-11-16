@@ -24,6 +24,6 @@ if ssh localhost "echo ''";
 then 
 	echo "This user has permission to ssh directly to the localhost without any user input."; 
 else 
-	echo "This user does not have permission to ssh directly to the localhost without any user input, so this script cannot continue.";
+	echo "This user does not have permission to ssh directly to the localhost without any user input, so galaxy install will not work.";
 	exit 1
 fi
