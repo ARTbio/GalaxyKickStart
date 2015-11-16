@@ -24,7 +24,7 @@ ansible-playbook -i "localhost," tools.yml -vvvv
 ```
 
 # Alterative install - Vagrant
-Before continue you must install Vagrant (www.vagrantup.com) and a vagrant compatible Virtual Box (www.virtualbox.org/).
+Before continue you must install Vagrant (www.vagrantup.com) and a vagrant compatible Virtual Box (www.virtualbox.org).
 After copy the file https://github.com/ARTbio/ansible-artimed/blob/master/galaxy_vm/Vagrantfile to one directory and execute:
 ```
 vagrant up
