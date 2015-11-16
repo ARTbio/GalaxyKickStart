@@ -1,9 +1,12 @@
 # Requirements
-  * your Operational System must be a Ubuntu Trusty 64 bits (can be other one of Debian flavours, but it was tested in Ubuntu Trusty 64 bits).
-  * your Operational System user must be in sudo group to do this (do not execute as root or with sudo).
-  * your Operational System must have at least 4GB of RAM.
-  * your Operational System must have Ansible >= 1.8 (www.ansible.com).
-  * your Operational System must have ssh client and server running on port 22, and git client.
+  * The target Operational System must be a Ubuntu Trusty 64 bits (can be other one of Debian flavours, but it was tested in Ubuntu Trusty 64 bits).
+  * The target Operational System user must be in sudo group to do this (do not execute as root or with sudo).
+  * The target Operational System must have at least 4GB of RAM.
+  * The target Operational System must have Ansible >= 1.8 (www.ansible.com).
+  * The target Operational System must have ssh client and server running on port 22, and git client.
+  * The target Operational System must have ssh client and server running on port 22, and git client.
+  * The target Operational System must allow you to ssh to it locally without user interactivelly input.
+  
 
 # Ansible ARTiMED Galaxy instance
 To deploy just execute:
