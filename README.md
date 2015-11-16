@@ -3,7 +3,7 @@
   * your Operational System user must be in sudo group to do this (do not execute as root or with sudo).
   * your Operational System must have at least 4GB of RAM.
   * your Operational System must have Ansible >= 1.8 (www.ansible.com).
-  * your Operational System must have ssh client and server running on port 22.
+  * your Operational System must have ssh client and server running on port 22, and git client.
 
 # Ansible ARTiMED Galaxy instance
 To deploy just execute:
