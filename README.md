@@ -5,7 +5,7 @@
   * The target Operational System must have Ansible >= 1.8 (www.ansible.com).
   * The target Operational System must have ssh client and server running on port 22, and git client.
   * The target Operational System must have ssh client and server running on port 22, and git client.
-  * The target Operational System must allow you to ssh to it locally without user interactivelly input.
+  * The target Operational System must allow you to ssh to it locally without user interactively input (you may use the bash script file https://github.com/ARTbio/ansible-artimed/blob/dev/galaxy_vm/extras/ssh.sh to do so in a Ubuntu Trusty 64 bits with ssh server and client properly installed).
   
 
 # Ansible ARTiMED Galaxy instance
@@ -36,4 +36,4 @@ vagrant ssh
 
 Beware that vagrant redirect some ports from the guest machine to the host machine. Therefore if this ports are already in use, you must change the ports specified in the Vagrantfile to other ports.
 After "ssh" to the virtual machine, execute the same procedure described in the beginning of this text. 
-Galaxy will be avaible in http port 10080 of the host network ip where the guest was installed if you did not changed it in the Vagrantfile.
+Galaxy will be available in http port 10080 of the host network ip where the guest was installed if you did not changed it in the Vagrantfile.
