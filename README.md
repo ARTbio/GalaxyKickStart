@@ -7,7 +7,7 @@
   * The target Operational System must allow you to ssh to it locally without user interactively input (you may use the bash script file https://github.com/ARTbio/ansible-artimed/blob/dev/galaxy_vm/extras/ssh.sh to do so in a Ubuntu Trusty 64 bits with ssh server and client properly installed).
   
 
-# Ansible ARTiMED Galaxy instance
+# Ansible Galaxy instance
 To deploy just execute:
 ```
 git clone --recursive -b dev https://github.com/ARTbio/ansible-artimed.git
@@ -15,15 +15,14 @@ cd ansible-artimed/galaxy/
 hostIP=`hostname -I | cut -d " " -f 1`
 INSTALL_HOSTNAME=$hostIP ansible-playbook -i "localhost," galaxy.yml -vvvv
 ```
-
-This script will ask you 3 things in 3 different times: your login/password on githut, if you agree to do a "ssh localhost" and if you want to install Galaxy tools.
-Galaxy will be avaible in http port 80 of the network ip where it was installed.
+Galaxy will be avaible in http port 80 (proxy NGINX) of the network ip where it was installed.
 
 # Installing Galaxy NGS tools
-If you want to install only galaxy tools, execute the first two lines of the previous script and execute: 
+If you want to install galaxy tools, execute the first two lines of the previous script and execute: 
 ```
-ansible-playbook -i "localhost," tools.yml -vvvv
+GALAXY_USER="galaxy" GALAXY_PORT="80" ansible-playbook -i "localhost," tools.yml -vvvv
 ```
+Be sure that Galaxy is running and available in http port 80 with the Operational System user galaxy, otherwise change the previous command accordingly. 
 
 # Alterative install - Vagrant
 Before continue you must install Vagrant (www.vagrantup.com) and a vagrant compatible Virtual Box (www.virtualbox.org).
