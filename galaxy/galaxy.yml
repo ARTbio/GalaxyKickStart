@@ -24,7 +24,7 @@
     - set_fact: ftp_port={{ftp_port|default(21)}}
 
     - fail: msg="You must specify at least a network name or IP address in playbook INSTALL_HOSTNAME parameter (example - INSTALL_HOSTNAME=8.8.8.8 ansible-playbook -i 'localhost,' galaxy.yml). Installation failed."
-      when: {{ galaxy_hostname | mandatory }}
+      when: galaxy_hostname is not defined
 
   roles:
     #installs system package requirements
