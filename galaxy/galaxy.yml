@@ -18,24 +18,13 @@
     galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
 
   pre_tasks:
-    - set_fact:
-      galaxy_data: "/galaxy_data/"
-      when: galaxy_data == ""
-
-    - set_fact:
-      galaxy_user: "galaxy"
-      when: galaxy_user == ""
+    - set_fact: galaxy_data={{galaxy_data|default(/galaxy_data/)}}
+    - set_fact: galaxy_user={{galaxy_user|default(galaxy)}}
+    - set_fact: galaxy_port={{galaxy_port|default(8080)}}
+    - set_fact: ftp_port={{ftp_port|default(21)}}
 
     - fail: msg="You must specify at least a network name or IP address in playbook INSTALL_HOSTNAME parameter (example - INSTALL_HOSTNAME=8.8.8.8 ansible-playbook -i 'localhost,' galaxy.yml). Installation failed."
-      when: galaxy_hostname == ""
-
-    - set_fact:
-      galaxy_port: "8080"
-      when: galaxy_port == ""
-
-    - set_fact:
-      ftp_port: "21"
-      when: ftp_port == ""
+      when: {{ galaxy_hostname | mandatory }}
 
   roles:
     #installs system package requirements
