@@ -28,3 +28,4 @@ If you want to install only galaxy tools, donwload https://github.com/ARTbio/ans
 cd $HOME/ansible-artimed/galaxy/
 GALAXY_USER=$galaxy_user GALAXY_PORT=$galaxy_port INSTALL_USER=$USER ansible-playbook -i "localhost," tools.yml -vvvv
 ```
+

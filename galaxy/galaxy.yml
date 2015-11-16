@@ -132,3 +132,4 @@
       supervisor_manage_reports: true
       supervisor_manage_docker: false
       supervisor_manage_nodeproxy: false
+      

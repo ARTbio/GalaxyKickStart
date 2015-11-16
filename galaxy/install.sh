@@ -77,3 +77,4 @@ then
 	read
 	GALAXY_USER=$galaxy_user GALAXY_PORT=$galaxy_port ansible-playbook -i "localhost," tools.yml -vvvv
 fi
+

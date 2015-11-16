@@ -58,3 +58,5 @@ tools:
 - name: samtools_flagstat
   owner: devteam
   tool_panel_section_id: 'ngs_mapping'
+
+  

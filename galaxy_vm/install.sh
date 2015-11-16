@@ -5,3 +5,4 @@ vagrant up
 vagrant ssh
 #INSTALL_USER=vagrant PLAYBOOK="../galaxy/galaxy.yml" VAGRANT_LOG=info vagrant provision
 #INSTALL_USER=vagrant PLAYBOOK="../galaxy/tools.yml" VAGRANT_LOG=info vagrant provision
+
