@@ -71,9 +71,9 @@ if git clone --recursive $artimed_git_repo
 then
 	cd ansible-artimed/galaxy/
 	hostIP=`hostname -I | cut -d " " -f 1`
-	FTP_PORT=$ftp_port GALAXY_USER=$galaxy_user GALAXY_PORT=$galaxy_user INSTALL_HOSTNAME=$hostIP ansible-playbook -i "localhost," galaxy.yml -vvvv
+	FTP_PORT="$ftp_port" GALAXY_USER="$galaxy_user" GALAXY_PORT="$galaxy_user" INSTALL_HOSTNAME="$hostIP" ansible-playbook -i "localhost," galaxy.yml -vvvv
 	echo "Wait until galaxy provide the web service on http://localhost"
 	echo -n "Press control+c to stop here or enter key to install Galaxy tools..."
 	read
-	GALAXY_USER=$galaxy_user GALAXY_PORT=$galaxy_port ansible-playbook -i "localhost," tools.yml -vvvv
+	GALAXY_USER="$galaxy_user" GALAXY_PORT="$galaxy_port" ansible-playbook -i "localhost," tools.yml -vvvv
 fi

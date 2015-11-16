@@ -11,14 +11,6 @@
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
 
   pre_tasks:
-    - set_fact:
-      galaxy_user: "galaxy"
-      when: galaxy_user == ""
-
-    - set_fact:
-      galaxy_port: "8080"
-      when: galaxy_port == ""
-
     - apt: name=pkg-config state=latest 
       sudo: yes
       sudo_user: root
