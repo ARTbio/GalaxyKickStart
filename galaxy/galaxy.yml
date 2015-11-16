@@ -1,5 +1,5 @@
 - hosts: all
-  remote_user: "{{ lookup('env','INSTALL_USER') }}"
+  remote_user: "{{ lookup('env','$USER') }}"
   sudo: yes
 
   vars:
@@ -16,6 +16,26 @@
     ftp_port: "{{ lookup('env','FTP_PORT') }}"
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
     galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
+
+  pre_tasks:
+    - set_fact:
+      galaxy_data: "/galaxy_data/"
+      when: galaxy_data == ""
+
+    - set_fact:
+      galaxy_user: "galaxy"
+      when: galaxy_user == ""
+
+    - fail: msg="You must specify at least a network name or IP address in playbook INSTALL_HOSTNAME parameter (example - INSTALL_HOSTNAME=8.8.8.8 ansible-playbook -i 'localhost,' galaxy.yml). Installation failed."
+      when: galaxy_hostname == ""
+
+    - set_fact:
+      galaxy_port: "8080"
+      when: galaxy_port == ""
+
+    - set_fact:
+      ftp_port: "21"
+      when: ftp_port == ""
 
   roles:
     #installs system package requirements

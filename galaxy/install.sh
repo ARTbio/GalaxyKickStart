@@ -6,28 +6,13 @@ then
 	exit 0
 fi
 
+ftp_port=$4
+galaxy_port=$3
+galaxy_user=$2
 artimed_git_repo=$1
 if [ "$artimed_git_repo" == "" ]
 then
 	artimed_git_repo="--branch supervisor https://github.com/fabiorjvieira/ansible-artimed.git"
-fi
-
-galaxy_user=$2
-if [ "$galaxy_user" == "" ]
-then
-	galaxy_user="galaxy"
-fi
-
-galaxy_port=$2
-if [ "$galaxy_port" == "" ]
-then
-	galaxy_port="9080"
-fi
-
-ftp_port=$2
-if [ "$ftp_port" == "" ]
-then
-	ftp_port="21"
 fi
 
 OS=`head -n1 /etc/issue | cut -d " " -f 1`
@@ -77,7 +62,8 @@ then
 	sudo apt-get install software-properties-common -y
 	sudo apt-add-repository ppa:ansible/ansible -y
 	sudo apt-get update -y
-	sudo apt-get install git openssh-client ansible -y
+	sudo apt-get install git openssh-client openssh-server ansible -y
+	sudo service ssh start
 fi
 
 #Installation
@@ -85,9 +71,9 @@ if git clone --recursive $artimed_git_repo
 then
 	cd ansible-artimed/galaxy/
 	hostIP=`hostname -I | cut -d " " -f 1`
-	FTP_PORT=$ftp_port GALAXY_USER=$galaxy_user GALAXY_PORT=$galaxy_port INSTALL_HOSTNAME=$hostIP INSTALL_USER=$USER ansible-playbook -i "localhost," galaxy.yml -vvvv
+	FTP_PORT=$ftp_port GALAXY_USER=$galaxy_user GALAXY_PORT=$galaxy_user INSTALL_HOSTNAME=$hostIP ansible-playbook -i "localhost," galaxy.yml -vvvv
 	echo "Wait until galaxy provide the web service on http://localhost"
 	echo -n "Press control+c to stop here or enter key to install Galaxy tools..."
 	read
-	GALAXY_USER=$galaxy_user GALAXY_PORT=$galaxy_port INSTALL_USER=$USER ansible-playbook -i "localhost," tools.yml -vvvv
+	GALAXY_USER=$galaxy_user GALAXY_PORT=$galaxy_port ansible-playbook -i "localhost," tools.yml -vvvv
 fi
