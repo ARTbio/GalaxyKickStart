@@ -8,7 +8,7 @@
 # Ansible ARTiMED Galaxy instance
 To deploy just execute:
 ```
-git clone --recursive https://github.com/ARTbio/ansible-artimed.git
+git clone --recursive -b dev https://github.com/ARTbio/ansible-artimed.git
 cd ansible-artimed/galaxy/
 hostIP=`hostname -I | cut -d " " -f 1`
 INSTALL_HOSTNAME=$hostIP ansible-playbook -i "localhost," galaxy.yml -vvvv
