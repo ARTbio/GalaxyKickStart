@@ -4,25 +4,20 @@
 
   vars:
     #Globals
-    galaxy_data: "{{ lookup('env','GALAXY_DATA') }}"
+    galaxy_data: "{{ lookup('env','GALAXY_DATA') | default('/galaxy_data/') }}"
     galaxy_hostname: "{{ lookup('env','INSTALL_HOSTNAME') }}"
-    galaxy_user: "{{ lookup('env','GALAXY_USER') }}"
-    galaxy_port: "{{ lookup('env','GALAXY_PORT') }}"
+    galaxy_user: "{{ lookup('env','GALAXY_USER') | default('galaxy') }}"
+    galaxy_port: "{{ lookup('env','GALAXY_PORT') | default('8080') }}"
     galaxy_host: "0.0.0.0"
     galaxy_admin: "artimed@gmail.com"
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
     galaxy_venv: "{{ galaxy_dir }}/venv/"
     galaxy_ftp: "{{ galaxy_dir }}/database/files/"
-    ftp_port: "{{ lookup('env','FTP_PORT') }}"
+    ftp_port: "{{ lookup('env','FTP_PORT') | default('21') }}"
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
     galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
 
   pre_tasks:
-    - set_fact: galaxy_data={{galaxy_data|default("/galaxy_data/")}}
-    - set_fact: galaxy_user={{galaxy_user|default("galaxy")}}
-    - set_fact: galaxy_port={{galaxy_port|default("8080")}}
-    - set_fact: ftp_port={{ftp_port|default("21")}}
-
     - fail: msg="You must specify at least a network name or IP address in playbook INSTALL_HOSTNAME parameter (example - INSTALL_HOSTNAME=8.8.8.8 ansible-playbook -i 'localhost,' galaxy.yml). Installation failed."
       when: galaxy_hostname is not defined
 

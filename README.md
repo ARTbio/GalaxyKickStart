@@ -4,7 +4,6 @@
   * The target Operational System must have at least 4GB of RAM.
   * The target Operational System must have Ansible >= 1.8 (www.ansible.com).
   * The target Operational System must have ssh client and server running on port 22, and git client.
-  * The target Operational System must have ssh client and server running on port 22, and git client.
   * The target Operational System must allow you to ssh to it locally without user interactively input (you may use the bash script file https://github.com/ARTbio/ansible-artimed/blob/dev/galaxy_vm/extras/ssh.sh to do so in a Ubuntu Trusty 64 bits with ssh server and client properly installed).
   
 
