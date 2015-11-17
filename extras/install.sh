@@ -12,7 +12,7 @@ galaxy_user=$2
 artimed_git_repo=$1
 if [ "$artimed_git_repo" == "" ]
 then
-	artimed_git_repo="--branch dev https://github.com/fabiorjvieira/old-ansible-galaxy.git"
+	artimed_git_repo="--branch dev https://github.com/fabiorjvieira/old-ansible-galaxy.git ansible-artimed"
 fi
 
 OS=`head -n1 /etc/issue | cut -d " " -f 1`
