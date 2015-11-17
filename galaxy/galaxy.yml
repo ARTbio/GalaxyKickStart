@@ -4,16 +4,22 @@
 
   vars:
     #Globals
-    galaxy_data: "{{ lookup('env','GALAXY_DATA') }}"
-    galaxy_hostname: "{{ lookup('env','INSTALL_HOSTNAME') }}"
-    galaxy_user: "{{ lookup('env','GALAXY_USER') }}"
-    galaxy_port: "{{ lookup('env','GALAXY_PORT') }}"
+#    galaxy_data: "{{ lookup('env','GALAXY_DATA') }}"
+#    galaxy_hostname: "{{ lookup('env','INSTALL_HOSTNAME') }}"
+#    galaxy_user: "{{ lookup('env','GALAXY_USER') }}"
+#    galaxy_port: "{{ lookup('env','GALAXY_PORT') }}"
+#    ftp_port: "{{ lookup('env','FTP_PORT') }}"
+
+    galaxy_data: "/galaxy_data/"
+    galaxy_hostname: "localhost"
+    galaxy_user: "galaxy"
+    galaxy_port: "8080"
+    ftp_port: "21"
     galaxy_host: "0.0.0.0"
     galaxy_admin: "artimed@gmail.com"
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
     galaxy_venv: "{{ galaxy_dir }}/venv/"
     galaxy_ftp: "{{ galaxy_dir }}/database/files/"
-    ftp_port: "{{ lookup('env','FTP_PORT') }}"
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
     galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
 
@@ -21,17 +27,17 @@
     - fail: msg="You must specify at least a network name or IP address in playbook INSTALL_HOSTNAME parameter (example - INSTALL_HOSTNAME=8.8.8.8 ansible-playbook -i 'localhost,' galaxy.yml). Installation failed."
       when: ((galaxy_hostname is undefined) or (galaxy_hostname is none) or (galaxy_hostname|trim == ''))
     
-    - set_fact: galaxy_data="/galaxy_data/"
-      when: ((galaxy_data is undefined) or (galaxy_data is none) or (galaxy_data|trim == ''))
+#    - set_fact: galaxy_data="/galaxy_data/"
+#      when: ((galaxy_data is undefined) or (galaxy_data is none) or (galaxy_data|trim == ''))
 
-    - set_fact: galaxy_user="galaxy"
-      when: ((galaxy_user is undefined) or (galaxy_user is none) or (galaxy_user|trim == ''))
+#    - set_fact: galaxy_user="galaxy"
+#      when: ((galaxy_user is undefined) or (galaxy_user is none) or (galaxy_user|trim == ''))
 
-    - set_fact: galaxy_port="8080"
-      when: ((galaxy_port is undefined) or (galaxy_port is none) or (galaxy_port|trim == ''))
+#    - set_fact: galaxy_port="8080"
+#      when: ((galaxy_port is undefined) or (galaxy_port is none) or (galaxy_port|trim == ''))
 
-    - set_fact: ftp_port="21"
-      when: ((ftp_port is undefined) or (ftp_port is none) or (ftp_port|trim == ''))
+#    - set_fact: ftp_port="21"
+#      when: ((ftp_port is undefined) or (ftp_port is none) or (ftp_port|trim == ''))
 
   roles:
     #installs system package requirements
