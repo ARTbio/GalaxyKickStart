@@ -5,6 +5,9 @@
   template: src=supervisor.conf.j2 main.yml dest="/etc/supervisor/conf.d/galaxy.conf"
   sudo_user: root
 
+- name: "Fix permissions on upload path"
+  file: path="{{ nginx_upload_store_path }}" owner="{{ galaxy_user }}"
+
 - name: "Overwrite nginx.conf"
   template: src=nginx.conf.j2 main.yml dest="/etc/nginx/nginx.conf"
   sudo_user: root

@@ -21,6 +21,7 @@
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
     galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
     supervisor_manage_nodeproxy: false
+    nginx_upload_store_path: "/tmp/nginx_upload_store"
 
   roles:
     #installs system package requirements
@@ -43,7 +44,7 @@
     #installs galaxy
     - role: galaxyprojectdotorg.galaxy
       #galaxy_manage_clone: no
-      galaxy_manage_database: yes  # For database updates
+      galaxy_manage_database: no  # For database updates
       galaxy_fetch_eggs: no
       galaxy_changeset_id: master
       galaxy_vcs: git
