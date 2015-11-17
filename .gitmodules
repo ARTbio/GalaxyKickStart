@@ -1,6 +1,3 @@
-[submodule "galaxy/roles/galaxyprojectdotorg.galaxy"]
-	path = galaxy/roles/galaxyprojectdotorg.galaxy
-	url = git://github.com/galaxyproject/ansible-galaxy.git
 [submodule "galaxy/roles/galaxyprojectdotorg.galaxy-extras"]
 	path = galaxy/roles/galaxyprojectdotorg.galaxy-extras
 	url = git://github.com/galaxyproject/ansible-galaxy-extras.git
