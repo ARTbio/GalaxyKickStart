@@ -4,7 +4,7 @@
   * The target Operational System must have at least 4GB of RAM.
   * The target Operational System must have Ansible >= 1.8 (www.ansible.com).
   * The target Operational System must have ssh client and server running on port 22, and git client.
-  * The target Operational System must allow you to ssh to it locally without user interactively input (you may use the bash script file https://github.com/ARTbio/ansible-artimed/blob/dev/galaxy_vm/extras/ssh.sh to do so in a Ubuntu Trusty 64 bits with ssh server and client properly installed).
+  * The target Operational System must allow your user to ssh to it locally without user interactively input (you may use the bash script file https://github.com/ARTbio/ansible-artimed/blob/dev/galaxy_vm/extras/ssh.sh to do so in a Ubuntu Trusty 64 bits with ssh server and client properly installed).
   
 
 # Ansible Galaxy instance
@@ -15,7 +15,7 @@ cd ansible-artimed/galaxy/
 hostIP=`hostname -I | cut -d " " -f 1`
 INSTALL_HOSTNAME=$hostIP ansible-playbook -i "localhost," galaxy.yml -vvvv
 ```
-Galaxy will be avaible in http port 80 (proxy NGINX) of the network ip where it was installed.
+Galaxy will be avaible in http port 80 (proxy NGINX) on the network ip where it was installed.
 
 # Installing Galaxy NGS tools
 If you want to install galaxy tools, execute the first two lines of the previous script and execute: 
@@ -26,12 +26,13 @@ Be sure that Galaxy is running and available in http port 80 with the Operationa
 
 # Alterative install - Vagrant
 Before continue you must install Vagrant (www.vagrantup.com) and a vagrant compatible Virtual Box (www.virtualbox.org).
-After copy the file https://github.com/ARTbio/ansible-artimed/blob/master/galaxy_vm/Vagrantfile to one directory and execute:
+Next, copy the file https://github.com/ARTbio/ansible-artimed/blob/master/galaxy_vm/Vagrantfile to one directory and execute:
 ```
 vagrant up
 vagrant ssh
 ```
 
-Beware that vagrant redirect some ports from the guest machine to the host machine. Therefore if this ports are already in use, you must change the ports specified in the Vagrantfile to other ports.
+Beware that vagrant redirect some ports from the guest machine to the host machine. 
+Therefore, if this ports are already in use, you must change the ports specified in the Vagrantfile to other ports.
 After "ssh" to the virtual machine, execute the same procedure described in the beginning of this text. 
-Galaxy will be available in http port 10080 of the host network ip where the guest was installed if you did not changed it in the Vagrantfile.
+Galaxy will be available in http port 10080 on the host network ip where the guest was installed if you did not changed it in the Vagrantfile.
