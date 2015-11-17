@@ -1,30 +1,38 @@
 # Requirements
-  * your Operational System must a Debian like system (Debian and Ubuntu basically).
-  * your Operational System user must be in sudo group to do this (do not execute as root or with sudo).
-  * your Operational System must have at least 4GB of RAM.
+  * The target Operational System must be a Ubuntu Trusty 64 bits (can be other one of Debian flavours, but it was tested in Ubuntu Trusty 64 bits).
+  * The target Operational System user must be in sudo group to do this (do not execute as root or with sudo).
+  * The target Operational System must have at least 4GB of RAM.
+  * The target Operational System must have Ansible >= 1.8 (www.ansible.com).
+  * The target Operational System must have ssh client and server running on port 22, and git client.
+  * The target Operational System must allow your user to ssh to it locally without user interactively input (https://stackoverflow.com/questions/4388385/how-to-ssh-login-without-password).
+  
 
-# Ansible ARTiMED Galaxy instance
-Deploys a Galaxy instance on the host machine in Debian flavors. 
-It includes Galaxy with postgresql database and some extras (proftpd and nginx).
-To deploy just download the https://github.com/ARTbio/ansible-artimed/blob/master/galaxy/install.sh file in your HOME directory and run:
+# Ansible Galaxy instance (web and ftp)
+To deploy just execute:
 ```
-cd $HOME
-bash install.sh;
+git clone --recursive -b min https://github.com/ARTbio/ansible-artimed.git
+cd ansible-artimed/galaxy/
+hostIP=`hostname -I | cut -d " " -f 1`
+INSTALL_HOSTNAME=$hostIP ansible-playbook -i "localhost," galaxy.yml -vvvv
 ```
-This script will ask you 3 things in 3 different times: your login/password on githut, if you agree to "ssh localhost" and if you want to install Galaxy tools.
-
-# Using Galaxy instance
-Galaxy is provided in http://localhost and the nginx proxy user name and password are artimed and artimed.
-The administrator email of Galaxy is artimed@gmail.com (you have to register it in Galaxy).
-
-If you restart the machine where Galaxy was installed, please start Galaxy service with:
-```
-sudo service galaxy start
-```
+Galaxy will be avaible in http port 8080 on the network ip where it was installed.
 
 # Installing Galaxy NGS tools
-If you want to install only galaxy tools, donwload https://github.com/ARTbio/ansible-artimed/blob/master/galaxy/tools.yml and https://github.com/ARTbio/ansible-artimed/blob/master/galaxy/artimed_tool_list.yaml and execute:
+If you want to install galaxy tools, execute the first two lines of the previous script and execute: 
 ```
-cd $HOME/ansible-artimed/galaxy/
-GALAXY_USER=$galaxy_user GALAXY_PORT=$galaxy_port INSTALL_USER=$USER ansible-playbook -i "localhost," tools.yml -vvvv
+GALAXY_USER="galaxy" GALAXY_PORT="8080" ansible-playbook -i "localhost," tools.yml -vvvv
 ```
+Be sure that Galaxy is running and available in http port 8080 with the Operational System user galaxy, otherwise change the previous command accordingly. 
+
+# Alterative install - Vagrant
+Before continue you must install Vagrant (www.vagrantup.com) and a vagrant compatible Virtual Box (www.virtualbox.org).
+Next, copy the file https://github.com/ARTbio/ansible-artimed/blob/master/galaxy_vm/Vagrantfile to one directory and execute:
+```
+vagrant up
+vagrant ssh
+```
+
+Beware that vagrant redirect some ports from the guest machine to the host machine. 
+Therefore, if this ports are already in use, you must change the ports specified in the Vagrantfile to other ports.
+After "ssh" to the virtual machine, execute the same procedure described in the beginning of this text. 
+Galaxy will be available in http port 8080 on the host network ip where the guest was installed if you did not changed it in the Vagrantfile.

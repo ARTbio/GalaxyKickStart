@@ -1,18 +1,18 @@
 - hosts: all
-  remote_user: "{{ lookup('env','INSTALL_USER') }}"
+  remote_user: "{{ lookup('env','USER') }}"
   sudo: yes
 
   vars:
     #Globals
     galaxy_hostname: "{{ lookup('env','INSTALL_HOSTNAME') }}"
-    galaxy_user: "{{ lookup('env','GALAXY_USER') }}"
-    galaxy_port: "{{ lookup('env','GALAXY_PORT') }}"
+    galaxy_user: "galaxy"
+    galaxy_port: "8080"
     galaxy_host: "0.0.0.0"
     galaxy_admin: "artimed@gmail.com"
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
     galaxy_venv: "{{ galaxy_dir }}/venv/"
     galaxy_ftp: "{{ galaxy_dir }}/database/files/"
-    ftp_port: "{{ lookup('env','FTP_PORT') }}"
+    ftp_port: "21"
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
     galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
 
@@ -55,12 +55,6 @@
           master_api_key: "{{ galaxy_api }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
           ftp_upload_site: "ftp {{ galaxy_hostname }} port {{ ftp_port }}"
-          #to be done only in production       
-          #debug: False
-          #use_interactive: False
-#      "uwsgi":
-#          "socket": "127.0.0.1:4001"
-#          "stats": "127.0.0.1:4001"
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
 
@@ -71,14 +65,14 @@
       galaxy_database_connection: "{{ galaxy_db }}"
       galaxy_paste_handlers: false
       galaxy_extras_install_packages: true
-      galaxy_extras_config_nginx: true
+      galaxy_extras_config_nginx: false
       galaxy_extras_config_supervisor: false
       galaxy_extras_config_proftpd: true
       galaxy_extras_config_uwsgi: false
-      galaxy_extras_config_galaxy_job_metrics: true
+      galaxy_extras_config_galaxy_job_metrics: false
       galaxy_extras_config_slurm: false
       galaxy_extras_config_galaxy_root: true
-      galaxy_extras_config_ie_proxy: true
+      galaxy_extras_config_ie_proxy: false
       galaxy_extras_config_scripts: false
       galaxy_extras_config_startup: false
       supervisor_manage_proftp: false
@@ -134,27 +128,6 @@
       sudo: yes
       sudo_user: root
     
-    #Correcting nginx settings
-    - apt: name=python-passlib state=latest 
-      sudo: yes
-      sudo_user: root
-
-    - command: cp "ansible-artimed/galaxy/nginx.conf" "/etc/nginx/nginx.conf"
-      sudo: yes
-      sudo_user: root
-
-    - htpasswd: path=/etc/nginx/.htpasswd name=artimed password=artimed owner=root group=root
-      sudo: yes
-      sudo_user: root
-    
-#    - lineinfile: dest=/etc/nginx/nginx.conf line="" insertafter=EOF state=present
-#      sudo: yes
-#      sudo_user: root
-
-    - command: "/usr/sbin/nginx -s reload"
-      sudo: yes
-      sudo_user: root
-    
     #Create a system service for galaxy
     - command: cp "{{ galaxy_dir }}/contrib/galaxy.debian-init" "/etc/init.d/{{ galaxy_user }}"
       sudo: yes
@@ -188,10 +161,6 @@
       sudo: yes
       sudo_user: root
 
-    - command: "bash /etc/init.d/{{ galaxy_user }} start"
+    - service: name=galaxy state=restarted
       sudo: yes
       sudo_user: root
-
-#  'status')
-#           status_of_proc -p /home/galaxy/galaxy/paster.pid "$DAEMON" "$NAME" && exit 0 || exit $?
-#        ;;
