@@ -1,5 +1,4 @@
 - hosts: all
-  remote_user: "{{ lookup('env','USER') }}"
   sudo: yes
 
   vars:
@@ -12,11 +11,13 @@
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
     galaxy_root: "{{ galaxy_dir }}"
     galaxy_mutable_config_dir: "{{ galaxy_config_dir }}"
-    galaxy_venv: "{{ galaxy_dir }}/venv/"
+    galaxy_venv: "{{ galaxy_dir }}/venv"
     galaxy_venv_dir: "{{ galaxy_venv }}"
-    galaxy_server_dir: "{{ galaxy_dir }}/"
-    galaxy_config_dir: "{{ galaxy_dir }}/config/"
-    galaxy_ftp: "{{ galaxy_dir }}/database/ftp/"
+    galaxy_server_dir: "{{ galaxy_dir }}"
+    galaxy_config_dir: "{{ galaxy_dir }}/config"
+    galaxy_log_dir: "{{ galaxy_dir }}"
+    galaxy_ftp: "{{ galaxy_dir }}/database/ftp"
+    tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies"
     ftp_port: "{{ lookup('env','FTP_PORT') }}"
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
     galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
@@ -44,7 +45,7 @@
     #installs galaxy
     - role: galaxyprojectdotorg.galaxy
       #galaxy_manage_clone: no
-      galaxy_manage_database: no  # For database updates
+      galaxy_manage_database: yes  # For database updates
       galaxy_fetch_eggs: no
       galaxy_changeset_id: master
       galaxy_vcs: git
@@ -53,7 +54,7 @@
         "app:main":
           admin_users: "{{ galaxy_admin }}"
           database_connection: "{{ galaxy_db }}"
-          tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies/"
+          tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies"
           master_api_key: "{{ galaxy_api }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
           ftp_upload_site: "ftp {{ galaxy_hostname }} port {{ ftp_port }}"
@@ -70,13 +71,13 @@
           threads: 4
           processes: "{{ galaxy_web_processes }}"
       sudo: yes
-      sudo_user: root
+      sudo_user: galaxy
 
     #installs nginx and proftpd
     - role: roles/pre_munge
     - role: galaxyprojectdotorg.galaxy-extras
       when: munge_key.stat.islnk is not defined
-      galaxy_root: "{{ galaxy_dir }}/"
+      galaxy_root: "{{ galaxy_dir }}"
       galaxy_venv_dir:  "{{ galaxy_venv }}"
       galaxy_database_connection: "{{ galaxy_db }}"
       galaxy_extras_install_packages: true
