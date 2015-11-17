@@ -1,0 +1,7 @@
+- name: "Check if munge key exists"
+  stat: path="/etc/munge/munge.key"
+  register: munge_key
+#- name: "Shutdown galaxy"
+#  supervisorctl: name="galaxy:" state=stopped
+#  when: munge_key.stat.islnk is defined
+#  sudo: yes

@@ -82,6 +82,7 @@
       sudo_user: "{{ galaxy_user }}"
 
     #installs nginx and proftpd
+    - role: roles/pre_munge
     - role: galaxyprojectdotorg.galaxy-extras
       galaxy_root: "{{ galaxy_dir }}/"
       galaxy_venv_dir:  "{{ galaxy_venv }}"
