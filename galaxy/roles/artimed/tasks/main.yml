@@ -7,6 +7,7 @@
 
 - name: "Fix permissions on upload path"
   file: path="{{ nginx_upload_store_path }}" owner="{{ galaxy_user }}"
+  sudo_user: root
 
 - name: "Overwrite nginx.conf"
   template: src=nginx.conf.j2 main.yml dest="/etc/nginx/nginx.conf"
