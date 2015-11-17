@@ -1,0 +1,36 @@
+api_key: <Admin user API key from galaxy_instance>
+galaxy_instance: <Galaxy instance IP>
+tools:
+- name: featurecounter
+  owner: devteam
+  tool_panel_section_id: 'ngs_mapping'
+- name: gatk
+  owner: avowinkel
+  tool_panel_section_id: 'ngs_mapping'
+- name: gatk2
+  owner: iuc
+  tool_panel_section_id: 'ngs_mapping'
+- name: bwa
+  owner: devteam
+  tool_panel_section_id: 'ngs_mapping'
+- name: tophat
+  owner: devteam
+  tool_panel_section_id: 'ngs_mapping'
+- name: tophat2
+  owner: devteam
+  tool_panel_section_id: 'ngs_mapping'
+- name: hisat2
+  owner: iuc
+  tool_panel_section_id: 'ngs_mapping'
+- name: hisat
+  owner: devteam
+  tool_panel_section_id: 'ngs_mapping'
+- name: deseq2
+  owner: iuc
+  tool_panel_section_id: 'ngs_mapping'
+- name: edger
+  owner: amawla
+  tool_panel_section_id: 'ngs_mapping'
+- name: suite_samtools_1_2
+  owner: devteam
+  tool_panel_section_id: 'ngs_mapping'
