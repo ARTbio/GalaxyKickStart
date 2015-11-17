@@ -6,7 +6,7 @@
     #Globals
     galaxy_data: "{{ lookup('env','GALAXY_DATA') }}"
     galaxy_hostname: "{{ lookup('env','INSTALL_HOSTNAME') }}"
-    galaxy_user: "{{ lookup('env','GALAXY_USER') }}"
+    galaxy_user: "galaxy"
     galaxy_port: "{{ lookup('env','GALAXY_PORT') }}"
     galaxy_host: "0.0.0.0"
     galaxy_admin: "artimed@gmail.com"
