@@ -98,3 +98,7 @@
       supervisor_manage_reports: true
       supervisor_manage_ie_proxy: false
       supervisor_manage_docker: false
+
+    - role: roles/artimed
+      sudo: yes
+      sudo_user: galaxy
