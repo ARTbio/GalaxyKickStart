@@ -134,7 +134,7 @@ http {
         # delegated uploads
         location /_upload {
             upload_store {{ nginx_upload_store_path }};
-            upload_store_access user:rw;
+            upload_store_access "{{ galaxy_user }}":rw;
             upload_pass_form_field "";
             upload_set_form_field "__${upload_field_name}__is_composite" "true";
             upload_set_form_field "__${upload_field_name}__keys" "name path";
