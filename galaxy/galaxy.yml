@@ -93,6 +93,7 @@
       galaxy_extras_config_galaxy_job_metrics: true
       galaxy_extras_config_slurm: true
       galaxy_extras_config_galaxy_root: true
+      supervisor_manage_nodeproxy: false
       supervisor_manage_postgres: false
       supervisor_manage_proftp: true
       supervisor_manage_nginx: false
