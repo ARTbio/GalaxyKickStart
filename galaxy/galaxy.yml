@@ -56,10 +56,10 @@
           master_api_key: "{{ galaxy_api }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
           ftp_upload_site: "ftp {{ galaxy_hostname }} port {{ ftp_port }}"
-          #"nginx_x_accel_redirect_base": "/_x_accel_redirect"
-          #"nginx_x_archive_files_base": "/_x_accel_redirect"
-          #"nginx_upload_store": "/tmp"
-          #"nginx_upload_path": "/_upload"
+          "nginx_x_accel_redirect_base": "/_x_accel_redirect"
+          "nginx_x_archive_files_base": "/_x_accel_redirect"
+          "nginx_upload_store": "/tmp"
+          "nginx_upload_path": "/_upload"
         "uwsgi":
           "socket": "127.0.0.1:4001"
           "stats": "127.0.0.1:9191"
@@ -74,6 +74,7 @@
     #installs nginx and proftpd
     - role: roles/pre_munge
     - role: galaxyprojectdotorg.galaxy-extras
+      when: munge_key.stat.islnk is not defined
       galaxy_root: "{{ galaxy_dir }}/"
       galaxy_venv_dir:  "{{ galaxy_venv }}"
       galaxy_database_connection: "{{ galaxy_db }}"
