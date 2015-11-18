@@ -23,8 +23,8 @@
     galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
 
   pre_tasks:
-    - fail: msg="You must specify at least a network name or IP address in playbook INSTALL_HOSTNAME parameter (example - INSTALL_HOSTNAME=8.8.8.8 ansible-playbook -i 'localhost,' galaxy.yml). Installation failed."
-      when: ((galaxy_hostname is undefined) or (galaxy_hostname is none) or (galaxy_hostname|trim == ''))
+#    - fail: msg="You must specify at least a network name or IP address in playbook INSTALL_HOSTNAME parameter (example - INSTALL_HOSTNAME=8.8.8.8 ansible-playbook -i 'localhost,' galaxy.yml). Installation failed."
+#      when: ((galaxy_hostname is undefined) or (galaxy_hostname is none) or (galaxy_hostname|trim == ''))
     
 #    - set_fact: galaxy_data="/galaxy_data/"
 #      when: ((galaxy_data is undefined) or (galaxy_data is none) or (galaxy_data|trim == ''))
@@ -71,18 +71,18 @@
           use_threadpool: True
           use: "egg:Paste#http"
           use_threadpool: True
-#        "server:handler0":
-#          use: "egg:Paste#http"
-#          use_threadpool: True
-#          host: "{{ galaxy_host }}"
-#          port: "{{ galaxy_port | int + 0 }}"
-#          threadpool_workers: 10
-#        "server:handler1":
-#          use: "egg:Paste#http"
-#          use_threadpool: True
-#          host: "{{ galaxy_host }}"
-#          port: "{{ galaxy_port | int + 1 }}"
-#          threadpool_workers: 10
+        "server:handler0":
+          use: "egg:Paste#http"
+          use_threadpool: True
+          host: "{{ galaxy_host }}"
+          port: "{{ galaxy_port | int + 0 }}"
+          threadpool_workers: 10
+        "server:handler1":
+          use: "egg:Paste#http"
+          use_threadpool: True
+          host: "{{ galaxy_host }}"
+          port: "{{ galaxy_port | int + 1 }}"
+          threadpool_workers: 10
         "app:main":
           admin_users: "{{ galaxy_admin }}"
           database_connection: "{{ galaxy_db }}"
