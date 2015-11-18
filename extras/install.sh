@@ -67,6 +67,7 @@ then
 fi
 
 #Installation
+#git clone --recursive --branch dev https://github.com/fabiorjvieira/old-ansible-galaxy.git ansible-artimed
 if git clone --recursive $artimed_git_repo
 then
 	cd ansible-artimed/galaxy/

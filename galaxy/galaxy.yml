@@ -9,7 +9,6 @@
 #    galaxy_user: "{{ lookup('env','GALAXY_USER') }}"
 #    galaxy_port: "{{ lookup('env','GALAXY_PORT') }}"
 #    ftp_port: "{{ lookup('env','FTP_PORT') }}"
-
     galaxy_data: "/galaxy_data/"
     galaxy_hostname: "localhost"
     galaxy_user: "galaxy"
@@ -72,18 +71,18 @@
           use_threadpool: True
           use: "egg:Paste#http"
           use_threadpool: True
-        "server:handler0":
-          use: "egg:Paste#http"
-          use_threadpool: True
-          host: "{{ galaxy_host }}"
-          port: "{{ galaxy_port | int + 0 }}"
-          threadpool_workers: 10
-        "server:handler1":
-          use: "egg:Paste#http"
-          use_threadpool: True
-          host: "{{ galaxy_host }}"
-          port: "{{ galaxy_port | int + 1 }}"
-          threadpool_workers: 10
+#        "server:handler0":
+#          use: "egg:Paste#http"
+#          use_threadpool: True
+#          host: "{{ galaxy_host }}"
+#          port: "{{ galaxy_port | int + 0 }}"
+#          threadpool_workers: 10
+#        "server:handler1":
+#          use: "egg:Paste#http"
+#          use_threadpool: True
+#          host: "{{ galaxy_host }}"
+#          port: "{{ galaxy_port | int + 1 }}"
+#          threadpool_workers: 10
         "app:main":
           admin_users: "{{ galaxy_admin }}"
           database_connection: "{{ galaxy_db }}"
