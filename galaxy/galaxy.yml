@@ -101,13 +101,6 @@
           pythonpath: lib
           threads: 4
           processes: "{{ galaxy_web_processes }}"
-          #log-maxsize: 134217728
-          #single-interpreter: True
-          #log-master-bufsize: 15865856
-          #module: galaxy.webapps.galaxy.buildapp:uwsgi_app_factory()
-          #set: galaxy_config_file="{{ galaxy_dir }}/config/galaxy.ini"
-          #set: galaxy_root="{{ galaxy_dir }}"
-          #logdate: True
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
 
