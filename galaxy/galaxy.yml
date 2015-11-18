@@ -25,16 +25,12 @@
   pre_tasks:
 #    - fail: msg="You must specify at least a network name or IP address in playbook INSTALL_HOSTNAME parameter (example - INSTALL_HOSTNAME=8.8.8.8 ansible-playbook -i 'localhost,' galaxy.yml). Installation failed."
 #      when: ((galaxy_hostname is undefined) or (galaxy_hostname is none) or (galaxy_hostname|trim == ''))
-    
 #    - set_fact: galaxy_data="/galaxy_data/"
 #      when: ((galaxy_data is undefined) or (galaxy_data is none) or (galaxy_data|trim == ''))
-
 #    - set_fact: galaxy_user="galaxy"
 #      when: ((galaxy_user is undefined) or (galaxy_user is none) or (galaxy_user|trim == ''))
-
 #    - set_fact: galaxy_port="8080"
 #      when: ((galaxy_port is undefined) or (galaxy_port is none) or (galaxy_port|trim == ''))
-
 #    - set_fact: ftp_port="21"
 #      when: ((ftp_port is undefined) or (ftp_port is none) or (ftp_port|trim == ''))
 
@@ -140,4 +136,6 @@
       supervisor_manage_docker: false
       supervisor_manage_nodeproxy: false
       supervisor_manage_ie_proxy: false
+      
+    - include: proftpd.yml
       
