@@ -26,3 +26,4 @@
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
       galaxy_server_dir: "{{ galaxy_dir }}"
       galaxy_tools_tool_list_files: [ "artimed_tool_list.yaml" ]
+ 
