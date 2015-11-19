@@ -10,7 +10,7 @@
 # Ansible Galaxy instance (web and ftp)
 To deploy just execute:
 ```
-git clone --recursive -b min https://github.com/ARTbio/ansible-artimed.git
+git clone --recursive -b minimum https://github.com/fabiorjvieira/old-ansible-artimed.git
 cd ansible-artimed/galaxy/
 hostIP=`hostname -I | cut -d " " -f 1`
 INSTALL_HOSTNAME=$hostIP ansible-playbook -i "localhost," galaxy.yml -vvvv
