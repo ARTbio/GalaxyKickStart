@@ -161,6 +161,10 @@
       sudo: yes
       sudo_user: root
 
+    - command: setcap 'cap_net_bind_service=+ep' /usr/bin/python2.7
+      sudo: yes
+      sudo_user: root
+
     - service: name=galaxy state=restarted
       sudo: yes
       sudo_user: root
