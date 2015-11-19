@@ -1,7 +1,7 @@
 # Preliminary Memo for running this dev branch from drosofff/ansible-artimed
 On the Amazon ubuntu instance,
  * `apt-get install wget`
- * `wget https://gist.githubusercontent.com/drosofff/2aa0f98f579cc7275b24/raw/ad2e9f1d7d36ffa0005a5935897cae7eeb21ceb1/install_packages.sh`
+ * `wget https://gist.githubusercontent.com/drosofff/2aa0f98f579cc7275b24/raw/4b7525231c1dcb4939aa0d0c8aa3d9c4570ed2bc/install_packages.sh`
  * `sh install_packages.sh`
 
 
