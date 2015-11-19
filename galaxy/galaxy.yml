@@ -165,4 +165,11 @@
       sudo: yes
       sudo_user: root
 
+    - apt: name=supervisor purge=yes
+      sudo: yes
+      sudo_user: root
+
+    - svc: name=nginx enable=no
+      sudo: yes
+      sudo_user: root
       
