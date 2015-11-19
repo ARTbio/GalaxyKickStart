@@ -1,3 +1,11 @@
+# Preliminary Memo for running this dev branch from drosofff/ansible-artimed
+On the Amazon ubuntu instance,
+ * `apt-get install wget`
+ * `wget https://gist.githubusercontent.com/drosofff/2aa0f98f579cc7275b24/raw/ad2e9f1d7d36ffa0005a5935897cae7eeb21ceb1/install_packages.sh`
+ * `sh install_packages.sh`
+
+
+
 # Requirements
   * The target Operational System must be a Ubuntu Trusty 64 bits (can be other one of Debian flavours, but it was tested in Ubuntu Trusty 64 bits).
   * The target Operational System user must be in sudo group to do this (do not execute as root or with sudo).
