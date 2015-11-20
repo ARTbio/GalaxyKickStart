@@ -1,0 +1,171 @@
+[supervisord]
+nodaemon=false
+
+{% if supervisor_webserver %}
+[inet_http_server]
+port={{ supervisor_webserver_port }}
+{% if supervisor_webserver_username %}
+username={{ supervisor_webserver_username }}
+password={{ supervisor_webserver_password }}
+{% endif %}
+{% endif %}
+
+{% if supervisor_manage_slurm %}
+[program:munge]
+user=root
+command=/bin/bash -c "mkdir -p /var/run/munge && /usr/sbin/munged -F"
+redirect_stderr=true
+priority=100
+stopasgroup     = true
+
+[program:slurmctld]
+user=root
+command=/bin/bash -c "python /usr/sbin/configure_slurm.py && /usr/sbin/slurmctld -D -L {{supervisor_slurm_config_dir}}/slurmctld.log"
+redirect_stderr=true 
+autorestart     = true
+priority=200
+stopasgroup     = true
+
+[program:slurmd]
+user=root
+command=/usr/sbin/slurmd -D -L {{supervisor_slurm_config_dir}}/slurmd.log
+redirect_stderr=true 
+autorestart     = true
+priority=300
+{% endif %}
+
+{% if supervisor_manage_postgres %}
+[program:postgresql]
+user            = postgres
+command         = /usr/lib/postgresql/9.3/bin/postmaster -D "{{supervisor_postgres_database_path}}"
+process_name    = %(program_name)s
+stopsignal      = INT
+autostart       = true
+autorestart     = true
+redirect_stderr = true
+priority        = 100
+{% endif %}
+
+{% if supervisor_manage_proftp %}
+[program:proftpd]
+command         = /usr/sbin/proftpd -n -c {{proftpd_conf_path}}
+autostart       = false
+autorestart     = true
+{% endif %}
+
+{% if supervisor_manage_nginx %}
+[program:nginx]
+command         = /usr/sbin/nginx
+directory       = /
+umask           = 022
+autostart       = true
+autorestart     = unexpected
+startsecs       = 5
+exitcodes       = 0
+user            = root
+priority        = 200
+{% endif %}
+
+[program:galaxy_web]
+{% if galaxy_uwsgi %}
+command         = {{ galaxy_venv_dir }}/bin/uwsgi --ini-paste {{ galaxy_config_file }}
+directory       = {{ galaxy_root }}
+umask           = 022
+autostart       = true
+autorestart     = true
+startsecs       = {{ supervisor_galaxy_startsecs }}
+user            = {{ galaxy_user_name }}
+environment     = PATH={{ galaxy_venv_dir }}:{{ galaxy_venv_dir }}/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin,PYTHON_EGG_CACHE={{ galxy_egg_cache }},PYTHONPATH={{ galaxy_root }}/eggs/PasteDeploy-1.5.0-py2.7.egg
+numprocs        = 1
+stopsignal      = INT
+startretries    = {{ supervisor_galaxy_startretries }}
+{% else %}
+# template cache hack https://github.com/galaxyproject/planemo-machine/issues/38
+command         = /bin/bash -c "rm -rf {{ galaxy_root }}/database/template_cache; {{ galaxy_venv_dir }}/bin/python ./scripts/paster.py serve {{ galaxy_config_file }} --server-name=web%(process_num)s --pid-file={{ galaxy_log_dir }}/galaxy_web%(process_num)s.pid --log-file={{ galaxy_log_dir }}/galaxy_web%(process_num)s.log"
+directory       = {{ galaxy_root }}
+process_name    = web%(process_num)s
+numprocs        = {{ galaxy_web_processes }}
+umask           = 022
+autostart       = true
+autorestart     = true
+startsecs       = {{ supervisor_galaxy_startsecs }}
+user            = {{ galaxy_user_name }}
+environment     = PYTHON_EGG_CACHE={{ galxy_egg_cache }}
+startretries    = {{ supervisor_galaxy_startretries }}
+# needed for bash wrapper
+stopasgroup     = true
+{% endif %}
+
+[program:handler]
+{% if not galaxy_paste_handlers %}
+command         = {{ galaxy_venv_dir }}/bin/python ./lib/galaxy/main.py -c {{ galaxy_config_file }} --server-name=handler%(process_num)s --log-file={{ galaxy_log_dir }}/handler%(process_num)s.log
+{% else %}
+command         = {{ galaxy_venv_dir }}/bin/python ./scripts/paster.py serve {{ galaxy_config_file }} --server-name=handler%(process_num)s --pid-file={{ galaxy_log_dir }}/handler%(process_num)s.pid --log-file={{ galaxy_log_dir }}/handler%(process_num)s.log
+{% endif %}
+directory       = {{ galaxy_root }}
+process_name    = handler%(process_num)s
+numprocs        = {{ galaxy_handler_processes }}
+umask           = 022
+autostart       = true
+autorestart     = true
+startsecs       = {{ supervisor_galaxy_startsecs }}
+user            = {{ galaxy_user_name }}
+environment     = PYTHON_EGG_CACHE={{ galxy_egg_cache }}
+startretries    = {{ supervisor_galaxy_startretries }}
+
+{% if supervisor_manage_reports %}
+[program:reports]
+command         = {{ galaxy_venv_dir }}/bin/python ./scripts/paster.py serve {{ galaxy_reports_config_file }} --server-name=main --pid-file={{ galaxy_log_dir }}/reports.pid --log-file={{ galaxy_log_dir }}/reports.log
+directory       = {{ galaxy_root }}
+process_name    = reports
+umask           = 022
+autostart       = false
+autorestart     = true
+startsecs       = {{ supervisor_galaxy_startsecs }}
+user            = {{ galaxy_user_name }}
+environment     = PYTHON_EGG_CACHE={{ galxy_egg_cache }}
+startretries    = {{ supervisor_galaxy_startretries }}
+{% endif %}
+
+{% if supervisor_manage_toolshed %}
+[program:toolshed]
+command         = {{ galaxy_venv_dir }}/bin/python ./scripts/paster.py serve {{ galaxy_toolshed_config_file }} --server-name=main --pid-file={{ galaxy_log_dir }}/toolshed.pid --log-file={{ galaxy_log_dir }}/toolshed.log
+directory       = {{ galaxy_root }}
+process_name    = toolshed
+umask           = 022
+autostart       = true
+autorestart     = true
+startsecs       = {{ supervisor_galaxy_startsecs }}
+user            = {{ galaxy_user_name }}
+environment     = PYTHON_EGG_CACHE={{ galxy_egg_cache }}
+startretries    = {{ supervisor_galaxy_startretries }}
+{% endif %}
+
+{% if supervisor_manage_nodeproxy %}
+[program:galaxy_nodejs_proxy]
+directory       = {{ galaxy_root }}
+command         = {{ galaxy_root }}/lib/galaxy/web/proxy/js/lib/main.js --sessions database/session_map.sqlite --ip 0.0.0.0 --port 8800
+autostart       = {{ supervisor_ie_proxy_autostart }}
+autorestart     = unexpected
+user            = {{ galaxy_user_name }}
+startsecs       = 5
+redirect_stderr = true
+{% endif %}
+
+{% if supervisor_manage_docker %}
+[program:docker]
+directory       = /
+command         = /usr/bin/docker -d
+autostart       = {{ supervisor_docker_autostart }}
+autorestart     = {{ supervisor_docker_autorestart }}
+user            = root
+startsecs       = 5
+redirect_stderr = true
+{% endif %}
+
+[group:galaxy]
+{% if supervisor_manage_nodeproxy %}
+programs = handler, galaxy_web, galaxy_nodejs_proxy
+{% else %}
+programs = handler, galaxy_web
+{% endif %}

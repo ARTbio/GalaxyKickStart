@@ -1,0 +1,21 @@
+#- name: "Activate custom toolsheds."
+#  copy: src=tool_sheds_conf.xml dest={{ galaxy_config_dir }}
+
+#- name: "Overwrite supervisor.conf"
+#  template: src=supervisor.conf.j2 main.yml dest="/etc/supervisor/conf.d/galaxy.conf"
+#  sudo_user: root
+
+#- name: "Overwrite nginx.conf"
+#  template: src=nginx.conf.j2 main.yml dest="/etc/nginx/nginx.conf"
+#  sudo_user: root
+
+#- name: "Restart galaxy"
+#  supervisorctl: name="munge" state=restarted
+#  supervisorctl: name="slurmd" state=restarted
+#  supervisorctl: name="slurmctld" state=restarted
+#  supervisorctl: name="galaxy:" state=restarted
+#  sudo_user: root
+
+#- name: "Restart nginx"
+#  service: name=nginx state=restarted
+#  sudo_user: root
