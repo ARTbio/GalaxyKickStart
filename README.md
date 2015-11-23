@@ -1,10 +1,8 @@
 # Requirements
   * The target Operational System must be a Ubuntu Trusty 64 bits (can be other one of Debian flavours, but it was tested in Ubuntu Trusty 64 bits).
-  * The target Operational System user must be in sudo group to do this (do not execute as root or with sudo).
   * The target Operational System must have at least 4GB of RAM.
-  * The host Operational System must have Ansible >= 1.8 (www.ansible.com).
-  * The target Operational System must have ssh client and server running on port 22, and git client.
-  * The target Operational System must allow your user to ssh to it locally without user interactively input (you may use the bash script file https://gist.github.com/fabiorjvieira/bb15ab456597123bac94 to do so in a Ubuntu Trusty 64 bits with ssh server and client properly installed).
+  * The target Operational System user must be in sudo group to do this (do not execute as root or with sudo).
+  * The machine where the Ansible playbook will be execute (not the target) must have Ansible >= 1.8 (www.ansible.com) and a git client.
   
 # Ansible Galaxy instance
 To deploy just change the targethost for the IP of the target machine and execute:
