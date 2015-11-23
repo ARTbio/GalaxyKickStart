@@ -11,6 +11,7 @@ VAGRANTFILE_API_VERSION = "2"
       config.vm.provision "ansible" do |ansible|
          ansible.extra_vars = {
             ntp_server: "pool.ntp.org",
+            ansible_ssh_user: 'vagrant' 
          }
          ansible.verbose = 'vvvv'
          ansible.playbook = "galaxy.yml"
