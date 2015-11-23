@@ -8,7 +8,7 @@
 To deploy just change the [targethost] for the IP of the target machine, [targetuser] for the remote user and execute:
 ```
 git clone --recursive https://github.com/ARTbio/ansible-artimed.git
-cd ansible-artimed/galaxy/
+cd ansible-artimed/
 ansible-playbook -u targetuser -i "targethost," galaxy.yml -vvvv
 ```
 Galaxy will be avaible in http port 80 (proxy NGINX) on the network ip where it was installed.
