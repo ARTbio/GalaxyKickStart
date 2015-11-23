@@ -16,13 +16,14 @@ Galaxy will be avaible in http port 80 (proxy NGINX) on the network ip where it 
 # Installing Galaxy NGS tools
 If you want to install galaxy tools, change the [targethost] and [targetuser] for the IP and user of the target machine respectively, and execute: 
 ```
+cd ansible-artimed/roles/artimed_extra/
 GALAXY_USER="galaxy" GALAXY_PORT="80" ansible-playbook -u targetuser -i "targethost," tools.yml -vvvv
 ```
 Be sure that Galaxy is running and available in http port 80 with the Operational System user galaxy, otherwise change the previous command accordingly. 
 
 # Alterative install - Vagrant
 Before continue you must install Vagrant (www.vagrantup.com) and a vagrant compatible Virtual Box (www.virtualbox.org).
-Next, copy the file https://github.com/ARTbio/ansible-artimed/blob/dev/galaxy/Vagrantfile to one directory and execute:
+Execute the first script of this readme and execute:
 ```
 vagrant up
 ```
