@@ -1,14 +1,14 @@
 # Requirements
   * The target Operational System must be a Ubuntu Trusty 64 bits (can be other one of Debian flavours, but it was tested in Ubuntu Trusty 64 bits).
   * The target Operational System must have at least 4GB of RAM.
-  * The target Operational System user must be in sudo group to do this (do not execute as root or with sudo).
+  * The target Operational System user must be in sudo group to do this.
   * The machine where the Ansible playbook will be execute (not the target) must have Ansible >= 1.8 (www.ansible.com) and a git client.
   
 # Ansible Galaxy instance
 To deploy just change the [targethost] for the IP of the target machine, [targetuser] for the remote user and execute:
 ```
-git clone --recursive -b dev https://github.com/ARTbio/ansible-artimed.git
-cd ansible-artimed/galaxy/
+git clone --recursive https://github.com/ARTbio/ansible-artimed.git
+cd ansible-artimed/
 ansible-playbook -u targetuser -i "targethost," galaxy.yml -vvvv
 ```
 Galaxy will be avaible in http port 80 (proxy NGINX) on the network ip where it was installed.
