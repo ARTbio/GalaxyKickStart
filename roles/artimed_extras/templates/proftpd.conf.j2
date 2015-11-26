@@ -62,7 +62,7 @@ SQLNamedQuery                   LookupGalaxyUser {{ sql_query_user }}
 
 {% if pbkdf2 %}
 SQLNamedQuery                   GetUserSalt {{ sql_query_alt }}
-SQLDefaultGID                   {{ galaxy_user_uid }}
+SQLDefaultGID                   {{ galaxy_user_gid }}
 SQLDefaultUID                   {{ galaxy_user_uid }}
 SQLPasswordPBKDF2               {{ sql_pwd }}
 SQLPasswordUserSalt             {{ sql_alt }}

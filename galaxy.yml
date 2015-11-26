@@ -97,13 +97,18 @@
       supervisor_manage_nodeproxy: false
       supervisor_manage_ie_proxy: false      
 
-  tasks:
-    #Create proftpd dir
-    - file: path="{{ galaxy_ftp }}" state=directory mode=0777
-      sudo: yes
-      sudo_user: "{{ galaxy_user }}"
-
-#    - name: Create Galaxy configuration file
-#      template: src=supervisor.conf.j2 dest={{ supervisor_conf_path }}
-
-    - service: name=supervisor state=restarted
+    - role: artimed_extras
+      pbkdf2: true
+      proftpd_conf_path:  "/etc/proftpd/proftpd.conf"
+      proftpd_welcome: "base64"
+      proftpd_db_connection: "{{ galaxy_user }}@localhost"
+      proftpd_db_username: "{{ galaxy_user }}"
+      proftpd_db_password: "{{ galaxy_user }}"
+      auth_type: "PBKDF2"
+      sql_query_user: "SELECT \"email, (CASE WHEN substring(password from 1 for 6) = 'PBKDF2' THEN substring(password from 38 for 69) ELSE password END) AS password2,512,512,'/home/galaxy/galaxy/database/files/%U','/bin/bash' FROM galaxy_user WHERE email='%U'\""
+      sql_query_alt: "SELECT \"(CASE WHEN SUBSTRING (password from 1 for 6) = 'PBKDF2' THEN SUBSTRING (password from 21 for 16) END) AS salt FROM galaxy_user WHERE email='%U'\""
+      galaxy_user_gid: "{{ galaxy_user_uid }}"
+      galaxy_user_uid: "{{ galaxy_user_uid }}"
+      sql_pwd: "SHA256 10000 24"
+      sql_alt: "sql:/GetUserSalt"
+      
