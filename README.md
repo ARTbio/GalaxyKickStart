@@ -7,7 +7,7 @@
 # Ansible Galaxy instance
 To deploy just change the [targethost] for the IP of the target machine, [targetuser] for the remote user and execute:
 ```
-git clone --recursive -b dev https://github.com/ARTbio/ansible-artimed.git
+git clone --recursive https://github.com/ARTbio/ansible-artimed.git
 cd ansible-artimed
 ansible-playbook -u targetuser -i "targethost," galaxy.yml -vvvv
 ```
