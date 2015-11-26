@@ -10,6 +10,7 @@
     galaxy_port: "8080"
     ftp_port: "21"
     galaxy_host: "0.0.0.0"
+    galaxy_user_uid: 1005 # Used by galaxy role and proftpd include
     galaxy_admin: "artimed@gmail.com"
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
     galaxy_venv: "{{ galaxy_dir }}/.venv" # Used by galaxy and galaxy-extras roles
@@ -17,14 +18,12 @@
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
     galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
     galaxy_ftp: "{{ galaxy_dir }}/database/ftp"
-    tool_dependency_dir: "{{ galaxy_dir }}/../tool_dependencies"
 
   roles:
     #installs system package requirements
     - role: galaxyprojectdotorg.galaxy-os
       configure_docker: no
       galaxy_user_name: "{{ galaxy_user }}"
-      galaxy_user_uid: 1055
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
@@ -99,4 +98,12 @@
       supervisor_manage_ie_proxy: false      
 
   tasks:
+    #Create proftpd dir
+    - file: path="{{ galaxy_ftp }}" state=directory mode=0777
+      sudo: yes
+      sudo_user: "{{ galaxy_user }}"
+
+???    - name: Create Galaxy configuration file
+      template: src=supervisor.conf.j2 dest={{ supervisor_conf_path }}
+
     - service: name=supervisor state=restarted
