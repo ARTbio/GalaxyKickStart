@@ -58,5 +58,15 @@ tools:
 - name: samtools_flagstat
   owner: devteam
   tool_panel_section_id: 'ngs_mapping'
-
-  
+- name: samtools_stats
+  owner: devteam
+  tool_panel_section_id: 'ngs_mapping'
+- name: samtools_sort
+  owner: devteam
+  tool_panel_section_id: 'ngs_mapping'
+- name: samtools_idxstats
+  owner: devteam
+  tool_panel_section_id: 'ngs_mapping'
+- name: igvtools
+  owner: jjohnson
+  tool_panel_section_id: 'ngs_mapping'
