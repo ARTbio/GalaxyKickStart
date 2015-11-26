@@ -16,12 +16,11 @@
     galaxy_ftp: "{{ galaxy_dir }}/database/ftp"
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
     galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
-    galaxy_ftp: "{{ galaxy_dir }}/database/ftp"
     galaxy_config_dir: "{{ galaxy_dir }}/config" # Used by artimed_extars and artimed roles 
 
   pre_tasks:
     #fix recreation of munge key
-    - shell: rm -r /tmp//slurm /etc/munge/munge.key
+    - shell: rm -rf /tmp//slurm /etc/munge/munge.key
 
   roles:
     #installs system package requirements
@@ -110,7 +109,7 @@
       proftpd_db_username: "{{ galaxy_user }}"
       proftpd_db_password: "{{ galaxy_user }}"
       auth_type: "PBKDF2"
-      sql_query_user: "SELECT \"email, (CASE WHEN substring(password from 1 for 6) = 'PBKDF2' THEN substring(password from 38 for 69) ELSE password END) AS password2,512,512,'/home/galaxy/galaxy/database/files/%U','/bin/bash' FROM galaxy_user WHERE email='%U'\""
+      sql_query_user: "SELECT \"email, (CASE WHEN substring(password from 1 for 6) = 'PBKDF2' THEN substring(password from 38 for 69) ELSE password END) AS password2,512,512,'{{ galaxy_ftp }}/%U','/bin/bash' FROM galaxy_user WHERE email='%U'\""
       sql_query_alt: "SELECT \"(CASE WHEN SUBSTRING (password from 1 for 6) = 'PBKDF2' THEN SUBSTRING (password from 21 for 16) END) AS salt FROM galaxy_user WHERE email='%U'\""
       galaxy_user_gid: "{{ galaxy_user_uid }}"
       galaxy_user_uid: "{{ galaxy_user_uid }}"
