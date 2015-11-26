@@ -103,8 +103,8 @@
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
 
-???    - name: Create Galaxy configuration file
-      template: src=supervisor.conf.j2 dest={{ supervisor_conf_path }}
+#    - name: Create Galaxy configuration file
+#      template: src=supervisor.conf.j2 dest={{ supervisor_conf_path }}
 
     - service: name=supervisor state=restarted
     - include: roles/artimed_extra/files/proftpd.yml
