@@ -107,4 +107,3 @@
 #      template: src=supervisor.conf.j2 dest={{ supervisor_conf_path }}
 
     - service: name=supervisor state=restarted
-    - include: roles/artimed_extra/files/proftpd.yml
