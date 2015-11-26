@@ -1,17 +1,13 @@
-- name: "Activate custom toolsheds."
-  copy: src=tool_sheds_conf.xml dest={{ galaxy_config_dir }}
-
-#- name: "Overwrite supervisor.conf"
-#  template: src=supervisor.conf.j2 main.yml dest="/etc/supervisor/conf.d/galaxy.conf"
-#  sudo_user: root
-
-- name: Create Supervisor configuration file
-  template: src=supervisor.conf.j2 dest={{ supervisor_conf_path }}
+#- name: "Activate custom toolsheds."
+#  copy: src=tool_sheds_conf.xml dest={{ galaxy_config_dir }}
 
 - name: "Create proftpd dir"
   file: path="{{ galaxy_ftp }}" state=directory mode=0777
   sudo: yes
   sudo_user: "{{ galaxy_user }}"
+
+- name: Create Proftpd configuration file
+  template: src=proftpd.conf.j2 dest={{ proftpd_conf_path }}
 
 - name: "Restart supervisor"
   service: name=supervisor state=restarted

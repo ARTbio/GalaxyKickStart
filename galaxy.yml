@@ -1,9 +1,8 @@
 - hosts: all
-#  remote_user: root
   sudo: yes
 
   vars:
-    #Globals
+    #globals
     galaxy_data: "/galaxy_data"
     galaxy_hostname: "localhost"
     galaxy_user: "galaxy"
@@ -18,6 +17,11 @@
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
     galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
     galaxy_ftp: "{{ galaxy_dir }}/database/ftp"
+    galaxy_config_dir: "{{ galaxy_dir }}/config" # Used by artimed_extars and artimed roles 
+
+  pre_tasks:
+    #fix recreation of munge key
+    - shell: rm -r /tmp//slurm /etc/munge/munge.key
 
   roles:
     #installs system package requirements
@@ -45,7 +49,6 @@
       galaxy_vcs: git
       galaxy_venv_dir: "{{ galaxy_venv }}"
       galaxy_server_dir: "{{ galaxy_dir }}"
-      galaxy_config_dir: "{{ galaxy_dir }}/config"
       galaxy_mutable_config_dir: "{{ galaxy_config_dir }}"
       galaxy_config:
         "app:main":
@@ -97,10 +100,12 @@
       supervisor_manage_nodeproxy: false
       supervisor_manage_ie_proxy: false      
 
+    #fix proftpd config file, restarts supervisor
     - role: artimed_extras
       pbkdf2: true
       proftpd_conf_path:  "/etc/proftpd/proftpd.conf"
-      proftpd_welcome: "base64"
+      proftpd_welcome: "Salut!"
+      encoding: "base64"
       proftpd_db_connection: "{{ galaxy_user }}@localhost"
       proftpd_db_username: "{{ galaxy_user }}"
       proftpd_db_password: "{{ galaxy_user }}"
