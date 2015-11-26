@@ -1,0 +1,69 @@
+# Includes DSO modules
+Include /etc/proftpd/modules.conf
+
+
+# Basics, some site-specific
+ServerName                      "{{ proftpd_welcome }}"
+ServerType                      standalone
+DefaultServer                   on
+Port                            {{ ftp_port }}
+Umask                           022
+#SyslogFacility                 DAEMON
+#SyslogLevel                    debug
+MaxInstances                    30
+User                            nobody
+Group                           nogroup
+
+# Passive port range for the firewall
+PassivePorts                    30000 40000
+
+# Cause every FTP user to be "jailed" (chrooted) into their home directory
+DefaultRoot                     ~
+
+# Automatically create home directory if it doesn't exist
+CreateHome                      on dirmode 700
+
+# Allow users to overwrite their files
+AllowOverwrite                  on
+
+# Allow users to resume interrupted uploads
+AllowStoreRestart               on
+
+# Bar use of SITE CHMOD
+<Limit SITE_CHMOD>
+    DenyAll
+</Limit>
+
+# Bar use of RETR (download) since this is not a public file drop
+<Limit RETR>
+    DenyAll
+</Limit>
+
+# Do not authenticate against real (system) users
+AuthPAM                         off
+
+# Set up mod_sql_password - Galaxy passwords are stored as hex-encoded SHA1
+SQLPasswordEngine               on
+SQLPasswordEncoding             {{ encoding }}
+
+# Set up mod_sql to authenticate against the Galaxy database
+SQLEngine                       on
+SQLBackend                      postgres
+SQLConnectInfo                  {{ proftpd_db_connection }} {{ proftpd_db_username }} {{ proftpd_db_password }}
+SQLAuthTypes                    {{ auth_type }}
+SQLAuthenticate                 users
+
+# An empty directory in case chroot fails
+SQLDefaultHomedir               /var/opt/local/proftpd
+
+# Define a custom query for lookup that returns a passwd-like entry.  UID and GID should match your Galaxy user.
+SQLUserInfo                     custom:/LookupGalaxyUser
+SQLNamedQuery                   LookupGalaxyUser {{ sql_query_user }}
+
+{% if pbkdf2 %}
+SQLNamedQuery                   GetUserSalt {{ sql_query_alt }}
+SQLDefaultGID                   {{ galaxy_user_uid }}
+SQLDefaultUID                   {{ galaxy_user_uid }}
+SQLPasswordPBKDF2               {{ sql_pwd }}
+SQLPasswordUserSalt             {{ sql_alt }}
+{% endif %}
