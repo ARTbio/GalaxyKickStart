@@ -1,7 +1,7 @@
 # Requirements
-  * The target Operational System must be a Ubuntu Trusty 64 bits (can be other one of Debian flavours, but it was tested in Ubuntu Trusty 64 bits).
-  * The target Operational System must have at least 4GB of RAM.
-  * The target Operational System user must be in sudo group to do this.
+  * The target Operating System must be a Ubuntu Trusty 64 bits (can be other one of Debian flavours, but it was tested in Ubuntu Trusty 64 bits).
+  * The target Operating System must have at least 4GB of RAM.
+  * The target Operating System user must be in sudo group to do this.
   * The machine where the Ansible playbook will be execute (not the target) must have Ansible >= 1.8 (www.ansible.com) and a git client.
   
 # Ansible Galaxy instance
@@ -14,12 +14,13 @@ ansible-playbook -u targetuser -i "targethost," galaxy.yml -vvvv
 Galaxy will be avaible in http port 80 (proxy NGINX) on the network ip where it was installed.
 
 # Installing Galaxy NGS tools
+This procedure assumes Galaxy has already been installed and configured (for instance with the procedures described above).
 If you want to install galaxy tools, change the [targethost] and [targetuser] for the IP and user of the target machine respectively, and execute: 
 ```
 cd ansible-artimed/roles/artimed_extras/
 GALAXY_USER="galaxy" GALAXY_PORT="80" ansible-playbook -u targetuser -i "targethost," tools.yml -vvvv
 ```
-Be sure that Galaxy is running and available in http port 80 with the Operational System user galaxy, otherwise change the previous command accordingly. 
+Be sure that Galaxy is running and available in http port 80 with the Operating System user galaxy, otherwise change the previous command accordingly. 
 
 # Alterative install - Vagrant
 Before continue you must install Vagrant (www.vagrantup.com) and a vagrant compatible Virtual Box (www.virtualbox.org).

@@ -103,7 +103,7 @@
     - role: artimed_extras
       pbkdf2: true
       proftpd_conf_path:  "/etc/proftpd/proftpd.conf"
-      proftpd_welcome: "Salut!"
+      proftpd_welcome: "Galaxy ARTiMED FTP server!"
       encoding: "base64"
       proftpd_db_connection: "{{ galaxy_user }}@localhost"
       proftpd_db_username: "{{ galaxy_user }}"
