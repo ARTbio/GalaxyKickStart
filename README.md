@@ -34,5 +34,5 @@ After "ssh" to the virtual machine, execute the same procedure described in the 
 Galaxy will be available in http port 8080 on the host network ip where the guest was installed if you did not changed it in the Vagrantfile. FTP server will be on 2121.
 
 # Troubleshooting
-If you have problems with postgresql installation, execute the file https://gist.github.com/fabiorjvieira/8672f445baf887eb5318 in the target machine.
-It will configure the language environment variables and reinstall postgresql sucessifully. 
+If you have problems with postgresql installation, execute the file https://gist.github.com/fabiorjvieira/8672f445baf887eb5318 in the target machine and re-execute the Galaxy installation procedure.
+It will configure the language environment variables and reinstall postgresql sucessifully.
