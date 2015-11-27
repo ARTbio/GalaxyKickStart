@@ -4,6 +4,7 @@
   vars:
     #globals
     galaxy_data: "/galaxy_data"
+    galaxy_database: "/galaxy_database"
     galaxy_hostname: "localhost"
     galaxy_user: "galaxy"
     galaxy_port: "8080"
@@ -13,10 +14,12 @@
     galaxy_admin: "artimed@gmail.com"
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
     galaxy_venv: "{{ galaxy_dir }}/.venv" # Used by galaxy and galaxy-extras roles
-    galaxy_ftp: "{{ galaxy_dir }}/database/ftp"
     galaxy_api: 379ab2a47d714a74b5cee4081703368e
     galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
-    galaxy_config_dir: "{{ galaxy_dir }}/config" # Used by artimed_extars and artimed roles 
+    #persistent data
+    galaxy_ftp: "{{ galaxy_data }}/database/ftp" # Used by artimed_extras and galaxy roles
+    galaxy_config_dir: "{{ galaxy_data }}/config" # Used by artimed_extras and galaxy roles
+    galaxy_mutable_data_dir: "{{ galaxy_data }}/database" # Used by artimed_extras and galaxy roles
 
   pre_tasks:
     #fix recreation of munge key
@@ -27,6 +30,10 @@
     - role: galaxyprojectdotorg.galaxy-os
       configure_docker: no
       galaxy_user_name: "{{ galaxy_user }}"
+    
+    #move postgresql db to a persistent dir
+    - role: postgresql.movedb
+      galaxy_user_name: "{{ galaxy_user }}"      
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
@@ -41,19 +48,32 @@
 
     #installs galaxy
     - role: galaxyprojectdotorg.galaxy
-      #galaxy_manage_clone: no
+      #persistent data
+      galaxy_mutable_config_dir: "{{ galaxy_config_dir }}"
+      galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini"
+      galaxy_shed_tool_conf_file: "{{ galaxy_mutable_config_dir }}/shed_tool_conf.xml"
+      data_manager_config_file: "{{ galaxy_data }}/config/data_manager_conf.xml.sample"
+      datatypes_config_file: "{{ galaxy_data }}/config/datatypes_conf.xml.sample"
+      external_service_type_config_file: "{{ galaxy_data }}/config/external_service_types_conf.xml.sample"
+      openid_config_file: "{{ galaxy_data }}/config/openid_conf.xml.sample"
+      tool_config_file: "{{ galaxy_data }}/config/tool_conf.xml.sample,{{ galaxy_shed_tool_conf_file }}"
+      tool_sheds_config_file: "{{ galaxy_data }}/config/tool_sheds_conf.xml.sample"
+      tool_data_table_config_path: "{{ galaxy_data }}/config/tool_data_table_conf.xml.sample"
+      visualization_plugins_directory: "{{ galaxy_data }}/config/plugins/visualizations"
+      ucsc_build_sites: "{{ galaxy_data }}/tool-data/shared/ucsc/ucsc_build_sites.txt.sample"
+      builds_file_path: "{{ galaxy_data }}/tool-data/shared/ucsc/builds.txt.sample"
+      #other vars
       galaxy_manage_database: yes
       galaxy_fetch_eggs: no
       galaxy_changeset_id: master
       galaxy_vcs: git
       galaxy_venv_dir: "{{ galaxy_venv }}"
       galaxy_server_dir: "{{ galaxy_dir }}"
-      galaxy_mutable_config_dir: "{{ galaxy_config_dir }}"
       galaxy_config:
         "app:main":
           admin_users: "{{ galaxy_admin }}"
           database_connection: "{{ galaxy_db }}"
-          tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies"
+          tool_dependency_dir: "{{ galaxy_data }}/lib/tool_shed/dependencies"
           master_api_key: "{{ galaxy_api }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
           ftp_upload_site: "ftp {{ galaxy_hostname }} port {{ ftp_port }}"
@@ -79,7 +99,7 @@
     #installs nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
       galaxy_root: "{{ galaxy_dir }}"
-      galaxy_log_dir: "{{ galaxy_dir }}"
+      galaxy_log_dir: "{{ galaxy_data }}"
       galaxy_venv_dir:  "{{ galaxy_venv }}"
       galaxy_database_connection: "{{ galaxy_db }}"
       galaxy_extras_install_packages: true
@@ -116,4 +136,3 @@
       galaxy_user_uid: "{{ galaxy_user_uid }}"
       sql_pwd: "SHA256 10000 24"
       sql_alt: "sql:/GetUserSalt"
-      
