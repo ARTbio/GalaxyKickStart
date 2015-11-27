@@ -1,5 +1,6 @@
 # Requirements
-  * The target Operating System (OS)  must be a Ubuntu Trusty 64 bits (can be other one of Debian flavours, but it was tested in Ubuntu Trusty 64 bits).
+<<<<<<< HEAD
+  * The target Operating System (OS) must be a Ubuntu Trusty 64 bits ( it might work on other Debian systems, untested).
   * The target instance must have at least 4GB of RAM.
   * The target user must have sudo rights.
   * You need Ansible >= 1.8 (www.ansible.com) on the machine on which you run the playbook.
@@ -26,7 +27,6 @@ If you want to install galaxy tools, change the [targethost] and [targetuser] fo
 cd ansible-artimed/roles/artimed_extras/
 GALAXY_USER="galaxy" GALAXY_PORT="80" ansible-playbook -u targetuser -i "targethost," tools.yml -vvvv
 ```
-
 # Alterative install - Vagrant
 Before continue you must install Vagrant (www.vagrantup.com) and a vagrant compatible Virtual Box (www.virtualbox.org).
 Execute the first script of this readme and execute:

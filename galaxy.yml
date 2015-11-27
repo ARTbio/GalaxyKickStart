@@ -64,6 +64,7 @@
           nginx_x_archive_files_base: "/_x_accel_redirect"
           nginx_upload_store: "/tmp"
           nginx_upload_path: "/_upload"
+          welcome_url: "/static/welcome.html"
         "uwsgi":
           stats: "{{ galaxy_hostname }}:9191"
           socket: "{{ galaxy_hostname }}:4001"
@@ -103,7 +104,7 @@
     - role: artimed_extras
       pbkdf2: true
       proftpd_conf_path:  "/etc/proftpd/proftpd.conf"
-      proftpd_welcome: "Salut!"
+      proftpd_welcome: "Galaxy ARTiMED FTP server!"
       encoding: "base64"
       proftpd_db_connection: "{{ galaxy_user }}@localhost"
       proftpd_db_username: "{{ galaxy_user }}"
