@@ -1,5 +1,4 @@
 # Requirements
-<<<<<<< HEAD
   * The target Operating System (OS) must be a Ubuntu Trusty 64 bits ( it might work on other Debian systems, untested).
   * The target instance must have at least 4GB of RAM.
   * The target user must have sudo rights.
