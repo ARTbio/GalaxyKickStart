@@ -1,0 +1,33 @@
+- name: "Check data dir for galaxy"
+  stat: path={{ galaxy_database }}
+  register: dir_sym
+
+- name: "Create data dir for galaxy"
+  file: path={{ galaxy_database }} owner={{ galaxy_user }} group={{ galaxy_user }} mode=0700 state=directory
+  when: dir_sym.stat.islnk is not defined
+
+- name: "Check postgresql dir for galaxy"
+  stat: path={{ galaxy_database }}/postgresql.conf
+  register: dir_sym
+
+- name: "Postgresql version"
+  shell: ls -C1 /etc/postgresql/
+  register: postgresql_version
+
+- name: "Copy postgresql db"
+  shell: cp -vr /etc/postgresql/{{ postgresql_version.stdout }}/main/* {{ galaxy_database }}/
+  when: dir_sym.stat.islnk is not defined
+
+- name: "Copy postgresql db"
+  shell: mv /etc/postgresql/{{ postgresql_version.stdout }}/main /etc/postgresql/{{ postgresql_version.stdout }}/main.backup
+  when: dir_sym.stat.islnk is not defined
+
+- name: "Create a symlink for postgresql"
+  shell: ln -s {{ galaxy_database }} /etc/postgresql/{{ postgresql_version.stdout }}/main
+  ignore_errors: yes
+  sudo: yes
+  sudo_user: postgres
+
+- name: "Restart postgresql"
+  service: name=postgresql state=restarted
+  
