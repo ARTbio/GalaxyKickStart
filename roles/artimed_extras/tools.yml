@@ -3,6 +3,7 @@
 
   vars:
     #Globals
+    galaxy_data: "/galaxy_data"
     galaxy_user: "{{ lookup('env','GALAXY_USER') }}"
     galaxy_port: "{{ lookup('env','GALAXY_PORT') }}"
     galaxy_admin: "artimed@gmail.com"
@@ -15,6 +16,7 @@
 
   roles:
     - role: galaxyprojectdotorg.galaxy-tools #Installs TopHat/HISAT, BWA, FeatureCount, DESeq/EdgeR, SAM Tools, GATK, BALSA (no wrapper yet), Isaac (no wrapper yet), R packages (no)
+      tool_config_file: "{{ galaxy_data }}/config/tool_conf.xml.sample,{{ galaxy_shed_tool_conf_file }}"
       galaxy_tools_galaxy_instance_url: "localhost:{{ galaxy_port }}"
       galaxy_user_name: "localhost:{{ galaxy_port }}"
       galaxy_server_dir: "{{ galaxy_dir }}"

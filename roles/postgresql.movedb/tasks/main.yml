@@ -1,14 +1,18 @@
 - name: "Check data dir for galaxy"
-  stat: path={{ galaxy_database }}
+  stat: path={{ galaxy_data }}
   register: dir_sym
 
 - name: "Create data dir for galaxy"
-  file: path={{ galaxy_database }} owner={{ galaxy_user }} group={{ galaxy_user }} mode=0700 state=directory
+  file: path={{ galaxy_data }} owner={{ galaxy_user }} group={{ galaxy_user }} mode=0700 state=directory
   when: dir_sym.stat.islnk is not defined
 
 - name: "Check postgresql dir for galaxy"
   stat: path={{ galaxy_database }}/postgresql.conf
   register: dir_sym
+
+- name: "Create postgresql dir for galaxy"
+  file: path={{ galaxy_database }} owner=postgres group=postgres mode=0700 state=directory
+  when: dir_sym.stat.islnk is not defined
 
 - name: "Postgresql version"
   shell: ls -C1 /etc/postgresql/
@@ -17,10 +21,18 @@
 - name: "Copy postgresql db"
   shell: cp -vr /etc/postgresql/{{ postgresql_version.stdout }}/main/* {{ galaxy_database }}/
   when: dir_sym.stat.islnk is not defined
+  sudo: yes
+  sudo_user: postgres
 
-- name: "Copy postgresql db"
+- name: "Check postgresql backup dir"
+  stat: path=/etc/postgresql/{{ postgresql_version.stdout }}/main.backup/postgresql.conf
+  register: dir_sym
+
+- name: "Backup postgresql db"
   shell: mv /etc/postgresql/{{ postgresql_version.stdout }}/main /etc/postgresql/{{ postgresql_version.stdout }}/main.backup
   when: dir_sym.stat.islnk is not defined
+  sudo: yes
+  sudo_user: postgres
 
 - name: "Create a symlink for postgresql"
   shell: ln -s {{ galaxy_database }} /etc/postgresql/{{ postgresql_version.stdout }}/main
