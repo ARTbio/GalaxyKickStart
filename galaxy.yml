@@ -63,7 +63,7 @@
         "app:main":
           admin_users: "{{ galaxy_admin }}"
           database_connection: "{{ galaxy_db }}"
-          tool_dependency_dir: "{{ galaxy_data }}/lib/tool_shed/dependencies"
+          tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies"
           master_api_key: "{{ galaxy_api }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
           ftp_upload_site: "ftp {{ galaxy_hostname }} port {{ ftp_port }}"
