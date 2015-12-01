@@ -19,23 +19,23 @@
   register: postgresql_version
 
 - name: "Copy postgresql db"
-  shell: cp -vr /etc/postgresql/{{ postgresql_version.stdout }}/main/* {{ galaxy_database }}/
+  shell: cp -vr /var/lib/postgresql/{{ postgresql_version.stdout }}/main {{ galaxy_database }}/
   when: dir_sym.stat.islnk is not defined
   sudo: yes
   sudo_user: postgres
 
 - name: "Check postgresql backup dir"
-  stat: path=/etc/postgresql/{{ postgresql_version.stdout }}/main.backup/postgresql.conf
+  stat: path=/var/lib/postgresql/{{ postgresql_version.stdout }}/main.backup/PG_VERSION
   register: dir_sym
 
 - name: "Backup postgresql db"
-  shell: mv /etc/postgresql/{{ postgresql_version.stdout }}/main /etc/postgresql/{{ postgresql_version.stdout }}/main.backup
+  shell: mv /var/lib/postgresql/{{ postgresql_version.stdout }}/main /var/lib/postgresql/{{ postgresql_version.stdout }}/main.backup
   when: dir_sym.stat.islnk is not defined
   sudo: yes
   sudo_user: postgres
 
 - name: "Create a symlink for postgresql"
-  shell: ln -s {{ galaxy_database }} /etc/postgresql/{{ postgresql_version.stdout }}/main
+  shell: ln -s {{ galaxy_database }}/main /var/lib/postgresql/{{ postgresql_version.stdout }}/main
   ignore_errors: yes
   sudo: yes
   sudo_user: postgres

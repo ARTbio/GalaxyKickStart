@@ -3,8 +3,7 @@
 
   vars:
     #Globals
-    galaxy_tools: "{{ lookup('env','GALAXY_TOOLS') }}"
-    galaxy_data: "/galaxy_data"
+    galaxy_tools: "{{ ansible_env.GALAXY_TOOLS|default('roles/artimed_extras/files/artimed_tool_list.yaml') }}"
     galaxy_user: "{{ lookup('env','GALAXY_USER') }}"
     galaxy_port: "{{ lookup('env','GALAXY_PORT') }}"
     galaxy_admin: "artimed@gmail.com"
@@ -13,20 +12,20 @@
 
   pre_tasks:
     - name: Verify if user gave any particular tools list
-    galaxy_tools
-    files/artimed_tool_list.yaml
-  
+      debug: msg="Tool list = {{ galaxy_tools }}"
+#      galaxy_tools: roles/artimed_extras/files/artimed_tool_list.yaml
+#      when: galaxy_tools is not defined
+        
     - name: Wait for Galaxy to start
       wait_for: port=80 delay=5 state=started timeout=150
 
   roles:
     - role: galaxyprojectdotorg.galaxy-tools #The default tools are listed in the file files/artimed_tool_list.yaml
-      tool_config_file: "{{ galaxy_data }}/config/tool_conf.xml.sample,{{ galaxy_shed_tool_conf_file }}"
+      tool_config_file: "{{ galaxy_dir }}/config/tool_conf.xml.sample,{{ galaxy_shed_tool_conf_file }}"
       galaxy_tools_galaxy_instance_url: "localhost:{{ galaxy_port }}"
       galaxy_user_name: "localhost:{{ galaxy_port }}"
       galaxy_server_dir: "{{ galaxy_dir }}"
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
       galaxy_tools_api_key: "{{ galaxy_api }}"
-      galaxy_tools_admin_user: "{{ galaxy_admin }}"
-      galaxy_server_dir: "{{ galaxy_dir }}"
-      galaxy_tools_tool_list_files: [ "{{ galaxy_tools }}" ]
+#      galaxy_tools_tool_list_files: [ "roles/artimed_extras/files/artimed_tool_list.yaml" ]
+      

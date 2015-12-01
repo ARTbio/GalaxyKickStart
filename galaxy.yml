@@ -3,9 +3,9 @@
 
   vars:
     #globals
+    galaxy_hostname: "{{ ansible_env.INSTALL_HOSTNAME|default('localhost') }}"
     galaxy_data: "/galaxy_data"
     galaxy_database: "/galaxy_database"
-    galaxy_hostname: "localhost"
     galaxy_user: "galaxy"
     galaxy_port: "8080"
     ftp_port: "21"
@@ -88,6 +88,7 @@
 
     #installs nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
+      supervisor_slurm_config_dir: "{{ galaxy_data }}" # Do not work?
       galaxy_root: "{{ galaxy_dir }}"
       galaxy_log_dir: "{{ galaxy_data }}"
       galaxy_venv_dir:  "{{ galaxy_venv }}"
