@@ -4,73 +4,97 @@ tools:
 - name: featurecounter
   owner: devteam
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: gatk
   owner: avowinkel
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: gatk2
   owner: iuc
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: bwa
   owner: devteam
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: tophat
   owner: devteam
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: tophat2
   owner: devteam
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: hisat2
   owner: iuc
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: hisat
   owner: devteam
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: deseq2
   owner: iuc
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: edger
   owner: amawla
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: suite_samtools_1_2
   owner: devteam
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: fastq_all_to_sanger
   owner: geert-vandeweyer
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: samtools_flagstat
   owner: devteam
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: samtools_stats
   owner: devteam
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: samtools_sort
   owner: devteam
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: samtools_idxstats
   owner: devteam
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: igvtools
   owner: jjohnson
   tool_panel_section_name: 'NGS Mapping'
+  tool_panel_section_id: 'ngs_mapping'
 - name: data_manager_rsync_g2
   owner: 
   tool_panel_section_name: 'Data Managers for NGS Mapping'
+  tool_panel_section_id: 'dm_ngs_mapping'
 - name: data_manager_fetch_genome_dbkeys_all_fasta
   owner: devteam
   tool_panel_section_name: 'Data Managers for NGS Mapping'
+  tool_panel_section_id: 'dm_ngs_mapping'
 - name: data_manager_bwa_mem_index_builder
   owner: devteam
   tool_panel_section_name: 'Data Managers for NGS Mapping'
+  tool_panel_section_id: 'dm_ngs_mapping'
 - name: data_manager_bwa_index_builder
   owner: devteam
   tool_panel_section_name: 'Data Managers for NGS Mapping'
+  tool_panel_section_id: 'dm_ngs_mapping'
 - name: data_manager_bowtie2_index_builder
   owner: devteam
   tool_panel_section_name: 'Data Managers for NGS Mapping'
+  tool_panel_section_id: 'dm_ngs_mapping'
 - name: data_manager_gatk_picard_index_builder
   owner: devteam
   tool_panel_section_name: 'Data Managers for NGS Mapping'
+  tool_panel_section_id: 'dm_ngs_mapping'
 - name: data_manager_sam_fasta_index_builder
   owner: devteam
   tool_panel_section_name: 'Data Managers for NGS Mapping'
+  tool_panel_section_id: 'dm_ngs_mapping'
   

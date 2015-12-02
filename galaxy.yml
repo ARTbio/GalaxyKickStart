@@ -2,25 +2,24 @@
   sudo: yes
 
   vars:
-    #globals
+    #params
     galaxy_hostname: "{{ ansible_env.INSTALL_HOSTNAME|default('localhost') }}"
-    galaxy_data: "/galaxy_data"
-    galaxy_database: "/galaxy_database"
-    galaxy_user: "galaxy"
-    galaxy_port: "8080"
-    ftp_port: "21"
-    galaxy_host: "0.0.0.0"
+    galaxy_user: "{{ ansible_env.GALAXY_USER|default('galaxy') }}"
+    galaxy_admin: "{{ ansible_env.GALAXY_ADMIN|default('artimed@gmail.com') }}"
+    galaxy_data: "{{ ansible_env.GALAXY_DATA|default('/home/galaxy/galaxy') }}" #"/galaxy_data"
+    galaxy_port: "{{ ansible_env.GALAXY_PORT|default('8080') }}"
+    ftp_port: "{{ ansible_env.FTP_PORT|default('21') }}"
+    galaxy_api: "{{ ansible_env.GALAXY_KEY|default('379ab2a47d714a74b5cee4081703368e') }}"
+    #globals
     galaxy_user_uid: 1005 # Used by galaxy role and proftpd include
-    galaxy_admin: "artimed@gmail.com"
-    galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
+    galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}" # Used by galaxy roles
     galaxy_venv: "{{ galaxy_dir }}/.venv" # Used by galaxy and galaxy-extras roles
-    galaxy_api: 379ab2a47d714a74b5cee4081703368e
-    galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql"
+    galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql" # Used by galaxy roles
     #persistent data
     galaxy_ftp: "{{ galaxy_data }}/database/ftp" # Used by artimed_extras and galaxy roles
     galaxy_config_dir: "{{ galaxy_data }}/config" # Used by artimed_extras and galaxy roles
     galaxy_mutable_data_dir: "{{ galaxy_data }}/database" # Used by artimed_extras and galaxy roles
-    galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini"
+    galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini" # Used by galaxy roles
 
   pre_tasks:
     #fix recreation of munge key
@@ -33,8 +32,9 @@
       galaxy_user_name: "{{ galaxy_user }}"
     
     #move postgresql db to a persistent dir
-    - role: postgresql.movedb
-      galaxy_user_name: "{{ galaxy_user }}"      
+#    - role: postgresql.movedb
+#      galaxy_database: "/galaxy_database"
+#      galaxy_user_name: "{{ galaxy_user }}"      
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
@@ -88,7 +88,7 @@
 
     #installs nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
-      supervisor_slurm_config_dir: "{{ galaxy_data }}" # Do not work?
+      supervisor_slurm_config_dir: "{{ galaxy_data }}"
       galaxy_root: "{{ galaxy_dir }}"
       galaxy_log_dir: "{{ galaxy_data }}"
       galaxy_venv_dir:  "{{ galaxy_venv }}"
@@ -127,3 +127,7 @@
       galaxy_user_uid: "{{ galaxy_user_uid }}"
       sql_pwd: "SHA256 10000 24"
       sql_alt: "sql:/GetUserSalt"
+
+#  tasks:
+#    - name: "Install NGS tools"
+#      include: tools.yml

@@ -1,31 +1,20 @@
 - hosts: all
   sudo: yes
 
-  vars:
-    #Globals
-    galaxy_tools: "{{ ansible_env.GALAXY_TOOLS|default('roles/artimed_extras/files/artimed_tool_list.yaml') }}"
-    galaxy_user: "{{ lookup('env','GALAXY_USER') }}"
-    galaxy_port: "{{ lookup('env','GALAXY_PORT') }}"
-    galaxy_admin: "artimed@gmail.com"
-    galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}"
-    galaxy_api: 379ab2a47d714a74b5cee4081703368e
-
   pre_tasks:
-    - name: Verify if user gave any particular tools list
-      debug: msg="Tool list = {{ galaxy_tools }}"
-#      galaxy_tools: roles/artimed_extras/files/artimed_tool_list.yaml
-#      when: galaxy_tools is not defined
-        
     - name: Wait for Galaxy to start
-      wait_for: port=80 delay=5 state=started timeout=150
+      wait_for: port="{{ ansible_env.GALAXY_PORT|default('80') }}" delay=5 state=started timeout=150
 
   roles:
     - role: galaxyprojectdotorg.galaxy-tools #The default tools are listed in the file files/artimed_tool_list.yaml
-      tool_config_file: "{{ galaxy_dir }}/config/tool_conf.xml.sample,{{ galaxy_shed_tool_conf_file }}"
-      galaxy_tools_galaxy_instance_url: "localhost:{{ galaxy_port }}"
-      galaxy_user_name: "localhost:{{ galaxy_port }}"
-      galaxy_server_dir: "{{ galaxy_dir }}"
-      galaxy_tools_admin_user: "{{ galaxy_admin }}"
-      galaxy_tools_api_key: "{{ galaxy_api }}"
-#      galaxy_tools_tool_list_files: [ "roles/artimed_extras/files/artimed_tool_list.yaml" ]
+      #params
+      galaxy_tools_api_key: "{{ ansible_env.GALAXY_KEY|default('379ab2a47d714a74b5cee4081703368e') }}"
+      galaxy_user_name: "{{ ansible_env.GALAXY_USER|default('galaxy') }}"
+      galaxy_tools_admin_user: "{{ ansible_env.GALAXY_ADMIN|default('artimed@gmail.com') }}"
+      galaxy_tools_galaxy_instance_url: "localhost:{{ ansible_env.GALAXY_PORT|default('80') }}"
+      galaxy_tools_tool_list_files: [ "{{ ansible_env.GALAXY_TOOLS|default('roles/artimed_extras/files/artimed_tool_list.yaml') }}" ]
+      #persintent data
+      galaxy_config_file: "{{ ansible_env.GALAXY_DATA|default('/home/galaxy/galaxy') }}/config/galaxy.ini" #"/galaxy_data"
+      #vars
+      galaxy_server_dir: "/home/{{ galaxy_user_name }}/{{ galaxy_user_name }}"
       
