@@ -3,13 +3,15 @@
 
   vars:
     #params
-    galaxy_hostname: "{{ ansible_env.INSTALL_HOSTNAME|default('localhost') }}"
-    galaxy_user: "{{ ansible_env.GALAXY_USER|default('galaxy') }}"
-    galaxy_admin: "{{ ansible_env.GALAXY_ADMIN|default('artimed@gmail.com') }}"
-    galaxy_data: "{{ ansible_env.GALAXY_DATA|default('/home/galaxy/galaxy') }}" #"/galaxy_data"
-    galaxy_port: "{{ ansible_env.GALAXY_PORT|default('8080') }}"
-    ftp_port: "{{ ansible_env.FTP_PORT|default('21') }}"
-    galaxy_api: "{{ ansible_env.GALAXY_KEY|default('379ab2a47d714a74b5cee4081703368e') }}"
+    galaxy_hostname: "{{ lookup('env','INSTALL_HOSTNAME')|default('localhost') }}"
+    galaxy_user: "{{ lookup('env','GALAXY_USER')|default('galaxy') }}"
+    galaxy_admin: "{{ lookup('env','GALAXY_ADMIN')|default('artimed@gmail.com') }}"
+    galaxy_port: "{{ lookup('env','GALAXY_PORT')|default('8080') }}"
+    ftp_port: "{{ lookup('env','FTP_PORT')|default('21') }}"
+    galaxy_api: "{{ lookup('env','GALAXY_KEY')|default('379ab2a47d714a74b5cee4081703368e') }}"
+    #persistent params
+    galaxy_data: "{{ lookup('env','GALAXY_DATA')|default('/galaxy_data') }}"
+    galaxy_database: "{{ lookup('env','GALAXY_DATABASE')|default('/galaxy_database') }}"
     #globals
     galaxy_user_uid: 1005 # Used by galaxy role and proftpd include
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}" # Used by galaxy roles
@@ -32,9 +34,8 @@
       galaxy_user_name: "{{ galaxy_user }}"
     
     #move postgresql db to a persistent dir
-#    - role: postgresql.movedb
-#      galaxy_database: "/galaxy_database"
-#      galaxy_user_name: "{{ galaxy_user }}"      
+    - role: postgresql.movedb
+      galaxy_user_name: "{{ galaxy_user }}"      
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects

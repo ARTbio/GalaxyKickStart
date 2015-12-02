@@ -3,18 +3,18 @@
 
   pre_tasks:
     - name: Wait for Galaxy to start
-      wait_for: port="{{ ansible_env.GALAXY_PORT|default('80') }}" delay=5 state=started timeout=150
+      wait_for: port="{{ lookup('env','GALAXY_PORT')|default('80') }}" delay=5 state=started timeout=150
 
   roles:
     - role: galaxyprojectdotorg.galaxy-tools #The default tools are listed in the file files/artimed_tool_list.yaml
       #params
-      galaxy_tools_api_key: "{{ ansible_env.GALAXY_KEY|default('379ab2a47d714a74b5cee4081703368e') }}"
-      galaxy_user_name: "{{ ansible_env.GALAXY_USER|default('galaxy') }}"
-      galaxy_tools_admin_user: "{{ ansible_env.GALAXY_ADMIN|default('artimed@gmail.com') }}"
-      galaxy_tools_galaxy_instance_url: "localhost:{{ ansible_env.GALAXY_PORT|default('80') }}"
-      galaxy_tools_tool_list_files: [ "{{ ansible_env.GALAXY_TOOLS|default('roles/artimed_extras/files/artimed_tool_list.yaml') }}" ]
+      galaxy_tools_api_key: "{{ lookup('env','GALAXY_KEY')|default('379ab2a47d714a74b5cee4081703368e') }}"
+      galaxy_user_name: "{{ lookup('env','GALAXY_USER')|default('galaxy') }}"
+      galaxy_tools_admin_user: "{{ lookup('env','GALAXY_ADMIN')|default('artimed@gmail.com') }}"
+      galaxy_tools_galaxy_instance_url: "localhost:{{ lookup('env','GALAXY_PORT')|default('80') }}"
+      galaxy_tools_tool_list_files: [ "{{ lookup('env','GALAXY_TOOLS')|default('roles/artimed_extras/files/artimed_tool_list.yaml') }}" ]
       #persintent data
-      galaxy_config_file: "{{ ansible_env.GALAXY_DATA|default('/home/galaxy/galaxy') }}/config/galaxy.ini" #"/galaxy_data"
+      galaxy_config_file: "{{ lookup('env','GALAXY_DATA')|default('/galaxy_data') }}/config/galaxy.ini"
       #vars
       galaxy_server_dir: "/home/{{ galaxy_user_name }}/{{ galaxy_user_name }}"
       

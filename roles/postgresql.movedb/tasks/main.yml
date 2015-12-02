@@ -7,7 +7,7 @@
   when: dir_sym.stat.islnk is not defined
 
 - name: "Check postgresql dir for galaxy"
-  stat: path={{ galaxy_database }}/postgresql.conf
+  stat: path={{ galaxy_database }}
   register: dir_sym
 
 - name: "Create postgresql dir for galaxy"
