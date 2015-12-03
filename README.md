@@ -43,3 +43,21 @@ If you are using Ubuntu on your ansible machine, make sure that you deactivate `
 
 Alternatively, execute the file https://gist.github.com/fabiorjvieira/8672f445baf887eb5318 on the target machine and re-execute the Galaxy installation procedure.
 It will configure the language environment variables and reinstall postgresql.
+
+#Advanced use
+The two playbooks have some parameters those default values can be modified by using ansible-playbook parameter "-e" (see https://docs.ansible.com/ansible/playbooks_variables.html#passing-variables-on-the-command-line).
+
+For galaxy.yml, the parameters are:
+- INSTALL_HOSTNAME - The public network address (ip or full domain name) where the galaxy server will be installed.
+- GALAXY_USER - The Operating System user name for galaxy process.
+- GALAXY_ADMIN - The admin galaxy user.
+- FTP_PORT - The ftp port for the proftpd service.
+- GALAXY_KEY - The api key for tool installation.
+- GALAXY_DATA - The persistent directory where the galaxy config and database directories will be installed or will be recovered. 
+- GALAXY_DATABASE - The persistent directory where postgresql will be installed or will be recovered.
+- GALAXY_DB_CONN - Connection string for galaxy-postgresql.
+
+For tools.yml, the parameters are:
+- GALAXY_USER, GALAXY_ADMIN, GALAXY_KEY and GALAXY_DATA are the same described above.
+- GALAXY_PORT - The http port were galaxy site will be provided by nginx.
+- GALAXY_TOOLS - the files that constants the list of tools to be installed (see file https://github.com/ARTbio/ansible-artimed/blob/master/roles/artimed_extras/files/artimed_tool_list.yaml).

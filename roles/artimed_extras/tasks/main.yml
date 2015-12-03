@@ -12,6 +12,6 @@
 #- name: "Restart supervisor"
 #  service: name=supervisor state=restarted
 
-- name: "Restart supervisor"
+- name: "Restart supervisor processes"
   supervisorctl: name=all state=restarted
   
