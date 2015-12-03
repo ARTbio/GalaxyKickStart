@@ -6,12 +6,13 @@
   sudo: yes
   sudo_user: "{{ galaxy_user }}"
 
-- name: Create Proftpd configuration file
+- name: "Create Proftpd configuration file"
   template: src=proftpd.conf.j2 dest={{ proftpd_conf_path }}
 
 #- name: "Restart supervisor"
 #  service: name=supervisor state=restarted
+#- name: "Restart supervisor processes"
+#  supervisorctl: name=all state=restarted
 
 - name: "Restart supervisor processes"
-  supervisorctl: name=all state=restarted
-  
+  shell: supervisorctl restart all
