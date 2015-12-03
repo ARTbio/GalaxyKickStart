@@ -9,5 +9,9 @@
 - name: Create Proftpd configuration file
   template: src=proftpd.conf.j2 dest={{ proftpd_conf_path }}
 
+#- name: "Restart supervisor"
+#  service: name=supervisor state=restarted
+
 - name: "Restart supervisor"
-  service: name=supervisor state=restarted
+  supervisorctl: name=all state=restarted
+  

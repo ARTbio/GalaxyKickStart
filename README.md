@@ -20,14 +20,10 @@ Galaxy will be available on http port 80 (proxy NGINX) on the "targethost" ip.
 
 # Installing Galaxy NGS tools
 This procedure assumes Galaxy has already been installed and configured (for instance with the procedures described above).
-If you want to install galaxy tools, change the "targethost" and "targetuser" for the IP and user of the target machine respectively, and execute: 
+If you want to install galaxy tools, change the "targethost" and "targetuser" for the IP and user of the target machine, respectively, and execute: 
 ```
 cd ansible-artimed
-GALAXY_USER="galaxy" GALAXY_PORT="80" ansible-playbook -u targetuser -i "targethost," tools.yml -vvvv
-```
-Optionally if you want to install your personal list of tools, change the "personal_tool_list" for your list and execute:
-```
-GALAXY_USER="galaxy" GALAXY_PORT="80" GALAXY_TOOLS="personal_tool_list" ansible-playbook -u targetuser -i "targethost," tools.yml -vvvv
+ansible-playbook -u targetuser -i "targethost," tools.yml -vvvv
 ```
 
 # Alternative install - Vagrant

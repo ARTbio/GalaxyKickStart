@@ -3,29 +3,37 @@
 
   vars:
     #params
-    galaxy_hostname: "{{ lookup('env','INSTALL_HOSTNAME')|default('localhost') }}"
-    galaxy_user: "{{ lookup('env','GALAXY_USER')|default('galaxy') }}"
-    galaxy_admin: "{{ lookup('env','GALAXY_ADMIN')|default('artimed@gmail.com') }}"
-    galaxy_port: "{{ lookup('env','GALAXY_PORT')|default('8080') }}"
-    ftp_port: "{{ lookup('env','FTP_PORT')|default('21') }}"
-    galaxy_api: "{{ lookup('env','GALAXY_KEY')|default('379ab2a47d714a74b5cee4081703368e') }}"
+    galaxy_hostname: "{{ INSTALL_HOSTNAME|default('localhost') }}"
+    galaxy_user: "{{ GALAXY_USER|default('galaxy') }}"
+    galaxy_admin: "{{ GALAXY_ADMIN|default('artimed@gmail.com') }}"
+    galaxy_port: "{{ GALAXY_PORT|default('8080') }}"
+    ftp_port: "{{ FTP_PORT|default('21') }}"
+    galaxy_api: "{{ GALAXY_KEY|default('379ab2a47d714a74b5cee4081703368e') }}"
     #persistent params
-    galaxy_data: "{{ lookup('env','GALAXY_DATA')|default('/galaxy_data') }}"
-    galaxy_database: "{{ lookup('env','GALAXY_DATABASE')|default('/galaxy_database') }}"
+    galaxy_data: "{{ GALAXY_DATA|default('/galaxy_data') }}"
+    galaxy_database: "{{ GALAXY_DATABASE|default('/galaxy_database') }}"
+    galaxy_db: "{{ GALAXY_DB_CONN|default('postgresql:///{{ galaxy_user }}?host=/var/run/postgresql') }}" # Used by galaxy roles
     #globals
     galaxy_user_uid: 1005 # Used by galaxy role and proftpd include
     galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}" # Used by galaxy roles
     galaxy_venv: "{{ galaxy_dir }}/.venv" # Used by galaxy and galaxy-extras roles
-    galaxy_db: "postgresql:///{{ galaxy_user }}?host=/var/run/postgresql" # Used by galaxy roles
     #persistent data
     galaxy_ftp: "{{ galaxy_data }}/database/ftp" # Used by artimed_extras and galaxy roles
     galaxy_config_dir: "{{ galaxy_data }}/config" # Used by artimed_extras and galaxy roles
     galaxy_mutable_data_dir: "{{ galaxy_data }}/database" # Used by artimed_extras and galaxy roles
     galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini" # Used by galaxy roles
+    #persistent tool_sheds ???
+    #tool_sheds_config_file: "{{ galaxy_server_dir }}/config/tool_sheds_conf.xml.sample"
 
   pre_tasks:
     #fix recreation of munge key
     - shell: rm -rf /tmp//slurm /etc/munge/munge.key
+    #only for ifb (should be removed later)
+    - shell: umount /dev/vdc
+      ignore_errors: yes
+    - shell: mount /dev/vdc /home
+      ignore_errors: yes
+    - shell: rm -rf /home/galaxy
 
   roles:
     #installs system package requirements
@@ -33,9 +41,8 @@
       configure_docker: no
       galaxy_user_name: "{{ galaxy_user }}"
     
-    #move postgresql db to a persistent dir
+    #move postgresql db to a persistent dir and symlinks to galaxy
     - role: postgresql.movedb
-      galaxy_user_name: "{{ galaxy_user }}"      
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
@@ -132,3 +139,4 @@
 #  tasks:
 #    - name: "Install NGS tools"
 #      include: tools.yml
+#      when: install_tools

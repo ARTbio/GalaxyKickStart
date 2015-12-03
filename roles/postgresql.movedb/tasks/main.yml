@@ -1,3 +1,6 @@
+- name: "Stop postgresql"
+  service: name=postgresql state=stopped
+
 - name: "Check data dir for galaxy"
   stat: path={{ galaxy_data }}
   register: dir_sym
@@ -5,6 +8,16 @@
 - name: "Create data dir for galaxy"
   file: path={{ galaxy_data }} owner={{ galaxy_user }} group={{ galaxy_user }} mode=0700 state=directory
   when: dir_sym.stat.islnk is not defined
+
+- name: "Create tool-data dir for galaxy"
+  file: path={{ galaxy_data }}/tool-data owner={{ galaxy_user }} group={{ galaxy_user }} mode=0700 state=directory
+  ignore_errors: yes
+
+- name: "Create a symlink for galaxy tool-data"
+  shell: ln -s {{ galaxy_data }}/tool-data {{ galaxy_dir }}/
+  ignore_errors: yes
+  sudo: yes
+  sudo_user: "{{ galaxy_user }}"
 
 - name: "Check postgresql dir for galaxy"
   stat: path={{ galaxy_database }}
@@ -40,6 +53,6 @@
   sudo: yes
   sudo_user: postgres
 
-- name: "Restart postgresql"
-  service: name=postgresql state=restarted
+- name: "Start postgresql"
+  service: name=postgresql state=started
   
