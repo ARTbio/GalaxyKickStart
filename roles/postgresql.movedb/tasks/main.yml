@@ -29,9 +29,13 @@
   sudo: yes
   sudo_user: postgres
 
+- name: Check postgresql symlink for galaxy
+  stat: path=/var/lib/postgresql/{{ postgresql_version.stdout }}/main
+  register: dir_sym
+
 - name: Create a symlink for postgresql
-  shell: ln -s {{ galaxy_database }}/main /var/lib/postgresql/{{ postgresql_version.stdout }}/main
-  ignore_errors: yes
+  shell: ln -s {{ galaxy_database }}/main /var/lib/postgresql/{{ postgresql_version.stdout }}/
+  when: dir_sym.stat.islnk is not defined or not dir_sym.stat.islnk
   sudo: yes
   sudo_user: postgres
 

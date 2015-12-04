@@ -2,21 +2,7 @@
   stat: path={{ galaxy_data }}
   register: directory
 
-- name: Wait for Galaxy to start
-  wait_for: port="{{ galaxy_port }}" delay=5 state=started timeout=150
-  when: directory.stat.islnk is not defined and persist
-  ignore_errors: yes
-  register: running
-  
-- name: Stop galaxy
-  supervisorctl: name="galaxy:" state=stopped
-  when: directory.stat.islnk is not defined and persist and running.failed is not defined
-
 - name: Create data dir for galaxy
   file: path={{ galaxy_data }} owner={{ galaxy_user }} group={{ galaxy_user }} mode=0700 state=directory
   when: directory.stat.islnk is not defined and persist
-
-- name: Start galaxy
-  supervisorctl: name="galaxy:" state=started
-  when: directory.stat.islnk is not defined and persist and running.failed is not defined
   

@@ -46,7 +46,7 @@
 
     #check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_dir)
     - role: galaxy.movedata
-      check_galaxy_data: true
+      check_galaxy_data: yes
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
@@ -142,7 +142,7 @@
 
     #check if tool-data persisted on galaxy (it does nothing if galaxy_data == galaxy_dir)
     - role: galaxy.movedata
-      check_tool_data: true
+      check_tool_data: yes
     
 #  tasks:
 #    - name: "Install NGS tools"
