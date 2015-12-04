@@ -5,7 +5,8 @@
   group: name=users state=present
 
 - name: Put postgres into users group
-  user: name=postgres groups="postgres,users" 
+  shell: adduser postgres users
+#  user: name=postgres groups="postgres,users"
 
 - name: Check postgresql dir for galaxy
   stat: path={{ galaxy_database }}
@@ -23,7 +24,7 @@
   shell: ls -C1 /etc/postgresql/
   register: postgresql_version
 
-#upgrade: automaticlly dicovers where is the postgresql master db
+#upgrade: automaticlly dicovers where is the postgresql master db (pg_lsclusters)
 - name: Copy postgresql db
   shell: cp -vr /var/lib/postgresql/{{ postgresql_version.stdout }}/main {{ galaxy_database }}/
   when: dir_sym.stat.islnk is not defined
