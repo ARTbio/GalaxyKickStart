@@ -1,0 +1,39 @@
+- name: Check tool-data dir for galaxy
+  stat: path={{ galaxy_data }}/tool-data
+  register: directory
+  when: persist
+
+- name: Check tool-data dir symlink for galaxy
+  stat: path={{ galaxy_dir }}/tool-data
+  register: symlink
+  when: persist
+
+- name: Wait for Galaxy to start
+  wait_for: port="{{ galaxy_port }}" delay=5 state=started timeout=150
+  when: persist
+  ignore_errors: yes
+  register: running
+  
+- name: Stop galaxy
+  supervisorctl: name="galaxy:" state=stopped
+  when: persist and running.failed is not defined and not directory.stat.islnk 
+
+- name: Create tool-data dir for galaxy
+  file: path={{ galaxy_data }}/tool-data owner={{ galaxy_user }} group={{ galaxy_user }} mode=0700 state=directory
+  when: directory.stat.islnk is not defined and persist
+
+- name: Move galaxy tool-data to backup
+  shell: mv {{ galaxy_dir }}/tool-data {{ galaxy_dir }}/tool-data.backup 
+  when: not directory.stat.islnk and persist
+  sudo: yes
+  sudo_user: "{{ galaxy_user }}"
+
+- name: Create a symlink for galaxy tool-data
+  shell: ln -s {{ galaxy_data }}/tool-data {{ galaxy_dir }}/
+  when: symlink.stat.islnk is not defined and persist
+  sudo: yes
+  sudo_user: "{{ galaxy_user }}"
+  
+- name: Start galaxy
+  supervisorctl: name="galaxy:" state=started
+  when: persist and running.failed is not defined and not directory.stat.islnk 

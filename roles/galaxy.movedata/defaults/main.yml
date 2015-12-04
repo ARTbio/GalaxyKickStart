@@ -1,0 +1,6 @@
+#check if tool-data will persist
+check_tool_data: false
+
+#check if data will persist
+check_galaxy_data: false
+persist: "{{ galaxy_data != galaxy_dir }}"
