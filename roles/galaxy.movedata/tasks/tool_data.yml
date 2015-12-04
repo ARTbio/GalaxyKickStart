@@ -8,12 +8,6 @@
   register: symlink
   when: persist
 
-#- name: Wait for Galaxy to start
-#  wait_for: port="{{ galaxy_port }}" delay=5 state=started timeout=150
-#  when: persist
-#  ignore_errors: yes
-#  register: running
-  
 - name: Stop galaxy
   supervisorctl: name="galaxy:" state=stopped
   ignore_errors: yes
@@ -24,7 +18,7 @@
   when: persist and directory.stat.islnk is not defined
 
 - name: Move galaxy tool-data to backup
-  shell: mv {{ galaxy_dir }}/tool-data {{ galaxy_dir }}/tool-data.backup 
+  shell: mv -v {{ galaxy_dir }}/tool-data {{ galaxy_dir }}/tool-data.backup 
   when: persist and not symlink.stat.islnk
   sudo: yes
   sudo_user: "{{ galaxy_user }}"
@@ -36,7 +30,7 @@
   sudo_user: "{{ galaxy_user }}"
   
 - name: Copy galaxy tool-data to persistent
-  shell: cp -r {{ galaxy_dir }}/tool-data.backup/ {{ galaxy_dir }}/tool-data/
+  shell: cp -vr {{ galaxy_dir }}/tool-data.backup/ {{ galaxy_dir }}/tool-data/
   when: persist and directory.stat.islnk is not defined
   sudo: yes
   sudo_user: "{{ galaxy_user }}"

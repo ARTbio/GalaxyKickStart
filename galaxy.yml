@@ -3,7 +3,7 @@
 
   vars:
     #params
-    galaxy_hostname: "{{ INSTALL_HOSTNAME|default('localhost') }}"
+    galaxy_hostname: "{{ INSTALL_HOSTNAME|default('localhost') }}" #upgrade: automaticlly dicovers the public ip
     galaxy_user: "{{ GALAXY_USER|default('galaxy') }}"
     galaxy_admin: "{{ GALAXY_ADMIN|default('artimed@gmail.com') }}"
     ftp_port: "{{ FTP_PORT|default('21') }}"

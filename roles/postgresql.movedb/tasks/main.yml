@@ -1,6 +1,12 @@
 - name: Stop postgresql
   service: name=postgresql state=stopped
 
+- name: Create users group
+  group: name=users state=present
+
+- name: Put postgres into users group
+  user: name=postgres groups="postgres,users" 
+
 - name: Check postgresql dir for galaxy
   stat: path={{ galaxy_database }}
   register: dir_sym
@@ -9,10 +15,15 @@
   file: path={{ galaxy_database }} owner=postgres group=postgres mode=0700 state=directory
   when: dir_sym.stat.islnk is not defined
 
+- name: Give postgres access to galaxy_database directory chain
+  file: path=/{{ galaxy_database_items[1] }} mode=0755 group=users recurse=yes
+#  with_items: "{{ galaxy_database_items }}"
+
 - name: Postgresql version
   shell: ls -C1 /etc/postgresql/
   register: postgresql_version
 
+#upgrade: automaticlly dicovers where is the postgresql master db
 - name: Copy postgresql db
   shell: cp -vr /var/lib/postgresql/{{ postgresql_version.stdout }}/main {{ galaxy_database }}/
   when: dir_sym.stat.islnk is not defined
@@ -24,7 +35,7 @@
   register: dir_sym
 
 - name: Backup postgresql db
-  shell: mv /var/lib/postgresql/{{ postgresql_version.stdout }}/main /var/lib/postgresql/{{ postgresql_version.stdout }}/main.backup
+  shell: mv -v /var/lib/postgresql/{{ postgresql_version.stdout }}/main /var/lib/postgresql/{{ postgresql_version.stdout }}/main.backup
   when: dir_sym.stat.islnk is not defined
   sudo: yes
   sudo_user: postgres
