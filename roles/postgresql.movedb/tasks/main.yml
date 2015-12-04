@@ -1,16 +1,4 @@
-- name: Check data dir for galaxy
-  stat: path={{ galaxy_data }}
-  register: dir_sym
-
-- name: Create data dir for galaxy
-  file: path={{ galaxy_data }} owner={{ galaxy_user }} group={{ galaxy_user }} mode=0700 state=directory
-  when: dir_sym.stat.islnk is not defined
-
-- name: Create tool-data dir for galaxy
-  file: path={{ galaxy_data }}/tool-data owner={{ galaxy_user }} group={{ galaxy_user }} mode=0700 state=directory
-  ignore_errors: yes
-
-- name: Stop postgresql"
+- name: Stop postgresql
   service: name=postgresql state=stopped
 
 - name: Check postgresql dir for galaxy

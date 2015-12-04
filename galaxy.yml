@@ -44,6 +44,10 @@
     #move postgresql db to a persistent dir and symlinks to galaxy
     - role: postgresql.movedb
 
+    #check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_dir)
+    - role: galaxy.movedata
+      check_galaxy_data: true
+
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
       postgresql_objects_users:
@@ -136,6 +140,10 @@
       sql_pwd: "SHA256 10000 24"
       sql_alt: "sql:/GetUserSalt"
 
+    #check if tool-data persisted on galaxy (it does nothing if galaxy_data == galaxy_dir)
+    - role: galaxy.movedata
+      check_tool_data: true
+    
 #  tasks:
 #    - name: "Install NGS tools"
 #      include: tools.yml
