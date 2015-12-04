@@ -27,13 +27,7 @@
 
   pre_tasks:
     #fix recreation of munge key
-    - shell: rm -rf /tmp//slurm /etc/munge/munge.key
-    #only for ifb (should be removed later)
-    - shell: umount /dev/vdc
-      ignore_errors: yes
-    - shell: mount /dev/vdc /home
-      ignore_errors: yes
-    - shell: rm -rf /home/galaxy
+    - shell: rm -rf /tmp/slurm /etc/munge/munge.key
 
   roles:
     #installs system package requirements
