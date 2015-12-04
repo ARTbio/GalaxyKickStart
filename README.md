@@ -44,7 +44,7 @@ If you are using Ubuntu on your ansible machine, make sure that you deactivate `
 Alternatively, execute the file https://gist.github.com/fabiorjvieira/8672f445baf887eb5318 on the target machine and re-execute the Galaxy installation procedure.
 It will configure the language environment variables and reinstall postgresql.
 
-#Advanced use
+#Important variables
 The two playbooks have some parameters those default values can be modified by using ansible-playbook parameter "-e" (see https://docs.ansible.com/ansible/playbooks_variables.html#passing-variables-on-the-command-line).
 
 For galaxy.yml, the parameters are:

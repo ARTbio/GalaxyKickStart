@@ -1,52 +1,51 @@
-- name: "Check data dir for galaxy"
+- name: Check data dir for galaxy
   stat: path={{ galaxy_data }}
   register: dir_sym
 
-- name: "Create data dir for galaxy"
+- name: Create data dir for galaxy
   file: path={{ galaxy_data }} owner={{ galaxy_user }} group={{ galaxy_user }} mode=0700 state=directory
   when: dir_sym.stat.islnk is not defined
 
-- name: "Create tool-data dir for galaxy"
+- name: Create tool-data dir for galaxy
   file: path={{ galaxy_data }}/tool-data owner={{ galaxy_user }} group={{ galaxy_user }} mode=0700 state=directory
   ignore_errors: yes
 
-- name: "Stop postgresql"
+- name: Stop postgresql"
   service: name=postgresql state=stopped
 
-- name: "Check postgresql dir for galaxy"
+- name: Check postgresql dir for galaxy
   stat: path={{ galaxy_database }}
   register: dir_sym
 
-- name: "Create postgresql dir for galaxy"
+- name: Create postgresql dir for galaxy
   file: path={{ galaxy_database }} owner=postgres group=postgres mode=0700 state=directory
   when: dir_sym.stat.islnk is not defined
 
-- name: "Postgresql version"
+- name: Postgresql version
   shell: ls -C1 /etc/postgresql/
   register: postgresql_version
 
-- name: "Copy postgresql db"
+- name: Copy postgresql db
   shell: cp -vr /var/lib/postgresql/{{ postgresql_version.stdout }}/main {{ galaxy_database }}/
   when: dir_sym.stat.islnk is not defined
   sudo: yes
   sudo_user: postgres
 
-- name: "Check postgresql backup dir"
+- name: Check postgresql backup dir
   stat: path=/var/lib/postgresql/{{ postgresql_version.stdout }}/main.backup/PG_VERSION
   register: dir_sym
 
-- name: "Backup postgresql db"
+- name: Backup postgresql db
   shell: mv /var/lib/postgresql/{{ postgresql_version.stdout }}/main /var/lib/postgresql/{{ postgresql_version.stdout }}/main.backup
   when: dir_sym.stat.islnk is not defined
   sudo: yes
   sudo_user: postgres
 
-- name: "Create a symlink for postgresql"
+- name: Create a symlink for postgresql
   shell: ln -s {{ galaxy_database }}/main /var/lib/postgresql/{{ postgresql_version.stdout }}/main
   ignore_errors: yes
   sudo: yes
   sudo_user: postgres
 
-- name: "Start postgresql"
+- name: Start postgresql
   service: name=postgresql state=started
-  

@@ -9,10 +9,17 @@
 - name: "Create Proftpd configuration file"
   template: src=proftpd.conf.j2 dest={{ proftpd_conf_path }}
 
+#got an error in my IFB instance, even when the service is sucessifully restarted
 #- name: "Restart supervisor"
 #  service: name=supervisor state=restarted
+
+#does nothing
 #- name: "Restart supervisor processes"
 #  supervisorctl: name=all state=restarted
 
-- name: "Restart supervisor processes"
-  shell: supervisorctl restart all
+#no need to restart all supervisor processes
+#- name: "Restart supervisor processes"
+#  shell: supervisorctl restart all
+
+- name: "Restart proftpd"
+  supervisorctl: name=proftpd state=restarted
