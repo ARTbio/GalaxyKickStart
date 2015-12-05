@@ -13,5 +13,5 @@
   when: directory.stat.islnk is not defined and persist
   
 - name: Give galaxy_user access to galaxy_data directory chain
-  file: path=/{{ galaxy_data_items[1] }} mode=0755 group=users recurse=yes
+  file: path=/{{ galaxy_data_items[1] }} mode=0755 group=users #recurse=yes
 #  with_items: "{{ galaxy_data_items }}"
