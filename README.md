@@ -1,5 +1,5 @@
 # Requirements
-  * The target Operating System (OS) must be a Ubuntu Trusty 64 bits ( it might work on other Debian systems, untested).
+  * The target Operating System must be a Ubuntu Trusty 64 bits ( it might work on other Debian systems, untested).
   * The target instance must have at least 4GB of RAM.
   * The target user must have sudo rights.
   * You need Ansible >= 1.8 (www.ansible.com) on the machine on which you run the playbook.
@@ -53,8 +53,8 @@ For galaxy.yml, the parameters are:
 - GALAXY_ADMIN - The admin galaxy user.
 - FTP_PORT - The ftp port for the proftpd service.
 - GALAXY_KEY - The api key for tool installation.
-- GALAXY_DATA - The persistent directory where the galaxy config and database directories will be installed or will be recovered. 
-- GALAXY_DATABASE - The persistent directory where postgresql will be installed or will be recovered.
+- GALAXY_DATA - The persistent directory where the galaxy config and database directories will be installed or will be recovered (still in dev). 
+- GALAXY_DATABASE - The persistent directory where postgresql will be installed or will be recovered (still in dev).
 - GALAXY_DB_CONN - Connection string for galaxy-postgresql.
 
 For tools.yml, the parameters are:
