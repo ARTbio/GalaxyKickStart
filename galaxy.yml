@@ -4,8 +4,8 @@
   vars:
     #params
     galaxy_hostname: "{{ INSTALL_HOSTNAME|default('localhost') }}" #next upgrade: automaticlly dicovers the public ip
-    galaxy_user: "{{ GALAXY_USER|default('galaxy') }}" # - subst by the real 
-    galaxy_dir: "{{ GALAXY_DIR|default('/home/galaxy/galaxy') }}" # - subst by the real 
+    galaxy_user: "{{ GALAXY_USER|default('galaxy') }}" 
+    galaxy_dir: "{{ GALAXY_DIR|default('/home/galaxy/galaxy') }}" 
     galaxy_admin: "{{ GALAXY_ADMIN|default('artimed@gmail.com') }}"
     ftp_port: "{{ FTP_PORT|default('21') }}"
     galaxy_api: "{{ GALAXY_KEY|default('379ab2a47d714a74b5cee4081703368e') }}"
@@ -19,9 +19,9 @@
     #globals
     galaxy_port: 80
     galaxy_user_uid: 1005 # Used by galaxy role and proftpd include
-    galaxy_venv: "{{ galaxy_dir }}/.venv" # Used by galaxy and galaxy-tools roles - subst by the real 
-    galaxy_server_dir: "{{ galaxy_dir }}" # Used by galaxy and galaxy-tools roles - subst by the real 
-    galaxy_user_name: "{{ galaxy_user }}" # Used by galaxy-os and galaxy-tools roles - subst by the real 
+    galaxy_venv: "{{ galaxy_dir }}/.venv" # Used by galaxy and galaxy-tools roles 
+    galaxy_server_dir: "{{ galaxy_dir }}" # Used by galaxy and galaxy-tools roles 
+    galaxy_user_name: "{{ galaxy_user }}" # Used by galaxy-os and galaxy-tools roles 
     #persistent data
     galaxy_ftp: "{{ galaxy_data }}/database/ftp" # Used by artimed_extras and galaxy roles
     galaxy_config_dir: "{{ galaxy_data }}/config" # Used by artimed_extras and galaxy roles
