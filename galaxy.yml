@@ -4,11 +4,14 @@
   vars:
     #params
     galaxy_hostname: "{{ INSTALL_HOSTNAME|default('localhost') }}" #next upgrade: automaticlly dicovers the public ip
-    galaxy_user: "{{ GALAXY_USER|default('galaxy') }}"
-    galaxy_dir: "{{ GALAXY_DIR|default('/home/galaxy/galaxy') }}"
+    galaxy_user: "{{ GALAXY_USER|default('galaxy') }}" # - subst by the real 
+    galaxy_dir: "{{ GALAXY_DIR|default('/home/galaxy/galaxy') }}" # - subst by the real 
     galaxy_admin: "{{ GALAXY_ADMIN|default('artimed@gmail.com') }}"
     ftp_port: "{{ FTP_PORT|default('21') }}"
     galaxy_api: "{{ GALAXY_KEY|default('379ab2a47d714a74b5cee4081703368e') }}"
+    install_galaxy: "{{ INSTALL_GALAXY|default('True') }}"
+    install_tools: "{{ INSTALL_TOOLS|default('False') }}"
+    galaxy_tools: "{{ GALAXY_TOOLS|default('roles/artimed_extras/files/artimed_tool_list.yaml') }}"
     #persistent params
     galaxy_data: "{{ GALAXY_DATA|default('/home/galaxy/galaxy') }}"
     galaxy_database: "{{ GALAXY_DATABASE|default('/home/galaxy_database') }}"
@@ -16,7 +19,9 @@
     #globals
     galaxy_port: 80
     galaxy_user_uid: 1005 # Used by galaxy role and proftpd include
-    galaxy_venv: "{{ galaxy_dir }}/.venv" # Used by galaxy and galaxy-extras roles
+    galaxy_venv: "{{ galaxy_dir }}/.venv" # Used by galaxy and galaxy-tools roles - subst by the real 
+    galaxy_server_dir: "{{ galaxy_dir }}" # Used by galaxy and galaxy-tools roles - subst by the real 
+    galaxy_user_name: "{{ galaxy_user }}" # Used by galaxy-os and galaxy-tools roles - subst by the real 
     #persistent data
     galaxy_ftp: "{{ galaxy_data }}/database/ftp" # Used by artimed_extras and galaxy roles
     galaxy_config_dir: "{{ galaxy_data }}/config" # Used by artimed_extras and galaxy roles
@@ -28,19 +33,22 @@
   pre_tasks:
     #fix recreation of munge key
     - shell: rm -rf /tmp/slurm /etc/munge/munge.key
+      when: install_galaxy
 
   roles:
     #installs system package requirements
     - role: galaxyprojectdotorg.galaxy-os
       configure_docker: no
-      galaxy_user_name: "{{ galaxy_user }}"
+      when: install_galaxy
     
     #move postgresql db to a persistent dir and symlinks to galaxy
     #- role: postgresql.movedb
+    #  when: install_galaxy
 
     #check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_dir)
     #- role: galaxy.movedata
     #  check_galaxy_data: yes
+    #  when: install_galaxy
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
@@ -52,6 +60,7 @@
           owner: "{{ galaxy_user }}"
       sudo: yes
       sudo_user: postgres
+      when: install_galaxy
 
     #installs galaxy
     - role: galaxyprojectdotorg.galaxy
@@ -64,7 +73,6 @@
       galaxy_changeset_id: master
       galaxy_vcs: git
       galaxy_venv_dir: "{{ galaxy_venv }}"
-      galaxy_server_dir: "{{ galaxy_dir }}"
       galaxy_config:
         "app:main":
           admin_users: "{{ galaxy_admin }}"
@@ -91,6 +99,7 @@
           processes: "{{ galaxy_web_processes }}"
       sudo: yes
       sudo_user: "{{ galaxy_user }}"
+      when: install_galaxy
 
     #installs nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
@@ -116,6 +125,7 @@
       supervisor_manage_docker: false
       supervisor_manage_nodeproxy: false
       supervisor_manage_ie_proxy: false      
+      when: install_galaxy
 
     #fix proftpd config file, restarts supervisor
     - role: artimed_extras
@@ -133,12 +143,17 @@
       galaxy_user_uid: "{{ galaxy_user_uid }}"
       sql_pwd: "SHA256 10000 24"
       sql_alt: "sql:/GetUserSalt"
-
+      when: install_galaxy
+      
     #check if tool-data persisted on galaxy (it does nothing if galaxy_data == galaxy_dir)
     #- role: galaxy.movedata
     #  check_tool_data: yes
-    
-#  tasks:
-#    - name: "Install NGS tools"
-#      include: tools.yml
-#      when: install_tools
+    #  when: install_galaxy
+
+    - role: galaxyprojectdotorg.galaxy-tools #The default tools are listed in the file files/artimed_tool_list.yaml
+      galaxy_tools_api_key: "{{ galaxy_api }}"
+      galaxy_tools_admin_user: "{{ galaxy_admin }}"
+      galaxy_tools_galaxy_instance_url: "localhost:{{ galaxy_port }}"
+      galaxy_tools_tool_list_files: [ "{{ galaxy_tools }}" ]
+      galaxy_venv_dir: "{{ galaxy_venv }}"
+      when: install_tools
