@@ -8,6 +8,6 @@ The following individuals have contributed code to ansible-artimed:
 
 # Institutional sponsors
 
-Institut Universitaire d'Ingénierie et Santé (IUIS)
-Université Paris 6 Pierre et Marie Curie
-Centre National de la Recherche Scientifique (CNRS)
+* Institut Universitaire d'Ingénierie et Santé (IUIS)
+* Université Paris 6 Pierre et Marie Curie
+* Centre National de la Recherche Scientifique (CNRS)
