@@ -70,4 +70,4 @@ If you want change it or do your on list, just follow the format of this file, t
 - The panel id should be preceded by the tag "tool_panel_section_id" placed in the third column of the line.
 - The panel name should be preceded by the tag "tool_panel_section_name" placed in the third column of the line.
 
-For more options, please see the file https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/tool_list.yaml.sample.
+For more options, please see the file https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/tool_list.yaml.sample. 
