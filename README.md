@@ -16,14 +16,14 @@ If you may need to include the path to the ssh [--private-key path_to_private_ke
 ```
 ansible-playbook -u targetuser --private-key path_to_private_key -i "targethost," galaxy.yml -vvvv
 ```
-Galaxy will be available on http port 80 (proxy NGINX) on the "targethost" ip.
+Galaxy will be available on http port 80 (proxy NGINX) on the "targethost" IP.
 
 # Installing Galaxy NGS tools
 This procedure assumes Galaxy has already been installed and configured (for instance with the procedures described above).
 If you want to install galaxy tools, change the "targethost" and "targetuser" for the IP and user of the target machine, respectively, and execute: 
 ```
 cd ansible-artimed
-ansible-playbook -u targetuser -i "targethost," tools.yml -vvvv
+ansible-playbook -u targetuser -i "targethost," -e "INSTALL_GALAXY=False INSTALL_TOOLS=True" galaxy.yml -vvvv
 ```
 
 # Alternative install - Vagrant
@@ -35,7 +35,7 @@ vagrant up
 Beware that vagrant redirect some ports from the guest machine to the host machine. 
 Therefore, if this ports are already in use, you must change the ports specified in the Vagrantfile to other ports.
 After "ssh" to the virtual machine, execute the same procedure described in the beginning of this text. 
-Galaxy will be available in http port 8080 on the host network ip where the guest was installed if you did not changed it in the Vagrantfile. FTP server will be on 2121.
+Galaxy will be available in http port 8080 on the host network IP where the guest was installed if you did not changed it in the Vagrantfile. FTP server will be on 2121.
 
 # Troubleshooting
 The installation of postgresql might fail due to non-standard locale settings that can be propagated by ssh (found on ubuntu systems).
@@ -48,7 +48,7 @@ It will configure the language environment variables and reinstall postgresql.
 The two playbooks have some parameters those default values can be modified by using ansible-playbook parameter "-e" (see https://docs.ansible.com/ansible/playbooks_variables.html#passing-variables-on-the-command-line).
 
 For galaxy.yml, the parameters are:
-- INSTALL_HOSTNAME - The public network address (ip or full domain name) where the galaxy server will be installed.
+- INSTALL_HOSTNAME - The public network address (IP or full domain name) where the galaxy server will be installed.
 - GALAXY_USER - The Operating System user name for galaxy process.
 - GALAXY_ADMIN - The admin galaxy user.
 - FTP_PORT - The ftp port for the proftpd service.
@@ -56,8 +56,6 @@ For galaxy.yml, the parameters are:
 - GALAXY_DATA - The persistent directory where the galaxy config and database directories will be installed or will be recovered (still in dev). 
 - GALAXY_DATABASE - The persistent directory where postgresql will be installed or will be recovered (still in dev).
 - GALAXY_DB_CONN - Connection string for galaxy-postgresql.
-
-For tools.yml, the parameters are:
-- GALAXY_USER, GALAXY_ADMIN, GALAXY_KEY and GALAXY_DATA are the same described above.
-- GALAXY_PORT - The http port were galaxy site will be provided by nginx.
-- GALAXY_TOOLS - the files that constants the list of tools to be installed (see file https://github.com/ARTbio/ansible-artimed/blob/master/roles/artimed_extras/files/artimed_tool_list.yaml).
+- GALAXY_TOOLS - The file that constants the list of tools to be installed (see file https://github.com/ARTbio/ansible-artimed/blob/master/roles/artimed_extras/files/artimed_tool_list.yaml).
+- INSTALL_GALAXY - Installs galaxy if True.
+- INSTALL_TOOLS - Installs galaxy tools if True.
