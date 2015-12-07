@@ -2,7 +2,7 @@
   * The target Operating System must be a Ubuntu Trusty 64 bits ( it might work on other Debian systems, untested).
   * The target instance must have at least 4GB of RAM.
   * The target user must have sudo rights.
-  * You need Ansible >= 1.8 (www.ansible.com) on the machine on which you run the playbook.
+  * You need git and Ansible >= 1.8 (www.ansible.com) on the machine on which you run the playbook.
   
 # Ansible Galaxy instance
 To deploy you will need ssh access to an account that can do passwordless sudo.
@@ -12,11 +12,11 @@ git clone --recursive https://github.com/ARTbio/ansible-artimed.git
 cd ansible-artimed
 ansible-playbook -u targetuser -i "targethost," galaxy.yml -vvvv
 ```
-If you may need to include the path to the ssh [--private-key path_to_private_key] if it is not the system's default key (optional).
+You need to include the path to the ssh private key [--private-key path_to_private_key] if it is not the system's default key:
 ```
 ansible-playbook -u targetuser --private-key path_to_private_key -i "targethost," galaxy.yml -vvvv
 ```
-Galaxy will be available on http port 80 (proxy NGINX) on the "targethost" ip.
+Galaxy will be available on http port 80 (proxy NGINX) on the "targethost" IP.
 
 # Installing Galaxy NGS tools
 This procedure assumes Galaxy has already been installed and configured (for instance with the procedures described above).
