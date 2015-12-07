@@ -19,6 +19,7 @@
 - name: Give postgres access to galaxy_database directory chain
   file: path=/{{ galaxy_database_items[1] }} mode=0755 group=users #recurse=yes
 #  with_items: "{{ galaxy_database_items }}"
+  when: galaxy_database_items[1] is defined
 
 - name: Postgresql version
   shell: ls -C1 /etc/postgresql/

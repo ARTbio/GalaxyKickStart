@@ -14,7 +14,7 @@
       galaxy_tools_galaxy_instance_url: "localhost:{{ GALAXY_PORT|default('80') }}"
       galaxy_tools_tool_list_files: [ "{{ GALAXY_TOOLS|default('roles/artimed_extras/files/artimed_tool_list.yaml') }}" ]
       #persintent data
-      galaxy_config_file: "{{ GALAXY_DATA|default('/galaxy_data') }}/config/galaxy.ini"
+      galaxy_config_file: "{{ GALAXY_DATA|default('/home/galaxy/galaxy') }}/config/galaxy.ini"
       #vars
       galaxy_server_dir: "/home/{{ galaxy_user_name }}/{{ galaxy_user_name }}"
       

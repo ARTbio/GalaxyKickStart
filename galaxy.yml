@@ -3,19 +3,19 @@
 
   vars:
     #params
-    galaxy_hostname: "{{ INSTALL_HOSTNAME|default('localhost') }}" #upgrade: automaticlly dicovers the public ip
+    galaxy_hostname: "{{ INSTALL_HOSTNAME|default('localhost') }}" #next upgrade: automaticlly dicovers the public ip
     galaxy_user: "{{ GALAXY_USER|default('galaxy') }}"
+    galaxy_dir: "{{ GALAXY_DIR|default('/home/galaxy/galaxy') }}"
     galaxy_admin: "{{ GALAXY_ADMIN|default('artimed@gmail.com') }}"
     ftp_port: "{{ FTP_PORT|default('21') }}"
     galaxy_api: "{{ GALAXY_KEY|default('379ab2a47d714a74b5cee4081703368e') }}"
     #persistent params
-    galaxy_data: "{{ GALAXY_DATA|default('/galaxy_data') }}"
-    galaxy_database: "{{ GALAXY_DATABASE|default('/galaxy_database') }}"
+    galaxy_data: "{{ GALAXY_DATA|default('/home/galaxy/galaxy') }}"
+    galaxy_database: "{{ GALAXY_DATABASE|default('/home/galaxy_database') }}"
     galaxy_db: "{{ GALAXY_DB_CONN|default('postgresql:///{{ galaxy_user }}?host=/var/run/postgresql') }}" # Used by galaxy roles
     #globals
     galaxy_port: 80
     galaxy_user_uid: 1005 # Used by galaxy role and proftpd include
-    galaxy_dir: "/home/{{ galaxy_user }}/{{ galaxy_user }}" # Used by galaxy roles
     galaxy_venv: "{{ galaxy_dir }}/.venv" # Used by galaxy and galaxy-extras roles
     #persistent data
     galaxy_ftp: "{{ galaxy_data }}/database/ftp" # Used by artimed_extras and galaxy roles
@@ -36,11 +36,11 @@
       galaxy_user_name: "{{ galaxy_user }}"
     
     #move postgresql db to a persistent dir and symlinks to galaxy
-    - role: postgresql.movedb
+    #- role: postgresql.movedb
 
     #check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_dir)
-    - role: galaxy.movedata
-      check_galaxy_data: yes
+    #- role: galaxy.movedata
+    #  check_galaxy_data: yes
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
@@ -82,8 +82,8 @@
           nginx_upload_path: "/_upload"
           welcome_url: "/static/welcome.html"
         "uwsgi":
-          stats: "{{ galaxy_hostname }}:9191"
-          socket: "{{ galaxy_hostname }}:4001"
+          stats: "localhost:9191"
+          socket: "localhost:4001"
           master: True
           logto: "{{ galaxy_data }}/uwsgi.log"
           pythonpath: lib
@@ -135,8 +135,8 @@
       sql_alt: "sql:/GetUserSalt"
 
     #check if tool-data persisted on galaxy (it does nothing if galaxy_data == galaxy_dir)
-    - role: galaxy.movedata
-      check_tool_data: yes
+    #- role: galaxy.movedata
+    #  check_tool_data: yes
     
 #  tasks:
 #    - name: "Install NGS tools"
