@@ -1,38 +1,31 @@
-#- name: "Activate custom toolsheds."
-#  copy: src=tool_sheds_conf.xml dest={{ galaxy_config_dir }}
-
 - name: Create proftpd dir
   file: path="{{ galaxy_ftp }}" state=directory mode=0777
   sudo: yes
   sudo_user: "{{ galaxy_user }}"
 
-- name: Create Proftpd configuration file
-  template: src=proftpd.conf.j2 dest={{ proftpd_conf_path }}
+- name: Manage templates for galaxy and proftpd
+  template: src={{ item.src }} dest={{ item.dest }} backup=no
+  with_items:
+    - { src: "welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
+    - { src: "tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+    - { src: "proftpd.conf.j2", dest: "{{ proftpd_conf_path }}" }
 
-#got an error in my IFB instance, even when the service is sucessifully restarted
-#- name: "Restart supervisor"
-#  service: name=supervisor state=restarted
-
-#does nothing
-#- name: "Restart supervisor processes"
-#  supervisorctl: name=all state=restarted
-
-#no need to restart all supervisor processes
-#- name: "Restart supervisor processes"
-#  shell: supervisorctl restart all
+- name:  Provide Galaxy images for the homepage
+  copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy
+  with_items:
+    - { src: "ARTiMED_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+    - { src: "logo_iuis_UPMC_UTC.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }
 
 - name: Restart proftpd
   supervisorctl: name=proftpd state=restarted
 
-- name: Manage available tool sheds 
-  template: src=tool_sheds_conf.xml.j2 dest={{ galaxy_config_dir }} backup=yes
+#- name: Create Proftpd configuration file
+#  template: src=proftpd.conf.j2 dest={{ proftpd_conf_path }}
 
-- name: Activate custom welcome.html
-  template: src=welcome.html.j2 dest={{ galaxy_server_dir }}/static/ backup=yes
+#- name: Manage available tool sheds 
+#  template: src=tool_sheds_conf.xml.j2 dest={{ galaxy_config_dir }} backup=yes
 
-- name: Create Galaxy images
-  template: src=ARTiMED_logo.png.j2 dest={{ galaxy_server_dir }}/static/images/ backup=no
+#- name: Activate custom welcome.html
+#  template: src=welcome.html.j2 dest={{ galaxy_server_dir }}/static/ backup=yes
 
-- name: Create Galaxy images
-  template: src=logo_iuis_UPMC_UTC.jpg.j2 dest={{ galaxy_server_dir }}/static/images/ backup=no
-  
+
