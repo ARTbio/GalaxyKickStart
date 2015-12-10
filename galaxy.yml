@@ -88,7 +88,6 @@
           nginx_x_archive_files_base: "/_x_accel_redirect"
           nginx_upload_store: "/tmp"
           nginx_upload_path: "/_upload"
-          welcome_url: "/static/welcome.html"
         "uwsgi":
           stats: "localhost:9191"
           socket: "localhost:4001"

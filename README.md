@@ -62,4 +62,4 @@ For galaxy.yml, the parameters are:
 
 #Format of the galaxy tools
 The file https://github.com/ARTbio/ansible-artimed/blob/master/roles/artimed_extras/files/artimed_tool_list.yaml contains a default list of NGS tools.
-If you want change it or do your on list, please see the file https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/tool_list.yaml.sample.
+If you want change it or do your own list, please see the file https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/tool_list.yaml.sample.

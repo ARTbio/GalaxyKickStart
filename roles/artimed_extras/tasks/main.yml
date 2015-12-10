@@ -23,3 +23,16 @@
 
 - name: "Restart proftpd"
   supervisorctl: name=proftpd state=restarted
+
+- name: Create Galaxy tools 
+  template: src=tool_sheds_conf.xml.j2 dest={{ galaxy_config_dir }} backup=yes
+
+- name: Create Galaxy webpage
+  template: src=welcome.html.j2 dest={{ galaxy_server_dir }}/static/ backup=yes
+
+- name: Create Galaxy images
+  template: src=ARTiMED_logo.png.j2 dest={{ galaxy_server_dir }}/static/images/ backup=no
+
+- name: Create Galaxy images
+  template: src=logo_iuis_UPMC_UTC.jpg.j2 dest={{ galaxy_server_dir }}/static/images/ backup=no
+  
