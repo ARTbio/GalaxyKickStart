@@ -2,6 +2,10 @@
   sudo: yes
 
   vars:
+    #install options
+    install_galaxy: "{{ INSTALL_GALAXY|default('True') }}"
+    install_tools: "{{ INSTALL_TOOLS|default('False') }}"
+    run_dm: "{{ RUN_DM|default('False') }}"
     #params
     galaxy_hostname: "{{ INSTALL_HOSTNAME|default('localhost') }}"
     galaxy_user: "{{ GALAXY_USER|default('galaxy') }}" 
@@ -9,9 +13,8 @@
     galaxy_admin: "{{ GALAXY_ADMIN|default('artimed@gmail.com') }}"
     ftp_port: "{{ FTP_PORT|default('21') }}"
     galaxy_api: "{{ GALAXY_KEY|default('379ab2a47d714a74b5cee4081703368e') }}"
-    install_galaxy: "{{ INSTALL_GALAXY|default('True') }}"
-    install_tools: "{{ INSTALL_TOOLS|default('False') }}"
     galaxy_tools: "{{ GALAXY_TOOLS|default('roles/artimed_extras/files/artimed_tool_list.yaml') }}"
+    galaxy_data_managers: "{{ GALAXY_DM|default('data_managers.yaml') }}"
     #persistent params
     galaxy_data: "{{ GALAXY_DATA|default('/home/galaxy/galaxy') }}"
     galaxy_database: "{{ GALAXY_DATABASE|default('/home/galaxy_database') }}"
@@ -125,22 +128,10 @@
       supervisor_manage_ie_proxy: false      
       when: install_galaxy
 
-    #fix proftpd config file, restarts supervisor
+    #fix proftpd config file, restarts supervisor, put the test tool shed in the list and create a welcome page
     - role: artimed_extras
+      run_extras: true
       pbkdf2: true
-      proftpd_conf_path:  "/etc/proftpd/proftpd.conf"
-      proftpd_welcome: "Galaxy ARTiMED FTP server!"
-      encoding: "base64"
-      proftpd_db_connection: "{{ galaxy_user }}@localhost"
-      proftpd_db_username: "{{ galaxy_user }}"
-      proftpd_db_password: "{{ galaxy_user }}"
-      auth_type: "PBKDF2"
-      sql_query_user: "SELECT \"email, (CASE WHEN substring(password from 1 for 6) = 'PBKDF2' THEN substring(password from 38 for 69) ELSE password END) AS password2,512,512,'{{ galaxy_ftp }}/%U','/bin/bash' FROM galaxy_user WHERE email='%U'\""
-      sql_query_alt: "SELECT \"(CASE WHEN SUBSTRING (password from 1 for 6) = 'PBKDF2' THEN SUBSTRING (password from 21 for 16) END) AS salt FROM galaxy_user WHERE email='%U'\""
-      galaxy_user_gid: "{{ galaxy_user_uid }}"
-      galaxy_user_uid: "{{ galaxy_user_uid }}"
-      sql_pwd: "SHA256 10000 24"
-      sql_alt: "sql:/GetUserSalt"
       when: install_galaxy
       
     #check if tool-data persisted on galaxy (it does nothing if galaxy_data == galaxy_dir)
@@ -155,3 +146,8 @@
       galaxy_tools_tool_list_files: [ "{{ galaxy_tools }}" ]
       galaxy_venv_dir: "{{ galaxy_venv }}"
       when: install_tools
+
+    #Run data managers
+    - role: artimed_extras
+      run_data_managers: true
+      when: run_dm
