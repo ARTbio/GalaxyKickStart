@@ -1,0 +1,5 @@
+dbkeys:
+- dbkey: "hg19"
+  genome_version: "Human Feb. 2009 (GRCh37/hg19) (hg19)"
+data_managers:
+- id: "data_manager_fetch_genome_dbkeys_all_fasta"
