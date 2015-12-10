@@ -59,3 +59,7 @@ For galaxy.yml, the parameters are:
 - GALAXY_TOOLS - The file that constants the list of tools to be installed (see file https://github.com/ARTbio/ansible-artimed/blob/master/roles/artimed_extras/files/artimed_tool_list.yaml).
 - INSTALL_GALAXY - Installs galaxy if True.
 - INSTALL_TOOLS - Installs galaxy tools if True.
+
+#Format of the galaxy tools
+The file https://github.com/ARTbio/ansible-artimed/blob/master/roles/artimed_extras/files/artimed_tool_list.yaml contains a default list of NGS tools.
+If you want change it or do your own list, please see the file https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/tool_list.yaml.sample.

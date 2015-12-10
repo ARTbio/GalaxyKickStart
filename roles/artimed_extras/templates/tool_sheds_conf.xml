@@ -2,5 +2,4 @@
 <tool_sheds>
     <tool_shed name="Galaxy Main Tool Shed" url="https://toolshed.g2.bx.psu.edu/"/>
     <tool_shed name="Galaxy Test Tool Shed" url="https://testtoolshed.g2.bx.psu.edu/"/> 
-    <tool_shed name="lbcd41" url="http://lbcd41.snv.jussieu.fr/toolshed/"/> 
 </tool_sheds>
