@@ -13,7 +13,7 @@ Second, change "targethost" (located in the second line of the file ansible-arti
 Finally, customize any other variables, if necessary, and execute:
 ```
 cd ansible-artimed
-ansible-playbook -i host galaxy.yml
+ansible-playbook -i hosts galaxy.yml
 ```
 If you may need to include the path to your ssh private key change the value of the variable "ansible_ssh_private_key_file" in the ansible-artimed/hosts.
 This procedure will install Galaxy on the target host (refered by the IP on the second line of the file hosts).
