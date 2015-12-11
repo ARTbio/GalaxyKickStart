@@ -1,7 +1,7 @@
 - name: Create proftpd dir
   file: path="{{ galaxy_ftp }}" state=directory mode=0777
   sudo: yes
-  sudo_user: "{{ galaxy_user }}"
+  sudo_user: "{{ galaxy_user_name }}"
 
 - name: Manage templates for galaxy and proftpd
   template: src={{ item.src }} dest={{ item.dest }} backup=no
