@@ -5,7 +5,7 @@
   * You need git and Ansible >= 1.8 (www.ansible.com) on the machine on which you run the playbook.
   
 # Ansible Galaxy instance and NGS tools
-To deploy Galaxy first, clone this repository by executing:
+To deploy Galaxy, first clone this repository by executing:
 ```
 git clone --recursive https://github.com/ARTbio/ansible-artimed.git
 ```
@@ -31,7 +31,7 @@ If you want to provide your own list of tools, change the value of the variable 
 
 # Alternative install - Vagrant
 Before continue you must install Vagrant (www.vagrantup.com) and a vagrant compatible Virtual Box (www.virtualbox.org).
-Execute the first script of this readme and execute:
+After execute:
 ```
 vagrant up
 ```
@@ -45,13 +45,13 @@ The installation of postgresql might fail due to non-standard locale settings th
 If you are using Ubuntu on your ansible machine, make sure that you deactivate `SendEnv LANG LC_*` in /etc/ssh_config.
 
 #Important variables
-The files ansible-artimed/hosts contains various important variables and the respectives default values, so you can change it as necessary.
+The files ansible-artimed/hosts contains various important variables and the respective default values, so you can change it as necessary.
 Here we list the function of each one of them by the order of apperence:
 - ansible_ssh_user - The login name used to access the target host.
 - ansible_ssh_private_key_file - The ssh private key used to access the target host.
-- install_galaxy - True for install a Galaxy instace.
+- install_galaxy - True for install a Galaxy instance.
 - install_tools - True for install the NGS tools.
-- run_dm - True for run the data maanager procedure.
+- run_dm - True for run the data manager procedure.
 - galaxy_user_name - The Operating System user name for galaxy process.
 - galaxy_server_dir - The home of Operating System user for galaxy process.
 - galaxy_admin - The admin galaxy user.
