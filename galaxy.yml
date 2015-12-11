@@ -2,26 +2,11 @@
   sudo: yes
 
   vars:
-    #install options
-#    install_galaxy: "{{ INSTALL_GALAXY|default('True') }}"
-#    install_tools: "{{ INSTALL_TOOLS|default('False') }}"
-#    run_dm: "{{ RUN_DM|default('False') }}"
-    #params
-#    galaxy_hostname: "{{ INSTALL_HOSTNAME|default(inventory_hostname) }}"
-#    galaxy_user_name: "{{ GALAXY_USER|default('galaxy') }}" 
-#    galaxy_server_dir: "{{ GALAXY_DIR|default('/home/{{ galaxy_user_name }}/{{ galaxy_user_name }}') }}" 
-#    galaxy_admin: "{{ GALAXY_ADMIN|default('artimed@gmail.com') }}"
-#    ftp_port: "{{ FTP_PORT|default('21') }}"
-#    galaxy_api: "{{ GALAXY_KEY|default('379ab2a47d714a74b5cee4081703368e') }}"
-#    galaxy_tools: "{{ GALAXY_TOOLS|default('roles/artimed_extras/files/artimed_tool_list.yaml') }}"
-#    galaxy_data_managers: "{{ GALAXY_DM|default('data_managers.yaml') }}"
-    #persistent params
-#    galaxy_data: "{{ GALAXY_DATA|default('/home/galaxy/galaxy') }}"
-#    galaxy_database: "{{ GALAXY_DATABASE|default('/home/galaxy_database') }}"
-#    galaxy_db: "{{ GALAXY_DB_CONN|default('postgresql:///{{ galaxy_user_name }}?host=/var/run/postgresql') }}"
     #globals
-    galaxy_port: 80
-    galaxy_user_uid: 1005 # Used by galaxy role and proftpd include
+    galaxy_hostname: "{{ inventory_hostname }}"
+    galaxy_port: "80" # Used by galaxy and galaxy-tools roles
+    ftp_port: "21" # Used by galaxy role
+    galaxy_user_uid: "1005" # Used by galaxy role and proftpd include
     galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv" # Used by galaxy and galaxy-tools roles 
     #persistent data
     galaxy_ftp: "{{ galaxy_data }}/database/ftp" # Used by artimed_extras and galaxy roles
