@@ -126,8 +126,3 @@
       galaxy_tools_galaxy_instance_url: "localhost:{{ galaxy_port }}"
       galaxy_tools_tool_list_files: [ "{{ galaxy_tools }}" ]
       when: install_tools
-
-    #Run data managers
-    - role: artimed_extras
-      run_data_managers: true
-      when: run_dm
