@@ -11,4 +11,6 @@
   copy: src={{ galaxy_data_managers }} dest={{ galaxy_tools_base_dir }}/
 
 - name: Run data managers
-  command: chdir={{ galaxy_tools_base_dir }} {{ galaxy_tools_base_dir }}/venv/bin/python galaxy_data_managers.py -d {{ galaxy_data_managers }} -a {{ galaxy_master_api_key }} -g localhost
+  command: chdir={{ galaxy_tools_base_dir }} {{ galaxy_tools_base_dir }}/venv/bin/python galaxy_data_managers.py -d {{ galaxy_data_managers }} -a b1a01a4077af1a99d8572f830f086485 -g localhost
+#  command: chdir={{ galaxy_tools_base_dir }} {{ galaxy_tools_base_dir }}/venv/bin/python galaxy_data_managers.py -d {{ galaxy_data_managers }} -a {{ galaxy_admin_api_key }} -g localhost
+  
