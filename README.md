@@ -1,7 +1,7 @@
 # Requirements
   * The target Operating System must be a Ubuntu Trusty 64 bits ( it might work on other Debian systems, untested).
   * The target instance must have at least 4GB of RAM.
-  * You need ssh access to an account that can do sudo shell commands.
+  * The target user must have sudo rights.
   * You need git and Ansible >= 1.8 (www.ansible.com) on the machine on which you run the playbook.
   
 # Ansible Galaxy instance and NGS tools
@@ -30,7 +30,7 @@ If you want to provide your own list of tools, change the value of the variable 
 
 # Alternative install - Vagrant
 Before continue you must install Vagrant (www.vagrantup.com) and a vagrant compatible Virtual Box (www.virtualbox.org).
-After execute:
+Bring up a vagrant machine using:
 ```
 vagrant up
 ```
