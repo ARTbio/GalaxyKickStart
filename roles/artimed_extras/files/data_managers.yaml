@@ -3,4 +3,4 @@ dbkeys:
   genome_version: "Human Feb. 2009 (GRCh37/hg19) (hg19)"
 data_managers:
 - id: "toolshed.g2.bx.psu.edu/repos/devteam/data_manager_fetch_genome_all_fasta/data_manager_fetch_genome_all_fasta/0.0.1"
-- id: "toolshed.g2.bx.psu.edu/repos/devteam/data_manager_fetch_genome_all_fasta/data_manager_fetch_genome_all_fasta/0.0.1"
+- id: "toolshed.g2.bx.psu.edu/repos/devteam/data_manager_fetch_genome_dbkeys_all_fasta/data_manager_fetch_genome_dbkeys_all_fasta/0.0.1"
