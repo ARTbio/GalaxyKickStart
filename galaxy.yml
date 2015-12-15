@@ -123,3 +123,8 @@
       galaxy_tools_galaxy_instance_url: "localhost"
       galaxy_tools_tool_list_files: [ "{{ galaxy_tool_list }}" ]
       when: install_tools
+
+    #Run data managers
+    - role: artimed_extras
+      run_data_managers: true
+      when: run_dm
