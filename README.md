@@ -4,31 +4,33 @@
   * The target user must have sudo rights.
   * You need git and Ansible >= 1.8 (www.ansible.com) on the machine on which you run the playbook.
   
-# Ansible Galaxy instance
-To deploy you will need ssh access to an account that can do passwordless sudo.
-In the below command change the "targethost" for the IP of the target machine, "targetuser" for the remote user and execute:
+# Ansible Galaxy instance and NGS tools
+To deploy Galaxy, first clone this repository by executing:
 ```
 git clone --recursive https://github.com/ARTbio/ansible-artimed.git
+```
+Then, if you are targeting a remote machine, adapt the inventory (a sample can be found in the hosts file) and execute:
+```
 cd ansible-artimed
-ansible-playbook -u targetuser -i "targethost," galaxy.yml -vvvv
+ansible-playbook -i hosts galaxy.yml
 ```
-You need to include the path to the ssh private key [--private-key path_to_private_key] if it is not the system's default key:
-```
-ansible-playbook -u targetuser --private-key path_to_private_key -i "targethost," galaxy.yml -vvvv
-```
-Galaxy will be available on http port 80 (proxy NGINX) on the "targethost" IP.
+If the ssh key for the target machine is not the default ssh key, add its path to the "ansible_ssh_private_key_file" in the inventory hosts file.
+This procedure will install Galaxy on the target host (refered by the IP on the second line of the file hosts).
+Galaxy will be available on http port 80 (proxy NGINX) on the target host IP.
 
-# Installing Galaxy NGS tools
+# Installing only Galaxy NGS tools
 This procedure assumes Galaxy has already been installed and configured (for instance with the procedures described above).
-If you want to install galaxy tools, change the "targethost" and "targetuser" for the IP and user of the target machine, respectively, and execute: 
+To install only NGS tools on a Galaxy instance, change the value of the variable "install_galaxy" to "False" (located in the file ansible-artimed/hosts) and execute:
 ```
-cd ansible-artimed
-ansible-playbook -u targetuser -i "targethost," -e "INSTALL_GALAXY=False INSTALL_TOOLS=True" galaxy.yml -vvvv
+ansible-playbook -i host galaxy.yml
 ```
+Note that the file https://github.com/ARTbio/ansible-artimed/blob/master/roles/artimed_extras/files/artimed_tool_list.yaml contains the default list of NGS tools to be installed.
+Therefore, if you want change it, please see the file https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/tool_list.yaml.sample for instructions.
+If you want to provide your own list of tools, change the value of the variable "galaxy_tool_list" in ansible-artimed/hosts.
 
 # Alternative install - Vagrant
 Before continue you must install Vagrant (www.vagrantup.com) and a vagrant compatible Virtual Box (www.virtualbox.org).
-Execute the first script of this readme and execute:
+Bring up a vagrant machine using:
 ```
 vagrant up
 ```
@@ -41,25 +43,20 @@ Galaxy will be available in http port 8080 on the host network IP where the gues
 The installation of postgresql might fail due to non-standard locale settings that can be propagated by ssh (found on ubuntu systems).
 If you are using Ubuntu on your ansible machine, make sure that you deactivate `SendEnv LANG LC_*` in /etc/ssh_config.
 
-Alternatively, execute the file https://gist.github.com/fabiorjvieira/8672f445baf887eb5318 on the target machine and re-execute the Galaxy installation procedure.
-It will configure the language environment variables and reinstall postgresql.
-
 #Important variables
-The two playbooks have some parameters those default values can be modified by using ansible-playbook parameter "-e" (see https://docs.ansible.com/ansible/playbooks_variables.html#passing-variables-on-the-command-line).
-
-For galaxy.yml, the parameters are:
-- INSTALL_HOSTNAME - The public network address (IP or full domain name) where the galaxy server will be installed.
-- GALAXY_USER - The Operating System user name for galaxy process.
-- GALAXY_ADMIN - The admin galaxy user.
-- FTP_PORT - The ftp port for the proftpd service.
-- GALAXY_KEY - The api key for tool installation.
-- GALAXY_DATA - The persistent directory where the galaxy config and database directories will be installed or will be recovered (still in dev). 
-- GALAXY_DATABASE - The persistent directory where postgresql will be installed or will be recovered (still in dev).
-- GALAXY_DB_CONN - Connection string for galaxy-postgresql.
-- GALAXY_TOOLS - The file that constants the list of tools to be installed (see file https://github.com/ARTbio/ansible-artimed/blob/master/roles/artimed_extras/files/artimed_tool_list.yaml).
-- INSTALL_GALAXY - Installs galaxy if True.
-- INSTALL_TOOLS - Installs galaxy tools if True.
-
-#Format of the galaxy tools
-The file https://github.com/ARTbio/ansible-artimed/blob/master/roles/artimed_extras/files/artimed_tool_list.yaml contains a default list of NGS tools.
-If you want change it or do your own list, please see the file https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/tool_list.yaml.sample.
+The file ansible-artimed/hosts contains various important variables that may be adapated, so you can change it as necessary.
+These variables are:
+- ansible_ssh_user - The login name used to access the target host.
+- ansible_ssh_private_key_file - The ssh private key used to access the target host.
+- install_galaxy - True for install a Galaxy instance.
+- install_tools - True for install the NGS tools.
+- run_dm - True for run the data manager procedure.
+- galaxy_user_name - The Operating System user name for galaxy process.
+- galaxy_server_dir - The home of Operating System user for galaxy process.
+- galaxy_admin - The admin galaxy user.
+- galaxy_api - The api key for tool installation.
+- galaxy_tool_list - The files that constants the list of tools to be installed.
+- galaxy_data_managers - The reference genomes and indexes to be load and build.
+- galaxy_data - The persistent directory where the galaxy config and database directories will be installed or will be recovered.
+- galaxy_database - The persistent directory where postgresql will be installed or will be recovered.
+- galaxy_db - Connection string for galaxy-postgresql.

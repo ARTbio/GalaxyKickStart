@@ -2,26 +2,9 @@
   sudo: yes
 
   vars:
-    #params
-    galaxy_hostname: "{{ INSTALL_HOSTNAME|default('localhost') }}"
-    galaxy_user: "{{ GALAXY_USER|default('galaxy') }}" 
-    galaxy_dir: "{{ GALAXY_DIR|default('/home/galaxy/galaxy') }}" 
-    galaxy_admin: "{{ GALAXY_ADMIN|default('artimed@gmail.com') }}"
-    ftp_port: "{{ FTP_PORT|default('21') }}"
-    galaxy_api: "{{ GALAXY_KEY|default('379ab2a47d714a74b5cee4081703368e') }}"
-    install_galaxy: "{{ INSTALL_GALAXY|default('True') }}"
-    install_tools: "{{ INSTALL_TOOLS|default('False') }}"
-    galaxy_tools: "{{ GALAXY_TOOLS|default('roles/artimed_extras/files/artimed_tool_list.yaml') }}"
-    #persistent params
-    galaxy_data: "{{ GALAXY_DATA|default('/home/galaxy/galaxy') }}"
-    galaxy_database: "{{ GALAXY_DATABASE|default('/home/galaxy_database') }}"
-    galaxy_db: "{{ GALAXY_DB_CONN|default('postgresql:///{{ galaxy_user }}?host=/var/run/postgresql') }}"
     #globals
-    galaxy_port: 80
-    galaxy_user_uid: 1005 # Used by galaxy role and proftpd include
-    galaxy_venv: "{{ galaxy_dir }}/.venv" # Used by galaxy and galaxy-tools roles 
-    galaxy_server_dir: "{{ galaxy_dir }}" # Used by galaxy and galaxy-tools roles 
-    galaxy_user_name: "{{ galaxy_user }}" # Used by galaxy-os and galaxy-tools roles 
+    galaxy_hostname: "{{ inventory_hostname }}"
+    galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv" # Used by galaxy and galaxy-tools roles 
     #persistent data
     galaxy_ftp: "{{ galaxy_data }}/database/ftp" # Used by artimed_extras and galaxy roles
     galaxy_config_dir: "{{ galaxy_data }}/config" # Used by artimed_extras and galaxy roles
@@ -43,7 +26,7 @@
     #- role: postgresql.movedb
     #  when: install_galaxy
 
-    #check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_dir)
+    #check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
     #- role: galaxy.movedata
     #  check_galaxy_data: yes
     #  when: install_galaxy
@@ -51,11 +34,11 @@
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
       postgresql_objects_users:
-        - name: "{{ galaxy_user }}"
-          password: "{{ galaxy_user }}"
+        - name: "{{ galaxy_user_name }}"
+          password: "{{ galaxy_user_name }}"
       postgresql_objects_databases:
-        - name: "{{ galaxy_user }}"
-          owner: "{{ galaxy_user }}"
+        - name: "{{ galaxy_user_name }}"
+          owner: "{{ galaxy_user_name }}"
       sudo: yes
       sudo_user: postgres
       when: install_galaxy
@@ -70,15 +53,14 @@
       galaxy_fetch_eggs: no
       galaxy_changeset_id: master
       galaxy_vcs: git
-      galaxy_venv_dir: "{{ galaxy_venv }}"
       galaxy_config:
         "app:main":
           admin_users: "{{ galaxy_admin }}"
           database_connection: "{{ galaxy_db }}"
-          tool_dependency_dir: "{{ galaxy_dir }}/lib/tool_shed/dependencies"
-          master_api_key: "{{ galaxy_api }}"
+          tool_dependency_dir: "{{ galaxy_server_dir }}/lib/tool_shed/dependencies"
+          master_api_key: "{{ galaxy_master_api_key }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
-          ftp_upload_site: "ftp {{ galaxy_hostname }} port {{ ftp_port }}"
+          ftp_upload_site: "ftp {{ galaxy_hostname }}"
           tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
           #to be done only in production       
           #debug: False
@@ -96,15 +78,14 @@
           threads: 4
           processes: "{{ galaxy_web_processes }}"
       sudo: yes
-      sudo_user: "{{ galaxy_user }}"
+      sudo_user: "{{ galaxy_user_name }}"
       when: install_galaxy
 
     #installs nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
       supervisor_slurm_config_dir: "{{ galaxy_data }}"
-      galaxy_root: "{{ galaxy_dir }}"
+      galaxy_root: "{{ galaxy_server_dir }}"
       galaxy_log_dir: "{{ galaxy_data }}"
-      galaxy_venv_dir:  "{{ galaxy_venv }}"
       galaxy_database_connection: "{{ galaxy_db }}"
       galaxy_extras_install_packages: true
       galaxy_extras_config_nginx: true
@@ -125,33 +106,20 @@
       supervisor_manage_ie_proxy: false      
       when: install_galaxy
 
-    #fix proftpd config file, restarts supervisor
+    #fix proftpd config file, restarts supervisor, put the test tool shed in the list and create a welcome page
     - role: artimed_extras
+      run_extras: true
       pbkdf2: true
-      proftpd_conf_path:  "/etc/proftpd/proftpd.conf"
-      proftpd_welcome: "Galaxy ARTiMED FTP server!"
-      encoding: "base64"
-      proftpd_db_connection: "{{ galaxy_user }}@localhost"
-      proftpd_db_username: "{{ galaxy_user }}"
-      proftpd_db_password: "{{ galaxy_user }}"
-      auth_type: "PBKDF2"
-      sql_query_user: "SELECT \"email, (CASE WHEN substring(password from 1 for 6) = 'PBKDF2' THEN substring(password from 38 for 69) ELSE password END) AS password2,512,512,'{{ galaxy_ftp }}/%U','/bin/bash' FROM galaxy_user WHERE email='%U'\""
-      sql_query_alt: "SELECT \"(CASE WHEN SUBSTRING (password from 1 for 6) = 'PBKDF2' THEN SUBSTRING (password from 21 for 16) END) AS salt FROM galaxy_user WHERE email='%U'\""
-      galaxy_user_gid: "{{ galaxy_user_uid }}"
-      galaxy_user_uid: "{{ galaxy_user_uid }}"
-      sql_pwd: "SHA256 10000 24"
-      sql_alt: "sql:/GetUserSalt"
       when: install_galaxy
       
-    #check if tool-data persisted on galaxy (it does nothing if galaxy_data == galaxy_dir)
+    #check if tool-data persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
     #- role: galaxy.movedata
     #  check_tool_data: yes
     #  when: install_galaxy
 
     - role: galaxyprojectdotorg.galaxy-tools #The default tools are listed in the file files/artimed_tool_list.yaml
-      galaxy_tools_api_key: "{{ galaxy_api }}"
+      galaxy_tools_api_key: "{{ galaxy_master_api_key }}"
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
-      galaxy_tools_galaxy_instance_url: "localhost:{{ galaxy_port }}"
-      galaxy_tools_tool_list_files: [ "{{ galaxy_tools }}" ]
-      galaxy_venv_dir: "{{ galaxy_venv }}"
+      galaxy_tools_galaxy_instance_url: "localhost"
+      galaxy_tools_tool_list_files: [ "{{ galaxy_tool_list }}" ]
       when: install_tools
