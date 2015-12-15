@@ -54,7 +54,7 @@ These variables are:
 - galaxy_user_name - The Operating System user name for galaxy process.
 - galaxy_server_dir - The home of Operating System user for galaxy process.
 - galaxy_admin - The admin galaxy user.
-- galaxy_api - The api key for tool installation.
+- galaxy_master_api_key - The api key for tool installation.
 - galaxy_tool_list - The files that constants the list of tools to be installed.
 - galaxy_data_managers - The reference genomes and indexes to be load and build.
 - galaxy_data - The persistent directory where the galaxy config and database directories will be installed or will be recovered.
