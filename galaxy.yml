@@ -120,7 +120,7 @@
     - role: galaxyprojectdotorg.galaxy-tools #The default tools are listed in the file files/artimed_tool_list.yaml
       galaxy_tools_api_key: "{{ galaxy_master_api_key }}"
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
-      galaxy_tools_galaxy_instance_url: "localhost"
+      galaxy_tools_galaxy_instance_url: "localhost:{{ galaxy_port }}"
       galaxy_tools_tool_list_files: [ "{{ galaxy_tool_list }}" ]
       when: install_tools
 
