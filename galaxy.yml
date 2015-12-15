@@ -60,7 +60,7 @@
           tool_dependency_dir: "{{ galaxy_server_dir }}/lib/tool_shed/dependencies"
           master_api_key: "{{ galaxy_master_api_key }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
-          ftp_upload_site: "ftp {{ galaxy_hostname }} port FTP_PORT"
+          ftp_upload_site: "ftp {{ galaxy_hostname }}"
           tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
           #to be done only in production       
           #debug: False
@@ -120,6 +120,6 @@
     - role: galaxyprojectdotorg.galaxy-tools #The default tools are listed in the file files/artimed_tool_list.yaml
       galaxy_tools_api_key: "{{ galaxy_master_api_key }}"
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
-      galaxy_tools_galaxy_instance_url: "localhost:80"
+      galaxy_tools_galaxy_instance_url: "localhost"
       galaxy_tools_tool_list_files: [ "{{ galaxy_tool_list }}" ]
       when: install_tools
