@@ -1,2 +1,5 @@
 - include: extras.yml
   when: run_extras
+  
+- include: data_managers.yml
+  when: run_data_managers
