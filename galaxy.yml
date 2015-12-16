@@ -51,7 +51,7 @@
       #other vars
       galaxy_manage_database: yes
       galaxy_fetch_eggs: no
-      galaxy_changeset_id: dev
+      galaxy_changeset_id: "{{ galaxy_git_branch }}"
       galaxy_vcs: git
       galaxy_config:
         "app:main":

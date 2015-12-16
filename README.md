@@ -63,3 +63,4 @@ These variables are:
 - galaxy_data - The persistent directory where the galaxy config and database directories will be installed or will be recovered.
 - galaxy_database - The persistent directory where postgresql will be installed or will be recovered.
 - galaxy_db - Connection string for galaxy-postgresql.
+- galaxy_git_branch - Git branch of Galaxy repository.
