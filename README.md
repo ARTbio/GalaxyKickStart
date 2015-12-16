@@ -4,7 +4,7 @@
   * The target user must have sudo rights.
   * You need git and Ansible >= 1.8 (www.ansible.com) on the machine on which you run the playbook.
   
-# Ansible Galaxy instance and NGS tools
+# Ansible Galaxy instance, NGS tools and Human reference genome (hg19, hg38)
 To deploy Galaxy, first clone this repository by executing:
 ```
 git clone --recursive https://github.com/ARTbio/ansible-artimed.git
@@ -18,17 +18,16 @@ If the ssh key for the target machine is not the default ssh key, add its path t
 This procedure will install Galaxy on the target host (refered by the IP on the second line of the file hosts).
 Galaxy will be available on http port 80 (proxy NGINX) on the target host IP.
 
-# Installing only Galaxy NGS tools
+# Installing only NGS tools
 This procedure assumes Galaxy has already been installed and configured (for instance with the procedures described above).
 To install only NGS tools on a Galaxy instance, change the value of the variable "install_galaxy" to "False" (located in the file ansible-artimed/hosts) and execute the last command of the previous procedure.
 Note that the file https://github.com/ARTbio/ansible-artimed/blob/master/roles/artimed_extras/files/artimed_tool_list.yaml contains the default list of NGS tools to be installed.
 Therefore, if you want change it, please see the file https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/tool_list.yaml.sample for instructions.
 If you want to provide your own list of tools, change the value of the variable "galaxy_tool_list" in ansible-artimed/hosts.
 
-# Running Galaxy Data Managers
+# Running only Galaxy Data Managers
 This procedure assumes Galaxy has already been installed, configured and with data managers installed (for instance with the procedures described above).
-It is important to noe that playbook's current version requires you to create an api key through the web interface for the galaxy admin account and to set galaxy_admin_api_key (located in the file ansible-artimed/hosts), therefore you cannot execute all the 3 procedures of this playbook in the same run.
-To run data managers on a Galaxy instance, change the value of the variables "install_galaxy" and "install_tools" to "False", and run_dm to "True" (located in the file ansible-artimed/hosts) and execute the last command of the previous procedure.
+To run data managers on a Galaxy instance, change the value of the variables "install_galaxy" and "install_tools" to "False" (located in the file ansible-artimed/hosts), and execute the last command of the previous procedure.
 Note that file https://github.com/ARTbio/ansible-artimed/blob/master/roles/artimed_extras/files/data_managers.yaml contains the default list of reference genomes and data managers to run.
 
 # Alternative install - Vagrant
@@ -57,8 +56,8 @@ These variables are:
 - galaxy_user_name - The Operating System user name for galaxy process.
 - galaxy_server_dir - The home of Operating System user for galaxy process.
 - galaxy_admin - The admin galaxy user.
-- galaxy_admin_api_key - The api key for the download reference genomes throught galaxy data managers.
-- galaxy_master_api_key - The api key for tool installation.
+- galaxy_admin_pw - The admin galaxy password.
+- galaxy_admin_api_key - The api key for tool installation and download reference genomes throught galaxy data managers.
 - galaxy_tool_list - The files that constants the list of tools to be installed.
 - galaxy_data_managers - The reference genomes and indexes to be load and build.
 - galaxy_data - The persistent directory where the galaxy config and database directories will be installed or will be recovered.
