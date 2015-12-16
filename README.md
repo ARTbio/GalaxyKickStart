@@ -4,7 +4,7 @@
   * The target user must have sudo rights.
   * You need git and Ansible >= 1.8 (www.ansible.com) on the machine on which you run the playbook.
   
-# Ansible Galaxy instance, NGS tools and Human reference genome (hg19, hg38)
+# Ansible Galaxy instance, NGS tools and Human reference genome
 To deploy Galaxy, first clone this repository by executing:
 ```
 git clone --recursive https://github.com/ARTbio/ansible-artimed.git

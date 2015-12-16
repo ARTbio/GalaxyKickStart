@@ -1,4 +1,4 @@
-- name: Create/invoke script virtualenv
+- name: Create/invoke script virtualenv for create galaxy admin
   pip: name={{ item }} virtualenv={{ galaxy_venv_dir }} virtualenv_command="{{ pip_virtualenv_command | default( 'virtualenv' ) }}"
   with_items:
     - pyyaml

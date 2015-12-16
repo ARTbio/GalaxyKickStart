@@ -1,6 +1,7 @@
 run_extras: false
 run_data_managers: false
 pbkdf2: false
+create_galaxy_admin: false
 restart_galaxy: false
 start_galaxy: false
 stop_galaxy: false
