@@ -1,3 +1,4 @@
+#Simplification of the code presented in https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/install_tool_shed_tools.py).
 import datetime as dt
 import logging
 import time

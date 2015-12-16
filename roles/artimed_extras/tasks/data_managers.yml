@@ -1,15 +1,14 @@
 - name: Create/invoke script virtualenv
-  pip: name={{ item }} virtualenv={{ galaxy_tools_base_dir }}/venv virtualenv_command="{{ pip_virtualenv_command | default( 'virtualenv' ) }}"
+  pip: name={{ item }} virtualenv={{ galaxy_venv_dir }} virtualenv_command="{{ pip_virtualenv_command | default( 'virtualenv' ) }}"
   with_items:
     - pyyaml
     - bioblend
 
 - name: Place the data manager script
-  copy: src=galaxy_data_managers.py dest={{ galaxy_tools_base_dir }}/
+  copy: src=galaxy_data_managers.py dest={{ galaxy_dir }}
 
 - name: Copy data manager list file
-  copy: src={{ galaxy_data_managers }} dest={{ galaxy_tools_base_dir }}/
+  copy: src={{ galaxy_data_managers }} dest={{ galaxy_dir }}
 
 - name: Run data managers
-  command: chdir={{ galaxy_tools_base_dir }} {{ galaxy_tools_base_dir }}/venv/bin/python galaxy_data_managers.py -d {{ galaxy_data_managers }} -a {{ galaxy_admin_api_key }} -g localhost
-  
+  command: chdir={{ galaxy_dir }} {{ galaxy_venv_dir }}/bin/python galaxy_data_managers.py -d {{ galaxy_data_managers }} -a {{ galaxy_tools_api_key }} -g localhost

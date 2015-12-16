@@ -3,3 +3,9 @@
   
 - include: data_managers.yml
   when: run_data_managers
+
+- include: galaxy_admin.yml
+  when: create_galaxy_admin
+
+- include: supervisor_galaxy.yml
+  when: restart_galaxy or start_galaxy or stop_galaxy

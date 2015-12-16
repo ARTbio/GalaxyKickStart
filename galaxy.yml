@@ -51,14 +51,14 @@
       #other vars
       galaxy_manage_database: yes
       galaxy_fetch_eggs: no
-      galaxy_changeset_id: master
+      galaxy_changeset_id: dev
       galaxy_vcs: git
       galaxy_config:
         "app:main":
           admin_users: "{{ galaxy_admin }}"
           database_connection: "{{ galaxy_db }}"
           tool_dependency_dir: "{{ galaxy_server_dir }}/lib/tool_shed/dependencies"
-          master_api_key: "{{ galaxy_master_api_key }}"
+          master_api_key: "{{ galaxy_admin_api_key }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
           ftp_upload_site: "ftp {{ galaxy_hostname }}"
           tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
@@ -87,6 +87,7 @@
       galaxy_root: "{{ galaxy_server_dir }}"
       galaxy_log_dir: "{{ galaxy_data }}"
       galaxy_database_connection: "{{ galaxy_db }}"
+      galaxy_extras_config_scripts: true
       galaxy_extras_install_packages: true
       galaxy_extras_config_nginx: true
       galaxy_extras_config_supervisor: true
@@ -110,6 +111,7 @@
     - role: artimed_extras
       run_extras: true
       pbkdf2: true
+      create_galaxy_admin: true
       when: install_galaxy
       
     #check if tool-data persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
@@ -118,10 +120,17 @@
     #  when: install_galaxy
 
     - role: galaxyprojectdotorg.galaxy-tools #The default tools are listed in the file files/artimed_tool_list.yaml
-      galaxy_tools_api_key: "{{ galaxy_master_api_key }}"
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
+      galaxy_tools_api_key: "{{ galaxy_admin_api_key }}"
       galaxy_tools_galaxy_instance_url: "localhost:{{ galaxy_port }}"
       galaxy_tools_tool_list_files: [ "{{ galaxy_tool_list }}" ]
+      sudo: yes
+      sudo_user: "{{ galaxy_user_name }}"
+      when: install_tools
+
+    #Restart Galaxy
+    - role: artimed_extras
+      restart_galaxy: true
       when: install_tools
 
     #Run data managers

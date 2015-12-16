@@ -1,0 +1,14 @@
+- name: Restart Galaxy
+  supervisorctl: name="galaxy:" state=restarted
+  ignore_errors: yes
+  when: restart_galaxy
+
+- name: Start Galaxy
+  supervisorctl: name="galaxy:" state=started
+  ignore_errors: yes
+  when: start_galaxy
+
+- name: Stop Galaxy
+  supervisorctl: name="galaxy:" state=stopped
+  ignore_errors: yes
+  when: stop_galaxy
