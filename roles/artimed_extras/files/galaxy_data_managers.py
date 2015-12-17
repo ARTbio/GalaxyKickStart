@@ -93,25 +93,6 @@ def _parse_cli_options():
                         dest="api_key",
                         help="Galaxy admin user API key (required if not "
                              "defined in the tools list file)",)
-    parser.add_argument("-t", "--toolsfile",
-                        dest="tool_list_file",
-                        help="Tools file to use (see tool_list.yaml.sample)",)
-    parser.add_argument("--name",
-                        help="The name of the tool to install (only applicable "
-                             "if the tools file is not provided).")
-    parser.add_argument("--owner",
-                        help="The owner of the tool to install (only applicable "
-                             "if the tools file is not provided).")
-    parser.add_argument("--section",
-                        dest="tool_panel_section_id",
-                        help="Galaxy tool panel section ID where the tool will "
-                             "be installed (the section must exist in Galaxy; "
-                             "only applicable if the tools file is not provided).")
-    parser.add_argument("--toolshed",
-                        dest="tool_shed_url",
-                        help="The Tool Shed URL where to install the tool from. "
-                             "This is applicable only if the tool info is "
-                             "provided as an option vs. in the tools file.")
     return parser.parse_args()
 
 def run_data_managers(options):

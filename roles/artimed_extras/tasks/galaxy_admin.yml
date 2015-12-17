@@ -1,3 +1,4 @@
+#Use python script installed by role galaxy-extras to create a Galaxy admin user with a prior api key
 - name: Create/invoke script virtualenv for create galaxy admin
   pip: name={{ item }} virtualenv={{ galaxy_venv_dir }} virtualenv_command="{{ pip_virtualenv_command | default( 'virtualenv' ) }}"
   with_items:
