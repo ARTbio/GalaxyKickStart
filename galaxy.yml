@@ -53,6 +53,7 @@
       galaxy_fetch_eggs: no
       galaxy_changeset_id: "{{ galaxy_git_branch }}"
       galaxy_vcs: git
+      galaxy_force_checkout: yes
       galaxy_config:
         "app:main":
           admin_users: "{{ galaxy_admin }}"
