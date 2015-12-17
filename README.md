@@ -1,33 +1,33 @@
 # Requirements
-  * The target Operating System must be a Ubuntu Trusty 64 bits ( it might work on other Debian systems, untested).
-  * The target instance must have at least 4GB of RAM.
-  * The target user must have sudo rights.
-  * You need git and Ansible >= 1.8 (www.ansible.com) on the machine on which you run the playbook.
+  * The remote machine Operating System must be a Ubuntu Trusty 64 bits ( it might work on other Debian systems, untested).
+  * The remote machine must have at least 4GB of RAM.
+  * The remote machine user must have sudo rights.
+  * You need git and Ansible >= 1.8 (www.ansible.com) on the control machine on which you run the playbook.
   
 # Ansible Galaxy instance, NGS tools and Human reference genome
 To deploy Galaxy, first clone this repository by executing:
 ```
 git clone --recursive https://github.com/ARTbio/ansible-artimed.git
 ```
-Then, if you are targeting a remote machine, adapt the inventory (a sample can be found in the hosts file) and execute:
+Then, if you are targeting a remote machine, adapt the inventory (a sample can be found in the https://github.com/ARTbio/ansible-artimed/blob/master/hosts file) and execute:
 ```
 cd ansible-artimed
 ansible-playbook -i hosts galaxy.yml
 ```
-If the ssh key for the target machine is not the default ssh key, add its path to the "ansible_ssh_private_key_file" in the inventory hosts file.
-This procedure will install Galaxy on the target host (refered by the IP on the second line of the file hosts).
-Galaxy will be available on http port 80 (proxy NGINX) on the target host IP.
+If the ssh key for the remote machine is not the default ssh key, add its path to the "ansible_ssh_private_key_file" in the inventory hosts file.
+This procedure will install Galaxy on the remote machine (refered by the IP on the second line of the file hosts).
+Galaxy will be available on http port 80 (proxy NGINX) on the remote machine IP.
 
 # Installing only NGS tools
 This procedure assumes Galaxy has already been installed and configured (for instance with the procedures described above).
-To install only NGS tools on a Galaxy instance, change the value of the variable "install_galaxy" to "False" (located in the file ansible-artimed/hosts) and execute the last command of the previous procedure.
+To install only NGS tools on a Galaxy instance, set the value of the variable "install_galaxy" and "install_dms" to "False" in the inventory, and execute the last command of the previous procedure.
 Note that the file https://github.com/ARTbio/ansible-artimed/blob/master/roles/artimed_extras/files/artimed_tool_list.yaml contains the default list of NGS tools to be installed.
 Therefore, if you want change it, please see the file https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/tool_list.yaml.sample for instructions.
 If you want to provide your own list of tools, change the value of the variable "galaxy_tool_list" in ansible-artimed/hosts.
 
 # Running only Galaxy Data Managers
 This procedure assumes Galaxy has already been installed, configured and with data managers installed (for instance with the procedures described above).
-To run data managers on a Galaxy instance, change the value of the variables "install_galaxy" and "install_tools" to "False" (located in the file ansible-artimed/hosts), and execute the last command of the previous procedure.
+To run data managers on a Galaxy instance, change the value of the variables "install_galaxy" and "install_tools" to "False" in the inventory, and execute the last command of the previous procedure.
 Note that file https://github.com/ARTbio/ansible-artimed/blob/master/roles/artimed_extras/files/data_managers.yaml contains the default list of reference genomes and data managers to run.
 
 # Alternative install - Vagrant
@@ -48,11 +48,11 @@ If you are using Ubuntu on your ansible machine, make sure that you deactivate `
 #Important variables
 The file ansible-artimed/hosts contains various important variables that may be adapated, so you can change it as necessary.
 These variables are:
-- ansible_ssh_user - The login name used to access the target host.
-- ansible_ssh_private_key_file - The ssh private key used to access the target host.
+- ansible_ssh_user - The login name used to access the remote machine.
+- ansible_ssh_private_key_file - The ssh private key used to access the remote machine.
 - install_galaxy - True for install a Galaxy instance.
 - install_tools - True for install the NGS tools.
-- run_dm - True for run the data manager procedure.
+- run_dms - True for run the data manager procedure.
 - galaxy_user_name - The Operating System user name for galaxy process.
 - galaxy_server_dir - The home of Operating System user for galaxy process.
 - galaxy_admin - The admin galaxy user.

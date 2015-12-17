@@ -1,18 +1,24 @@
 [artimed]
 localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
-192.54.201.168 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
+192.54.201.46 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
+192.54.201.57 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
+192.54.201.81 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
+192.54.201.82 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
+192.54.201.90 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
+192.54.201.91 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
 
 [artimed:vars]
 #install options
 install_galaxy="True"
 install_tools="True"
-run_dm="True"
+install_dms="True"
+run_dms="True"
 #params
 galaxy_user_name="galaxy"
 galaxy_server_dir="/home/{{ galaxy_user_name }}/{{ galaxy_user_name }}"
 galaxy_admin="artimed@gmail.com"
 galaxy_admin_pw="artimed"
-galaxy_admin_api_key="379ab2a47d714a74b5cee4081703368e"
+galaxy_admin_api_key=f137d9af2f2065bd8c5fbadf7111494b
 galaxy_tool_list="roles/artimed_extras/files/artimed_tool_list.yaml"
 galaxy_data_managers="data_managers.yaml"
 galaxy_port="80"

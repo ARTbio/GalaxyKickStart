@@ -58,7 +58,7 @@
           admin_users: "{{ galaxy_admin }}"
           database_connection: "{{ galaxy_db }}"
           tool_dependency_dir: "{{ galaxy_server_dir }}/lib/tool_shed/dependencies"
-          master_api_key: "{{ galaxy_admin_api_key }}"
+          #master_api_key: "{{ galaxy_admin_api_key }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
           ftp_upload_site: "ftp {{ galaxy_hostname }}"
           tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
@@ -119,7 +119,23 @@
     #  check_tool_data: yes
     #  when: install_galaxy
 
-    - role: galaxyprojectdotorg.galaxy-tools #The default tools are listed in the file files/artimed_tool_list.yaml
+    #The default data managers are listed in the file data_manager_list.yaml
+    - role: galaxyprojectdotorg.galaxy-tools 
+      galaxy_tools_admin_user: "{{ galaxy_admin }}"
+      galaxy_tools_api_key: "{{ galaxy_admin_api_key }}"
+      galaxy_tools_galaxy_instance_url: "localhost:{{ galaxy_port }}"
+      galaxy_tools_tool_list_files: [ roles/artimed_extras/files/data_manager_list.yaml ]
+      sudo: yes
+      sudo_user: "{{ galaxy_user_name }}"
+      when: install_dms
+
+    #Restart Galaxy
+    - role: artimed_extras
+      restart_galaxy: true
+      when: install_dms
+
+    #The default tools are listed in the file artimed_tool_list.yaml
+    - role: galaxyprojectdotorg.galaxy-tools 
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
       galaxy_tools_api_key: "{{ galaxy_admin_api_key }}"
       galaxy_tools_galaxy_instance_url: "localhost:{{ galaxy_port }}"
