@@ -123,7 +123,7 @@
     - role: galaxyprojectdotorg.galaxy-tools 
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
       galaxy_tools_api_key: "{{ galaxy_admin_api_key }}"
-      galaxy_tools_galaxy_instance_url: "localhost:{{ galaxy_port }}"
+      galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}:{{ galaxy_port }}"
       galaxy_tools_tool_list_files: [ roles/artimed_extras/files/data_manager_list.yaml ]
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
@@ -138,7 +138,7 @@
     - role: galaxyprojectdotorg.galaxy-tools 
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
       galaxy_tools_api_key: "{{ galaxy_admin_api_key }}"
-      galaxy_tools_galaxy_instance_url: "localhost:{{ galaxy_port }}"
+      galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}:{{ galaxy_port }}"
       galaxy_tools_tool_list_files: [ "{{ galaxy_tool_list }}" ]
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
