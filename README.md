@@ -1,5 +1,5 @@
 # Requirements
-  * The remote machine Operating System must be a Ubuntu Trusty 64 bits ( it might work on other Debian systems, untested).
+  * The remote machine Operating System must be a Ubuntu Trusty 64 bits (it might work on other Debian systems, untested).
   * The remote machine must have at least 4GB of RAM.
   * The remote machine user must have sudo rights.
   * You need git and Ansible >= 1.8 (www.ansible.com) on the control machine on which you run the playbook.
@@ -16,7 +16,7 @@ ansible-playbook -i hosts galaxy.yml
 ```
 If the ssh key for the remote machine is not the default ssh key, add its path to the "ansible_ssh_private_key_file" in the inventory hosts file.
 This procedure will install Galaxy on the remote machine (refered by the IP on the second line of the file hosts).
-Galaxy will be available on http port 80 (proxy NGINX) on the remote machine IP.
+Galaxy will be available on http port 80 (proxy NGINX) on the remote machine IP and the admin user is artimed@gmail.com (password: artimed).
 
 # Installing only NGS tools
 This procedure assumes Galaxy has already been installed and configured (for instance with the procedures described above).
