@@ -8,15 +8,8 @@
   sudo_user: "{{ galaxy_user_name }}"
 
 - name: Create Galaxy admin user
-  command: chdir={{ galaxy_server_dir }} {{ galaxy_venv_dir }}/bin/python /usr/local/bin/create_galaxy_user.py --user {{ galaxy_admin }} --password {{ galaxy_admin_pw }} --key {{ galaxy_admin_api_key }}
+  command: "{{ galaxy_venv_dir }}/bin/python /usr/local/bin/create_galaxy_user.py --user {{ galaxy_admin }} --password {{ galaxy_admin_pw }} --key {{ galaxy_admin_api_key }}"
+  args:
+    chdir: "{{ galaxy_server_dir }}"
   sudo: yes
   sudo_user: "{{ galaxy_user_name }}"
-
-#- name: Copy the bootstrap user management script
-#  copy: src=manage_bootstrap_user.py dest={{ galaxy_server_dir }}/manage_bootstrap_user.py owner={{ galaxy_user_name }}
-
-#- name: Create Galaxy bootstrap user
-#  command: chdir={{ galaxy_server_dir }} {{ galaxy_venv_dir }}/bin/python manage_bootstrap_user.py -c {{ galaxy_config_file }} create -e {{ galaxy_admin }} -p ""
-
-#- name: Remove the bootstrap user management script
-#  file: dest={{ galaxy_server_dir }}/manage_bootstrap_user.py state=absent
