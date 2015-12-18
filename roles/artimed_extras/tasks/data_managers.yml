@@ -5,10 +5,10 @@
     - bioblend
 
 - name: Place the data manager script
-  copy: src=galaxy_data_managers.py dest={{ galaxy_tools_base_dir }}/
+  copy: src=roles/galaxyprojectdotorg.galaxy-tools/files/install_tool_shed_tools.py dest={{ galaxy_tools_base_dir }}/
 
 - name: Copy data manager list file
   copy: src={{ galaxy_data_managers }} dest={{ galaxy_tools_base_dir }}/
 
 - name: Run data managers
-  command: chdir={{ galaxy_tools_base_dir }} {{ galaxy_tools_base_dir }}/venv/bin/python galaxy_data_managers.py -d {{ galaxy_data_managers }} -a {{ galaxy_admin_api_key }} -g {{ galaxy_hostname }}
+  command: chdir={{ galaxy_tools_base_dir }} {{ galaxy_tools_base_dir }}/venv/bin/python install_tool_shed_tools.py -d {{ galaxy_data_managers }} -a {{ galaxy_admin_api_key }} -g {{ galaxy_hostname }}
