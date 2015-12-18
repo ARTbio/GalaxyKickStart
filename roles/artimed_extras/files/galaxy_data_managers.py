@@ -1,81 +1,20 @@
-#Simplification of the code presented in https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/install_tool_shed_tools.py).
-import datetime as dt
-import logging
-import time
-import yaml
-from argparse import ArgumentParser
+#this code is a simplification of the original python script https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/install_tool_shed_tools.py
+#This is temporary, because it is only a manner of uncomment some lines in the original to make the original work 
 
-from bioblend.galaxy import GalaxyInstance
-from bioblend.galaxy.toolshed import ToolShedClient
-from bioblend.toolshed import ToolShedInstance
-from bioblend.galaxy.client import ConnectionError
+import sys
+sys.path.insert(0, '../../galaxyprojectdotorg.galaxy-tools/files/')
 
-# Omit (most of the) logging by external libraries
-logging.getLogger('bioblend').setLevel(logging.ERROR)
-logging.getLogger('requests').setLevel(logging.ERROR)
-logging.captureWarnings(True)  # Capture HTTPS warngings from urllib3
+from install_tool_shed_tools import _setup_global_logger
+from install_tool_shed_tools import ArgumentParser
+from install_tool_shed_tools import load_input_file
+from install_tool_shed_tools import galaxy_instance
+from install_tool_shed_tools import dt
+from install_tool_shed_tools import ConnectionError
+from install_tool_shed_tools import time
+#from install_tool_shed_tools import run_data_managers
+#from install_tool_shed_tools import _parse_cli_options
 
-MTS = 'https://toolshed.g2.bx.psu.edu/'  # Main Tool Shed
-
-class ProgressConsoleHandler(logging.StreamHandler):
-    """
-    A handler class which allows the cursor to stay on
-    one line for selected messages
-    """
-    on_same_line = False
-
-    def emit(self, record):
-        try:
-            msg = self.format(record)
-            stream = self.stream
-            same_line = hasattr(record, 'same_line')
-            if self.on_same_line and not same_line:
-                stream.write('\r\n')
-            stream.write(msg)
-            if same_line:
-                stream.write('.')
-                self.on_same_line = True
-            else:
-                stream.write('\r\n')
-                self.on_same_line = False
-            self.flush()
-        except (KeyboardInterrupt, SystemExit):
-            raise
-        except:
-            self.handleError(record)
-
-def _setup_global_logger():
-    formatter = logging.Formatter('%(asctime)s %(levelname)-5s - %(message)s')
-    progress = ProgressConsoleHandler()
-    file_handler = logging.FileHandler('/tmp/galaxy_tool_install.log')
-    console = logging.StreamHandler()
-    console.setFormatter(formatter)
-
-    logger = logging.getLogger('test')
-    logger.setLevel(logging.DEBUG)
-    logger.addHandler(progress)
-    logger.addHandler(file_handler)
-    return logger
-
-def load_input_file(tool_list_file='tool_list.yaml'):
-    """
-    Load YAML from the `tool_list_file` and return a dict with the content.
-    """
-    with open(tool_list_file, 'r') as f:
-        tl = yaml.load(f)
-    return tl
-
-def galaxy_instance(url=None, api_key=None):
-    """
-    Get an instance of the `GalaxyInstance` object. If the arguments are not
-    provided, load the default values using `load_input_file` method.
-    """
-    if not (url and api_key):
-        tl = load_input_file()
-        url = tl['galaxy_instance']
-        api_key = tl['api_key']
-    return GalaxyInstance(url, api_key)
-
+#this is because "-d" option is commented in the original
 def _parse_cli_options():
     """
     Parse command line options, returning `parse_args` from `ArgumentParser`.
@@ -95,6 +34,7 @@ def _parse_cli_options():
                              "defined in the tools list file)",)
     return parser.parse_args()
 
+#this is because log is global
 def run_data_managers(options):
     """
     Run Galaxy Data Manager to download, index, and install reference genome
@@ -163,6 +103,7 @@ def run_data_managers(options):
     log.info("Errored DMs: {0}".format(errored_dms))
     log.info("Total run time: {0}".format(dt.datetime.now() - istart))
 
+#this is because in the original "run_data_managers" call is commented
 if __name__ == "__main__":
     global log
     log = _setup_global_logger()
