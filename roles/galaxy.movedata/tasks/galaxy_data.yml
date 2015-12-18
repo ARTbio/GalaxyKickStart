@@ -1,19 +1,21 @@
 - name: Create users group
   group: name=users state=present
+  when: persist
 
 - name: Put galaxy_user_name into users group
-  user: name="{{ galaxy_user_namegalaxy_user_name }}" groups="users" 
+  user: name="{{ galaxy_user_name }}" groups="users" 
+  when: persist
 
 - name: Check data dir for galaxy
   stat: path={{ galaxy_data }}
   register: directory
+#  when: persist
 
 - name: Create data dir for galaxy
   file: path={{ galaxy_data }} owner={{ galaxy_user_name }} group={{ galaxy_user_name }} mode=0700 state=directory
-  when: directory.stat.islnk is not defined and persist
+  when: persist and directory.stat.islnk is not defined
   
 - name: Give galaxy_user_name access to galaxy_data directory chain
   file: path=/{{ galaxy_data_items[1] }} mode=0755 group=users #recurse=yes
 #  with_items: "{{ galaxy_data_items }}"
-  when: galaxy_data_items[1] is defined
-  
+  when: persist and galaxy_data_items[1] is defined

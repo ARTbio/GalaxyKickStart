@@ -1,6 +1,5 @@
 [artimed]
 localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
-192.54.201.111 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
 
 [artimed:vars]
 #install options
@@ -16,9 +15,8 @@ galaxy_admin_pw="artimed"
 galaxy_admin_api_key=f137d9af2f2065bd8c5fbadf7111494b
 galaxy_tool_list="roles/artimed_extras/files/artimed_tool_list.yaml"
 galaxy_data_managers="data_managers.yaml"
-galaxy_port="80"
 #persistent params
 galaxy_data="/home/{{ galaxy_user_name }}/{{ galaxy_user_name }}"
 galaxy_database="/home/galaxy_database"
 galaxy_db="postgresql:///{{ galaxy_user_name }}?host=/var/run/postgresql"
-galaxy_git_branch="dev"
+galaxy_changeset_id="dev"
