@@ -2,7 +2,7 @@
   * The target Operating System must be a Ubuntu Trusty 64 bits (it might work on other Debian systems, untested yet).
   * The target instance must have at least 4GB of RAM.
   * The target user must have sudo rights.
-  * You need git and Ansible >= 1.8 (www.ansible.com) on the control machine on which you run the playbook.
+  * You need git and Ansible >= 1.8 (www.ansible.com) on the machine on which you run the playbook.
   
 # Ansible Galaxy instance, tools and reference genomes
 To deploy Galaxy, first clone this repository by executing:
