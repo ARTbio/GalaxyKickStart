@@ -11,11 +11,6 @@
     galaxy_mutable_data_dir: "{{ galaxy_data }}/database" # Used by artimed_extras and galaxy roles
     galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini" # Used by galaxy roles
 
-  pre_tasks:
-    #fix recreation of munge key
-    - shell: rm -rf /tmp/slurm /etc/munge/munge.key
-      when: install_galaxy
-
   roles:
     #installs system package requirements
     - role: galaxyprojectdotorg.galaxy-os
@@ -30,6 +25,8 @@
     #- role: galaxy.movedata
     #  check_galaxy_data: yes
     #  when: install_galaxy
+
+    - role: ensure_postgresql_up
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
