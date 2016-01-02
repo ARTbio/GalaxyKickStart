@@ -23,7 +23,7 @@ Also note that file https://github.com/ARTbio/ansible-artimed/blob/master/roles/
 
 # Installing only tools
 This procedure assumes Galaxy has already been installed and configured (for instance with the procedures described above).
-To install only NGS tools on a Galaxy instance, set the value of the variable "install_galaxy" and "install_dms" to "False" in the inventory, and execute the last command of the previous procedure.
+To install only NGS tools on a Galaxy instance, set the value of the variable "install_galaxy" and "run_data_manager" to "False" in the inventory, and execute the last command of the previous procedure.
 If you want to provide your own list of tools or change the default list, please see the file https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/tool_list.yaml.sample for instructions and change the value of the variable "galaxy_tool_list" in the inventory.
 
 # Load only reference genomes
@@ -52,7 +52,7 @@ These variables are:
 - ansible_ssh_private_key_file - The ssh private key used to access the target.
 - install_galaxy - True for install a Galaxy instance.
 - install_tools - True for install the NGS tools.
-- run_dms - True for run the data manager procedure.
+- run_data_manager - True for run the data manager procedure.
 - galaxy_user_name - The Operating System user name for galaxy process.
 - galaxy_server_dir - The home of Operating System user for galaxy process.
 - galaxy_admin - The admin galaxy user.
