@@ -1,9 +1,9 @@
 [submodule "roles/galaxyprojectdotorg.galaxy-tools"]
 	path = roles/galaxyprojectdotorg.galaxy-tools
-	url = git://github.com/fabiorjvieira/ansible-galaxy-tools.git
+	url = git://github.com/galaxyproject/ansible-galaxy-tools.git
 [submodule "roles/galaxyprojectdotorg.galaxy-extras"]
 	path = roles/galaxyprojectdotorg.galaxy-extras
-	url = git://github.com/galaxyproject/ansible-galaxy-extras
+	url = git://github.com/mvdbeek/ansible-galaxy-extras
 [submodule "roles/natefoo.postgresql_objects"]
 	path = roles/natefoo.postgresql_objects
 	url = git://github.com/natefoo/ansible-postgresql-objects.git

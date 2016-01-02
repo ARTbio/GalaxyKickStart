@@ -32,7 +32,6 @@
     - role: natefoo.postgresql_objects
       postgresql_objects_users:
         - name: "{{ galaxy_user_name }}"
-          password: "{{ galaxy_user_name }}"
       postgresql_objects_databases:
         - name: "{{ galaxy_user_name }}"
           owner: "{{ galaxy_user_name }}"
@@ -47,7 +46,8 @@
       galaxy_mutable_config_dir: "{{ galaxy_config_dir }}"
       #other vars
       galaxy_manage_database: yes
-      galaxy_fetch_eggs: no
+      # does not actually fetch eggs if galaxy uses pip
+      galaxy_fetch_eggs: yes
       galaxy_vcs: git
       galaxy_force_checkout: yes
       galaxy_config:
@@ -55,17 +55,20 @@
           admin_users: "{{ galaxy_admin }}"
           database_connection: "{{ galaxy_db }}"
           tool_dependency_dir: "{{ galaxy_server_dir }}/lib/tool_shed/dependencies"
-          #master_api_key: "{{ galaxy_admin_api_key }}"
+          master_api_key: "{{ master_api_key }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
           ftp_upload_site: "ftp {{ galaxy_hostname }}"
           tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
           #to be done only in production       
           #debug: False
           #use_interactive: False
+          static_enabled: False
           nginx_x_accel_redirect_base: "/_x_accel_redirect"
           nginx_x_archive_files_base: "/_x_accel_redirect"
           nginx_upload_store: "/tmp"
           nginx_upload_path: "/_upload"
+        "uwsgi":
+          master: True
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
       when: install_galaxy
@@ -96,6 +99,8 @@
       when: install_galaxy
 
     #fix proftpd config file, restarts supervisor, put the test tool shed in the list and create a welcome page
+    - role: ensure_postgresql_up
+
     - role: artimed_extras
       run_extras: true
       pbkdf2: true
@@ -110,22 +115,22 @@
     #The default data managers are listed in the file data_manager_list.yaml
     - role: galaxyprojectdotorg.galaxy-tools 
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
-      galaxy_tools_api_key: "{{ galaxy_admin_api_key }}"
+      galaxy_tools_api_key: "{{ master_api_key }}"
       galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}"
       galaxy_tools_tool_list_files: [ roles/artimed_extras/files/data_manager_list.yaml ]
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
-      when: install_dms
+      when: run_data_manager
 
     #Restart Galaxy
-    #- role: artimed_extras
-    #  restart_galaxy: true
-    #  when: install_dms
+    - role: artimed_extras
+      restart_galaxy: true
+      when: run_data_manager
 
     #The default tools are listed in the file artimed_tool_list.yaml
     - role: galaxyprojectdotorg.galaxy-tools 
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
-      galaxy_tools_api_key: "{{ galaxy_admin_api_key }}"
+      galaxy_tools_api_key: "{{ master_api_key }}"
       galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}"
       galaxy_tools_tool_list_files: [ "{{ galaxy_tool_list }}" ]
       sudo: yes
@@ -140,4 +145,4 @@
     #Run data managers
     - role: artimed_extras
       run_data_managers: true
-      when: run_dm
+      when: run_data_manager
