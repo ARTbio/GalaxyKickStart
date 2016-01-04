@@ -52,7 +52,7 @@ These variables are:
 - ansible_ssh_private_key_file - The ssh private key used to access the target.
 - install_galaxy - True for install a Galaxy instance.
 - install_tools - True for install the NGS tools.
-- run_dms - True for run the data manager procedure.
+- run_data_manager - True for run the data manager procedure.
 - galaxy_user_name - The Operating System user name for galaxy process.
 - galaxy_server_dir - The home of Operating System user for galaxy process.
 - galaxy_admin - The admin galaxy user.

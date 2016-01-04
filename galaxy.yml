@@ -23,8 +23,8 @@
       when: install_galaxy
     
     #move postgresql db to a persistent dir and symlinks to galaxy
-    #- role: postgresql.movedb
-    #  when: install_galaxy
+    - role: postgresql.movedb
+      when: install_galaxy
 
     #check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
     #- role: galaxy.movedata
@@ -50,7 +50,7 @@
       galaxy_mutable_config_dir: "{{ galaxy_config_dir }}"
       #other vars
       galaxy_manage_database: yes
-      galaxy_fetch_eggs: no
+      galaxy_fetch_eggs: yes #see if this does not break anything???
       galaxy_vcs: git
       galaxy_force_checkout: yes
       galaxy_config:
@@ -58,13 +58,14 @@
           admin_users: "{{ galaxy_admin }}"
           database_connection: "{{ galaxy_db }}"
           tool_dependency_dir: "{{ galaxy_server_dir }}/lib/tool_shed/dependencies"
-          #master_api_key: "{{ galaxy_admin_api_key }}"
+          master_api_key: "{{ master_api_key }}" #see if it affects tools instalation and data managers execution???
           ftp_upload_dir: "{{ galaxy_ftp }}" 
           ftp_upload_site: "ftp {{ galaxy_hostname }}"
           tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
           #to be done only in production       
           #debug: False
           #use_interactive: False
+          static_enabled: false
           nginx_x_accel_redirect_base: "/_x_accel_redirect"
           nginx_x_archive_files_base: "/_x_accel_redirect"
           nginx_upload_store: "/tmp"
@@ -97,7 +98,7 @@
       galaxy_extras_config_slurm: true
       galaxy_extras_config_galaxy_root: true
       galaxy_extras_config_ie_proxy: false
-      supervisor_manage_postgres: false
+      supervisor_manage_postgres: true #see if this works???
       supervisor_manage_nginx: true
       supervisor_manage_proftp: true
       supervisor_manage_slurm: true
@@ -122,22 +123,22 @@
     #The default data managers are listed in the file data_manager_list.yaml
     - role: galaxyprojectdotorg.galaxy-tools 
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
-      galaxy_tools_api_key: "{{ galaxy_admin_api_key }}"
+      galaxy_tools_api_key: "{{ master_api_key }}"
       galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}"
       galaxy_tools_tool_list_files: [ roles/artimed_extras/files/data_manager_list.yaml ]
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
-      when: install_dms
+      when: install_data_manager
 
     #Restart Galaxy
     #- role: artimed_extras
     #  restart_galaxy: true
-    #  when: install_dms
+    #  when: install_data_manager
 
     #The default tools are listed in the file artimed_tool_list.yaml
     - role: galaxyprojectdotorg.galaxy-tools 
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
-      galaxy_tools_api_key: "{{ galaxy_admin_api_key }}"
+      galaxy_tools_api_key: "{{ master_api_key }}"
       galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}"
       galaxy_tools_tool_list_files: [ "{{ galaxy_tool_list }}" ]
       sudo: yes
@@ -152,4 +153,4 @@
     #Run data managers
     - role: artimed_extras
       run_data_managers: true
-      when: run_dm
+      when: run_data_manager
