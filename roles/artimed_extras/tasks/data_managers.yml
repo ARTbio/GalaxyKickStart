@@ -11,6 +11,6 @@
   copy: src={{ galaxy_data_managers }} dest={{ galaxy_tools_base_dir }}/
 
 - name: Run data managers
-  command: "{{ galaxy_tools_base_dir }}/venv/bin/python install_tool_shed_tools.py -d {{ galaxy_data_managers }} -a {{ galaxy_admin_api_key }} -g {{ galaxy_hostname }}"
+  command: "{{ galaxy_tools_base_dir }}/venv/bin/python install_tool_shed_tools.py -d {{ galaxy_data_managers }} -a {{ master_api_key }} -g {{ galaxy_hostname }}"
   args:
     chdir: "{{ galaxy_tools_base_dir }}"
