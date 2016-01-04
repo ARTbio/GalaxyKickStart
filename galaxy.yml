@@ -10,7 +10,6 @@
     galaxy_config_dir: "{{ galaxy_data }}/config" # Used by artimed_extras and galaxy roles
     galaxy_mutable_data_dir: "{{ galaxy_data }}/database" # Used by artimed_extras and galaxy roles
     galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini" # Used by galaxy roles
-
   roles:
     #installs system package requirements
     - role: galaxyprojectdotorg.galaxy-os
@@ -75,6 +74,7 @@
 
     #installs nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
+      galaxy_uwsgi_static_conf: true
       supervisor_slurm_config_dir: "{{ galaxy_data }}"
       galaxy_root: "{{ galaxy_server_dir }}"
       galaxy_log_dir: "{{ galaxy_data }}"
