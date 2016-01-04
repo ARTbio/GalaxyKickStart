@@ -105,6 +105,7 @@
       run_extras: true
       pbkdf2: true
       create_galaxy_admin: true
+      restart_galaxy: true
       when: install_galaxy
       
     #check if tool-data persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
