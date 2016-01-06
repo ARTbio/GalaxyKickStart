@@ -1,9 +1,9 @@
-- include: galaxy_admin.yml
-  when: create_galaxy_admin
-
 - include: extras.yml
   when: run_extras
   
+- include: galaxy_admin.yml
+  when: create_galaxy_admin
+
 - include: data_managers.yml
   when: run_data_managers
 

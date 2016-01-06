@@ -1,0 +1,29 @@
+- name: Check if postgresql is managed by supervisor
+  supervisorctl: name=postgresql state=present
+  register: supervisor_postgres
+  ignore_errors: yes
+
+- name: Check if postgresql is local
+  set_fact:
+    manage_postgresql: true
+  when: galaxy_db == "postgresql:///{{ galaxy_user_name }}?host=/var/run/postgresql" or galaxy_db.find('localhost') != -1 or galaxy_db.find('127.0.0.1') != -1 
+
+- set_fact:
+    service_postgresql: true
+  when: supervisor_postgres.failed is defined
+
+- supervisorctl: name=postgresql state=started
+  when: start_postgresql and manage_postgresql and supervisor_postgres.failed is undefined
+  register: supervisor_postgresql_success
+  ignore_errors: yes
+
+- service: name=postgresql state=started
+  when: start_postgresql and manage_postgresql and (supervisor_postgres.failed is defined or supervisor_postgresql_success.failed is defined)
+
+- action: shell /usr/bin/pg_isready #change to test if postgres db is there - postgresql_db: name=postgres
+  register: result
+  until: result.stdout.find("accepting connections") != -1
+  retries: 10
+  delay: 5
+  when: start_postgresql and manage_postgresql
+  

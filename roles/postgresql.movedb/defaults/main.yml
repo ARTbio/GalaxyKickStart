@@ -1,1 +1,2 @@
 galaxy_database_items: "{{ galaxy_database.split('/') }}"
+service_postgresql: false

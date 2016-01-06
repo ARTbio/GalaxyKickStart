@@ -8,9 +8,9 @@
   copy: src=roles/galaxyprojectdotorg.galaxy-tools/files/install_tool_shed_tools.py dest={{ galaxy_tools_base_dir }}/
 
 - name: Copy data manager list file
-  copy: src={{ galaxy_data_managers }} dest={{ galaxy_tools_base_dir }}/
-
+  copy: src={{ galaxy_data_managers }} dest={{ galaxy_tools_base_dir }}/run_data_manager.yaml
+  
 - name: Run data managers
-  command: "{{ galaxy_tools_base_dir }}/venv/bin/python install_tool_shed_tools.py -d {{ galaxy_data_managers }} -a {{ galaxy_admin_api_key }} -g {{ galaxy_hostname }}"
+  command: "{{ galaxy_tools_base_dir }}/venv/bin/python install_tool_shed_tools.py -d run_data_manager.yaml -a {{ galaxy_admin_api_key }} -g {{ galaxy_hostname }}"
   args:
     chdir: "{{ galaxy_tools_base_dir }}"

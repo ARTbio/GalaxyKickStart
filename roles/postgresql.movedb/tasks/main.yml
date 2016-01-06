@@ -1,5 +1,12 @@
+- name: Stop supervisor postgreSQL
+  supervisorctl: name="postgresql" state=stopped
+  when: not service_postgresql
+  register: supervisor_postgresql_success
+  ignore_errors: yes
+  
 - name: Stop postgresql
   service: name=postgresql state=stopped
+  when: service_postgresql or supervisor_postgresql_success.failed is defined
 
 - name: Create users group
   group: name=users state=present
@@ -52,5 +59,16 @@
   sudo: yes
   sudo_user: postgres
 
+- set_fact:
+    supervisor_postgres_database_path: "/var/lib/postgresql/{{ postgresql_version.stdout }}/main\" -c \"config_file=/etc/postgresql/{{ postgresql_version.stdout }}/main/postgresql.conf"
+
+- name: Start supervisor postgreSQL
+  supervisorctl: name="postgresql" state=started
+  when: not service_postgresql
+  register: supervisor_postgresql_success
+  ignore_errors: yes
+
 - name: Start postgresql
   service: name=postgresql state=started
+  when: service_postgresql or supervisor_postgresql_success.failed is defined
+  
