@@ -3,7 +3,7 @@
 The following individuals have contributed code to ansible-artimed:
 
 * Christophe Antoniewski <drosofff@gmail.com>
-* Fabio Rocha Jimenez Vieira <fabiorjvieira@gmail.com >
+* Fabio Rocha Jimenez Vieira <fabiorjvieira@gmail.com>
 * Marius van den Beek <m.vandenbeek@gmail.com>
 
 # Institutional sponsors

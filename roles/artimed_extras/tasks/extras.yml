@@ -8,6 +8,7 @@
   with_items:
     - { src: "welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
     - { src: "tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+    - { src: "dependency_resolvers_conf.xml", dest: "{{ galaxy_config_dir }}" } # Remove once https://github.com/galaxyproject/ansible-galaxy-extras/pull/33 is merged.
     - { src: "proftpd.conf.j2", dest: "{{ proftpd_conf_path }}" }
 
 - name:  Provide Galaxy images for the homepage
@@ -16,5 +17,10 @@
     - { src: "ARTiMED_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
     - { src: "logo_iuis_UPMC_UTC.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }
     
-- name: Restart proftpd
-  supervisorctl: name=proftpd state=restarted
+- name: Restart/start supervisor tasks
+  supervisorctl: name={{ item.name }} state={{ item.state }}
+  with_items:
+    - { name: "proftpd", state: "restarted" }
+    - { name: "munge", state: "started" }
+    - { name: "nginx", state: "started" }
+  
