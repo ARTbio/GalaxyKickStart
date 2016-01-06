@@ -118,7 +118,7 @@
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
       galaxy_tools_api_key: "{{ master_api_key }}"
       galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}"
-      galaxy_tools_tool_list_files: [ roles/artimed_extras/files/data_manager_list.yaml ]
+      galaxy_tools_tool_list_files: roles/artimed_extras/files/data_manager_list.yaml
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
       when: run_data_manager
