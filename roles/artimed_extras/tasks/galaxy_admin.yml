@@ -4,6 +4,7 @@
   with_items:
     - pyyaml
     - bioblend
+    - psycopg2
   sudo: yes
   sudo_user: "{{ galaxy_user_name }}"
 

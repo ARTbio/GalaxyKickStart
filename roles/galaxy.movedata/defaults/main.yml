@@ -1,8 +1,3 @@
-#check if tool-data will persist
-check_tool_data: no
-
 #check if data will persist
-check_galaxy_data: no
 persist: "{{ galaxy_data != galaxy_server_dir }}"
-
 galaxy_data_items: "{{ galaxy_data.split('/') }}"

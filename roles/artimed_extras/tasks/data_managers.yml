@@ -3,6 +3,7 @@
   with_items:
     - pyyaml
     - bioblend
+    - psycopg2
 
 - name: Place the data manager script
   copy: src=roles/galaxyprojectdotorg.galaxy-tools/files/install_tool_shed_tools.py dest={{ galaxy_tools_base_dir }}/

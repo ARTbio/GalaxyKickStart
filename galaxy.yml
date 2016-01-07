@@ -3,11 +3,11 @@
 
   vars:
     #globals
-    galaxy_hostname: "{{ inventory_hostname }}"
+    galaxy_hostname: "{{ inventory_hostname }}" # Used by galaxy and galaxy-tools roles
     galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv" # Used by galaxy and galaxy-tools roles 
-    manage_postgresql: true #this needs to be here to be a global var??? 
-    service_postgresql: false #this needs to be here to be a global var???
-    supervisor_postgres_database_path: "" #this needs to be here to be a global var???
+    manage_postgresql: true # Used by artimed_extras and galaxy-extras roles 
+    service_postgresql: false # Used by artimed_extras and galaxy-extras roles
+    supervisor_postgres_database_path: "" # Used by artimed_extras and galaxy-extras roles
     #persistent data
     galaxy_ftp: "{{ galaxy_data }}/database/ftp" # Used by artimed_extras and galaxy roles
     galaxy_config_dir: "{{ galaxy_data }}/config" # Used by artimed_extras and galaxy roles
@@ -15,29 +15,34 @@
     galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini" # Used by galaxy roles
 
   pre_tasks:
+    #not necessary anymore in dev release - must test???
     #fix recreation of munge key
     - shell: rm -rf /tmp/slurm /etc/munge/munge.key
-      when: install_galaxy
+      tags: 
+        - galaxy
 
   roles:
     #installs system package requirements
     - role: galaxyprojectdotorg.galaxy-os
       configure_docker: no
-      when: install_galaxy
+      tags: 
+        - galaxy
     
     #based on marius stuff
     - role: postgresql.check
       start_postgresql: false
-      when: install_galaxy
+      tags: 
+        - galaxy
     
     #move postgresql db to a persistent dir and symlinks to galaxy
     - role: postgresql.movedb
-      when: (install_galaxy and manage_postgresql) #boolean operation not working??? 
+      tags: 
+        - galaxy
 
     #check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
-    - role: galaxy.movedata
-      check_galaxy_data: yes
-      when: install_galaxy
+#    - role: galaxy.movedata
+#      tags: 
+#        - galaxy
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
@@ -49,7 +54,8 @@
           owner: "{{ galaxy_user_name }}"
       sudo: yes
       sudo_user: postgres
-      when: install_galaxy
+      tags: 
+        - galaxy
 
     #installs galaxy
     - role: galaxyprojectdotorg.galaxy
@@ -58,20 +64,20 @@
       galaxy_mutable_config_dir: "{{ galaxy_config_dir }}"
       #other vars
       galaxy_manage_database: yes
-      galaxy_fetch_eggs: yes #see if this does not break anything???
+      galaxy_fetch_eggs: yes
       galaxy_vcs: git
       galaxy_force_checkout: yes #for testing this is good 
       galaxy_config:
         "app:main":
           admin_users: "{{ galaxy_admin }}"
           database_connection: "{{ galaxy_db }}"
-          #tool_dependency_dir: "{{ galaxy_server_dir }}/lib/tool_shed/dependencies"
           tool_path: "{{ galaxy_data }}/tools"
           tool_dependency_dir: "{{ galaxy_data }}/tool_shed_dependencies"
           tool_data_path: "{{ galaxy_data }}/tool-data"
           shed_tool_data_path: "{{ galaxy_data }}/tool-data"
           galaxy_data_manager_data_path: "{{ galaxy_data }}/tool-data"
-          master_api_key: "{{ master_api_key }}" #see if it affects tools instalation and data managers execution???
+          galaxy_eggs_path: "{{ galaxy_data }}/eggs"
+          #master_api_key: "{{ master_api_key }}" #could not be the same as admin's key
           ftp_upload_dir: "{{ galaxy_ftp }}" 
           ftp_upload_site: "ftp {{ galaxy_hostname }}"
           tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
@@ -93,7 +99,8 @@
           processes: "{{ galaxy_web_processes }}"
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
-      when: install_galaxy
+      tags: 
+        - galaxy
 
     #installs nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
@@ -119,7 +126,8 @@
       supervisor_manage_docker: false
       supervisor_manage_nodeproxy: false
       supervisor_manage_ie_proxy: false      
-      when: install_galaxy
+      tags: 
+        - galaxy
 
     #fix proftpd config file, restarts supervisor, put the test tool shed in the list and create a welcome page
     - role: artimed_extras
@@ -127,52 +135,53 @@
       run_extras: true
       pbkdf2: true
       create_galaxy_admin: true
-      when: install_galaxy
+      tags: 
+        - galaxy
       
     #based on marius stuff (to assure that postgresql is running)
     - role: postgresql.check
-      when: install_galaxy
-
-    #not necessary anymore - must test???
-    #check if tool-data persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
-    #- role: galaxy.movedata
-    #  check_tool_data: yes
-    #  when: install_galaxy
+      tags: 
+        - galaxy
 
     #The default data managers are listed in the file data_manager_list.yaml
     - role: galaxyprojectdotorg.galaxy-tools 
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
       galaxy_tools_api_key: "{{ master_api_key }}"
       galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}"
-      galaxy_tools_tool_list_files: [ "{{ data_manager_list }}" ]
+      galaxy_tools_tool_list: "{{ data_manager_list }}"
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
-      when: install_data_manager
+      tags: 
+        - data_manager
 
-    #not necessary anymore - must test???
+    #not necessary anymore in dev release - must test???
     #Restart Galaxy
-    #- role: artimed_extras
-    #  restart_galaxy: true
-    #  when: install_data_manager
+    - role: artimed_extras
+      restart_galaxy: true
+      tags: 
+        - data_manager
 
     #The default tools are listed in the file artimed_tool_list.yaml
     - role: galaxyprojectdotorg.galaxy-tools 
       galaxy_tools_admin_user: "{{ galaxy_admin }}"
       galaxy_tools_api_key: "{{ master_api_key }}"
       galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}"
-      galaxy_tools_tool_list_files: [ "{{ galaxy_tool_list }}" ]
+      galaxy_tools_tool_list: "{{ galaxy_tool_list }}"
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
-      when: install_tools
+      tags: 
+        - tools
 
-    #not necessary anymore - must test???
+    #not necessary anymore in dev release - must test???
     #Restart Galaxy
-    #- role: artimed_extras
-    #  restart_galaxy: true
-    #  when: install_tools
+    - role: artimed_extras
+      restart_galaxy: true
+      tags: 
+        - tools
 
     #Run data managers
     - role: artimed_extras
       run_data_managers: true
       galaxy_admin_api_key: "{{ master_api_key }}"
-      when: run_data_manager
+      tags: 
+        - data
