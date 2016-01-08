@@ -45,7 +45,7 @@ galaxy_config:
     nginx_x_archive_files_base: /_x_accel_redirect
     nginx_upload_store: /tmp
     nginx_upload_path: /_upload
-    use_pbkdf2: false
+    #use_pbkdf2: false
   "uwsgi":
     master: True
 
