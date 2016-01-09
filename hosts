@@ -6,6 +6,7 @@ localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
 install_galaxy="True"
 install_tools="True"
 run_data_manager="True"
+proftpd_nat_masquerade=true
 #params
 supervisor_postgres_database_path="/etc/postgresql/{{ postgresql_version }}/main"
 galaxy_user_name="galaxy"
