@@ -9,4 +9,4 @@ install:
 script:
   # Check the role/playbook's syntax.
   - ansible-playbook -i "localhost," galaxy.yml --syntax-check
-  - ansible-playbook -i "localhost" -c local galaxy.yml
+  - ansible-playbook -i "localhost," -c local galaxy.yml
