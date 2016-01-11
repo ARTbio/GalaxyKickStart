@@ -1,4 +1,16 @@
 #Execute afgane procedure (https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/install_tool_shed_tools.py)
+- include: ../../galaxyprojectdotorg.galaxy-tools/tasks/bootstrap_user.yml 
+  vars:
+    create_user: true 
+    delete_user: false
+  sudo: yes
+  sudo_user: "{{ galaxy_user_name }}"
+  ignore_errors: true
+
+- include: supervisor_galaxy.yml
+  vars:
+    restart_galaxy: true
+
 - name: Create/invoke script virtualenv
   pip: name={{ item }} virtualenv={{ galaxy_tools_base_dir }}/venv virtualenv_command="{{ pip_virtualenv_command | default( 'virtualenv' ) }}"
   with_items:
@@ -13,7 +25,17 @@
   copy: src={{ galaxy_data_managers }} dest={{ galaxy_tools_base_dir }}/run_data_manager.yaml
   
 - name: Run data managers
-#  command: "{{ galaxy_tools_base_dir }}/venv/bin/python install_tool_shed_tools.py -d run_data_manager.yaml -a {{ galaxy_admin_api_key }} -g {{ galaxy_hostname }}"
   command: "{{ galaxy_tools_base_dir }}/venv/bin/python install_tool_shed_tools.py -d run_data_manager.yaml -a {{ galaxy_tools_api_key }} -g {{ galaxy_hostname }}"
   args:
     chdir: "{{ galaxy_tools_base_dir }}"
+    
+- include: ../../galaxyprojectdotorg.galaxy-tools/tasks/bootstrap_user.yml 
+  vars:
+    create_user: false
+    delete_user: true
+  sudo: yes
+  sudo_user: "{{ galaxy_user_name }}"
+
+- include: supervisor_galaxy.yml
+  vars:
+    restart_galaxy: true

@@ -1,20 +1,19 @@
 [artimed]
 localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
-192.54.201.171 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
+192.54.201.177 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
 
 [artimed:vars]
-#install options
-#install_galaxy="True"
-#install_tools="True"
-#install_data_manager="True"
-#run_data_manager="True"
-#
-#params
-galaxy_user_name="galaxy"
-galaxy_server_dir="/home/{{ galaxy_user_name }}/{{ galaxy_user_name }}"
+#To create a galaxy admin user if the user want to do it
+create_galaxy_admin="False"
 galaxy_admin="artimed@gmail.com"
 galaxy_admin_pw="artimed"
+#
+#
+galaxy_user_name="galaxy"
+galaxy_server_dir="/home/{{ galaxy_user_name }}/{{ galaxy_user_name }}"
 master_api_key=f137d9af2f2065bd8c5fbadf7111494b
+#
+#default tools/data managers/ref. genomes to be installed
 galaxy_tool_list="roles/artimed_extras/defaults/artimed_tool_list.yaml"
 data_manager_list="roles/artimed_extras/defaults/data_manager_list.yaml"
 galaxy_data_managers="roles/artimed_extras/defaults/data_managers.yaml"
@@ -23,4 +22,6 @@ galaxy_data_managers="roles/artimed_extras/defaults/data_managers.yaml"
 galaxy_data="/home/galaxy_data"
 galaxy_database="/home/galaxy_database"
 galaxy_db="postgresql:///{{ galaxy_user_name }}?host=/var/run/postgresql"
+#
+#galaxy version to install
 galaxy_changeset_id="master"

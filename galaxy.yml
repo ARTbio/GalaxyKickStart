@@ -134,13 +134,6 @@
       galaxy_admin_api_key: "{{ master_api_key }}"
       run_extras: true
       pbkdf2: true
-      create_galaxy_admin: false
-      tags: 
-        - galaxy
-      
-    #Restart Galaxy to force galaxy to update the location of the tool_shed 
-    - role: artimed_extras
-      restart_galaxy: true   reuse galaxy-tools task to restart galaxy
       tags: 
         - galaxy
 

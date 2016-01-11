@@ -1,5 +1,4 @@
 #Use python script installed by role galaxy-extras to create a Galaxy admin user with a prior api key
-#It is necessary, since the procedure to run data managers need the admin api key to succeed (do not work with the master api key)
 - name: Create/invoke script virtualenv for create galaxy admin
   pip: name={{ item }} virtualenv={{ galaxy_venv_dir }} virtualenv_command="{{ pip_virtualenv_command | default( 'virtualenv' ) }}"
   with_items:
@@ -15,3 +14,7 @@
     chdir: "{{ galaxy_server_dir }}"
   sudo: yes
   sudo_user: "{{ galaxy_user_name }}"
+
+- include: supervisor_galaxy.yml
+  vars:
+    restart_galaxy: true

@@ -4,28 +4,9 @@
 - include: galaxy_admin.yml
   when: create_galaxy_admin
 
-- include: ../../galaxyprojectdotorg.galaxy-tools/tasks/bootstrap_user.yml 
-  vars:
-    create_user: true 
-    delete_user: false
-  when: run_data_managers
-  sudo: yes
-  sudo_user: "{{ galaxy_user_name }}"
-  ignore_errors: true
-
-- include: supervisor_galaxy.yml
-  when: restart_galaxy or start_galaxy or stop_galaxy
-
 - include: data_managers.yml
   when: run_data_managers
 
-- include: ../../galaxyprojectdotorg.galaxy-tools/tasks/bootstrap_user.yml 
-  vars:
-    create_user: false
-    delete_user: true
-  when: run_data_managers
-  sudo: yes
-  sudo_user: "{{ galaxy_user_name }}"
-
 - include: supervisor_galaxy.yml
   when: restart_galaxy or start_galaxy or stop_galaxy
+  

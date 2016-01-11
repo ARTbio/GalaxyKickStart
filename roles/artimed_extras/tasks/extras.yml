@@ -26,3 +26,8 @@
     - { name: "posgresql", state: "started" }
     - { name: "slurm", state: "started" }
     - { name: "slurmctld", state: "started" }
+  ignore_errors: yes #some services may not be managed via supevisor
+  
+- include: supervisor_galaxy.yml
+  vars:
+    restart_galaxy: true    
