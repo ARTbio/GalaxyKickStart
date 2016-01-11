@@ -14,12 +14,12 @@
     galaxy_mutable_data_dir: "{{ galaxy_data }}/database" # Used by artimed_extras and galaxy roles
     galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini" # Used by galaxy roles
 
-  pre_tasks:
-    #not necessary anymore in dev release - must test???
-    #fix recreation of munge key
-    - shell: rm -rf /tmp/slurm /etc/munge/munge.key
-      tags: 
-        - galaxy
+#  pre_tasks:
+#    #not necessary anymore in dev release - must test???
+#    #fix recreation of munge key
+#    - shell: rm -rf /tmp/slurm /etc/munge/munge.key
+#      tags: 
+#        - galaxy
 
   roles:
     #installs system package requirements
@@ -77,7 +77,7 @@
           tool_data_path: "{{ galaxy_data }}/tool-data"
           shed_tool_data_path: "{{ galaxy_data }}/tool-data"
           galaxy_data_manager_data_path: "{{ galaxy_data }}/tool-data"
-          master_api_key: "{{ master_api_key }}" #could not be the same as admin's key???
+          master_api_key: "{{ master_api_key }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
           ftp_upload_site: "ftp {{ galaxy_hostname }}"
           tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
@@ -104,6 +104,7 @@
 
     #installs nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
+      galaxy_uwsgi_static_conf: true
       supervisor_slurm_config_dir: "{{ galaxy_data }}"
       galaxy_root: "{{ galaxy_server_dir }}"
       galaxy_log_dir: "{{ galaxy_data }}"
@@ -131,9 +132,9 @@
 
     #fix proftpd config file, restarts supervisor tasks, put the test tool shed in the list and create a welcome page
     - role: artimed_extras
-      galaxy_admin_api_key: "{{ master_api_key }}"
       run_extras: true
       pbkdf2: true
+      create_galaxy_admin: "{{ galaxy_admin_create }}"
       tags: 
         - galaxy
 
@@ -147,12 +148,12 @@
       tags: 
         - data_manager
 
-    #not necessary anymore in dev release - must test???
-    #Restart Galaxy
-    - role: artimed_extras
-      restart_galaxy: true
-      tags: 
-        - data_manager
+#    #not necessary anymore in dev release - must test???
+#    #Restart Galaxy
+#    - role: artimed_extras
+#      restart_galaxy: true
+#      tags: 
+#        - data_manager
 
     #The default tools are listed in the file artimed_tool_list.yaml
     - role: galaxyprojectdotorg.galaxy-tools
@@ -164,12 +165,12 @@
       tags: 
         - tools
 
-    #not necessary anymore in dev release - must test???
-    #Restart Galaxy
-    - role: artimed_extras
-      restart_galaxy: true
-      tags: 
-        - tools
+#    #not necessary anymore in dev release - must test???
+#    #Restart Galaxy
+#    - role: artimed_extras
+#      restart_galaxy: true
+#      tags: 
+#        - tools
 
     #Create/delete a bootstrap admin user and run data managers
     - role: artimed_extras
