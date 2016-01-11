@@ -13,3 +13,4 @@
 [submodule "roles/galaxyprojectdotorg.galaxy"]
 	path = roles/galaxyprojectdotorg.galaxy
 	url = https://github.com/fabiorjvieira/ansible-galaxy.git
+
