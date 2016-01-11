@@ -5,9 +5,9 @@ dist: trusty
 
 install:
   # Install Ansible.
-  - pip install ansible
+  - sudo pip install ansible
 
 script:
   # Check the role/playbook's syntax.
-  - ansible-playbook -i "localhost," galaxy.yml --syntax-check
-  - ansible-playbook -i "localhost," -c local -vvvv galaxy.yml
+  - sudo ansible-playbook -i "localhost," galaxy.yml --syntax-check
+  - sudo ansible-playbook -i "localhost," -c local -vvvv galaxy.yml
