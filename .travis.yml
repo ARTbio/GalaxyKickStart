@@ -3,6 +3,10 @@ python: "2.7"
 sudo: required
 dist: trusty
 
+before_install:
+  - sudo service postgresql stop
+  - sudo apt-get remove -y --purge postgresql-*
+
 install:
   # Install Ansible.
   - sudo pip install ansible
