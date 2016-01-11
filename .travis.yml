@@ -2,8 +2,6 @@
 python: "2.7"
 sudo: required
 dist: trusty
-env:
-  - PSQL_DATA_PATH=`psql -t -P format=unaligned -c "SHOW data_directory;"`
 
 before_install:
   - sudo service postgresql stop
@@ -17,4 +15,4 @@ script:
   # Check the role/playbook's syntax.
   - echo $PSQL_DATA_PATH
   - sudo ansible-playbook -i "localhost," galaxy.yml --syntax-check
-  - sudo ansible-playbook -i "localhost," -c local --extra-vars "supervisor_postgres_database_path=$PSQL_DATA_PATH" -vvvv galaxy.yml
+  - sudo ansible-playbook -i "localhost," -c local --extra-vars -vvvv galaxy.yml
