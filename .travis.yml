@@ -2,16 +2,18 @@
 python: "2.7"
 sudo: required
 dist: trusty
+addons:
+  postgresql: "9.3"
 
-before_install:
-  - sudo service postgresql stop
-  - sudo apt-get remove -y --purge postgresql-*
+services:
+  - postgresql
 
 install:
   # Install Ansible.
   - sudo pip install ansible
+  - export PSQL_CONF_PATH=`psql -t -P format=unaligned -c "SHOW config_file;"`
 
 script:
   # Check the role/playbook's syntax.
   - sudo ansible-playbook -i "localhost," galaxy.yml --syntax-check
-  - sudo ansible-playbook -i "localhost," -c local -vvvv galaxy.yml
+  - sudo ansible-playbook -i "localhost," -c local --extra-vars "supervisor_postgres_database_path=$PSQL_CONF_PATH" -vvvv galaxy.yml
