@@ -90,13 +90,13 @@
           nginx_upload_store: "/tmp"
           nginx_upload_path: "/_upload"
         "uwsgi":
-          stats: "localhost:9191" #see if the removal off all except master and logto will work (must incorporate marius changes in extras)??? 
-          socket: "localhost:4001"
+#          stats: "localhost:9191" #see if the removal off all except master and logto will work (must incorporate marius changes in extras)??? 
+#          socket: "localhost:4001"
           master: True
-          logto: "{{ galaxy_data }}/uwsgi.log"
-          pythonpath: lib
-          threads: 4
-          processes: "{{ galaxy_web_processes }}"
+#          logto: "{{ galaxy_data }}/uwsgi.log"
+#          pythonpath: lib
+#          threads: 4
+#          processes: "{{ galaxy_web_processes }}"
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
       tags: 
