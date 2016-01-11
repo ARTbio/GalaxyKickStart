@@ -7,17 +7,21 @@
   when: persist
 
 - name: Check data dir for galaxy
-  stat: path={{ galaxy_data }}/tool-data
+  stat: path={{ galaxy_data }}/eggs
   register: directory
 #  when: persist
 
-- name: Create data dir for galaxy
+- name: Create data dir for galaxy persistent files
   file: path={{ item }} owner={{ galaxy_user_name }} group={{ galaxy_user_name }} mode=0700 state=directory
   with_items: 
     - "{{ galaxy_data }}"
     - "{{ galaxy_data }}/tool_shed_dependencies"
     - "{{ galaxy_data }}/shed_tools"
     - "{{ galaxy_data }}/tool-data"
+    - "{{ galaxy_data }}/database"
+    - "{{ galaxy_data }}/tools"
+    - "{{ galaxy_data }}/database/ftp"
+    - "{{ galaxy_data }}/eggs"
   when: persist and (directory.stat.islnk is not defined)
   
 - name: Give galaxy_user_name access to galaxy_data base chain directory
