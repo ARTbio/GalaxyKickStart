@@ -11,9 +11,9 @@ services:
 install:
   # Install Ansible.
   - sudo pip install ansible
-  - export PSQL_CONF_PATH=`psql -t -P format=unaligned -c "SHOW config_file;"`
+  - export PSQL_DATA_PATH=`psql -t -P format=unaligned -c "SHOW data_directory;"`
 
 script:
   # Check the role/playbook's syntax.
   - sudo ansible-playbook -i "localhost," galaxy.yml --syntax-check
-  - sudo ansible-playbook -i "localhost," -c local --extra-vars "supervisor_postgres_database_path=$PSQL_CONF_PATH" -vvvv galaxy.yml
+  - sudo ansible-playbook -i "localhost," -c local --extra-vars "supervisor_postgres_database_path=$PSQL_DATA_PATH" -vvvv galaxy.yml
