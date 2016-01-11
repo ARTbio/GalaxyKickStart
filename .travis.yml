@@ -2,6 +2,8 @@
 python: "2.7"
 sudo: required
 dist: trusty
+env:
+  - PSQL_DATA_PATH=`psql -t -P format=unaligned -c "SHOW data_directory;"`
 
 before_install:
   - sudo service postgresql stop
@@ -10,7 +12,6 @@ before_install:
 install:
   # Install Ansible.
   - sudo pip install ansible
-  - export PSQL_DATA_PATH=`psql -t -P format=unaligned -c "SHOW data_directory;"`
 
 script:
   # Check the role/playbook's syntax.
