@@ -24,3 +24,9 @@ sql_pwd: "SHA256 10000 24"
 sql_alt: "sql:/GetUserSalt"
 galaxy_tools_base_dir: "/tmp"
 ftp_port: "21"
+
+additional_files_list:
+  - { src: "welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
+  - { src: "tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+  - { src: "ARTiMED_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "logo_iuis_UPMC_UTC.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }

@@ -1,3 +1,2 @@
 [artimed]
-192.54.201.79 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/ifb"
-#192.54.201.129 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/ifb"
+192.54.201.179 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/ifb"
