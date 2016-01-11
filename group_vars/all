@@ -16,6 +16,7 @@ proftpd_files_dir: "{{ galaxy_data }}/database/ftp"
 master_api_key: "f137d9af2f2065bd8c5fbadf7111494b"
 postgresql_version: 9.3
 supervisor_postgres_database_path: /etc/postgresql/{{ postgresql_version }}/main
+apt_package_state: present
 galaxy_extras_apt_package_state: present
 additional_files_list: []
 
