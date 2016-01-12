@@ -1,3 +1,8 @@
+- set_fact:
+    supervisor_postgres_database_path: "/var/lib/postgresql/{{ postgresql_version }}/main" 
+    supervisor_postgres_database_config: "/var/lib/postgresql/{{ postgresql_version }}/main/postgresql.conf"
+  when: manage_postgresql
+
 - name: Create users group
   group: name=users state=present
   when: manage_postgresql
@@ -45,15 +50,16 @@
   sudo_user: postgres
 
 - name: Copy postgresql config files
-  shell: cp -vr /etc/postgresql/{{ postgresql_version }}/main/*.conf {{ galaxy_database }}/
+  shell: cp -vr /etc/postgresql/{{ postgresql_version }}/main/*.conf {{ galaxy_database }}/main/
   when: manage_postgresql and (dir_sym.stat.islnk is not defined)
   sudo: yes
   sudo_user: postgres
 
 - name: Fix hba and ident locations in the config file
-  replace: hba_file = 
+  lineinfile: dest="{{ supervisor_postgres_database_config }}" regexp="^[ ]*{{ item }}[ ]*=" line="{{ item }} = {{ item }}" 
   with_items: 
     - "hba_file = "
+    - "ident_file = "
 
 - name: Check postgresql backup dir
   stat: path=/var/lib/postgresql/{{ postgresql_version }}/main.backup/PG_VERSION
@@ -74,10 +80,6 @@
   when: manage_postgresql and ((dir_sym.stat.islnk is not defined) or (not dir_sym.stat.islnk))
   sudo: yes
   sudo_user: postgres
-
-- set_fact:
-    supervisor_postgres_database_path: "/var/lib/postgresql/{{ postgresql_version }}/main" 
-    supervisor_postgres_database_config: "/var/lib/postgresql/{{ postgresql_version }}/main/postgresql.conf"
 
 - name: Start supervisor postgreSQL
   supervisorctl: name="postgresql" state=started
