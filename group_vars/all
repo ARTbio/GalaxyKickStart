@@ -4,6 +4,8 @@ install_tools: false
 run_data_manager: false
 galaxy_hostname: "{{ inventory_hostname }}"
 galaxy_user_name: galaxy
+galaxy_user_gid: 1111
+galaxy_user_uid: 1111
 galaxy_server_dir: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
 galaxy_data: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
 galaxy_config_dir: "{{ galaxy_data }}/config"
@@ -15,7 +17,8 @@ galaxy_admin_pw: artimed
 proftpd_files_dir: "{{ galaxy_data }}/database/ftp"
 master_api_key: "f137d9af2f2065bd8c5fbadf7111494b"
 postgresql_version: 9.3
-supervisor_postgres_database_path: /etc/postgresql/{{ postgresql_version }}/main
+#supervisor_postgres_database_path: /etc/postgresql/{{ postgresql_version }}/main
+apt_package_state: present
 galaxy_extras_apt_package_state: present
 additional_files_list: []
 
@@ -77,7 +80,7 @@ supervisor_manage_reports: true
 supervisor_manage_docker: false
 supervisor_manage_nodeproxy: false
 supervisor_manage_ie_proxy: false
-proftpd_nat_masquerade: true
+proftpd_nat_masquerade: false
 
 # galaxy-tools role variables
 
