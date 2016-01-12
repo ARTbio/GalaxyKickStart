@@ -41,6 +41,7 @@
 
     #fix proftpd config file, restarts supervisor, put the test tool shed in the list and create a welcome page
     - role: ensure_postgresql_up
+      supervisor_postgres_database_path: supervisor_postgres_database_path_discovered
 
     - role: artimed_extras
       run_extras: true
