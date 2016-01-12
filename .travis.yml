@@ -9,8 +9,7 @@ before_install:
 
 install:
   # Install Ansible.
-  - git clone -b stable-1.9 --recursive https://github.com/mvdbeek/ansible.git
-  - sudo pip install -e ansible/
+  - sudo pip install ansible
 
 script:
   # Check the role/playbook's syntax.
