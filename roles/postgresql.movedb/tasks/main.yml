@@ -25,6 +25,8 @@
   shell: ls -C1 /etc/postgresql/
   register: postgresql_version
 
+- set_fact: postgresql_version="{{ postgresql_version.stdout }}"
+
 - name: Stop supervisor postgreSQL
   supervisorctl: name="postgresql" state=stopped
   when: manage_postgresql and not service_postgresql and (dir_sym.stat.islnk is not defined)
@@ -37,33 +39,34 @@
 
 #upgrade: automaticlly dicovers where is the postgresql master db (pg_lsclusters)
 - name: Copy postgresql db
-  shell: cp -vr /var/lib/postgresql/{{ postgresql_version.stdout }}/main {{ galaxy_database }}/
+  shell: cp -vr /var/lib/postgresql/{{ postgresql_version }}/main {{ galaxy_database }}/
   when: manage_postgresql and (dir_sym.stat.islnk is not defined)
   sudo: yes
   sudo_user: postgres
 
 - name: Check postgresql backup dir
-  stat: path=/var/lib/postgresql/{{ postgresql_version.stdout }}/main.backup/PG_VERSION
+  stat: path=/var/lib/postgresql/{{ postgresql_version }}/main.backup/PG_VERSION
   register: dir_sym
 
 - name: Backup postgresql db
-  shell: mv -v /var/lib/postgresql/{{ postgresql_version.stdout }}/main /var/lib/postgresql/{{ postgresql_version.stdout }}/main.backup
+  shell: mv -v /var/lib/postgresql/{{ postgresql_version }}/main /var/lib/postgresql/{{ postgresql_version }}/main.backup
   when: manage_postgresql and (dir_sym.stat.islnk is not defined)
   sudo: yes
   sudo_user: postgres
 
 - name: Check postgresql symlink for galaxy
-  stat: path=/var/lib/postgresql/{{ postgresql_version.stdout }}/main
+  stat: path=/var/lib/postgresql/{{ postgresql_version }}/main
   register: dir_sym
 
 - name: Create a symlink for postgresql
-  shell: ln -s {{ galaxy_database }}/main /var/lib/postgresql/{{ postgresql_version.stdout }}/
+  shell: ln -s {{ galaxy_database }}/main /var/lib/postgresql/{{ postgresql_version }}/
   when: manage_postgresql and ((dir_sym.stat.islnk is not defined) or (not dir_sym.stat.islnk))
   sudo: yes
   sudo_user: postgres
 
 - set_fact:
-    supervisor_postgres_database_path: "/var/lib/postgresql/{{ postgresql_version.stdout }}/main\" -c \"config_file=/etc/postgresql/{{ postgresql_version.stdout }}/main/postgresql.conf"
+    supervisor_postgres_database_path: "/var/lib/postgresql/{{ postgresql_version }}/main" 
+    supervisor_postgres_database_config: "/etc/postgresql/{{ postgresql_version }}/main/postgresql.conf"
 
 - name: Start supervisor postgreSQL
   supervisorctl: name="postgresql" state=started
