@@ -44,6 +44,17 @@
   sudo: yes
   sudo_user: postgres
 
+- name: Copy postgresql config files
+  shell: cp -vr /etc/postgresql/{{ postgresql_version }}/main/*.conf {{ galaxy_database }}/
+  when: manage_postgresql and (dir_sym.stat.islnk is not defined)
+  sudo: yes
+  sudo_user: postgres
+
+- name: Fix hba and ident locations in the config file
+  replace: hba_file = 
+  with_items: 
+    - "hba_file = "
+
 - name: Check postgresql backup dir
   stat: path=/var/lib/postgresql/{{ postgresql_version }}/main.backup/PG_VERSION
   register: dir_sym
@@ -66,7 +77,7 @@
 
 - set_fact:
     supervisor_postgres_database_path: "/var/lib/postgresql/{{ postgresql_version }}/main" 
-    supervisor_postgres_database_config: "/etc/postgresql/{{ postgresql_version }}/main/postgresql.conf"
+    supervisor_postgres_database_config: "/var/lib/postgresql/{{ postgresql_version }}/main/postgresql.conf"
 
 - name: Start supervisor postgreSQL
   supervisorctl: name="postgresql" state=started
