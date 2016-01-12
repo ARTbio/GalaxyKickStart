@@ -17,10 +17,12 @@ Group                           nogroup
 # Passive port range for the firewall
 PassivePorts                    {{ proftpd_passive_port_low }} {{ proftpd_passive_port_high }}
 
+{% if proftpd_nat_masquerade %}
 # If your host was NATted, this option is useful in order to
 # allow passive tranfers to work. You have to use your public
 # address and opening the passive ports used on your firewall as well.
-MasqueradeAddress               %{env:PUBLIC_IP}
+MasqueradeAddress               %{env:MASQUERADE_ADDRESS}
+{% endif %}
 
 # Cause every FTP user to be "jailed" (chrooted) into their home directory
 DefaultRoot                     ~

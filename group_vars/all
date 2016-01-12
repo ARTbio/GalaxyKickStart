@@ -1,0 +1,90 @@
+install_galaxy: true
+run_extras: true
+install_tools: false
+run_data_manager: false
+galaxy_hostname: "{{ inventory_hostname }}"
+galaxy_user_name: galaxy
+galaxy_user_gid: 1111
+galaxy_user_uid: 1111
+galaxy_server_dir: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
+galaxy_data: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
+galaxy_config_dir: "{{ galaxy_data }}/config"
+galaxy_database: /home/galaxy_database
+galaxy_db: postgresql:///{{ galaxy_user_name }}?host=/var/run/postgresql
+galaxy_changeset_id: release_16.01
+galaxy_admin: artimed@gmail.com
+galaxy_admin_pw: artimed
+proftpd_files_dir: "{{ galaxy_data }}/database/ftp"
+master_api_key: "f137d9af2f2065bd8c5fbadf7111494b"
+postgresql_version: 9.3
+#supervisor_postgres_database_path: /etc/postgresql/{{ postgresql_version }}/main
+apt_package_state: present
+galaxy_extras_apt_package_state: present
+additional_files_list: []
+
+# galaxy role variables
+
+#persistent data
+galaxy_manage_mutable_setup: yes
+galaxy_mutable_config_dir: "{{ galaxy_config_dir }}"
+galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini"
+#other vars
+galaxy_manage_database: yes
+# does not actually fetch eggs if galaxy uses pip
+galaxy_fetch_eggs: yes
+galaxy_vcs: git
+galaxy_force_checkout: yes
+galaxy_config:
+  "app:main":
+    admin_users: "{{ galaxy_admin }}"
+    database_connection: "{{ galaxy_db }}"
+    tool_dependency_dir: "{{ galaxy_server_dir }}/lib/tool_shed/dependencies"
+    master_api_key: "{{ master_api_key }}"
+    ftp_upload_dir: "{{ proftpd_files_dir }}"
+    ftp_upload_site: ftp://{{ galaxy_hostname }}
+    #tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
+    #to be done only in production
+    #debug: False
+    #use_interactive: False
+    static_enabled: False
+    nginx_x_accel_redirect_base: /_x_accel_redirect
+    nginx_x_archive_files_base: /_x_accel_redirect
+    nginx_upload_store: /tmp
+    nginx_upload_path: /_upload
+    #use_pbkdf2: false
+  "uwsgi":
+    master: True
+
+# galaxy-extras role variables
+galaxy_uwsgi_static_conf: true
+galaxy_web_processes: 1
+galaxy_handler_processes: 1
+supervisor_slurm_config_dir: "{{ galaxy_data }}"
+galaxy_root: "{{ galaxy_server_dir }}"
+galaxy_log_dir: "{{ galaxy_data }}"
+galaxy_database_connection: "{{ galaxy_db }}"
+galaxy_extras_config_scripts: true
+galaxy_extras_install_packages: true
+galaxy_extras_config_nginx: true
+galaxy_extras_config_supervisor: true
+galaxy_extras_config_proftpd: true
+galaxy_extras_config_uwsgi: true
+galaxy_extras_config_galaxy_job_metrics: true
+galaxy_extras_config_slurm: true
+galaxy_extras_config_galaxy_root: true
+galaxy_extras_config_ie_proxy: false
+supervisor_manage_nginx: true
+supervisor_manage_proftp: true
+supervisor_manage_slurm: true
+supervisor_manage_reports: true
+supervisor_manage_docker: false
+supervisor_manage_nodeproxy: false
+supervisor_manage_ie_proxy: false
+proftpd_nat_masquerade: false
+
+# galaxy-tools role variables
+
+galaxy_tools_admin_user: "{{ galaxy_admin }}"
+galaxy_tools_api_key: "{{ master_api_key }}"
+galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}"
+galaxy_tools_tool_list_files: [ "{{ galaxy_tool_list }}" ]
