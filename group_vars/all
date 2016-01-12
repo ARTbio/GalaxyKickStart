@@ -80,7 +80,7 @@ supervisor_manage_reports: true
 supervisor_manage_docker: false
 supervisor_manage_nodeproxy: false
 supervisor_manage_ie_proxy: false
-proftpd_nat_masquerade: true
+proftpd_nat_masquerade: false
 
 # galaxy-tools role variables
 
