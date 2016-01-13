@@ -18,8 +18,8 @@ before_install:
 install:
   # Install Ansible.
   - sudo pip install ansible
-  - pip install --user --upgrade "tox>=1.8.0" "pep8<=1.6.2"
   - pip install --user https://github.com/bgruening/bioblend/archive/master.tar.gz
+  - pip install --user --upgrade "tox>=1.8.0" "pep8<=1.6.2"
   - wget https://github.com/bgruening/bioblend/archive/master.tar.gz
   - tar xzf master.tar.gz
 
