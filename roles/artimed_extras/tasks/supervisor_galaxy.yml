@@ -1,21 +1,21 @@
-- name get_logs
+- name: get_logs
   shell: "cat /var/log/supervior/galaxy*"
-  register: galaxy_logs
+  register: galaxylogs
   ignore_errors: yes
 
-- debug var=galaxy_logs
+- debug: var=galaxylogs
 
 - name: Restart Galaxy
   supervisorctl: name="galaxy:" state=restarted
   ignore_errors: yes
   when: restart_galaxy
 
-- name get_logs
+- name: get_logs
   shell: "cat /var/log/supervior/galaxy*"
-  register: galaxy_logs
+  register: galaxylogs
   ignore_errors: yes
 
-- debug var=galaxy_logs
+- debug: var=galaxlogs
 
 - name: Start Galaxy
   supervisorctl: name="galaxy:" state=started
