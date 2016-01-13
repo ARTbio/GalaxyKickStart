@@ -26,10 +26,10 @@ install:
 script:
   # Check the role/playbook's syntax.
   - sudo ansible-playbook -i "localhost," galaxy.yml --syntax-check
-  # run playbook
+  # run the full playbook
   - sudo ansible-playbook -i "localhost," -c local -vvvv galaxy.yml
-  # run it again (should return 0 changes in the future)
-  - sudo ansible-playbook -i "localhost," -c local -vvvv galaxy.yml
+  # run playbook again, but with settings required for bioblend
+  - sudo ansible-playbook -i hosts -l travis_bioblend -vvvv galaxy.yml
   - curl $BIOBLEND_GALAXY_URL/api/version
   - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   - curl --fail ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
