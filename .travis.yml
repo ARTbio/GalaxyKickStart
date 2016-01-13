@@ -34,7 +34,7 @@ script:
   # run playbook again, but with settings required for bioblend
   - sudo ansible-playbook -i hosts -l travis_bioblend -vvvv galaxy.yml
   - curl $BIOBLEND_GALAXY_URL/api/version
-  - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
+  - time > /tmp/time.txt && curl --fail -T /tmp/time.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   - curl --fail ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   # bioblend nose-tests
   - cd bioblend-master 
