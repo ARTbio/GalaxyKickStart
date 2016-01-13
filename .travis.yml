@@ -4,7 +4,7 @@ sudo: required
 dist: trusty
 
 env:
-  - TOX_ENV=py27
+  - TOXENV=py27
 
 before_install:
   - sudo service postgresql stop
@@ -35,4 +35,5 @@ script:
   - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   - curl --fail ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   # bioblend nose-tests
-  - cd bioblend-master && tox -e $TOX_ENV -- -e 'test_download_dataset'"
+  - cd bioblend-master 
+  - tox -e $TOXENV -- -e 'test_download_dataset'

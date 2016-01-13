@@ -1,5 +1,12 @@
 - name: get_logs
-  shell: "cat /var/log/supervior/galaxy*"
+  shell: "cat /var/log/supervisor/galaxy*"
+  register: galaxylogs
+  ignore_errors: yes
+
+- debug: var=galaxylogs
+
+- name: get_logs
+  shell: "cat /home/galaxy/galaxy/*.log"
   register: galaxylogs
   ignore_errors: yes
 
@@ -11,11 +18,33 @@
   when: restart_galaxy
 
 - name: get_logs
-  shell: "cat /var/log/supervior/galaxy*"
+  shell: "cat /var/log/supervisor/galaxy*"
   register: galaxylogs
   ignore_errors: yes
 
-- debug: var=galaxlogs
+- debug: var=galaxylogs
+
+- name: get_logs
+  shell: "cat /home/galaxy/galaxy/*.log"
+  register: galaxylogs
+  ignore_errors: yes
+
+- debug: var=galaxylogs
+
+- name: get_logs
+  shell: "cat /etc/supervisor/conf.d/galaxy.conf"
+  register: galaxylogs
+  ignore_errors: yes
+
+- debug: var=galaxylogs
+
+- name: get_logs
+  shell: "supervisorctl status"
+  register: galaxylogs
+  ignore_errors: yes
+
+- debug: var=galaxylogs
+
 
 - name: Start Galaxy
   supervisorctl: name="galaxy:" state=started
