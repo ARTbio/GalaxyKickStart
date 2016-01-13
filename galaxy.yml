@@ -63,7 +63,7 @@
       galaxy_force_checkout: yes #for testing this is good 
       galaxy_config:
         "app:main":
-#          admin_users: "{{ galaxy_admin }}"
+          admin_users: "{{ galaxy_admin_email }}"
           database_connection: "{{ galaxy_db }}"
           tool_path: "{{ galaxy_data }}/tools"
           tool_dependency_dir: "{{ galaxy_data }}/tool_shed_dependencies"

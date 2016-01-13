@@ -1,6 +1,6 @@
 [artimed]
 localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
-192.54.201.102 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
+192.54.201.105 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
 
 [artimed:vars]
 galaxy_user_name="galaxy"
@@ -22,6 +22,6 @@ galaxy_changeset_id="dev"
 #
 #To create a galaxy admin user if the user want to do it
 galaxy_admin_create="False"
-galaxy_admin="artimed@gmail.com"
+galaxy_admin="artimed"
+galaxy_admin_email="artimed@gmail.com"
 galaxy_admin_pw="artimed"
-galaxy_admin_api_key="8a82a5aadde9db28fc6ebbba8d70c2db"
