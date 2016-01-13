@@ -15,6 +15,7 @@ galaxy_db: postgresql:///{{ galaxy_user_name }}?host=/var/run/postgresql
 galaxy_changeset_id: release_16.01
 galaxy_admin: artimed@gmail.com
 galaxy_admin_pw: artimed
+use_pbkdf2: true
 proftpd_files_dir: "{{ galaxy_data }}/database/ftp"
 master_api_key: "f137d9af2f2065bd8c5fbadf7111494b"
 postgresql_version: 9.3
@@ -52,7 +53,7 @@ galaxy_config:
     nginx_x_archive_files_base: /_x_accel_redirect
     nginx_upload_store: /tmp
     nginx_upload_path: /_upload
-    #use_pbkdf2: false
+    use_pbkdf2: "{{ use_pbkdf2 }}"
   "uwsgi":
     master: True
 
