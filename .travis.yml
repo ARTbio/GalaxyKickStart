@@ -33,6 +33,6 @@ script:
   - export BIOBLEND_GALAXY_URL=http://localhost:80
   - curl --fail $BIOBLEND_GALAXY_URL/api/version
   - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
-  - curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
+  - curl --fail ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   # bioblend nose-tests
   - cd bioblend-master && tox -e $TOX_ENV -- -e 'test_download_dataset'"
