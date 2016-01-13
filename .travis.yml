@@ -9,6 +9,11 @@ env:
 before_install:
   - sudo service postgresql stop
   - sudo apt-get remove -y --purge postgresql-*
+  - export GALAXY_USER=artimed@gmail.com
+  - export GALAXY_USER_EMAIL=$GALAXY_USER
+  - export GALAXY_USER_PASSWD=artimed
+  - export BIOBLEND_GALAXY_API_KEY=f137d9af2f2065bd8c5fbadf7111494b
+  - export BIOBLEND_GALAXY_URL=http://localhost:80
 
 install:
   # Install Ansible.
@@ -25,13 +30,7 @@ script:
   - sudo ansible-playbook -i "localhost," -c local -vvvv galaxy.yml
   # run it again (should return 0 changes in the future)
   - sudo ansible-playbook -i "localhost," -c local -vvvv galaxy.yml
-
-  - export GALAXY_USER=artimed@gmail.com
-  - export GALAXY_USER_EMAIL=$GALAXY_USER
-  - export GALAXY_USER_PASSWD=artimed
-  - export BIOBLEND_GALAXY_API_KEY=f137d9af2f2065bd8c5fbadf7111494b
-  - export BIOBLEND_GALAXY_URL=http://localhost:80
-  - curl --fail $BIOBLEND_GALAXY_URL/api/version
+  - curl $BIOBLEND_GALAXY_URL/api/version
   - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   - curl --fail ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   # bioblend nose-tests
