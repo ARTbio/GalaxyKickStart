@@ -2,21 +2,6 @@
   group: name=users state=present
   when: manage_postgresql
 
-#create the export directory???
-#only for testing in IFB, must be removed later
-- file: path=/export owner=root group=users mode=0777 state=directory
-  sudo: yes
-  sudo_user: root
-  when: IFB
-- shell: umount /dev/vdc
-  sudo: yes
-  sudo_user: root
-  when: IFB
-- shell: mount /dev/vdc /export
-  sudo: yes
-  sudo_user: root
-  when: IFB
-
 - name: Put postgres into users group
   shell: adduser postgres users
   when: manage_postgresql
@@ -59,13 +44,13 @@
 
 - name: Stop supervisor postgreSQL
   supervisorctl: name="postgresql" state=stopped
-  when: manage_postgresql and not service_postgresql and (dir_sym.stat.islnk is not defined)
+  when: manage_postgresql and not service_postgresql
   register: supervisor_postgresql_success
   ignore_errors: yes
   
 - name: Stop postgresql
   service: name=postgresql state=stopped
-  when: manage_postgresql and (service_postgresql or (supervisor_postgresql_success.failed is defined)) and (dir_sym.stat.islnk is not defined)
+  when: manage_postgresql and (service_postgresql or (supervisor_postgresql_success.failed is defined))
 
 - name: Copy postgresql db
   shell: cp -vr {{ supervisor_postgres_database_path }} {{ galaxy_database }}/
@@ -108,11 +93,11 @@
 
 - name: Start supervisor postgreSQL
   supervisorctl: name="postgresql" state=started
-  when: manage_postgresql and not service_postgresql and (dir_sym.stat.islnk is not defined)
+  when: manage_postgresql and not service_postgresql
   register: supervisor_postgresql_success
   ignore_errors: yes
 
 - name: Start postgresql
   service: name=postgresql state=started
-  when: manage_postgresql and (service_postgresql or (supervisor_postgresql_success.failed is defined)) and (dir_sym.stat.islnk is not defined)
+  when: manage_postgresql and (service_postgresql or (supervisor_postgresql_success.failed is defined))
   
