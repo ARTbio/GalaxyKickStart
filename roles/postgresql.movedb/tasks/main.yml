@@ -3,10 +3,19 @@
   when: manage_postgresql
 
 #create the export directory???
-#only for testing, must be removed later
+#only for testing in IFB, must be removed later
 - file: path=/export owner=root group=users mode=0777 state=directory
   sudo: yes
   sudo_user: root
+  when: IFB
+- shell: umount /dev/vdc
+  sudo: yes
+  sudo_user: root
+  when: IFB
+- shell: mount /dev/vdc /export
+  sudo: yes
+  sudo_user: root
+  when: IFB
 
 - name: Put postgres into users group
   shell: adduser postgres users

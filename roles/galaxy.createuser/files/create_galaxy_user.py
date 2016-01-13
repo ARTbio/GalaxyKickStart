@@ -4,10 +4,10 @@ import argparse
 
 from bioblend.galaxy import GalaxyInstance   
 
-def create_user( url, email, password, username, key ):
+def create_user(url, username, email, password, key):
     if email and password and username and key:
        galaxy_instance = GalaxyInstance(url, key)
-       galaxy_instance.users.create_local_user(username,email,password)
+       galaxy_instance.users.create_local_user(username, email, password)
     return None
 
 if __name__ == "__main__":

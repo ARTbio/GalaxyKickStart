@@ -1,11 +1,11 @@
 [artimed]
 localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
-192.54.201.105 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
+192.54.201.109 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
 
 [artimed:vars]
 galaxy_user_name="galaxy"
 galaxy_server_dir="/home/{{ galaxy_user_name }}/{{ galaxy_user_name }}"
-master_api_key=f137d9af2f2065bd8c5fbadf7111494b
+master_api_key="f137d9af2f2065bd8c5fbadf7111494b"
 #
 #Default tools/data_managers/ref_genomes to be installed
 galaxy_tool_list="roles/artimed_extras/defaults/artimed_tool_list.yaml"
@@ -25,3 +25,6 @@ galaxy_admin_create="False"
 galaxy_admin="artimed"
 galaxy_admin_email="artimed@gmail.com"
 galaxy_admin_pw="artimed"
+#
+#debug in IFB
+IFB="True"

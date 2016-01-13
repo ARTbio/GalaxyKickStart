@@ -63,7 +63,7 @@
       galaxy_force_checkout: yes #for testing this is good 
       galaxy_config:
         "app:main":
-          admin_users: "{{ galaxy_admin_email }}"
+          #admin_users: "{{ galaxy_admin_email }}"
           database_connection: "{{ galaxy_db }}"
           tool_path: "{{ galaxy_data }}/tools"
           tool_dependency_dir: "{{ galaxy_data }}/tool_shed_dependencies"
@@ -91,7 +91,6 @@
 
     #installs nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
-      ansible_virtualization_type: false
       galaxy_uwsgi_static_conf: true
       supervisor_slurm_config_dir: "{{ galaxy_data }}"
       galaxy_root: "{{ galaxy_server_dir }}"
@@ -122,8 +121,12 @@
     - role: artimed_extras
       run_extras: true
       pbkdf2: true
-      create_galaxy_admin: "{{ galaxy_admin_create }}"
       tags: 
+        - galaxy
+        
+    - role: galaxy.createuser
+      when: galaxy_admin_create
+      tags:
         - galaxy
 
     #The default data managers are listed in the file data_manager_list.yaml

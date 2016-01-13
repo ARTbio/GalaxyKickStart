@@ -1,20 +1,15 @@
-#Use python script installed by role galaxy-extras to create a Galaxy admin user
+#Use bioblend to create a Galaxy admin user
 - name: Create/invoke script virtualenv for create galaxy admin
   pip: name={{ item }} virtualenv={{ galaxy_venv_dir }} virtualenv_command="{{ pip_virtualenv_command | default( 'virtualenv' ) }}"
   with_items:
     - pyyaml
     - bioblend
-    - psycopg2
   sudo: yes
   sudo_user: "{{ galaxy_user_name }}"
 
 - name: Create Galaxy admin user
-  command: "{{ galaxy_venv_dir }}/bin/python /usr/local/bin/create_galaxy_user.py --user {{ galaxy_admin_email }} --password {{ galaxy_admin_pw }}"
+  command: '{{ galaxy_venv_dir }}/bin/python --url "{{ galaxy_hostname }}" --user "{{ galaxy_admin }}" --email "{{ galaxy_admin_email }}" --password "{{ galaxy_admin_pw }}" --key "{{ master_api_key }}"'
   args:
     chdir: "{{ galaxy_server_dir }}"
   sudo: yes
   sudo_user: "{{ galaxy_user_name }}"
-
-- include: supervisor_galaxy.yml
-  vars:
-    restart_galaxy: true

@@ -1,0 +1,5 @@
+galaxy_admin_email: ""
+galaxy_admin_pw: ""
+galaxy_admin: ""
+master_api_key: ""
+galaxy_hostname: "{{ inventory_hostname }}"
