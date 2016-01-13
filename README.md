@@ -61,7 +61,7 @@ These most important variables are:
 - galaxy_server_dir - The home of Operating System user for galaxy process.
 - galaxy_admin - The admin galaxy user.
 - galaxy_admin_pw - The admin galaxy password.
-- master_api_key - The api key for tool installation and download reference genomes throught galaxy data managers.
+- default_admin_api_key - The api key for tool installation and download reference genomes throught galaxy data managers. To be removed in production.
 - galaxy_tool_list - The files that constants the list of tools to be installed.
 - galaxy_data_managers - The reference genomes and indexes to be load and build.
 - galaxy_data - The persistent directory where the galaxy config and database directories will be installed or will be recovered.
