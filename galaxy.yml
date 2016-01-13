@@ -14,13 +14,6 @@
     galaxy_mutable_data_dir: "{{ galaxy_data }}/database" # Used by artimed_extras and galaxy roles
     galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini" # Used by galaxy roles
 
-#  pre_tasks:
-#    #not necessary anymore in dev release - must test???
-#    #fix recreation of munge key
-#    - shell: rm -rf /tmp/slurm /etc/munge/munge.key
-#      tags: 
-#        - galaxy
-
   roles:
     #installs system package requirements
     - role: galaxyprojectdotorg.galaxy-os
@@ -90,13 +83,7 @@
           nginx_upload_store: "/tmp"
           nginx_upload_path: "/_upload"
         "uwsgi":
-#          stats: "localhost:9191" #see if the removal off all except master and logto will work (must incorporate marius changes in extras)??? 
-#          socket: "localhost:4001"
           master: True
-#          logto: "{{ galaxy_data }}/uwsgi.log"
-#          pythonpath: lib
-#          threads: 4
-#          processes: "{{ galaxy_web_processes }}"
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
       tags: 
@@ -149,13 +136,6 @@
       tags: 
         - data_manager
 
-#    #not necessary anymore in dev release - must test???
-#    #Restart Galaxy
-#    - role: artimed_extras
-#      restart_galaxy: true
-#      tags: 
-#        - data_manager
-
     #The default tools are listed in the file artimed_tool_list.yaml
     - role: galaxyprojectdotorg.galaxy-tools
       galaxy_tools_api_key: "{{ master_api_key }}"
@@ -165,13 +145,6 @@
       sudo_user: "{{ galaxy_user_name }}"
       tags: 
         - tools
-
-#    #not necessary anymore in dev release - must test???
-#    #Restart Galaxy
-#    - role: artimed_extras
-#      restart_galaxy: true
-#      tags: 
-#        - tools
 
     #Create/delete a bootstrap admin user and run data managers
     - role: artimed_extras

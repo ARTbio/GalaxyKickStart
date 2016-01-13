@@ -1,11 +1,12 @@
-- set_fact:
-    supervisor_postgres_database_path: "/var/lib/postgresql/{{ postgresql_version }}/main" 
-    supervisor_postgres_database_config: "/var/lib/postgresql/{{ postgresql_version }}/main/postgresql.conf"
-  when: manage_postgresql
-
 - name: Create users group
   group: name=users state=present
   when: manage_postgresql
+
+#create the export directory???
+#only for testing, must be removed later
+- file: path=/export owner=root group=users mode=0777 state=directory
+  sudo: yes
+  sudo_user: root
 
 - name: Put postgres into users group
   shell: adduser postgres users
@@ -22,15 +23,30 @@
   when: manage_postgresql and (dir_sym.stat.islnk is not defined)
 
 - name: Give postgres access to galaxy_database directory chain
-  file: path=/{{ galaxy_database_items[1] }} mode=0755 group=users #recurse=yes
+  file: path={{ galaxy_database }} mode=0755 group=users #recurse=yes
+#  file: path=/{{ galaxy_database_items[1] }} mode=0755 group=users #recurse=yes
 #  with_items: "{{ galaxy_database_items }}"
-  when: manage_postgresql and (galaxy_database_items[1] is defined)
+  when: manage_postgresql and (galaxy_database is defined)
 
+#upgrade: automaticlly dicovers where is the postgresql config (pg_lsclusters)
 - name: Postgresql version
   shell: ls -C1 /etc/postgresql/
   register: postgresql_version
 
-- set_fact: postgresql_version="{{ postgresql_version.stdout }}"
+#set postgresql debian like distributions
+#upgrade: automaticlly dicovers where is the postgresql master db (pg_lsclusters)
+- set_fact:
+    postgresql_version: "{{ postgresql_version.stdout }}"
+  when: manage_postgresql
+
+- set_fact:
+    supervisor_postgres_database_path: "/var/lib/postgresql/{{ postgresql_version }}/main" 
+  when: manage_postgresql
+
+- set_fact:
+    supervisor_postgres_database_config: "{{ supervisor_postgres_database_path }}/postgresql.conf"
+    supervisor_postgres_database_config_path: "/etc/postgresql/{{ postgresql_version }}/main"
+  when: manage_postgresql
 
 - name: Stop supervisor postgreSQL
   supervisorctl: name="postgresql" state=stopped
@@ -42,44 +58,44 @@
   service: name=postgresql state=stopped
   when: manage_postgresql and (service_postgresql or (supervisor_postgresql_success.failed is defined)) and (dir_sym.stat.islnk is not defined)
 
-#upgrade: automaticlly dicovers where is the postgresql master db (pg_lsclusters)
 - name: Copy postgresql db
-  shell: cp -vr /var/lib/postgresql/{{ postgresql_version }}/main {{ galaxy_database }}/
+  shell: cp -vr {{ supervisor_postgres_database_path }} {{ galaxy_database }}/
   when: manage_postgresql and (dir_sym.stat.islnk is not defined)
   sudo: yes
   sudo_user: postgres
 
 - name: Copy postgresql config files
-  shell: cp -vr /etc/postgresql/{{ postgresql_version }}/main/*.conf {{ galaxy_database }}/main/
+  shell: cp -vr {{ supervisor_postgres_database_config_path }}/*.conf {{ galaxy_database }}/main/
   when: manage_postgresql and (dir_sym.stat.islnk is not defined)
   sudo: yes
   sudo_user: postgres
 
-- name: Fix hba and ident locations in the config file
-  lineinfile: dest="{{ supervisor_postgres_database_config }}" regexp="^[ ]*{{ item }}[ ]*=" line="{{ item }} = {{ item }}" 
-  with_items: 
-    - "hba_file = "
-    - "ident_file = "
-
 - name: Check postgresql backup dir
-  stat: path=/var/lib/postgresql/{{ postgresql_version }}/main.backup/PG_VERSION
+  stat: path={{ supervisor_postgres_database_path }}.backup/PG_VERSION
   register: dir_sym
 
 - name: Backup postgresql db
-  shell: mv -v /var/lib/postgresql/{{ postgresql_version }}/main /var/lib/postgresql/{{ postgresql_version }}/main.backup
+  shell: mv -v {{ supervisor_postgres_database_path }} {{ supervisor_postgres_database_path }}.backup
   when: manage_postgresql and (dir_sym.stat.islnk is not defined)
   sudo: yes
   sudo_user: postgres
 
 - name: Check postgresql symlink for galaxy
-  stat: path=/var/lib/postgresql/{{ postgresql_version }}/main
+  stat: path={{ supervisor_postgres_database_path }}
   register: dir_sym
 
 - name: Create a symlink for postgresql
-  shell: ln -s {{ galaxy_database }}/main /var/lib/postgresql/{{ postgresql_version }}/
+  shell: ln -s {{ galaxy_database }}/main {{ supervisor_postgres_database_path }}
   when: manage_postgresql and ((dir_sym.stat.islnk is not defined) or (not dir_sym.stat.islnk))
   sudo: yes
   sudo_user: postgres
+
+- name: Fix hba and ident locations in the config file
+  lineinfile: dest="{{ supervisor_postgres_database_config }}" regexp="^[ ]*{{ item.tag }}[ ]*=[ ]*" line="{{ item.tag }} = '{{ supervisor_postgres_database_path }}/{{ item.file }}.conf'" 
+  with_items: 
+    - { tag: "hba_file", file: "pg_hba" }
+    - { tag: "ident_file", file: "pg_ident" }
+  when: manage_postgresql
 
 - name: Start supervisor postgreSQL
   supervisorctl: name="postgresql" state=started
