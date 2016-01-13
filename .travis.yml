@@ -9,19 +9,22 @@ env:
 before_install:
   - sudo service postgresql stop
   - sudo apt-get remove -y --purge postgresql-*
+  - export GALAXY_TRAVIS_USER=galaxy
+  - export GALAXY_HOME=/home/galaxy
   - export GALAXY_USER=artimed@gmail.com
   - export GALAXY_USER_EMAIL=$GALAXY_USER
   - export GALAXY_USER_PASSWD=artimed
   - export BIOBLEND_GALAXY_API_KEY=f137d9af2f2065bd8c5fbadf7111494b
   - export BIOBLEND_GALAXY_URL=http://localhost:80
+  - cd $GALAXY_HOME
+  - sudo su $GALAXY_TRAVIS_USER -c 'wget https://github.com/bgruening/bioblend/archive/master.tar.gz'
+  - sudo su $GALAXY_TRAVIS_USER -c 'tar xfz master.tar.gz'
 
 install:
   # Install Ansible.
   - sudo pip install ansible
-  - pip install --user https://github.com/bgruening/bioblend/archive/master.tar.gz
-  - pip install --user --upgrade "tox>=1.8.0" "pep8<=1.6.2"
-  - wget https://github.com/bgruening/bioblend/archive/master.tar.gz
-  - tar xzf master.tar.gz
+  - sudo pip install https://github.com/mvdbeek/bioblend/archive/master.tar.gz
+  - sudo pip install --upgrade "tox>=1.8.0"
 
 script:
   # Check the role/playbook's syntax.
@@ -35,4 +38,4 @@ script:
   - curl --fail ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   # bioblend nose-tests
   - cd bioblend-master 
-  - tox -e $TOXENV -- -e 'test_download_dataset'
+  - sudo -E su $GALAXY_TRAVIS_USER -c "tox -e $TOXENV -- -e 'test_download_dataset'"
