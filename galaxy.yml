@@ -59,7 +59,6 @@
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
       tags: install_tools
-      galaxy_tools_tool_list: "{{ galaxy_tools_tool_list }}"
       when: install_tools
 
     - role: galaxyprojectdotorg.galaxy-tools
