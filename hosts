@@ -1,23 +1,7 @@
 [artimed]
 localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
-
-[artimed:vars]
-#install options
-install_galaxy="True"
-install_tools="True"
-run_data_manager="True"
-proftpd_nat_masquerade=true
-#params
-supervisor_postgres_database_path="/etc/postgresql/{{ postgresql_version }}/main"
-galaxy_user_name="galaxy"
-galaxy_server_dir="/home/{{ galaxy_user_name }}/{{ galaxy_user_name }}"
-galaxy_admin="artimed@gmail.com"
-galaxy_admin_pw="artimed"
-master_api_key=f137d9af2f2065bd8c5fbadf7111494b
-galaxy_tool_list="roles/artimed_extras/files/artimed_tool_list.yaml"
-galaxy_data_managers="data_managers.yaml"
-#persistent params
-galaxy_data="/home/{{ galaxy_user_name }}/{{ galaxy_user_name }}"
-galaxy_database="/home/galaxy_database"
-galaxy_db="postgresql:///{{ galaxy_user_name }}?host=/var/run/postgresql"
-galaxy_changeset_id="dev"
+[travis_bioblend]
+localhost ansible_connection=local
+[aws]
+# Put you aws IP and key here to make FTP work in the default VPC.
+# If you want further group-specific variables, put the host in these groups as well [e.g artimed].

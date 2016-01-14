@@ -2,9 +2,6 @@ tools:
 - name: featurecounter
   owner: devteam
   tool_panel_section_label: 'NGS Mapping'
-- name: gatk
-  owner: avowinkel
-  tool_panel_section_label: 'NGS Mapping'
 - name: gatk2
   owner: iuc
   tool_panel_section_label: 'NGS Mapping'
@@ -26,9 +23,6 @@ tools:
 - name: deseq2
   owner: iuc
   tool_panel_section_label: 'NGS Mapping'
-- name: edger
-  owner: amawla
-  tool_panel_section_label: 'NGS Mapping'
 - name: suite_samtools_1_2
   owner: devteam
   tool_panel_section_label: 'NGS Mapping'
@@ -46,7 +40,4 @@ tools:
   tool_panel_section_label: 'NGS Mapping'
 - name: samtools_idxstats
   owner: devteam
-  tool_panel_section_label: 'NGS Mapping'
-- name: igvtools
-  owner: jjohnson
   tool_panel_section_label: 'NGS Mapping'

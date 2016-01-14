@@ -8,7 +8,7 @@
   sudo_user: "{{ galaxy_user_name }}"
 
 - name: Create Galaxy admin user
-  command: "{{ galaxy_venv_dir }}/bin/python /usr/local/bin/create_galaxy_user.py --user {{ galaxy_admin }} --password {{ galaxy_admin_pw }} --key {{ master_api_key }}"
+  command: "{{ galaxy_venv_dir }}/bin/python /usr/local/bin/create_galaxy_user.py --user {{ galaxy_admin }} --password {{ galaxy_admin_pw }} --key {{ default_admin_api_key }}"
   args:
     chdir: "{{ galaxy_server_dir }}"
   sudo: yes

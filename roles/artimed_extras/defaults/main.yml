@@ -6,7 +6,6 @@ restart_galaxy: false
 start_galaxy: false
 stop_galaxy: false
 
-admin_user_name: "admin"
 proftpd_conf_path:  "/etc/proftpd/proftpd.conf"
 proftpd_welcome: "Galaxy ARTiMED FTP server!"
 encoding: "base64"
@@ -16,7 +15,7 @@ proftpd_db_password: "{{ galaxy_user_name }}"
 proftpd_passive_port_low: 49152
 proftpd_passive_port_high: 65534
 auth_type: "PBKDF2"
-sql_query_user: "SELECT \"email, (CASE WHEN substring(password from 1 for 6) = 'PBKDF2' THEN substring(password from 38 for 69) ELSE password END) AS password2,512,512,'{{ galaxy_ftp }}/%U','/bin/bash' FROM galaxy_user WHERE email='%U'\""
+sql_query_user: "SELECT \"email, (CASE WHEN substring(password from 1 for 6) = 'PBKDF2' THEN substring(password from 38 for 69) ELSE password END) AS password2,512,512,'{{ proftpd_files_dir }}/%U','/bin/bash' FROM galaxy_user WHERE email='%U'\""
 sql_query_alt: "SELECT \"(CASE WHEN SUBSTRING (password from 1 for 6) = 'PBKDF2' THEN SUBSTRING (password from 21 for 16) END) AS salt FROM galaxy_user WHERE email='%U'\""
 galaxy_user_gid: "1001"
 galaxy_user_uid: "1001"
@@ -24,3 +23,11 @@ sql_pwd: "SHA256 10000 24"
 sql_alt: "sql:/GetUserSalt"
 galaxy_tools_base_dir: "/tmp"
 ftp_port: "21"
+
+data_manager_task_file: "data_manager_tasks.yml"
+
+additional_files_list:
+  - { src: "welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
+  - { src: "tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+  - { src: "ARTiMED_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "logo_iuis_UPMC_UTC.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }

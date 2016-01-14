@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/ARTbio/ansible-artimed.svg?branch=master)](https://travis-ci.org/ARTbio/ansible-artimed)
 # Requirements
   * The target Operating System must be a Ubuntu Trusty 64 bits (it might work on other Debian systems, untested yet).
   * The target instance must have at least 4GB of RAM.
@@ -46,8 +47,12 @@ The installation of postgresql might fail due to non-standard locale settings th
 If you are using Ubuntu on your ansible machine, make sure that you deactivate `SendEnv LANG LC_*` in /etc/ssh_config.
 
 #Important variables
-The file ansible-artimed/hosts contains various important variables that may be adapated, so you can change it as necessary.
-These variables are:
+We aimed for this playbook to be reusable. We therefore made most variables configurable.
+The group_vars/all file contains the variables we have chosen as defaults. You may override them either in this file
+or you can use ansible group variables to selectively set the variables for certain hosts/groups. See the [ansible documentation
+about group variables](http://docs.ansible.com/ansible/intro_inventory.html#splitting-out-host-and-group-specific-data) for details.
+
+These most important variables are:
 - ansible_ssh_user - The login name used to access the target.
 - ansible_ssh_private_key_file - The ssh private key used to access the target.
 - install_galaxy - True for install a Galaxy instance.
@@ -57,7 +62,7 @@ These variables are:
 - galaxy_server_dir - The home of Operating System user for galaxy process.
 - galaxy_admin - The admin galaxy user.
 - galaxy_admin_pw - The admin galaxy password.
-- master_api_key - The api key for tool installation and download reference genomes throught galaxy data managers.
+- default_admin_api_key - The api key for tool installation and download reference genomes throught galaxy data managers. To be removed in production.
 - galaxy_tool_list - The files that constants the list of tools to be installed.
 - galaxy_data_managers - The reference genomes and indexes to be load and build.
 - galaxy_data - The persistent directory where the galaxy config and database directories will be installed or will be recovered.
