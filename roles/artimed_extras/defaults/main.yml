@@ -6,7 +6,6 @@ restart_galaxy: false
 start_galaxy: false
 stop_galaxy: false
 
-admin_user_name: "admin"
 proftpd_conf_path:  "/etc/proftpd/proftpd.conf"
 proftpd_welcome: "Galaxy ARTiMED FTP server!"
 encoding: "base64"

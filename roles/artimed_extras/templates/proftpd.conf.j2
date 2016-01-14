@@ -67,7 +67,7 @@ SQLDefaultHomedir               /var/opt/local/proftpd
 SQLUserInfo                     custom:/LookupGalaxyUser
 SQLNamedQuery                   LookupGalaxyUser {{ sql_query_user }}
 
-{% if pbkdf2 %}
+{% if use_pbkdf2 %}
 SQLNamedQuery                   GetUserSalt {{ sql_query_alt }}
 SQLDefaultGID                   {{ galaxy_user_gid }}
 SQLDefaultUID                   {{ galaxy_user_uid }}
