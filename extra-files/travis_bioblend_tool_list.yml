@@ -1,4 +1,4 @@
 tools:
-- name: bwa
-  owner: devteam
+- name: yac_clipper
+  owner: drosofff
   tool_panel_section_label: 'NGS Mapping'
