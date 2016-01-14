@@ -19,23 +19,23 @@
     - role: galaxyprojectdotorg.galaxy-os
       configure_docker: no
       tags: 
-        - galaxy
+        - install_galaxy
     
     #Based on marius stuff
     - role: postgresql.check
       start_postgresql: false
       tags: 
-        - galaxy
+        - install_galaxy
     
     #Move postgresql db to a persistent dir and symlinks to galaxy
     - role: postgresql.movedb
       tags: 
-        - galaxy
+        - install_galaxy
 
     #Check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
     - role: galaxy.movedata
       tags: 
-        - galaxy
+        - install_galaxy
 
     #This role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
@@ -48,7 +48,7 @@
       sudo: yes
       sudo_user: postgres
       tags: 
-        - galaxy
+        - install_galaxy
 
     #Installs galaxy
     - role: galaxyprojectdotorg.galaxy
@@ -63,7 +63,7 @@
       galaxy_force_checkout: yes #for testing this is good 
       galaxy_config:
         "app:main":
-          #admin_users: "{{ galaxy_admin_email }}"
+          admin_users: "{{ galaxy_admin_email }}"
           database_connection: "{{ galaxy_db }}"
           tool_path: "{{ galaxy_data }}/tools"
           tool_dependency_dir: "{{ galaxy_data }}/tool_shed_dependencies"
@@ -87,7 +87,7 @@
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
       tags: 
-        - galaxy
+        - install_galaxy
 
     #Installs nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
@@ -115,20 +115,19 @@
       supervisor_manage_nodeproxy: false
       supervisor_manage_ie_proxy: false      
       tags: 
-        - galaxy
+        - install_galaxy
 
     #Fix proftpd config file, restarts supervisor tasks, put the test tool shed in the list and create a welcome page
     - role: artimed_extras
       run_extras: true
       pbkdf2: true
       tags: 
-        - galaxy
+        - install_galaxy
     
     #Create the galaxy admin user
     - role: galaxy.createuser
-      when: galaxy_admin_create
       tags:
-        - galaxy
+        - create_admin
 
     #The default data managers are listed in the file data_manager_list.yaml
     - role: galaxyprojectdotorg.galaxy-tools 
@@ -138,7 +137,7 @@
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
       tags: 
-        - data_manager
+        - install_data_manager
 
     #The default tools are listed in the file artimed_tool_list.yaml
     - role: galaxyprojectdotorg.galaxy-tools
@@ -148,7 +147,7 @@
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
       tags: 
-        - tools
+        - install_tools
 
     #Create/delete a bootstrap admin user and run data managers
     - role: artimed_extras
@@ -156,4 +155,4 @@
       galaxy_tools_admin_user_password: "{{ galaxy_admin_pw }}"
       create_user: true
       tags: 
-        - data
+        - import_genome

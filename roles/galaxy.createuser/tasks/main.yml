@@ -7,9 +7,12 @@
   sudo: yes
   sudo_user: "{{ galaxy_user_name }}"
 
+- name: Place the data manager script
+  copy: src=create_galaxy_user.py dest={{ galaxy_tools_base_dir }}/
+
 - name: Create Galaxy admin user
   command: '{{ galaxy_venv_dir }}/bin/python create_galaxy_user.py --url "{{ galaxy_hostname }}" --user "{{ galaxy_admin }}" --email "{{ galaxy_admin_email }}" --password "{{ galaxy_admin_pw }}" --key "{{ master_api_key }}"'
   args:
-    chdir: "{{ galaxy_server_dir }}"
+    chdir: "{{ galaxy_tools_base_dir }}"
   sudo: yes
   sudo_user: "{{ galaxy_user_name }}"
