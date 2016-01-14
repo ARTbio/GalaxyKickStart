@@ -115,14 +115,14 @@
       supervisor_manage_nodeproxy: false
       supervisor_manage_ie_proxy: false      
       tags: 
-        - install_galaxy
+        - install_extras
 
     #Fix proftpd config file, restarts supervisor tasks, put the test tool shed in the list and create a welcome page
     - role: artimed_extras
       run_extras: true
       pbkdf2: true
       tags: 
-        - install_galaxy
+        - install_extras
     
     #Create the galaxy admin user
     - role: galaxy.createuser
@@ -137,7 +137,7 @@
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
       tags: 
-        - install_data_manager
+        - install_data_managers
 
     #The default tools are listed in the file artimed_tool_list.yaml
     - role: galaxyprojectdotorg.galaxy-tools
@@ -155,4 +155,4 @@
       galaxy_tools_admin_user_password: "{{ galaxy_admin_pw }}"
       create_user: true
       tags: 
-        - import_genome
+        - import_genomes
