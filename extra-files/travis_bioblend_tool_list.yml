@@ -1,0 +1,4 @@
+tools:
+- name: bwa
+  owner: devteam
+  tool_panel_section_label: 'NGS Mapping'
