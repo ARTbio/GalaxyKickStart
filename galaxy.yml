@@ -55,19 +55,21 @@
       check_tool_data: yes
       when: install_galaxy
 
-    - role: galaxyprojectdotorg.galaxy-tools 
+    - role: galaxyprojectdotorg.galaxy-tools
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
       tags: install_tools
-      galaxy_tools_tool_list: "{{ data_manager_tools + tools }}"
+      galaxy_tools_tool_list: "{{ galaxy_tools_tool_list }}"
       when: install_tools
+
+    - role: galaxyprojectdotorg.galaxy-tools
+      sudo: yes
+      sudo_user: "{{ galaxy_user_name }}"
+      tags: install_tools
+      galaxy_tools_tool_list: "{{ galaxy_data_manager_tool_list }}"
+      when: run_data_manager
 
     #Restart Galaxy
     - role: artimed_extras
       restart_galaxy: true
-      when: install_tools
-
-    #Run data managers
-    - role: artimed_extras
-      run_data_managers: true
-      when: run_data_manager
+      when: install_tools or run_data_manager

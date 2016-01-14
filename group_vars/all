@@ -88,4 +88,3 @@ proftpd_nat_masquerade: false
 galaxy_tools_admin_user: "{{ galaxy_admin }}"
 galaxy_tools_api_key: "{{ default_admin_api_key }}"
 galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}"
-galaxy_tools_tool_list_files: [ "{{ galaxy_tool_list }}" ]
