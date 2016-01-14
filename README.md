@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/ARTbio/ansible-artimed.svg?branch=master)](https://travis-ci.org/ARTbio/ansible-artimed)
 # Requirements
   * The target Operating System must be a Ubuntu Trusty 64 bits (it might work on other Debian systems, untested yet).
   * The target instance must have at least 4GB of RAM.
