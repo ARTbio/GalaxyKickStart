@@ -1,3 +1,5 @@
+galaxy_web_processes: 2
+galaxy_handler_processes: 2
 galaxy_config:
   "app:main":
     admin_users: "{{ galaxy_admin }}"
