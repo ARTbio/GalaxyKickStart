@@ -9,7 +9,6 @@
 - name: Check data dir for galaxy
   stat: path={{ galaxy_data }}/eggs
   register: directory
-#  when: persist
 
 - name: Create data dir for galaxy persistent files
   file: path={{ item }} owner={{ galaxy_user_name }} group={{ galaxy_user_name }} mode=0700 state=directory
@@ -24,8 +23,6 @@
     - "{{ galaxy_data }}/eggs"
   when: persist and (directory.stat.islnk is not defined)
   
-- name: Give galaxy_user_name access to galaxy_data base chain directory
+- name: Give galaxy_user_name access to galaxy_data directory (only the last directory of the directory structure, that is, the base directory structure must already exists)
   file: path=/{{ galaxy_data }} mode=0755 group=users recurse=yes
-#  file: path=/{{ galaxy_data_items[1] }} mode=0755 group=users #recurse=yes
-#  with_items: "{{ galaxy_data_items }}"
   when: persist and (galaxy_data is defined)

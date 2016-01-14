@@ -1,6 +1,6 @@
 [artimed]
 localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
-192.54.201.111 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
+192.54.201.120 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
 
 [artimed:vars]
 galaxy_user_name="galaxy"
@@ -25,6 +25,3 @@ galaxy_admin_create="False"
 galaxy_admin="artimed"
 galaxy_admin_email="artimed@gmail.com"
 galaxy_admin_pw="artimed"
-#
-#debug in IFB
-IFB="True"

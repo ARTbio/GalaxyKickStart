@@ -2,42 +2,42 @@
   sudo: yes
 
   vars:
-    #globals
+    #Globals
     galaxy_hostname: "{{ inventory_hostname }}" # Used by galaxy and galaxy-tools roles
     galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv" # Used by galaxy and galaxy-tools roles 
     manage_postgresql: true # Used by artimed_extras and galaxy-extras roles 
     service_postgresql: false # Used by artimed_extras and galaxy-extras roles
     supervisor_postgres_database_path: "" # Used by artimed_extras and galaxy-extras roles
-    #persistent data
+    #Persistent data
     galaxy_ftp: "{{ galaxy_data }}/database/ftp" # Used by artimed_extras and galaxy roles
     galaxy_config_dir: "{{ galaxy_data }}/config" # Used by artimed_extras and galaxy roles
     galaxy_mutable_data_dir: "{{ galaxy_data }}/database" # Used by artimed_extras and galaxy roles
     galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini" # Used by galaxy roles
 
   roles:
-    #installs system package requirements
+    #Installs system package requirements
     - role: galaxyprojectdotorg.galaxy-os
       configure_docker: no
       tags: 
         - galaxy
     
-    #based on marius stuff
+    #Based on marius stuff
     - role: postgresql.check
       start_postgresql: false
       tags: 
         - galaxy
     
-    #move postgresql db to a persistent dir and symlinks to galaxy
+    #Move postgresql db to a persistent dir and symlinks to galaxy
     - role: postgresql.movedb
       tags: 
         - galaxy
 
-    #check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
+    #Check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
     - role: galaxy.movedata
       tags: 
         - galaxy
 
-    #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
+    #This role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
       postgresql_objects_users:
         - name: "{{ galaxy_user_name }}"
@@ -50,7 +50,7 @@
       tags: 
         - galaxy
 
-    #installs galaxy
+    #Installs galaxy
     - role: galaxyprojectdotorg.galaxy
       #persistent data
       galaxy_manage_mutable_setup: yes
@@ -89,7 +89,7 @@
       tags: 
         - galaxy
 
-    #installs nginx and proftpd
+    #Installs nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
       galaxy_uwsgi_static_conf: true
       supervisor_slurm_config_dir: "{{ galaxy_data }}"
@@ -117,13 +117,14 @@
       tags: 
         - galaxy
 
-    #fix proftpd config file, restarts supervisor tasks, put the test tool shed in the list and create a welcome page
+    #Fix proftpd config file, restarts supervisor tasks, put the test tool shed in the list and create a welcome page
     - role: artimed_extras
       run_extras: true
       pbkdf2: true
       tags: 
         - galaxy
-        
+    
+    #Create the galaxy admin user
     - role: galaxy.createuser
       when: galaxy_admin_create
       tags:
