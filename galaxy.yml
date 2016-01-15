@@ -7,7 +7,7 @@
     galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv" # Used by galaxy and galaxy-tools roles 
     manage_postgresql: true # Used by artimed_extras and galaxy-extras roles 
     service_postgresql: false # Used by artimed_extras and galaxy-extras roles
-    supervisor_postgres_database_path: "" # Used by artimed_extras and galaxy-extras roles
+#    supervisor_postgres_options: "" # Used by artimed_extras and galaxy-extras roles
     #Persistent data
     galaxy_ftp: "{{ galaxy_data }}/database/ftp" # Used by artimed_extras and galaxy roles
     galaxy_config_dir: "{{ galaxy_data }}/config" # Used by artimed_extras and galaxy roles
@@ -74,6 +74,7 @@
           ftp_upload_dir: "{{ galaxy_ftp }}" 
           ftp_upload_site: "ftp {{ galaxy_hostname }}"
           tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
+          galaxy_shed_tool_conf_file: "{{ galaxy_config_dir }}/tool_conf.xml"
           #to be done only in production       
           #debug: False
           #use_interactive: False

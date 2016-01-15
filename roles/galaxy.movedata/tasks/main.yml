@@ -1,3 +1,7 @@
+- set_fact:
+    persist: True
+  when: galaxy_data != galaxy_server_dir
+  
 - name: Create users group
   group: name=users state=present
   when: persist

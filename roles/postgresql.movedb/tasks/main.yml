@@ -40,6 +40,10 @@
     supervisor_postgres_database_config_path: "/etc/postgresql/{{ postgresql_version }}/main"
   when: manage_postgresql
 
+- set_fact:
+    supervisor_postgres_options: "-D {{ supervisor_postgres_database_path }} -c \"config_file={{ supervisor_postgres_database_config }}\"" 
+  when: manage_postgresql
+
 - name: Stop supervisor postgreSQL
   supervisorctl: name="postgresql" state=stopped
   when: manage_postgresql and not service_postgresql

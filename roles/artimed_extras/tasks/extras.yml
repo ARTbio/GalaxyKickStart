@@ -7,8 +7,8 @@
   template: src={{ item.src }} dest={{ item.dest }} backup=no
   with_items:
     - { src: "welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
-    - { src: "tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
     - { src: "proftpd.conf.j2", dest: "{{ proftpd_conf_path }}" }
+    - { src: "tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
     - { src: "shed_tool_conf.xml", dest: "{{ galaxy_config_dir }}" }
 
 - name:  Provide Galaxy images for the homepage
