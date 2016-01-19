@@ -8,23 +8,15 @@
   sudo: yes
   sudo_user: "{{ galaxy_user_name }}"
 
-- name: Copy galaxy data/config directories to permanent directories
+- name: Move galaxy data/config directories to permanent directories
 #  copy: src={{ galaxy_server_dir }}/{{ item.split('/')[-1] }} dest="{{ galaxy_persistent_directory }}/" validate="touch {{ galaxy_server_dir }}/{{ item.split('/')[-1] }}/" remote_src=True
-  shell: cp -rv {{ galaxy_server_dir }}/{{ item.split('/')[-1] }} {{ galaxy_persistent_directory }}/
+  shell: mv -v {{ galaxy_server_dir }}/{{ item.split('/')[-1] }} {{ galaxy_persistent_directory }}/
   with_items: galaxy_persist_directories
   ignore_errors: true
   when: move_to_persistent and (exists.stat.isfile is not defined)
   sudo: yes
   sudo_user: "{{ galaxy_user_name }}"
   
-- name: Create a backup of galaxy data/config directories
-  shell: mv -v {{ galaxy_server_dir }}/{{ item.split('/')[-1] }} {{ galaxy_server_dir }}/{{ item.split('/')[-1] }}.backup
-  with_items: galaxy_persist_directories
-  ignore_errors: true
-  when: move_to_persistent and (exists.stat.isfile is not defined)
-  sudo: yes
-  sudo_user: "{{ galaxy_user_name }}"
-
 - name: Create a .exists file to say that there persistent data to be consider
   shell: touch {{ galaxy_persistent_directory }}/.exists
   sudo: yes
