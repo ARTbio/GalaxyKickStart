@@ -44,5 +44,10 @@
   when: move_to_persistent
 
 - name: Start supervisor tasks 
-  supervisorctl: name="all" state=started
+  supervisorctl: name="galaxy:" state=started
   when: move_to_persistent
+
+- name: Start supervisor tasks 
+  supervisorctl: name="proftpd" state=started
+  when: move_to_persistent
+  
