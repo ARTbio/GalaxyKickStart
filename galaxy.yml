@@ -13,6 +13,9 @@
     galaxy_config_dir: "{{ galaxy_data }}/config" # Used by artimed_extras and galaxy roles
     galaxy_mutable_data_dir: "{{ galaxy_data }}/database" # Used by artimed_extras and galaxy roles
     galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini" # Used by galaxy roles
+    tool_data_path: "{{ galaxy_data }}/tool-data"
+    tool_path: "{{ galaxy_data }}/tools"
+    tool_dependency_dir: "{{ galaxy_data }}/tool_shed_dependencies"
 
   roles:
     #Installs system package requirements
@@ -29,11 +32,6 @@
     
     #Move postgresql db to a persistent dir and symlinks to galaxy
     - role: postgresql.movedb
-      tags: 
-        - install_galaxy
-
-    #Check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
-    - role: galaxy.movedata
       tags: 
         - install_galaxy
 
@@ -65,16 +63,13 @@
         "app:main":
           admin_users: "{{ galaxy_admin_email }}"
           database_connection: "{{ galaxy_db }}"
-          tool_path: "{{ galaxy_data }}/tools"
-          tool_dependency_dir: "{{ galaxy_data }}/tool_shed_dependencies"
-          tool_data_path: "{{ galaxy_data }}/tool-data"
           shed_tool_data_path: "{{ galaxy_data }}/tool-data"
           galaxy_data_manager_data_path: "{{ galaxy_data }}/tool-data"
           master_api_key: "{{ master_api_key }}"
           ftp_upload_dir: "{{ galaxy_ftp }}" 
           ftp_upload_site: "ftp {{ galaxy_hostname }}"
           tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
-          galaxy_shed_tool_conf_file: "{{ galaxy_config_dir }}/tool_conf.xml"
+          #galaxy_shed_tool_conf_file: "{{ galaxy_config_dir }}/tool_conf.xml" #must be build by me???
           #to be done only in production       
           #debug: False
           #use_interactive: False
@@ -125,6 +120,12 @@
       tags: 
         - install_extras
     
+    #Check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
+    - role: galaxy.movedata
+      move_to_persistent: true
+      tags: 
+        - persists_galaxy
+
     #Create the galaxy admin user
     - role: galaxy.createuser
       tags:

@@ -1,3 +1,12 @@
 #check if data will persist
-persist: False
+move_to_persistent: False
 galaxy_data_items: "{{ galaxy_data.split('/') }}"
+galaxy_persist_directories: 
+#  - "{{ tool_dependency_dir }}"
+  - "{{ galaxy_config_dir }}"
+#  - "shed_tools"
+  - "{{ tool_data_path }}"
+  - "{{ galaxy_mutable_data_dir }}"
+  - "{{ tool_path }}"
+  - "static"
+  - "display_applications"

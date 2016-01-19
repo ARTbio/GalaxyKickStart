@@ -1,6 +1,6 @@
 [artimed]
 localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
-192.54.201.168 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
+192.54.201.102 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
 
 [artimed:vars]
 galaxy_user_name="galaxy"
@@ -14,6 +14,7 @@ galaxy_data_managers="roles/artimed_extras/defaults/data_managers.yaml"
 #
 #Persistent params
 galaxy_data="/home/{{ galaxy_user_name }}/{{ galaxy_user_name }}"
+galaxy_persistent_directory="/export"
 #galaxy_data="/export/galaxy_data"
 galaxy_database="/export/galaxy_database"
 galaxy_db="postgresql:///{{ galaxy_user_name }}?host=/var/run/postgresql"

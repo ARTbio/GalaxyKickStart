@@ -1,32 +1,44 @@
-- set_fact:
-    persist: True
-  when: galaxy_data != galaxy_server_dir
+- name: Stop supervisor tasks to copy data/config directories to the permanent directories
+  supervisorctl: name="all" state=stopped
+  when: move_to_persistent
   
-- name: Create users group
-  group: name=users state=present
-  when: persist
-
-- name: Put galaxy_user_name into users group
-  user: name="{{ galaxy_user_name }}" groups="users" 
-  when: persist
-
 - name: Check data dir for galaxy
-  stat: path={{ galaxy_data }}/eggs
-  register: directory
+  stat: path={{ galaxy_persistent_directory }}/.exists
+  register: exists
+  sudo: yes
+  sudo_user: "{{ galaxy_user_name }}"
 
-- name: Create data dir for galaxy persistent files
-  file: path={{ item }} owner={{ galaxy_user_name }} group={{ galaxy_user_name }} mode=0700 state=directory
-  with_items: 
-    - "{{ galaxy_data }}"
-    - "{{ galaxy_data }}/tool_shed_dependencies"
-    - "{{ galaxy_data }}/shed_tools"
-    - "{{ galaxy_data }}/tool-data"
-    - "{{ galaxy_data }}/database"
-    - "{{ galaxy_data }}/tools"
-    - "{{ galaxy_data }}/database/ftp"
-    - "{{ galaxy_data }}/eggs"
-  when: persist and (directory.stat.islnk is not defined)
+- name: Copy galaxy data/config directories to permanent directories
+#  copy: src={{ galaxy_server_dir }}/{{ item.split('/')[-1] }} dest="{{ galaxy_persistent_directory }}/" validate="touch {{ galaxy_server_dir }}/{{ item.split('/')[-1] }}/" remote_src=True
+  shell: cp -rv {{ galaxy_server_dir }}/{{ item.split('/')[-1] }} {{ galaxy_persistent_directory }}/
+  with_items: galaxy_persist_directories
+  ignore_errors: true
+  when: move_to_persistent and (exists.stat.isfile is not defined)
+  sudo: yes
+  sudo_user: "{{ galaxy_user_name }}"
   
-- name: Give galaxy_user_name access to galaxy_data directory (only the last directory of the directory structure, that is, the base directory structure must already exists)
-  file: path=/{{ galaxy_data }} mode=0755 group=users recurse=yes
-  when: persist and (galaxy_data is defined)
+- name: Create a backup of galaxy data/config directories
+  shell: mv -v {{ galaxy_server_dir }}/{{ item.split('/')[-1] }} {{ galaxy_server_dir }}/{{ item.split('/')[-1] }}.backup
+  with_items: galaxy_persist_directories
+  ignore_errors: true
+  when: move_to_persistent and (exists.stat.isfile is not defined)
+  sudo: yes
+  sudo_user: "{{ galaxy_user_name }}"
+
+- name: Create a .exists file to say that there persistent data to be consider
+  shell: touch {{ galaxy_persistent_directory }}/.exists
+  sudo: yes
+  sudo_user: "{{ galaxy_user_name }}"
+  when: move_to_persistent
+
+- name: Create a symlink for galaxy data/config directories #this will overwrite galaxy directories that were copied by the previous task
+#  file: src={{ galaxy_persistent_directory }}/{{ item.split('/')[-1] }} dest={{ galaxy_server_dir }}/ state=link force=yes
+  shell: ln -sf {{ galaxy_persistent_directory }}/{{ item.split('/')[-1] }} {{ galaxy_server_dir }}/
+  with_items: galaxy_persist_directories
+  sudo: yes
+  sudo_user: "{{ galaxy_user_name }}"
+  when: move_to_persistent
+
+- name: Start supervisor tasks 
+  supervisorctl: name="all" state=started
+  when: move_to_persistent
