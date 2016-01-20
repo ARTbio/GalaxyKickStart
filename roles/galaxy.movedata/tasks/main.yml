@@ -1,23 +1,35 @@
-- name: Stop supervisor galaxy tasks to copy data/config directories to the permanent directories
-  supervisorctl: name="galaxy:" state=stopped
-  when: move_to_persistent
-  
-- name: Stop supervisor proftpd task to copy data/config directories to the permanent directories
-  supervisorctl: name="proftpd" state=stopped
-  when: move_to_persistent
+- name: Check persistent dirs
+  stat: path={{ galaxy_persistent_directory }}
+  register: move_to_persistent
+  sudo: yes
+  sudo_user: "{{ galaxy_user_name }}"
 
-- name: Check data dir for galaxy
+- name: Check for galaxy data into the persistent dirs
   stat: path={{ galaxy_persistent_directory }}/.exists
   register: exists
   sudo: yes
   sudo_user: "{{ galaxy_user_name }}"
+
+- name: Check symlinks dir for galaxy
+  stat: path={{ galaxy_persistent_directory }}/.symlinks
+  register: symlinks
+  sudo: yes
+  sudo_user: "{{ galaxy_user_name }}"
+
+- name: Stop supervisor galaxy tasks to copy data/config directories to the permanent directories
+  supervisorctl: name="galaxy:" state=stopped
+  when: (move_to_persistent.isdir is defined)
+  
+- name: Stop supervisor proftpd task to copy data/config directories to the permanent directories
+  supervisorctl: name="proftpd" state=stopped
+  when: (move_to_persistent.isdir is defined)
 
 - name: Copy galaxy data/config directories to permanent directories
 #  copy: src={{ galaxy_server_dir }}/{{ item.split('/')[-1] }} dest="{{ galaxy_persistent_directory }}/" validate="touch {{ galaxy_server_dir }}/{{ item.split('/')[-1] }}/" remote_src=True
   shell: cp -rv {{ galaxy_server_dir }}/{{ item.split('/')[-1] }} {{ galaxy_persistent_directory }}/
   with_items: galaxy_persist_directories
   ignore_errors: true
-  when: move_to_persistent and (exists.stat.isfile is not defined)
+  when: (move_to_persistent.isdir is defined) and (exists.stat.isfile is not defined)
   sudo: yes
   sudo_user: "{{ galaxy_user_name }}"
   
@@ -25,7 +37,7 @@
   shell: rm -rvf {{ galaxy_server_dir }}/{{ item.split('/')[-1] }}
   with_items: galaxy_persist_directories
   ignore_errors: true
-  when: move_to_persistent
+  when: move_to_persistent and (symlinks.stat.islnk is not defined)
   sudo: yes
   sudo_user: "{{ galaxy_user_name }}"
 
@@ -33,7 +45,7 @@
   shell: touch {{ galaxy_persistent_directory }}/.exists
   sudo: yes
   sudo_user: "{{ galaxy_user_name }}"
-  when: move_to_persistent
+  when: (move_to_persistent.isdir is defined)
 
 - name: Create a symlink for galaxy data/config directories #this will overwrite galaxy directories that were copied by the previous task
 #  file: src={{ galaxy_persistent_directory }}/{{ item.split('/')[-1] }} dest={{ galaxy_server_dir }}/ state=link force=yes
@@ -41,13 +53,19 @@
   with_items: galaxy_persist_directories
   sudo: yes
   sudo_user: "{{ galaxy_user_name }}"
-  when: move_to_persistent
+  when: (move_to_persistent.isdir is defined) and (symlinks.stat.islnk is not defined)
 
-- name: Start supervisor tasks 
+- name: Create a .symlinks file to say that there persistent data is linked to galaxy server directory
+  shell: touch ../{{ galaxy_server_dir }}/.symlinks
+  sudo: yes
+  sudo_user: "{{ galaxy_user_name }}"
+  when: (move_to_persistent.isdir is defined)
+
+- name: Start galaxy 
   supervisorctl: name="galaxy:" state=started
-  when: move_to_persistent
+  when: (move_to_persistent.isdir is defined)
 
-- name: Start supervisor tasks 
+- name: Start proftpd 
   supervisorctl: name="proftpd" state=started
-  when: move_to_persistent
+  when: (move_to_persistent.isdir is defined)
   

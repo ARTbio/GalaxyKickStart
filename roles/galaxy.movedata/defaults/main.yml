@@ -1,4 +1,5 @@
 #check if data will persist
+galaxy_persistent_directory: "/export"
 move_to_persistent: False
 galaxy_data_items: "{{ galaxy_data.split('/') }}"
 galaxy_persist_directories: 
