@@ -1,53 +1,11 @@
-- name: Stop supervisor galaxy tasks to copy data/config directories to the permanent directories
-  supervisorctl: name="galaxy:" state=stopped
-  when: move_to_persistent
-  
-- name: Stop supervisor proftpd task to copy data/config directories to the permanent directories
-  supervisorctl: name="proftpd" state=stopped
-  when: move_to_persistent
+- name: Check for persistent directory
+  stat: path={{ galaxy_persistent_directory }}
+  register: export_dir_exists
 
-- name: Check data dir for galaxy
+- name: Check for persistent data
   stat: path={{ galaxy_persistent_directory }}/.exists
-  register: exists
-  sudo: yes
-  sudo_user: "{{ galaxy_user_name }}"
+  register: export_exists
 
-- name: Copy galaxy data/config directories to permanent directories
-#  copy: src={{ galaxy_server_dir }}/{{ item.split('/')[-1] }} dest="{{ galaxy_persistent_directory }}/" validate="touch {{ galaxy_server_dir }}/{{ item.split('/')[-1] }}/" remote_src=True
-  shell: cp -rv {{ galaxy_server_dir }}/{{ item.split('/')[-1] }} {{ galaxy_persistent_directory }}/
-  with_items: galaxy_persist_directories
-  ignore_errors: true
-  when: move_to_persistent and (exists.stat.isfile is not defined)
-  sudo: yes
-  sudo_user: "{{ galaxy_user_name }}"
-  
-- name: Remove galaxy data/config directories to permanent directories
-  shell: rm -rvf {{ galaxy_server_dir }}/{{ item.split('/')[-1] }}
-  with_items: galaxy_persist_directories
-  ignore_errors: true
-  when: move_to_persistent
-  sudo: yes
-  sudo_user: "{{ galaxy_user_name }}"
+- include: export.yml
+  when: export_dir_exists.exists and not export_exists
 
-- name: Create a .exists file to say that there persistent data to be consider
-  shell: touch {{ galaxy_persistent_directory }}/.exists
-  sudo: yes
-  sudo_user: "{{ galaxy_user_name }}"
-  when: move_to_persistent
-
-- name: Create a symlink for galaxy data/config directories #this will overwrite galaxy directories that were copied by the previous task
-#  file: src={{ galaxy_persistent_directory }}/{{ item.split('/')[-1] }} dest={{ galaxy_server_dir }}/ state=link force=yes
-  shell: ln -sf {{ galaxy_persistent_directory }}/{{ item.split('/')[-1] }} {{ galaxy_server_dir }}/
-  with_items: galaxy_persist_directories
-  sudo: yes
-  sudo_user: "{{ galaxy_user_name }}"
-  when: move_to_persistent
-
-- name: Start supervisor tasks 
-  supervisorctl: name="galaxy:" state=started
-  when: move_to_persistent
-
-- name: Start supervisor tasks 
-  supervisorctl: name="proftpd" state=started
-  when: move_to_persistent
-  

@@ -46,7 +46,6 @@
       when: install_galaxy
       
     - role: galaxy.movedata
-      move_to_persistent: true
       tags: 
         - persists_galaxy
 

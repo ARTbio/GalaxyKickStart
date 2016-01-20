@@ -1,6 +1,6 @@
 #check if data will persist
-move_to_persistent: False
 galaxy_data_items: "{{ galaxy_data.split('/') }}"
+galaxy_persistent_directory: /export
 galaxy_persist_directories: 
 #  - "{{ tool_dependency_dir }}"
   - "{{ galaxy_config_dir }}"
