@@ -10,11 +10,6 @@
     #- role: postgresql.movedb
     #  when: install_galaxy
 
-    #check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
-    #- role: galaxy.movedata
-    #  check_galaxy_data: yes
-    #  when: install_galaxy
-
     - role: ensure_postgresql_up
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
@@ -50,10 +45,10 @@
       restart_galaxy: true
       when: install_galaxy
       
-    #check if tool-data persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
     - role: galaxy.movedata
-      check_tool_data: yes
-      when: install_galaxy
+      move_to_persistent: true
+      tags: 
+        - persists_galaxy
 
     - role: galaxyprojectdotorg.galaxy-tools
       sudo: yes
