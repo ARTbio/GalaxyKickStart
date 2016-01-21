@@ -9,7 +9,7 @@
   sudo_user: "{{ galaxy_user_name }}"
 
 - name: Create a .exists file to say that there persistent data to be consider
-  file: "{{ galaxy_persistent_directory }}/.exists" state=touch
+  file: path="{{ galaxy_persistent_directory }}/.exists" state=touch
   sudo_user: "{{ galaxy_user_name }}"
 
 - name: Create a symlink for galaxy data/config directories #this will overwrite galaxy directories that were copied by the previous task
