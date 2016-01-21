@@ -12,11 +12,6 @@
     #- role: postgresql.movedb
     #  when: install_galaxy
 
-    #check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
-    #- role: galaxy.movedata
-    #  check_galaxy_data: yes
-    #  when: install_galaxy
-
     - role: ensure_postgresql_up
       tags:
         - install_galaxy
@@ -60,12 +55,9 @@
       tags:
         - install_extras
       
-    #check if tool-data persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
     - role: galaxy.movedata
-      check_tool_data: yes
-      tags:
-        - configure_galaxy
-        - install_galaxy
+      tags: 
+        - persists_galaxy
 
     - role: galaxyprojectdotorg.galaxy-tools
       sudo: yes

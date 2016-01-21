@@ -1,0 +1,29 @@
+- name: Stop supervisor tasks to copy data/config directories to the permanent directories
+  supervisorctl: name={{ item }} state=stopped
+  with_items: "{{ start_stop_items }}"
+
+- name: Create persistent directory paths
+  file: path={{ galaxy_persistent_directory }}/{{ item }} state=directory owner="{{ galaxy_user_name }}" group="{{ galaxy_user_name }}"
+  with_items: "{{ galaxy_persist_directories }}"
+
+- name: Copy galaxy data/config directories to permanent directories
+  shell: "rsync -a {{ item }}/ {{ galaxy_persistent_directory }}/{{ item }}"
+  with_items: "{{ galaxy_persist_directories }}"
+  sudo_user: "{{ galaxy_user_name }}"
+
+#- name: Remove previously copied directories
+#  file: path="{{ item }}" state=absent
+#  with_items: "{{ galaxy_persist_directories }}"
+#  sudo_user: "{{ galaxy_user_name }}"
+
+- name: Link files from their new location
+  mount: opts=bind fstype=none state=mounted dest="{{ item }}" src="{{ galaxy_persistent_directory }}/{{ item }}"
+  with_items: "{{ galaxy_persist_directories }}"
+
+- name: Create a .exists file to say that there persistent data to be consider
+  file: path="{{ galaxy_persistent_directory }}/.exists" state=touch
+  sudo_user: "{{ galaxy_user_name }}"
+
+- name: Start supervisor tasks after moving has finished.
+  supervisorctl: name={{ item }} state=started
+  with_items: "{{ start_stop_items }}"

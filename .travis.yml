@@ -27,8 +27,13 @@ script:
   # Check the role/playbook's syntax.
   - sudo ansible-playbook -i "localhost," galaxy.yml --syntax-check
   # run the full playbook
-  - sudo ansible-playbook -i "localhost," -c local -vvvv galaxy.yml
-  # run playbook again, but with settings required for bioblend
+  # - sudo ansible-playbook -i "localhost," -c local -vvvv galaxy.yml
+  # run playbook with settings required for bioblend
+  - sudo ansible-playbook -i hosts -l travis_bioblend -vvvv galaxy.yml
+  - sudo mkdir /export && sudo chown galaxy:galaxy /export
+  # Run again, but with export
+  - sudo ansible-playbook -i hosts -l travis_bioblend -vvvv galaxy.yml
+  # Run again
   - sudo ansible-playbook -i hosts -l travis_bioblend -vvvv galaxy.yml
   - curl $BIOBLEND_GALAXY_URL/api/version
   - time > /tmp/time.txt && curl --fail -T /tmp/time.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD

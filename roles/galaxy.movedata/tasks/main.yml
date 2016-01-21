@@ -1,5 +1,11 @@
-- include: galaxy_data.yml
-  when: check_galaxy_data
+- name: Check for persistent directory
+  stat: path={{ galaxy_persistent_directory }}
+  register: export_dir_exists
 
-- include: tool_data.yml
-  when: check_tool_data
+- name: Check for persistent data
+  stat: path={{ galaxy_persistent_directory }}/.exists
+  register: export_exists
+
+- include: export.yml
+  when: export_dir_exists.stat.exists and not export_exists.stat.exists
+
