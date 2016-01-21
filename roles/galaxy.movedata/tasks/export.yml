@@ -2,27 +2,32 @@
   supervisorctl: name={{ item }} state=stopped
   with_items: "{{ start_stop_items }}"
 
-- debug: var=tool_dependency_dir
-
 - name: Create persistent directory paths
-  file: path={{ galaxy_persistent_directory }}/{{ item }} state=directory owner="{{ galaxy_user_name }}" group="{{ galaxy_user_name }}"
+  file: path={{ galaxy_persistent_directory }}/{{ item.path }} state=directory owner="{{ item.owner }}" group="{{ item.owner }}"
   with_items: "{{ galaxy_persist_directories }}"
 
 - name: Copy galaxy data/config directories to permanent directories
-  shell: "rsync -a {{ item }}/ {{ galaxy_persistent_directory }}/{{ item }}"
+  shell: "rsync --exclude \".original\" -a {{ item.path }}/ {{ galaxy_persistent_directory }}/{{ item.path }}"
   with_items: "{{ galaxy_persist_directories }}"
-  sudo_user: "{{ galaxy_user_name }}"
 
 - name: Mark original folders as such  # This allows us to detect if a folder has been imported.
-  file: path="{{ item }}/.original" state=touch
+  file: path="{{ item.path }}/.original" state=touch owner="{{ item.owner}}" group="{{ item.owner}}"
   with_items: "{{ galaxy_persist_directories }}"
-  sudo_user: "{{ galaxy_user_name }}"
 
 - name: Link files from their new location
-  mount: opts=bind fstype=none state=mounted name="{{ item }}" src="{{ galaxy_persistent_directory }}/{{ item }}"
+  mount: opts=bind fstype=none state=mounted name="{{ item.path }}" src="{{ galaxy_persistent_directory }}/{{ item.path }}"
   with_items: "{{ galaxy_persist_directories }}"
 
 - template: src=exported_dirs.yml.j2 dest="{{ galaxy_persistent_directory }}/exported_dirs.yml"
+
+- name: Start postgresql and wait till ready
+  supervisorctl: name=postgresql state=started
+
+- action: shell /usr/bin/pg_isready
+  register: result
+  until: result.stdout.find("accepting connections") != -1
+  retries: 10
+  delay: 5
 
 - name: Start supervisor tasks after moving has finished.
   supervisorctl: name={{ item }} state=started

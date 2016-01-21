@@ -2,12 +2,6 @@
   sudo: yes
 
   roles:
-    # If re-running the playbook we first want to get exported data back into the system
-    - role: galaxy.movedata
-      tags:
-        - persists_galaxy
-        - import data
-
     - role: galaxyprojectdotorg.galaxy-os
       tags:
         - install_galaxy
@@ -17,6 +11,7 @@
       tags:
         - install_galaxy
         - manage_postgres
+        - persists_galaxy
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
