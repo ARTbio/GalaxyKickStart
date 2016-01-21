@@ -6,6 +6,9 @@
   stat: path={{ galaxy_persistent_directory }}/.exists
   register: export_path
 
+- debug: var=export_dir_path
+- debug: var=export_path
+
 - include: export.yml
   when: export_dir_path.exists and not export_path.exists
 
