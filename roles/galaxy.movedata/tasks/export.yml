@@ -2,6 +2,8 @@
   supervisorctl: name={{ item }} state=stopped
   with_items: "{{ start_stop_items }}"
 
+- debug: var=tool_dependency_dir
+
 - name: Create persistent directory paths
   file: path={{ galaxy_persistent_directory }}/{{ item }} state=directory owner="{{ galaxy_user_name }}" group="{{ galaxy_user_name }}"
   with_items: "{{ galaxy_persist_directories }}"
@@ -11,18 +13,16 @@
   with_items: "{{ galaxy_persist_directories }}"
   sudo_user: "{{ galaxy_user_name }}"
 
-#- name: Remove previously copied directories
-#  file: path="{{ item }}" state=absent
-#  with_items: "{{ galaxy_persist_directories }}"
-#  sudo_user: "{{ galaxy_user_name }}"
+- name: Mark original folders as such  # This allows us to detect if a folder has been imported.
+  file: path="{{ item }}/.original" state=touch
+  with_items: "{{ galaxy_persist_directories }}"
+  sudo_user: "{{ galaxy_user_name }}"
 
 - name: Link files from their new location
   mount: opts=bind fstype=none state=mounted name="{{ item }}" src="{{ galaxy_persistent_directory }}/{{ item }}"
   with_items: "{{ galaxy_persist_directories }}"
 
-- name: Create a .exists file to say that there persistent data to be consider
-  file: path="{{ galaxy_persistent_directory }}/.exists" state=touch
-  sudo_user: "{{ galaxy_user_name }}"
+- template: src=exported_dirs.yml.j2 dest="{{ galaxy_persistent_directory }}/exported_dirs.yml"
 
 - name: Start supervisor tasks after moving has finished.
   supervisorctl: name={{ item }} state=started

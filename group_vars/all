@@ -22,6 +22,7 @@ postgresql_version: 9.3
 #supervisor_postgres_database_path: /etc/postgresql/{{ postgresql_version }}/main
 apt_package_state: present
 galaxy_extras_apt_package_state: present
+tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
 additional_files_list: []
 
 # galaxy role variables
@@ -40,7 +41,7 @@ galaxy_config:
   "app:main":
     admin_users: "{{ galaxy_admin }}"
     database_connection: "{{ galaxy_db }}"
-    tool_dependency_dir: "{{ galaxy_server_dir }}/lib/tool_shed/dependencies"
+    tool_dependency_dir: "{{ tool_dependency_dir }}"
     ftp_upload_dir: "{{ proftpd_files_dir }}"
     ftp_upload_site: ftp://{{ galaxy_hostname }}
     #tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"

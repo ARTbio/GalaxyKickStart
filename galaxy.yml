@@ -2,16 +2,17 @@
   sudo: yes
 
   roles:
+    # If re-running the playbook we first want to get exported data back into the system
+    - role: galaxy.movedata
+      tags:
+        - persists_galaxy
+        - import data
+
     - role: galaxyprojectdotorg.galaxy-os
-      configure_docker: no
       tags:
         - install_galaxy
         - install_packages
     
-    #move postgresql db to a persistent dir and symlinks to galaxy
-    #- role: postgresql.movedb
-    #  when: install_galaxy
-
     - role: ensure_postgresql_up
       tags:
         - install_galaxy

@@ -1,8 +1,6 @@
-#check if data will persist
-galaxy_data_items: "{{ galaxy_data.split('/') }}"
 galaxy_persistent_directory: /export
 galaxy_persist_directories: 
-#  - "{{ tool_dependency_dir }}"
+  - "{{ tool_dependency_dir }}"
   - "{{ galaxy_config_dir }}"
 #  - "shed_tools"
   - "{{ galaxy_mutable_data_dir }}"
@@ -12,4 +10,3 @@ galaxy_persist_directories:
 start_stop_items:
   - "galaxy:"
   - "proftpd"
-
