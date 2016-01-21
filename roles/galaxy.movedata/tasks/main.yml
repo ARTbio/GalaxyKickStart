@@ -1,11 +1,11 @@
 - name: Check for persistent directory
   stat: path={{ galaxy_persistent_directory }}
-  register: export_dir_exists
+  register: export_dir_path
 
 - name: Check for persistent data
   stat: path={{ galaxy_persistent_directory }}/.exists
-  register: export_exists
+  register: export_path
 
 - include: export.yml
-  when: export_dir_exists.exists | bool and not export_exists.exists | bool
+  when: export_dir_path.exists and not export_path.exists
 

@@ -4,8 +4,8 @@
 
 - name: Copy galaxy data/config directories to permanent directories
   # TODO: The split is a bad hack, we probably want basename.
-  shell: rsync -a --remove-source-files {{ galaxy_server_dir }}/{{ item.split('/')[-1] }} {{ galaxy_persistent_directory }}/
-  with_items: galaxy_persist_directories
+  shell: "rsync -a --remove-source-files {{ galaxy_server_dir }}/{{ item.split('/')[-1] }} {{ galaxy_persistent_directory }}/"
+  with_items: "{{ galaxy_persist_directories }}"
   sudo_user: "{{ galaxy_user_name }}"
 
 - name: Create a .exists file to say that there persistent data to be consider
@@ -14,8 +14,8 @@
 
 - name: Create a symlink for galaxy data/config directories #this will overwrite galaxy directories that were copied by the previous task
 #  file: src={{ galaxy_persistent_directory }}/{{ item.split('/')[-1] }} dest={{ galaxy_server_dir }}/ state=link force=yes
-  shell: ln -sf {{ galaxy_persistent_directory }}/{{ item.split('/')[-1] }} {{ galaxy_server_dir }}/
-  with_items: galaxy_persist_directories
+  shell: "ln -sf {{ galaxy_persistent_directory }}/{{ item.split('/')[-1] }} {{ galaxy_server_dir }}/"
+  with_items: "{{ galaxy_persist_directories }}"
   sudo_user: "{{ galaxy_user_name }}"
 
 - name: Stop supervisor tasks to copy data/config directories to the permanent directories
