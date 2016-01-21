@@ -23,6 +23,7 @@ postgresql_version: 9.3
 apt_package_state: present
 galaxy_extras_apt_package_state: present
 tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
+tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
 additional_files_list: []
 
 # galaxy role variables
