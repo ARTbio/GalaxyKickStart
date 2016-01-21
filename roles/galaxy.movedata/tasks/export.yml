@@ -7,19 +7,18 @@
   with_items: "{{ galaxy_persist_directories }}"
 
 - name: Copy galaxy data/config directories to permanent directories
-  shell: "rsync -a --remove-source-files {{ item }}/ {{ galaxy_persistent_directory }}/{{ item }}"
+  shell: "rsync -a {{ item }}/ {{ galaxy_persistent_directory }}/{{ item }}"
   with_items: "{{ galaxy_persist_directories }}"
   sudo_user: "{{ galaxy_user_name }}"
 
-- name: Remove previously copied directories
-  file: path="{{ item }}" state=absent
-  with_items: "{{ galaxy_persist_directories }}"
-  sudo_user: "{{ galaxy_user_name }}"
+#- name: Remove previously copied directories
+#  file: path="{{ item }}" state=absent
+#  with_items: "{{ galaxy_persist_directories }}"
+#  sudo_user: "{{ galaxy_user_name }}"
 
 - name: Link files from their new location
-  file: dest="{{ item }}" src="{{ galaxy_persistent_directory }}/{{ item }}" state=link
+  mount: opts=bind fstype=none state=mounted dest="{{ item }}" src="{{ galaxy_persistent_directory }}/{{ item }}"
   with_items: "{{ galaxy_persist_directories }}"
-  sudo_user: "{{ galaxy_user_name }}"
 
 - name: Create a .exists file to say that there persistent data to be consider
   file: path="{{ galaxy_persistent_directory }}/.exists" state=touch
