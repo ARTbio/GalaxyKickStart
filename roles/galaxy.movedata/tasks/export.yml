@@ -17,7 +17,7 @@
 #  sudo_user: "{{ galaxy_user_name }}"
 
 - name: Link files from their new location
-  mount: opts=bind fstype=none state=mounted dest="{{ item }}" src="{{ galaxy_persistent_directory }}/{{ item }}"
+  mount: opts=bind fstype=none state=mounted name="{{ item }}" src="{{ galaxy_persistent_directory }}/{{ item }}"
   with_items: "{{ galaxy_persist_directories }}"
 
 - name: Create a .exists file to say that there persistent data to be consider
