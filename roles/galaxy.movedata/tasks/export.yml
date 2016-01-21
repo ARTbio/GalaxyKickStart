@@ -1,8 +1,3 @@
-  start_stop_items:
-    - "galaxy:"
-    - "proftpd" 
- # TODO: test if munge and slurm should be stopped as well?
-
 - name: Stop supervisor tasks to copy data/config directories to the permanent directories
   supervisorctl: name={{ item }} state=stopped
   with_items: "{{ start_stop_items }}"

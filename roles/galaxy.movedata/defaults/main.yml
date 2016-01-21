@@ -10,3 +10,7 @@ galaxy_persist_directories:
   - "{{ tool_path }}"
   - "static"
   - "display_applications"
+start_stop_items:
+  - "galaxy:"
+  - "proftpd"
+
