@@ -4,6 +4,7 @@ galaxy_web_processes: 2
 galaxy_handler_processes: 2
 postgres_user_uid: 1550
 postgres_user_gid: 1550
+install_apparmor: false
 galaxy_config:
   "app:main":
     admin_users: "{{ galaxy_admin }}"
