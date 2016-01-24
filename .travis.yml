@@ -19,6 +19,7 @@ before_install:
 
 install:
   # Install Ansible.
+  - sudo pip install pip==7.1.2
   - sudo pip install ansible
   - sudo pip install https://github.com/mvdbeek/bioblend/archive/master.tar.gz
   - sudo pip install --upgrade "tox>=1.8.0"
