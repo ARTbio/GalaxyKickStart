@@ -2,6 +2,8 @@ install_tools: true
 galaxy_tools_tool_list: "extra-files/travis_bioblend_tool_list.yml"
 galaxy_web_processes: 2
 galaxy_handler_processes: 2
+main.yml:postgres_user_uid: 1550
+main.yml:postgres_user_gid: 1550
 galaxy_config:
   "app:main":
     admin_users: "{{ galaxy_admin }}"
