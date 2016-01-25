@@ -1,6 +1,7 @@
 - name: Stop supervisor tasks to copy data/config directories to the permanent directories
   supervisorctl: name={{ item }} state=stopped
   with_items: "{{ start_stop_items }}"
+  tags: skip_supervisor_start_in_docker
 
 - name: Create persistent directory paths
   file: path={{ galaxy_persistent_directory }}/{{ item.path }} state=directory owner="{{ item.owner }}" group="{{ item.owner }}"
@@ -22,13 +23,16 @@
 
 - name: Start postgresql and wait till ready
   supervisorctl: name=postgresql state=started
+  tags: skip_supervisor_start_in_docker
 
 - action: shell /usr/bin/pg_isready
   register: result
   until: result.stdout.find("accepting connections") != -1
   retries: 10
   delay: 5
+  tags: skip_supervisor_start_in_docker
 
 - name: Start supervisor tasks after moving has finished.
   supervisorctl: name={{ item }} state=started
   with_items: "{{ start_stop_items }}"
+  tags: skip_supervisor_start_in_docker
