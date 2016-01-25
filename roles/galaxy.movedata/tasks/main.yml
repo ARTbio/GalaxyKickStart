@@ -11,7 +11,7 @@
   register: original
 
 - include: import.yml
-  when: export_dir_exists.stat.exists and export_exists.stat.exists and original.stat.exists
+  when: export_dir_exists.stat.exists and export_exists.stat.exists and not original.stat.exists
 
 - include: export.yml
   when: export_dir_exists.stat.exists and not export_exists.stat.exists

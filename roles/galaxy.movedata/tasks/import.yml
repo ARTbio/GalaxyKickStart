@@ -7,9 +7,11 @@
   shell: "grep -v \"#\" {{ galaxy_persistent_directory }}/exported_dirs.yml"
   register: exported_paths
 
+- set_fact: importable_paths={{ exported_paths.stdout | from_yaml }}
+
 - name: Link files from their new location
-  mount: opts=bind fstype=none state=mounted name="{{ item }}" src="{{ galaxy_persistent_directory }}/{{ item }}"
-  with_items: "{{ exported_paths.stdout_lines | default([]) }}"
+  mount: opts=bind fstype=none state=mounted name={{ item.path }} src="{{ galaxy_persistent_directory }}/{{ item.path }}"
+  with_items: "{{ importable_paths | default([]) }}"
 
 - name: Start supervisor tasks after moving has finished.
   supervisorctl: name={{ item }} state=started

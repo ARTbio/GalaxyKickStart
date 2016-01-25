@@ -1,7 +1,5 @@
 ## This file contains the exported paths and the corresponding variables
-{% for path in galaxy_persist_directories %}
-{{ path }}
-{% endfor %}
+{{ galaxy_persist_directories | to_yaml }}
 # For reference, these were the original variables referring to the above paths:
 # pre_export_galaxy_config_dir: {{ galaxy_config_dir }}
 # pre_export_galaxy_mutable_data_dir: {{ galaxy_mutable_data_dir }}

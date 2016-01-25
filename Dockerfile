@@ -37,5 +37,5 @@ EXPOSE :9002
 # Mark folders as imported from the host.
 VOLUME ["/export", "/var/lib/docker"]
 
-CMD ansible-playbook galaxy.yml -c local --tags persists_galaxy --skip-tags=skip_supervisor_start_in_docker -i hosts && \
+CMD ansible-playbook galaxy.yml -c local --tags persists_galaxy --skip-tags=skip_supervisor_start_in_docker -i docker_inventory && \
            /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf --nodaemon
