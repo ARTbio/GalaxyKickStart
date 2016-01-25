@@ -12,6 +12,7 @@
         - install_galaxy
         - manage_postgres
         - persists_galaxy
+        - skip_supervisor_start_in_docker
 
     #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
     - role: natefoo.postgresql_objects
