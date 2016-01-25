@@ -1,0 +1,11 @@
+- name: Start postgresql and wait till ready
+  supervisorctl: name=postgresql state=started
+  tags: skip_supervisor_start_in_docker
+
+- action: shell /usr/bin/pg_isready
+  register: result
+  until: result.stdout.find("accepting connections") != -1
+  retries: 10
+  delay: 5
+  tags: skip_supervisor_start_in_docker
+

@@ -13,6 +13,9 @@
   mount: opts=bind fstype=none state=mounted name={{ item.path }} src="{{ galaxy_persistent_directory }}/{{ item.path }}"
   with_items: "{{ importable_paths | default([]) }}"
 
+- include: check_psql_connection.yml
+  tags: skip_supervisor_start_in_docker
+
 - name: Start supervisor tasks after moving has finished.
   supervisorctl: name={{ item }} state=started
   with_items: "{{ start_stop_items }}"

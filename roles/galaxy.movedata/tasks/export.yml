@@ -21,15 +21,7 @@
 
 - template: src=exported_dirs.yml.j2 dest="{{ galaxy_persistent_directory }}/exported_dirs.yml"
 
-- name: Start postgresql and wait till ready
-  supervisorctl: name=postgresql state=started
-  tags: skip_supervisor_start_in_docker
-
-- action: shell /usr/bin/pg_isready
-  register: result
-  until: result.stdout.find("accepting connections") != -1
-  retries: 10
-  delay: 5
+- include: check_psql_connection.yml
   tags: skip_supervisor_start_in_docker
 
 - name: Start supervisor tasks after moving has finished.
