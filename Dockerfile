@@ -17,13 +17,16 @@ ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
 
 RUN pip install --upgrade pip && pip install ansible
 
+COPY  .  /tmp
+WORKDIR /tmp
+
 ONBUILD  WORKDIR  /tmp
 ONBUILD  COPY  .  /tmp
 ONBUILD  RUN  \
               echo "===> Diagnosis: host information..."  && \
               ansible -c local -m setup all
 
-RUN ansible-playbook -c local -i "localhost," -l "travis_bioblend" galaxy.yml
+RUN ansible-playbook -c local -i hosts -l "travis_bioblend" --skip-tags=persists_galaxy galaxy.yml
 
 # Expose port 80 (webserver), 21 (FTP server), 8800 (Proxy), 9002 (supvisord web app)
 EXPOSE :80
@@ -34,5 +37,5 @@ EXPOSE :9002
 # Mark folders as imported from the host.
 VOLUME ["/export", "/var/lib/docker"]
 
-CMD ansible-playbook $PLAYBOOK -c local --tags persists_galaxy --skip-tags=skip_supervisor_start_in_docker -i $INVENTORY && \
+CMD ansible-playbook galaxy.yml -c local --tags persists_galaxy --skip-tags=skip_supervisor_start_in_docker -i hosts && \
            /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf --nodaemon
