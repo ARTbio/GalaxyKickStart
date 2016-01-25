@@ -6,6 +6,8 @@ restart_galaxy: false
 start_galaxy: false
 stop_galaxy: false
 
+tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
+
 proftpd_conf_path:  "/etc/proftpd/proftpd.conf"
 proftpd_welcome: "Galaxy ARTiMED FTP server!"
 encoding: "base64"

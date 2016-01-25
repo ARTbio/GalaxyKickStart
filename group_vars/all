@@ -12,16 +12,18 @@ galaxy_data: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
 galaxy_config_dir: "{{ galaxy_data }}/config"
 galaxy_database: /home/galaxy_database
 galaxy_db: postgresql:///{{ galaxy_user_name }}?host=/var/run/postgresql
-galaxy_changeset_id: release_16.01
+galaxy_changeset_id: release_16.01 # change back when gakaxy releases new pip
 galaxy_admin: artimed@gmail.com
 galaxy_admin_pw: artimed
 use_pbkdf2: true
 proftpd_files_dir: "{{ galaxy_data }}/database/ftp"
 default_admin_api_key: "f137d9af2f2065bd8c5fbadf7111494b"
 postgresql_version: 9.3
-#supervisor_postgres_database_path: /etc/postgresql/{{ postgresql_version }}/main
+supervisor_postgres_database_path: /etc/postgresql/{{ postgresql_version }}/main
 apt_package_state: present
 galaxy_extras_apt_package_state: present
+tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
+tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
 additional_files_list: []
 
 # galaxy role variables
@@ -40,7 +42,7 @@ galaxy_config:
   "app:main":
     admin_users: "{{ galaxy_admin }}"
     database_connection: "{{ galaxy_db }}"
-    tool_dependency_dir: "{{ galaxy_server_dir }}/lib/tool_shed/dependencies"
+    tool_dependency_dir: "{{ tool_dependency_dir }}"
     ftp_upload_dir: "{{ proftpd_files_dir }}"
     ftp_upload_site: ftp://{{ galaxy_hostname }}
     #tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"

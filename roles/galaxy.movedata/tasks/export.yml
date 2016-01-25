@@ -1,0 +1,30 @@
+- name: Stop supervisor tasks to copy data/config directories to the permanent directories
+  supervisorctl: name={{ item }} state=stopped
+  with_items: "{{ start_stop_items }}"
+  tags: skip_supervisor_start_in_docker
+
+- name: Create persistent directory paths
+  file: path={{ galaxy_persistent_directory }}/{{ item.path }} state=directory owner="{{ item.owner }}" group="{{ item.owner }}"
+  with_items: "{{ galaxy_persist_directories }}"
+
+- name: Copy galaxy data/config directories to permanent directories
+  shell: "rsync --exclude \".original\" -a {{ item.path }}/ {{ galaxy_persistent_directory }}/{{ item.path }}"
+  with_items: "{{ galaxy_persist_directories }}"
+
+- name: Mark original folders as such  # This allows us to detect if a folder has been imported.
+  file: path="{{ item.path }}/.original" state=touch owner="{{ item.owner}}" group="{{ item.owner}}"
+  with_items: "{{ galaxy_persist_directories }}"
+
+- name: Link files from their new location
+  mount: opts=bind fstype=none state=mounted name="{{ item.path }}" src="{{ galaxy_persistent_directory }}/{{ item.path }}"
+  with_items: "{{ galaxy_persist_directories }}"
+
+- template: src=exported_dirs.yml.j2 dest="{{ galaxy_persistent_directory }}/exported_dirs.yml"
+
+- include: check_psql_connection.yml
+  tags: skip_supervisor_start_in_docker
+
+- name: Start supervisor tasks after moving has finished.
+  supervisorctl: name={{ item }} state=started
+  with_items: "{{ start_stop_items }}"
+  tags: skip_supervisor_start_in_docker

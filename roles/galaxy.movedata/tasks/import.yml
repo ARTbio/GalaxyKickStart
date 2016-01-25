@@ -1,0 +1,23 @@
+- name: Stop supervisor tasks to link directories
+  supervisorctl: name={{ item }} state=stopped
+  with_items: "{{ start_stop_items }}"
+  tags: skip_supervisor_start_in_docker
+
+- name: get exported paths
+  shell: "grep -v \"#\" {{ galaxy_persistent_directory }}/exported_dirs.yml"
+  register: exported_paths
+
+- set_fact: importable_paths={{ exported_paths.stdout | from_yaml }}
+
+- name: Link files from their new location
+  mount: opts=bind fstype=none state=mounted name={{ item.path }} src="{{ galaxy_persistent_directory }}/{{ item.path }}"
+  with_items: "{{ importable_paths | default([]) }}"
+
+- include: check_psql_connection.yml
+  tags: skip_supervisor_start_in_docker
+
+- name: Start supervisor tasks after moving has finished.
+  supervisorctl: name={{ item }} state=started
+  with_items: "{{ start_stop_items }}"
+  tags: skip_supervisor_start_in_docker
+

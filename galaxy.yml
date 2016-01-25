@@ -3,20 +3,10 @@
 
   roles:
     - role: galaxyprojectdotorg.galaxy-os
-      configure_docker: no
       tags:
         - install_galaxy
         - install_packages
     
-    #move postgresql db to a persistent dir and symlinks to galaxy
-    #- role: postgresql.movedb
-    #  when: install_galaxy
-
-    #check if config and database directories persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
-    #- role: galaxy.movedata
-    #  check_galaxy_data: yes
-    #  when: install_galaxy
-
     - role: ensure_postgresql_up
       tags:
         - install_galaxy
@@ -45,8 +35,6 @@
 
     #installs supervisor, nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
-      supervisor_postgres_database_path: "{{ supervisor_postgres_database_path_discovered }}"
-      postgresql_version: "{{ supervisor_postgres_database_version_discovered }}"
       tags:
         - configure_server_stack
         - install_extras
@@ -60,12 +48,9 @@
       tags:
         - install_extras
       
-    #check if tool-data persisted on galaxy (it does nothing if galaxy_data == galaxy_server_dir)
     - role: galaxy.movedata
-      check_tool_data: yes
-      tags:
-        - configure_galaxy
-        - install_galaxy
+      tags: 
+        - persists_galaxy
 
     - role: galaxyprojectdotorg.galaxy-tools
       sudo: yes

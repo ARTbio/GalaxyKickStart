@@ -1,8 +1,11 @@
-#check if tool-data will persist
-check_tool_data: no
-
-#check if data will persist
-check_galaxy_data: no
-persist: "{{ galaxy_data != galaxy_server_dir }}"
-
-galaxy_data_items: "{{ galaxy_data.split('/') }}"
+galaxy_persistent_directory: /export
+galaxy_persist_directories: 
+  - { path: "{{ tool_dependency_dir }}", owner: "{{ galaxy_user_name }}" }
+  - { path: "{{ tool_data_dir }}", owner: "{{ galaxy_user_name }}" }
+  - { path: "{{ galaxy_config_dir }}", owner: "{{ galaxy_user_name }}" }
+  - { path: "{{ galaxy_mutable_data_dir }}", owner: "{{ galaxy_user_name }}" }
+  - { path: "{{ supervisor_postgres_database_path }}", owner: "postgres" }
+start_stop_items:
+  - "galaxy:"
+  - "proftpd"
+  - "postgresql"
