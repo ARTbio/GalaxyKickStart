@@ -15,7 +15,7 @@ before_install:
   - export GALAXY_USER_EMAIL=$GALAXY_USER
   - export GALAXY_USER_PASSWD=artimed
   - export BIOBLEND_GALAXY_API_KEY=f137d9af2f2065bd8c5fbadf7111494b
-  - export BIOBLEND_GALAXY_URL=http://localhost:80
+  - export BIOBLEND_GALAXY_URL=http://localhost:8080
 
 install:
   # Install Ansible.
@@ -38,10 +38,10 @@ script:
   ## - sudo ansible-playbook -i hosts -l travis_bioblend -vvvv galaxy.yml
   - sudo mkdir /export && sudo chown 1111:1111 /export
   - sudo docker build -t galaxy_kickstart .
-  - sudo docker run --privileged -d --privileged -v /export:/export galaxy_kickstart
+  - sudo docker run --privileged -d -p 8021:21 8080:80 -v /export:/export galaxy_kickstart
   - curl $BIOBLEND_GALAXY_URL/api/version
-  - time > /tmp/time.txt && curl --fail -T /tmp/time.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
-  - curl --fail ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
+  - time > /tmp/time.txt && curl --fail -T /tmp/time.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
+  - curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   # bioblend nose-tests
   - wget https://github.com/mvdbeek/bioblend/archive/master.tar.gz
   - tar xfz master.tar.gz
