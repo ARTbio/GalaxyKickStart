@@ -17,11 +17,11 @@ ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
 
 RUN pip install --upgrade pip && pip install ansible
 
-COPY  .  /tmp
-WORKDIR /tmp
+COPY  .  /setup
+WORKDIR /setup
 
-ONBUILD  WORKDIR  /tmp
-ONBUILD  COPY  .  /tmp
+ONBUILD  WORKDIR  /setup
+ONBUILD  COPY  .  /setup
 ONBUILD  RUN  \
               echo "===> Diagnosis: host information..."  && \
               ansible -c local -m setup all
