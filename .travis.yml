@@ -28,13 +28,13 @@ script:
   ## - sudo ansible-playbook -i hosts -l travis_bioblend -vvvv galaxy.yml
   # Run again
   ## - sudo ansible-playbook -i hosts -l travis_bioblend -vvvv galaxy.yml
+  - sudo mkdir /export && sudo chown 1111:1111 /export
   - sudo docker run --privileged -d -p 8021:21 -p 8080:80 -v /export:/export -v /tmp:/tmp galaxy_kickstart
   - sudo pip install https://github.com/mvdbeek/bioblend/archive/master.tar.gz
   - sudo pip install --upgrade "tox>=1.8.0"
   - wget https://github.com/mvdbeek/bioblend/archive/master.tar.gz
   - tar xfz master.tar.gz
   - cd bioblend-master 
-  - sudo mkdir /export && sudo chown 1111:1111 /export
   - curl --fail $BIOBLEND_GALAXY_URL/api/version
   - time > /tmp/time.txt && curl --fail -T /tmp/time.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   - curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
