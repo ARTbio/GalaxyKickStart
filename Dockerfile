@@ -26,7 +26,7 @@ ONBUILD  RUN  \
               echo "===> Diagnosis: host information..."  && \
               ansible -c local -m setup all
 
-RUN ansible-playbook -c local -i docker_inventory -l "travis_bioblend" --skip-tags=persists_galaxy galaxy.yml
+RUN ansible-playbook -c local -i docker_inventory --skip-tags=persists_galaxy galaxy.yml
 
 # Expose port 80 (webserver), 21 (FTP server), 8800 (Proxy), 9002 (supvisord web app)
 EXPOSE :80
