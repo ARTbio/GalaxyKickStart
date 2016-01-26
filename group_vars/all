@@ -4,20 +4,22 @@ install_tools: false
 run_data_manager: false
 galaxy_hostname: "{{ inventory_hostname }}"
 galaxy_user_name: galaxy
-galaxy_user_gid: 1111
-galaxy_user_uid: 1111
+galaxy_user_gid: 1450
+galaxy_user_uid: 1450
+postgres_user_uid: 1550
+postgres_user_gid: 1550
 galaxy_server_dir: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
 galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
 galaxy_data: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
 galaxy_config_dir: "{{ galaxy_data }}/config"
 galaxy_database: /home/galaxy_database
 galaxy_db: postgresql:///{{ galaxy_user_name }}?host=/var/run/postgresql
-galaxy_changeset_id: release_16.01 # change back when gakaxy releases new pip
-galaxy_admin: artimed@gmail.com
-galaxy_admin_pw: artimed
+galaxy_changeset_id: release_16.01
+galaxy_admin: admin@galaxy.org
+galaxy_admin_pw: admin
 use_pbkdf2: true
 proftpd_files_dir: "{{ galaxy_data }}/database/ftp"
-default_admin_api_key: "f137d9af2f2065bd8c5fbadf7111494b"
+default_admin_api_key: admin
 postgresql_version: 9.3
 supervisor_postgres_database_path: /etc/postgresql/{{ postgresql_version }}/main
 apt_package_state: present
