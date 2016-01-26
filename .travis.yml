@@ -37,7 +37,7 @@ script:
   # Run again
   ## - sudo ansible-playbook -i hosts -l travis_bioblend -vvvv galaxy.yml
   - sudo mkdir /export && sudo chown 1111:1111 /export
-  - sudo docker build -t galaxy_kickstart
+  - sudo docker build -t galaxy_kickstart .
   - sudo docker run --privileged -d --privileged -v /export:/export galaxy_kickstart
   - curl $BIOBLEND_GALAXY_URL/api/version
   - time > /tmp/time.txt && curl --fail -T /tmp/time.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
