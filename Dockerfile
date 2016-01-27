@@ -17,16 +17,18 @@ ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
 
 RUN pip install --upgrade pip && pip install ansible
 
-COPY  .  /tmp
-WORKDIR /tmp
+COPY  .  /setup
+WORKDIR /setup
 
-ONBUILD  WORKDIR  /tmp
-ONBUILD  COPY  .  /tmp
+ONBUILD  WORKDIR  /setup
+ONBUILD  COPY  .  /setup
 ONBUILD  RUN  \
               echo "===> Diagnosis: host information..."  && \
               ansible -c local -m setup all
 
-RUN ansible-playbook -c local -i hosts -l "travis_bioblend" --skip-tags=persists_galaxy galaxy.yml
+RUN ansible-playbook -c local -i docker_inventory --skip-tags=persists_galaxy galaxy.yml && \
+    apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 
 # Expose port 80 (webserver), 21 (FTP server), 8800 (Proxy), 9002 (supvisord web app)
 EXPOSE :80

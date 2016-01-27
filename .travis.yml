@@ -4,44 +4,61 @@ sudo: required
 dist: trusty
 
 env:
-  - TOXENV=py27
+  - TOX_ENV=py27
 
 before_install:
-  - sudo service postgresql stop
-  - sudo apt-get remove -y --purge postgresql-*
   - export GALAXY_TRAVIS_USER=galaxy
+  - export GALAXY_UID=1450
+  - export GALAXY_GID=1450
   - export GALAXY_HOME=/home/galaxy
-  - export GALAXY_USER=artimed@gmail.com
-  - export GALAXY_USER_EMAIL=$GALAXY_USER
-  - export GALAXY_USER_PASSWD=artimed
-  - export BIOBLEND_GALAXY_API_KEY=f137d9af2f2065bd8c5fbadf7111494b
-  - export BIOBLEND_GALAXY_URL=http://localhost:80
+  - export GALAXY_USER=admin@galaxy.org
+  - export GALAXY_USER_EMAIL=admin@galaxy.org
+  - export GALAXY_USER_PASSWD=admin
+  - export BIOBLEND_GALAXY_API_KEY=admin
+  - export BIOBLEND_GALAXY_URL=http://localhost:8080
+
+  - docker --version
+  - docker info
+
+  - sudo groupadd -r $GALAXY_TRAVIS_USER -g $GALAXY_GID
+  - sudo useradd -u $GALAXY_UID -r -g $GALAXY_TRAVIS_USER -d $GALAXY_HOME -p travis_testing -c "Galaxy user" $GALAXY_TRAVIS_USER
+  - sudo mkdir $GALAXY_HOME
+  - sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
+  - docker build -t galaxy_kickstart .
+  - sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
+  - |
+    docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
+    --privileged=true \
+    -e GALAXY_CONFIG_ALLOW_USER_DATASET_PURGE=True \
+    -e GALAXY_CONFIG_ALLOW_LIBRARY_PATH_PASTE=True \
+    -e GALAXY_CONFIG_ENABLE_USER_DELETION=True \
+    -e GALAXY_CONFIG_ENABLE_BETA_WORKFLOW_MODULES=True \
+    -v /tmp/:/tmp/ \
+    -v /export/:/export \
+    galaxy_kickstart
+  - docker ps
+  - cd $GALAXY_HOME
+  - sudo su $GALAXY_TRAVIS_USER -c 'wget https://github.com/bgruening/bioblend/archive/master.tar.gz'
+  - sudo su $GALAXY_TRAVIS_USER -c 'tar xfz master.tar.gz'
 
 install:
-  # Install Ansible.
-  - sudo pip install pip==7.1.2
-  - sudo pip install ansible
-  - sudo pip install https://github.com/mvdbeek/bioblend/archive/master.tar.gz
-  - sudo pip install --upgrade "tox>=1.8.0"
+  - cd $GALAXY_HOME/bioblend-master
+  - sudo su $GALAXY_TRAVIS_USER -c 'pip install --user --upgrade "tox>=1.8.0" "pep8<=1.6.2" '
+  - sudo su $GALAXY_TRAVIS_USER -c 'python setup.py install --user'
+  # remove flake8 testing for bioblend from tox
+  - sudo su $GALAXY_TRAVIS_USER -c 'sed -i.bak "s/commands.*$/commands =/" tox.ini'
 
 script:
-  # Check the role/playbook's syntax.
-  - sudo ansible-playbook -i "localhost," galaxy.yml --syntax-check
-  # run the full playbook
-  # - sudo ansible-playbook -i "localhost," -c local -vvvv galaxy.yml
-  # run playbook with settings required for bioblend
-  - sudo ansible-playbook -i hosts -l travis_bioblend -vvvv galaxy.yml
-  - sudo mkdir /export && sudo chown galaxy:galaxy /export
-  # Run again, but with export
-  - sudo ansible-playbook -i hosts -l travis_bioblend -vvvv galaxy.yml
-  # Run again
-  - sudo ansible-playbook -i hosts -l travis_bioblend -vvvv galaxy.yml
-  - curl $BIOBLEND_GALAXY_URL/api/version
-  - time > /tmp/time.txt && curl --fail -T /tmp/time.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
-  - curl --fail ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
-  # bioblend nose-tests
-  - cd $GALAXY_HOME
-  - sudo su $GALAXY_TRAVIS_USER -c 'wget https://github.com/mvdbeek/bioblend/archive/master.tar.gz'
-  - sudo su $GALAXY_TRAVIS_USER -c 'tar xfz master.tar.gz'
-  - cd bioblend-master 
-  - sudo -E su $GALAXY_TRAVIS_USER -c "tox -e $TOXENV -- -e 'test_download_dataset'"
+  - sleep 30s
+  # Run bioblend nosetests with the same UID and GID as the galaxy user inside if Docker
+  # this will guarantee that exchanged files bewteen bioblend and Docker are read & writable from both sides
+  - sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH && cd $GALAXY_HOME/bioblend-master && tox -e $TOX_ENV -- -e 'test_download_dataset'"
+  # Test the 'old' tool installation script
+  #- docker run galaxy-docker/test bash -c 'install-repository "--url https://toolshed.g2.bx.psu.edu -o iuc --name bedtools --panel-section-name 'BEDTools'"'
+  # Test the 'new' tool installation script
+  #- docker run galaxy-docker/test bash -c "install-tools $GALAXY_HOME/ansible/galaxy-tools-playbook/files/tool_list.yaml"
+  # Test Docker in Docker, used by Interactive Environments; This needs to be at the end as Docker takes some time to start.
+  #- docker exec -i -t galaxy_test_container docker info
+  - curl --fail $BIOBLEND_GALAXY_URL/api/version
+  - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
+  - curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD

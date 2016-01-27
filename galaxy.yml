@@ -39,6 +39,10 @@
         - configure_server_stack
         - install_extras
 
+    - role: ensure_postgresql_up
+      tags:
+        - manage_postgres
+
     #fix proftpd config file, restarts supervisor, put the test tool shed in the list and create a welcome page
     - role: artimed_extras
       run_extras: true
