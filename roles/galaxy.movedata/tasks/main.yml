@@ -10,8 +10,12 @@
   stat: path="{{ galaxy_config_dir }}/.original"
   register: original
 
+- name: Check if galaxy config dir should be imported (no .do not import file)
+  stat: path="{{ galaxy_persistent_directory }}/.do_not_import"
+  register: do_not_import
+
 - include: import.yml
-  when: export_dir_exists.stat.exists and export_exists.stat.exists and not original.stat.exists
+  when: export_dir_exists.stat.exists and export_exists.stat.exists and not original.stat.exists and not do_not_import.stat.exists
 
 - include: export.yml
-  when: export_dir_exists.stat.exists and not export_exists.stat.exists
+  when: export_dir_exists.stat.exists and not export_exists.stat.exists and not do_not_import.stat.exists

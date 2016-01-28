@@ -2,6 +2,15 @@ FROM ubuntu:14.04
 
 MAINTAINER Marius van den Beek <m.vandenbeek@gmail.com>
 
+# Expose port 80 (webserver), 21 (FTP server), 8800 (Proxy), 9002 (supvisord web app)
+EXPOSE :80
+EXPOSE :21
+EXPOSE :8800
+EXPOSE :9002
+
+# Mark folders as imported from the host.
+VOLUME ["/export", "/var/lib/docker"]
+
 RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
     \
     \
@@ -15,29 +24,19 @@ ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
               echo "===> Updating TLS certificates..."         && \
               apt-get install -y openssl ca-certificates
 
-RUN pip install --upgrade pip && pip install ansible
+RUN pip install --upgrade pip && pip install ansible && touch /export/.do_not_import
 
 COPY  .  /setup
 WORKDIR /setup
+
+RUN ansible-playbook -i docker_inventory -c local galaxy.yml && \
+    apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ONBUILD  WORKDIR  /setup
 ONBUILD  COPY  .  /setup
 ONBUILD  RUN  \
               echo "===> Diagnosis: host information..."  && \
               ansible -c local -m setup all
-
-RUN ansible-playbook -c local -i docker_inventory --skip-tags=persists_galaxy galaxy.yml && \
-    apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-
-# Expose port 80 (webserver), 21 (FTP server), 8800 (Proxy), 9002 (supvisord web app)
-EXPOSE :80
-EXPOSE :21
-EXPOSE :8800
-EXPOSE :9002
-
-# Mark folders as imported from the host.
-VOLUME ["/export", "/var/lib/docker"]
 
 CMD ansible-playbook galaxy.yml -c local --tags persists_galaxy --skip-tags=skip_supervisor_start_in_docker -i docker_inventory && \
            /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf --nodaemon
