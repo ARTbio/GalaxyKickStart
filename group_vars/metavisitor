@@ -1,5 +1,7 @@
 install_tools: true
 galaxy_tools_tool_list: "extra-files/metavisitor/metavisitor_tool_list.yml"
+galaxy_tools_workflows: 
+  - "extra-files/metavisitor/Metavisitor Test case 1-1.ga"
 galaxy_web_processes: 2
 galaxy_handler_processes: 2
 postgres_user_uid: 1550
