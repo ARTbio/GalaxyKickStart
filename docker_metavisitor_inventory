@@ -1,0 +1,5 @@
+[metavisitor]
+localhost ansible_connection=local
+[aws]
+# Put you aws IP and key here to make FTP work in the default VPC.
+# If you want further group-specific variables, put the host in these groups as well [e.g artimed].

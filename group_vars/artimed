@@ -2,10 +2,10 @@ install_galaxy: true
 run_extras: true
 install_tools: true
 run_data_manager: false
-galaxy_tools_tool_list: "extra-files/artimed_tool_list.yml"
-data_manager_task_file: "extra-files/artimed_data_manager_tasks.yml"
+galaxy_tools_tool_list: "extra-files/artimed/artimed_tool_list.yml"
+data_manager_task_file: "extra-files/artimed/artimed_data_manager_tasks.yml"
 additional_files_list:
-  - { src: "welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
-#  - { src: "tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
-  - { src: "ARTiMED_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
-  - { src: "logo_iuis_UPMC_UTC.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/artimed/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
+#  - { src: "extra-files/artimed/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+  - { src: "extra-files/artimed/ARTiMED_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/artimed/logo_iuis_UPMC_UTC.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }
