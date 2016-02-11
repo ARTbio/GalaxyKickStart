@@ -1,5 +1,10 @@
 - hosts: all
   sudo: yes
+  pre_tasks:
+    - name: Set filter_with variable if galaxy is run behing proxy
+      set_fact:
+        filter_with: "filter-with = proxy-prefix"
+      when: nginx_galaxy_location is defined and nginx_galaxy_location != ""
 
   roles:
     - role: galaxyprojectdotorg.galaxy-os
