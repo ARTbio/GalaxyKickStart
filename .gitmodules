@@ -12,7 +12,7 @@
 	url = git://github.com/mvdbeek/ansible-galaxy-os.git
 [submodule "roles/galaxyprojectdotorg.galaxy"]
 	path = roles/galaxyprojectdotorg.galaxy
-	url = git://github.com/galaxyproject/ansible-galaxy.git
+	url = git://github.com/mvdbeek/ansible-galaxy.git
 [submodule "ensure_postgresql_up"]
 	path = roles/ensure_postgresql_up
 	url = git://github.com/mvdbeek/ensure_postgresql_up.git
