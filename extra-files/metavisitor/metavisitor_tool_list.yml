@@ -8,13 +8,11 @@ tools:
 - name: blast_to_scaffold
   owner: drosofff
   revisions:
-  - 35e2e6452cf7
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: blastx_to_scaffold
   owner: drosofff
   revisions:
-  - a2e034f1638e
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: bowtie2
@@ -26,13 +24,11 @@ tools:
 - name: cherry_pick_fasta
   owner: drosofff
   revisions:
-  - c7a0ec8263b4
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: concatenate_multiple_datasets
   owner: mvdbeek
   revisions:
-  - 1e06fa2771f9
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: fasta_filter_by_length
@@ -50,7 +46,6 @@ tools:
 - name: fetch_fasta_from_ncbi
   owner: drosofff
   revisions:
-  - befdb392fece
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: get_orfs_or_cdss
@@ -67,38 +62,26 @@ tools:
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_blastparser_and_hits
   owner: drosofff
-  revisions:
-  - a0dec1a0f2ef
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_cap3
   owner: drosofff
-  revisions:
-  - ddb463fdf57e
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_fasta_tabular_converter
   owner: drosofff
-  revisions:
-  - 951cb6b3979b
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_oases
   owner: drosofff
-  revisions:
-  - f08d9c814ffb
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_sr_bowtie
   owner: drosofff
-  revisions:
-  - c1bfa227bbb6
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_sr_readmap_and_size_histograms
   owner: drosofff
-  revisions:
-  - e4874d1ae69d
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: ncbi_blast_plus
@@ -115,7 +98,5 @@ tools:
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: yac_clipper
   owner: drosofff
-  revisions:
-  - 91cce7c1436d
   tool_panel_section_label: NGS Mapping
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
