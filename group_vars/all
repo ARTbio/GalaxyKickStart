@@ -63,7 +63,7 @@ galaxy_config:
     master: True
   "filter:proxy-prefix":
     use: "egg:PasteDeploy#prefix"
-    prefix: "{{ nginx_galaxy_location }}"
+    prefix: "{{ nginx_galaxy_location | default(/)}}"
 
 # galaxy-extras role variables
 galaxy_uwsgi_static_conf: true
