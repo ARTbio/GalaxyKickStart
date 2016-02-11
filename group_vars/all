@@ -58,7 +58,7 @@ galaxy_config:
     nginx_upload_store: /tmp
     nginx_upload_path: /_upload
     use_pbkdf2: "{{ use_pbkdf2 }}"
-    "{{ filter_with | default(#filter-with = proxy-prefix) }}"
+    "{{ filter_with | default("") }}"
   "uwsgi":
     master: True
   "filter:proxy-prefix":
