@@ -1,0 +1,396 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "separate host and virus reads", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 248
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Input Dataset\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "59bafbfa-1030-4edd-95f1-c4e204d2300e", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "15a0490f-23a0-4bd2-9f04-03a419035fbc"
+                }
+            ]
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 1146.5, 
+                "top": 622
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Input Dataset\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "7c4129ef-8e44-453a-bfd3-d29450659d0a", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/drosofff/yac_clipper/yac/1.3.3", 
+            "id": 2, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Clip adapter", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 419, 
+                "top": 248
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/drosofff/yac_clipper/yac/1.3.3", 
+            "tool_state": "{\"out_format\": \"\\\"fasta\\\"\", \"__page__\": 0, \"min\": \"\\\"18\\\"\", \"max\": \"\\\"30\\\"\", \"__rerun_remap_job_id__\": null, \"clip_source\": \"{\\\"clip_source_list\\\": \\\"prebuilt\\\", \\\"clip_sequence\\\": \\\"CTGTAGGCACCATCAATCGT\\\", \\\"__current_case__\\\": 0}\", \"input\": \"null\", \"Nmode\": \"\\\"accept\\\"\"}", 
+            "tool_version": "1.3.3", 
+            "type": "tool", 
+            "uuid": "1f92e0c0-e747-412f-82f8-e19843a4f131", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
+            "id": 3, 
+            "input_connections": {
+                "switch|input": {
+                    "id": 2, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "fasta - tabular", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 640, 
+                "top": 248
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
+            "tool_state": "{\"__page__\": 0, \"switch\": \"{\\\"input\\\": null, \\\"conversionType\\\": \\\"fasta2tabular\\\", \\\"__current_case__\\\": 0}\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "1.0.2", 
+            "type": "tool", 
+            "uuid": "aeec0117-4482-4855-bce7-b277eba0afbb", 
+            "workflow_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
+            "id": 4, 
+            "input_connections": {
+                "switch|input": {
+                    "id": 3, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "fasta - tabular", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 860, 
+                "top": 248
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
+            "tool_state": "{\"__page__\": 0, \"switch\": \"{\\\"input\\\": null, \\\"conversionType\\\": \\\"tabular2fastaweight\\\", \\\"__current_case__\\\": 2}\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "1.0.2", 
+            "type": "tool", 
+            "uuid": "b3ceaaf4-5431-4834-bad9-34790e0e0c75", 
+            "workflow_outputs": []
+        }, 
+        "5": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2", 
+            "id": 5, 
+            "input_connections": {
+                "input": {
+                    "id": 4, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "sRbowtie", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "aligned", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "unaligned", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 1154, 
+                "top": 251
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionaligned": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "aligned"
+                }, 
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }, 
+                "HideDatasetActionunaligned": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "unaligned"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2", 
+            "tool_state": "{\"__page__\": 0, \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\", \"output_format\": \"\\\"tabular\\\"\", \"additional_fasta\": \"\\\"al_and_unal\\\"\", \"v_mismatches\": \"\\\"2\\\"\", \"__rerun_remap_job_id__\": null, \"input\": \"null\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"indexed\\\", \\\"index\\\": {\\\"__class__\\\": \\\"UnvalidatedValue\\\", \\\"value\\\": \\\"dm6\\\"}, \\\"__current_case__\\\": 0}\", \"method\": \"\\\"k_option\\\"\"}", 
+            "tool_version": "1.1.2", 
+            "type": "tool", 
+            "uuid": "6e5bd0ce-7326-4351-80cd-a567f785a4a5", 
+            "workflow_outputs": []
+        }, 
+        "6": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
+            "id": 6, 
+            "input_connections": {
+                "switch|input": {
+                    "id": 5, 
+                    "output_name": "unaligned"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "fasta - tabular", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 1012, 
+                "top": 471
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
+            "tool_state": "{\"__page__\": 0, \"switch\": \"{\\\"input\\\": null, \\\"conversionType\\\": \\\"fastaweight2fasta\\\", \\\"__current_case__\\\": 4}\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "1.0.2", 
+            "type": "tool", 
+            "uuid": "247fe9bd-dd85-4066-99a7-1926570718f7", 
+            "workflow_outputs": []
+        }, 
+        "7": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
+            "id": 7, 
+            "input_connections": {
+                "switch|input": {
+                    "id": 5, 
+                    "output_name": "aligned"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "fasta - tabular", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 1663.5, 
+                "top": 286
+            }, 
+            "post_job_actions": {
+                "RenameDatasetActionoutput": {
+                    "action_arguments": {
+                        "newname": "all host reads"
+                    }, 
+                    "action_type": "RenameDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
+            "tool_state": "{\"__page__\": 0, \"switch\": \"{\\\"input\\\": null, \\\"conversionType\\\": \\\"fastaweight2fasta\\\", \\\"__current_case__\\\": 4}\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "1.0.2", 
+            "type": "tool", 
+            "uuid": "e339bc11-9fdf-4f50-ab70-9b6407f49e36", 
+            "workflow_outputs": [
+                {
+                    "label": "all host reads", 
+                    "output_name": "output", 
+                    "uuid": "d262a53a-8d1a-4a15-8476-e9bc7659c07b"
+                }
+            ]
+        }, 
+        "8": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.1", 
+            "id": 8, 
+            "input_connections": {
+                "input": {
+                    "id": 6, 
+                    "output_name": "output"
+                }, 
+                "refGenomeSource|ownFile": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "sRbowtie", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "aligned", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "unaligned", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 1391.5, 
+                "top": 569
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionunaligned": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "unaligned"
+                }, 
+                "RenameDatasetActionaligned": {
+                    "action_arguments": {
+                        "newname": "all virus reads (fasta)"
+                    }, 
+                    "action_type": "RenameDatasetAction", 
+                    "output_name": "aligned"
+                }, 
+                "RenameDatasetActionoutput": {
+                    "action_arguments": {
+                        "newname": "all virus reads (as bam)"
+                    }, 
+                    "action_type": "RenameDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.1", 
+            "tool_state": "{\"__page__\": 0, \"output_format\": \"\\\"bam\\\"\", \"additional_fasta\": \"\\\"al_and_unal\\\"\", \"v_mismatches\": \"\\\"2\\\"\", \"__rerun_remap_job_id__\": null, \"input\": \"null\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"history\\\", \\\"ownFile\\\": null, \\\"__current_case__\\\": 1}\", \"method\": \"\\\"k_option\\\"\"}", 
+            "tool_version": "1.1.1", 
+            "type": "tool", 
+            "uuid": "abb2fbbf-d78f-42cb-b12b-c3a14123456b", 
+            "workflow_outputs": [
+                {
+                    "label": "all virus reads (fasta)", 
+                    "output_name": "aligned", 
+                    "uuid": "6afdbb82-ddee-46dd-bfc9-e66d18b97f95"
+                }, 
+                {
+                    "label": "all virus reads (as bam)", 
+                    "output_name": "output", 
+                    "uuid": "f6e62929-73f0-4106-8c97-95d1b34b3124"
+                }
+            ]
+        }
+    }, 
+    "uuid": "b7f5ce23-d464-4951-a64e-4b1e26db2591"
+}
