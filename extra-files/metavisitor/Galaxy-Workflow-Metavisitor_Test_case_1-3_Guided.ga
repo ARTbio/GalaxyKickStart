@@ -103,46 +103,6 @@
                     "label": null, 
                     "output_name": "outfilename", 
                     "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "outfilename", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "outfilename", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "outfilename", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "outfilename", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "outfilename", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "outfilename", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "outfilename", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "outfilename", 
-                    "uuid": null
                 }
             ]
         }, 
@@ -177,46 +137,6 @@
             "type": "tool", 
             "uuid": "69611c78-3f25-4471-abf7-426ec35fd2db", 
             "workflow_outputs": [
-                {
-                    "label": null, 
-                    "output_name": "output", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "output", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "output", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "output", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "output", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "output", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "output", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "output", 
-                    "uuid": null
-                }, 
                 {
                     "label": null, 
                     "output_name": "output", 
@@ -305,16 +225,6 @@
                     "label": null, 
                     "output_name": "out_file1", 
                     "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
                 }
             ]
         }, 
@@ -375,16 +285,6 @@
             "type": "tool", 
             "uuid": "834cfd60-e0df-40e3-9d01-ecfa4296960b", 
             "workflow_outputs": [
-                {
-                    "label": null, 
-                    "output_name": "sequences", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "sequences", 
-                    "uuid": null
-                }, 
                 {
                     "label": null, 
                     "output_name": "sequences", 
@@ -498,46 +398,6 @@
                     "label": null, 
                     "output_name": "unaligned", 
                     "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "unaligned", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "unaligned", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "unaligned", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "unaligned", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "unaligned", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "unaligned", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "unaligned", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "unaligned", 
-                    "uuid": null
                 }
             ]
         }, 
@@ -580,46 +440,6 @@
             "type": "tool", 
             "uuid": "4290f9b9-2ea7-4634-a639-bc008f1eb90c", 
             "workflow_outputs": [
-                {
-                    "label": null, 
-                    "output_name": "transcripts", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "transcripts", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "transcripts", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "transcripts", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "transcripts", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "transcripts", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "transcripts", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "transcripts", 
-                    "uuid": null
-                }, 
                 {
                     "label": null, 
                     "output_name": "transcripts", 
@@ -727,76 +547,6 @@
             "type": "tool", 
             "uuid": "84989771-81db-4d86-bff6-cfda892b1959", 
             "workflow_outputs": [
-                {
-                    "label": null, 
-                    "output_name": "fastaOutput", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "tabularOutput", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "fastaOutput", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "tabularOutput", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "fastaOutput", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "tabularOutput", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "fastaOutput", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "tabularOutput", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "tabularOutput", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "fastaOutput", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "tabularOutput", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "fastaOutput", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "tabularOutput", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "fastaOutput", 
-                    "uuid": null
-                }, 
                 {
                     "label": null, 
                     "output_name": "tabularOutput", 
@@ -1045,46 +795,6 @@
             "type": "tool", 
             "uuid": "d804abd4-ad4e-4382-a81d-b592bec797cf", 
             "workflow_outputs": [
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
                 {
                     "label": null, 
                     "output_name": "out_file1", 

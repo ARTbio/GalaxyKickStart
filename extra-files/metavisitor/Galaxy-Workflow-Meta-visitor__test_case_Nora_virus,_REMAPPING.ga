@@ -346,41 +346,6 @@
                     "label": null, 
                     "output_name": "out_file1", 
                     "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
                 }
             ]
         }, 
@@ -448,47 +413,17 @@
             "workflow_outputs": [
                 {
                     "label": null, 
-                    "output_name": "combi_PDF", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "size_PDF", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "readmap_PDF", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "combi_PDF", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "size_PDF", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "readmap_PDF", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "readmap_PDF", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
                     "output_name": "size_PDF", 
                     "uuid": null
                 }, 
                 {
                     "label": null, 
                     "output_name": "combi_PDF", 
+                    "uuid": null
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "readmap_PDF", 
                     "uuid": null
                 }
             ]
