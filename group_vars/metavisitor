@@ -1,7 +1,13 @@
 install_tools: true
 galaxy_tools_tool_list: "extra-files/metavisitor/metavisitor_tool_list.yml"
 galaxy_tools_workflows: 
-  - "extra-files/metavisitor/Metavisitor Test case 1-1.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-create_model.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-separate_host_and_virus_reads.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-standart_metavisitor_workflow_(input__clipped_dataset).ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-1_Guided.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-2_Guided.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-3_Guided.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Meta-visitor__test_case_Nora_virus,_REMAPPING.ga"
 galaxy_web_processes: 2
 galaxy_handler_processes: 2
 postgres_user_uid: 1550
