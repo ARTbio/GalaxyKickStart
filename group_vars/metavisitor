@@ -1,6 +1,7 @@
 install_tools: true
 galaxy_tools_tool_list: "extra-files/metavisitor/metavisitor_tool_list.yml"
-galaxy_tools_workflows: 
+galaxy_tools_install_workflows: true
+galaxy_tools_workflows:
   - "extra-files/metavisitor/Galaxy-Workflow-create_model.ga"
   - "extra-files/metavisitor/Galaxy-Workflow-separate_host_and_virus_reads.ga"
   - "extra-files/metavisitor/Galaxy-Workflow-standart_metavisitor_workflow_(input__clipped_dataset).ga"
