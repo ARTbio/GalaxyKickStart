@@ -58,8 +58,12 @@ galaxy_config:
     nginx_upload_store: /tmp
     nginx_upload_path: /_upload
     use_pbkdf2: "{{ use_pbkdf2 }}"
+    filter-with: proxy-prefix
   "uwsgi":
     master: True
+  "filter:proxy-prefix":
+    use: "egg:PasteDeploy#prefix"
+    prefix: "{{ nginx_galaxy_location | default()}}"
 
 # galaxy-extras role variables
 galaxy_uwsgi_static_conf: true

@@ -1,7 +1,14 @@
 install_tools: true
 galaxy_tools_tool_list: "extra-files/metavisitor/metavisitor_tool_list.yml"
-galaxy_tools_workflows: 
-  - "extra-files/metavisitor/Metavisitor Test case 1-1.ga"
+galaxy_tools_install_workflows: true
+galaxy_tools_workflows:
+  - "extra-files/metavisitor/Galaxy-Workflow-create_model.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-separate_host_and_virus_reads.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-standart_metavisitor_workflow_(input__clipped_dataset).ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-1_Guided.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-2_Guided.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-3_Guided.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Meta-visitor__test_case_Nora_virus,_REMAPPING.ga"
 galaxy_web_processes: 2
 galaxy_handler_processes: 2
 postgres_user_uid: 1550
@@ -11,25 +18,3 @@ postgresql_version: 9.3
 supervisor_postgres_database_path: /var/lib/postgresql/9.3/main
 supervisor_postgres_database_config: /etc/postgresql/9.3/main/postgresql.conf
 supervisor_postgres_options: "-D {{ supervisor_postgres_database_path }} -c \"config_file={{ supervisor_postgres_database_config }}\""
-galaxy_config:
-  "app:main":
-    admin_users: "{{ galaxy_admin }}"
-    database_connection: "{{ galaxy_db }}"
-    tool_dependency_dir: "{{ tool_dependency_dir }}"
-    ftp_upload_dir: "{{ proftpd_files_dir }}"
-    ftp_upload_site: ftp://{{ galaxy_hostname }}
-    #tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
-    #to be done only in production
-    #debug: False
-    #use_interactive: False
-    static_enabled: False
-    nginx_x_accel_redirect_base: /_x_accel_redirect
-    nginx_x_archive_files_base: /_x_accel_redirect
-    nginx_upload_store: /tmp
-    nginx_upload_path: /_upload
-    allow_user_dataset_purge: true
-    allow_library_path_paste: true
-    allow_user_deletion: true
-    use_pbkdf2: "{{ use_pbkdf2 }}"
-  "uwsgi":
-    master: True
