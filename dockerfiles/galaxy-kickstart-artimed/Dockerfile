@@ -1,11 +1,11 @@
-FROM artbio/galaxy-kickstart-base
+FROM artbio/galaxy-kickstart-base:ff5fb361875a1220ae3880412083c5cef4a8f1b1
 
 MAINTAINER Marius van den Beek <m.vandenbeek@gmail.com>
 
 COPY  .  /setup
 WORKDIR /setup
 
-RUN ansible-playbook -i docker_metavisitor_inventory -c local galaxy.yml && \
+RUN ansible-playbook -i extra-files/artimed/artimed_inventory.yml -c local galaxy.yml && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Expose port 80 (webserver), 21 (FTP server), 8800 (Proxy), 9002 (supvisord web app)

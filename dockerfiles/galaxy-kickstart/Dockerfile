@@ -28,7 +28,8 @@ RUN ansible-playbook -i docker_inventory -c local galaxy.yml && \
 RUN mkdir /etc/ssl/private-copy; mv /etc/ssl/private/* /etc/ssl/private-copy/; rm -r /etc/ssl/private; mv /etc/ssl/private-copy /etc/ssl/private; chmod -R 0700 /etc/ssl/private; chown -R postgres /etc/ssl/private
 
 
-ENV NGINX_GALAXY_LOCATION=""
+ENV NGINX_GALAXY_LOCATION="" \
+GALAXY_CONFIG_ADMIN_USERS="admin@galaxy.org"
 
 ONBUILD  WORKDIR  /setup
 ONBUILD  COPY  .  /setup
@@ -43,5 +44,6 @@ EXPOSE :8800
 EXPOSE :9002
 
 CMD ansible-playbook galaxy.yml -c local --tags "persists_galaxy,nginx_config,galaxy_config_files" --skip-tags=skip_supervisor_start_in_docker \
-           --extra-vars nginx_galaxy_location=$NGINX_GALAXY_LOCATION -i docker_inventory && \
+           --extra-vars nginx_galaxy_location=$NGINX_GALAXY_LOCATION \
+           --extra-vars galaxy_admin=$GALAXY_CONFIG_ADMIN_USERS -i docker_inventory && \
            /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf --nodaemon
