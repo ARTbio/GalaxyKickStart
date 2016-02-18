@@ -34,7 +34,37 @@ tool_panel_section_label will determine the tool panel section where the tools w
 
 We can also obtain a tool list from a runnning galaxy instance.
 Note that for server running a galaxy release <16.04, you need a galaxy API keys and bioblend.
-Download the script and run it.
+A script is included in the extra-files directory.
 ```
-python get_tool_from_
+python get_tool_yml_from_gi.py --galaxy <my_galaxy_url> --api-key <my_admin_api_key> --output-file <my_tool_list.yml>
+```
+
+# Adding a tool_list.yml file to a group_variable files
+
+Group variable files are in the group_vars directory.
+
+If you would like to install tools, you need to reference the tool_list.yml in the group variable file.
+We typically place additional files in the `extra-files/<hostname>/<hostname>_tool_list.yml` file.
+
+If you would like to add tools to a group that is called metavisitor edit `group_vars/metavisitor` and add these lines:
+```
+install_tools: true
+galaxy_tools_tool_list: "extra-files/metavisitor/metavisitor_tool_list.yml"
+```
+
+# Installing workflows
+
+You can also make sure that workflows are available after running the playbook.
+As with tools, place the workflows in `extra-files/<hostname>/<hostname><workflow_name>.ga`
+Add these lines to the corresponding group_var file:
+```
+galaxy_tools_install_workflows: true
+galaxy_tools_workflows:
+  - "extra-files/metavisitor/Galaxy-Workflow-create_model.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-separate_host_and_virus_reads.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-standart_metavisitor_workflow_(input__clipped_dataset).ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-1_Guided.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-2_Guided.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-3_Guided.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Meta-visitor__test_case_Nora_virus,_REMAPPING.ga"
 ```
