@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<job_conf>
+    <plugins>
+        <plugin id="slurm" type="runner" load="galaxy.jobs.runners.slurm:SlurmJobRunner" workers="20">
+            <param id="drmaa_library_path">/usr/local/lib/libdrmaa.so</param>
+        </plugin>
+    </plugins>
+    <handlers default="handlers">
+        <handler id="handler0" tags="handlers"/>
+        <handler id="handler1" tags="handlers"/>
+        <handler id="handler2" tags="handlers"/>
+        <handler id="handler3" tags="handlers"/>
+    </handlers>
+    <destinations default="dynamic">
+        <destination id="cluster" runner="slurm">
+            <!-- <param id="docker_enabled">true</param> -->
+            <param id="nativeSpecification">--ntasks=8</param>
+            <param id="docker_sudo">false</param>
+            <param id="docker_volumes_from">galaxy</param>
+        </destination>
+        <destination id="cluster" runner="slurm">
+        <param id="nativeSpecification">--ntasks=8</param>
+        </destination>
+	<!-- heavy jobs (tophat) will be routed to cluster_heavy with less concurrent jobs available-->
+        <destination id="cluster_heavy" runner="slurm">
+            <param id="nativeSpecification">--ntasks=8</param>
+        </destination>
+	<!-- users with IBPS role will be routed to cluster_ibps with more concurrent jobs available-->
+        <destination id="cluster_ibps" runner="slurm">
+            <param id="nativeSpecification">--ntasks=8</param>
+        </destination>
+	<!-- users with IBPS role running heavy jobs will be routed to cluster_heavy_ibps with medium amount of concurrent jobs available-->
+        <destination id="cluster_heavy_ibps" runner="slurm">
+            <param id="nativeSpecification">--ntasks=8</param>
+        </destination>
+	<!-- the "dynamic" destination selects the static destination ("cluster" or "cluster_ibps") based on the users role-->
+        <destination id="dynamic" runner="dynamic">
+            <param id="nativeSpecification">--ntasks=8</param>
+            <param id="type">python</param>
+	    <!-- cluster is a function in lib/galaxy/jobs/rules/destinations.py. It returns either the "cluster" or "cluster_ibps" destination-->
+            <param id="function">cluster</param>
+        </destination>
+	<!-- the "dynamic_heavy" destination selects the static destination ("cluster_heavy" or "cluster_ibps_heavy") based on the users role-->
+        <destination id="dynamic_heavy" runner="dynamic">
+            <param id="nativeSpecification">--ntasks=8</param>
+            <param id="type">python</param>
+	    <!-- cluster_heavy is a function in lib/galaxy/jobs/rules/destinations.py. It returns either the "cluster_heavy" or "cluster_ibps_heavy" destination-->
+            <param id="function">cluster_heavy</param>
+            <param id="nativeSpecification">--ntasks=8</param>
+        </destination>
+    </destinations>
+    <limits>
+        <limit type="anonymous_user_concurrent_jobs">1</limit>
+        <limit type="destination_user_concurrent_jobs" id="cluster">4</limit>
+        <limit type="destination_user_concurrent_jobs" id="cluster_heavy">2</limit>
+        <limit type="destination_user_concurrent_jobs" id="cluster_ibps">8</limit>
+        <limit type="destination_user_concurrent_jobs" id="cluster_heavy_ibps">4</limit>
+    </limits>
+   <tools>
+        <tool id="tophat2" destination="dynamic_heavy"/>
+        <tool id="cuffdiff" destination="dynamic_heavy"/>
+        <tool id="rna_star" destination="dynamic_heavy"/>
+   </tools>
+</job_conf>
