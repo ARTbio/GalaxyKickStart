@@ -1,6 +1,10 @@
 # Customising the playbook
 
 We strongly encourage users to read the [ansible inventory](https://docs.ansible.com/ansible/intro_inventory.html) documentation first.  
+
+Most settings should be editable without modifying the playbook directly,
+instead variables can be set in group_vars and host vars.
+
 The playbook comes with an example inventory file `hosts`.
 ```
 [artimed]

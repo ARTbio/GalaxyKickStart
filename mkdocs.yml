@@ -4,7 +4,9 @@ pages:
  - What is GalaxyKickstarter: about.md
  - Getting started: getting_started.md
  - Customizations: customizations.md
- - Examples: examples.md
+ - Examples:
+   - examples/docker.md
  - Available roles: available_roles.md
  - Available variables: available_variables.md
+ - Editing the readme: editing_help.md
 theme: readthedocs

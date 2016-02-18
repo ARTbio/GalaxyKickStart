@@ -2,6 +2,7 @@
 
 GalaxyKickstarter is designed to be flexible and powerful, but for demonstration purposes we start a simple vagrant box 
 that runs this playbook. Following these instructions will not change the host system.
+Alternatively, see [examples/docker](examples/docker.md) for running the playbook in docker.
 More advanced examples are shown in [examples](examples.md).
 
 # Requirements
