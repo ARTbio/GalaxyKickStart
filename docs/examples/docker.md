@@ -1,13 +1,14 @@
+
 #Building and deploying galaxy-kickstart in docker
 ----
 
-# Requirements
+## Requirements
 You need to have docker installed and configured for your user.
 
 The repository comes with various Dockerfiles that can be used to configure a deployment using Docker,
 or you can start with a pre-built docker image.
 
-# Running images from the dockerhub
+## Running images from the dockerhub
 You can obtain a pre-built docker image from the dockerhub:
 ```
 docker pull artbio/galaxy-kickstart-base
@@ -19,7 +20,7 @@ CID=`docker run -d -p 8080:80 artbio/galaxy-kickstart-base`
 ```
 `-p 8080:80` will forward requests to nginx inside the container running on port 80.
 
-# Runtime changes to pre-built docker images
+## Runtime changes to pre-built docker images
 
 If you wish to reach the container on a subdirectory, add `-e NGINX_GALAXY_LOCATION="/my-subdirectory"` to the docker call 
 and galaxy will be served at `http://127.0.0.1:8080/my-subdirectory`.
@@ -29,7 +30,7 @@ We recommend changing the default admin user as well, so the command becomes:
 CID=`docker run -d -e NGINX_GALAXY_LOCATION="/my-subdirectory" -e GALAXY_CONFIG_ADMIN_USERS=admin@artbio.fr -p 8080:80 artbio/galaxy-kickstart-base`
 ```
 
-# Commit changed containers to new images
+## Commit changed containers to new images
 
 As with standard docker containers, you can change, tag and commit running containers when you have configured them to your liking:
 Commit the changes to my-new-image
@@ -46,7 +47,7 @@ Start the new container:
 CID=`docker run -d -e NGINX_GALAXY_LOCATION="/my-subdirectory" -e GALAXY_CONFIG_ADMIN_USERS=admin@artbio.fr -p 8080:80 my-new-image`
 ```
 
-# Persisting to disk
+## Persisting to disk
 
 All changes made to the container are by default ephemeral; if you remove the container, the changes are gone.
 To persist data (this includes the postgresql database, galaxy's config files and your user data), mount a Volume into
