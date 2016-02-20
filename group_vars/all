@@ -53,10 +53,10 @@ galaxy_config:
     #debug: False
     #use_interactive: False
     static_enabled: False
-    nginx_x_accel_redirect_base: /_x_accel_redirect
-    nginx_x_archive_files_base: /_x_accel_redirect
+    nginx_x_accel_redirect_base: "{{ nginx_galaxy_location | default() }}/_x_accel_redirect"
+    nginx_x_archive_files_base: "{{ nginx_galaxy_location | default() }}/_x_accel_redirect"
     nginx_upload_store: /tmp
-    nginx_upload_path: /_upload
+    nginx_upload_path: "{{ nginx_galaxy_location | default() }}/_upload"
     use_pbkdf2: "{{ use_pbkdf2 }}"
     filter-with: proxy-prefix
   "uwsgi":
