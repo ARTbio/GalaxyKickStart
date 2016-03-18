@@ -3,13 +3,16 @@ install_tools: true
 galaxy_tools_tool_list: "roles/galaxyprojectdotorg.galaxy-tools/files/tool_list.yaml"
 galaxy_tools_install_workflows: true
 galaxy_tools_workflows:
-  - "extra-files/metavisitor/Galaxy-Workflow-create_model.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-separate_host_and_virus_reads.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-standart_metavisitor_workflow_(input__clipped_dataset).ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Meta-visitor__test_case_Nora_virus_REMAPPING.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_Case_2-1.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_Case_2-2.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_Case_3-1.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_Case_3-2.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_Case_3-3.ga"
   - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-1_Guided.ga"
   - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-2_Guided.ga"
   - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-3_Guided.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-Meta-visitor__test_case_Nora_virus,_REMAPPING.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-4.ga"
 galaxy_web_processes: 2
 galaxy_handler_processes: 2
 postgres_user_uid: 1550

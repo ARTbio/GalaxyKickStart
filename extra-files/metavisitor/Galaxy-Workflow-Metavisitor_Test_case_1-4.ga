@@ -2,7 +2,7 @@
     "a_galaxy_workflow": "true", 
     "annotation": "", 
     "format-version": "0.1", 
-    "name": "Metavisitor Test case 1-1 Guided", 
+    "name": "Metavisitor Test case 1-4", 
     "steps": {
         "0": {
             "annotation": "", 
@@ -19,8 +19,8 @@
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
-                "left": 212, 
-                "top": 200
+                "left": 211.94447326660156, 
+                "top": 200.00000762939453
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -28,7 +28,13 @@
             "tool_version": null, 
             "type": "data_collection_input", 
             "uuid": "e60ca12e-15cc-4a01-a912-945af21a5e8e", 
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "f9af6731-280d-4606-b7c3-ff6e5bc0870e"
+                }
+            ]
         }, 
         "1": {
             "annotation": "", 
@@ -45,8 +51,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 1025, 
-                "top": 964
+                "left": 1024.9827270507812, 
+                "top": 963.9930953979492
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -54,62 +60,18 @@
             "tool_version": null, 
             "type": "data_input", 
             "uuid": "462eb78f-9844-42d6-8087-19f2e1e801ca", 
-            "workflow_outputs": []
-        }, 
-        "2": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/fetch_fasta_from_ncbi/retrieve_fasta_from_NCBI/0.9.4", 
-            "id": 2, 
-            "input_connections": {}, 
-            "inputs": [], 
-            "label": null, 
-            "name": "Retrieve FASTA from NCBI", 
-            "outputs": [
-                {
-                    "name": "outfilename", 
-                    "type": "fasta"
-                }, 
-                {
-                    "name": "logfile", 
-                    "type": "txt"
-                }
-            ], 
-            "position": {
-                "left": 1587.5, 
-                "top": 994.5
-            }, 
-            "post_job_actions": {
-                "HideDatasetActionlogfile": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "logfile"
-                }, 
-                "RenameDatasetActionoutfilename": {
-                    "action_arguments": {
-                        "newname": "${ncbi_guide_ID}"
-                    }, 
-                    "action_type": "RenameDatasetAction", 
-                    "output_name": "outfilename"
-                }
-            }, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/fetch_fasta_from_ncbi/retrieve_fasta_from_NCBI/0.9.4", 
-            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"queryString\": \"\\\"${ncbi_guide_ID}\\\"\", \"dbname\": \"\\\"nuccore\\\"\"}", 
-            "tool_version": "0.9.4", 
-            "type": "tool", 
-            "uuid": "7858036a-2e5d-4dc3-8ce4-819c746c742c", 
             "workflow_outputs": [
                 {
                     "label": null, 
-                    "output_name": "outfilename", 
-                    "uuid": null
+                    "output_name": "output", 
+                    "uuid": "89f3e51c-db84-4ff4-85f3-d3030a160685"
                 }
             ]
         }, 
-        "3": {
+        "2": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/yac_clipper/yac/1.3.6", 
-            "id": 3, 
+            "id": 2, 
             "input_connections": {
                 "input": {
                     "id": 0, 
@@ -126,8 +88,8 @@
                 }
             ], 
             "position": {
-                "left": 420.5, 
-                "top": 292.5
+                "left": 420.4861469268799, 
+                "top": 292.50000762939453
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -140,55 +102,17 @@
                 {
                     "label": null, 
                     "output_name": "output", 
-                    "uuid": null
+                    "uuid": "5d28fac9-5b17-48b1-927d-5ae3fbcd2790"
                 }
             ]
         }, 
-        "4": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.1.06", 
-            "id": 4, 
-            "input_connections": {
-                "input_file": {
-                    "id": 2, 
-                    "output_name": "outfilename"
-                }
-            }, 
-            "inputs": [], 
-            "label": null, 
-            "name": "NCBI BLAST+ makeblastdb", 
-            "outputs": [
-                {
-                    "name": "outfile", 
-                    "type": "data"
-                }
-            ], 
-            "position": {
-                "left": 1866.5, 
-                "top": 1084.5
-            }, 
-            "post_job_actions": {
-                "HideDatasetActionoutfile": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "outfile"
-                }
-            }, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.1.06", 
-            "tool_state": "{\"__page__\": 0, \"mask_data_file\": \"null\", \"input_file\": \"null\", \"dbtype\": \"\\\"nucl\\\"\", \"__rerun_remap_job_id__\": null, \"hash_index\": \"\\\"True\\\"\", \"tax\": \"{\\\"taxselect\\\": \\\"\\\", \\\"__current_case__\\\": 0}\", \"__workflow_invocation_uuid__\": \"\\\"ae5b2b58802911e5808df01fafdfc061\\\"\", \"title\": \"\\\"Blastn candidate database\\\"\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\", \"parse_seqids\": \"\\\"False\\\"\"}", 
-            "tool_version": "0.1.06", 
-            "type": "tool", 
-            "uuid": "ce29cdbe-653a-4d0e-b225-0d0762c28d4d", 
-            "workflow_outputs": []
-        }, 
-        "5": {
+        "3": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/mvdbeek/concatenate_multiple_datasets/cat_multiple/0.2", 
-            "id": 5, 
+            "id": 3, 
             "input_connections": {
                 "input": {
-                    "id": 3, 
+                    "id": 2, 
                     "output_name": "output"
                 }
             }, 
@@ -202,8 +126,8 @@
                 }
             ], 
             "position": {
-                "left": 452.5, 
-                "top": 463.5
+                "left": 452.50003814697266, 
+                "top": 463.48961639404297
             }, 
             "post_job_actions": {
                 "ChangeDatatypeActionout_file1": {
@@ -227,13 +151,13 @@
             "uuid": "6be696ec-ca89-4e64-ad39-7d0e7fb4401a", 
             "workflow_outputs": []
         }, 
-        "6": {
+        "4": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
-            "id": 6, 
+            "id": 4, 
             "input_connections": {
                 "switch|input": {
-                    "id": 5, 
+                    "id": 3, 
                     "output_name": "out_file1"
                 }
             }, 
@@ -247,8 +171,8 @@
                 }
             ], 
             "position": {
-                "left": 620.5, 
-                "top": 630.5
+                "left": 620.4861602783203, 
+                "top": 630.4861373901367
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -265,13 +189,13 @@
             "uuid": "05b6a627-ae1d-465f-a019-f830148be536", 
             "workflow_outputs": []
         }, 
-        "7": {
+        "5": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
-            "id": 7, 
+            "id": 5, 
             "input_connections": {
                 "switch|input": {
-                    "id": 6, 
+                    "id": 4, 
                     "output_name": "output"
                 }
             }, 
@@ -285,8 +209,8 @@
                 }
             ], 
             "position": {
-                "left": 707.5, 
-                "top": 798.5
+                "left": 707.5000610351562, 
+                "top": 798.489616394043
             }, 
             "post_job_actions": {
                 "RenameDatasetActionoutput": {
@@ -307,17 +231,17 @@
                 {
                     "label": null, 
                     "output_name": "output", 
-                    "uuid": null
+                    "uuid": "2b428531-3776-4c79-90f4-c7ad394f7b98"
                 }
             ]
         }, 
-        "8": {
+        "6": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2", 
-            "id": 8, 
+            "id": 6, 
             "input_connections": {
                 "input": {
-                    "id": 7, 
+                    "id": 5, 
                     "output_name": "output"
                 }
             }, 
@@ -339,8 +263,8 @@
                 }
             ], 
             "position": {
-                "left": 830.5, 
-                "top": 288.5
+                "left": 830.4861755371094, 
+                "top": 288.4896011352539
             }, 
             "post_job_actions": {
                 "HideDatasetActionaligned": {
@@ -371,17 +295,17 @@
                 {
                     "label": null, 
                     "output_name": "unaligned", 
-                    "uuid": null
+                    "uuid": "ffe3bdf3-dea8-420a-8e04-498463c26691"
                 }
             ]
         }, 
-        "9": {
+        "7": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_oases/oasesoptimiserv/1.1.4", 
-            "id": 9, 
+            "id": 7, 
             "input_connections": {
                 "inputs_0|input": {
-                    "id": 8, 
+                    "id": 6, 
                     "output_name": "unaligned"
                 }
             }, 
@@ -395,8 +319,8 @@
                 }
             ], 
             "position": {
-                "left": 1099.5, 
-                "top": 509.5
+                "left": 1099.49658203125, 
+                "top": 509.49654388427734
             }, 
             "post_job_actions": {
                 "RenameDatasetActiontranscripts": {
@@ -417,21 +341,21 @@
                 {
                     "label": null, 
                     "output_name": "transcripts", 
-                    "uuid": null
+                    "uuid": "f5bf1efc-241a-4b48-8fda-5d83ca3eb956"
                 }
             ]
         }, 
-        "10": {
+        "8": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.06", 
-            "id": 10, 
+            "id": 8, 
             "input_connections": {
                 "db_opts|histdb": {
                     "id": 1, 
                     "output_name": "output"
                 }, 
                 "query": {
-                    "id": 9, 
+                    "id": 7, 
                     "output_name": "transcripts"
                 }
             }, 
@@ -445,35 +369,35 @@
                 }
             ], 
             "position": {
-                "left": 1273.5, 
-                "top": 800.5
+                "left": 1273.4896850585938, 
+                "top": 800.4861373901367
             }, 
-            "post_job_actions": {
-                "HideDatasetActionoutput1": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "output1"
-                }
-            }, 
+            "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.06", 
             "tool_state": "{\"evalue_cutoff\": \"\\\"0.001\\\"\", \"output\": \"{\\\"out_format\\\": \\\"cols\\\", \\\"std_cols\\\": [\\\"qseqid\\\", \\\"sseqid\\\", \\\"pident\\\", \\\"length\\\", \\\"mismatch\\\", \\\"gapopen\\\", \\\"qstart\\\", \\\"qend\\\", \\\"sstart\\\", \\\"send\\\", \\\"evalue\\\", \\\"bitscore\\\"], \\\"ids_cols\\\": null, \\\"tax_cols\\\": null, \\\"__current_case__\\\": 2, \\\"misc_cols\\\": null, \\\"ext_cols\\\": [\\\"slen\\\"]}\", \"adv_opts\": \"{\\\"adv_optional_id_files_opts\\\": {\\\"adv_optional_id_files_opts_selector\\\": \\\"none\\\", \\\"__current_case__\\\": 0}, \\\"identity_cutoff\\\": \\\"0.0\\\", \\\"adv_opts_selector\\\": \\\"advanced\\\", \\\"ungapped\\\": \\\"False\\\", \\\"filter_query\\\": \\\"True\\\", \\\"word_size\\\": \\\"0\\\", \\\"__current_case__\\\": 1, \\\"parse_deflines\\\": \\\"False\\\", \\\"qcov_hsp_perc\\\": \\\"0.0\\\", \\\"strand\\\": \\\"-strand both\\\", \\\"max_hits\\\": \\\"5\\\"}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"__workflow_invocation_uuid__\": \"\\\"4dd2fde8802311e5bcddf01fafdfc061\\\"\", \"db_opts\": \"{\\\"db_opts_selector\\\": \\\"histdb\\\", \\\"subject\\\": \\\"\\\", \\\"histdb\\\": null, \\\"__current_case__\\\": 1, \\\"database\\\": \\\"\\\"}\", \"blast_type\": \"\\\"blastn\\\"\", \"query\": \"null\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
             "tool_version": "0.1.06", 
             "type": "tool", 
             "uuid": "bf30a0ad-4ef9-49f0-b4c7-4aae52017748", 
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output1", 
+                    "uuid": "c53ba510-461f-4f0d-a075-d8c97924beab"
+                }
+            ]
         }, 
-        "11": {
+        "9": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_blastparser_and_hits/BlastParser_and_hits/2.4.3", 
-            "id": 11, 
+            "id": 9, 
             "input_connections": {
                 "blast": {
-                    "id": 10, 
+                    "id": 8, 
                     "output_name": "output1"
                 }, 
                 "sequences": {
-                    "id": 9, 
+                    "id": 7, 
                     "output_name": "transcripts"
                 }
             }, 
@@ -499,14 +423,19 @@
                 }
             ], 
             "position": {
-                "left": 1564, 
-                "top": 513.5
+                "left": 1564.9827270507812, 
+                "top": 513.489616394043
             }, 
             "post_job_actions": {
                 "HideDatasetActional_sequences": {
                     "action_arguments": {}, 
                     "action_type": "HideDatasetAction", 
                     "output_name": "al_sequences"
+                }, 
+                "HideDatasetActionfastaOutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "fastaOutput"
                 }, 
                 "HideDatasetActionun_sequences": {
                     "action_arguments": {}, 
@@ -516,7 +445,7 @@
             }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_blastparser_and_hits/BlastParser_and_hits/2.4.3", 
-            "tool_state": "{\"__page__\": 0, \"flanking\": \"\\\"5\\\"\", \"additional_filters\": \"{\\\"filter_term_out\\\": \\\"JX220408.1\\\", \\\"filter_relativeCov\\\": \\\"0.0\\\", \\\"filter_meanScore\\\": \\\"0.0\\\", \\\"use_filters\\\": \\\"yes\\\", \\\"__current_case__\\\": 1, \\\"filter_term_in\\\": \\\"Nora_virus\\\", \\\"filter_maxScore\\\": \\\"0.0\\\"}\", \"__rerun_remap_job_id__\": null, \"mode\": \"\\\"short\\\"\", \"sequences\": \"null\", \"blast\": \"null\"}", 
+            "tool_state": "{\"__page__\": 0, \"flanking\": \"\\\"5\\\"\", \"additional_filters\": \"{\\\"use_filters\\\": \\\"no\\\", \\\"__current_case__\\\": 0}\", \"__rerun_remap_job_id__\": null, \"mode\": \"\\\"short\\\"\", \"sequences\": \"null\", \"blast\": \"null\"}", 
             "tool_version": "2.4.3", 
             "type": "tool", 
             "uuid": "84989771-81db-4d86-bff6-cfda892b1959", 
@@ -524,251 +453,10 @@
                 {
                     "label": null, 
                     "output_name": "tabularOutput", 
-                    "uuid": null
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "fastaOutput", 
-                    "uuid": null
-                }
-            ]
-        }, 
-        "12": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_cap3/cap3/1.2.0", 
-            "id": 12, 
-            "input_connections": {
-                "inputSequences": {
-                    "id": 11, 
-                    "output_name": "fastaOutput"
-                }
-            }, 
-            "inputs": [], 
-            "label": null, 
-            "name": "cap3", 
-            "outputs": [
-                {
-                    "name": "contigsandsinglets", 
-                    "type": "fasta"
-                }, 
-                {
-                    "name": "cap3stdout", 
-                    "type": "txt"
-                }, 
-                {
-                    "name": "contigs", 
-                    "type": "fasta"
-                }, 
-                {
-                    "name": "contigsqual", 
-                    "type": "txt"
-                }, 
-                {
-                    "name": "contigslink", 
-                    "type": "txt"
-                }, 
-                {
-                    "name": "ace", 
-                    "type": "txt"
-                }, 
-                {
-                    "name": "info", 
-                    "type": "txt"
-                }, 
-                {
-                    "name": "singlets", 
-                    "type": "txt"
-                }
-            ], 
-            "position": {
-                "left": 1879.5, 
-                "top": 596.5
-            }, 
-            "post_job_actions": {
-                "HideDatasetActionace": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "ace"
-                }, 
-                "HideDatasetActioncap3stdout": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "cap3stdout"
-                }, 
-                "HideDatasetActioncontigs": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "contigs"
-                }, 
-                "HideDatasetActioncontigslink": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "contigslink"
-                }, 
-                "HideDatasetActioncontigsqual": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "contigsqual"
-                }, 
-                "HideDatasetActioninfo": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "info"
-                }, 
-                "HideDatasetActionsinglets": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "singlets"
-                }
-            }, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_cap3/cap3/1.2.0", 
-            "tool_state": "{\"__page__\": 0, \"inputSequences\": \"null\", \"overlaplength\": \"\\\"40\\\"\", \"__rerun_remap_job_id__\": null, \"__workflow_invocation_uuid__\": \"\\\"ae5b2b58802911e5808df01fafdfc061\\\"\", \"overlapidentity\": \"\\\"90\\\"\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
-            "tool_version": "1.2.0", 
-            "type": "tool", 
-            "uuid": "1d6dcdba-8f89-453b-ae30-6bb8aee06360", 
-            "workflow_outputs": [
-                {
-                    "label": null, 
-                    "output_name": "contigsandsinglets", 
-                    "uuid": null
-                }
-            ]
-        }, 
-        "13": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.06", 
-            "id": 13, 
-            "input_connections": {
-                "db_opts|histdb": {
-                    "id": 4, 
-                    "output_name": "outfile"
-                }, 
-                "query": {
-                    "id": 12, 
-                    "output_name": "contigsandsinglets"
-                }
-            }, 
-            "inputs": [], 
-            "label": null, 
-            "name": "NCBI BLAST+ blastn", 
-            "outputs": [
-                {
-                    "name": "output1", 
-                    "type": "tabular"
-                }
-            ], 
-            "position": {
-                "left": 2234.5, 
-                "top": 956.5
-            }, 
-            "post_job_actions": {
-                "HideDatasetActionoutput1": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "output1"
-                }
-            }, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.06", 
-            "tool_state": "{\"evalue_cutoff\": \"\\\"0.001\\\"\", \"output\": \"{\\\"out_format\\\": \\\"cols\\\", \\\"std_cols\\\": [\\\"qseqid\\\", \\\"sseqid\\\", \\\"pident\\\", \\\"length\\\", \\\"mismatch\\\", \\\"gapopen\\\", \\\"qstart\\\", \\\"qend\\\", \\\"sstart\\\", \\\"send\\\", \\\"evalue\\\", \\\"bitscore\\\"], \\\"ids_cols\\\": null, \\\"tax_cols\\\": null, \\\"__current_case__\\\": 2, \\\"misc_cols\\\": null, \\\"ext_cols\\\": [\\\"slen\\\"]}\", \"adv_opts\": \"{\\\"adv_opts_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"__workflow_invocation_uuid__\": \"\\\"ae5b2b58802911e5808df01fafdfc061\\\"\", \"db_opts\": \"{\\\"db_opts_selector\\\": \\\"histdb\\\", \\\"subject\\\": \\\"\\\", \\\"histdb\\\": null, \\\"__current_case__\\\": 1, \\\"database\\\": \\\"\\\"}\", \"blast_type\": \"\\\"blastn\\\"\", \"query\": \"null\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
-            "tool_version": "0.1.06", 
-            "type": "tool", 
-            "uuid": "c9f9c58a-f21d-46d2-a952-9e7b7d5bf939", 
-            "workflow_outputs": []
-        }, 
-        "14": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/blastn_to_scaffold/blastn2scaffold/0.1.0", 
-            "id": 14, 
-            "input_connections": {
-                "blastn_tab": {
-                    "id": 13, 
-                    "output_name": "output1"
-                }, 
-                "guideSequence": {
-                    "id": 2, 
-                    "output_name": "outfilename"
-                }, 
-                "sequences": {
-                    "id": 12, 
-                    "output_name": "contigsandsinglets"
-                }
-            }, 
-            "inputs": [], 
-            "label": null, 
-            "name": "blastn_to_scaffold", 
-            "outputs": [
-                {
-                    "name": "output", 
-                    "type": "fasta"
-                }
-            ], 
-            "position": {
-                "left": 2394.5, 
-                "top": 1179.5
-            }, 
-            "post_job_actions": {
-                "HideDatasetActionoutput": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "output"
-                }
-            }, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/blastn_to_scaffold/blastn2scaffold/0.1.0", 
-            "tool_state": "{\"__page__\": 0, \"blastn_tab\": \"null\", \"__rerun_remap_job_id__\": null, \"guideSequence\": \"null\", \"sequences\": \"null\"}", 
-            "tool_version": "0.1.0", 
-            "type": "tool", 
-            "uuid": "5f6de7fd-e5ea-4bd1-baa1-4feec7fe6d0e", 
-            "workflow_outputs": []
-        }, 
-        "15": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/jjohnson/regex_find_replace/regex1/0.1.0", 
-            "id": 15, 
-            "input_connections": {
-                "input": {
-                    "id": 14, 
-                    "output_name": "output"
-                }
-            }, 
-            "inputs": [], 
-            "label": null, 
-            "name": "Regex Find And Replace", 
-            "outputs": [
-                {
-                    "name": "out_file1", 
-                    "type": "input"
-                }
-            ], 
-            "position": {
-                "left": 2727, 
-                "top": 1140
-            }, 
-            "post_job_actions": {
-                "RenameDatasetActionout_file1": {
-                    "action_arguments": {
-                        "newname": "Nora_MV_${ncbi_guide_ID}_guided"
-                    }, 
-                    "action_type": "RenameDatasetAction", 
-                    "output_name": "out_file1"
-                }
-            }, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/jjohnson/regex_find_replace/regex1/0.1.0", 
-            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"checks\": \"[{\\\"__index__\\\": 0, \\\"replacement\\\": \\\">Nora_MV\\\", \\\"pattern\\\": \\\">.+\\\"}]\", \"__page__\": 0}", 
-            "tool_version": "0.1.0", 
-            "type": "tool", 
-            "uuid": "d804abd4-ad4e-4382-a81d-b592bec797cf", 
-            "workflow_outputs": [
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": null
+                    "uuid": "8b327d4e-27c9-4ec3-a4f7-be8f8ea27452"
                 }
             ]
         }
     }, 
-    "uuid": "973af1c6-d15d-46be-b6a1-c2f60a919b63"
+    "uuid": "81205f6a-4e9d-49e8-8cd7-7e682bf5f1fa"
 }
