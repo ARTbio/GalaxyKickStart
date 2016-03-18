@@ -68,3 +68,19 @@ galaxy_tools_workflows:
   - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-3_Guided.ga"
   - "extra-files/metavisitor/Galaxy-Workflow-Meta-visitor__test_case_Nora_virus,_REMAPPING.ga"
 ```
+
+# Running the playbook
+
+As per usual, run the playbook with an inventory file that maps your target machine to the metavisitor group.
+If this is localhost, you inventory file should look ike this:
+
+```
+[metavisitor]
+localhost
+```
+
+then run the playbook like so:
+
+```
+ansible-playbook --inventory-file=<your_inventory_file> galaxy.yml
+```
