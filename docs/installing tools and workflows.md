@@ -72,7 +72,7 @@ galaxy_tools_workflows:
 # Running the playbook
 
 As per usual, run the playbook with an inventory file that maps your target machine to the metavisitor group.
-If this is localhost, you inventory file should look ike this:
+If the target is localhost, your inventory file should look ike this:
 
 ```
 [metavisitor]
