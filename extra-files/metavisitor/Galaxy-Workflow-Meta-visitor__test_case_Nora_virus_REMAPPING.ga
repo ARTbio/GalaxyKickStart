@@ -110,7 +110,7 @@
             "outputs": [
                 {
                     "name": "out_file1", 
-                    "type": "data"
+                    "type": "input"
                 }
             ], 
             "position": {
@@ -155,7 +155,7 @@
             "outputs": [
                 {
                     "name": "out_file1", 
-                    "type": "data"
+                    "type": "input"
                 }
             ], 
             "position": {
@@ -267,7 +267,7 @@
             "outputs": [
                 {
                     "name": "out_file1", 
-                    "type": "data"
+                    "type": "input"
                 }
             ], 
             "position": {
