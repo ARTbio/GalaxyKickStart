@@ -2,7 +2,6 @@ install_tools: true
 galaxy_tools_tool_list: "extra-files/metavisitor/metavisitor_tool_list.yml"
 galaxy_tools_install_workflows: true
 galaxy_tools_workflows:
-  - "extra-files/metavisitor/Galaxy-Workflow-Meta-visitor__test_case_Nora_virus_REMAPPING.ga"
   - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_Case_2-1.ga"
   - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_Case_2-2.ga"
   - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_Case_3-1.ga"
