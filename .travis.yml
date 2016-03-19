@@ -62,6 +62,8 @@ script:
   - curl --fail $BIOBLEND_GALAXY_URL/api/version
   - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   - curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
+  # Change back to $TRAVIS_BUILD_DIR, since deployment will fail otherwise
+  - cd $TRAVIS_BUILD_DIR
 deploy:
   provider: script
   script: travis_wait deploy.sh
