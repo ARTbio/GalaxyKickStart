@@ -62,7 +62,8 @@ script:
   - curl --fail $BIOBLEND_GALAXY_URL/api/version
   - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   - curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
-after_success:
-  - docker tag galaxy_kickstart artbio/galaxy-kickstart-base:$TRAVIS_COMMIT
-  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push artbio/galaxy-kickstart-base:$TRAVIS_COMMIT
+deploy:
+  provider: script
+  script: travis_wait deploy.sh
+  on:
+    branch: master
