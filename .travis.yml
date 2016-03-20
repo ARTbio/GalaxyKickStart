@@ -66,6 +66,6 @@ script:
   - cd $TRAVIS_BUILD_DIR
 deploy:
   provider: script
-  script: travis_wait deploy.sh
+  script: deploy.sh
   on:
     branch: master
