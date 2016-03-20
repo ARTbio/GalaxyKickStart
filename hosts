@@ -2,6 +2,9 @@
 localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
 [travis_bioblend]
 localhost ansible_connection=local
+# Uncomment the 2 lines below to point ansible to a local vagrant machine.
+#[all]
+#localhost ansible_user="vagrant" ansible_port=2222 ansible_private_key_file=.vagrant/machines/default/virtualbox/private_key
 [aws]
 # Put you aws IP and key here to make FTP work in the default VPC.
 # If you want further group-specific variables, put the host in these groups as well [e.g artimed].
