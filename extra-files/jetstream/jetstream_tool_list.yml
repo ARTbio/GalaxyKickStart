@@ -1,0 +1,642 @@
+tools:
+- name: 'column_maker'
+  owner: 'devteam'
+  tool_panel_section_id: 'textutil'
+  revisions:
+  - '08a01b2ce4cd'  # v1.1.0
+- name: 'tabular_to_fasta'
+  owner: 'devteam'
+  tool_panel_section_id: 'convert'
+  revisions:
+  - '0b4e36026794'  # v1.1.0
+- name: 'fasta_to_tabular'
+  owner: 'devteam'
+  tool_panel_section_id: 'convert'
+  revisions:
+  - '9d189d08f2ad'  # v1.1.0
+- name: 'fastqtofasta'
+  owner: 'devteam'
+  tool_panel_section_id: 'convert'
+  revisions:
+  - '3571553aeb20'  # v1.0.0
+- name: 'subtract_query'
+  owner: 'devteam'
+  tool_panel_section_id: 'group'
+  revisions:
+  - '5f6ebef89722'  # v0.1
+- name: 'fastqc'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '8c650f7f76e9'  # v0.63
+#- name: 'short_reads_trim_seq'
+#owner: 'devteam'
+  #tool_panel_section_id: 'cshl_library_information'
+  #revisions:
+  #- 'f17a1585733b'
+#- name: 'short_reads_figure_score'
+  #owner: 'devteam'
+  #tool_panel_section_id: 'cshl_library_information'
+  #revisions:
+  #- 'b52b9c7aabd9'
+- name: 'fastq_quality_boxplot'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - 'f95284aa2946'
+- name: 'fastq_quality_converter'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - 'b87c74b61d81'
+- name: 'fastq_quality_filter'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '57adb07cccfc'
+- name: 'fastx_artifacts_filter'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - 'c8808979ba33'
+- name: 'fastx_barcode_splitter'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - 'c46a5807f2b6'
+- name: 'fastx_clipper'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '8192b4014977'
+- name: 'fastx_collapser'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '13c2d9e8c6d5'
+- name: 'fastx_nucleotides_distribution'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '9353010b95df'
+- name: 'fastx_quality_statistics'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - 'c2af34024061'
+- name: 'fastx_renamer'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - 'd7bce63e6e09'
+- name: 'fastx_reverse_complement'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '5bd826723d61'
+- name: 'fastx_trimmer'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - 'd77c9c6ecf68'
+- name: 'fastq_combiner'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '94306bdd58f7'
+- name: 'fastq_filter'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '30d9ece6c752'
+- name: 'fastq_groomer'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '1298445c852b'
+- name: 'fastq_manipulation'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '5d1e9e13e8db'
+- name: 'fastq_masker_by_quality'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '5a7b5751617b'
+- name: 'fastq_paired_end_joiner'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '270a8ed8a300'
+- name: 'fastq_paired_end_splitter'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - 'c549e99026db'
+- name: 'fastq_stats'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '9b7b4e0ca9db'
+- name: 'fastq_to_tabular'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - 'bc9269529e88'
+- name: 'fastq_trimmer'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '0b9feb0ed628'
+- name: 'fastq_trimmer_by_quality'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - '1cdcaf5fc1da'
+- name: 'tabular_to_fastq'
+  owner: 'devteam'
+  tool_panel_section_id: 'cshl_library_information'
+  revisions:
+  - 'b334cd1095ea'
+- name: 'bowtie2'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs_mapping'
+  revisions:
+  - 'ceb6467e276c'  # v0.4
+- name: 'megablast_xml_parser'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs_mapping'
+  revisions:
+  - '03ca082aeb2e'  # v1.0.0
+- name: 'megablast_wrapper'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs_mapping'
+  revisions:
+  - 'dc7b4acb3fa6'  # v1.2.0
+- name: 'vcfgeno2haplo'
+  owner: 'anton'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - 'd6fd217a1f90'
+- name: 'vcfgeno2haplo'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - '2bdb74ab3270'
+- name: 'vcfcombine'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - 'da419f5ed589'
+- name: 'vcffilter'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - '34c3b846e0b6'
+- name: 'vcf2tsv'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - 'd6c944f1581a'
+- name: 'vcfallelicprimitives'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - '3f4fefbc52c8'
+- name: 'vcfbreakcreatemulti'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - 'f0dae4ac267e'
+- name: 'vcfrandomsample'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - 'd9efe7842413'
+- name: 'vcfflatten'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - '38d93ca9c0f0'
+- name: 'vcfselectsamples'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - '88fd8ef7e4af'
+- name: 'vcfcheck'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - 'd7d4d88ae84d'
+- name: 'vcfgenotypes'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - '1673e7848bf4'
+- name: 'vcfvcfintersect'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - 'b29dbe1270b5'
+- name: 'vcfhethom'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - '586d614a4c2d'
+- name: 'vcfleftalign'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - '3e3d0dffeb1f'
+- name: 'vcfaddinfo'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - '4d4b16af67aa'
+- name: 'vcfsort'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - '433d50620231'
+- name: 'vcfprimers'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - '67a4da1a4df3'
+- name: 'vcfannotategenotypes'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - 'c6be83b8883d'
+- name: 'vcffixup'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - 'a03f346b6aae'
+- name: 'vcfbedintersect'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - '8a482a9aa45d'
+- name: 'vcfdistance'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - '6e0fc18309f4'
+- name: 'vcfcommonsamples'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs:_vcf_manipulation'
+  revisions:
+  - 'f27d6187d808'
+- name: 'annotation_profiler'
+  owner: 'devteam'
+  tool_panel_section_id: 'bxops'
+  revisions:
+  - '3b33da018e74'
+- name: 'merge'
+  owner: 'devteam'
+  tool_panel_section_id: 'bxops'
+  revisions:
+  - '1bc76ceffa7f'  # v1.0.0
+- name: 'flanking_features'
+  owner: 'devteam'
+  tool_panel_section_id: 'bxops'
+  revisions:
+  - '90100b587723'  # v4.0.1
+- name: 'concat'
+  owner: 'devteam'
+  tool_panel_section_id: 'bxops'
+  revisions:
+  - '855580142a12'  #v1.0.1
+- name: 'get_flanks'
+  owner: 'devteam'
+  tool_panel_section_id: 'bxops'
+  revisions:
+  - '4b14d0e3a837'  #v1.0.0
+- name: 'coverage'
+  owner: 'devteam'
+  tool_panel_section_id: 'bxops'
+  revisions:
+  - '16b62a897aac'  #v1.0.0
+- name: 'cluster'
+  owner: 'devteam'
+  tool_panel_section_id: 'bxops'
+  revisions:
+  - '520de69b107a'  #v1.0.0
+- name: 'basecoverage'
+  owner: 'devteam'
+  tool_panel_section_id: 'bxops'
+  revisions:
+  - 'b8a9e718caa3'  #v1.0.0
+- name: join
+  owner: devteam
+  tool_panel_section_id: bxops
+  revisions:
+  - 'de21bdbb8d28'  # v1.0.0
+- name: annotation_profiler
+  owner: devteam
+  tool_panel_section_id: bxops
+  revisions:
+  - '3b33da018e74'  # v1.0.0
+- name: subtract
+  owner: devteam
+  tool_panel_section_id: bxops
+  revisions:
+  - 'c19a2a29c561'  #v1.0.0
+- name: intersect
+  owner: devteam
+  tool_panel_section_id: bxops
+  revisions:
+  - '77641d5731c8'  # v1.0.0
+- name: complement
+  owner: devteam
+  tool_panel_section_id: bxops
+  revisions:
+  - '2221cf5f59aa'  # v1.0.0
+- name: 'correlation'
+  owner: 'devteam'
+  tool_panel_section_id: 'stats'
+  revisions:
+  - '24e01abf9e34'
+- name: 'ucsc_custom_track'
+  owner: 'devteam'
+  tool_panel_section_id: 'plots'
+  revisions:
+  - '618e56c3109b'
+- name: 'scatterplot'
+  owner: 'devteam'
+  tool_panel_section_id: 'plots'
+  revisions:
+  - 'c12b0759203b'
+- name: 'histogram'
+  owner: 'devteam'
+  tool_panel_section_id: 'plots'
+  revisions:
+  - '6ff47de059a0'
+- name: 'xy_plot'
+  owner: 'devteam'
+  tool_panel_section_id: 'plots'
+  revisions:
+  - '1a73a2406edc'
+- name: 'gmaj'
+  owner: 'devteam'
+  tool_panel_section_id: 'plots'
+  revisions:
+  - '2cd5ee197ec7'
+- name: 'vcf2pgsnp'
+  owner: 'devteam'
+  tool_panel_section_id: 'hgv'
+  revisions:
+  - '5fca46616675'
+- name: 'snpfreq'
+  owner: 'devteam'
+  tool_panel_section_id: 'hgv'
+  revisions:
+  - '72ea0d13dd66'
+- name: 'ctd_batch'
+  owner: 'devteam'
+  tool_panel_section_id: 'hgv'
+  revisions:
+  - '4a32700dcaa2'
+- name: 'divide_pg_snp'
+  owner: 'devteam'
+  tool_panel_section_id: 'hgv'
+  revisions:
+  - 'f74fdfc17143'
+- name: 'hgv_fundo'
+  owner: 'devteam'
+  tool_panel_section_id: 'hgv'
+  revisions:
+  - '64133669255f'
+- name: 'hgv_hilbertvis'
+  owner: 'devteam'
+  tool_panel_section_id: 'hgv'
+  revisions:
+  - 'e1a9ad05dced'
+- name: 'freebayes_wrapper'
+  owner: 'devteam'
+  tool_panel_section_id: 'hgv'
+  revisions:
+  - '33a0e6aca936'
+- name: 'dgidb_annotator'
+  owner: 'devteam'
+  tool_panel_section_id: 'hgv'
+  revisions:
+  - 'c5bb987015c5'
+- name: 'bedtools'
+  owner: 'aaronquinlan'
+  tool_panel_section_id: 'bedtools'
+  revisions:
+  - '41bba3e648d1'
+  # Broken install
+  # - name: 'genome_diversity'
+  #   owner: 'miller-lab'
+  #   tool_panel_section_id: 'genome_diversity'
+  #   tool_shed_url: https://toolshed.g2.bx.psu.edu
+- name: 'fasta_filter_by_length'
+  owner: 'devteam'
+  tool_panel_section_id: 'fasta_manipulation'
+  revisions:
+  - '16679a7f554a'
+- name: 'fasta_concatenate_by_species'
+  owner: 'devteam'
+  tool_panel_section_id: 'fasta_manipulation'
+  revisions:
+  - '717aee069681'
+#- name: 'fasta_compute_length'
+  #owner: 'devteam'
+  #tool_panel_section_id: 'fasta_manipulation'
+  #revisions:
+  #- '1dbb5181c327'
+- name: 'fasta_formatter'
+  owner: 'devteam'
+  tool_panel_section_id: 'fasta_manipulation'
+  revisions:
+  - '1dbb5181c327'
+- name: 'fasta_nucleotide_changer'
+  owner: 'devteam'
+  tool_panel_section_id: 'fasta_manipulation'
+  revisions:
+  - '2f868bfbe9de'
+- name: 'mutate_snp_codon'
+  owner: 'devteam'
+  tool_panel_section_id: 'hyphy'
+  revisions:
+  - '8f0af7251167'
+#- name: 'clustalw'
+  #owner: 'devteam'
+  #tool_panel_section_id: 'clustal'
+  #revisions:
+  #- 'acf51ff24c7d'
+- name: 'find_diag_hits'
+  owner: 'devteam'
+  tool_panel_section_id: 'tax_manipulation'
+  revisions:
+  - 'acf51ff24c7d'
+- name: 'gi2taxonomy'
+  owner: 'devteam'
+  tool_panel_section_id: 'tax_manipulation'
+  revisions:
+  - '7b1b03c4465d'
+- name: 'lca_wrapper'
+  owner: 'devteam'
+  tool_panel_section_id: 'tax_manipulation'
+  revisions:
+  - '33e8ed5a4601'
+- name: 'poisson2test'
+  owner: 'devteam'
+  tool_panel_section_id: 'tax_manipulation'
+  revisions:
+  - '8cd5945559b8'
+- name: 't2ps'
+  owner: 'devteam'
+  tool_panel_section_id: 'tax_manipulation'
+  revisions:
+  - 'dee81096ec71'
+- name: 't2t_report'
+  owner: 'devteam'
+  tool_panel_section_id: 'tax_manipulation'
+  revisions:
+  - '592acb9505fc'
+- name: 'bam_to_sam'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - 'af7c50162f0b'  # v2.0
+- name: 'pileup_interval'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - 'a110f9d6ae24'  # v1.0.0
+- name: 'pileup_parser'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '1670f0565000'  # v1.0.2
+- name: 'sam2interval'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '8c737b8ddc45'  # v1.0.1
+- name: 'sam_bitwise_flag_filter'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '0b2424a404d9'  # v1.0.0
+- name: 'sam_merge'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - 'a7a49d31c5cf'  # v1.1.2
+- name: 'sam_pileup'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '890d97772e2a'  # v1.1.2
+- name: 'sam_to_bam'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - 'd04d9f1c6791'
+- name: 'samtools_flagstat'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '0072bf593791'
+- name: 'samtools_mpileup'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - 'aa0ef6f0ee89'  # v2.0
+- name: 'samtools_rmdup'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '3735f950b2f5'
+- name: 'samtool_filter2'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '2d4ae2f8231e'
+- name: 'samtools_slice_bam'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '2b474ebbfc7d'  # v2.0
+- name: 'sam_merge'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '1f18d80df2a5'
+- name: 'samtools_idxstats'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '87398ae795c7'
+- name: 'samtools_bedcov'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '8c3472790020'
+- name: 'samtools_calmd'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '1ebb4ecdc1ef'
+- name: 'samtools_sort'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - 'a430da4f04cd'
+- name: 'samtools_stats'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '0d71d9467847'
+- name: 'samtools_split'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '57f3e32f809d'
+- name: 'samtools_reheader'
+  owner: 'devteam'
+  tool_panel_section_id: 'samtools'
+  revisions:
+  - '020e144b5f78'
+- name: 'tophat2'
+  owner: 'devteam'
+  tool_panel_section_id: 'ngs-rna-tools'
+  revisions:
+  - '5c5517d2a9e9'  # v0.9
+# Data Managers
+- name: data_manager_snpeff
+  owner: iuc
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+- name: data_manager_bwa_index_builder
+  owner: devteam
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+- name: data_manager_gatk_picard_index_builder
+  owner: devteam
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+- name: data_manager_sam_fasta_index_builder
+  owner: devteam
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+- name: data_manager_fetch_genome_dbkeys_all_fasta
+  owner: devteam
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+- name: data_manager_fetch_genome_all_fasta
+  owner: devteam
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+#- name: data_manager_rsync_g2
+  #owner: blankenberg
+  #tool_shed_url: https://testtoolshed.g2.bx.psu.edu
+- name: data_manager_bowtie2_index_builder
+  owner:  devteam
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+- name: data_manager_bwa_mem_index_builder
+  owner: devteam
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+#- name: data_manager_picard_index_builder
+  #owner: devteam
+  #tool_shed_url: https://testtoolshed.g2.bx.psu.edu
