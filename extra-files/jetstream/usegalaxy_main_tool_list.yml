@@ -435,27 +435,27 @@ tools:
   tool_panel_section_id: datamash
   tool_panel_section_label: Datamash
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: deeptools_bam_compare
-  owner: bgruening
-  revisions:
-  - eb48e332a41f
-  tool_panel_section_id: ngs:_deeptools
-  tool_panel_section_label: 'NGS: DeepTools'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: deeptools_bam_coverage
-  owner: bgruening
-  revisions:
-  - 5c5c6aff3732
-  tool_panel_section_id: ngs:_deeptools
-  tool_panel_section_label: 'NGS: DeepTools'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: deeptools_bam_pe_fragmentsize
-  owner: bgruening
-  revisions:
-  - 07167a0f70d9
-  tool_panel_section_id: ngs:_deeptools
-  tool_panel_section_label: 'NGS: DeepTools'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: deeptools_bam_compare
+#   owner: bgruening
+#   revisions:
+#   - eb48e332a41f
+#   tool_panel_section_id: ngs:_deeptools
+#   tool_panel_section_label: 'NGS: DeepTools'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: deeptools_bam_coverage
+#   owner: bgruening
+#   revisions:
+#   - 5c5c6aff3732
+#   tool_panel_section_id: ngs:_deeptools
+#   tool_panel_section_label: 'NGS: DeepTools'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: deeptools_bam_pe_fragmentsize
+#   owner: bgruening
+#   revisions:
+#   - 07167a0f70d9
+#   tool_panel_section_id: ngs:_deeptools
+#   tool_panel_section_label: 'NGS: DeepTools'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: deeptools_bigwig_compare
   owner: bgruening
   revisions:
@@ -553,13 +553,13 @@ tools:
   tool_panel_section_id: gatk
   tool_panel_section_label: 'NGS: GATK Tools (beta)'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: deseq2
-  owner: iuc
-  revisions:
-  - afe2a77c5900
-  tool_panel_section_id: ngs-rna-tools
-  tool_panel_section_label: 'NGS: RNA Analysis'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: deseq2
+#   owner: iuc
+#   revisions:
+#   - afe2a77c5900
+#   tool_panel_section_id: ngs-rna-tools
+#   tool_panel_section_label: 'NGS: RNA Analysis'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: dgidb_annotator
   owner: devteam
   revisions:
@@ -1149,13 +1149,13 @@ tools:
   tool_panel_section_id: peak_calling
   tool_panel_section_label: 'NGS: Peak Calling'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: genome_diversity
-  owner: miller-lab
-  revisions:
-  - 884ccb07885b
-  tool_panel_section_id: genome_diversity
-  tool_panel_section_label: Genome Diversity
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: genome_diversity
+#   owner: miller-lab
+#   revisions:
+#   - 884ccb07885b
+#   tool_panel_section_id: genome_diversity
+#   tool_panel_section_label: Genome Diversity
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: getalleleseq
   owner: boris
   revisions:
@@ -1311,13 +1311,13 @@ tools:
   tool_panel_section_id: tax_manipulation
   tool_panel_section_label: Metagenomic Analysis
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: kraken2tax
-  owner: devteam
-  revisions:
-  - d844fdcce44e
-  tool_panel_section_id: tax_manipulation
-  tool_panel_section_label: Metagenomic Analysis
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: kraken2tax
+#   owner: devteam
+#   revisions:
+#   - d844fdcce44e
+#   tool_panel_section_id: tax_manipulation
+#   tool_panel_section_label: Metagenomic Analysis
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: kraken_filter
   owner: devteam
   revisions:
@@ -1387,14 +1387,14 @@ tools:
   tool_panel_section_id: peak_calling
   tool_panel_section_label: 'NGS: Peak Calling'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: macs2
-  owner: iuc
-  revisions:
-  - 6d4babad010f
-  - bfe57d6e0c4c
-  tool_panel_section_id: peak_calling
-  tool_panel_section_label: 'NGS: Peak Calling'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: macs2
+#   owner: iuc
+#   revisions:
+#   - 6d4babad010f
+#   - bfe57d6e0c4c
+#   tool_panel_section_id: peak_calling
+#   tool_panel_section_label: 'NGS: Peak Calling'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: maf_cpg_filter
   owner: devteam
   revisions:
@@ -1429,14 +1429,14 @@ tools:
   tool_panel_section_id: ngs_mapping
   tool_panel_section_label: 'NGS: Mapping'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: meme_fimo
-  owner: iuc
-  revisions:
-  - 37fe944073aa
-  - fd522a964017
-  tool_panel_section_id: motifs
-  tool_panel_section_label: Motif Tools
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: meme_fimo
+#   owner: iuc
+#   revisions:
+#   - 37fe944073aa
+#   - fd522a964017
+#   tool_panel_section_id: motifs
+#   tool_panel_section_label: Motif Tools
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: meme_meme
   owner: iuc
   revisions:
@@ -1646,13 +1646,13 @@ tools:
   - f6e5bb5aa2f5
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: sailfish
-  owner: bgruening
-  revisions:
-  - 20eab032389f
-  tool_panel_section_id: ngs-rna-tools
-  tool_panel_section_label: 'NGS: RNA Analysis'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: sailfish
+#   owner: bgruening
+#   revisions:
+#   - 20eab032389f
+#   tool_panel_section_id: ngs-rna-tools
+#   tool_panel_section_label: 'NGS: RNA Analysis'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: sam2interval
   owner: devteam
   revisions:
