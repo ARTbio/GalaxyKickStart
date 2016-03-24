@@ -1,7 +1,7 @@
 install_galaxy: true
 run_extras: true
 install_tools: true
-run_data_manager: false
+run_data_manager: true
 galaxy_tools_tool_list: "extra-files/jetstream/usegalaxy_main_tool_list.yml"
 data_manager_task_file: "extra-files/jetstream/jetstream_data_manager_tasks.yml"
 additional_files_list:

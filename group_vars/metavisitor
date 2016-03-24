@@ -1,6 +1,5 @@
 install_tools: true
-#galaxy_tools_tool_list: "extra-files/metavisitor/metavisitor_tool_list.yml"
-galaxy_tools_tool_list: "roles/galaxyprojectdotorg.galaxy-tools/files/tool_list.yaml"
+galaxy_tools_tool_list: "extra-files/metavisitor/metavisitor_tool_list.yml"
 galaxy_tools_install_workflows: true
 galaxy_tools_workflows:
   - "extra-files/metavisitor/Galaxy-Workflow-Meta-visitor__test_case_Nora_virus_REMAPPING.ga"
