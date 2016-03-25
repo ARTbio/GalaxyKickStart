@@ -1,10 +1,47 @@
-install_galaxy: true
-run_extras: true
-install_tools: false
-run_data_manager: false
-galaxy_tools_tool_list: "extra-files/jetstream/usegalaxy_main_tool_list.yml"
+jetstream: true
+
+configure_docker: no
+install_apparmor: no
+install_galaxy: yes
+run_extras: yes
+install_tools: yes
+run_data_manager: no
+
+# A custom config needs be supplied before Reports will work
+supervisor_manage_reports: no
+
+galaxyFS_base_dir: /opt/galaxy
+galaxy_server_dir: "{{ galaxyFS_base_dir }}/galaxy-app"
+galaxy_config_dir: "{{ galaxy_server_dir }}/config"
+galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
+galaxy_data: "{{ galaxyFS_base_dir }}/galaxy"
+galaxy_database: "{{ galaxyFS_base_dir }}/db"
+galaxy_shed_tools_dir: "{{ galaxyFS_base_dir }}/shed_tools"
+galaxy_tools_tool_list: "extra-files/jetstream/jetstream_data_manager_tool_list.yml"
+# galaxy_tools_tool_list: "extra-files/jetstream/usegalaxy_main_tool_list.yml"
 data_manager_task_file: "extra-files/jetstream/jetstream_data_manager_tasks.yml"
 additional_files_list:
   - { src: "extra-files/jetstream/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
-configure_docker: no
-install_apparmor: no
+  - { src: "extra-files/jetstream/fix_hostname.sh", dest: "/usr/local/bin/fix_hostname.sh" }
+
+galaxy_config_files:
+  - src: extra-files/jetstream/builds.txt
+    dest: "{{ galaxy_config['app:main']['builds_file_path'] }}"
+  - src: extra-files/jetstream/shed_tool_conf.xml.cloud
+    dest: "{{ galaxy_config_dir }}/shed_tool_conf_cloud.xml"
+
+galaxy_mutable_configs:
+  - src: "{{ galaxy_server_dir }}/config/shed_tool_conf.xml.sample"
+    dest: "{{ galaxy_shed_tool_conf_file }}"
+  - src: "{{ galaxy_server_dir }}/config/shed_tool_data_table_conf.xml.sample"
+    dest: "{{ galaxy_config['app:main']['shed_tool_data_table_config'] if galaxy_config is defined and 'app:main' in galaxy_config and 'shed_tool_data_table_config' in galaxy_config['app:main'] else galaxy_config_default['app:main']['shed_tool_data_table_config'] }}"
+  - src: "{{ galaxy_server_dir }}/config/shed_data_manager_conf.xml.sample"
+    dest: "{{ galaxy_config['app:main']['shed_data_manager_config_file'] if galaxy_config is defined and 'app:main' in galaxy_config and 'shed_data_manager_config_file' in galaxy_config['app:main'] else galaxy_config_default['app:main']['shed_data_manager_config_file'] }}"
+  - src: "{{ galaxy_server_dir }}/config/datatypes_conf.xml.sample"
+    dest: "{{ galaxy_config['app:main']['datatypes_config_file'] if galaxy_config is defined and 'app:main' in galaxy_config and 'datatypes_config_file' in galaxy_config['app:main'] else galaxy_config_default['app:main']['datatypes_config_file'] }}"
+  - src: "{{ galaxy_server_dir }}/config/tool_data_table_conf.xml.sample"
+    dest: "{{ galaxy_config['app:main']['tool_data_table_config_path'] }}"
+  - src: "{{ galaxy_server_dir }}/config/tool_conf.xml.sample"
+    dest: "{{ galaxy_config_dir }}/tool_conf.xml"
+  - src: "{{ galaxy_server_dir }}/config/migrated_tools_conf.xml.sample"
+    dest: "{{ galaxy_config['app:main']['migrated_tools_config'] if galaxy_config is defined and 'app:main' in galaxy_config and 'migrated_tools_config' in galaxy_config['app:main'] else galaxy_config_default['app:main']['migrated_tools_config'] }}"

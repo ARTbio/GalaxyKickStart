@@ -53,12 +53,19 @@ galaxy_config:
     #debug: False
     #use_interactive: False
     static_enabled: False
+    cleanup_job: onsuccess
+    allow_library_path_paste: True
+    allow_user_dataset_purge: True
     tool_config_file: "{{ galaxy_config_dir }}/tool_conf.xml,{{ galaxy_config_dir }}/shed_tool_conf_cloud.xml,{{ galaxy_shed_tool_conf_file }}"
+    tool_sheds_config_file": "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     nginx_x_accel_redirect_base: "{{ nginx_galaxy_location | default() }}/_x_accel_redirect"
     nginx_x_archive_files_base: "{{ nginx_galaxy_location | default() }}/_x_accel_redirect"
     nginx_upload_store: /tmp
     nginx_upload_path: "{{ nginx_galaxy_location | default() }}/_upload"
     use_pbkdf2: "{{ use_pbkdf2 }}"
+    builds_file_path: "{{ galaxy_server_dir }}/tool-data/shared/ucsc/builds.txt"
+    tool_data_table_config_path: "{{ galaxy_config_dir }}/tool_data_table_conf.xml"
+    migrated_tools_config: "{{ galaxy_mutable_config_dir }}/migrated_tools_conf.xml"
     filter-with: proxy-prefix
   "uwsgi":
     master: True
