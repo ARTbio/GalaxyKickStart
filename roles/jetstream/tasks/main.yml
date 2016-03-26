@@ -17,3 +17,6 @@
 
 - name: Add fix_hostname script to /etc/rc.local
   lineinfile: dest=/etc/rc.local line='/usr/local/bin/fix_hostname.sh' insertbefore="exit 0"
+
+- name: Add Galaxy tools dir to PATH
+  lineinfile: "dest=/etc/bash.bashrc line='export PATH={{ galaxyFS_base_dir }}/tools/bin:$PATH'"

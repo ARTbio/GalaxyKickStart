@@ -16,3 +16,6 @@
 [submodule "ensure_postgresql_up"]
 	path = roles/ensure_postgresql_up
 	url = https://github.com/mvdbeek/ensure_postgresql_up.git
+[submodule "roles/galaxyprojectdotorg.trackster"]
+	path = roles/galaxyprojectdotorg.trackster
+	url = https://github.com/galaxyproject/ansible-trackster.git
