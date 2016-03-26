@@ -66,6 +66,7 @@ galaxy_config:
     builds_file_path: "{{ galaxy_server_dir }}/tool-data/shared/ucsc/builds.txt"
     tool_data_table_config_path: "{{ galaxy_config_dir }}/tool_data_table_conf.xml"
     migrated_tools_config: "{{ galaxy_mutable_config_dir }}/migrated_tools_conf.xml"
+    datatypes_config_file: "{{ galaxy_config_dir }}/datatypes_conf.xml"
     filter-with: proxy-prefix
   "uwsgi":
     master: True

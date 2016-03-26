@@ -45,3 +45,5 @@ galaxy_mutable_configs:
     dest: "{{ galaxy_config_dir }}/tool_conf.xml"
   - src: "{{ galaxy_server_dir }}/config/migrated_tools_conf.xml.sample"
     dest: "{{ galaxy_config['app:main']['migrated_tools_config'] if galaxy_config is defined and 'app:main' in galaxy_config and 'migrated_tools_config' in galaxy_config['app:main'] else galaxy_config_default['app:main']['migrated_tools_config'] }}"
+  - src: "{{ galaxy_server_dir }}/config/datatypes_conf.xml.sample"
+    dest: "{{ galaxy_config['app:main']['datatypes_config_file'] if galaxy_config is defined and 'app:main' in galaxy_config and 'datatypes_config_file' in galaxy_config['app:main'] else galaxy_config_default['app:main']['datatypes_config_file'] }}"
