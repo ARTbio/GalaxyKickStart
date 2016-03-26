@@ -17,3 +17,6 @@ tools:
 - name: data_manager_sam_fasta_index_builder
   owner: devteam
   tool_panel_section_label: 'Data Managers for NGS Mapping'
+- name: data_manager_twobit_builder
+  owner: devteam
+  tool_panel_section_label: 'Data Managers for NGS Mapping'
