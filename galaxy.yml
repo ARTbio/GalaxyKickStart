@@ -62,7 +62,6 @@
 
     - role: galaxyprojectdotorg.trackster
       tags: trackster
-      sudo_user: "{{ galaxy_user_name }}"
 
     - role: galaxyprojectdotorg.galaxy-tools
       sudo: yes
