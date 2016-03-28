@@ -21,6 +21,9 @@
 - name: Ensure galaxy log dir exists
   file: path={{ galaxy_log_dir }} state=directory owner={{ galaxy_user_name }} group={{ galaxy_user_name }}
 
+- name: Restart hostname service
+  shell: service hostname restart
+
 - shell: "hostname"
   register: hostname
 
