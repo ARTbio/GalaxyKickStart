@@ -35,6 +35,10 @@ additional_files_list: []
 galaxy_manage_mutable_setup: yes
 galaxy_mutable_config_dir: "{{ galaxy_config_dir }}"
 galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini"
+galaxy_web0_port: 8080
+galaxy_handler0_port: 9010
+galaxy_web_threadpool_workers: 5
+galaxy_handler_threadpool_workers: 5
 #other vars
 galaxy_manage_database: yes
 # does not actually fetch eggs if galaxy uses pip
@@ -71,6 +75,16 @@ galaxy_config:
     filter-with: proxy-prefix
   "uwsgi":
     master: True
+  "server:web0":
+    use: "egg:Paste#http"
+    port: "{{ galaxy_web0_port + 0}}"
+    use_threadpool: "True"
+    threadpool_workers: "{{ galaxy_web_threadpool_workers }}"
+  "server:handler0":
+    use: "egg:Paste#http"
+    port: "{{ galaxy_handler0_port + 0}}"
+    use_threadpool: "True"
+    threadpool_workers: "{{ galaxy_handler_threadpool_workers }}"
   "filter:proxy-prefix":
     use: "egg:PasteDeploy#prefix"
     prefix: "{{ nginx_galaxy_location | default()}}"

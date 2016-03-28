@@ -10,6 +10,12 @@ run_data_manager: no
 # A custom config needs be supplied before Reports will work
 supervisor_manage_reports: no
 
+galaxy_uwsgi: no
+galaxy_uwsgi_static_conf: no
+galaxy_extras_config_uwsgi: no
+galaxy_web_processes: 1
+galaxy_handler_processes: 0
+
 galaxyFS_base_dir: /opt/galaxy
 galaxy_server_dir: "{{ galaxyFS_base_dir }}/galaxy-app"
 galaxy_config_dir: "{{ galaxy_server_dir }}/config"
