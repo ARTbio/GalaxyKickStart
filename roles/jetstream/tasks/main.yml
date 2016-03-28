@@ -21,6 +21,12 @@
 - name: Ensure galaxy log dir exists
   file: path={{ galaxy_log_dir }} state=directory owner={{ galaxy_user_name }} group={{ galaxy_user_name }}
 
+- name: Setup /etc/bash.bashrc
+  lineinfile: dest=/etc/bash.bashrc line="{{ item }}"
+  with_items:
+    - "alias 'lt=ls -ltr'"
+    - "alias 'll=ls -l'"
+
 - name: Restart hostname service
   shell: service hostname restart
 

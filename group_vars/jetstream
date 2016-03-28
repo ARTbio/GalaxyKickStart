@@ -32,6 +32,7 @@ additional_files_list:
   - { src: "extra-files/jetstream/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
   - { src: "extra-files/jetstream/jetstream_text.png", dest: "{{ galaxy_server_dir }}/static/images/" }
   - { src: "extra-files/jetstream/cloud.gif", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/jetstream/vimrc", dest: "/etc/vim/" }
 
 galaxy_config_files:
   - src: extra-files/jetstream/builds.txt
