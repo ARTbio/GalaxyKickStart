@@ -26,6 +26,7 @@ galaxy_database: "{{ galaxyFS_base_dir }}/db"
 galaxy_shed_tools_dir: "{{ galaxyFS_base_dir }}/shed_tools"
 galaxy_tools_tool_list: "extra-files/jetstream/jetstream_data_manager_tool_list.yml"
 # galaxy_tools_tool_list: "extra-files/jetstream/usegalaxy_main_tool_list.yml"
+tool_dependency_dir: "{{ galaxyFS_base_dir }}/tool_dependencies"
 data_manager_task_file: "extra-files/jetstream/jetstream_data_manager_tasks.yml"
 len_file_path: "{{ galaxy_config_dir }}/len"
 galaxy_custom_tools_dir: /usr/local/bin
