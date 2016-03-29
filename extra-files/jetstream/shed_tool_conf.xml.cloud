@@ -76,4 +76,6 @@
 	<section id="tax_manipulation" name="Metagenomic Analysis" version=""></section>
 	<section id="ngs:_deeptools" name="NGS: DeepTools" version=""></section>
 	<section id="ngs:_gemini" name="NGS: Gemini" version=""></section>
+    <section id="multivariate_analysis" name="Multivariate Analysis" version=""></section>
+    <section id="fasta_manipulation" name="FASTA manipulation" version=""></section>
 </toolbox>
