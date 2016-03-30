@@ -15,9 +15,7 @@ tools:
 - name: bowtie2
   owner: devteam
   revisions:
-  - a54de7e658f7
   - 019c2a81547a
-  - e23b0cdeeba6
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: bowtie_wrappers
