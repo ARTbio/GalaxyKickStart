@@ -7,13 +7,13 @@ tools:
   tool_panel_section_id: variant_detection
   tool_panel_section_label: 'NGS: Variant Analysis'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: analyze_covariates
-  owner: devteam
-  revisions:
-  - 738bc749f9a3
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: analyze_covariates
+#   owner: devteam
+#   revisions:
+#   - 738bc749f9a3
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: annotation_profiler
   owner: devteam
   revisions:
@@ -128,19 +128,19 @@ tools:
   tool_panel_section_id: ngs_mapping
   tool_panel_section_label: 'NGS: Mapping'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: bowtie_color_wrappers
-  owner: devteam
-  revisions:
-  - fd0914e451c5
-  tool_panel_section_label: null
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: bowtie_wrappers
-  owner: devteam
-  revisions:
-  - 0c7e4eadfb3c
-  tool_panel_section_id: ngs_mapping
-  tool_panel_section_label: 'NGS: Mapping'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: bowtie_color_wrappers
+#   owner: devteam
+#   revisions:
+#   - fd0914e451c5
+#   tool_panel_section_label: null
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: bowtie_wrappers
+#   owner: devteam
+#   revisions:
+#   - 0c7e4eadfb3c
+#   tool_panel_section_id: ngs_mapping
+#   tool_panel_section_label: 'NGS: Mapping'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: bwa
   owner: devteam
   revisions:
@@ -150,13 +150,13 @@ tools:
   tool_panel_section_id: ngs_mapping
   tool_panel_section_label: 'NGS: Mapping'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: bwa_wrappers
-  owner: devteam
-  revisions:
-  - ffa8aaa14f7c
-  tool_panel_section_id: ngs_mapping
-  tool_panel_section_label: 'NGS: Mapping'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: bwa_wrappers
+#   owner: devteam
+#   revisions:
+#   - ffa8aaa14f7c
+#   tool_panel_section_id: ngs_mapping
+#   tool_panel_section_label: 'NGS: Mapping'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: canonical_correlation_analysis
   owner: devteam
   revisions:
@@ -276,13 +276,13 @@ tools:
   tool_panel_section_id: stats
   tool_panel_section_label: Statistics
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: count_covariates
-  owner: devteam
-  revisions:
-  - 14e304b70425
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: count_covariates
+#   owner: devteam
+#   revisions:
+#   - 14e304b70425
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: count_gff_features
   owner: devteam
   revisions:
@@ -546,13 +546,13 @@ tools:
   - f16000dc644b
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: depth_of_coverage
-  owner: devteam
-  revisions:
-  - c3f08370fc82
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: depth_of_coverage
+#   owner: devteam
+#   revisions:
+#   - c3f08370fc82
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 # - name: deseq2
 #   owner: iuc
 #   revisions:
@@ -1254,13 +1254,13 @@ tools:
 #   tool_panel_section_id: ngs-rna-tools
 #   tool_panel_section_label: 'NGS: RNA Analysis'
 #   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: indel_realigner
-  owner: devteam
-  revisions:
-  - bb0beda6cf83
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: indel_realigner
+#   owner: devteam
+#   revisions:
+#   - bb0beda6cf83
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: indels_3way
   owner: devteam
   revisions:
@@ -1533,13 +1533,13 @@ tools:
   - d281062566f9
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: phylorelatives
-  owner: boris
-  revisions:
-  - 06d6e56e8c2b
-  tool_panel_section_id: variant_detection
-  tool_panel_section_label: 'NGS: Variant Analysis'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: phylorelatives
+#   owner: boris
+#   revisions:
+#   - 06d6e56e8c2b
+#   tool_panel_section_id: variant_detection
+#   tool_panel_section_label: 'NGS: Variant Analysis'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: picard
   owner: devteam
   revisions:
@@ -1584,14 +1584,14 @@ tools:
   tool_panel_section_id: multivariate_analysis
   tool_panel_section_label: Multivariate Analysis
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: print_reads
-  owner: devteam
-  revisions:
-  - a8b94864fe35
-  - e768f4851646
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: print_reads
+#   owner: devteam
+#   revisions:
+#   - a8b94864fe35
+#   - e768f4851646
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: quality_filter
   owner: devteam
   revisions:
@@ -1606,13 +1606,13 @@ tools:
   tool_panel_section_id: multiple_regression
   tool_panel_section_label: Multiple regression
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: realigner_target_creator
-  owner: devteam
-  revisions:
-  - b83a853a3156
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: realigner_target_creator
+#   owner: devteam
+#   revisions:
+#   - b83a853a3156
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: repmatch_gff3
   owner: iuc
   revisions:
@@ -1941,13 +1941,13 @@ tools:
   tool_panel_section_id: variant_detection
   tool_panel_section_label: 'NGS: Variant Analysis'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: table_recalibration
-  owner: devteam
-  revisions:
-  - 30e1dd77e99c
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: table_recalibration
+#   owner: devteam
+#   revisions:
+#   - 30e1dd77e99c
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: tables_arithmetic_operations
   owner: devteam
   revisions:
@@ -2034,13 +2034,13 @@ tools:
   tool_panel_section_id: plots
   tool_panel_section_label: Graph/Display Data
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: unified_genotyper
-  owner: devteam
-  revisions:
-  - 66dd4d4c1743
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: unified_genotyper
+#   owner: devteam
+#   revisions:
+#   - 66dd4d4c1743
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: uniprot_rest_interface
   owner: bgruening
   revisions:
@@ -2048,62 +2048,62 @@ tools:
   tool_panel_section_id: textutil
   tool_panel_section_label: Text Manipulation
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: variant_annotator
-  owner: devteam
-  revisions:
-  - ae9d0a543e9b
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: variant_apply_recalibration
-  owner: devteam
-  revisions:
-  - 350a4d0d1678
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: variant_combine
-  owner: devteam
-  revisions:
-  - 1a6e16391727
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: variant_eval
-  owner: devteam
-  revisions:
-  - fbca1c0956d2
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: variant_filtration
-  owner: devteam
-  revisions:
-  - da6e2503c62d
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: variant_recalibrator
-  owner: devteam
-  revisions:
-  - cb7cf57397a7
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: variant_select
-  owner: devteam
-  revisions:
-  - 135e8721ffc5
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: variants_validate
-  owner: devteam
-  revisions:
-  - 7e1ecaa64370
-  tool_panel_section_id: gatk
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: variant_annotator
+#   owner: devteam
+#   revisions:
+#   - ae9d0a543e9b
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: variant_apply_recalibration
+#   owner: devteam
+#   revisions:
+#   - 350a4d0d1678
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: variant_combine
+#   owner: devteam
+#   revisions:
+#   - 1a6e16391727
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: variant_eval
+#   owner: devteam
+#   revisions:
+#   - fbca1c0956d2
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: variant_filtration
+#   owner: devteam
+#   revisions:
+#   - da6e2503c62d
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: variant_recalibrator
+#   owner: devteam
+#   revisions:
+#   - cb7cf57397a7
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: variant_select
+#   owner: devteam
+#   revisions:
+#   - 135e8721ffc5
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: variants_validate
+#   owner: devteam
+#   revisions:
+#   - 7e1ecaa64370
+#   tool_panel_section_id: gatk
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: varscan_version_2
   owner: devteam
   revisions:
@@ -2449,30 +2449,30 @@ tools:
 #   - b8ab4ef85a5b
 #   tool_panel_section_label: null
 #   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: vegan_diversity
-  owner: iuc
-  revisions:
-  - 2c771b437502
-  - c58e19ff504a
-  tool_panel_section_id: tax_manipulation
-  tool_panel_section_label: Metagenomic Analysis
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: vegan_fisher_alpha
-  owner: iuc
-  revisions:
-  - d6b92ca3a9a1
-  - a5a453f92273
-  tool_panel_section_id: tax_manipulation
-  tool_panel_section_label: Metagenomic Analysis
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: vegan_rarefaction
-  owner: iuc
-  revisions:
-  - dd2705a31239
-  - 3d1d965b6423
-  tool_panel_section_id: tax_manipulation
-  tool_panel_section_label: Metagenomic Analysis
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: vegan_diversity
+#   owner: iuc
+#   revisions:
+#   - 2c771b437502
+#   - c58e19ff504a
+#   tool_panel_section_id: tax_manipulation
+#   tool_panel_section_label: Metagenomic Analysis
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: vegan_fisher_alpha
+#   owner: iuc
+#   revisions:
+#   - d6b92ca3a9a1
+#   - a5a453f92273
+#   tool_panel_section_id: tax_manipulation
+#   tool_panel_section_label: Metagenomic Analysis
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+# - name: vegan_rarefaction
+#   owner: iuc
+#   revisions:
+#   - dd2705a31239
+#   - 3d1d965b6423
+#   tool_panel_section_id: tax_manipulation
+#   tool_panel_section_label: Metagenomic Analysis
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: venn_list
   owner: peterjc
   revisions:
