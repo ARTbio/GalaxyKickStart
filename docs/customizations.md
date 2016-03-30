@@ -1,6 +1,6 @@
 # Customising the playbook
 
-We strongly encourage users to read the [ansible inventory](https://docs.ansible.com/ansible/intro_inventory.html) documentation first.  
+We strongly encourage users to read the [ansible inventory](https://docs.ansible.com/ansible/intro_inventory.html) documentation first.
 
 Most settings should be editable without modifying the playbook directly,
 instead variables can be set in group_vars and host vars.
@@ -24,6 +24,21 @@ All variables defined in `group_vars/all` are overwritten in `group_vars/[name o
 For instance the variable `proftpd_nat_masquerade` is set to `false` in `group_vars/all`, while hosts in the `[aws]` group
 apply the `[aws]` group variables which set `proftpd_nat_masquerade` to true, so that hosts in the aws group will have
 this aws-specific setting applied. Any combination of groups may be used.
+
+If you want to apply any of the changes you made to the variables you need to run the playbook again, making sure that
+the host you are targeting is in the right group. The simplest way to do so is to use an inventory file that only contains
+the group and the host you wish to target. If this is for example the group metavisitor, and you target the host localhost,
+your inventory file should look like this:
+
+```
+[metavisitor]
+localhost
+```
+You can then run the playbook as usual:
+```
+ansible-playbook --inventory-file=<your_inventory_file> galaxy.yml
+```
+
 
 [//]: # (TODO: Write-up extra-files, tools, workflows, which variables win.)
 

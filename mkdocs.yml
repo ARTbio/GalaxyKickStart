@@ -6,8 +6,9 @@ pages:
  - customizations.md
  - installing tools and workflows.md
  - Examples:
-   - examples/remote machines.md
    - examples/docker.md
+   - examples/vagrant.md
+ - Frequently asked questions: faq.md
  - Available roles: available_roles.md
  - Available variables: available_variables.md
  - Editing the readme: editing_help.md
