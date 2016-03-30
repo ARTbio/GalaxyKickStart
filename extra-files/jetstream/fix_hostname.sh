@@ -1,4 +1,5 @@
 #!/bin/bash
+service hostname restart
 HN=$(cat /etc/hostname)
 
 cat<<EOF > /etc/hosts
