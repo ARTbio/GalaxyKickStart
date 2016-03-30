@@ -2,10 +2,20 @@
 
 ## Example usage: python get_tool_yml_from_gi.py -g https://mississippi.snv.jussieu.fr/ -a <api_key> -o tool_list.yml
 
+import sys
 from operator import itemgetter
 from argparse import ArgumentParser
+from distutils.version import StrictVersion
 
-import bioblend.galaxy
+try:
+    import bioblend
+    if StrictVersion( bioblend.get_version() ) < StrictVersion( "0.6.0" ):
+        print("This script needs bioblend >= 0.6.0.")
+        sys.exit(1)
+    import bioblend.galaxy
+except ImportError:
+    print("bioblend is not installed, this script needs bioblend >= 0.6.0.")
+    raise(ImportError)
 import yaml
 
 class GiToToolYaml:
@@ -15,7 +25,7 @@ class GiToToolYaml:
                  get_deleted=False,
                  get_packages=False,
                  get_latest_installed=False,
-                 skip_tool_panel_section_id=True,
+                 include_tool_panel_section_id=False,
                  skip_tool_panel_section_name=True):
 
         self.url = url
@@ -24,7 +34,7 @@ class GiToToolYaml:
         self.get_deleted = get_deleted
         self.get_packages = get_packages
         self.get_latest_installed = get_latest_installed
-        self.skip_tool_panel_section_id = skip_tool_panel_section_id
+        self.include_tool_panel_section_id = include_tool_panel_section_id
         self.skip_tool_panel_section_name = skip_tool_panel_section_name
         self.gi = self.get_instance()
         self.galaxy_client = bioblend.galaxy.config.ConfigClient( self.gi )
@@ -86,7 +96,7 @@ class GiToToolYaml:
                 try:
                     self.parse_panel_section(section, tool_panel_list_filtered)
                 except Exception:
-                    print "could not parse section, continuing anyway"
+                    print("could not parse section, continuing anyway")
                     continue
 
         return tool_panel_list_filtered
@@ -115,7 +125,7 @@ class GiToToolYaml:
             if (repo['deleted'] is True) and (self.get_deleted is False):
                 continue
             if self.get_latest_installed is True and not (self.is_latest_installed(repo)):
-                print "skip because is not latest rev."
+                print("skip because is not latest rev.")
                 continue
             if self.get_packages is False:
                 if repo["name"].startswith("package_"):
@@ -145,7 +155,7 @@ class GiToToolYaml:
             required_values = itemgetter(*required_fields)(repo)
             tool_panel_section_id = self.get_tool_panel_section_id(required_values)
             tool_panel_section_label = self.get_tool_panel_section_label(required_values)
-            if not self.skip_tool_panel_section_id:
+            if self.include_tool_panel_section_id:
                 repo["tool_panel_section_id"] = tool_panel_section_id
             if not self.skip_tool_panel_section_name:
                 repo["tool_panel_section_label"] = tool_panel_section_label
@@ -168,7 +178,7 @@ class GiToToolYaml:
                            "tool_panel_section_label",
                            "revisions",
                            "tool_shed_url"]
-        if self.skip_tool_panel_section_id:
+        if not self.include_tool_panel_section_id:
             required_fields.remove("tool_panel_section_id")
             yaml_categories.remove("tool_panel_section_id")
         if self.skip_tool_panel_section_name:
@@ -251,11 +261,13 @@ def _parse_cli_options():
     parser.add_argument("-l", "--get_latest",
                         action="store_true",
                         default=False,
-                        help="Include only latest revision of a repository in tool_list.yml ?")
-    parser.add_argument("-skip_id", "--skip_tool_panel_id",
+                        help="Include only latest revision of a tool version in tool_list.yml ?")
+    parser.add_argument("-include_id", "--include_tool_panel_id",
                         action="store_true",
                         default=False,
-                        help="Do not include tool_panel_id in tool_list.yml ?")
+                        help="Include tool_panel_id in tool_list.yml ? "
+                             "Use this only if the tool panel id already exists. See "
+                             "https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/tool_list.yaml.sample")
     parser.add_argument("-skip_name", "--skip_tool_panel_name",
                         action="store_true",
                         default=False,
@@ -271,5 +283,5 @@ if __name__ == "__main__":
                                          get_deleted=options.get_deleted,
                                          get_packages=options.get_packages,
                                          get_latest_installed=options.get_latest,
-                                         skip_tool_panel_section_id=options.skip_tool_panel_id,
+                                         include_tool_panel_section_id=options.include_tool_panel_id,
                                          skip_tool_panel_section_name=options.skip_tool_panel_name)
