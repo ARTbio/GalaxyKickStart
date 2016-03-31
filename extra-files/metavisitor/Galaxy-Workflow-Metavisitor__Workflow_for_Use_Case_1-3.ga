@@ -2,7 +2,7 @@
     "a_galaxy_workflow": "true", 
     "annotation": "", 
     "format-version": "0.1", 
-    "name": "Metavisitor: Workflow for Test case 1-3", 
+    "name": "Metavisitor: Workflow for Use Case 1-3", 
     "steps": {
         "0": {
             "annotation": "", 
@@ -19,8 +19,8 @@
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
-                "left": 211.9444580078125, 
-                "top": 200.00003051757812
+                "left": 211.9271240234375, 
+                "top": 200
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -51,8 +51,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 1024.9827270507812, 
-                "top": 963.9931030273438
+                "left": 1024.9827423095703, 
+                "top": 963.9930725097656
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -87,8 +87,8 @@
                 }
             ], 
             "position": {
-                "left": 1587.5001068115234, 
-                "top": 994.49658203125
+                "left": 1587.5001220703125, 
+                "top": 994.4965515136719
             }, 
             "post_job_actions": {
                 "HideDatasetActionlogfile": {
@@ -138,8 +138,8 @@
                 }
             ], 
             "position": {
-                "left": 420.451416015625, 
-                "top": 292.5000305175781
+                "left": 420.43408203125, 
+                "top": 292.50001525878906
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -176,8 +176,8 @@
                 }
             ], 
             "position": {
-                "left": 1866.493179321289, 
-                "top": 1084.4966125488281
+                "left": 1866.4931640625, 
+                "top": 1084.4965515136719
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutfile": {
@@ -214,8 +214,8 @@
                 }
             ], 
             "position": {
-                "left": 382.4132080078125, 
-                "top": 522.5000381469727
+                "left": 382.3785400390625, 
+                "top": 522.5000228881836
             }, 
             "post_job_actions": {
                 "ChangeDatatypeActionout_file1": {
@@ -268,8 +268,8 @@
                 }
             ], 
             "position": {
-                "left": 522.96875, 
-                "top": 658.9931030273438
+                "left": 522.9688110351562, 
+                "top": 658.9930877685547
             }, 
             "post_job_actions": {
                 "ChangeDatatypeActionsequences": {
@@ -325,7 +325,7 @@
             ], 
             "position": {
                 "left": 753.9931640625, 
-                "top": 511.9965658187866
+                "top": 511.9965515136719
             }, 
             "post_job_actions": {
                 "ChangeDatatypeActionout_file1": {
@@ -377,8 +377,8 @@
                 }
             ], 
             "position": {
-                "left": 830.4688110351562, 
-                "top": 288.48960876464844
+                "left": 830.4341125488281, 
+                "top": 288.4895935058594
             }, 
             "post_job_actions": {
                 "HideDatasetActionaligned": {
@@ -433,8 +433,8 @@
                 }
             ], 
             "position": {
-                "left": 1099.4619140625, 
-                "top": 509.4965658187866
+                "left": 1099.461898803711, 
+                "top": 509.4965515136719
             }, 
             "post_job_actions": {
                 "RenameDatasetActiontranscripts": {
@@ -483,8 +483,8 @@
                 }
             ], 
             "position": {
-                "left": 1273.4896850585938, 
-                "top": 800.4861755371094
+                "left": 1273.4896919727325, 
+                "top": 800.4861450195312
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput1": {
@@ -538,7 +538,7 @@
             ], 
             "position": {
                 "left": 1563.9931640625, 
-                "top": 513.4896211624146
+                "top": 513.4896087646484
             }, 
             "post_job_actions": {
                 "HideDatasetActional_sequences": {
@@ -620,7 +620,7 @@
             ], 
             "position": {
                 "left": 1902.5001220703125, 
-                "top": 655.4861602783203
+                "top": 655.4861450195312
             }, 
             "post_job_actions": {
                 "HideDatasetActionace": {
@@ -697,8 +697,8 @@
                 }
             ], 
             "position": {
-                "left": 2234.4966735839844, 
-                "top": 956.4931030273438
+                "left": 2234.4967041015625, 
+                "top": 956.4930725097656
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput1": {
@@ -717,7 +717,7 @@
         }, 
         "14": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/blast_to_scaffold/blast2scaffold/0.1.0", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/blast_to_scaffold/blast2scaffold/0.9.0", 
             "id": 14, 
             "input_connections": {
                 "blast_tab": {
@@ -743,8 +743,8 @@
                 }
             ], 
             "position": {
-                "left": 2347.0487670898438, 
-                "top": 1131.5451965332031
+                "left": 2553.0731201171875, 
+                "top": 876.5625305175781
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -754,11 +754,11 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/blast_to_scaffold/blast2scaffold/0.1.0", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/blast_to_scaffold/blast2scaffold/0.9.0", 
             "tool_state": "{\"__page__\": 0, \"guideSequence\": \"null\", \"blast_tab\": \"null\", \"__rerun_remap_job_id__\": null, \"sequences\": \"null\"}", 
-            "tool_version": "0.1.0", 
+            "tool_version": "0.9.0", 
             "type": "tool", 
-            "uuid": "a0b73d4c-2a99-426a-b1d4-ee144bb284f4", 
+            "uuid": "031fbacb-303d-421d-84ee-24c9474c26d2", 
             "workflow_outputs": []
         }, 
         "15": {
@@ -782,7 +782,7 @@
             ], 
             "position": {
                 "left": 2726.9967041015625, 
-                "top": 1140.0000915527344
+                "top": 1140.0000305175781
             }, 
             "post_job_actions": {
                 "ChangeDatatypeActionout_file1": {
@@ -815,5 +815,5 @@
             ]
         }
     }, 
-    "uuid": "81e35e05-4998-4dcc-a922-ea97fcf39471"
+    "uuid": "dab2601e-a95f-4f94-accc-28d265c7001e"
 }

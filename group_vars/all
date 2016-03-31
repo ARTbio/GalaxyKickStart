@@ -32,6 +32,7 @@ additional_files_list: []
 # galaxy role variables
 
 #persistent data
+galaxy_persistent_directory: /export # for IFB it's /root/mydisk, by default, /export
 galaxy_manage_mutable_setup: yes
 galaxy_mutable_config_dir: "{{ galaxy_config_dir }}"
 galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini"

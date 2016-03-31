@@ -2,7 +2,7 @@
     "a_galaxy_workflow": "true", 
     "annotation": "", 
     "format-version": "0.1", 
-    "name": "Metavisitor: Workflow for Test Case 2-1", 
+    "name": "Metavisitor: Workflow for Use Case 2-1", 
     "steps": {
         "0": {
             "annotation": "", 
@@ -19,8 +19,8 @@
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
-                "left": 199.947998046875, 
-                "top": 200.00001049041748
+                "left": 110.9375, 
+                "top": 269.37501525878906
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -52,7 +52,7 @@
             "outputs": [], 
             "position": {
                 "left": 1088.5938110351562, 
-                "top": 705.5729370117188
+                "top": 839.96533203125
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -87,8 +87,8 @@
                 }
             ], 
             "position": {
-                "left": 1736.5973205566406, 
-                "top": 900.1042175292969
+                "left": 1736.5973052978516, 
+                "top": 1034.4966125488281
             }, 
             "post_job_actions": {
                 "HideDatasetActionlogfile": {
@@ -137,8 +137,8 @@
                 }
             ], 
             "position": {
-                "left": 334.8785400390625, 
-                "top": 302.9861297607422
+                "left": 254.84375, 
+                "top": 419.3750247955322
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -175,8 +175,8 @@
                 }
             ], 
             "position": {
-                "left": 2035.6077575683594, 
-                "top": 784.0972595214844
+                "left": 2035.6077270507812, 
+                "top": 918.4896545410156
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutfile": {
@@ -213,8 +213,8 @@
                 }
             ], 
             "position": {
-                "left": 389.791748046875, 
-                "top": 452.98614501953125
+                "left": 312.77783203125, 
+                "top": 621.3715667724609
             }, 
             "post_job_actions": {
                 "ChangeDatatypeActionout_file1": {
@@ -240,7 +240,7 @@
         }, 
         "6": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.1.0", 
             "id": 6, 
             "input_connections": {
                 "switch|input": {
@@ -258,8 +258,8 @@
                 }
             ], 
             "position": {
-                "left": 537.5, 
-                "top": 207.96876049041748
+                "left": 482.5694580078125, 
+                "top": 420.9722480773926
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -269,16 +269,16 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
-            "tool_state": "{\"__page__\": 0, \"switch\": \"{\\\"input\\\": null, \\\"conversionType\\\": \\\"fasta2tabular\\\", \\\"__current_case__\\\": 0}\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null, \"__workflow_invocation_uuid__\": \"\\\"459d9188801e11e5ae6af01fafdfc061\\\"\"}", 
-            "tool_version": "1.0.2", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.1.0", 
+            "tool_state": "{\"__page__\": 0, \"switch\": \"{\\\"input\\\": null, \\\"conversionType\\\": \\\"fasta2tabular\\\", \\\"__current_case__\\\": 0}\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "1.1.0", 
             "type": "tool", 
-            "uuid": "None", 
+            "uuid": "890947a5-b6c3-4905-9659-9f4cb58ae3de", 
             "workflow_outputs": []
         }, 
         "7": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.1.0", 
             "id": 7, 
             "input_connections": {
                 "switch|input": {
@@ -296,15 +296,10 @@
                 }
             ], 
             "position": {
-                "left": 647.46533203125, 
-                "top": 342.9861297607422
+                "left": 729.6007080078125, 
+                "top": 374.9653015136719
             }, 
             "post_job_actions": {
-                "HideDatasetActionoutput": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "output"
-                }, 
                 "RenameDatasetActionoutput": {
                     "action_arguments": {
                         "newname": "Initial Clipped sequences"
@@ -314,12 +309,18 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.1.0", 
             "tool_state": "{\"__page__\": 0, \"switch\": \"{\\\"input\\\": null, \\\"conversionType\\\": \\\"tabular2fastaweight\\\", \\\"__current_case__\\\": 2}\", \"__rerun_remap_job_id__\": null}", 
-            "tool_version": "1.0.2", 
+            "tool_version": "1.1.0", 
             "type": "tool", 
-            "uuid": "None", 
-            "workflow_outputs": []
+            "uuid": "5807c11d-856f-466a-80b3-2854a13ed901", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "0104c422-daac-45f9-b56c-2b899f4f4c6f"
+                }
+            ]
         }, 
         "8": {
             "annotation": "", 
@@ -350,7 +351,7 @@
             ], 
             "position": {
                 "left": 722.482666015625, 
-                "top": 467.98614501953125
+                "top": 602.3785095214844
             }, 
             "post_job_actions": {
                 "HideDatasetActionaligned": {
@@ -414,7 +415,7 @@
             ], 
             "position": {
                 "left": 724.96533203125, 
-                "top": 645.9896240234375
+                "top": 780.3819885253906
             }, 
             "post_job_actions": {
                 "HideDatasetActionaligned": {
@@ -477,7 +478,7 @@
             ], 
             "position": {
                 "left": 725.920166015625, 
-                "top": 861.9965515136719
+                "top": 996.3889465332031
             }, 
             "post_job_actions": {
                 "HideDatasetActionaligned": {
@@ -532,7 +533,7 @@
             ], 
             "position": {
                 "left": 1090.4688110351562, 
-                "top": 205.00001049041748
+                "top": 339.39238357543945
             }, 
             "post_job_actions": {
                 "RenameDatasetActiontranscripts": {
@@ -581,8 +582,8 @@
                 }
             ], 
             "position": {
-                "left": 1149.4966125488281, 
-                "top": 472.98614501953125
+                "left": 1149.49658203125, 
+                "top": 607.3785095214844
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -601,7 +602,7 @@
         }, 
         "13": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_blastparser_and_hits/BlastParser_and_hits/2.4.0", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_blastparser_and_hits/BlastParser_and_hits/2.4.3", 
             "id": 13, 
             "input_connections": {
                 "blast": {
@@ -635,8 +636,8 @@
                 }
             ], 
             "position": {
-                "left": 1457.5000915527344, 
-                "top": 350.9895935058594
+                "left": 1454.5486907958984, 
+                "top": 436.9097480773926
             }, 
             "post_job_actions": {
                 "HideDatasetActional_sequences": {
@@ -651,21 +652,21 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_blastparser_and_hits/BlastParser_and_hits/2.4.0", 
-            "tool_state": "{\"additional_filters\": \"{\\\"use_filters\\\": \\\"no\\\", \\\"__current_case__\\\": 0}\", \"flanking\": \"\\\"5\\\"\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"__workflow_invocation_uuid__\": \"\\\"4dd2fde8802311e5bcddf01fafdfc061\\\"\", \"mode\": \"\\\"verbose\\\"\", \"sequences\": \"null\", \"blast\": \"null\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
-            "tool_version": "2.4.0", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_blastparser_and_hits/BlastParser_and_hits/2.4.3", 
+            "tool_state": "{\"__page__\": 0, \"flanking\": \"\\\"5\\\"\", \"additional_filters\": \"{\\\"use_filters\\\": \\\"no\\\", \\\"__current_case__\\\": 0}\", \"__rerun_remap_job_id__\": null, \"mode\": \"\\\"verbose\\\"\", \"sequences\": \"null\", \"blast\": \"null\"}", 
+            "tool_version": "2.4.3", 
             "type": "tool", 
-            "uuid": "None", 
+            "uuid": "32401021-0c03-4c16-a8a3-b08c54d34ce5", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "tabularOutput", 
-                    "uuid": "601081c8-3172-4919-9877-f2642c46f6d1"
+                    "uuid": "0ecb04ea-b8fe-45ce-aa11-c4a67f1e17dd"
                 }, 
                 {
                     "label": null, 
                     "output_name": "fastaOutput", 
-                    "uuid": "7019bf37-e138-4ebc-a747-1048ec0899f0"
+                    "uuid": "f37bfebc-7b87-4dfc-a98c-2cdc3b18a84a"
                 }
             ]
         }, 
@@ -689,8 +690,8 @@
                 }
             ], 
             "position": {
-                "left": 1746.093849182129, 
-                "top": 538.107666015625
+                "left": 1746.0938415527344, 
+                "top": 672.5000305175781
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -727,8 +728,8 @@
                 }
             ], 
             "position": {
-                "left": 1745.1042709350586, 
-                "top": 631.0937805175781
+                "left": 1745.104248046875, 
+                "top": 765.4861450195312
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -769,8 +770,8 @@
                 }
             ], 
             "position": {
-                "left": 1983.5938720703125, 
-                "top": 546.0937805175781
+                "left": 1983.5938415527344, 
+                "top": 680.4861450195312
             }, 
             "post_job_actions": {
                 "RenameDatasetActionout_file1": {
@@ -844,7 +845,7 @@
             ], 
             "position": {
                 "left": 2192.100830078125, 
-                "top": 379.0972442626953
+                "top": 513.489616394043
             }, 
             "post_job_actions": {
                 "HideDatasetActionace": {
@@ -929,7 +930,7 @@
             ], 
             "position": {
                 "left": 2424.0973510742188, 
-                "top": 703.107666015625
+                "top": 837.5000305175781
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -948,7 +949,7 @@
         }, 
         "19": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/blast_to_scaffold/blast2scaffold/0.1.0", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/blast_to_scaffold/blast2scaffold/0.9.0", 
             "id": 19, 
             "input_connections": {
                 "blast_tab": {
@@ -974,8 +975,8 @@
                 }
             ], 
             "position": {
-                "left": 2753.038330078125, 
-                "top": 433.5243225097656
+                "left": 2718.003662109375, 
+                "top": 597.9167022705078
             }, 
             "post_job_actions": {
                 "RenameDatasetActionoutput": {
@@ -987,19 +988,19 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/blast_to_scaffold/blast2scaffold/0.1.0", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/blast_to_scaffold/blast2scaffold/0.9.0", 
             "tool_state": "{\"__page__\": 0, \"guideSequence\": \"null\", \"blast_tab\": \"null\", \"__rerun_remap_job_id__\": null, \"sequences\": \"null\"}", 
-            "tool_version": "0.1.0", 
+            "tool_version": "0.9.0", 
             "type": "tool", 
-            "uuid": "10ca0aa1-d93a-469b-99fb-01f2ef4567d5", 
+            "uuid": "d6fcfcf9-1b9b-4ac3-8217-f7ddbc84be91", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "output", 
-                    "uuid": "20131034-04ee-4ba7-88ea-80bea840f187"
+                    "uuid": "c052be17-d78e-4a17-891c-7154936c7935"
                 }
             ]
         }
     }, 
-    "uuid": "d36f6c59-a20b-44e7-95e8-427594339d04"
+    "uuid": "ac35209c-d243-403c-95c7-5500b022ae10"
 }

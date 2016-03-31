@@ -2,7 +2,7 @@
     "a_galaxy_workflow": "true", 
     "annotation": "", 
     "format-version": "0.1", 
-    "name": "Metavisitor: Workflow for Test Case 2-2", 
+    "name": "Metavisitor: Workflow for Use Case 2-2", 
     "steps": {
         "0": {
             "annotation": "", 
@@ -19,8 +19,8 @@
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
-                "left": 200, 
-                "top": 138.5416717529297
+                "left": 199.91314697265625, 
+                "top": 183.5937557220459
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -51,8 +51,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 1749.010498046875, 
-                "top": 561.5104675292969
+                "left": 1887.9861450195312, 
+                "top": 619.5659847259521
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -70,7 +70,7 @@
         }, 
         "2": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/0.6", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.2.6.2", 
             "id": 2, 
             "input_connections": {
                 "library|input_1": {
@@ -87,23 +87,64 @@
                     "type": "fastqsanger"
                 }, 
                 {
+                    "name": "output_aligned_reads_l", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output_aligned_reads_r", 
+                    "type": "fastqsanger"
+                }, 
+                {
                     "name": "output_unaligned_reads_r", 
                     "type": "fastqsanger"
                 }, 
                 {
                     "name": "output", 
                     "type": "bam"
+                }, 
+                {
+                    "name": "output_sam", 
+                    "type": "sam"
+                }, 
+                {
+                    "name": "mapping_stats", 
+                    "type": "txt"
                 }
             ], 
             "position": {
-                "left": 300.43402099609375, 
-                "top": 231.97918701171875
+                "left": 433.48956298828125, 
+                "top": 367.6389217376709
             }, 
             "post_job_actions": {
+                "DeleteIntermediatesActionoutput_unaligned_reads_l": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "output_unaligned_reads_l"
+                }, 
+                "HideDatasetActionmapping_stats": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "mapping_stats"
+                }, 
                 "HideDatasetActionoutput": {
                     "action_arguments": {}, 
                     "action_type": "HideDatasetAction", 
                     "output_name": "output"
+                }, 
+                "HideDatasetActionoutput_aligned_reads_l": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_aligned_reads_l"
+                }, 
+                "HideDatasetActionoutput_aligned_reads_r": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_aligned_reads_r"
+                }, 
+                "HideDatasetActionoutput_sam": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_sam"
                 }, 
                 "HideDatasetActionoutput_unaligned_reads_l": {
                     "action_arguments": {}, 
@@ -117,11 +158,11 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/0.6", 
-            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"library\": \"{\\\"unaligned_file\\\": \\\"True\\\", \\\"type\\\": \\\"single\\\", \\\"__current_case__\\\": 0, \\\"input_1\\\": null}\", \"reference_genome\": \"{\\\"source\\\": \\\"indexed\\\", \\\"__current_case__\\\": 0, \\\"index\\\": \\\"AgamP4\\\"}\", \"rg\": \"{\\\"rg_selector\\\": \\\"do_not_set\\\", \\\"__current_case__\\\": 3}\", \"analysis_type\": \"{\\\"alignment_options\\\": {\\\"alignment_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"effort_options\\\": {\\\"effort_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"sam_options\\\": {\\\"sam_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"other_options\\\": {\\\"other_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"analysis_type_selector\\\": \\\"full\\\", \\\"reporting_options\\\": {\\\"k\\\": \\\"1\\\", \\\"reporting_options_selector\\\": \\\"k\\\", \\\"__current_case__\\\": 1}, \\\"__current_case__\\\": 1, \\\"input_options\\\": {\\\"int_quals\\\": \\\"False\\\", \\\"solexa_quals\\\": \\\"False\\\", \\\"skip\\\": \\\"0\\\", \\\"input_options_selector\\\": \\\"yes\\\", \\\"qv_encoding\\\": \\\"--phred33\\\", \\\"__current_case__\\\": 0, \\\"trim3\\\": \\\"50\\\", \\\"qupto\\\": \\\"1000000000\\\", \\\"trim5\\\": \\\"0\\\"}}\"}", 
-            "tool_version": "0.6", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.2.6.2", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"library\": \"{\\\"aligned_file\\\": \\\"False\\\", \\\"unaligned_file\\\": \\\"True\\\", \\\"type\\\": \\\"single\\\", \\\"__current_case__\\\": 0, \\\"input_1\\\": null}\", \"reference_genome\": \"{\\\"source\\\": \\\"indexed\\\", \\\"__current_case__\\\": 0, \\\"index\\\": \\\"AgamP4\\\"}\", \"rg\": \"{\\\"rg_selector\\\": \\\"do_not_set\\\", \\\"__current_case__\\\": 3}\", \"save_mapping_stats\": \"\\\"False\\\"\", \"analysis_type\": \"{\\\"alignment_options\\\": {\\\"alignment_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"effort_options\\\": {\\\"effort_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"sam_options\\\": {\\\"sam_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"other_options\\\": {\\\"other_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"analysis_type_selector\\\": \\\"full\\\", \\\"reporting_options\\\": {\\\"k\\\": \\\"1\\\", \\\"reporting_options_selector\\\": \\\"k\\\", \\\"__current_case__\\\": 1}, \\\"__current_case__\\\": 1, \\\"sam_opt\\\": \\\"True\\\", \\\"input_options\\\": {\\\"int_quals\\\": \\\"False\\\", \\\"solexa_quals\\\": \\\"False\\\", \\\"skip\\\": \\\"0\\\", \\\"input_options_selector\\\": \\\"yes\\\", \\\"qv_encoding\\\": \\\"--phred33\\\", \\\"__current_case__\\\": 0, \\\"trim3\\\": \\\"20\\\", \\\"qupto\\\": \\\"100000000\\\", \\\"trim5\\\": \\\"0\\\"}}\"}", 
+            "tool_version": "2.2.6.2", 
             "type": "tool", 
-            "uuid": "None", 
+            "uuid": "15edcf5f-9b38-4b7e-ad04-f816d1d4d126", 
             "workflow_outputs": []
         }, 
         "3": {
@@ -144,8 +185,8 @@
                 }
             ], 
             "position": {
-                "left": 635.4340209960938, 
-                "top": 257.9340515136719
+                "left": 774.4097290039062, 
+                "top": 315.97223472595215
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -182,8 +223,8 @@
                 }
             ], 
             "position": {
-                "left": 866.4236297607422, 
-                "top": 244.94793701171875
+                "left": 1005.4166717529297, 
+                "top": 303.00348472595215
             }, 
             "post_job_actions": {
                 "ChangeDatatypeActionout_file1": {
@@ -209,7 +250,7 @@
         }, 
         "5": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.1.0", 
             "id": 5, 
             "input_connections": {
                 "switch|input": {
@@ -227,8 +268,8 @@
                 }
             ], 
             "position": {
-                "left": 1115.4687805175781, 
-                "top": 371.9965515136719
+                "left": 1290.5555725097656, 
+                "top": 296.59723472595215
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -238,16 +279,16 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
-            "tool_state": "{\"__page__\": 0, \"switch\": \"{\\\"input\\\": null, \\\"conversionType\\\": \\\"fasta2tabular\\\", \\\"__current_case__\\\": 0}\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null}", 
-            "tool_version": "1.0.2", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.1.0", 
+            "tool_state": "{\"__page__\": 0, \"switch\": \"{\\\"input\\\": null, \\\"conversionType\\\": \\\"fasta2tabular\\\", \\\"__current_case__\\\": 0}\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "1.1.0", 
             "type": "tool", 
-            "uuid": "None", 
+            "uuid": "1d78a822-0e08-4e92-a9f7-bc80166e36a1", 
             "workflow_outputs": []
         }, 
         "6": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.1.0", 
             "id": 6, 
             "input_connections": {
                 "switch|input": {
@@ -265,8 +306,8 @@
                 }
             ], 
             "position": {
-                "left": 1335.4687805175781, 
-                "top": 371.9965515136719
+                "left": 1517.5521240234375, 
+                "top": 302.5868282318115
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -276,11 +317,11 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.0.2", 
-            "tool_state": "{\"__page__\": 0, \"switch\": \"{\\\"input\\\": null, \\\"conversionType\\\": \\\"tabular2fastaweight\\\", \\\"__current_case__\\\": 2}\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null}", 
-            "tool_version": "1.0.2", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.1.0", 
+            "tool_state": "{\"__page__\": 0, \"switch\": \"{\\\"input\\\": null, \\\"conversionType\\\": \\\"tabular2fastaweight\\\", \\\"__current_case__\\\": 2}\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "1.1.0", 
             "type": "tool", 
-            "uuid": "None", 
+            "uuid": "d6d8e36c-641a-4662-b615-0745b9d9fb55", 
             "workflow_outputs": []
         }, 
         "7": {
@@ -303,8 +344,8 @@
                 }
             ], 
             "position": {
-                "left": 1639.4618530273438, 
-                "top": 280.9895935058594
+                "left": 1778.4375610351562, 
+                "top": 339.0625057220459
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -341,8 +382,8 @@
                 }
             ], 
             "position": {
-                "left": 1817.447998046875, 
-                "top": 154.98265075683594
+                "left": 1956.4236450195312, 
+                "top": 213.05556297302246
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -383,8 +424,8 @@
                 }
             ], 
             "position": {
-                "left": 2086.4584350585938, 
-                "top": 254.96530151367188
+                "left": 2225.451416015625, 
+                "top": 313.00348472595215
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -403,7 +444,7 @@
         }, 
         "10": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_blastparser_and_hits/BlastParser_and_hits/2.4.0", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_blastparser_and_hits/BlastParser_and_hits/2.4.3", 
             "id": 10, 
             "input_connections": {
                 "blast": {
@@ -437,8 +478,8 @@
                 }
             ], 
             "position": {
-                "left": 2275.4514770507812, 
-                "top": 476.9792175292969
+                "left": 2559.5313720703125, 
+                "top": 128.57639122009277
             }, 
             "post_job_actions": {
                 "HideDatasetActional_sequences": {
@@ -458,19 +499,19 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_blastparser_and_hits/BlastParser_and_hits/2.4.0", 
-            "tool_state": "{\"additional_filters\": \"{\\\"use_filters\\\": \\\"no\\\", \\\"__current_case__\\\": 0}\", \"flanking\": \"\\\"5\\\"\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"mode\": \"\\\"verbose\\\"\", \"sequences\": \"null\", \"blast\": \"null\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
-            "tool_version": "2.4.0", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_blastparser_and_hits/BlastParser_and_hits/2.4.3", 
+            "tool_state": "{\"__page__\": 0, \"flanking\": \"\\\"5\\\"\", \"additional_filters\": \"{\\\"use_filters\\\": \\\"no\\\", \\\"__current_case__\\\": 0}\", \"__rerun_remap_job_id__\": null, \"mode\": \"\\\"verbose\\\"\", \"sequences\": \"null\", \"blast\": \"null\"}", 
+            "tool_version": "2.4.3", 
             "type": "tool", 
-            "uuid": "None", 
+            "uuid": "30288e33-ff64-4089-9b45-428027744176", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "tabularOutput", 
-                    "uuid": "8e20f5af-8781-4961-8be8-c669f333e9f0"
+                    "uuid": "6b25acfc-474c-4852-b196-a14a4cf619e3"
                 }
             ]
         }
     }, 
-    "uuid": "1f8c0b51-db6c-412a-a43c-3dbd5f312c51"
+    "uuid": "ea5b1974-4efa-4a30-a29c-4cfa9fd7da83"
 }
