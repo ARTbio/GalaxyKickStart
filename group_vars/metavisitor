@@ -2,15 +2,17 @@ install_tools: true
 galaxy_tools_tool_list: "extra-files/metavisitor/metavisitor_tool_list.yml"
 galaxy_tools_install_workflows: true
 galaxy_tools_workflows:
-  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_Case_2-1.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_Case_2-2.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_Case_3-1.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_Case_3-2.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_Case_3-3.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_case_1-1.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_case_1-2.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Test_case_1-3.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_remapping_in_test_cases_1-1,2,3.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_remapping_in_Use_Cases_1-1,2,3.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_remapping_in_Use_Cases_2-1,2.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_1-1.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_1-2.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_1-3.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_1-4.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_2-1.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_2-2.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_3-1.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_3-2.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_3-3.ga"
 galaxy_web_processes: 2
 galaxy_handler_processes: 2
 postgres_user_uid: 1550
@@ -20,3 +22,8 @@ postgresql_version: 9.3
 supervisor_postgres_database_path: /var/lib/postgresql/9.3/main
 supervisor_postgres_database_config: /etc/postgresql/9.3/main/postgresql.conf
 supervisor_postgres_options: "-D {{ supervisor_postgres_database_path }} -c \"config_file={{ supervisor_postgres_database_config }}\""
+
+additional_files_list:
+  - { src: "extra-files/metavisitor/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
+  - { src: "extra-files/metavisitor/metavisitor_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+
