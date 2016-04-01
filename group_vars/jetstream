@@ -23,9 +23,9 @@ galaxy_log_dir: "{{ galaxyFS_base_dir }}/logs"
 galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
 galaxy_data: "{{ galaxyFS_base_dir }}/galaxy"
 galaxy_database: "{{ galaxyFS_base_dir }}/db"
-galaxy_shed_tools_dir: "{{ galaxyFS_base_dir }}/shed_tools"
+# galaxy_shed_tools_dir: "{{ galaxyFS_base_dir }}/shed_tools"
 galaxy_tools_tool_list: "extra-files/jetstream/jetstream_data_manager_tool_list.yml"
-# galaxy_tools_tool_list: "extra-files/jetstream/usegalaxy_main_tool_list.yml"
+galaxy_tools_tool_list: "extra-files/jetstream/usegalaxy_main_tool_list.yml"
 tool_dependency_dir: "{{ galaxyFS_base_dir }}/tool_dependencies"
 data_manager_task_file: "extra-files/jetstream/jetstream_data_manager_tasks.yml"
 len_file_path: "{{ galaxy_config_dir }}/len"
@@ -64,3 +64,43 @@ galaxy_mutable_configs:
     dest: "{{ galaxy_config['app:main']['migrated_tools_config'] if galaxy_config is defined and 'app:main' in galaxy_config and 'migrated_tools_config' in galaxy_config['app:main'] else galaxy_config_default['app:main']['migrated_tools_config'] }}"
   - src: "{{ galaxy_server_dir }}/config/datatypes_conf.xml.sample"
     dest: "{{ galaxy_config['app:main']['datatypes_config_file'] if galaxy_config is defined and 'app:main' in galaxy_config and 'datatypes_config_file' in galaxy_config['app:main'] else galaxy_config_default['app:main']['datatypes_config_file'] }}"
+
+
+cvmfs_deb_url: "https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs_2.1.20_amd64.deb"
+cvmfs_deb_config_url: "https://ecsft.cern.ch/dist/cvmfs/cvmfs-config/cvmfs-config-default_latest_all.deb"
+cvmfs_keys:
+  - path: /etc/cvmfs/keys/test.galaxyproject.org.pub
+    key: |
+      -----BEGIN PUBLIC KEY-----
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtfc5SSX9ALcrukWYcxkI
+      mkLhlkJa5tCP1oZNWFA7GfE4xQW2vcKE5qmbZqhYVfdiy+FHPnhWPJp577hekD2F
+      vMITbApdZ0265AjRC0+EKKxpMF8zZ0q71vCFxvdK0c3DtT/3LmqKrr2wimtJZjQN
+      UAZcQG2ykzeHzFZ46w74IO0o8Fv/w2XEbYI0QqbNFv+0hcp5SruFqaaLsRZdd6Bn
+      3iSylgVRQ5b+h1LfB/EuEpSmH1sDozZ4tU0fpbrBSknK76aad1o/cvWY1X87ToUV
+      helU0HE2Rw/u9EqJDvPFTbUmad3MtspkqbG5Eo7lI+ktzbcD7UTsQ/7noIXIQ5dD
+      PwIDAQAB
+      -----END PUBLIC KEY-----
+  - path: /etc/cvmfs/keys/data.galaxyproject.org.pub
+    key: |
+      -----BEGIN PUBLIC KEY-----
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5LHQuKWzcX5iBbCGsXGt
+      6CRi9+a9cKZG4UlX/lJukEJ+3dSxVDWJs88PSdLk+E25494oU56hB8YeVq+W8AQE
+      3LWx2K2ruRjEAI2o8sRgs/IbafjZ7cBuERzqj3Tn5qUIBFoKUMWMSIiWTQe2Sfnj
+      GzfDoswr5TTk7aH/FIXUjLnLGGCOzPtUC244IhHARzu86bWYxQJUw0/kZl5wVGcH
+      maSgr39h1xPst0Vx1keJ95AH0wqxPbCcyBGtF1L6HQlLidmoIDqcCQpLsGJJEoOs
+      NVNhhcb66OJHah5ppI1N3cZehdaKyr1XcF9eedwLFTvuiwTn6qMmttT/tHX7rcxT
+      owIDAQAB
+      -----END PUBLIC KEY-----
+
+cvmfs_server_urls:
+  - domain: galaxyproject.org
+    urls:
+      - "http://cvmfs1-tacc0.galaxyproject.org/cvmfs/@fqrn@"
+
+cvmfs_repositories:
+  # - test.galaxyproject.org
+  - data.galaxyproject.org
+
+cvmfs_http_proxies:
+  - "http://cvmfs1-tacc0.galaxyproject.org:3128"
+

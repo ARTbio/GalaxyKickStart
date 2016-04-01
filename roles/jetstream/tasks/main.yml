@@ -28,10 +28,63 @@
     - "alias 'll=ls -l'"
 
 - name: Restart hostname service
-  shell: service hostname restart
+  service:
+    name: hostname
+    state: restarted
 
 - shell: "hostname"
   register: hostname
 
 - name: Fix /etc/hosts on running instance
-  replace: dest=/etc/hosts regexp='127.0.0.1 localhost$' replace='127.0.0.1 localhost {{ hostname.stdout }}'
+  replace: dest=/etc/hosts regexp='127.0.0.1 localhost$' replace='127.0.0.1 localhost {{ hostname.stdout }}'  #'
+
+# Install & setup CermVM-FS
+- name: Download cvmfs
+  get_url:
+    url="{{ cvmfs_deb_url }}"
+    dest="/tmp/cvmfs.deb"
+
+- name: Download cvmfs-config
+  get_url:
+    url="{{ cvmfs_deb_config_url }}"
+    dest="/tmp/cvmfs-config.deb"
+
+- name: Install cvmfs-config
+  apt: deb="/tmp/cvmfs-config.deb"
+
+- name: Install cvmfs
+  apt: deb="/tmp/cvmfs.deb"
+
+- name: Install CernVM-FS keys
+  copy:
+    content: "{{ item.key }}"
+    dest: "{{ item.path }}"
+    owner: "root"
+    group: "root"
+    mode: "0444"
+  with_items: "{{ cvmfs_keys }}"
+
+- name: Perform AutoFS and FUSE configuration for CernVM-FS
+  command: cvmfs_config setup
+  notify:
+    - restart autofs
+
+- name: Configure CernVM-FS domain
+  copy:
+    content: |
+      CVMFS_SERVER_URL="{{ item.urls | join(';') }}"
+    dest: "/etc/cvmfs/domain.d/{{ item.domain }}.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  with_items: "{{ cvmfs_server_urls }}"
+
+- name: Configure CernVM-FS repositories and proxy
+  copy:
+    content: |
+      CVMFS_REPOSITORIES="{{ cvmfs_repositories | join(',') }}"
+      CVMFS_HTTP_PROXY="{{ cvmfs_http_proxies | join('|') }}"
+    dest: "/etc/cvmfs/default.local"
+    owner: "root"
+    group: "root"
+    mode: "0644"
