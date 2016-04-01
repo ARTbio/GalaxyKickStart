@@ -1,5 +1,5 @@
 - hosts: jetstream
-  sudo: yes
+  become: yes
 
   roles:
     - role: galaxyprojectdotorg.galaxy-os
@@ -88,3 +88,6 @@
       tags:
         - import_genomes
 
+    - role: jetstream
+      jetstream_cleanup: yes
+      when: jetstream is defined

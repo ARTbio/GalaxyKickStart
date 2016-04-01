@@ -10,6 +10,8 @@ run_data_manager: no
 # A custom config needs be supplied before Reports will work
 supervisor_manage_reports: no
 
+default_user_name: ubuntu
+
 galaxy_uwsgi: no
 galaxy_uwsgi_static_conf: no
 galaxy_extras_config_uwsgi: no
@@ -23,9 +25,9 @@ galaxy_log_dir: "{{ galaxyFS_base_dir }}/logs"
 galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
 galaxy_data: "{{ galaxyFS_base_dir }}/galaxy"
 galaxy_database: "{{ galaxyFS_base_dir }}/db"
-# galaxy_shed_tools_dir: "{{ galaxyFS_base_dir }}/shed_tools"
+galaxy_shed_tools_dir: "{{ galaxyFS_base_dir }}/shed_tools"
 galaxy_tools_tool_list: "extra-files/jetstream/jetstream_data_manager_tool_list.yml"
-galaxy_tools_tool_list: "extra-files/jetstream/usegalaxy_main_tool_list.yml"
+# galaxy_tools_tool_list: "extra-files/jetstream/usegalaxy_main_tool_list.yml"
 tool_dependency_dir: "{{ galaxyFS_base_dir }}/tool_dependencies"
 data_manager_task_file: "extra-files/jetstream/jetstream_data_manager_tasks.yml"
 len_file_path: "{{ galaxy_config_dir }}/len"
