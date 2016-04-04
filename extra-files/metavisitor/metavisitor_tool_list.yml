@@ -1,4 +1,10 @@
 tools:
+- name: sra_tools
+  owner: iuc
+  revisions:
+  - b723c120161a
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  tool_panel_section_label: "Get Data"
 - name: trinityrnaseq
   owner: anmoljh
   revisions:
