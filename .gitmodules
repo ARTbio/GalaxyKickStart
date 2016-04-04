@@ -3,7 +3,7 @@
 	url = https://github.com/galaxyproject/ansible-galaxy-tools.git
 [submodule "roles/galaxyprojectdotorg.galaxy-extras"]
 	path = roles/galaxyprojectdotorg.galaxy-extras
-	url = https://github.com/galaxyproject/ansible-galaxy-extras
+	url = https://github.com/mvdbeek/ansible-galaxy-extras
 [submodule "roles/natefoo.postgresql_objects"]
 	path = roles/natefoo.postgresql_objects
 	url = https://github.com/natefoo/ansible-postgresql-objects.git
