@@ -1,7 +1,6 @@
 install_galaxy: true
 install_maintainance_packages: false
 run_extras: true
-install_tools: false
 run_data_manager: false
 galaxy_hostname: "{{ inventory_hostname }}"
 galaxy_user_name: galaxy
@@ -93,9 +92,14 @@ supervisor_manage_nodeproxy: false
 supervisor_manage_ie_proxy: false
 proftpd_nat_masquerade: false
 supervisor_proftpd_autostart: true
+galaxy_extras_slurm_ntask: "{{ ansible_processor_cores }}"
 
 # galaxy-tools role variables
 
+install_tools: true
 galaxy_tools_admin_user: "{{ galaxy_admin }}"
 galaxy_tools_api_key: "{{ default_admin_api_key }}"
 galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}"
+galaxy_tools_tool_list_files: []
+galaxy_tools_install_workflows: true
+galaxy_tools_workflows: []
