@@ -92,7 +92,7 @@ supervisor_manage_nodeproxy: false
 supervisor_manage_ie_proxy: false
 proftpd_nat_masquerade: false
 supervisor_proftpd_autostart: true
-galaxy_extras_slurm_ntask: "{{ ansible_processor_cores }}"
+galaxy_extras_slurm_ntask: "{{ ansible_processor_vcpus }}"
 
 # galaxy-tools role variables
 
