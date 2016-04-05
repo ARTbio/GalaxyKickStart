@@ -26,7 +26,7 @@ tools:
 - name: fastq_to_fasta
   owner: devteam
   revisions:
-  - 04614cf6ed39
+  - 186b8d913e6c
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   tool_panel_section_label: Metavisitor
 - name: fastx_trimmer
