@@ -32,7 +32,7 @@ tools:
 - name: fastx_trimmer
   owner: devteam
   revisions:
-  - d77c9c6ecf68
+  - 377ac2829eac
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   tool_panel_section_label: Metavisitor
 - name: ncbi_blast_plus
@@ -57,14 +57,13 @@ tools:
 - name: fetch_fasta_from_ncbi
   owner: drosofff
   revisions:
-  - 79cb7620843d
   - befdb392fece
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   tool_panel_section_label: Metavisitor
 - name: msp_blastparser_and_hits
   owner: drosofff
   revisions:
-  - 77346ecf5a28
+  - 6dfa79a6908a
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   tool_panel_section_label: Metavisitor
 - name: msp_cap3
@@ -106,7 +105,7 @@ tools:
 - name: khmer_normalize_by_median
   owner: iuc
   revisions:
-  - 5531deeabd2c
+  - 6d8793a4923d
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   tool_panel_section_label: Metavisitor
 - name: regex_find_replace
@@ -118,6 +117,6 @@ tools:
 - name: concatenate_multiple_datasets
   owner: mvdbeek
   revisions:
-  - 1e06fa2771f9
+  - 201c568972c3
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   tool_panel_section_label: Metavisitor
