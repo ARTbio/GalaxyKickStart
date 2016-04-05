@@ -20,7 +20,7 @@ tools:
 - name: fasta_filter_by_length
   owner: devteam
   revisions:
-  - 16679a7f554a
+  - c8cd0a03db49
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   tool_panel_section_label: Metavisitor
 - name: fastq_to_fasta
