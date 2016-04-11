@@ -214,6 +214,13 @@
                 "top": 379.59375
             }, 
             "post_job_actions": {
+                "ChangeDatatypeActionoutput_sam": {
+                    "action_arguments": {
+                        "newtype": "tabular"
+                    }, 
+                    "action_type": "ChangeDatatypeAction", 
+                    "output_name": "output_sam"
+                }, 
                 "DeleteIntermediatesActionoutput_unaligned_reads_l": {
                     "action_arguments": {}, 
                     "action_type": "DeleteIntermediatesAction", 
@@ -266,8 +273,46 @@
         }, 
         "4": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_to_fasta/cshl_fastq_to_fasta/1.0.0", 
+            "content_id": "Grouping1", 
             "id": 4, 
+            "input_connections": {
+                "input1": {
+                    "id": 3, 
+                    "output_name": "output_sam"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Group", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 783.5, 
+                "top": 783
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "Grouping1", 
+            "tool_state": "{\"operations\": \"[{\\\"opcol\\\": \\\"1\\\", \\\"__index__\\\": 0, \\\"optype\\\": \\\"length\\\", \\\"opround\\\": \\\"no\\\"}]\", \"__page__\": 0, \"input1\": \"null\", \"ignorelines\": \"[\\\"64\\\"]\", \"groupcol\": \"\\\"3\\\"\", \"__rerun_remap_job_id__\": null, \"ignorecase\": \"\\\"False\\\"\"}", 
+            "tool_version": "2.1.0", 
+            "type": "tool", 
+            "uuid": "731a0b2f-10f8-43d5-840b-892333b92d3c", 
+            "workflow_outputs": []
+        }, 
+        "5": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_to_fasta/cshl_fastq_to_fasta/1.0.0", 
+            "id": 5, 
             "input_connections": {
                 "input": {
                     "id": 3, 
@@ -302,13 +347,59 @@
                 }
             ]
         }, 
-        "5": {
+        "6": {
+            "annotation": "", 
+            "content_id": "sort1", 
+            "id": 6, 
+            "input_connections": {
+                "input": {
+                    "id": 4, 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Sort", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 1018.5, 
+                "top": 826
+            }, 
+            "post_job_actions": {
+                "RenameDatasetActionout_file1": {
+                    "action_arguments": {
+                        "newname": "putative false negatives"
+                    }, 
+                    "action_type": "RenameDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "sort1", 
+            "tool_state": "{\"__page__\": 0, \"style\": \"\\\"gennum\\\"\", \"column\": \"\\\"2\\\"\", \"__rerun_remap_job_id__\": null, \"order\": \"\\\"DESC\\\"\", \"input\": \"null\", \"column_set\": \"[]\"}", 
+            "tool_version": "1.0.3", 
+            "type": "tool", 
+            "uuid": "a586f659-f4bd-4968-8b42-7f1afeea1dfb", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "out_file1", 
+                    "uuid": "6369f226-0a21-4108-88e5-d5e99aea324b"
+                }
+            ]
+        }, 
+        "7": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_oases/oasesoptimiserv/1.1.4", 
-            "id": 5, 
+            "id": 7, 
             "input_connections": {
                 "inputs_0|input": {
-                    "id": 4, 
+                    "id": 5, 
                     "output_name": "output"
                 }
             }, 
@@ -340,17 +431,17 @@
                 }
             ]
         }, 
-        "6": {
+        "8": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.07", 
-            "id": 6, 
+            "id": 8, 
             "input_connections": {
                 "db_opts|histdb": {
                     "id": 1, 
                     "output_name": "output"
                 }, 
                 "query": {
-                    "id": 5, 
+                    "id": 7, 
                     "output_name": "transcripts"
                 }
             }, 
@@ -382,17 +473,17 @@
                 }
             ]
         }, 
-        "7": {
+        "9": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_blastparser_and_hits/BlastParser_and_hits/2.4.3", 
-            "id": 7, 
+            "id": 9, 
             "input_connections": {
                 "blast": {
-                    "id": 6, 
+                    "id": 8, 
                     "output_name": "output1"
                 }, 
                 "sequences": {
-                    "id": 5, 
+                    "id": 7, 
                     "output_name": "transcripts"
                 }
             }, 
@@ -452,13 +543,13 @@
                 }
             ]
         }, 
-        "8": {
+        "10": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/mvdbeek/concatenate_multiple_datasets/cat_multiple/0.2", 
-            "id": 8, 
+            "id": 10, 
             "input_connections": {
                 "input": {
-                    "id": 7, 
+                    "id": 9, 
                     "output_name": "tabularOutput"
                 }
             }, 
@@ -499,5 +590,5 @@
             ]
         }
     }, 
-    "uuid": "c56c85ae-7cca-44ff-b732-50f75db00d0b"
+    "uuid": "e478bbdb-f34d-48f4-9cb6-b54be280f669"
 }
