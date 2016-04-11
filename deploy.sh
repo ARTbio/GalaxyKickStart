@@ -2,7 +2,7 @@
 
 # We start by building and deploying the documentation
 SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd -P)"
-pip install --user mkdocs
+sudo pip install mkdocs
 # Initialize gh-pages checkout
 mkdir -p docs/html
 (
