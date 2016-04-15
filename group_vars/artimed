@@ -1,4 +1,5 @@
-galaxy_tools_tool_list: ["extra-files/artimed/artimed_tool_list.yml"]
+galaxy_tools_tool_list_files:
+  - "extra-files/artimed/artimed_tool_list.yml"
 data_manager_task_file: "extra-files/artimed/artimed_data_manager_tasks.yml"
 additional_files_list:
   - { src: "extra-files/artimed/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
