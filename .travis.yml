@@ -11,7 +11,6 @@ env:
     - GH_USER_NAME="Marius van den Beek"
     - GH_USER_EMAIL="m.vandenbeek@gmail.com"
     - GH_REF="github.com/ARTbio/ansible-artimed.git"
-    - secure="pseB6yOf48IPBRjuqXz+huJORBEtbaiyGnqE4NQVX0LXzNPpwaVBNURIMfvbPhZ5OhoEhnt8a0dZT95fQie0H82oQU9vJ73tBb/rNlytbtJQ4cXYOqn4HRzQsrHY1Tns5++LZmTrLWGKTGvO3bCg6nBTXSmda4kr46tEUJCI9IZRWPHIZu2MjfSMe5qxu4cT11hzQw6NuoTJs+B49uvz+0MCSP+Q3bDGHauVP6n/NjEItka1Rw75GIb+BqqKN4TQ+Wpv9+bM+WuUGdUNGDaFyR9y/M1Br6z+YfySu0OBjZuEf4bF3ZSh70W8VBm3fQW+aOZw3U9GA2FOcVERSGdMDq8UYj52T0c0d38pXCsxj51MFQ5eIlXp2tUSW/S8nttynGYWTqmUngin/qm6w6JnC+g6RLWlRhPYZfgZ/UggBu883N49OYj33hSwVlSmIspmK5KjD8t9X3LuRwbRPeNXTsHZppAEbFu/HezxxY1lK/pQepQIs5SHy1bXCMnLhQajfzrH82EiY7U/DEyYkrUPaHVBU27CmaNFA9g/l/SZaWnUq/ZQaKloQCBXoVGudrX4MWcIf4Do95WUTzZl4qc+2GhzIy9HZA9IA27zHW5FD5NhFf58ICmIkyhMlndIG3K8neRDRVn3keoh79feqOibyevSuQ8w3xaNBi4zr5eTqus="
 
 before_install:
   - export GALAXY_TRAVIS_USER=galaxy
