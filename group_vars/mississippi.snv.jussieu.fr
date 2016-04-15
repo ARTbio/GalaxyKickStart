@@ -1,4 +1,5 @@
-galaxy_tools_tool_list: ["extra-files/mississippi.snv.jussieu.fr/mississippi_tool_list.yml"]
+galaxy_tools_tool_list_files: 
+  - "extra-files/mississippi.snv.jussieu.fr/mississippi_tool_list.yml"
 additional_files_list:
   - { src: "extra-files/mississippi.snv.jussieu.fr/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
   - { src: "extra-files/mississippi.snv.jussieu.fr/ARTbio_plastisipi_screen.jpg", dest: "{{ galaxy_server_dir }}/static/" }
