@@ -1,4 +1,4 @@
-FROM artbio/galaxy-kickstart-base:ff5fb361875a1220ae3880412083c5cef4a8f1b1
+FROM artbio/galaxy-kickstart-base
 
 MAINTAINER Marius van den Beek <m.vandenbeek@gmail.com>
 

@@ -33,9 +33,6 @@ GALAXY_CONFIG_ADMIN_USERS="admin@galaxy.org"
 
 ONBUILD  WORKDIR  /setup
 ONBUILD  COPY  .  /setup
-ONBUILD  RUN  \
-              echo "===> Diagnosis: host information..."  && \
-              ansible -c local -m setup all
 
 # Expose port 80 (webserver), 21 (FTP server), 8800 (Proxy), 9002 (supvisord web app)
 EXPOSE :80
