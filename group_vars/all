@@ -25,6 +25,7 @@ supervisor_postgres_database_path: /etc/postgresql/{{ postgresql_version }}/main
 apt_package_state: present
 galaxy_extras_apt_package_state: present
 tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
+shed_tools_dir: "{{ galaxy_server_dir }}/../shed_tools"
 tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
 additional_files_list: []
 
