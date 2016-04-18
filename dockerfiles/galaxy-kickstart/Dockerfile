@@ -20,11 +20,10 @@ RUN pip install --upgrade pip && pip install ansible
 COPY  .  /setup
 WORKDIR /setup
 
-LC_ALL=en_US.UTF-8 \
+ENV LC_ALL=en_US.UTF-8 \
 LANG=en_US.UTF-8
 
 RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
-
 RUN ansible-playbook -i docker_inventory -c local galaxy.yml && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
