@@ -20,10 +20,10 @@ docker pull artbio/metavisitor-1.2
 ```
 In this documentation, we recommend to use the `artbio/metavisitor-1.2` which better corresponds to the environment described in our [Metavisitor preprint](http://dx.doi.org/10.1101/048983)
 
-When this pull is done (may take a moment), you can start the container by typing:
+When this pull is done (may take a few minutes depending on your connection speed to the dockerhub), you can start the container by typing:
 
 ```
-docker run -d -p 80:80 artbio/metavisitor-1.2`
+docker run -d -p 80:80 artbio/metavisitor-1.2
 ```
 
 This command starts a container in daemon mode (`-d`) from the image and serve it on port 80 of the local machine in the standard docker way.
@@ -36,16 +36,16 @@ If you wish to reach the container on a subdirectory, add `-e NGINX_GALAXY_LOCAT
 
 For instance,
 ```
-docker run -d -e NGINX_GALAXY_LOCATION="/my-subdirectory" -p 80:80 artbio/metavisitor-1.2`
+docker run -d -e NGINX_GALAXY_LOCATION="/my-subdirectory" -p 80:80 artbio/metavisitor-1.2
 ```
 
-will get the metavisitor docker container serving at `http://127.0.0.1:8080/my-subdirectory`.
+will get the metavisitor docker container serving at `http://127.0.0.1:80/my-subdirectory`.
 
 We recommend also changing the default admin user as well, so the command becomes:
 ```
-docker run -d -e NGINX_GALAXY_LOCATION="/my-subdirectory" -e GALAXY_CONFIG_ADMIN_USERS=admin@artbio.fr -p 8080:80 artbio/galaxy-kickstart-base
+docker run -d -e NGINX_GALAXY_LOCATION="/my-subdirectory" -e GALAXY_CONFIG_ADMIN_USERS=admin@artbio.fr -p 80:80 artbio/galaxy-kickstart-base
 ```
-Note that is you do not make this latest change, the admin login for the metavisitor container is admin@galaxy.org
+Note that is you do not make this latest change, the admin login for the metavisitor container is by default `admin@galaxy.org`
 
 ## Persisting to disk
 
