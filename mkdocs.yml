@@ -15,4 +15,5 @@ pages:
  - Metavisitor: 
    - about_metavisitor.md
    - Installing with GalaxyKickstarter: metavisitor_ansible.md
+   - Installing with Docker: metavisitor_docker.md
 theme: readthedocs
