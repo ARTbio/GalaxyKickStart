@@ -45,7 +45,7 @@ We recommend also changing the default admin user as well, so the command become
 ```
 docker run -d -e NGINX_GALAXY_LOCATION="/my-subdirectory" -e GALAXY_CONFIG_ADMIN_USERS=admin@artbio.fr -p 80:80 artbio/galaxy-kickstart-base
 ```
-Note that is you do not make this latest change, the admin login for the metavisitor container is by default `admin@galaxy.org`
+Note that is you do not make this latest change, the admin login for the metavisitor container is by default `admin@galaxy.org` and the password is `admin`.
 
 ## Persisting to disk
 
