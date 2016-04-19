@@ -87,28 +87,32 @@ Now, navigate with your terminal to your `ansible-artimed` folder and type the f
 
 ```
 ansible-playbook --inventory-file=hosts galaxy.yml
-
 ```
 
 
 If everything is ok, you may be asked to authorize the access to the `Target Machine` by typing yes in the terminal, and you will see ansible orchestrating the serveur deployment on the `Target Machine` in this terminal.
 
+# Re-deploying Metavisitor Galaxy on the `Target Machine`
+----
+If you are experimented in using ansible, you may customize your Metavisitor Galaxy instance deployed with GalaxyKickstarter by editing the content of `ansible-artimed.
 
-Here `[artimed]` is a group, that contains a machine called localhost.
-The variables defined in `group_vars/artimed` will be applied to this host.
-Ansible will connect by ssh to this machine, using the ssh key in `~/.ssh/id_rsa`.
+In that case, when your changes are done, just run again the command
 
-If you would like to run this playbook on a remote machine by ssh (currently needs to be a debian-type machine),
-create a new inventory, and change `localhost` to the IP address of that machine.
-`ansible_ssh_user=<user>` controls under which username to connect to this machine.
-This user needs to have sudo rights.
-
-Then, run the plabook by typing:
 ```
-ansible-playbook --inventory-file=<your_inventory> galaxy.yml
+ansible-playbook --inventory-file=hosts galaxy.yml
 ```
-
-You can put multiple machines in your inventory.
-If you run the playbook a second time, the process will be much faster, since steps that have already been executed will be skipped.
+When you run the playbook a second time, the process will be much faster, since steps that have already been executed are skipped.
 Whenever you change a variable (see [customizations](customizations.md)), you need to run the playbook again.
+
+
+You can put multiple machines in your inventory: a simple way to do this is just copying the line the required number of times with the appropriate ip address:
+
+```
+[metavisitor]
+192.54.201.126 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
+192.54.201.127 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
+192.54.201.128 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
+
+```
+
 
