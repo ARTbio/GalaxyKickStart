@@ -88,6 +88,10 @@ ansible-playbook --inventory-file=hosts galaxy.yml
 
 If everything is ok, you may be asked to authorize the access to the `Target Machine` by typing yes in the terminal, and you will see ansible orchestrating the serveur deployment on the `Target Machine` in this terminal.
 
+When the process is finished, you should be able to access the `Target Machine` by typing its IP address in your web browser.
+
+By default the admin login/password is `admin@galaxy.org` / `admin`. You should change the password for safety.
+
 # Re-deploying Metavisitor Galaxy on the `Target Machine`
 ----
 If you are experimented in using ansible, you may customize your Metavisitor Galaxy instance deployed with GalaxyKickstarter by editing the content of `ansible-artimed`.
