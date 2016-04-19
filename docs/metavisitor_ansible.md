@@ -1,6 +1,5 @@
 # Installing Metavisitor with GalaxyKickstarter and Ansible
 ----
-
 Here, a `Deployment Machine` will install a Metavisitor Galaxy server on `Target Machine`. Note that `Deployment Machine` and `Target Machine` can both be local or remote machines, and that they can be the same machine.
 
 # Requirements
@@ -10,18 +9,17 @@ Here, a `Deployment Machine` will install a Metavisitor Galaxy server on `Target
 - The `Target Machine` has to be accessible through ssh connection by the user (you) with `root` privileges. This implies that a correct ssh private key file is available on your `Deployment Machine`, for instance `~/.ssh/id_rsa`. This key will be used for secure transactions managed by ansible between the `Deployment Machine` and the `Target Machine`.
 
 # Getting the ansible playbook
+----
 This is done on the `Deployment Machine` by cloning the [GalaxyKickstarter (ansible-artimed) repository](https://github.com/ARTbio/ansible-artimed.git) hosted by [the ARTbio organization](https://github.com/ARTbio):
 
 In your terminal, type:
-
 ```
 git clone --recursive https://github.com/ARTbio/ansible-artimed.git
 ```
-
 [//]: # (TODO: Once we do releases, we include the submodules and hence users can just download the playbook without git)
 
 Importantly, GalaxyKickstarter makes use of submodules, so care
-needs to be taken to also download these submodules. This is why `--recursive` is included in the git command line
+needs to be taken to also download these submodules. This is why `--recursive` is included in the git command line.
 
 At completion of the git cloning, you will have a new `ansible-artimed` folder, which contains everything need for deployment with ansible, including the playbook file (here `galaxy.yml`). You can verify this by typing in terminal:
 
@@ -41,7 +39,7 @@ For deploying Metavisitor, you need to edit this file so that it just contains
 
 [metavisitor]
 
-`<ip address>` ansible_ssh_user="root" ansible_ssh_private_key_file="`<path/to/the/ssh/private/key>`"
+<ip address> ansible_ssh_user="root" ansible_ssh_private_key_file="<path/to/the/ssh/private/key>"
 
 ```
 
@@ -65,9 +63,7 @@ In cases where your `Target machine` has volumes where you wish the Galaxy data 
 
 If you don't understand the previous statement, no worries, just don't do anything and skip this step.
 
-For others:
-
-find the lines
+For others, find the lines
 
 ```
 #persistent data
@@ -83,7 +79,7 @@ Note that if `/export` is not changed, nothing will happen and the deployed gala
 
 You are almost done.
 
-Now, navigate with your terminal to your `ansible-artimed` folder and type the following command to run the ansible playbook for deploying metavisitor Galaxy on the `Target Machine`:
+Navigate with your terminal to your `ansible-artimed` folder and type the following command to run the ansible playbook for deploying metavisitor Galaxy on the `Target Machine`:
 
 ```
 ansible-playbook --inventory-file=hosts galaxy.yml
@@ -94,7 +90,7 @@ If everything is ok, you may be asked to authorize the access to the `Target Mac
 
 # Re-deploying Metavisitor Galaxy on the `Target Machine`
 ----
-If you are experimented in using ansible, you may customize your Metavisitor Galaxy instance deployed with GalaxyKickstarter by editing the content of `ansible-artimed.
+If you are experimented in using ansible, you may customize your Metavisitor Galaxy instance deployed with GalaxyKickstarter by editing the content of `ansible-artimed`.
 
 In that case, when your changes are done, just run again the command
 
@@ -105,7 +101,7 @@ When you run the playbook a second time, the process will be much faster, since 
 Whenever you change a variable (see [customizations](customizations.md)), you need to run the playbook again.
 
 
-You can put multiple machines in your inventory: a simple way to do this is just copying the line the required number of times with the appropriate ip address:
+You can put multiple machines in your inventory: a simple way to do this is just copying the line the required number of times with the appropriate ip addresses:
 
 ```
 [metavisitor]
