@@ -12,4 +12,8 @@ pages:
  - Available roles: available_roles.md
  - Available variables: available_variables.md
  - Editing the readme: editing_help.md
+ - Metavisitor: 
+   - about_metavisitor.md
+   - Installing with GalaxyKickstarter: metavisitor_ansible.md
+   - Installing with Docker: metavisitor_docker.md
 theme: readthedocs
