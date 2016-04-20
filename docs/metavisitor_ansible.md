@@ -69,7 +69,7 @@ In this specific case, add in the hosts inventory file:
 ```
 In that case `aws_private_key.pem` is the private ssh key for interacting with aws instances, and the [aws] section will trigger additional actions for accessing the Metavisitor Galaxy instance in the Amazon cloud.
 
-Note also that port range 49152 - 65534 should be open in for an AWS instance in order to allow ftp upload (set this range in the security group associated to the AWS instance)
+Note also that port range 49152 - 65534 should be open for the AWS instance in order to allow ftp upload (set this range in the security group associated to the AWS instance)
 
 
 ## Adapt the group_vars/all file for persisting data, if needed.
