@@ -57,6 +57,21 @@ Thus, a practical exemple of the final content on the inventory file `hosts` is:
 
 where `192.54.201.126` is the ip address of the `Target machine` and `~/.ssh/id_rsa` the path to the private ssh key.
 
+### Adapt the ansible inventory file to an Amazon Web Service (AWS) virtual machine
+In this specific case, add in the hosts inventory file:
+
+```
+[metavisitor]
+192.54.201.126 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/aws_private_key.pem"
+
+[aws]
+192.54.201.126
+```
+In that case `aws_private_key.pem` is the private ssh key for interacting with aws instances, and the [aws] section will trigger additional actions for accessing the Metavisitor Galaxy instance in the Amazon cloud.
+
+Note also that port range 49152 - 65534 should be open for the AWS instance in order to allow ftp upload (set this range in the security group associated to the AWS instance)
+
+
 ## Adapt the group_vars/all file for persisting data, if needed.
 
 In cases where your `Target machine` has volumes where you wish the Galaxy data to be persisted in, you have to edit the `ansible-artimed/group_vars/all` file, to indicate the path to this volume on the `Target machine`.
