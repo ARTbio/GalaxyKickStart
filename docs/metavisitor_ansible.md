@@ -72,11 +72,12 @@ In that case `aws_private_key.pem` is the private ssh key for interacting with a
 Note that in addition the settings of the security group associated to the AWS instance should be as follows:
 
 ```
-Type	Protocole	Port Range	Source	#comment
-HTTP	TCP	80	0.0.0.0/0	for Galaxy web access
-SSH	TCP	22	0.0.0.0/0	for ssh access to the AWS instance
-Custom TCP Rule	TCP	21	0.0.0.0/0	for FTP upload to Galaxy
-Custom TCP Rule	TCP	49152 - 65534	0.0.0.0/0	for FTP upload to Galaxy
+Type            |Protocole|   Port Range  |  Source   | #comment
+__________________________________________________________________________________________
+HTTP            |   TCP   |      80       | 0.0.0.0/0 | for Galaxy web access
+SSH             |   TCP   |      22       | 0.0.0.0/0 | for ssh access to the AWS instance
+Custom TCP Rule |   TCP   |      21       | 0.0.0.0/0 | for FTP upload to Galaxy
+Custom TCP Rule |   TCP   | 49152 - 65534 | 0.0.0.0/0 | for FTP upload to Galaxy
 ```
 
 
