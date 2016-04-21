@@ -80,9 +80,7 @@ Custom TCP Rule |   TCP   |      21       | 0.0.0.0/0 | for FTP upload to Galaxy
 Custom TCP Rule |   TCP   | 49152 - 65534 | 0.0.0.0/0 | for FTP upload to Galaxy
 ```
 
-
-Note also that port range 49152 - 65534 should be open for the AWS instance in order to allow ftp upload
-
+The ports 21 and  49152 - 65534 should be open for FTP uploads to the AWS instance, and port 80 should be open for accessing galaxy.
 
 ## Adapt the group_vars/all file for persisting data, if needed.
 
