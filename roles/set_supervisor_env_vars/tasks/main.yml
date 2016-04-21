@@ -1,0 +1,8 @@
+# Some environmental variables need to be set before supervisor starts.
+# This can be done by adding lines in /etc/default/supervisor,
+# which will be sourced when starting/restarting supervisor
+
+- name: Add supervisor ENV vars
+  lineinfile: "dest=/etc/default/supervisor state=present line={{ item }}"
+  with_items:
+    - "{{ supervisor_env_vars }}"
