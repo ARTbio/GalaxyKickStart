@@ -44,7 +44,7 @@ EXPOSE :21
 EXPOSE :8800
 EXPOSE :9002
 
-CMD printenv >> /etc/default/supervisor && bash -c "source /etc/default/supervisor &&\ 
+CMD printenv >> /etc/default/supervisor && bash -c "source /etc/default/supervisor &&\
            ansible-playbook galaxy.yml -c local \
            --tags "persists_galaxy,nginx_config,galaxy_config_files,galaxy_extras_job_conf" --skip-tags=skip_supervisor_start_in_docker \
            --extra-vars nginx_galaxy_location=$NGINX_GALAXY_LOCATION \
