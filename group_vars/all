@@ -32,7 +32,7 @@ supervisor_env_vars:
     - export IP_ADDRESS=`curl icanhazip.com`
     - export GALAXY_CONF_FTP_UPLOAD_SITE="ftp://$IP_ADDRESS"
     - export MASQUERADE_ADDRESS=$IP_ADDRESS
-    - export NTASK="--ntasks=`/usr/bin/nproc` --share"
+    - export NATIVE_SPEC="--ntasks=`/usr/bin/nproc` --share"
 
 # galaxy role variables
 
