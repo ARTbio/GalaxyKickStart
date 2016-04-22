@@ -39,6 +39,8 @@
         - configure_server_stack
         - install_extras
 
+    - role: set_supervisor_env_vars
+
     - role: ensure_postgresql_up
       tags:
         - manage_postgres
