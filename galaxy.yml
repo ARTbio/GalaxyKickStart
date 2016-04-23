@@ -33,13 +33,13 @@
         - configure_galaxy
         - install_galaxy
 
+    - role: set_supervisor_env_vars
+
     #installs supervisor, nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
       tags:
         - configure_server_stack
         - install_extras
-
-    - role: set_supervisor_env_vars
 
     - role: ensure_postgresql_up
       tags:
