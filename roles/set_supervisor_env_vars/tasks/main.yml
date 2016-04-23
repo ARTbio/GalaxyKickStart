@@ -3,6 +3,6 @@
 # which will be sourced when starting/restarting supervisor
 
 - name: Add supervisor ENV vars
-  lineinfile: "dest=/etc/default/supervisor state=present line={{ item }}"
+  lineinfile: "dest=/etc/default/supervisor state=present create=yes line={{ item }}"
   with_items:
     - "{{ supervisor_env_vars }}"
