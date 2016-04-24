@@ -33,7 +33,8 @@ RUN mkdir /etc/ssl/private-copy; mv /etc/ssl/private/* /etc/ssl/private-copy/; r
 
 
 ENV NGINX_GALAXY_LOCATION="" \
-GALAXY_CONFIG_ADMIN_USERS="admin@galaxy.org"
+GALAXY_CONFIG_ADMIN_USERS="admin@galaxy.org" \
+NAT_MASQUERADE=false
 
 ONBUILD  WORKDIR  /setup
 ONBUILD  COPY  .  /setup
@@ -50,5 +51,6 @@ CMD printenv >> /etc/default/supervisor && bash -c "source /etc/default/supervis
            --extra-vars nginx_galaxy_location=$NGINX_GALAXY_LOCATION \
            --extra-vars galaxy_admin=$GALAXY_CONFIG_ADMIN_USERS \
            --extra-vars ftp_upload_site=$IP_ADDRESS \
+           --extra-vars nat_masquerade=$NAT_MAQUERADE \
            -i docker_inventory && \
            /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf --nodaemon"
