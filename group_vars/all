@@ -31,6 +31,9 @@ additional_files_list: []
 supervisor_env_vars:
     - export IP_ADDRESS=`curl icanhazip.com`
     - export GALAXY_CONFIG_FTP_UPLOAD_SITE="ftp://$IP_ADDRESS"
+    - export GALAXY_CONFIG_CONDA_AUTO_INSTALL=True
+    - export GALAXY_CONFIG_CONDA_AUTO_INIT=True
+    - export GALAXY_CONFIG_CONDA_PREFIX=/home/galaxy/conda
     - export MASQUERADE_ADDRESS=$IP_ADDRESS
     - export NATIVE_SPEC="--ntasks=`/usr/bin/nproc` --share"
 
