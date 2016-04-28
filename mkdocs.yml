@@ -16,4 +16,6 @@ pages:
    - about_metavisitor.md
    - Installing with GalaxyKickstarter: metavisitor_ansible.md
    - Installing with Docker: metavisitor_docker.md
+   - Access and Control Metavisitor Galaxy instance: metavisitor_access_control.md
+   - Prepare Metavisitor Galaxy instance for analyses: metavisitor_configure_references.md
 theme: readthedocs
