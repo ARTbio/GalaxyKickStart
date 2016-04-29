@@ -19,7 +19,7 @@ ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
 COPY  .  /setup
 WORKDIR /setup
 
-RUN pip install --upgrade setuptools && pip install ansible && ansible-playbook -i docker_inventory -c local galaxy.yml && \
+RUN pip install --upgrade setuptools && pip install ansible && ansible-playbook -i docker_inventory -c local galaxy.yml
 ENV LC_ALL=en_US.UTF-8 \
 LANG=en_US.UTF-8
 
