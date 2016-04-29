@@ -18,4 +18,5 @@ pages:
    - Installing with Docker: metavisitor_docker.md
    - Access and Control Metavisitor Galaxy instance: metavisitor_access_control.md
    - Prepare Metavisitor Galaxy instance for analyses: metavisitor_configure_references.md
+   - Prepare input data histories: use_cases_input_data.md
 theme: readthedocs
