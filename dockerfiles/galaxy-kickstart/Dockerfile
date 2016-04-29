@@ -9,13 +9,11 @@ RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
     echo "exit 0" > /usr/sbin/policy-rc.d  && \
     \
     apt-get install -y --no-install-recommends \
-    apt-transport-https software-properties-common python-dev python-pip build-essential
+    apt-transport-https software-properties-common python-dev python-pip build-essential libffi-dev
 
 ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
               echo "===> Updating TLS certificates..."         && \
               apt-get install -y openssl ca-certificates
-
-RUN pip install --upgrade pip && pip install ansible
 
 COPY  .  /setup
 WORKDIR /setup
