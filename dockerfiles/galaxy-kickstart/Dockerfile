@@ -9,7 +9,8 @@ RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
     echo "exit 0" > /usr/sbin/policy-rc.d  && \
     \
     apt-get install -y --no-install-recommends \
-    apt-transport-https software-properties-common python-dev python-pip build-essential libffi-dev
+    apt-transport-https software-properties-common python-dev python-pip build-essential libffi-dev \
+    libssl-dev
 
 ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
               echo "===> Updating TLS certificates..."         && \
@@ -18,7 +19,7 @@ ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
 COPY  .  /setup
 WORKDIR /setup
 
-RUN ansible-playbook -i docker_inventory -c local galaxy.yml && \
+RUN pip install --upgrade setuptools && pip install ansible && ansible-playbook -i docker_inventory -c local galaxy.yml && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # work around for AUFS bug
