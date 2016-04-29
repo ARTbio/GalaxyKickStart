@@ -32,6 +32,7 @@ before_install:
   - sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
   - docker build -t galaxy_kickstart .
   - sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
+  - CID=`docker run -d -p 8181:80 -e NGINX_GALAXY_LOCATION=/subdir galaxy_kickstart`
   - |
     docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
     --privileged=true \
@@ -56,15 +57,12 @@ install:
 
 script:
   - sleep 30s
+  # Test that galaxy served at subdir responds
+  - curl https://localhost:8181/subdir/api/version| grep version_major
+  - docker stop $CID
   # Run bioblend nosetests with the same UID and GID as the galaxy user inside if Docker
   # this will guarantee that exchanged files bewteen bioblend and Docker are read & writable from both sides
   - sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH && cd $GALAXY_HOME/bioblend-master && tox -e $TOX_ENV -- -e 'test_download_dataset'"
-  # Test the 'old' tool installation script
-  #- docker run galaxy-docker/test bash -c 'install-repository "--url https://toolshed.g2.bx.psu.edu -o iuc --name bedtools --panel-section-name 'BEDTools'"'
-  # Test the 'new' tool installation script
-  #- docker run galaxy-docker/test bash -c "install-tools $GALAXY_HOME/ansible/galaxy-tools-playbook/files/tool_list.yaml"
-  # Test Docker in Docker, used by Interactive Environments; This needs to be at the end as Docker takes some time to start.
-  #- docker exec -i -t galaxy_test_container docker info
   - curl --fail $BIOBLEND_GALAXY_URL/api/version
   - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   - curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
