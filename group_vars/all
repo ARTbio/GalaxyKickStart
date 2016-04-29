@@ -3,6 +3,7 @@ install_maintainance_packages: false
 run_extras: true
 run_data_manager: false
 galaxy_hostname: "{{ inventory_hostname }}"
+nginx_galaxy_location: ""
 galaxy_user_name: galaxy
 galaxy_user_gid: 1450
 galaxy_user_uid: 1450
@@ -59,17 +60,17 @@ galaxy_config:
     #debug: False
     #use_interactive: False
     static_enabled: False
-    nginx_x_accel_redirect_base: "{{ nginx_galaxy_location | default() }}/_x_accel_redirect"
-    nginx_x_archive_files_base: "{{ nginx_galaxy_location | default() }}/_x_accel_redirect"
+    nginx_x_accel_redirect_base: "{{ nginx_galaxy_location }}/_x_accel_redirect"
+    nginx_x_archive_files_base: "{{ nginx_galaxy_location }}/_x_accel_redirect"
     nginx_upload_store: /tmp
-    nginx_upload_path: "{{ nginx_galaxy_location | default() }}/_upload"
+    nginx_upload_path: "{{ nginx_galaxy_location }}/_upload"
     use_pbkdf2: "{{ use_pbkdf2 }}"
     filter-with: proxy-prefix
   "uwsgi":
     master: True
   "filter:proxy-prefix":
     use: "egg:PasteDeploy#prefix"
-    prefix: "{{ nginx_galaxy_location | default()}}"
+    prefix: "{{ nginx_galaxy_location }}"
 
 # galaxy-extras role variables
 galaxy_uwsgi_static_conf: true
