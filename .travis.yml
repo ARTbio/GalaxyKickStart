@@ -22,7 +22,6 @@ before_install:
   - export GALAXY_USER_PASSWD=admin
   - export BIOBLEND_GALAXY_API_KEY=admin
   - export BIOBLEND_GALAXY_URL=http://localhost:8080
-
   - docker --version
   - docker info
 
@@ -32,7 +31,7 @@ before_install:
   - sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
   - docker build -t galaxy_kickstart .
   - sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
-  - CID=`docker run -d -p 8181:80 -e NGINX_GALAXY_LOCATION=/subdir galaxy_kickstart`
+  - CID=`docker run -d -p 8181:80 -e NAT_MASQUERADE=true NGINX_GALAXY_LOCATION=/subdir galaxy_kickstart`
   - |
     docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
     --privileged=true \
@@ -59,13 +58,14 @@ script:
   - sleep 30s
   # Test that galaxy served at subdir responds
   - curl https://localhost:8181/subdir/api/version| grep version_major
-  - docker stop $CID
   # Run bioblend nosetests with the same UID and GID as the galaxy user inside if Docker
   # this will guarantee that exchanged files bewteen bioblend and Docker are read & writable from both sides
   - sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH && cd $GALAXY_HOME/bioblend-master && tox -e $TOX_ENV -- -e 'test_download_dataset'"
   - curl --fail $BIOBLEND_GALAXY_URL/api/version
   - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   - curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
+  # test that proftpd is running when nat_masquerade=true
+  - docker exec -it $CID supervisorctl status | grep proftpd | grep RUNNING
   # Change back to $TRAVIS_BUILD_DIR, since deployment will fail otherwise
   - cd $TRAVIS_BUILD_DIR
 deploy:

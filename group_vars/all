@@ -26,8 +26,14 @@ supervisor_postgres_database_path: /etc/postgresql/{{ postgresql_version }}/main
 apt_package_state: present
 galaxy_extras_apt_package_state: present
 tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
+shed_tools_dir: "{{ galaxy_server_dir }}/../shed_tools"
 tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
 additional_files_list: []
+supervisor_env_vars:
+    - export IP_ADDRESS=`curl --silent icanhazip.com`
+    - export GALAXY_CONFIG_FTP_UPLOAD_SITE="ftp://$IP_ADDRESS"
+    - export MASQUERADE_ADDRESS=$IP_ADDRESS
+    - export NATIVE_SPEC="--ntasks=`/usr/bin/nproc` --share"
 
 # galaxy role variables
 
@@ -48,7 +54,7 @@ galaxy_config:
     database_connection: "{{ galaxy_db }}"
     tool_dependency_dir: "{{ tool_dependency_dir }}"
     ftp_upload_dir: "{{ proftpd_files_dir }}"
-    ftp_upload_site: ftp://{{ galaxy_hostname }}
+    allow_user_dataset_purge: True
     #tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     #to be done only in production
     #debug: False
@@ -93,7 +99,6 @@ supervisor_manage_nodeproxy: false
 supervisor_manage_ie_proxy: false
 proftpd_nat_masquerade: false
 supervisor_proftpd_autostart: true
-galaxy_extras_slurm_ntask: "{{ ansible_processor_vcpus }}"
 
 # galaxy-tools role variables
 

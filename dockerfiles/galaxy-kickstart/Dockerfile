@@ -20,6 +20,11 @@ COPY  .  /setup
 WORKDIR /setup
 
 RUN pip install --upgrade setuptools && pip install ansible && ansible-playbook -i docker_inventory -c local galaxy.yml && \
+ENV LC_ALL=en_US.UTF-8 \
+LANG=en_US.UTF-8
+
+RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
+RUN ansible-playbook -i docker_inventory -c local galaxy.yml && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # work around for AUFS bug
@@ -28,7 +33,8 @@ RUN mkdir /etc/ssl/private-copy; mv /etc/ssl/private/* /etc/ssl/private-copy/; r
 
 
 ENV NGINX_GALAXY_LOCATION="" \
-GALAXY_CONFIG_ADMIN_USERS="admin@galaxy.org"
+GALAXY_CONFIG_ADMIN_USERS="admin@galaxy.org" \
+NAT_MASQUERADE=false
 
 ONBUILD  WORKDIR  /setup
 ONBUILD  COPY  .  /setup
@@ -39,7 +45,12 @@ EXPOSE :21
 EXPOSE :8800
 EXPOSE :9002
 
-CMD ansible-playbook galaxy.yml -c local --tags "persists_galaxy,nginx_config,galaxy_config_files,galaxy_extras_job_conf" --skip-tags=skip_supervisor_start_in_docker \
+CMD printenv >> /etc/default/supervisor && bash -c "source /etc/default/supervisor &&\
+           ansible-playbook galaxy.yml -c local \
+           --tags "persists_galaxy,nginx_config,galaxy_config_files,galaxy_extras_job_conf" --skip-tags=skip_supervisor_start_in_docker \
            --extra-vars nginx_galaxy_location=$NGINX_GALAXY_LOCATION \
-           --extra-vars galaxy_admin=$GALAXY_CONFIG_ADMIN_USERS -i docker_inventory && \
-           /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf --nodaemon
+           --extra-vars galaxy_admin=$GALAXY_CONFIG_ADMIN_USERS \
+           --extra-vars ftp_upload_site=$IP_ADDRESS \
+           --extra-vars nat_masquerade=$NAT_MAQUERADE \
+           -i docker_inventory && \
+           /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf --nodaemon"
