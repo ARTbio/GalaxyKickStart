@@ -9,8 +9,9 @@ RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
     echo "exit 0" > /usr/sbin/policy-rc.d  && \
     \
     apt-get install -y --no-install-recommends \
-    apt-transport-https software-properties-common python-dev python-pip build-essential libffi-dev \
-    libssl-dev
+    apt-transport-https software-properties-common \
+    && apt-add-repository -y ppa:ansible/ansible && \
+    apt-get update -qq && apt-get install -y --no-install-recommends ansible
 
 ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
               echo "===> Updating TLS certificates..."         && \
@@ -19,7 +20,7 @@ ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
 COPY  .  /setup
 WORKDIR /setup
 
-RUN pip install --upgrade setuptools && pip install ansible && ansible-playbook -i docker_inventory -c local galaxy.yml
+RUN ansible-playbook -i docker_inventory -c local galaxy.yml
 ENV LC_ALL=en_US.UTF-8 \
 LANG=en_US.UTF-8
 
