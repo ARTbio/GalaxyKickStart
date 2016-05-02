@@ -13,6 +13,8 @@
   mount: opts=bind fstype=none state=mounted name={{ item.path }} src="{{ galaxy_persistent_directory }}/{{ item.path }}"
   with_items: "{{ importable_paths | default([]) }}"
 
+- replace: dest={{ galaxy_config_dir }}/galaxy.ini regexp='(.*)prefix = (?!{{ nignx_galaxy_location }}).*' replace='\1prefix = {{ nginx_galaxy_location }}' backup=yes
+
 - include: check_psql_connection.yml
   tags: skip_supervisor_start_in_docker
 
