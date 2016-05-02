@@ -25,13 +25,13 @@ You can find the correct remote in ansible-artimed/.gitmodules
 git remote -v
 ```
 
-If this is not the correct remote, change back to ansible-artimed and do
+If this is not the correct remote, change back to the ansible-artimed directory and do
 
 ```
 git submodule sync
 ```
 
-Get the latest changesets (change back to the submodule if you had to sync the submodules)
+Get the latest changesets (change back to the submodule directory if you had to sync the submodules)
 ```
 git fetch
 ```
