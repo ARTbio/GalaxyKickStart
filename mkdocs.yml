@@ -20,4 +20,5 @@ pages:
    - Prepare Metavisitor Galaxy instance for analyses: metavisitor_configure_references.md
    - Prepare input data histories: use_cases_input_data.md
    - Use Cases 1-1 to 1-4: use_case_1.md
+ - development.md
 theme: readthedocs
