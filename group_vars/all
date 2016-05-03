@@ -33,11 +33,11 @@ supervisor_env_vars:
     - export IP_ADDRESS=`curl --silent icanhazip.com`
     - export MASQUERADE_ADDRESS=$IP_ADDRESS
     - export NATIVE_SPEC="--ntasks=`/usr/bin/nproc` --share"
-    - export NGINX_GALAXY_LOCATION={{ nginx_galaxy_location }}
+    - export NGINX_GALAXY_LOCATION="{{ nginx_galaxy_location }}"
     - export GALAXY_CONFIG_FTP_UPLOAD_SITE="ftp://$IP_ADDRESS"
-    - export GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE=$NGINX_GALAXY_LOCATION/_x_accel_redirect
-    - export GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE=$NGINX_GALAXY_LOCATION/_x_accel_redirect
-    - export GALAXY_CONFIG_NGINX_UPLOAD_PATH=$NGINX_GALAXY_LOCATION/_upload
+    - export GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE="$NGINX_GALAXY_LOCATION/_x_accel_redirect"
+    - export GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE="$NGINX_GALAXY_LOCATION/_x_accel_redirect"
+    - export GALAXY_CONFIG_NGINX_UPLOAD_PATH="$NGINX_GALAXY_LOCATION/_upload"
 
 # galaxy role variables
 
