@@ -40,3 +40,41 @@ We are almost ready, but before clicking the "**Run Workflow**" button there is 
 - And edit the field to "History for Use Case 1-1"
 - **You can now click the "Run workflow" button.**
 This trigger the workflow run. After a few seconds (may be take a while for complex workflows), you will see an alert that the workflow is started, and a link to navigate to the newly created history.
+
+When the workflow has finished, if you navigate to the created "History for Use Case 1-1", you should see:
+
+![history1_1](images/final_history_1_1.png)
+
+Note that 24 datasets have been hidden by the workflow for clarity. You just have to click on the "hidden" link to unhide these datasets
+
+## Histories for Use Cases 1-2 and 1-3
+
+Histories for Uses Cases 1-2 and 1-3 are produced in almost the same way as History for Use Case 1-1.
+
+Do exactly as described for Use Case 1-1 and
+- Remember to go back to the `Input data for Use Cases 1-1, 1-2, 1-3 and 1-4` history and be sure you are going to run the workflow from that history.
+- **Select the appropriate workflow** !
+- Remember to Check the "**Send results to a new history**" checkbox, rename the new history appropriately before pressing the "**Run workflow**" button
+
+## History for Use Case 1-4
+
+Before running the workflow for Use Case 1-4, we need to collect datasets generated in Histories for Use Case 1-1, 1-2 and 1-3 and send them in our `Input data for Use Cases 1-1, 1-2, 1-3 and 1-4` history.
+
+This is because the purpose of the workflow for Use Case 1-4 is to remap the raw read sequencing datasets to the viral genomes generated in the previous histories as well as to 2 different Nora virus genomes deposited in Genbank (NC_007919.3 and JX220408).
+
+Thus, go back to the `Input data for Use Cases 1-1, 1-2, 1-3 and 1-4` history and
+
+1. Use the `Retrieve FASTA from NCBI` Metavisitor tool to retrieve the NC_007919.3 sequence.
+- Use the `Regex Find And Replace` tool on the _Retrieve FASTA from NCBI (Nucleotide) with queryString 'NC_007919.3'_ dataset as an input, and put `>gi\|346421290\|ref\|NC_007919.3\|_Nora_virus,_complete_genome` as Find Regex parameter and `>NC_007919.3` as Replacement parameter. This is just to change the header of the FASTA file and make it more readable.
+- Use the `Retrieve FASTA from NCBI` Metavisitor tool to retrieve the JX220408 sequence.
+- Use the `Regex Find And Replace` tool on the _Retrieve FASTA from NCBI (Nucleotide) with queryString 'JX220408'_ dataset as an input, and put `>gi\|402295620\|gb\|JX220408.1\|_Nora_virus_isolate_FR1,_complete_genome` as Find Regex parameter and `>JX220408.1` as Replacement parameter.
+- click on the top wheel history icon, select `Copy Datasets`; select "History for Use Case 1-1" as a Source History, click on the last dataset of the history (Nora_MV_NC_007919.3_guided), select "Input data for Use Cases 1-1, 1-2..." as Destination History, and click "Copy History Items".
+- Repeat the previous operation for History for Use Case 1-2, selecting the last "Nora_raw_reads_NC_007919.3_guided" dataset.
+- and Repeat the previous operation for History for Use Case 1-3, selecting the last "Nora_Median-Norm-reads_NC_007919.3_guided" dataset.
+
+
+
+
+
+
+
