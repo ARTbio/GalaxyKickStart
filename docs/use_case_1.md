@@ -56,21 +56,61 @@ Do exactly as described for Use Case 1-1 and
 - **Select the appropriate workflow** !
 - Remember to Check the "**Send results to a new history**" checkbox, rename the new history appropriately before pressing the "**Run workflow**" button
 
-## History for Use Case 1-4
+## History for remapping in Use Cases 1-1,2,3
 
-Before running the workflow for Use Case 1-4, we need to collect datasets generated in Histories for Use Case 1-1, 1-2 and 1-3 and send them in our `Input data for Use Cases 1-1, 1-2, 1-3 and 1-4` history.
+Before running the workflow for remapping in Use Cases 1-1,2,3, we need to collect datasets generated in the histories for Use Case 1-1, 1-2 and 1-3 and send them in our `Input data for Use Cases 1-1, 1-2, 1-3 and 1-4` history.
+
+#### update the `Input data for Use Cases 1-1, 1-2, 1-3 and 1-4` history
 
 This is because the purpose of the workflow for Use Case 1-4 is to remap the raw read sequencing datasets to the viral genomes generated in the previous histories as well as to 2 different Nora virus genomes deposited in Genbank (NC_007919.3 and JX220408).
 
 Thus, go back to the `Input data for Use Cases 1-1, 1-2, 1-3 and 1-4` history and
 
 1. Use the `Retrieve FASTA from NCBI` Metavisitor tool to retrieve the NC_007919.3 sequence.
-- Use the `Regex Find And Replace` tool on the _Retrieve FASTA from NCBI (Nucleotide) with queryString 'NC_007919.3'_ dataset as an input, and put `>gi\|346421290\|ref\|NC_007919.3\|_Nora_virus,_complete_genome` as Find Regex parameter and `>NC_007919.3` as Replacement parameter. This is just to change the header of the FASTA file and make it more readable.
+- Use the `Regex Find And Replace` tool on the _Retrieve FASTA from NCBI (Nucleotide) with queryString 'NC_007919.3'_ dataset as an input, and put `>gi\|346421290\|ref\|NC_007919.3\|_Nora_virus,_complete_genome` as Find Regex parameter and `>NC_007919.3` as Replacement parameter. This is just to change the header of the FASTA file and make it more readable. Rename the generated dataset NC_007919.3 for clarity.
 - Use the `Retrieve FASTA from NCBI` Metavisitor tool to retrieve the JX220408 sequence.
-- Use the `Regex Find And Replace` tool on the _Retrieve FASTA from NCBI (Nucleotide) with queryString 'JX220408'_ dataset as an input, and put `>gi\|402295620\|gb\|JX220408.1\|_Nora_virus_isolate_FR1,_complete_genome` as Find Regex parameter and `>JX220408.1` as Replacement parameter.
+- Use the `Regex Find And Replace` tool on the _Retrieve FASTA from NCBI (Nucleotide) with queryString 'JX220408'_ dataset as an input, and put `>gi\|402295620\|gb\|JX220408.1\|_Nora_virus_isolate_FR1,_complete_genome` as Find Regex parameter and `>JX220408.1` as Replacement parameter. Rename the generated dataset JX220408.1 for clarity.
 - click on the top wheel history icon, select `Copy Datasets`; select "History for Use Case 1-1" as a Source History, click on the last dataset of the history (Nora_MV_NC_007919.3_guided), select "Input data for Use Cases 1-1, 1-2..." as Destination History, and click "Copy History Items".
 - Repeat the previous operation for History for Use Case 1-2, selecting the last "Nora_raw_reads_NC_007919.3_guided" dataset.
 - and Repeat the previous operation for History for Use Case 1-3, selecting the last "Nora_Median-Norm-reads_NC_007919.3_guided" dataset.
+- you may have to refresh your `Input data for Use Cases 1-1, 1-2, 1-3 and 1-4` history to reveal the three copied datasets
+- The last step is to create a dataset collection with the 5 Nora virus genomes that you have now in your input data history: just click on the checkbox icon at the top of the history bar, select the 5 corresponding data sets (NC_007919.3, JX220408.1, Nora_MV_NC_007919.3_guided, Nora_raw_reads_NC_007919.3_guided and Nora_Median-Norm-reads_NC_007919.3_guided), click on the `For all selected...` button, select `Build Dataset List`, name this list "Nora virus genomes", and press the `Create list` button.
+
+We are done with the input data history update !
+
+#### Generate the History for remapping in Use Cases 1-1,2,3
+
+1. in the workflow top menu of Galaxy, select the `Metavisitor: Workflow for remapping in Use Cases 1-1,2,3` workflow and directly select the `run`option (you may also look at the workflow before by selection the `edit` option).
+- Specify "SRP013822" for the step 1 option
+- Specify "Nora virus genomes" for the step 2 option (you see now why we had to create a dataset collection)
+- click at the bottom the checkbox `Send results to a new history`
+- Edit the field that shows up by typing in it: "**History for remapping in Use Cases 1-1,2,3**"
+- execute the workflow by clicking the `Run workflow` button.
+- After few seconds, you may follow the link to the new history running !
+
+## History for remapping in Use Case 1-4
+
+This is a simple history to generate because basically, it is similar to the History for Use Case 1-1, but with a slightly modified (and simplified workflow).
+
+#### Navigate back again to your "base" history `Input data for Use Cases 1-1, 1-2, 1-3 and 1-4`
+
+Now the sequence of operations to be performed should be more familiar to you:
+
+1. Top menu `Workflow`
+- Select `Metavisitor: Workflow for Use Case 1-4` and the `run` option
+- Step 1 (Input Dataset Collection), select the `SRP013822` option
+- Step 2 (viral nucleotide BLAST database), select `nucleotide vir1 blast database` (forced option if everything went well - only one blast database is available in this input history)
+- click at the bottom the checkbox `Send results to a new history`
+- Edit the field that shows up by typing in it: "**History for Use Case 1-4**"
+- execute the workflow by clicking the `Run workflow` button.
+- After few seconds, you may follow the link to the new "**History for Use Case 1-4**" running !
+
+
+
+
+
+
+
 
 
 
