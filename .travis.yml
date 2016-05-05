@@ -31,9 +31,10 @@ before_install:
   - sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
   - docker build -t galaxy_kickstart .
   - sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
-  - CID=`docker run -d -p 8181:80 -e NAT_MASQUERADE=true -e NGINX_GALAXY_LOCATION=/subdir galaxy_kickstart`
+  - sudo mkdir /export2 && sudo chown $GALAXY_UID:$GALAXY_GID /export2
+  - CID1=`docker run -d --privileged=true -p 8181:80 -e NAT_MASQUERADE=true -e NGINX_GALAXY_LOCATION=/subdir -v /export2:/export galaxy_kickstart`
   - |
-    docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
+    CID2=`docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
     --privileged=true \
     -e GALAXY_CONFIG_ALLOW_USER_DATASET_PURGE=True \
     -e GALAXY_CONFIG_ALLOW_LIBRARY_PATH_PASTE=True \
@@ -41,7 +42,7 @@ before_install:
     -e GALAXY_CONFIG_ENABLE_BETA_WORKFLOW_MODULES=True \
     -v /tmp/:/tmp/ \
     -v /export/:/export \
-    galaxy_kickstart
+    galaxy_kickstart`
   - docker ps
   - cd $GALAXY_HOME
   - sudo su $GALAXY_TRAVIS_USER -c 'wget https://github.com/bgruening/bioblend/archive/master.tar.gz'
@@ -55,6 +56,7 @@ install:
   - sudo su $GALAXY_TRAVIS_USER -c 'sed -i.bak "s/commands.*$/commands =/" tox.ini'
 
 script:
+  - docker logs $CID2
   - sleep 30s
   # Test that galaxy served at subdir responds
   - curl http://localhost:8181/subdir/api/version| grep version_major
@@ -65,7 +67,12 @@ script:
   - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   - curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   # test that proftpd is running when nat_masquerade=true
-  - docker exec -it $CID supervisorctl status | grep proftpd | grep RUNNING
+  - docker exec -it $CID1 supervisorctl status | grep proftpd | grep RUNNING
+  - docker stop $CID1 $CID2 && docker rm $CID1 $CID2
+  # Start docker again with export2 but do not define a NGINX_GALAXY_LOCATION
+  - CID3=`docker run -d --privileged=true -p 8181:80 -e NAT_MASQUERADE=true -v /export2:/export galaxy_kickstart` && sleep 60s
+  - docker logs $CID3
+  - curl http://localhost:8181/api/version| grep version_major
   # Change back to $TRAVIS_BUILD_DIR, since deployment will fail otherwise
   - cd $TRAVIS_BUILD_DIR
 deploy:

@@ -31,9 +31,13 @@ tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
 additional_files_list: []
 supervisor_env_vars:
     - export IP_ADDRESS=`curl --silent icanhazip.com`
-    - export GALAXY_CONFIG_FTP_UPLOAD_SITE="ftp://$IP_ADDRESS"
     - export MASQUERADE_ADDRESS=$IP_ADDRESS
     - export NATIVE_SPEC="--ntasks=`/usr/bin/nproc` --share"
+    - export NGINX_GALAXY_LOCATION="{{ nginx_galaxy_location }}"
+    - export GALAXY_CONFIG_FTP_UPLOAD_SITE="ftp://$IP_ADDRESS"
+    - export GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE="$NGINX_GALAXY_LOCATION/_x_accel_redirect"
+    - export GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE="$NGINX_GALAXY_LOCATION/_x_accel_redirect"
+    - export GALAXY_CONFIG_NGINX_UPLOAD_PATH="$NGINX_GALAXY_LOCATION/_upload"
 
 # galaxy role variables
 
@@ -55,15 +59,8 @@ galaxy_config:
     tool_dependency_dir: "{{ tool_dependency_dir }}"
     ftp_upload_dir: "{{ proftpd_files_dir }}"
     allow_user_dataset_purge: True
-    #tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
-    #to be done only in production
-    #debug: False
-    #use_interactive: False
     static_enabled: False
-    nginx_x_accel_redirect_base: "{{ nginx_galaxy_location }}/_x_accel_redirect"
-    nginx_x_archive_files_base: "{{ nginx_galaxy_location }}/_x_accel_redirect"
     nginx_upload_store: /tmp
-    nginx_upload_path: "{{ nginx_galaxy_location }}/_upload"
     use_pbkdf2: "{{ use_pbkdf2 }}"
     filter-with: proxy-prefix
   "uwsgi":

@@ -36,6 +36,10 @@
     - role: set_supervisor_env_vars
       tags: env_vars
 
+    - role: copy_additional_files
+      tags:
+        - install_extras
+
     #installs supervisor, nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
       tags:
@@ -52,7 +56,7 @@
       run_extras: true
       pbkdf2: true
       create_galaxy_admin: true
-      restart_galaxy: true
+      restart_galaxy: false
       tags:
         - install_extras
       
@@ -64,19 +68,11 @@
       sudo: yes
       sudo_user: "{{ galaxy_user_name }}"
       tags: install_tools
-      when: install_tools
 
-    - role: galaxyprojectdotorg.galaxy-tools
-      sudo: yes
-      sudo_user: "{{ galaxy_user_name }}"
-      tags: install_tools
-      galaxy_tools_tool_list: "{{ galaxy_data_manager_tool_list }}"
-      when: run_data_manager
-
-    #Restart Galaxy
+    # Restart Galaxy if tools have been installed
     - role: artimed_extras
       restart_galaxy: true
-      when: install_tools or run_data_manager
+      when: galaxy_tools_tool_list_files|length > 0
 
     - role: artimed_extras
       run_data_managers: true
