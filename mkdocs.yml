@@ -22,5 +22,6 @@ pages:
    - Use Cases 1-1 to 1-4: use_case_1.md
    - Use Cases 2-1 and 2-2: use_case_2.md
    - Use Case 3-1: use_case_3-1.md
+   - Use Case 3-2: use_case_3-2.md
  - development.md
 theme: readthedocs
