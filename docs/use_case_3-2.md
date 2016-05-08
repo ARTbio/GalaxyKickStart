@@ -8,42 +8,42 @@ As for the previous Use Cases 1, 2 and 3-1, the first step is to collect all inp
 Here is a table that recapitulates the actions to perform, line by line.
 ```
 #ENA-RUN            action		                                        post-action
-SRR453487           |rename	"patient 566"	                            |change datatype to "fastq"
-SRR453437	        |rename	"patient 438"	                            |change datatype to "fastq"
-SRR453443,SRR453458	|concatenate, rename merge dataset	"patient 401"	|change the merged dataset to datatype to "fastq", and delete and purge the original SRR datasets
-SRR453430	        |rename	"patient 382"	                            |change datatype to "fastq"
-SRR453491	        |rename	"patient 377"	                            |change datatype to "fastq"
-SRR453499	        |rename	"patient 375"	                            |change datatype to "fastq"
-SRR453484	        |rename	"patient 350"	                            |change datatype to "fastq"
-SRR453464	        |rename	"patient 349"	                            |change datatype to "fastq"
-SRR453506	        |rename	"patient 345"	                            |change datatype to "fastq"
-SRR453417	        |rename	"patient 344"	                            |change datatype to "fastq"
-SRR453490	        |rename	"patient 335"	                            |change datatype to "fastq"
-SRR453478	        |rename	"patient 331"	                            |change datatype to "fastq"
-SRR453465,SRR453480	|concatenate, rename merge dataset	"patient 330"	|change the merged dataset to datatype to "fastq", and delete and purge the original SRR datasets
-SRR453489,SRR453505	|concatenate, rename merge dataset	"patient 329"	|change the merged dataset to datatype to "fastq", and delete and purge the original SRR datasets
-SRR453498	        |rename	"patient 322"	                            |change datatype to "fastq"
-SRR453446	        |rename	"patient 321"	                            |change datatype to "fastq"
-SRR453427,SRR453440	|concatenate, rename merge dataset	"patient 315"	|change the merged dataset to datatype to "fastq", and delete and purge the original SRR datasets
-SRR453438	        |rename	"patient 282"	                            |change datatype to "fastq"
-SRR453450	        |rename	"patient 275"	                            |change datatype to "fastq"
-SRR453460	        |rename	"patient 274"	                            |change datatype to "fastq"
-SRR453485	        |rename	"patient 270"	                            |change datatype to "fastq"
-SRR453448	        |rename	"patient 266"	                            |change datatype to "fastq"
-SRR453424,SRR453457	|concatenate, rename merge dataset	"patient 263"	|change the merged dataset to datatype to "fastq", and delete and purge the original SRR datasets
-SRR453510	        |rename	"patient 193"	                            |change datatype to "fastq"
-SRR453456	        |rename	"patient 187"	                            |change datatype to "fastq"
-SRR453425,SRR453469	|concatenate, rename merge dataset	"patient 186"	|change the merged dataset to datatype to "fastq", and delete and purge the original SRR datasets
-SRR453481	        |rename	"patient 183"	                            |change datatype to "fastq"
-SRR453531	        |rename	"patient 180"	                            |change datatype to "fastq"
-SRR453474	        |rename	"patient 179"	                            |change datatype to "fastq"
-SRR453509	        |rename	"patient 171"	                            |change datatype to "fastq"
-SRR453451	        |rename	"patient 168"	                            |change datatype to "fastq"
-SRR453495,SRR453504	|concatenate, rename merge dataset	"patient 161"	|change the merged dataset to datatype to "fastq", and delete and purge the original SRR datasets
-SRR453500	        |rename	"patient 159"	                            |change datatype to "fastq"
-SRR453493	        |rename	"patient 156"	                            |change datatype to "fastq"
-SRR453444	        |rename	"patient 131"	                            |change datatype to "fastq"
-SRR453426	        |rename	"patient 78	                                |change datatype to "fastq"
+SRR453487           |rename	"patient 566"	                            |change datatype to "fastqsanger"
+SRR453437	        |rename	"patient 438"	                            |change datatype to "fastqsanger"
+SRR453443,SRR453458	|concatenate, rename merge dataset	"patient 401"	|change the merged dataset to datatype to "fastqsanger", and delete and purge the original SRR datasets
+SRR453430	        |rename	"patient 382"	                            |change datatype to "fastqsanger"
+SRR453491	        |rename	"patient 377"	                            |change datatype to "fastqsanger"
+SRR453499	        |rename	"patient 375"	                            |change datatype to "fastqsanger"
+SRR453484	        |rename	"patient 350"	                            |change datatype to "fastqsanger"
+SRR453464	        |rename	"patient 349"	                            |change datatype to "fastqsanger"
+SRR453506	        |rename	"patient 345"	                            |change datatype to "fastqsanger"
+SRR453417	        |rename	"patient 344"	                            |change datatype to "fastqsanger"
+SRR453490	        |rename	"patient 335"	                            |change datatype to "fastqsanger"
+SRR453478	        |rename	"patient 331"	                            |change datatype to "fastqsanger"
+SRR453465,SRR453480	|concatenate, rename merge dataset	"patient 330"	|change the merged dataset to datatype to "fastqsanger", and delete and purge the original SRR datasets
+SRR453489,SRR453505	|concatenate, rename merge dataset	"patient 329"	|change the merged dataset to datatype to "fastqsanger", and delete and purge the original SRR datasets
+SRR453498	        |rename	"patient 322"	                            |change datatype to "fastqsanger"
+SRR453446	        |rename	"patient 321"	                            |change datatype to "fastqsanger"
+SRR453427,SRR453440	|concatenate, rename merge dataset	"patient 315"	|change the merged dataset to datatype to "fastqsanger", and delete and purge the original SRR datasets
+SRR453438	        |rename	"patient 282"	                            |change datatype to "fastqsanger"
+SRR453450	        |rename	"patient 275"	                            |change datatype to "fastqsanger"
+SRR453460	        |rename	"patient 274"	                            |change datatype to "fastqsanger"
+SRR453485	        |rename	"patient 270"	                            |change datatype to "fastqsanger"
+SRR453448	        |rename	"patient 266"	                            |change datatype to "fastqsanger"
+SRR453424,SRR453457	|concatenate, rename merge dataset	"patient 263"	|change the merged dataset to datatype to "fastqsanger", and delete and purge the original SRR datasets
+SRR453510	        |rename	"patient 193"	                            |change datatype to "fastqsanger"
+SRR453456	        |rename	"patient 187"	                            |change datatype to "fastqsanger"
+SRR453425,SRR453469	|concatenate, rename merge dataset	"patient 186"	|change the merged dataset to datatype to "fastqsanger", and delete and purge the original SRR datasets
+SRR453481	        |rename	"patient 183"	                            |change datatype to "fastqsanger"
+SRR453531	        |rename	"patient 180"	                            |change datatype to "fastqsanger"
+SRR453474	        |rename	"patient 179"	                            |change datatype to "fastqsanger"
+SRR453509	        |rename	"patient 171"	                            |change datatype to "fastqsanger"
+SRR453451	        |rename	"patient 168"	                            |change datatype to "fastqsanger"
+SRR453495,SRR453504	|concatenate, rename merge dataset	"patient 161"	|change the merged dataset to datatype to "fastqsanger", and delete and purge the original SRR datasets
+SRR453500	        |rename	"patient 159"	                            |change datatype to "fastqsanger"
+SRR453493	        |rename	"patient 156"	                            |change datatype to "fastqsanger"
+SRR453444	        |rename	"patient 131"	                            |change datatype to "fastqsanger"
+SRR453426	        |rename	"patient 78	                                |change datatype to "fastqsanger"
 ```
 - Create a dataset collection of patient datasets: Click on the checked box icon in the history top menu, check the "patient... " datasets we have just generated (36 datasets) (you can use the `Select all` button), and `For all selected`, `Build a dataset list` that you name "Tractable Patient Datasets".
 - Copy the `vir1 nucleotide BLAST database` from the `References` history to the current history `Input data for Use Case 3-2`.
