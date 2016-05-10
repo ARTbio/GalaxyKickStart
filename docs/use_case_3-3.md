@@ -91,7 +91,7 @@ When you have finishid with the 55 datasets, make sure to change their datatype 
 - For Step 2, select the `nucleotide vir1 blast database` (this should also be already selected)
 - As usual, check the box `Send results to a new history`, edit the name of the new history to `Use Case 3-3 Ebola virus`, and `Execute` the workflow ! Note, that for complex workflows with dataset collections in input, the actual warning that the workflow is started make take time to show up; you can even have a "504 Gateway Time-out" warning. This is not a serious issue: just go in your `User` -> `Saved history` menu, you will see your `Use Case 3-3 Ebola virus` history running and you will be able to access it.
 
-As a last note, the workflow for Use Case 3-3 may take a long time. Be patient.
+The workflow for Use Case 3-3 may take a long time. Be patient.
 
 ## History for Use Case 3-3 / Lassa virus, segment L
 1. Stay in the history `Input data for Use Case 3-3`
@@ -101,7 +101,7 @@ As a last note, the workflow for Use Case 3-3 may take a long time. Be patient.
 - For Step 2, select the `nucleotide vir1 blast database` (this should also be already selected)
 - As usual, check the box `Send results to a new history`, edit the name of the new history to `Use Case 3-3 Ebola virus`, and `Execute` the workflow ! Note, that for complex workflows with dataset collections in input, the actual warning that the workflow is started make take time to show up; you can even have a "504 Gateway Time-out" warning. This is not a serious issue: just go in your `User` -> `Saved history` menu, you will see your `Use Case 3-3 Ebola virus` history running and you will be able to access it.
 
-As a last note, the workflow for Use Case 3-3 may take a long time. Be patient.
+The workflow for Use Case 3-3 may take a long time. Be patient.
 
 ## History for Use Case 3-3 / Lassa virus, segment S
 1. Stay in the history `Input data for Use Case 3-3`
@@ -111,18 +111,4 @@ As a last note, the workflow for Use Case 3-3 may take a long time. Be patient.
 - For Step 2, select the `nucleotide vir1 blast database` (this should also be already selected)
 - As usual, check the box `Send results to a new history`, edit the name of the new history to `Use Case 3-3 Ebola virus`, and `Execute` the workflow ! Note, that for complex workflows with dataset collections in input, the actual warning that the workflow is started make take time to show up; you can even have a "504 Gateway Time-out" warning. This is not a serious issue: just go in your `User` -> `Saved history` menu, you will see your `Use Case 3-3 Ebola virus` history running and you will be able to access it.
 
-As a last note, the workflow for Use Case 3-3 may take a long time. Be patient.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The workflow for Use Case 3-3 may take a long time. Be patient.
