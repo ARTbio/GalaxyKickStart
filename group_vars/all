@@ -60,6 +60,7 @@ galaxy_config:
     tool_dependency_dir: "{{ tool_dependency_dir }}"
     ftp_upload_dir: "{{ proftpd_files_dir }}"
     allow_user_dataset_purge: True
+    allow_user_impersonation: True
     static_enabled: False
     nginx_upload_store: /tmp
     use_pbkdf2: "{{ use_pbkdf2 }}"

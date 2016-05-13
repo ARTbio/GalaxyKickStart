@@ -92,7 +92,7 @@ tools:
 - name: msp_oases
   owner: drosofff
   revisions:
-  - f08d9c814ffb
+  - dc684e37f668
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_sr_bowtie
@@ -124,7 +124,7 @@ tools:
   owner: iuc
   revisions:
   - b723c120161a
-  tool_panel_section_label: Get Data
+  tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: trinityrnaseq
   owner: anmoljh
