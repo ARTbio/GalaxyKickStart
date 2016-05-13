@@ -27,7 +27,7 @@
             "tool_state": "{\"collection_type\": \"list\", \"name\": \"Small Read fastq files\"}", 
             "tool_version": null, 
             "type": "data_collection_input", 
-            "uuid": "None", 
+            "uuid": "35d6ef0f-98d0-439a-aef4-3d4d2c85e309", 
             "workflow_outputs": [
                 {
                     "label": null, 
@@ -100,10 +100,16 @@
             }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/yac_clipper/yac/1.3.6", 
+            "tool_shed_repository": {
+                "changeset_revision": "91cce7c1436d", 
+                "name": "yac_clipper", 
+                "owner": "drosofff", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
             "tool_state": "{\"out_format\": \"\\\"fasta\\\"\", \"__page__\": 0, \"min\": \"\\\"18\\\"\", \"max\": \"\\\"30\\\"\", \"__rerun_remap_job_id__\": null, \"clip_source\": \"{\\\"clip_source_list\\\": \\\"prebuilt\\\", \\\"clip_sequence\\\": \\\"TGGAATTCTCGGGTGCCAAG\\\", \\\"__current_case__\\\": 0}\", \"input\": \"null\", \"Nmode\": \"\\\"reject\\\"\"}", 
             "tool_version": "1.3.6", 
             "type": "tool", 
-            "uuid": "None", 
+            "uuid": "4d773707-d5ed-48c2-b9d2-334f32e2e1f7", 
             "workflow_outputs": []
         }, 
         "3": {
@@ -152,10 +158,16 @@
             }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/mvdbeek/concatenate_multiple_datasets/cat_multiple/0.2", 
+            "tool_shed_repository": {
+                "changeset_revision": "201c568972c3", 
+                "name": "concatenate_multiple_datasets", 
+                "owner": "mvdbeek", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
             "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
             "tool_version": "0.2", 
             "type": "tool", 
-            "uuid": "None", 
+            "uuid": "c1d6a090-fc9b-4957-a952-4241216e082a", 
             "workflow_outputs": []
         }, 
         "4": {
@@ -212,10 +224,16 @@
             }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2", 
+            "tool_shed_repository": {
+                "changeset_revision": "c1bfa227bbb6", 
+                "name": "msp_sr_bowtie", 
+                "owner": "drosofff", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
             "tool_state": "{\"__page__\": 0, \"output_format\": \"\\\"tabular\\\"\", \"additional_fasta\": \"\\\"No\\\"\", \"v_mismatches\": \"\\\"0\\\"\", \"__rerun_remap_job_id__\": null, \"input\": \"null\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"history\\\", \\\"ownFile\\\": null, \\\"__current_case__\\\": 1}\", \"method\": \"\\\"multiple\\\"\"}", 
             "tool_version": "1.1.2", 
             "type": "tool", 
-            "uuid": "None", 
+            "uuid": "7c3b7910-0490-4b69-ad32-c4ab81d01046", 
             "workflow_outputs": []
         }, 
         "5": {
@@ -252,10 +270,10 @@
             }, 
             "tool_errors": null, 
             "tool_id": "wc_gnu", 
-            "tool_state": "{\"__page__\": 0, \"include_header\": \"\\\"True\\\"\", \"input1\": \"null\", \"options\": \"[\\\"lines\\\"]\", \"__rerun_remap_job_id__\": null}", 
+            "tool_state": "{\"__page__\": 0, \"include_header\": \"\\\"true\\\"\", \"input1\": \"null\", \"options\": \"[\\\"lines\\\"]\", \"__rerun_remap_job_id__\": null}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "None", 
+            "uuid": "5967713a-0548-48b9-a675-227ad48b420c", 
             "workflow_outputs": [
                 {
                     "label": null, 
@@ -321,6 +339,12 @@
             }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_readmap_and_size_histograms/Readmap/1.1.5", 
+            "tool_shed_repository": {
+                "changeset_revision": "68f58363f1c6", 
+                "name": "msp_sr_readmap_and_size_histograms", 
+                "owner": "drosofff", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
             "tool_state": "{\"minquery\": \"\\\"18\\\"\", \"__page__\": 0, \"rows_per_page\": \"\\\"8\\\"\", \"yrange\": \"\\\"0\\\"\", \"title\": \"\\\"Readmaps and size distributions\\\"\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"history\\\", \\\"series\\\": [{\\\"__index__\\\": 0, \\\"norm\\\": \\\"1.0\\\", \\\"input\\\": null}], \\\"ownFile\\\": null, \\\"__current_case__\\\": 1}\", \"__rerun_remap_job_id__\": null, \"maxquery\": \"\\\"30\\\"\", \"xlabel\": \"\\\"Coordinates/read size\\\"\", \"ylabel\": \"\\\"Number of reads\\\"\", \"gff\": \"null\"}", 
             "tool_version": "1.1.5", 
             "type": "tool", 
