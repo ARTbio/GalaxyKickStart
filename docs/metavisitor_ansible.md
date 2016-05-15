@@ -62,7 +62,7 @@ In this specific case, add in the hosts inventory file:
 
 ```
 [metavisitor]
-192.54.201.126 ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/aws_private_key.pem"
+192.54.201.126 ansible_ssh_user="ubuntu" ansible_ssh_private_key_file="~/.ssh/aws_private_key.pem"
 
 [aws]
 192.54.201.126
