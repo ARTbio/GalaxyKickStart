@@ -57,7 +57,32 @@ You may follow the link to the new history when the workflow is started.
 3. Be careful at selecting `long read RNAseq datasets` for the step 1 (Input Dataset Collection)
 4. For the step 2, the option `protein vir1 blast database` is forced, because the workflow is expecting of protein blast database for this step and only one dataset with this datatype is available in the history
 5. Click the `Send results to a new history` checkbox and rename the history to "History for Use Case 2-1".
-6. Run Workflow !
+6. Run Workflow.
+
+## Re-mapping of the small RNA reads (ERP012577) to the AnCV genome (KU169878).
+The previous workflow allowed to assemble a large contig of 8919 nt which significantly matched structural and non-structural polyproteins of Drosophila C Virus and Cricket Paralysis Virus in blastx alignments (see the dataset `blast analysis, by subjects` of the history). This large contig corresponds to the genome of a new Anopheles C Virus deposited to the NCBI nucleotide database under accession number KU169878 (see the [companion Metavisitor article](http://dx.doi.org/10.1101/048983) and [Carissimo et al](http://dx.doi.org/10.1371/journal.pone.0153881)).
+
+Here, we are going to perform manually a few steps, before using another workflow in the history 2-2 to remap the ERP012577 small RNA reads to the AnCV genome.
+
+1. Look at the `blast analysis, by subjects` dataset and copy the name of the 8919 nt contig that aligned to DCV and CrPV sequences. It is noteworthy that this name may vary from one Oase run to another because the Oases algorithm is not totally deterministic. In the [companion Metavisitor article](http://dx.doi.org/10.1101/048983), this name was Locus_69_Transcript_1/1_Confidence_0.000_Length_8919.
+    - Copy this name, find the tool `Pick Fasta sequences with header satisfying a query string` in the Galaxy tool bar, and paste this name in the field `Select sequences with this string in their header` of the tool form. Select the dataset `Oases_optimiser on data 20: Denovo assembled transcripts` as a source file, and run the tool.
+2. Now, we are going to change the header of the previously extracted fasta sequence using the tool `Regex Find And Replace`.
+    - Select the previous dataset `Pick Fasta sequences on data 21 including 'Locus_69_Transcript_1/1_Confidence_0.000_Length_8919' in header` as input dataset for this tool. Click on `+ Insert Check`. Use `Locus_69_Transcript_1/1_Confidence_0.000_Length_8919` as *Find Regex* and `Anopheles_C_Virus|KU169878` as *Replacement*. Execute the tool. Look at the resulting dataset.
+    
+3. Copy the dataset collection `Small RNA reads ERP012577` from the history `Input data for Use Cases 2-1 and 2-2` into the *current* history `Use Case 2-2`. You may have the refresh the history bar to see this collection and the attached datasets popping up.
+
+We are now ready to run the workflow.
+
+----
+
+1. In the workflow menu, pick up the workflow `Metavisitor: Workflow for remapping in Use Cases 2-1,2` and select the `run` option.
+2. In the workflow form, ensure that `Small RNA reads ERP012577` are selected for the Step 1 and `Regex Find And Replace on data 28` is selected for the step 2 (this should be the case if you followed the instructions).
+3. This time, *do not* check the box `Send results to a new history` and directly click the `Run workflow`button.
+
+This workflow will provide you with a graphical view of ERP012577 small RNA mapping to the AnCV genome.
+
+
+    
 
 
  

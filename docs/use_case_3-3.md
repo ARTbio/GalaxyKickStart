@@ -87,7 +87,7 @@ When you have finishid with the 55 datasets, make sure to change their datatype 
 1. Stay in the history `Input data for Use Case 3-3`
 - pick the workflow `Metavisitor: Workflow for Use Case 3-3` in the workflows menu. It is possible that the workflow manager complains about settings for the Trinity tool that is used in this workflow. This is a minor issue if happens: just edit the workflow, click on the tool `Trinity` and specify the number of processors accordingly to your computing infrastructure. Save the workflow and select the `run` option.
 - Before Step 1, you have to specify some parameters at run time. For Ebola virus, the field `target_virus` has to be filled with `Ebola` and the field `reference_virus` has to be filled with `NC_002549.1` (as a guide for reconstruction of the Ebola virus genome).
-- For Step 1, select `Ebola virus` (this should be already selected).
+- For Step 1, select `Ebola virus`.
 - For Step 2, select the `nucleotide vir1 blast database` (this should also be already selected)
 - As usual, check the box `Send results to a new history`, edit the name of the new history to `Use Case 3-3 Ebola virus`, and `Execute` the workflow ! Note, that for complex workflows with dataset collections in input, the actual warning that the workflow is started make take time to show up; you can even have a "504 Gateway Time-out" warning. This is not a serious issue: just go in your `User` -> `Saved history` menu, you will see your `Use Case 3-3 Ebola virus` history running and you will be able to access it.
 
@@ -96,19 +96,19 @@ The workflow for Use Case 3-3 may take a long time. Be patient.
 ## History for Use Case 3-3 / Lassa virus, segment L
 1. Stay in the history `Input data for Use Case 3-3`
 - pick the workflow `Metavisitor: Workflow for Use Case 3-3` in the workflows menu. It is possible that the workflow manager complains about settings for the Trinity tool that is used in this workflow. This is a minor issue if happens: just edit the workflow, click on the tool `Trinity` and specify the number of processors accordingly to your computing infrastructure. Save the workflow and select the `run` option.
-- Before Step 1, you have to specify some parameters at run time. For Ebola virus, the field `target_virus` has to be filled with `Lassa` and the field `reference_virus` has to be filled with `NC_002549.1` (as a guide for reconstruction of the Ebola virus genome).
-- For Step 1, select `Ebola virus` (this should be already selected).
+- Before Step 1, you have to specify some parameters at run time. For Lassa virus, the field `target_virus` has to be filled with `Lassa` and the field `reference_virus` has to be filled with `NC_004297.1` (as a guide for reconstruction of the segment L of the Lassa virus genome).
+- For Step 1, select `Lassa virus`.
 - For Step 2, select the `nucleotide vir1 blast database` (this should also be already selected)
-- As usual, check the box `Send results to a new history`, edit the name of the new history to `Use Case 3-3 Ebola virus`, and `Execute` the workflow ! Note, that for complex workflows with dataset collections in input, the actual warning that the workflow is started make take time to show up; you can even have a "504 Gateway Time-out" warning. This is not a serious issue: just go in your `User` -> `Saved history` menu, you will see your `Use Case 3-3 Ebola virus` history running and you will be able to access it.
+- As usual, check the box `Send results to a new history`, edit the name of the new history to `Use Case 3-3 Lassa virus segment L`, and `Execute` the workflow ! Note, that for complex workflows with dataset collections in input, the actual warning that the workflow is started make take time to show up; you can even have a "504 Gateway Time-out" warning. This is not a serious issue: just go in your `User` -> `Saved history` menu, you will see your `Use Case 3-3 Lassa virus segment L` history running and you will be able to access it.
 
 The workflow for Use Case 3-3 may take a long time. Be patient.
 
 ## History for Use Case 3-3 / Lassa virus, segment S
 1. Stay in the history `Input data for Use Case 3-3`
 - pick the workflow `Metavisitor: Workflow for Use Case 3-3` in the workflows menu. It is possible that the workflow manager complains about settings for the Trinity tool that is used in this workflow. This is a minor issue if happens: just edit the workflow, click on the tool `Trinity` and specify the number of processors accordingly to your computing infrastructure. Save the workflow and select the `run` option.
-- Before Step 1, you have to specify some parameters at run time. For Ebola virus, the field `target_virus` has to be filled with `Lassa` and the field `reference_virus` has to be filled with `NC_004296.1` (as a guide for reconstruction of the Ebola virus genome).
-- For Step 1, select `Ebola virus` (this should be already selected).
+- Before Step 1, you have to specify some parameters at run time. For Lassa virus, the field `target_virus` has to be filled with `Lassa` and the field `reference_virus` has to be filled with `NC_004296.1` (as a guide for reconstruction of the segment S of the Lassa virus genome).
+- For Step 1, select `Lassa virus` (this should be already selected).
 - For Step 2, select the `nucleotide vir1 blast database` (this should also be already selected)
-- As usual, check the box `Send results to a new history`, edit the name of the new history to `Use Case 3-3 Ebola virus`, and `Execute` the workflow ! Note, that for complex workflows with dataset collections in input, the actual warning that the workflow is started make take time to show up; you can even have a "504 Gateway Time-out" warning. This is not a serious issue: just go in your `User` -> `Saved history` menu, you will see your `Use Case 3-3 Ebola virus` history running and you will be able to access it.
+- As usual, check the box `Send results to a new history`, edit the name of the new history to `Use Case 3-3 Lassa virus segment S`, and `Execute` the workflow ! Note, that for complex workflows with dataset collections in input, the actual warning that the workflow is started make take time to show up; you can even have a "504 Gateway Time-out" warning. This is not a serious issue: just go in your `User` -> `Saved history` menu, you will see your `Use Case 3-3 Lassa virus segment S` history running and you will be able to access it.
 
 The workflow for Use Case 3-3 may take a long time. Be patient.

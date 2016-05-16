@@ -1,6 +1,6 @@
 Once you know how to access to your Metavisitor Galaxy instance with a web browser and are able to perform basic start/stop/restart operations, there is still some work needed to import and configure reference data (genomes) so that they are directly available to all instance users for running tools and workflows
 
-Here we provide the step-by-step description of what we *actually did ourselves* to prepare our Metavisitor instance before performing the analyses described here [here](http://dx.doi.org/10.1101/048983).
+Here we provide the step-by-step description of what we *actually did ourselves* to prepare our Metavisitor instance before performing the analyses described [here](http://dx.doi.org/10.1101/048983).
 
 ## 1. Connect to your Metavisitor Galaxy admin account with your web browser
 
