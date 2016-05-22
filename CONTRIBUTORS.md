@@ -1,6 +1,6 @@
 # Contributors
 
-The following individuals have contributed code to ansible-artimed:
+The following individuals have contributed code to galaxy-kickstart:
 
 * Christophe Antoniewski <drosofff@gmail.com>
 * Fabio Rocha Jimenez Vieira <fabiorjvieira@gmail.com>

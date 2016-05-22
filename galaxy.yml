@@ -52,7 +52,7 @@
         - install_tools
 
     #fix proftpd config file, restarts supervisor, put the test tool shed in the list and create a welcome page
-    - role: artimed_extras
+    - role: kickstart_extras
       run_extras: true
       pbkdf2: true
       create_galaxy_admin: true
@@ -69,12 +69,12 @@
       sudo_user: "{{ galaxy_user_name }}"
       tags: install_tools
 
-    # Restart Galaxy if tools have been installed
-    - role: artimed_extras
+    #Restart Galaxy
+    - role: kickstart_extras
       restart_galaxy: true
       when: galaxy_tools_tool_list_files|length > 0
 
-    - role: artimed_extras
+    - role: kickstart_extras
       run_data_managers: true
       create_user: true
       when: run_data_manager

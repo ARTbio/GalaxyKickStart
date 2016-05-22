@@ -7,15 +7,15 @@ instead variables can be set in group_vars and host vars.
 
 The playbook comes with an example inventory file `hosts`.
 ```
-[artimed]
+[kickstart]
 localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
 [travis_bioblend]
 localhost ansible_connection=local
 [aws]
 # Put you aws IP and key here to make FTP work in the default VPC.
-# If you want further group-specific variables, put the host in these groups as well [e.g artimed].
+# If you want further group-specific variables, put the host in these groups as well [e.g kickstart].
 ```
-`[artimed]`, `[travis_bioblend]` and `[aws]` are predefined groups. Any host (here we only have localhost) that
+`[kickstart]`, `[travis_bioblend]` and `[aws]` are predefined groups. Any host (here we only have localhost) that
 is added to one or multiple groups will have the corresponding group variables applied.
 Group variables are defined in `group_vars/[name of the group]` and default variables are found in   
 `group_vars/all`.

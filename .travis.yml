@@ -7,10 +7,10 @@ dist: trusty
 env:
   global:
     - TOX_ENV=py27
-    - SITE_URL="https://artbio.github.io/ansible-artimed/"
+    - SITE_URL="https://artbio.github.io/galaxy-kickstart/"
     - GH_USER_NAME="Marius van den Beek"
     - GH_USER_EMAIL="m.vandenbeek@gmail.com"
-    - GH_REF="github.com/ARTbio/ansible-artimed.git"
+    - GH_REF="github.com/ARTbio/galaxy-kickstart.git"
 
 before_install:
   - export GALAXY_TRAVIS_USER=galaxy

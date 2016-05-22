@@ -38,7 +38,7 @@ VAGRANTFILE_API_VERSION = "2"
 ```
 By default, port 8080 will be forwarded to port 80, and port 2121 will be forwarded to port 21 (for FTP),
 and 4096 MB of memory will be attributed to the VM.
-Enter the playbook directory `cd ansible-artimed` and type `vagrant up` to download a VM image and run the `galaxy.yml` playbook.
+Enter the playbook directory `cd galaxy-kickstart` and type `vagrant up` to download a VM image and run the `galaxy.yml` playbook.
 
 This will take a while. Once finished, you should find a running Galaxy Instance on http://localhost:8080 .
 If you would like to see the internals of the VM, you can log into the machine by typing `vagrant ssh`.
@@ -49,7 +49,7 @@ The hosts inventory file contains an example for directly pointing ansible to th
 Uncomment the vagrant specific lines and comment or remove the remaining lines:
 
 ```
-#[artimed]
+#[kickstart]
 #localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
 #[travis_bioblend]
 #localhost ansible_connection=local
@@ -58,7 +58,7 @@ Uncomment the vagrant specific lines and comment or remove the remaining lines:
 localhost ansible_user="vagrant" ansible_port=2222 ansible_private_key_file=.vagrant/machines/default/virtualbox/private_key
 #[aws]
 # Put you aws IP and key here to make FTP work in the default VPC.
-# If you want further group-specific variables, put the host in these groups as well [e.g artimed].
+# If you want further group-specific variables, put the host in these groups as well [e.g kickstart].
 ```
 
 To run the playbook again, type
