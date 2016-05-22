@@ -1,7 +1,0 @@
-galaxy_tools_tool_list_files:
-  - "extra-files/artimed/artimed_tool_list.yml"
-data_manager_task_file: "extra-files/artimed/artimed_data_manager_tasks.yml"
-additional_files_list:
-  - { src: "extra-files/artimed/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
-  - { src: "extra-files/artimed/ARTiMED_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
-  - { src: "extra-files/artimed/logo_iuis_UPMC_UTC.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }

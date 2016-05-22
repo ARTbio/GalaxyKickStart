@@ -1,0 +1,7 @@
+galaxy_tools_tool_list_files:
+  - "extra-files/kickstart/kickstart_tool_list.yml"
+data_manager_task_file: "extra-files/kickstart/kickstart_data_manager_tasks.yml"
+additional_files_list:
+  - { src: "extra-files/kickstart/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
+  - { src: "extra-files/kickstart/ARTiMED_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/kickstart/logo_iuis_UPMC_UTC.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }

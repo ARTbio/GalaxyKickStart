@@ -10,7 +10,7 @@ If you want to add a document called `editing_help.md` add the following line.
  - Editing the readme: editing_help.md
 ```
 
-so that [mkdocs.yml](https://github.com/ARTbio/ansible-artimed/blob/master/mkdocs.yml) looks like this.
+so that [mkdocs.yml](https://github.com/ARTbio/galaxy-kickstart/blob/master/mkdocs.yml) looks like this.
 ```
 site_name: GalaxyKickstarter
 pages:
