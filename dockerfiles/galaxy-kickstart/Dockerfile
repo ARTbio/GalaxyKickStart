@@ -20,12 +20,12 @@ ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
 COPY  .  /setup
 WORKDIR /setup
 
-RUN ansible-playbook -i docker_inventory -c local galaxy.yml
+RUN ansible-playbook -i inventory_files/docker -c local galaxy.yml
 ENV LC_ALL=en_US.UTF-8 \
 LANG=en_US.UTF-8
 
 RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
-RUN ansible-playbook -i docker_inventory -c local galaxy.yml && \
+RUN ansible-playbook -i inventory_files/docker -c local galaxy.yml && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # work around for AUFS bug
@@ -53,5 +53,5 @@ CMD printenv >> /etc/default/supervisor && bash -c "source /etc/default/supervis
            --extra-vars galaxy_admin=$GALAXY_CONFIG_ADMIN_USERS \
            --extra-vars ftp_upload_site=$IP_ADDRESS \
            --extra-vars nat_masquerade=$NAT_MAQUERADE \
-           -i docker_inventory && \
+           -i inventory_files/docker && \
            /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf --nodaemon"

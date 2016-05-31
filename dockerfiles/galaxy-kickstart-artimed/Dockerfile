@@ -20,5 +20,5 @@ CMD printenv >> /etc/default/supervisor && bash -c "source /etc/default/supervis
            --extra-vars nginx_galaxy_location=$NGINX_GALAXY_LOCATION \
            --extra-vars galaxy_admin=$GALAXY_CONFIG_ADMIN_USERS \
            --extra-vars ftp_upload_site=$IP_ADDRESS \
-           -i docker_inventory && \
+           -i inventory_files/docker && \
            /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf --nodaemon"
