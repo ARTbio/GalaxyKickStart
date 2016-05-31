@@ -1,8 +1,7 @@
 [aws]
-# adapt the lines bellow by puttin your aws IP and private key to make FTP work in the default AWS VPC (Virtual Private Cloud).
+# adapt the lines below by putting your aws IP and private key to make FTP work in the default AWS VPC (Virtual Private Cloud).
 <target Amazon Web Services IP address> ansible_ssh_user="<user (may be 'ubuntu')>" ansible_ssh_private_key_file="<path/to/your/aws/private/key.pem>"
 
-# *In addition*, adapt the group-specific variables bellow (here [kickstart], but you can change it, e.g [metavisitor])
+# *In addition*, adapt the group-specific variables below (here [kickstart], but you can change it, e.g [metavisitor])
 [kickstart]
 <target Amazon Web Services IP address> ansible_ssh_user="<user (may be 'ubuntu')>" ansible_ssh_private_key_file="<path/to/your/aws/private/key.pem>"
-
