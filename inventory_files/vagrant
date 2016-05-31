@@ -2,4 +2,4 @@
 # adapt the group variable (here [kickstart]) as you wish
 
 [kickstart]
-localhost ansible_user="vagrant" ansible_port=2222 ansible_private_key_file=.vagrant/machines/default/virtualbox/private_key
+localhost ansible_ssh_user="vagrant" ansible_port=2222 ansible_private_key_file="~/ansible-artimed/.vagrant/machines/default/virtualbox/private_key"
