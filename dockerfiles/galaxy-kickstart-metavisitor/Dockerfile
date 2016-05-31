@@ -5,7 +5,7 @@ MAINTAINER Marius van den Beek <m.vandenbeek@gmail.com>
 COPY  .  /setup
 WORKDIR /setup
 
-RUN ansible-playbook -i docker_metavisitor_inventory -c local galaxy.yml && \
+RUN ansible-playbook -i inventory_files/metavisitor -c local galaxy.yml && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Expose port 80 (webserver), 21 (FTP server), 8800 (Proxy), 9002 (supvisord web app)
@@ -20,5 +20,5 @@ CMD printenv >> /etc/default/supervisor && bash -c "source /etc/default/supervis
            --extra-vars nginx_galaxy_location=$NGINX_GALAXY_LOCATION \
            --extra-vars galaxy_admin=$GALAXY_CONFIG_ADMIN_USERS \
            --extra-vars ftp_upload_site=$IP_ADDRESS \
-           -i docker_metavisitor_inventory && \
+           -i inventory_files/metavisitor && \
            /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf --nodaemon"
