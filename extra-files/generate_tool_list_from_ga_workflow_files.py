@@ -1,10 +1,5 @@
 #!/usr/bin/env python
 
-## Christophe Antoniewski <drosofff@gmail.com>
-## https://github.com/ARTbio/ansible-artimed/tree/master/extra-files/generate_tool_list_from_ga_workflow_files.py
-## Usage example:
-## generate_tool_list_from_ga_workflow_files.py -w workflow1 workflow2 -o mytool_list.yml -l my_panel_label
-
 import yaml
 import json
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
