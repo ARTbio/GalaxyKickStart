@@ -1,9 +1,0 @@
-[kickstart]
-localhost ansible_connection=local
-
-# if remote target, replace by
-# <target IP address> ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
-
-#[aws]
-# Put your aws IP and key here to make FTP work in the default VPC.
-# If you want further group-specific variables, put the host in these groups as well [e.g artimed].
