@@ -40,16 +40,10 @@ def get_workflow_dictionary(json_file):
 
 def translate_workflow_dictionary_to_tool_list(tool_dictionary):
     starting_tool_list = []
-
-    #for step in tool_dictionary:
-    #    if tool_dictionary[step][u'tool_id'] and 'toolshed' in tool_dictionary[step][u'tool_id']:
-    #        starting_tool_list.append(tool_dictionary[step][u'tool_shed_repository'])
-
     for step in tool_dictionary.values():
         tsr = step.get("tool_shed_repository")
         if tsr:
             starting_tool_list.append(tsr)
-
     tool_list = []
     for tool in starting_tool_list:
         sub_dic = {'name': tool['name'], 'owner': tool['owner'], 'revision': tool['changeset_revision'],
