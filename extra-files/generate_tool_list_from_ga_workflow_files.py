@@ -47,7 +47,7 @@ def translate_workflow_dictionary_to_tool_list(tool_dictionary):
     tool_list = []
     for tool in starting_tool_list:
         sub_dic = {'name': tool['name'], 'owner': tool['owner'], 'revision': tool['changeset_revision'],
-                      'tool_panel_section_label': options.panel_label, 'tool_shed_url': tool['tool_shed']}
+                      'tool_panel_section_label': options.panel_label, 'tool_shed_url': 'https://'+tool['tool_shed']+'/'}
         tool_list.append(sub_dic)
     return tool_list
 
