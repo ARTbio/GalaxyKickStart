@@ -1,0 +1,471 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "uORF RNA-seq analysis workflow", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset Collection of fastqsanger files"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset collection", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 118
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"collection_type\": \"list\", \"name\": \"Input Dataset Collection of fastqsanger files\"}", 
+            "tool_version": null, 
+            "type": "data_collection_input", 
+            "uuid": "0a936d71-0a1b-4772-9fb5-55f4b382fc7e", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "44ea4a28-ae5d-49f1-87f1-1641b8081247"
+                }
+            ]
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "gene annotation file"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 478.484375, 
+                "top": 936.984375
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"gene annotation file\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "a6a04515-3800-432b-a487-5323b49154a7", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "ca9105b5-2c31-4918-9d01-7d8e5a78302a"
+                }
+            ]
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/yac_clipper/yac/1.3.6", 
+            "id": 2, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Clip adapter", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Clip adapter", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 449.984375, 
+                "top": 466.96875
+            }, 
+            "post_job_actions": {
+                "ChangeDatatypeActionoutput": {
+                    "action_arguments": {
+                        "newtype": "fastqsanger"
+                    }, 
+                    "action_type": "ChangeDatatypeAction", 
+                    "output_name": "output"
+                }, 
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/yac_clipper/yac/1.3.6", 
+            "tool_shed_repository": {
+                "changeset_revision": "91cce7c1436d", 
+                "name": "yac_clipper", 
+                "owner": "drosofff", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"out_format\": \"\\\"fastq\\\"\", \"__page__\": 0, \"min\": \"\\\"20\\\"\", \"max\": \"\\\"50\\\"\", \"__rerun_remap_job_id__\": null, \"clip_source\": \"{\\\"clip_source_list\\\": \\\"prebuilt\\\", \\\"clip_sequence\\\": \\\"TGGAATTCTCGGGTGCCAAG\\\", \\\"__current_case__\\\": 0}\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"Nmode\": \"\\\"reject\\\"\"}", 
+            "tool_version": "1.3.6", 
+            "type": "tool", 
+            "uuid": "None", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/tophat2/tophat2/2.1.0", 
+            "id": 3, 
+            "input_connections": {
+                "params|own_junctions|gene_model_ann|gene_annotation_model": {
+                    "id": 1, 
+                    "output_name": "output"
+                }, 
+                "singlePaired|input1": {
+                    "id": 2, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool TopHat", 
+                    "name": "singlePaired"
+                }
+            ], 
+            "label": null, 
+            "name": "TopHat", 
+            "outputs": [
+                {
+                    "name": "align_summary", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "fusions", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "insertions", 
+                    "type": "bed"
+                }, 
+                {
+                    "name": "deletions", 
+                    "type": "bed"
+                }, 
+                {
+                    "name": "junctions", 
+                    "type": "bed"
+                }, 
+                {
+                    "name": "accepted_hits", 
+                    "type": "bam"
+                }, 
+                {
+                    "name": "unmapped", 
+                    "type": "bam"
+                }
+            ], 
+            "position": {
+                "left": 893.5, 
+                "top": 301
+            }, 
+            "post_job_actions": {
+                "HideDatasetActiondeletions": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "deletions"
+                }, 
+                "HideDatasetActionfusions": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "fusions"
+                }, 
+                "HideDatasetActioninsertions": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "insertions"
+                }, 
+                "HideDatasetActionjunctions": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "junctions"
+                }, 
+                "HideDatasetActionunmapped": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "unmapped"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/tophat2/tophat2/2.1.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "758594ed0364", 
+                "name": "tophat2", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"singlePaired\": \"{\\\"sPaired\\\": \\\"single\\\", \\\"input1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 0}\", \"__rerun_remap_job_id__\": null, \"readGroup\": \"{\\\"__current_case__\\\": 1, \\\"specReadGroup\\\": \\\"no\\\"}\", \"params\": \"{\\\"min_intron_length\\\": \\\"70\\\", \\\"min_segment_intron\\\": \\\"50\\\", \\\"fusion_search\\\": {\\\"__current_case__\\\": 0, \\\"do_search\\\": \\\"No\\\"}, \\\"seg_mismatches\\\": \\\"2\\\", \\\"library_type\\\": \\\"fr-secondstrand\\\", \\\"settingsType\\\": \\\"full\\\", \\\"coverage_search\\\": {\\\"use_search\\\": \\\"auto\\\", \\\"__current_case__\\\": 0}, \\\"splice_mismatches\\\": \\\"0\\\", \\\"max_multihits\\\": \\\"20\\\", \\\"bowtie_n\\\": \\\"No\\\", \\\"read_realign_edit_dist\\\": \\\"1000\\\", \\\"max_intron_length\\\": \\\"500000\\\", \\\"anchor_length\\\": \\\"8\\\", \\\"microexon_search\\\": \\\"No\\\", \\\"indel_search\\\": {\\\"max_insertion_length\\\": \\\"3\\\", \\\"max_deletion_length\\\": \\\"3\\\", \\\"__current_case__\\\": 1, \\\"allow_indel_search\\\": \\\"Yes\\\"}, \\\"read_edit_dist\\\": \\\"2\\\", \\\"output_unmapped\\\": \\\"false\\\", \\\"own_junctions\\\": {\\\"gene_model_ann\\\": {\\\"gene_annotation_model\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"use_annotations\\\": \\\"Yes\\\", \\\"__current_case__\\\": 1}, \\\"no_novel_juncs\\\": \\\"Yes\\\", \\\"__current_case__\\\": 0, \\\"use_junctions\\\": \\\"Yes\\\", \\\"raw_juncs\\\": {\\\"use_juncs\\\": \\\"No\\\", \\\"__current_case__\\\": 0}}, \\\"seg_length\\\": \\\"25\\\", \\\"max_segment_intron\\\": \\\"500000\\\", \\\"bowtie2_settings\\\": {\\\"__current_case__\\\": 0, \\\"b2_settings\\\": \\\"No\\\"}, \\\"__current_case__\\\": 1, \\\"read_mismatches\\\": \\\"2\\\"}\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"indexed\\\", \\\"index\\\": \\\"GRCh38.dna.primary_assembly.fa\\\", \\\"__current_case__\\\": 0}\"}", 
+            "tool_version": "2.1.0", 
+            "type": "tool", 
+            "uuid": "c805b3f1-cfb2-48c2-92f4-d125c88210ec", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "align_summary", 
+                    "uuid": "108b5c54-b9b3-4756-acf4-3dbd7d11ce75"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "accepted_hits", 
+                    "uuid": "8eb5f1a4-b441-4d6b-a1fb-9f0c928a2871"
+                }
+            ]
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/yhoogstrate/featurecounts/featurecounts/1.4.6.p5", 
+            "id": 4, 
+            "input_connections": {
+                "alignments": {
+                    "id": 3, 
+                    "output_name": "accepted_hits"
+                }, 
+                "reference_gene_sets_source|reference_gene_sets": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool featureCounts", 
+                    "name": "reference_gene_sets_source"
+                }, 
+                {
+                    "description": "runtime parameter for tool featureCounts", 
+                    "name": "alignments"
+                }
+            ], 
+            "label": null, 
+            "name": "featureCounts", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "output_summary", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 1140.453125, 
+                "top": 650.984375
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/yhoogstrate/featurecounts/featurecounts/1.4.6.p5", 
+            "tool_shed_repository": {
+                "changeset_revision": "e04fbcc4e91a", 
+                "name": "featurecounts", 
+                "owner": "yhoogstrate", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"reference_gene_sets_source\": \"{\\\"reference_gene_sets\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1, \\\"source_select\\\": \\\"history\\\"}\", \"format\": \"\\\"tabdel_short\\\"\", \"__rerun_remap_job_id__\": null, \"alignments\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"extended_parameters\": \"{\\\"gff_feature_attribute\\\": \\\"gene_id\\\", \\\"only_both_ends\\\": \\\"false\\\", \\\"protocol\\\": \\\" -s 1\\\", \\\"parameters\\\": \\\"extended\\\", \\\"mapping_quality\\\": \\\"12\\\", \\\"minimum_fragment_length\\\": \\\"50\\\", \\\"fragment_counting\\\": \\\"true\\\", \\\"__current_case__\\\": 1, \\\"contribute_to_multiple_features\\\": \\\"false\\\", \\\"check_distance\\\": \\\"false\\\", \\\"summarization_level\\\": \\\"false\\\", \\\"exclude_chimerics\\\": \\\"true\\\", \\\"maximum_fragment_length\\\": \\\"600\\\", \\\"multimapping_counts\\\": \\\"false\\\", \\\"gff_feature_type\\\": \\\"exon\\\"}\"}", 
+            "tool_version": "1.4.6.p5", 
+            "type": "tool", 
+            "uuid": "4f03abd7-bdc3-40b8-bd5d-99ecdbef4f1d", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output_summary", 
+                    "uuid": "7d29d051-e2ea-4824-8f4b-e8992202f1ca"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "77b6a3f2-a200-4402-a398-6b5f2528d925"
+                }
+            ]
+        }, 
+        "5": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/fubar/differential_count_models/rgdifferentialcount/0.28", 
+            "id": 5, 
+            "input_connections": {
+                "input1": {
+                    "id": 4, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Differential_Count", 
+                    "name": "input1"
+                }
+            ], 
+            "label": null, 
+            "name": "Differential_Count", 
+            "outputs": [
+                {
+                    "name": "out_edgeR", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "out_DESeq2", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "out_VOOM", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }
+            ], 
+            "position": {
+                "left": 1434.46875, 
+                "top": 585.984375
+            }, 
+            "post_job_actions": {
+                "RenameDatasetActionhtml_file": {
+                    "action_arguments": {
+                        "newname": "eRF3_vs_Sc"
+                    }, 
+                    "action_type": "RenameDatasetAction", 
+                    "output_name": "html_file"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/fubar/differential_count_models/rgdifferentialcount/0.28", 
+            "tool_shed_repository": {
+                "changeset_revision": "3107df74056e", 
+                "name": "differential_count_models", 
+                "owner": "fubar", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"doVoom\": \"\\\"F\\\"\", \"fQ\": \"\\\"0.3\\\"\", \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"DESeq2\": \"{\\\"DESeq_fitType\\\": \\\"parametric\\\", \\\"__current_case__\\\": 0, \\\"doDESeq2\\\": \\\"T\\\"}\", \"title\": \"\\\"Differential Counts\\\"\", \"__page__\": 0, \"useNDF\": \"\\\"false\\\"\", \"__rerun_remap_job_id__\": null, \"fdrthresh\": \"\\\"0.05\\\"\", \"subjectids\": \"\\\"\\\"\", \"fdrtype\": \"\\\"fdr\\\"\", \"Treat_cols\": \"[\\\"4\\\", \\\"5\\\"]\", \"edgeR\": \"{\\\"edgeR_priordf\\\": \\\"10\\\", \\\"edgeR_robust_method\\\": \\\"ordinary\\\", \\\"doedgeR\\\": \\\"T\\\", \\\"__current_case__\\\": 0}\", \"control_name\": \"\\\"Control\\\"\", \"treatment_name\": \"\\\"Treatment\\\"\", \"Control_cols\": \"[\\\"2\\\", \\\"3\\\"]\"}", 
+            "tool_version": "0.28", 
+            "type": "tool", 
+            "uuid": "e036fcb0-ff21-4ba5-82b6-15802abb864f", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "html_file", 
+                    "uuid": "aa9ce248-71dc-451a-bb8a-e23df82f59f2"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "out_edgeR", 
+                    "uuid": "31cc5fc7-3ad3-4ce6-a6b0-fb89716a76ac"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "out_DESeq2", 
+                    "uuid": "6b822693-5665-4c4d-87dc-510a1566ff76"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "out_VOOM", 
+                    "uuid": "d5e2dd7b-da5d-4e6d-a0b7-924f88c75185"
+                }
+            ]
+        }, 
+        "6": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/fubar/differential_count_models/rgdifferentialcount/0.28", 
+            "id": 6, 
+            "input_connections": {
+                "input1": {
+                    "id": 4, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Differential_Count", 
+                    "name": "input1"
+                }
+            ], 
+            "label": null, 
+            "name": "Differential_Count", 
+            "outputs": [
+                {
+                    "name": "out_edgeR", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "out_DESeq2", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "out_VOOM", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }
+            ], 
+            "position": {
+                "left": 1432.5, 
+                "top": 893
+            }, 
+            "post_job_actions": {
+                "RenameDatasetActionhtml_file": {
+                    "action_arguments": {
+                        "newname": "Upf1_vs_Sc"
+                    }, 
+                    "action_type": "RenameDatasetAction", 
+                    "output_name": "html_file"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/fubar/differential_count_models/rgdifferentialcount/0.28", 
+            "tool_shed_repository": {
+                "changeset_revision": "3107df74056e", 
+                "name": "differential_count_models", 
+                "owner": "fubar", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"doVoom\": \"\\\"F\\\"\", \"fQ\": \"\\\"0.3\\\"\", \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"DESeq2\": \"{\\\"DESeq_fitType\\\": \\\"parametric\\\", \\\"__current_case__\\\": 0, \\\"doDESeq2\\\": \\\"T\\\"}\", \"title\": \"\\\"Differential Counts\\\"\", \"__page__\": 0, \"useNDF\": \"\\\"false\\\"\", \"__rerun_remap_job_id__\": null, \"fdrthresh\": \"\\\"0.05\\\"\", \"subjectids\": \"\\\"\\\"\", \"fdrtype\": \"\\\"fdr\\\"\", \"Treat_cols\": \"[\\\"6\\\", \\\"7\\\"]\", \"edgeR\": \"{\\\"edgeR_priordf\\\": \\\"10\\\", \\\"edgeR_robust_method\\\": \\\"ordinary\\\", \\\"doedgeR\\\": \\\"T\\\", \\\"__current_case__\\\": 0}\", \"control_name\": \"\\\"Control\\\"\", \"treatment_name\": \"\\\"Treatment\\\"\", \"Control_cols\": \"[\\\"2\\\", \\\"3\\\"]\"}", 
+            "tool_version": "0.28", 
+            "type": "tool", 
+            "uuid": "97d0a927-093c-485c-9415-556e419facd0", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "html_file", 
+                    "uuid": "e7a434cb-8761-4f20-bb0c-45d1f37bf515"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "out_edgeR", 
+                    "uuid": "54fc8684-8996-49ab-8c0a-0ccce1db2388"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "out_DESeq2", 
+                    "uuid": "57d71d40-3d2a-4cd6-945c-a4207d2abadc"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "out_VOOM", 
+                    "uuid": "ebc70ec6-32c8-47f0-a7ba-a500fd960bd7"
+                }
+            ]
+        }
+    }, 
+    "uuid": "5c69a79e-45f5-4242-b23c-12794be5e83a"
+}

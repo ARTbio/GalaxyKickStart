@@ -1,0 +1,6 @@
+galaxy_tools_tool_list_files:
+  - "extra-files/galaxy-kickstart_workflow1/workflow1_tool_list.yml"
+additional_files_list:
+  - { src: "extra-files/galaxy-kickstart/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
+  - { src: "extra-files/galaxy-kickstart/galaxy-kickstart_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/galaxy-kickstart_workflow1/tool_sheds_conf.xml.sample", dest: "{{ galaxy_server_dir }}/config/" }
