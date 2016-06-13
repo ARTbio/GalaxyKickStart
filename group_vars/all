@@ -20,6 +20,7 @@ galaxy_changeset_id: galaxykickstarter
 galaxy_admin: admin@galaxy.org
 galaxy_admin_pw: admin
 use_pbkdf2: true
+proftpd_sql_auth_type: PBKDF2
 proftpd_files_dir: "{{ galaxy_data }}/database/ftp"
 default_admin_api_key: admin
 postgresql_version: 9.3

@@ -1,7 +1,3 @@
-- name: debug supervisor
-  include: debug_supervisor_galaxy.yml
-  when: debug is defined
-
 - name: Restart Galaxy
   supervisorctl: name="galaxy:" state=restarted
   ignore_errors: yes
