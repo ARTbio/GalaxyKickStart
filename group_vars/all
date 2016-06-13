@@ -34,6 +34,8 @@ additional_files_list: []
 supervisor_env_vars:
     - export IP_ADDRESS=`curl --silent icanhazip.com`
     - export MASQUERADE_ADDRESS=$IP_ADDRESS
+    - export GALAXY_GID="{{ galaxy_user_gid }}"
+    - export GALAXY_UID="{{ galaxy_user_uid }}"
     - export NATIVE_SPEC="--ntasks=`/usr/bin/nproc` --share"
     - export NGINX_GALAXY_LOCATION="{{ nginx_galaxy_location }}"
     - export GALAXY_CONFIG_FTP_UPLOAD_SITE="ftp://$IP_ADDRESS"
