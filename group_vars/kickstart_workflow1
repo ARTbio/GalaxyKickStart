@@ -1,3 +1,11 @@
+galaxy_web_processes: 2
+galaxy_handler_processes: 2
+postgres_user_uid: 1550
+postgres_user_gid: 1550
+install_apparmor: false
+supervisor_postgres_database_path: /var/lib/postgresql/9.3/main
+supervisor_postgres_database_config: /etc/postgresql/9.3/main/postgresql.conf
+supervisor_postgres_options: "-D {{ supervisor_postgres_database_path }} -c \"config_file={{ supervisor_postgres_database_config }}\""
 galaxy_tools_tool_list_files:
   - "extra-files/galaxy-kickstart_workflow1/workflow1_tool_list.yml"
 additional_files_list:
