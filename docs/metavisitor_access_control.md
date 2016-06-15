@@ -1,9 +1,9 @@
-When you are done with the installation of your own Metavisitor Galaxy instance installation using either [Galaxykickstarter](metavisitor_ansible.md) or [docker](metavisitor_docker), there are a few basic things to know for web access and basic server admin operations
+When you are done with the installation of your own Metavisitor Galaxy instance installation using either [GalaxyKickStart](metavisitor_ansible.md) or [docker](metavisitor_docker), there are a few basic things to know for web access and basic server admin operations
 
 ## 1. Connect web frontpage of your Metavisitor Galaxy
 We assume that you know the IP address to reach the Metavisitor Galaxy webserver:
 
-- if you used [Galaxykickstarter](metavisitor_ansible.md#adapt-the-ansible-inventory-file), you had to indicate this host IP in your hosts inventory file.
+- if you used [GalaxyKickStart](metavisitor_ansible.md#adapt-the-ansible-inventory-file), you had to indicate this host IP in your hosts inventory file.
 - if you used [docker](metavisitor_docker), you had to connect to the host machine with the appropriate IP address.
 
 Thus, to access Metavisitor Galaxy webserver, just type this IP address in your web browser.
@@ -35,9 +35,9 @@ And click the `Change your password` item in the User preferences.
 
 As we will see in the [next chapter](metavisitor_configure_references.md), installations of reference genomes or additional tools in the Galaxy Metavisitor instance imply a Galaxy restart for completion. Here is how to do it.
 
-#### restart Metavisitor Galaxy instance deployed with [Galaxykickstarter](metavisitor_ansible.md)
+#### restart Metavisitor Galaxy instance deployed with [GalaxyKickStart](metavisitor_ansible.md)
 
-- Connect to the server where the Galaxy instance has been installed either through the ssh connection you have used with [Galaxykickstarter](metavisitor_ansible.md)
+- Connect to the server where the Galaxy instance has been installed either through the ssh connection you have used with [GalaxyKickStart](metavisitor_ansible.md)
 
 - in your terminal, type `sudo supervisorctl restart galaxy:`
 
@@ -55,7 +55,7 @@ That's it, the Galaxy instance has restarted.
 
 #### restart Metavisitor Galaxy instance deployed with [docker](metavisitor_docker)
 
-- Connect to the server where the Galaxy instance has been installed either through the ssh connection you have used with [Galaxykickstarter](metavisitor_ansible.md)
+- Connect to the server where the Galaxy instance has been installed either through the ssh connection you have used with [GalaxyKickStart](metavisitor_ansible.md)
 
 
 - connect to you docker host using ssh

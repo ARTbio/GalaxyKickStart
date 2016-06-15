@@ -12,10 +12,10 @@ If you want to add a document called `editing_help.md` add the following line.
 
 so that [mkdocs.yml](https://github.com/ARTbio/ansible-artimed/blob/master/mkdocs.yml) looks like this.
 ```
-site_name: GalaxyKickstarter
+site_name: GalaxyKickStart
 pages:
  - Home: index.md
- - What is GalaxyKickstarter: about.md
+ - What is GalaxyKickStart: about.md
  - Getting started: getting_started.md
  - Customizations: customizations.md
  - Examples: examples.md
