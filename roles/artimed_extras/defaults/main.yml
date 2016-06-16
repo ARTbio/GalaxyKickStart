@@ -4,6 +4,5 @@ create_galaxy_admin: false
 restart_galaxy: false
 start_galaxy: false
 stop_galaxy: false
-tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
 galaxy_tools_base_dir: "/tmp"
 data_manager_task_file: "data_manager_tasks.yml"
