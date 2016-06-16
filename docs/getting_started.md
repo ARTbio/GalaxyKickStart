@@ -5,7 +5,7 @@
 [//]: # (TODO: Once we do releases, we include the submodules and hence users can just download the playbook without git)
 
 
-GalaxyKickstarter is hosted on [github](https://github.com/ARTbio/ansible-artimed.git) and makes use of submodules, so care
+GalaxyKickStart is hosted on [github](https://github.com/ARTbio/ansible-artimed.git) and makes use of submodules, so care
 needs to be taken to also download the submodules. Cloning the repository for the first time can be done like this
 (note the `--recursive`):
 

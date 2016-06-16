@@ -1,7 +1,7 @@
-site_name: GalaxyKickstarter
+site_name: GalaxyKickStart
 pages:
  - Home: index.md
- - What is GalaxyKickstarter: about.md
+ - What is GalaxyKickStart: about.md
  - Getting started: getting_started.md
  - customizations.md
  - installing tools and workflows.md
@@ -14,7 +14,7 @@ pages:
  - Editing the readme: editing_help.md
  - Metavisitor: 
    - about_metavisitor.md
-   - Installing with GalaxyKickstarter: metavisitor_ansible.md
+   - Installing with GalaxyKickStart: metavisitor_ansible.md
    - Installing with Docker: metavisitor_docker.md
    - Access and Control Metavisitor Galaxy instance: metavisitor_access_control.md
    - Prepare Metavisitor Galaxy instance for analyses: metavisitor_configure_references.md

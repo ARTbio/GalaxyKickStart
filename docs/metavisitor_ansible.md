@@ -1,4 +1,4 @@
-# Installing Metavisitor with GalaxyKickstarter and Ansible
+# Installing Metavisitor with GalaxyKickStart and Ansible
 ----
 Here, a `Deployment Machine` will install a Metavisitor Galaxy server on `Target Machine`. Note that `Deployment Machine` and `Target Machine` can both be local or remote machines, and that they can be the same machine.
 
@@ -10,7 +10,7 @@ Here, a `Deployment Machine` will install a Metavisitor Galaxy server on `Target
 
 # Getting the ansible playbook
 ----
-This is done on the `Deployment Machine` by cloning the [GalaxyKickstarter (ansible-artimed) repository](https://github.com/ARTbio/ansible-artimed.git) hosted by [the ARTbio organization](https://github.com/ARTbio):
+This is done on the `Deployment Machine` by cloning the [GalaxyKickStart (ansible-artimed) repository](https://github.com/ARTbio/ansible-artimed.git) hosted by [the ARTbio organization](https://github.com/ARTbio):
 
 In your terminal, type:
 ```
@@ -18,7 +18,7 @@ git clone --recursive https://github.com/ARTbio/ansible-artimed.git
 ```
 [//]: # (TODO: Once we do releases, we include the submodules and hence users can just download the playbook without git)
 
-Importantly, GalaxyKickstarter makes use of submodules, so care
+Importantly, GalaxyKickStart makes use of submodules, so care
 needs to be taken to also download these submodules. This is why `--recursive` is included in the git command line.
 
 At completion of the git cloning, you will have a new `ansible-artimed` folder, which contains everything need for deployment with ansible, including the playbook file (here `galaxy.yml`). You can verify this by typing in terminal:
@@ -119,7 +119,7 @@ By default the admin login/password is `admin@galaxy.org` / `admin`. You should 
 
 # Re-deploying Metavisitor Galaxy on the `Target Machine`
 ----
-If you are experimented in using ansible, you may customize your Metavisitor Galaxy instance deployed with GalaxyKickstarter by editing the content of `ansible-artimed`.
+If you are experimented in using ansible, you may customize your Metavisitor Galaxy instance deployed with GalaxyKickStart by editing the content of `ansible-artimed`.
 
 In that case, when your changes are done, just run again the command
 
