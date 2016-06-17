@@ -1,8 +1,10 @@
 - include: roles/galaxyprojectdotorg.galaxy-tools/tasks/bootstrap_user.yml create_user={{ galaxy_tools_create_bootstrap_user }}
-  when: galaxy_tools_create_bootstrap_user and not galaxy_tools_api_key
+  when: galaxy_tools_create_bootstrap_user and (not galaxy_tools_api_key or galaxy_tools_admin_user_preset_api_key)
 
 - name: Run data managers
-  command: "{{ galaxy_tools_base_dir }}/venv/bin/python install_tool_shed_tools.py -d {{ data_manager_task_file }} -a {{ default_admin_api_key }} -g {{ galaxy_hostname }}"
+  command: "{{ galaxy_tools_base_dir }}/venv/bin/python install_tool_shed_tools.py -d {{ item }} -a {{ default_admin_api_key }} -g {{ galaxy_hostname }}"
+  with_items:
+    - "{{ data_manager_task_file }}"
   args:
     chdir: "{{ galaxy_tools_base_dir }}"
 

@@ -1,5 +1,4 @@
 - include: data_managers.yml
-  when: run_data_managers
 
 - include: supervisor_galaxy.yml
   when: restart_galaxy or start_galaxy or stop_galaxy
