@@ -1,9 +1,9 @@
 [submodule "roles/galaxyprojectdotorg.galaxy-tools"]
 	path = roles/galaxyprojectdotorg.galaxy-tools
-	url = https://github.com/galaxyproject/ansible-galaxy-tools.git
+	url = https://github.com/mvdbeek/ansible-galaxy-tools.git
 [submodule "roles/galaxyprojectdotorg.galaxy-extras"]
 	path = roles/galaxyprojectdotorg.galaxy-extras
-	url = https://github.com/mvdbeek/ansible-galaxy-extras
+	url = https://github.com/galaxyproject/ansible-galaxy-extras
 [submodule "roles/natefoo.postgresql_objects"]
 	path = roles/natefoo.postgresql_objects
 	url = https://github.com/natefoo/ansible-postgresql-objects.git
@@ -12,7 +12,7 @@
 	url = https://github.com/galaxyproject/ansible-galaxy-os.git
 [submodule "roles/galaxyprojectdotorg.galaxy"]
 	path = roles/galaxyprojectdotorg.galaxy
-	url = https://github.com/mvdbeek/ansible-galaxy.git
+	url = https://github.com/galaxyproject/ansible-galaxy.git
 [submodule "ensure_postgresql_up"]
 	path = roles/ensure_postgresql_up
 	url = https://github.com/mvdbeek/ensure_postgresql_up.git
