@@ -39,9 +39,7 @@ Other tools from other developers are included the suite_metavisitor_1_2. Of cou
 All metavisitor tools are available in the [suite_metavisitor_1_2](https://toolshed.g2.bx.psu.edu/repository/browse_repositories?sort=name&operation=view_or_manage_repository&f-free-text-search=metavisitor&id=ca18473f5a7e691a)
 Galaxy Admin can just install this suite of tools by using the `Search Tool Shed` menu in their Admin panel, searching for "metavisitor", and installing the `suite_metavisitor_1_2` tool suite.
 
-Admins can also try to directly install the tools from the `metavisitor_workflows` repository, which will provide in addition the metavisitors workflows.
-
-However this feature seems to be still in developpement and getting the metavisitor workflows available for all users after installation of the `metavisitor_workflows` repository may require additional not automated admin tasks.
+Admins can also install the tools from the `metavisitor_workflows` repository, which will provide in addition the metavisitors workflows.
 
 #### Availability of Metavisitors workflows for any Galaxy instance user.
 We have deposited the Metavisitors workflows in the [myexperiment server](http://www.myexperiment.org/workflows), where they are searchable with "metavisitor" keyword and can be downloaded and reuploaded to the Galaxy instance.
