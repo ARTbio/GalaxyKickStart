@@ -1,8 +1,6 @@
-run_extras: false
-run_data_managers: false
-create_galaxy_admin: false
 restart_galaxy: false
 start_galaxy: false
 stop_galaxy: false
 galaxy_tools_base_dir: "/tmp"
-data_manager_task_file: "data_manager_tasks.yml"
+data_manager_task_file_list:
+  - "data_manager_tasks.yml"
