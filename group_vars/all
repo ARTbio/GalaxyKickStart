@@ -103,8 +103,10 @@ supervisor_proftpd_autostart: true
 # galaxy-tools role variables
 
 galaxy_tools_admin_user: "{{ galaxy_admin }}"
+galaxy_tools_admin_user_password: "{{ galaxy_admin_pw }}"
 galaxy_tools_admin_user_preset_api_key: yes
 galaxy_tools_api_key: "{{ default_admin_api_key }}"
+galaxy_tools_create_bootstrap_user: yes
 galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}"
 galaxy_tools_tool_list_files: []
 galaxy_tools_install_workflows: true
