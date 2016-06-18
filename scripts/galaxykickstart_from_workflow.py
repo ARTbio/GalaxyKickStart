@@ -51,11 +51,21 @@ def make_inventory (path="../inventory_files/"):
             ''')
     f.close()
 
-def make_gks_workflows_groupvars (path="../group_vars/gks_workflows",
+def make_gks_workflows_groupvars (workflow_file_list, path="../group_vars/gks_workflows",
                                   template="galaxykickstart_from_workflow_templates/group_vars_template.yml"):
     if os.path.exists(path):
         sys.exit("../group_vars/gks_workflows already exists.")
-    copyfile(template, path)
+    with open (template, "r") as f:
+        with open (path, "w") as o:
+            for line in f:
+                o.write(line)
+            for workflow in workflow_file_list:
+                workflow = os.path.basename(workflow)
+                workflow = "extra-files/gks_workflows/" + workflow
+                o.write ('  - "')
+                o.write (workflow)
+                o.write ('"\n')
+
 
 def make_gks_workflows_extra_files (workflow_files, panel_label, tool_list_file, extra_files_dir="../extra-files/gks_workflows"):
     makedir(extra_files_dir)
@@ -78,7 +88,7 @@ def __main__(workflow_file_list, panel_label, tool_list_file):
     copy these files in and extra-files/gks_workflows folder
     '''
     make_inventory()
-    make_gks_workflows_groupvars()
+    make_gks_workflows_groupvars(options.workflow_files)
     make_gks_workflows_extra_files (workflow_file_list, panel_label, tool_list_file)
 
 if __name__ == "__main__":
