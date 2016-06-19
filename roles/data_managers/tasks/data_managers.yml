@@ -4,8 +4,13 @@
     - pyyaml
     - bioblend
 
-- name: Place the tool management script
+- name: Place tool management script
   copy: src=roles/galaxyprojectdotorg.galaxy-tools/files/install_tool_shed_tools.py dest={{ galaxy_tools_base_dir }}/install_tool_shed_tools.py
+
+- name: Copy data manager task file
+  copy: src={{ item }} dest={{ galaxy_tools_base_dir }}/
+  with_items:
+    - "{{ data_manager_task_file_list }}"
 
 - name: Run data managers
   command: "{{ galaxy_tools_base_dir }}/venv/bin/python install_tool_shed_tools.py -d {{ item }} -a {{ default_admin_api_key }} -g {{ galaxy_hostname }}"
@@ -16,3 +21,8 @@
 
 - name: Remove tool management script
   file: dest={{ galaxy_tools_base_dir }}/install_tool_shed_tools.py state=absent
+
+- name: Remove data manager task file
+  file: src={{ item }} dest={{ galaxy_tools_base_dir }}/ state=absent
+  with_items:
+    - "{{ data_manager_task_file_list }}"
