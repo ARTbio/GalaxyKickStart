@@ -13,7 +13,7 @@
     - "{{ data_manager_task_file_list }}"
 
 - name: Run data managers
-  command: "{{ galaxy_tools_base_dir }}/venv/bin/python install_tool_shed_tools.py -d {{ item }} -a {{ default_admin_api_key }} -g {{ galaxy_hostname }}"
+  command: "{{ galaxy_tools_base_dir }}/venv/bin/python install_tool_shed_tools.py -d {{ item|basename }} -a {{ default_admin_api_key }} -g {{ galaxy_hostname }}"
   with_items:
     - "{{ data_manager_task_file_list }}"
   args:
