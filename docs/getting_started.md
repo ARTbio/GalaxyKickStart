@@ -44,7 +44,7 @@ This user needs to have sudo rights.
 
 Then, run the plabook by typing:
 ```
-ansible-playbook --inventory-file=<your_inventory> galaxy.yml
+ansible-playbook --inventory-file inventory_files/<your_inventory_file> galaxy.yml
 ```
 
 You can put multiple machines in your inventory.
