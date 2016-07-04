@@ -23,6 +23,6 @@
   file: dest={{ galaxy_tools_base_dir }}/install_tool_shed_tools.py state=absent
 
 - name: Remove data manager task file
-  file: src={{ item }} dest={{ galaxy_tools_base_dir }}/ state=absent
+  file: src={{ item }} dest={{ galaxy_tools_base_dir }}/{{ item|basename }}  state=absent
   with_items:
     - "{{ data_manager_task_file_list }}"
