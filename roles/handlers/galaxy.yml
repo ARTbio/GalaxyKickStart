@@ -1,6 +1,7 @@
 - name: start galaxy
   supervisorctl: name='galaxy:' state=started
 
-- name: restart galaxy handler
-  supervisorctl: name='galaxy_handlers:' state=restarted
-
+# Restarting galaxy is only necessary when not running docker
+- name: restart galaxy
+  supervisorctl: name='galaxy:' state=restarted
+  when: ansible_virtualization_type != "docker"
