@@ -1,0 +1,6 @@
+- name: start galaxy
+  supervisorctl: name='galaxy:' state=started
+
+- name: restart galaxy handler
+  supervisorctl: name='galaxy_handlers:' state=restarted
+

@@ -1,6 +1,9 @@
 - hosts: all
   sudo: yes
 
+  handlers:
+    - include: handlers/galaxy.yml
+
   roles:
     - role: galaxyprojectdotorg.galaxy-os
       tags:
