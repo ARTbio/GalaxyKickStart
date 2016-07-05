@@ -1,7 +1,7 @@
 galaxy_tools_tool_list_files:
   - "extra-files/travis_bioblend/travis_bioblend_tool_list.yml"
 galaxy_web_processes: 2
-galaxy_handler_processes: 2
+galaxy_handler_processes: 4
 postgres_user_uid: 1550
 postgres_user_gid: 1550
 install_apparmor: false

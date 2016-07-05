@@ -75,7 +75,7 @@ galaxy_config:
 # galaxy-extras role variables
 galaxy_uwsgi_static_conf: true
 galaxy_web_processes: 1
-galaxy_handler_processes: 1
+galaxy_handler_processes: 4
 supervisor_slurm_config_dir: "{{ galaxy_data }}"
 galaxy_root: "{{ galaxy_server_dir }}"
 galaxy_log_dir: "{{ galaxy_data }}"
