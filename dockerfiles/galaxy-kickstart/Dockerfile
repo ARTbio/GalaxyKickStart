@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM artbio/ansible-galaxy-os 
 
 MAINTAINER Marius van den Beek <m.vandenbeek@gmail.com>
 
@@ -24,11 +24,14 @@ ENV LC_ALL=en_US.UTF-8 \
 LANG=en_US.UTF-8
 
 RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
+# work around for AUFS bug
+# as per https://github.com/docker/docker/issues/783#issuecomment-56013588
+RUN mkdir /var/lib/postgresql-copy; mv /var/lib/postgresql/* /var/lib/postgresql-copy; rm -R /var/lib/postgresql; mv /var/lib/postgresql-copy /var/lib/postgresql; \
+    chmod 0700 /var/lib/postgresql; chown -R 1550:1550 /var/lib/postgresql 
 RUN ansible-playbook -i inventory_files/docker -c local galaxy.yml && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # work around for AUFS bug
-# as per https://github.com/docker/docker/issues/783#issuecomment-56013588
 RUN mkdir /etc/ssl/private-copy; mv /etc/ssl/private/* /etc/ssl/private-copy/; rm -r /etc/ssl/private; mv /etc/ssl/private-copy /etc/ssl/private; chmod -R 0700 /etc/ssl/private; chown -R postgres /etc/ssl/private
 
 

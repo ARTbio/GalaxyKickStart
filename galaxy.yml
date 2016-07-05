@@ -2,7 +2,8 @@
   sudo: yes
 
   handlers:
-    - include: handlers/galaxy.yml
+    - include: roles/handlers/galaxy.yml
+      static: yes
 
   roles:
     - role: galaxyprojectdotorg.galaxy-os
