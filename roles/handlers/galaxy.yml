@@ -4,4 +4,5 @@
 # Restarting galaxy is only necessary when not running docker
 - name: restart galaxy
   supervisorctl: name='galaxy:' state=restarted
-  when: ansible_virtualization_type != "docker"
+  when: not ansible_virtualization_type == "docker"
+

@@ -1,5 +1,5 @@
 - hosts: all
-  sudo: yes
+  become: yes
 
   handlers:
     - include: roles/handlers/galaxy.yml
@@ -24,15 +24,15 @@
       postgresql_objects_databases:
         - name: "{{ galaxy_user_name }}"
           owner: "{{ galaxy_user_name }}"
-      sudo: yes
-      sudo_user: postgres
+      become: yes
+      become_user: postgres
       tags:
         - install_galaxy
         - manage_postgres
 
     - role: galaxyprojectdotorg.galaxy
-      sudo: yes
-      sudo_user: "{{ galaxy_user_name }}"
+      become: yes
+      become_user: "{{ galaxy_user_name }}"
       tags:
         - configure_galaxy
         - install_galaxy
@@ -60,8 +60,8 @@
         - persists_galaxy
 
     - role: galaxyprojectdotorg.galaxy-tools
-      sudo: yes
-      sudo_user: "{{ galaxy_user_name }}"
+      become: yes
+      become_user: "{{ galaxy_user_name }}"
       tags: install_tools
 
     - role: data_managers
