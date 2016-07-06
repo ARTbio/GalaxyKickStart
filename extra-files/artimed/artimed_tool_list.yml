@@ -2,13 +2,7 @@ tools:
 - name: featurecounter
   owner: devteam
   tool_panel_section_label: 'NGS Mapping'
-- name: gatk2
-  owner: iuc
-  tool_panel_section_label: 'NGS Mapping'
 - name: bwa
-  owner: devteam
-  tool_panel_section_label: 'NGS Mapping'
-- name: tophat
   owner: devteam
   tool_panel_section_label: 'NGS Mapping'
 - name: tophat2
@@ -17,17 +11,8 @@ tools:
 - name: hisat2
   owner: iuc
   tool_panel_section_label: 'NGS Mapping'
-- name: hisat
-  owner: devteam
-  tool_panel_section_label: 'NGS Mapping'
 - name: deseq2
   owner: iuc
-  tool_panel_section_label: 'NGS Mapping'
-- name: suite_samtools_1_2
-  owner: devteam
-  tool_panel_section_label: 'NGS Mapping'
-- name: fastq_all_to_sanger
-  owner: geert-vandeweyer
   tool_panel_section_label: 'NGS Mapping'
 - name: samtools_flagstat
   owner: devteam
@@ -41,3 +26,21 @@ tools:
 - name: samtools_idxstats
   owner: devteam
   tool_panel_section_label: 'NGS Mapping'
+- name: data_manager_picard_index_builder
+  owner: devteam
+  tool_panel_section_label: 'Data Managers for NGS Mapping'
+- name: data_manager_fetch_genome_dbkeys_all_fasta
+  owner: devteam
+  tool_panel_section_label: 'Data Managers for NGS Mapping'
+- name: data_manager_bwa_mem_index_builder
+  owner: devteam
+  tool_panel_section_label: 'Data Managers for NGS Mapping'
+- name: data_manager_bowtie2_index_builder
+  owner: devteam
+  tool_panel_section_label: 'Data Managers for NGS Mapping'
+- name: data_manager_gatk_picard_index_builder
+  owner: devteam
+  tool_panel_section_label: 'Data Managers for NGS Mapping'
+- name: data_manager_sam_fasta_index_builder
+  owner: devteam
+  tool_panel_section_label: 'Data Managers for NGS Mapping'
