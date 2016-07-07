@@ -1,3 +1,13 @@
+Why does the playbook fail?
+----
+
+Make sure that you are on ansible version >=2.1.
+You can check your ansible version by typing:
+
+```
+ansible --version
+```
+
 What is the username and password of the galaxy admin account ?
 ----
 

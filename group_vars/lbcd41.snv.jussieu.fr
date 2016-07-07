@@ -1,4 +1,3 @@
-run_data_manager: false
 galaxy_tools_tool_list_files:
   - "extra-files/lbcd41.snv.jussieu.fr/lbcd41_tool_list.yml"
 additional_files_list:

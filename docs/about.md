@@ -3,6 +3,8 @@
 GalaxyKickStart is an Ansible playbook designed to help you get one or more production-ready
  [Galaxy servers](https://usegalaxy.org/) based on Ubuntu within minutes, and to maintain these servers.
 
+# Required ansible version >=2.1
+
 Optionally, instances can be pre-loaded with tools and workflows.
 
 The playbook has been tested on 

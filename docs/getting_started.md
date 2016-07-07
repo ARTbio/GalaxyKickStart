@@ -1,5 +1,8 @@
 # Getting Started
 
+Make sure that you have a recent version of ansible installed.
+The playbook has been tested with version 2.1.
+
 # Getting the playbook
 
 [//]: # (TODO: Once we do releases, we include the submodules and hence users can just download the playbook without git)

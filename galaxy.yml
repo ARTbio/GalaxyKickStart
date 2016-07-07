@@ -1,5 +1,9 @@
 - hosts: all
-  sudo: yes
+  become: yes
+
+  handlers:
+    - include: roles/handlers/galaxy.yml
+      static: yes
 
   roles:
     - role: galaxyprojectdotorg.galaxy-os
@@ -20,15 +24,15 @@
       postgresql_objects_databases:
         - name: "{{ galaxy_user_name }}"
           owner: "{{ galaxy_user_name }}"
-      sudo: yes
-      sudo_user: postgres
+      become: yes
+      become_user: postgres
       tags:
         - install_galaxy
         - manage_postgres
 
     - role: galaxyprojectdotorg.galaxy
-      sudo: yes
-      sudo_user: "{{ galaxy_user_name }}"
+      become: yes
+      become_user: "{{ galaxy_user_name }}"
       tags:
         - configure_galaxy
         - install_galaxy
@@ -51,33 +55,16 @@
         - manage_postgres
         - install_tools
 
-    #fix proftpd config file, restarts supervisor, put the test tool shed in the list and create a welcome page
-    - role: artimed_extras
-      run_extras: true
-      pbkdf2: true
-      create_galaxy_admin: true
-      restart_galaxy: false
-      tags:
-        - install_extras
-      
     - role: galaxy.movedata
       tags: 
         - persists_galaxy
 
     - role: galaxyprojectdotorg.galaxy-tools
-      sudo: yes
-      sudo_user: "{{ galaxy_user_name }}"
+      become: yes
+      become_user: "{{ galaxy_user_name }}"
       tags: install_tools
 
-    # Restart Galaxy if tools have been installed
-    - role: artimed_extras
-      restart_galaxy: true
-      when: galaxy_tools_tool_list_files|length > 0
-
-    - role: artimed_extras
-      run_data_managers: true
-      create_user: true
-      when: run_data_manager
+    - role: data_managers
       tags:
         - import_genomes
 
