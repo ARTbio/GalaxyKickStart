@@ -38,11 +38,7 @@ def make_inventory (path="../inventory_files/"):
     if os.path.exists (file_path):
         sys.exit("gks_workflows inventory file already exists in ../inventory_files")
     with open (file_path, "w") as f:
-#    try:
-#        f = os.fdopen(os.open(file_path, os.O_CREAT | os.O_WRONLY | os.O_EXCL), 'w')
-#    except OSError:
-#        sys.exit("gks_workflows inventory file already exists in ../inventory_files")
-# fill in the inventory file
+    ## fill in the inventory file ##
         print >> f, textwrap.dedent('''\
                 [gks_workflows]
                 localhost ansible_connection=local
