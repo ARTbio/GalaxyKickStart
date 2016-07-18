@@ -19,7 +19,7 @@ def _parse_cli_options():
                         dest="workflow_files",
                         required=True,
                         nargs='+',
-                        help='A comma-separated of galaxy workflow description files in json format', )
+                        help='A space separated list of galaxy workflow description files in json format', )
     parser.add_argument('-o', '--output-file',
                         required=True,
                         dest='output_file',
@@ -28,7 +28,7 @@ def _parse_cli_options():
                         dest='panel_label',
                         default='Tools from workflows',
                         help='The name of the panel where the tools will show up in Galaxy.'
-                             ' If not specified, workflow file base name is taken')
+                             'If not specified: "Tools from workflows"')
     return parser.parse_args()
 
 
@@ -38,7 +38,7 @@ def get_workflow_dictionary(json_file):
     return mydict
 
 
-def translate_workflow_dictionary_to_tool_list(tool_dictionary):
+def translate_workflow_dictionary_to_tool_list(tool_dictionary, panel_label):
     starting_tool_list = []
     for step in tool_dictionary.values():
         tsr = step.get("tool_shed_repository")
@@ -47,7 +47,7 @@ def translate_workflow_dictionary_to_tool_list(tool_dictionary):
     tool_list = []
     for tool in starting_tool_list:
         sub_dic = {'name': tool['name'], 'owner': tool['owner'], 'revision': tool['changeset_revision'],
-                      'tool_panel_section_label': options.panel_label, 'tool_shed_url': tool['tool_shed']}
+                      'tool_panel_section_label': panel_label, 'tool_shed_url': 'https://'+tool['tool_shed']}
         tool_list.append(sub_dic)
     return tool_list
 
@@ -56,13 +56,20 @@ def print_yaml_tool_list(tool_dictionary, output_file):
         F.write(yaml.safe_dump(tool_dictionary, default_flow_style=False))
     return
 
-if __name__ == "__main__":
-    options = _parse_cli_options()
+def generate_tool_list_from_workflow(workflow_files, panel_label, output_file):
+    """
+
+    :rtype: object
+    """
     intermediate_tool_list = []
-    for workflow in options.workflow_files:
+    for workflow in workflow_files:
         workflow_dictionary = get_workflow_dictionary (workflow)
-        intermediate_tool_list += translate_workflow_dictionary_to_tool_list (workflow_dictionary)
+        intermediate_tool_list += translate_workflow_dictionary_to_tool_list (workflow_dictionary, panel_label)
     reduced_tool_list = list({v['revision']: v for v in intermediate_tool_list}.values())
     convert_dic = {}
     convert_dic['tools'] = reduced_tool_list
-    print_yaml_tool_list(convert_dic, options.output_file)
+    print_yaml_tool_list(convert_dic, output_file)
+
+if __name__ == "__main__":
+    options = _parse_cli_options()
+    generate_tool_list_from_workflow(options.workflow_files, options.panel_label, options.output_file)
