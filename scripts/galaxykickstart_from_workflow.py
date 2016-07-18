@@ -3,8 +3,7 @@ import sys
 import textwrap
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
 from shutil import copyfile
-from generate_tool_list_from_ga_workflow_files import *
-
+from generate_tool_list_from_ga_workflow_files import generate_tool_list_from_workflow
 
 
 def _parse_cli_options():
@@ -29,9 +28,11 @@ def _parse_cli_options():
                              'If not specified: "Tools from workflows"')
     return parser.parse_args()
 
+
 def makedir (path):
     if not os.path.isdir(path):
         os.makedirs(path)
+
 
 def make_inventory (path="../inventory_files/"):
     file_path = path + "gks_workflows"
@@ -46,6 +47,7 @@ def make_inventory (path="../inventory_files/"):
                 # if remote target, replace the above line by
                 # <remote host IP> ansible_ssh_user="root" ansible_ssh_private_key_file="<path/to/your/private/key>"
                 ''')
+
 
 def make_groupvars (workflow_file_list, path="../group_vars/gks_workflows",
                                   template="galaxykickstart_from_workflow_templates/group_vars_template.yml"):
@@ -68,12 +70,9 @@ def make_extra_files (workflow_files, panel_label, tool_list_file, extra_files_d
     copyfile("galaxykickstart_from_workflow_templates/tool_sheds_conf.xml.sample", extra_files_dir + "/tool_sheds_conf.xml.sample")
     generate_tool_list_from_workflow(workflow_files, panel_label, tool_list_file)
     copyfile(tool_list_file, extra_files_dir + "/" + tool_list_file)
-    for file in workflow_files:
-        file_basename = os.path.basename(file)
-        copyfile (file, extra_files_dir + "/" + file_basename)
-
-
-
+    for workflow in workflow_files:
+        workflow_basename = os.path.basename(workflow)
+        copyfile (workflow, extra_files_dir + "/" + workflow_basename)
 
 
 def create_gks_flavor (workflow_file_list, panel_label, tool_list_file):
@@ -86,6 +85,7 @@ def create_gks_flavor (workflow_file_list, panel_label, tool_list_file):
     make_inventory()
     make_groupvars(options.workflow_files)
     make_extra_files (workflow_file_list, panel_label, tool_list_file)
+
 
 if __name__ == "__main__":
     options = _parse_cli_options()
