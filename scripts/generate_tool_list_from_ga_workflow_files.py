@@ -57,10 +57,6 @@ def print_yaml_tool_list(tool_dictionary, output_file):
     return
 
 def generate_tool_list_from_workflow(workflow_files, panel_label, output_file):
-    """
-
-    :rtype: object
-    """
     intermediate_tool_list = []
     for workflow in workflow_files:
         workflow_dictionary = get_workflow_dictionary (workflow)
