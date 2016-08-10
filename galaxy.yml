@@ -11,6 +11,9 @@
         - install_galaxy
         - install_packages
 
+    - role: jetstream
+      when: jetstream is defined
+
     - role: ensure_postgresql_up
       tags:
         - install_galaxy
@@ -67,3 +70,7 @@
     - role: data_managers
       tags:
         - import_genomes
+
+    # - role: jetstream
+    #   jetstream_cleanup: yes
+    #   when: jetstream is defined

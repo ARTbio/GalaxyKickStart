@@ -1,9 +1,0 @@
-[artimed]
-localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
-[jetstream]
-149.165.169.164 ansible_ssh_user="nturaga" ansible_ssh_private_key_file="~/.ssh/jetstream.pem"
-[travis_bioblend]
-localhost ansible_connection=local
-[aws]
-# Put you aws IP and key here to make FTP work in the default VPC.
-# If you want further group-specific variables, put the host in these groups as well [e.g artimed].
