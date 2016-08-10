@@ -2,28 +2,13 @@ tools:
 - name: blast_to_scaffold
   owner: drosofff
   revisions:
-  - 7fb07a6ab968
-  - 35e2e6452cf7
-  tool_panel_section_label: Metavisitor
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: blastx_to_scaffold
-  owner: drosofff
-  revisions:
-  - a2e034f1638e
+  - 3288cc5a57e5
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: bowtie2
   owner: devteam
   revisions:
-  - a54de7e658f7
-  - 019c2a81547a
-  - e23b0cdeeba6
-  tool_panel_section_label: Metavisitor
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: bowtie_wrappers
-  owner: devteam
-  revisions:
-  - df86f29bedee
+  - a9d4f71dbfb0
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: cherry_pick_fasta
@@ -35,117 +20,85 @@ tools:
 - name: concatenate_multiple_datasets
   owner: mvdbeek
   revisions:
-  - 1e06fa2771f9
-  - 745090cbbf75
+  - 201c568972c3
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: fasta_compute_length
+- name: data_manager_bowtie2_index_builder
   owner: devteam
   revisions:
-  - d8cc2c8eef14
-  tool_panel_section_label: FASTA manipulation
+  - e87aeff2cf88
+  tool_panel_section_label: null
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: data_manager_bowtie_index_builder
+  owner: iuc
+  revisions:
+  - 0a0c648498e2
+  tool_panel_section_label: null
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: data_manager_fetch_genome_dbkeys_all_fasta
+  owner: devteam
+  revisions:
+  - 776bb1b478a0
+  tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: fasta_filter_by_length
   owner: devteam
   revisions:
-  - 16679a7f554a
-  tool_panel_section_label: FASTA manipulation
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: fastqc
-  owner: devteam
-  revisions:
-  - e28c965eeed4
-  tool_panel_section_label: 'NGS: QC and manipulation'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: fastq_quality_filter
-  owner: devteam
-  revisions:
-  - 57adb07cccfc
-  tool_panel_section_label: fastx toolkit
+  - c8cd0a03db49
+  tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: fastq_to_fasta
   owner: devteam
   revisions:
-  - 04614cf6ed39
-  tool_panel_section_label: fastx toolkit
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: fastx_artifacts_filter
-  owner: devteam
-  revisions:
-  - c8808979ba33
-  tool_panel_section_label: fastx toolkit
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: fastx_clipper
-  owner: devteam
-  revisions:
-  - 8192b4014977
-  tool_panel_section_label: fastx toolkit
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: fastx_reverse_complement
-  owner: devteam
-  revisions:
-  - 5bd826723d61
-  tool_panel_section_label: fastx toolkit
+  - 186b8d913e6c
+  tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: fastx_trimmer
   owner: devteam
   revisions:
-  - d77c9c6ecf68
-  tool_panel_section_label: fastx toolkit
+  - 377ac2829eac
+  tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: fetch_fasta_from_ncbi
   owner: drosofff
   revisions:
-  - 79cb7620843d
-  - 0bdc5a73c8d1
   - befdb392fece
-  tool_panel_section_label: Metavisitor
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: get_orfs_or_cdss
-  owner: peterjc
-  revisions:
-  - 09a8be9247ca
-  - 705a2e2df7fb
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: khmer_normalize_by_median
   owner: iuc
   revisions:
-  - 5531deeabd2c
+  - 6d8793a4923d
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_blastparser_and_hits
   owner: drosofff
   revisions:
-  - 78c34df2dd8d
-  - 77346ecf5a28
+  - 6dfa79a6908a
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_cap3
   owner: drosofff
   revisions:
-  - e2ae46b16b3b
   - ddb463fdf57e
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_fasta_tabular_converter
   owner: drosofff
   revisions:
-  - 951cb6b3979b
+  - 330dd8a8c31a
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_oases
   owner: drosofff
   revisions:
-  - f08d9c814ffb
+  - dc684e37f668
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_sr_bowtie
   owner: drosofff
   revisions:
   - c1bfa227bbb6
-  - 316124e85b8d
-  - 88cdd6118bfe
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_sr_readmap_and_size_histograms
@@ -157,53 +110,31 @@ tools:
 - name: ncbi_blast_plus
   owner: devteam
   revisions:
-  - 623f727cdff1
-  - 577d9c12411a
   - 7f3c448e119b
-  tool_panel_section_label: NCBI BLAST+
+  - 577d9c12411a
+  tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: regex_find_replace
   owner: jjohnson
   revisions:
   - 9ea374bb0350
-  tool_panel_section_label: Text Manipulation
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: regex_replace
-  owner: kellrott
-  revisions:
-  - 9a77d5fca67c
-  tool_panel_section_label: Text Manipulation
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: reverse_complement
-  owner: xuebing
-  revisions:
-  - 3af9a3c6aa6f
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: sambamba_filter
-  owner: lomereiter
-  revisions:
-  - af897e0a3c13
-  tool_panel_section_label: 'NGS: SAM Tools'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: sam_to_bam
-  owner: devteam
-  revisions:
-  - c73bf16b45df
-  tool_panel_section_label: 'NGS: SAM Tools'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: sra_tools
-  owner: mvdbeek
+  owner: iuc
   revisions:
-  - 9f74a22d2060
-  tool_panel_section_label: SRA tools
+  - b723c120161a
+  tool_panel_section_label: Metavisitor
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: trinityrnaseq
+  owner: anmoljh
+  revisions:
+  - 0a576a57a9eb
+  tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: yac_clipper
   owner: drosofff
   revisions:
   - 91cce7c1436d
-  - 2445856981a1
-  - e5ef40107f54
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-

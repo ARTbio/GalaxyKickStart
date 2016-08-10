@@ -1,10 +1,16 @@
 ---
+language: python
 python: "2.7"
 sudo: required
 dist: trusty
 
 env:
-  - TOX_ENV=py27
+  global:
+    - TOX_ENV=py27
+    - SITE_URL="https://artbio.github.io/ansible-artimed/"
+    - GH_USER_NAME="Marius van den Beek"
+    - GH_USER_EMAIL="m.vandenbeek@gmail.com"
+    - GH_REF="github.com/ARTbio/ansible-artimed.git"
 
 before_install:
   - export GALAXY_TRAVIS_USER=galaxy
@@ -16,7 +22,6 @@ before_install:
   - export GALAXY_USER_PASSWD=admin
   - export BIOBLEND_GALAXY_API_KEY=admin
   - export BIOBLEND_GALAXY_URL=http://localhost:8080
-
   - docker --version
   - docker info
 
@@ -26,8 +31,10 @@ before_install:
   - sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
   - docker build -t galaxy_kickstart .
   - sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
+  - sudo mkdir /export2 && sudo chown $GALAXY_UID:$GALAXY_GID /export2
+  - CID1=`docker run -d --privileged=true -p 8181:80 -e NAT_MASQUERADE=true -e NGINX_GALAXY_LOCATION=/subdir -v /export2:/export galaxy_kickstart`
   - |
-    docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
+    CID2=`docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
     --privileged=true \
     -e GALAXY_CONFIG_ALLOW_USER_DATASET_PURGE=True \
     -e GALAXY_CONFIG_ALLOW_LIBRARY_PATH_PASTE=True \
@@ -35,7 +42,7 @@ before_install:
     -e GALAXY_CONFIG_ENABLE_BETA_WORKFLOW_MODULES=True \
     -v /tmp/:/tmp/ \
     -v /export/:/export \
-    galaxy_kickstart
+    galaxy_kickstart`
   - docker ps
   - cd $GALAXY_HOME
   - sudo su $GALAXY_TRAVIS_USER -c 'wget https://github.com/bgruening/bioblend/archive/master.tar.gz'
@@ -49,19 +56,23 @@ install:
   - sudo su $GALAXY_TRAVIS_USER -c 'sed -i.bak "s/commands.*$/commands =/" tox.ini'
 
 script:
+  - docker logs $CID2
   - sleep 30s
+  # Test that galaxy served at subdir responds
+  - curl http://localhost:8181/subdir/api/version| grep version_major
   # Run bioblend nosetests with the same UID and GID as the galaxy user inside if Docker
   # this will guarantee that exchanged files bewteen bioblend and Docker are read & writable from both sides
   - sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH && cd $GALAXY_HOME/bioblend-master && tox -e $TOX_ENV -- -e 'test_download_dataset'"
-  # Test the 'old' tool installation script
-  #- docker run galaxy-docker/test bash -c 'install-repository "--url https://toolshed.g2.bx.psu.edu -o iuc --name bedtools --panel-section-name 'BEDTools'"'
-  # Test the 'new' tool installation script
-  #- docker run galaxy-docker/test bash -c "install-tools $GALAXY_HOME/ansible/galaxy-tools-playbook/files/tool_list.yaml"
-  # Test Docker in Docker, used by Interactive Environments; This needs to be at the end as Docker takes some time to start.
-  #- docker exec -i -t galaxy_test_container docker info
   - curl --fail $BIOBLEND_GALAXY_URL/api/version
   - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
   - curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
+  # test that proftpd is running when nat_masquerade=true
+  - docker exec -it $CID1 supervisorctl status | grep proftpd | grep RUNNING
+  - docker stop $CID1 $CID2 && docker rm $CID1 $CID2
+  # Start docker again with export2 but do not define a NGINX_GALAXY_LOCATION
+  - CID3=`docker run -d --privileged=true -p 8181:80 -e NAT_MASQUERADE=true -v /export2:/export galaxy_kickstart` && sleep 60s
+  - docker logs $CID3
+  - curl http://localhost:8181/api/version| grep version_major
   # Change back to $TRAVIS_BUILD_DIR, since deployment will fail otherwise
   - cd $TRAVIS_BUILD_DIR
 deploy:

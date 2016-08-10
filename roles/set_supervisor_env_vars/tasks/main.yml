@@ -1,0 +1,18 @@
+# Some environmental variables need to be set before supervisor starts.
+# This can be done by adding lines in /etc/default/supervisor,
+# which will be sourced when starting/restarting supervisor
+# If we change these we need to restart supervisor
+
+- name: Install supervisor
+  apt: name="supervisor" state="present"
+
+- name: Add supervisor ENV vars
+  lineinfile: "dest=/etc/default/supervisor state=present create=yes line={{ item }}"
+  with_items:
+    - "{{ supervisor_env_vars }}"
+  register: env_var_task
+
+- name: restart supervisor
+  service: name=supervisor state=restarted
+  when: env_var_task.changed
+  ignore_errors: yes

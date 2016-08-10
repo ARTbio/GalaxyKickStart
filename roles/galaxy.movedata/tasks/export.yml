@@ -3,6 +3,10 @@
   with_items: "{{ start_stop_items }}"
   tags: skip_supervisor_start_in_docker
 
+- name: Make sure paths to be exported exists
+  file: path="{{ item.path }}" state=directory owner="{{ item.owner }}" group="{{ item.owner }}"
+  with_items: "{{ galaxy_persist_directories }}"
+
 - name: Create persistent directory paths
   file: path={{ galaxy_persistent_directory }}/{{ item.path }} state=directory owner="{{ item.owner }}" group="{{ item.owner }}"
   with_items: "{{ galaxy_persist_directories }}"

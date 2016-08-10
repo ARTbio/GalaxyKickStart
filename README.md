@@ -1,10 +1,11 @@
 [![Build Status](https://travis-ci.org/ARTbio/ansible-artimed.svg?branch=master)](https://travis-ci.org/ARTbio/ansible-artimed)
 
+# GalaxyKickStart
 
-# GalaxyKickstarter
-
-GalaxyKickstarter is an Ansible playbook designed to help you get one or more production-ready
+GalaxyKickStart is an Ansible playbook designed to help you get one or more production-ready
  [Galaxy servers](https://usegalaxy.org/) based on Ubuntu within minutes, and to maintain these servers.
+
+# Required ansible version >= 2.1
 
 Optionally, instances can be pre-loaded with tools and workflows.
 
@@ -18,7 +19,7 @@ The playbook has been tested on
 Detailed instructions are available in the [Documentation](https://artbio.github.io/ansible-artimed/)
 
 
-GalaxyKickstarter has been developed at the [ARTbio platform](http://artbio.fr) and contains roles developed
+GalaxyKickStart has been developed at the [ARTbio platform](http://artbio.fr) and contains roles developed
 by the [Galaxy team](https://github.com/galaxyproject/).
 
 List of roles included in this playbook

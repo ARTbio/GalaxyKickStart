@@ -1,1 +1,5 @@
 .idea/
+.vagrant/
+*.retry
+.DS_Store
+docs/html
