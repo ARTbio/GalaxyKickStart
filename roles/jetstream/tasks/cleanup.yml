@@ -3,6 +3,21 @@
 - name: Clean apt cache to recover some disk space
   shell: apt-get clean
 
+# htop is a placeholder here; see bug report
+# https://github.com/ansible/ansible-modules-core/issues/4029
+- name: Apt autoremove
+  apt: autoremove=yes name=htop
+
+- name: Run fix_hostname script
+  shell: /usr/local/bin/fix_hostname.sh
+
+# Dev only: Slurm will start only after the hostname has been resolved
+# - name: Explicitly start Slurm
+#   shell: supervisorctl start slurmctld
+
+- name: Stop all supervisor tasks
+  shell: supervisorctl stop all
+
 - name: Delete unwanted files
   shell: rm -rf {{ item }}
   with_items:
@@ -14,7 +29,7 @@
     - "/home/{{ galaxy_user_name }}/.bash_history"
   ignore_errors: yes
 
-# Note that after this task run, ssh will no longer be possible
+Note that after this task run, ssh will no longer be possible
 - name: Clear home dirs
   shell: find /home/{{ item }}/ -type f -not -name ".*" -exec rm {} \;
   with_items:
@@ -24,12 +39,19 @@
 
 - name: Place a custom history file into galaxy_user's home dir
   copy: src=extra-files/jetstream/bash_history dest=~/.bash_history mode=0600
-  become_user: ubuntu
+  become_user: "{{ galaxy_user_name }}"
 
 - name: Create a symlink placeholder to the Galaxy app dir
   file: src="{{ galaxy_server_dir }}" dest="~/galaxy-app" state=link
-  become_user: "{{ item }}"
-  ignore_errors: yes
-  with_items:
-    - "{{ default_user_name }}"
-    - "{{ galaxy_user_name }}"
+  become_user: "{{ galaxy_user_name }}"
+
+# Create a symlink from the CVMFS to /galaxy/data because that is where the
+# .loc files from CVMFS point (and consequently tool_data_table_conf.xml)
+- name: List target CVMFS
+  command: ls /cvmfs/data.galaxyproject.org
+
+- name: Create /galaxy dir
+  file: path=/galaxy state=directory
+
+- name: Create a symlink from CVMFS to /galaxy/data
+  file: src=/cvmfs/data.galaxyproject.org/byhand dest=/galaxy/data state=link

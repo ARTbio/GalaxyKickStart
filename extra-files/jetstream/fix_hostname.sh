@@ -1,5 +1,4 @@
 #!/bin/bash
-service hostname restart
 HN=$(cat /etc/hostname)
 
 cat<<EOF > /etc/hosts
@@ -14,3 +13,5 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ff02::3 ip6-allhosts
 EOF
+
+service hostname restart

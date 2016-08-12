@@ -71,6 +71,6 @@
       tags:
         - import_genomes
 
-    # - role: jetstream
-    #   jetstream_cleanup: yes
-    #   when: jetstream is defined
+    - role: jetstream
+      jetstream_cleanup: yes
+      when: jetstream is defined
