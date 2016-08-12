@@ -29,7 +29,7 @@
     - "/home/{{ galaxy_user_name }}/.bash_history"
   ignore_errors: yes
 
-Note that after this task run, ssh will no longer be possible
+#Note that after this task run, ssh will no longer be possible
 - name: Clear home dirs
   shell: find /home/{{ item }}/ -type f -not -name ".*" -exec rm {} \;
   with_items:
