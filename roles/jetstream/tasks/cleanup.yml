@@ -8,10 +8,10 @@
 - name: Apt autoremove
   apt: autoremove=yes name=htop
 
-- name: Run fix_hostname script
-  shell: /usr/local/bin/fix_hostname.sh
+# - name: Run fix_hostname script
+#   shell: /etc/init.d/fix_hostname.sh
 
-# Dev only: Slurm will start only after the hostname has been resolved
+# Dev only: due to hostname issues, explicitly start Slurm
 # - name: Explicitly start Slurm
 #   shell: supervisorctl start slurmctld
 
@@ -24,12 +24,12 @@
     - /var/log/syslog
     - /var/log/nginx/*
     - /var/log/supervisor/*
-    - /opt/galaxy/logs/*
+    - "{{ galaxy_log_dir }}/*"
     - "/home/{{ default_user_name }}/.bash_history"
     - "/home/{{ galaxy_user_name }}/.bash_history"
   ignore_errors: yes
 
-#Note that after this task run, ssh will no longer be possible
+# Note that after this task run, ssh will no longer be possible
 - name: Clear home dirs
   shell: find /home/{{ item }}/ -type f -not -name ".*" -exec rm {} \;
   with_items:

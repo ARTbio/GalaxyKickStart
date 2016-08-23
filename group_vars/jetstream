@@ -24,7 +24,6 @@ galaxy_config_dir: "{{ galaxy_server_dir }}/config"
 galaxy_log_dir: "{{ galaxyFS_base_dir }}/logs"
 galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
 galaxy_data: "{{ galaxyFS_base_dir }}/galaxy"
-galaxy_database: "{{ galaxyFS_base_dir }}/db"
 galaxy_shed_tools_dir: "{{ galaxyFS_base_dir }}/shed_tools"
 galaxy_tools_tool_list_files: ["extra-files/jetstream/jetstream_data_manager_tool_list.yml"]
 # galaxy_tools_tool_list_files: ["extra-files/jetstream/usegalaxy_main_tool_list.yml"]
@@ -41,7 +40,6 @@ proftpd_files_dir: "{{ galaxyFS_base_dir }}/tmp/ftp"
 supervisor_slurm_config_dir: "{{ galaxyFS_base_dir }}/logs"
 additional_files_list:
   - { src: "extra-files/jetstream/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
-  - { src: "extra-files/jetstream/fix_hostname.sh", dest: "/usr/local/bin/fix_hostname.sh" }
   - { src: "extra-files/jetstream/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
   - { src: "extra-files/jetstream/jetstream_text.png", dest: "{{ galaxy_server_dir }}/static/images/" }
   - { src: "extra-files/jetstream/cloud.gif", dest: "{{ galaxy_server_dir }}/static/images/" }
