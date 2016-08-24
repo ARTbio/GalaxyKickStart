@@ -8,12 +8,9 @@
 - name: Apt autoremove
   apt: autoremove=yes name=htop
 
-# - name: Run fix_hostname script
-#   shell: /etc/init.d/fix_hostname.sh
-
 # Dev only: due to hostname issues, explicitly start Slurm
-# - name: Explicitly start Slurm
-#   shell: supervisorctl start slurmctld
+# - name: Run fix_hostname script
+#   shell: /etc/init.d/fix_hostname.sh && supervisorctl start slurmctld
 
 - name: Stop all supervisor tasks
   shell: supervisorctl stop all

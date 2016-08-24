@@ -16,5 +16,11 @@
 - name:  Copy fix_hostname script
   copy: src=extra-files/jetstream/fix_hostname.sh dest=/etc/init.d/fix_hostname.sh mode=0755
 
+- name: Add fix_hostname script to rc2
+  file: src=/etc/init.d/fix_hostname.sh dest=/etc/rc2.d/S18fix-hostname state=link
+
+- name: Run the fix_hostname script (needed for CVMFS & Slurm)
+  command: /etc/init.d/fix_hostname.sh
+
 # Install & setup CermVM-FS for reference data
 - include: cvmfs_client.yml
