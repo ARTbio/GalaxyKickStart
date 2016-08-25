@@ -8,17 +8,17 @@ The playbook has been tested with version 2.1.
 [//]: # (TODO: Once we do releases, we include the submodules and hence users can just download the playbook without git)
 
 
-GalaxyKickStart is hosted on [github](https://github.com/ARTbio/ansible-artimed.git) and makes use of submodules, so care
+GalaxyKickStart is hosted on [github](https://github.com/ARTbio/GalaxyKickStart.git) and makes use of submodules, so care
 needs to be taken to also download the submodules. Cloning the repository for the first time can be done like this
 (note the `--recursive`):
 
 ```
-git clone --recursive https://github.com/ARTbio/ansible-artimed.git
+git clone --recursive https://github.com/ARTbio/GalaxyKickStart.git
 ```
 
-The playbook (here `galaxy.yml`) should be in the ansible-artimed folder.
+The playbook (here `galaxy.yml`) should be in the GalaxyKickStart folder.
 ```bash
-ls ansible-artimed/
+ls GalaxyKickStart/
 CONTRIBUTORS.md  docs  extra-files  galaxy.yml  group_vars  hosts
 LICENSE.txt  mkdocs.yml  pre-commit.sh  README.md  roles  Vagrantfile
 ```

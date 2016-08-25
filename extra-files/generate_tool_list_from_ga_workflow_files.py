@@ -14,7 +14,7 @@ def _parse_cli_options():
                             epilog="example:\n"
                                    "python %(prog)s -w workflow1 workflow2 -o mytool_list.yml -l my_panel_label\n"
                                    "Christophe Antoniewski <drosofff@gmail.com>\n"
-                                   "https://github.com/ARTbio/ansible-artimed/tree/master/extra-files/generate_tool_list_from_ga_workflow_files.py")
+                                   "https://github.com/ARTbio/GalaxyKickStart/tree/master/extra-files/generate_tool_list_from_ga_workflow_files.py")
     parser.add_argument('-w', '--workflow',
                         dest="workflow_files",
                         required=True,
