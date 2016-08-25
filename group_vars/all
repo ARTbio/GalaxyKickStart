@@ -48,10 +48,6 @@ galaxy_persistent_directory: /export # for IFB it's /root/mydisk, by default, /e
 galaxy_manage_mutable_setup: yes
 galaxy_mutable_config_dir: "{{ galaxy_config_dir }}"
 galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini"
-galaxy_web0_port: 8080
-galaxy_handler0_port: 9010
-galaxy_web_threadpool_workers: 5
-galaxy_handler_threadpool_workers: 5
 #other vars
 galaxy_manage_database: yes
 # does not actually fetch eggs if galaxy uses pip
@@ -64,17 +60,12 @@ galaxy_config:
     database_connection: "{{ galaxy_db }}"
     tool_dependency_dir: "{{ tool_dependency_dir }}"
     ftp_upload_dir: "{{ proftpd_files_dir }}"
-    ftp_upload_site: ftp://[instance IP address]
-    #tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
-    #to be done only in production
-    #debug: False
-    #use_interactive: False
-    static_enabled: False
+    ftp_upload_site: ftp://[server IP address]
     cleanup_job: onsuccess
     allow_library_path_paste: True
     allow_user_dataset_purge: True
     tool_config_file: "{{ galaxy_config_dir }}/tool_conf.xml,{{ galaxy_config_dir }}/shed_tool_conf_cloud.xml,{{ galaxy_shed_tool_conf_file }}"
-    tool_sheds_config_file": "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
+    tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     nginx_x_accel_redirect_base: "{{ nginx_galaxy_location | default() }}/_x_accel_redirect"
     nginx_x_archive_files_base: "{{ nginx_galaxy_location | default() }}/_x_accel_redirect"
     allow_user_impersonation: True
@@ -138,9 +129,6 @@ galaxy_tools_admin_user_preset_api_key: yes
 galaxy_tools_api_key: "{{ default_admin_api_key }}"
 galaxy_tools_create_bootstrap_user: yes
 galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}"
-galaxy_config_files:
- - src: extra-files/jetstream/shed_tool_conf.xml.cloud
-   dest: "{{ galaxy_config_dir }}/shed_tool_conf_cloud.xml"
 galaxy_tools_tool_list_files: []
 galaxy_tools_install_workflows: true
 galaxy_tools_workflows: []

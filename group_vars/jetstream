@@ -17,6 +17,10 @@ galaxy_uwsgi_static_conf: no
 galaxy_extras_config_uwsgi: no
 galaxy_web_processes: 1
 galaxy_handler_processes: 0
+galaxy_web0_port: 8080
+galaxy_handler0_port: 9010
+galaxy_web_threadpool_workers: 5
+galaxy_handler_threadpool_workers: 5
 
 galaxyFS_base_dir: /opt/galaxy
 galaxy_server_dir: "{{ galaxyFS_base_dir }}/galaxy-app"
