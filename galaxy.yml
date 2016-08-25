@@ -14,13 +14,13 @@
       tags:
         - install_galaxy
         - install_packages
-    
+
     - role: ensure_postgresql_up
       tags:
         - install_galaxy
         - manage_postgres
 
-    #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db 
+    #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db
     - role: natefoo.postgresql_objects
       postgresql_objects_users:
         - name: "{{ galaxy_user_name }}"
@@ -60,8 +60,11 @@
         - install_tools
 
     - role: galaxy.movedata
-      tags: 
+      tags:
         - persists_galaxy
+
+    - role: galaxyprojectdotorg.trackster
+      tags: configure_galaxy
 
     - role: galaxyprojectdotorg.galaxy-tools
       become: yes

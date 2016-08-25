@@ -1,0 +1,2 @@
+- src: https://github.com/galaxyproject/ansible-trackster.git
+  name: galaxyprojectdotorg.trackster
