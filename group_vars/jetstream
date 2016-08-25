@@ -37,6 +37,13 @@ data_manager_task_file: "extra-files/jetstream/jetstream_data_manager_tasks.yml"
 len_file_path: "{{ galaxy_config_dir }}/len"
 tool_data_table_config_path: "{{ galaxy_server_dir }}/config/tool_data_table_conf.xml,/cvmfs/data.galaxyproject.org/managed/location/tool_data_table_conf.xml"
 galaxy_custom_tools_dir: /usr/local/bin
+# Conda settings
+dependency_resolvers_config_file: config/dependency_resolvers_conf.xml
+conda_prefix: /opt/galaxy/tool_dependencies/_conda
+conda_debug: True
+conda_ensure_channels: r,bioconda,iuc
+conda_auto_install: True
+conda_auto_init: True
 
 galaxy_git_repo: https://github.com/galaxyproject/galaxy.git
 galaxy_changeset_id: release_16.07
@@ -121,6 +128,8 @@ galaxy_mutable_configs:
     dest: "{{ galaxy_config['app:main']['migrated_tools_config'] if galaxy_config is defined and 'app:main' in galaxy_config and 'migrated_tools_config' in galaxy_config['app:main'] else galaxy_config_default['app:main']['migrated_tools_config'] }}"
   - src: "{{ galaxy_server_dir }}/config/datatypes_conf.xml.sample"
     dest: "{{ galaxy_config['app:main']['datatypes_config_file'] if galaxy_config is defined and 'app:main' in galaxy_config and 'datatypes_config_file' in galaxy_config['app:main'] else galaxy_config_default['app:main']['datatypes_config_file'] }}"
+  - src: "{{ galaxy_server_dir }}/config/dependency_resolvers_conf.xml.sample"
+    dest: "{{ galaxy_config['app:main']['dependency_resolvers_config_file'] if galaxy_config is defined and 'app:main' in galaxy_config and 'dependency_resolvers_config_file' in galaxy_config['app:main'] else galaxy_config_default['app:main']['dependency_resolvers_config_file'] }}"
 
 cvmfs_deb_url: "https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs_2.1.20_amd64.deb"
 cvmfs_deb_config_url: "https://ecsft.cern.ch/dist/cvmfs/cvmfs-config/cvmfs-config-default_latest_all.deb"
