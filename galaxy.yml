@@ -70,7 +70,3 @@
     - role: data_managers
       tags:
         - import_genomes
-
-    - role: jetstream
-      jetstream_cleanup: yes
-      when: jetstream is defined

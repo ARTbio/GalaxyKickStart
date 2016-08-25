@@ -26,13 +26,17 @@
     - "/home/{{ galaxy_user_name }}/.bash_history"
   ignore_errors: yes
 
-# Note that after this task run, ssh will no longer be possible
+# After this task run, ssh will no longer be possible by specified users
 - name: Clear home dirs
   shell: find /home/{{ item }}/ -type f -not -name ".*" -exec rm {} \;
   with_items:
     - "{{ default_user_name }}"
     - "{{ galaxy_user_name }}"
   ignore_errors: yes
+
+# After this task run, ssh by root will no longer be possible
+- name: Delete /root/.ssh/authorized_keys
+  file: path=/root/.ssh/authorized_keys state=absent
 
 - name: Place a custom history file into galaxy_user's home dir
   copy: src=extra-files/jetstream/bash_history dest=~/.bash_history mode=0600
@@ -50,5 +54,6 @@
 - name: Create /galaxy dir
   file: path=/galaxy state=directory
 
+# This is required to be able to use Galaxy .len files from Main w/o mods
 - name: Create a symlink from CVMFS to /galaxy/data
   file: src=/cvmfs/data.galaxyproject.org/byhand dest=/galaxy/data state=link

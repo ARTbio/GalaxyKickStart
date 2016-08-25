@@ -1,6 +1,25 @@
 ---
 
-- include: setup.yml
-  when: jetstream_cleanup is not defined
-- include: cleanup.yml
-  when: jetstream_cleanup is defined
+- name: Assure galaxyFS dir exists
+  file: path={{ galaxyFS_base_dir }} state=directory owner={{ galaxy_user_name }} group={{ galaxy_user_name }}
+
+- name:  Copy fix_hostname script
+  copy: src=extra-files/jetstream/fix_hostname.sh dest=/etc/init.d/fix_hostname.sh mode=0755
+
+- name: Add fix_hostname script to rc2
+  file: src=/etc/init.d/fix_hostname.sh dest=/etc/rc2.d/S18fix-hostname state=link
+
+- name: Run the fix_hostname script (needed for CVMFS & Slurm)
+  command: /etc/init.d/fix_hostname.sh
+  notify:
+    - instance cleanup
+
+- name: Setup /etc/bash.bashrc
+  lineinfile: dest=/etc/bash.bashrc line="{{ item }}"
+  with_items:
+    - "alias 'lt=ls -ltr'"
+    - "alias 'll=ls -l'"
+    - "sh /etc/init.d/fix_hostname.sh > /dev/null 2>&1"
+
+# Install & setup CernVM-FS client used for Galaxy's reference data
+- include: cvmfs_client.yml

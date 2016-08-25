@@ -4,3 +4,6 @@
   service:
     name: autofs
     state: restarted
+
+- name: instance cleanup
+  include: cleanup.yml
