@@ -8,72 +8,30 @@
 	<section id="genome_diversity" name="Genome Diversity" version=""></section>
 	<section id="ngs-rna-tools" name="NGS: RNA Analysis" version=""></section>
 	<section id="hgv" name="Phenotype Association" version=""></section>
-	<section id="samtools" name="NGS: SAMtools" version=""></section>
 	<section id="bxops" name="Operate on Genomic Intervals" version=""></section>
 	<section id="gatk" name="NGS: GATK Tools (beta)" version=""></section>
-	<section id="variant_detection" name="NGS: Variant Analysis" version=""></section>
 	<section id="ngs:_vcf_manipulation" name="NGS: VCF Manipulation" version=""></section>
 	<section id="EMBOSSLite" name="EMBOSS" version=""></section>
 	<section id="multiple_regression" name="Multiple Regression" version=""></section>
 	<section id="regVar" name="Regional Variation" version=""></section>
-	<section id="variant_detection" name="NGS: Variant Analysis" version=""></section>
-	<section id="ngs:_picard" name="NGS: Picard" version=""></section>
 	<section id="cshl_library_information" name="NGS: QC and manipulation" version=""></section>
-	<section id="ngs_mapping" name="NGS: Mapping" version=""></section>
 	<section id="ngs:_bam_tools" name="NGS: BamTools" version=""></section>
-	<section id="variant_detection" name="NGS: Variant Analysis" version=""></section>
-	<section id="ngs_mapping" name="NGS: Mapping" version=""></section>
-	<section id="ngs-rna-tools" name="NGS: RNA Analysis" version=""></section>
 	<section id="plots" name="Graph/Display Data" version=""></section>
-	<section id="ngs:_vcf_manipulation" name="NGS: VCF Manipulation" version=""></section>
 	<section id="ngs_rna_structure" name="NGS: RNA Structure" version=""></section>
-	<section id="samtools" name="NGS: SAMtools" version=""></section>
-	<section id="ngs-rna-tools" name="NGS: RNA Analysis" version=""></section>
-	<section id="variant_detection" name="NGS: Variant Analysis" version=""></section>
-	<section id="samtools" name="NGS: SAMtools" version=""></section>
-	<section id="ngs_mapping" name="NGS: Mapping" version=""></section>
 	<section id="datamash" name="Datamash" version=""></section>
-	<section id="variant_detection" name="NGS: Variant Analysis" version=""></section>
-	<section id="cshl_library_information" name="NGS: QC and manipulation" version=""></section>
 	<section id="clustal" name="Multiple Alignments" version=""></section>
 	<section id="str-fm:_microsatellite_analysis" name="STR-FM: Microsatellite Analysis" version=""></section>
-	<section id="bedtools" name="BEDTools" version=""></section>
 	<section id="stats" name="Statistics" version=""></section>
-	<section id="ngs-rna-tools" name="NGS: RNA Analysis" version=""></section>
-	<section id="samtools" name="NGS: SAMtools" version=""></section>
 	<section id="peak_calling" name="NGS: Peak Calling" version=""></section>
-	<section id="samtools" name="NGS: SAMtools" version=""></section>
-	<section id="variant_detection" name="NGS: Variant Analysis" version=""></section>
-	<section id="peak_calling" name="NGS: Peak Calling" version=""></section>
-	<section id="plots" name="Graph/Display Data" version=""></section>
 	<section id="tax_manipulation" name="Metagenomic Analysis" version=""></section>
-	<section id="ngs:_bam_tools" name="NGS: BamTools" version=""></section>
 	<section id="motifs" name="Motif Tools" version=""></section>
 	<section id="ngs:_duplexnovo" name="NGS: Du Novo" version=""></section>
 	<section id="ngs:_duplexnovo" name="NGS: DuplexNovo" version=""></section>
-	<section id="tax_manipulation" name="Metagenomic Analysis" version=""></section>
-	<section id="ngs_mapping" name="NGS: Mapping" version=""></section>
 	<section id="convert" name="Convert Formats" version=""></section>
-	<section id="peak_calling" name="NGS: Peak Calling" version=""></section>
-	<section id="motifs" name="Motif Tools" version=""></section>
 	<section id="ngs:_picard" name="NGS: Picard" version=""></section>
-	<section id="motifs" name="Motif Tools" version=""></section>
 	<section id="ngs_mapping" name="NGS: Mapping" version=""></section>
-	<section id="ngs-rna-tools" name="NGS: RNA Analysis" version=""></section>
 	<section id="textutil" name="Text Manipulation" version=""></section>
-	<section id="peak_calling" name="NGS: Peak Calling" version=""></section>
-	<section id="tax_manipulation" name="Metagenomic Analysis" version=""></section>
-	<section id="ngs-rna-tools" name="NGS: RNA Analysis" version=""></section>
-	<section id="hgv" name="Phenotype Association" version=""></section>
-	<section id="cshl_library_information" name="NGS: QC and manipulation" version=""></section>
-	<section id="tax_manipulation" name="Metagenomic Analysis" version=""></section>
-	<section id="gatk" name="NGS: GATK Tools (beta)" version=""></section>
-	<section id="peak_calling" name="NGS: Peak Calling" version=""></section>
-	<section id="cshl_library_information" name="NGS: QC and manipulation" version=""></section>
-	<section id="EMBOSSLite" name="EMBOSS" version=""></section>
-	<section id="cshl_library_information" name="NGS: QC and manipulation" version=""></section>
 	<section id="ncbi_sra_tools" name="NCBI SRA Tools" version=""></section>
-	<section id="tax_manipulation" name="Metagenomic Analysis" version=""></section>
 	<section id="ngs:_deeptools" name="NGS: DeepTools" version=""></section>
 	<section id="ngs:_gemini" name="NGS: Gemini" version=""></section>
     <section id="multivariate_analysis" name="Multivariate Analysis" version=""></section>
