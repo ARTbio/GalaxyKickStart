@@ -8,9 +8,13 @@ env:
   global:
     - TOX_ENV=py27
     - SITE_URL="https://artbio.github.io/GalaxyKickStart/"
-    - GH_USER_NAME="Marius van den Beek"
-    - GH_USER_EMAIL="m.vandenbeek@gmail.com"
+    - GH_USER_NAME="Christophe Antoniewski"
+    - GH_USER_EMAIL="drosofff@gmail.com"
     - GH_REF="github.com/ARTbio/GalaxyKickStart.git"
+    # GH_TOKEN is secret, add in travis interface. Needed for pushing updated documentation.
+    # https://help.github.com/articles/creating-an-access-token-for-command-line-use/
+    # below, deprecated GH_REF value
+    # - GH_REF="github.com/ARTbio/ansible-artimed.git"
 
 before_install:
   - export GALAXY_TRAVIS_USER=galaxy
