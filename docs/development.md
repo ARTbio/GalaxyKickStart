@@ -9,8 +9,8 @@ If at any point you find yourself in the situation where a git checkout of submo
 Skip the git clone if you already cloned the repo.
 
 ```
-git clone --recursive https://github.com/ARTbio/ansible-artimed.git
-cd ansible-artimed/
+git clone --recursive https://github.com/ARTbio/GalaxyKickStart.git
+cd GalaxyKickStart/
 ```
 
 Enter the directory of the problematic submodule
@@ -20,12 +20,12 @@ cd roles/galaxyprojectdotorg.galaxy-extras/
 ```
 
 Verify that you have the correct remote.
-You can find the correct remote in ansible-artimed/.gitmodules
+You can find the correct remote in GalaxyKickStart/.gitmodules
 ```
 git remote -v
 ```
 
-If this is not the correct remote, change back to the ansible-artimed directory and do
+If this is not the correct remote, change back to the GalaxyKickStart directory and do
 
 ```
 git submodule sync
@@ -45,5 +45,5 @@ git add galaxyprojectdotorg.galaxy-extras
 git commit -m "Fix galaxy-extras submodule revision"
 ```
 
-If you push this work back to github and you compare your repo with ansible-artimed/master, you should not see any changes
+If you push this work back to github and you compare your repo with GalaxyKickStart/master, you should not see any changes
 that look like `Subproject commit 8265bdceaf0eca5ea4daeda06eb0d28583754ef6` (unless you have intentionally updated a submodule).

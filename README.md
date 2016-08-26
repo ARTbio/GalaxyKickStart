@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ARTbio/ansible-artimed.svg?branch=master)](https://travis-ci.org/ARTbio/ansible-artimed)
+[![Build Status](https://travis-ci.org/ARTbio/GalaxyKickStart.svg?branch=master)](https://travis-ci.org/ARTbio/GalaxyKickStart)
 
 # GalaxyKickStart
 
@@ -16,7 +16,7 @@ The playbook has been tested on
 - Physical Servers 
 - Docker.
 
-Detailed instructions are available in the [Documentation](https://artbio.github.io/ansible-artimed/)
+Detailed instructions are available in the [Documentation](https://artbio.github.io/GalaxyKickStart/)
 
 
 GalaxyKickStart has been developed at the [ARTbio platform](http://artbio.fr) and contains roles developed
