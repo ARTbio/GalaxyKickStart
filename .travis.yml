@@ -13,7 +13,8 @@ env:
     - GH_REF="github.com/ARTbio/GalaxyKickStart.git"
     # GH_TOKEN is secret, add in travis interface. Needed for pushing updated documentation.
     # https://help.github.com/articles/creating-an-access-token-for-command-line-use/
-    - GH_REF="github.com/ARTbio/ansible-artimed.git"
+    # below, deprecated GH_REF value
+    # - GH_REF="github.com/ARTbio/ansible-artimed.git"
 
 before_install:
   - export GALAXY_TRAVIS_USER=galaxy
