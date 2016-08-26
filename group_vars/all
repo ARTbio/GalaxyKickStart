@@ -60,35 +60,15 @@ galaxy_config:
     database_connection: "{{ galaxy_db }}"
     tool_dependency_dir: "{{ tool_dependency_dir }}"
     ftp_upload_dir: "{{ proftpd_files_dir }}"
-    ftp_upload_site: ftp://[server IP address]
-    cleanup_job: onsuccess
-    allow_library_path_paste: True
     allow_user_dataset_purge: True
-    tool_config_file: "{{ galaxy_config_dir }}/tool_conf.xml,{{ galaxy_config_dir }}/shed_tool_conf_cloud.xml,{{ galaxy_shed_tool_conf_file }}"
-    tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
-    nginx_x_accel_redirect_base: "{{ nginx_galaxy_location | default() }}/_x_accel_redirect"
-    nginx_x_archive_files_base: "{{ nginx_galaxy_location | default() }}/_x_accel_redirect"
     allow_user_impersonation: True
+    static_enabled: False
     nginx_upload_store: /tmp
     use_pbkdf2: "{{ use_pbkdf2 }}"
-    builds_file_path: "{{ galaxy_server_dir }}/tool-data/shared/ucsc/builds.txt"
-    tool_data_table_config_path: "{{ galaxy_config_dir }}/tool_data_table_conf.xml"
-    migrated_tools_config: "{{ galaxy_mutable_config_dir }}/migrated_tools_conf.xml"
-    datatypes_config_file: "{{ galaxy_config_dir }}/datatypes_conf.xml"
     len_file_path: "{{ galaxy_config_dir }}/len"
     filter-with: proxy-prefix
   "uwsgi":
     master: True
-  "server:web0":
-    use: "egg:Paste#http"
-    port: "{{ galaxy_web0_port + 0}}"
-    use_threadpool: "True"
-    threadpool_workers: "{{ galaxy_web_threadpool_workers }}"
-  "server:handler0":
-    use: "egg:Paste#http"
-    port: "{{ galaxy_handler0_port + 0}}"
-    use_threadpool: "True"
-    threadpool_workers: "{{ galaxy_handler_threadpool_workers }}"
   "filter:proxy-prefix":
     use: "egg:PasteDeploy#prefix"
     prefix: "{{ nginx_galaxy_location }}"
