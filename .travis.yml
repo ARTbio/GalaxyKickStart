@@ -29,6 +29,9 @@ before_install:
   - docker --version
   - docker info
 
+  - pip install ansible
+  - ansible-galaxy install -r requirements_roles.yml -p roles
+
   - sudo groupadd -r $GALAXY_TRAVIS_USER -g $GALAXY_GID
   - sudo useradd -u $GALAXY_UID -r -g $GALAXY_TRAVIS_USER -d $GALAXY_HOME -p travis_testing -c "Galaxy user" $GALAXY_TRAVIS_USER
   - sudo mkdir $GALAXY_HOME
@@ -65,7 +68,7 @@ script:
   # Test that galaxy served at subdir responds
   - curl http://localhost:8181/subdir/api/version| grep version_major
   # Run bioblend nosetests with the same UID and GID as the galaxy user inside if Docker
-  # this will guarantee that exchanged files bewteen bioblend and Docker are read & writable from both sides
+  # this will guarantee that exchanged files between bioblend and Docker are read & writable from both sides
   - sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH && cd $GALAXY_HOME/bioblend-master && tox -e $TOX_ENV -- -e 'test_download_dataset'"
   - curl --fail $BIOBLEND_GALAXY_URL/api/version
   - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
