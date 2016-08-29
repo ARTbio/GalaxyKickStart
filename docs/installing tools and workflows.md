@@ -7,7 +7,7 @@ to install tools and workflows into galaxy instances using the [bioblend](https:
 
 # Creating a tool_list.yml file
 To install tools, you will need to prepare a list of tools in yaml format.
-A an example of a a tool list can be found in [here](https://github.com/ARTbio/ansible-artimed/blob/master/extra-files/metavisitor/metavisitor_tool_list.yml)
+A an example of a a tool list can be found in [here](https://github.com/ARTbio/GalaxyKickStart/blob/master/extra-files/metavisitor/metavisitor_tool_list.yml)
 ```
 tools:
 - name: blast_to_scaffold

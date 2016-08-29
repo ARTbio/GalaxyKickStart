@@ -10,29 +10,29 @@ Here, a `Deployment Machine` will install a Metavisitor Galaxy server on `Target
 
 # Getting the ansible playbook
 ----
-This is done on the `Deployment Machine` by cloning the [GalaxyKickStart (ansible-artimed) repository](https://github.com/ARTbio/ansible-artimed.git) hosted by [the ARTbio organization](https://github.com/ARTbio):
+This is done on the `Deployment Machine` by cloning the [GalaxyKickStart (GalaxyKickStart) repository](https://github.com/ARTbio/GalaxyKickStart.git) hosted by [the ARTbio organization](https://github.com/ARTbio):
 
 In your terminal, type:
 ```
-git clone --recursive https://github.com/ARTbio/ansible-artimed.git
+git clone --recursive https://github.com/ARTbio/GalaxyKickStart.git
 ```
 [//]: # (TODO: Once we do releases, we include the submodules and hence users can just download the playbook without git)
 
 Importantly, GalaxyKickStart makes use of submodules, so care
 needs to be taken to also download these submodules. This is why `--recursive` is included in the git command line.
 
-At completion of the git cloning, you will have a new `ansible-artimed` folder, which contains everything need for deployment with ansible, including the playbook file (here `galaxy.yml`). You can verify this by typing in terminal:
+At completion of the git cloning, you will have a new `GalaxyKickStart` folder, which contains everything need for deployment with ansible, including the playbook file (here `galaxy.yml`). You can verify this by typing in terminal:
 
-`ls -la ansible-artimed`
+`ls -la GalaxyKickStart`
 
-# Adapting the ansible-artimed folder to your deployment
+# Adapting the GalaxyKickStart folder to your deployment
 ----
 
-There are only few things to change in the `ansible-artimed` folder before running ansible.
+There are only few things to change in the `GalaxyKickStart` folder before running ansible.
 
 ## Adapt the ansible inventory file
 
-In the ansible-artimed folder, there is a `hosts` file called the "inventory file".
+In the GalaxyKickStart folder, there is a `hosts` file called the "inventory file".
 For deploying Metavisitor, you need to edit this file so that it just contains
 
 ```
@@ -84,7 +84,7 @@ The ports 21 and  49152 - 65534 should be open for FTP uploads to the AWS instan
 
 ## Adapt the group_vars/all file for persisting data, if needed.
 
-In cases where your `Target machine` has volumes where you wish the Galaxy data to be persisted in, you have to edit the `ansible-artimed/group_vars/all` file, to indicate the path to this volume on the `Target machine`.
+In cases where your `Target machine` has volumes where you wish the Galaxy data to be persisted in, you have to edit the `GalaxyKickStart/group_vars/all` file, to indicate the path to this volume on the `Target machine`.
 
 If you don't understand the previous statement, no worries, just don't do anything and skip this step.
 
@@ -95,7 +95,7 @@ For others, find the lines
 galaxy_persistent_directory: /export # for IFB it's /root/mydisk, by default, /export
 ```
 
-in the `ansible-artimed/group_vars/all` file, and change /export to the path of your persistent volume.
+in the `GalaxyKickStart/group_vars/all` file, and change /export to the path of your persistent volume.
 
 Note that if `/export` is not changed, nothing will happen and the deployed galaxy server and all associated data files will be in the `/home/galaxy/galaxy` folder of the `Target Machine`.
 
@@ -104,7 +104,7 @@ Note that if `/export` is not changed, nothing will happen and the deployed gala
 
 You are almost done.
 
-Navigate with your terminal to your `ansible-artimed` folder and type the following command to run the ansible playbook for deploying metavisitor Galaxy on the `Target Machine`:
+Navigate with your terminal to your `GalaxyKickStart` folder and type the following command to run the ansible playbook for deploying metavisitor Galaxy on the `Target Machine`:
 
 ```
 ansible-playbook --inventory-file=hosts galaxy.yml
@@ -119,7 +119,7 @@ By default the admin login/password is `admin@galaxy.org` / `admin`. You should 
 
 # Re-deploying Metavisitor Galaxy on the `Target Machine`
 ----
-If you are experimented in using ansible, you may customize your Metavisitor Galaxy instance deployed with GalaxyKickStart by editing the content of `ansible-artimed`.
+If you are experimented in using ansible, you may customize your Metavisitor Galaxy instance deployed with GalaxyKickStart by editing the content of `GalaxyKickStart`.
 
 In that case, when your changes are done, just run again the command
 

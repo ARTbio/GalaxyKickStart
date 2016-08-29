@@ -38,7 +38,7 @@ VAGRANTFILE_API_VERSION = "2"
 ```
 By default, port 8080 will be forwarded to port 80, and port 2121 will be forwarded to port 21 (for FTP),
 and 4096 MB of memory will be attributed to the VM.
-Enter the playbook directory `cd ansible-artimed` and type `vagrant up` to download a VM image and run the `galaxy.yml` playbook.
+Enter the playbook directory `cd GalaxyKickStart` and type `vagrant up` to download a VM image and run the `galaxy.yml` playbook.
 
 This will take a while. Once finished, you should find a running Galaxy Instance on http://localhost:8080 .
 If you would like to see the internals of the VM, you can log into the machine by typing `vagrant ssh`.

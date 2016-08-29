@@ -7,10 +7,14 @@ dist: trusty
 env:
   global:
     - TOX_ENV=py27
-    - SITE_URL="https://artbio.github.io/ansible-artimed/"
-    - GH_USER_NAME="Marius van den Beek"
-    - GH_USER_EMAIL="m.vandenbeek@gmail.com"
-    - GH_REF="github.com/ARTbio/ansible-artimed.git"
+    - SITE_URL="https://artbio.github.io/GalaxyKickStart/"
+    - GH_USER_NAME="Christophe Antoniewski"
+    - GH_USER_EMAIL="drosofff@gmail.com"
+    - GH_REF="github.com/ARTbio/GalaxyKickStart.git"
+    # GH_TOKEN is secret, add in travis interface. Needed for pushing updated documentation.
+    # https://help.github.com/articles/creating-an-access-token-for-command-line-use/
+    # below, deprecated GH_REF value
+    # - GH_REF="github.com/ARTbio/ansible-artimed.git"
 
 before_install:
   - export GALAXY_TRAVIS_USER=galaxy
@@ -24,6 +28,9 @@ before_install:
   - export BIOBLEND_GALAXY_URL=http://localhost:8080
   - docker --version
   - docker info
+
+  - pip install ansible
+  - ansible-galaxy install -r requirements_roles.yml -p roles
 
   - sudo groupadd -r $GALAXY_TRAVIS_USER -g $GALAXY_GID
   - sudo useradd -u $GALAXY_UID -r -g $GALAXY_TRAVIS_USER -d $GALAXY_HOME -p travis_testing -c "Galaxy user" $GALAXY_TRAVIS_USER
@@ -61,7 +68,7 @@ script:
   # Test that galaxy served at subdir responds
   - curl http://localhost:8181/subdir/api/version| grep version_major
   # Run bioblend nosetests with the same UID and GID as the galaxy user inside if Docker
-  # this will guarantee that exchanged files bewteen bioblend and Docker are read & writable from both sides
+  # this will guarantee that exchanged files between bioblend and Docker are read & writable from both sides
   - sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH && cd $GALAXY_HOME/bioblend-master && tox -e $TOX_ENV -- -e 'test_download_dataset'"
   - curl --fail $BIOBLEND_GALAXY_URL/api/version
   - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
