@@ -1,4 +1,4 @@
-FROM artbio/ansible-galaxy-os 
+FROM artbio/ansible-galaxy-os
 
 MAINTAINER Marius van den Beek <m.vandenbeek@gmail.com>
 
@@ -9,13 +9,15 @@ RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
     echo "exit 0" > /usr/sbin/policy-rc.d  && \
     \
     apt-get install -y --no-install-recommends \
-    apt-transport-https software-properties-common \
-    && apt-add-repository -y ppa:ansible/ansible && \
-    apt-get update -qq && apt-get install -y --no-install-recommends ansible
+    apt-transport-https software-properties-common
 
 ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
               echo "===> Updating TLS certificates..."         && \
               apt-get install -y openssl ca-certificates
+
+# TODO: install as a system package after v2.1.2.0 is released
+RUN git clone --recursive -b stable-2.1 https://github.com/ansible/ansible && \
+    pip install ansible/
 
 COPY  .  /setup
 WORKDIR /setup
@@ -27,7 +29,7 @@ RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
 # work around for AUFS bug
 # as per https://github.com/docker/docker/issues/783#issuecomment-56013588
 RUN mkdir /var/lib/postgresql-copy; mv /var/lib/postgresql/* /var/lib/postgresql-copy; rm -R /var/lib/postgresql; mv /var/lib/postgresql-copy /var/lib/postgresql; \
-    chmod 0700 /var/lib/postgresql; chown -R 1550:1550 /var/lib/postgresql 
+    chmod 0700 /var/lib/postgresql; chown -R 1550:1550 /var/lib/postgresql
 RUN ansible-playbook -i inventory_files/docker -c local galaxy.yml && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
