@@ -6,6 +6,7 @@ install_galaxy: yes
 run_extras: yes
 install_tools: yes
 run_data_manager: no
+import_genomes: no
 
 # A custom config needs be supplied before Reports will work
 supervisor_manage_reports: no
