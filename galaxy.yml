@@ -20,7 +20,6 @@
         - install_galaxy
         - manage_postgres
 
-    #this role included in galaxyprojectdotorg.galaxy as a submodule to create galaxy user and its db
     - role: natefoo.postgresql_objects
       postgresql_objects_users:
         - name: "{{ galaxy_user_name }}"
@@ -48,7 +47,7 @@
       tags:
         - install_extras
 
-    #installs supervisor, nginx and proftpd
+    # Installs supervisor, nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
       tags:
         - configure_server_stack
@@ -70,8 +69,3 @@
       become: yes
       become_user: "{{ galaxy_user_name }}"
       tags: install_tools
-
-    - role: data_managers
-      tags:
-        - import_genomes
-

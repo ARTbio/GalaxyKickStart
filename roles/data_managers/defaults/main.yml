@@ -1,3 +1,0 @@
-galaxy_tools_base_dir: "/tmp"
-data_manager_task_file_list:
-  - "data_manager_tasks.yml"
