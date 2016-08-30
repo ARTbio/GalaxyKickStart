@@ -112,5 +112,3 @@ galaxy_tools_galaxy_instance_url: "{{ galaxy_hostname }}"
 galaxy_tools_tool_list_files: []
 galaxy_tools_install_workflows: true
 galaxy_tools_workflows: []
-
-data_manager_task_file_list: []
