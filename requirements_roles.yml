@@ -1,2 +1,20 @@
+- src: https://github.com/galaxyproject/ansible-galaxy-os.git
+  name: galaxyprojectdotorg.galaxy-os
+
+- src: https://github.com/mvdbeek/ensure_postgresql_up.git
+  name: ensure_postgresql_up
+
+- src: https://github.com/natefoo/ansible-postgresql-objects.git
+  name: natefoo.postgresql_objects
+
+- src: https://github.com/galaxyproject/ansible-galaxy.git
+  name: galaxyprojectdotorg.galaxy
+
+- src: https://github.com/galaxyproject/ansible-galaxy-extras.git
+  name: galaxyprojectdotorg.galaxy-extras
+
 - src: https://github.com/galaxyproject/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
+
+- src: https://github.com/galaxyproject/ansible-galaxy-tools.git
+  name: galaxyprojectdotorg.galaxy-tools

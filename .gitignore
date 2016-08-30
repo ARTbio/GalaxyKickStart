@@ -3,3 +3,11 @@
 *.retry
 .DS_Store
 docs/html
+
+roles/ensure_postgresql_up
+roles/galaxyprojectdotorg.galaxy
+roles/galaxyprojectdotorg.galaxy-extras
+roles/galaxyprojectdotorg.galaxy-os
+roles/galaxyprojectdotorg.galaxy-tools
+roles/galaxyprojectdotorg.trackster
+roles/natefoo.postgresql_objects
