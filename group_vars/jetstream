@@ -64,6 +64,13 @@ galaxy_config:
     datatypes_config_file: "{{ galaxy_config_dir }}/datatypes_conf.xml"
     len_file_path: "{{ galaxy_config_dir }}/len"
     filter-with: proxy-prefix
+    # Conda settings
+    dependency_resolvers_config_file: "{{ galaxy_config_dir }}/dependency_resolvers_conf.xml"
+    conda_prefix: "{{ galaxyFS_base_dir }}/tool_dependencies/_conda"
+    conda_debug: True
+    conda_ensure_channels: r,bioconda,iuc
+    conda_auto_install: False
+    conda_auto_init: True
   "uwsgi":
     master: True
   "server:web0":
@@ -96,6 +103,8 @@ galaxy_config_files:
     dest: "{{ galaxy_config_dir }}/shed_tool_conf_cloud.xml"
   - src: extra-files/jetstream/tool_data_table_conf.xml
     dest: "{{ galaxy_config_dir }}/tool_data_table_conf.xml"
+  - src: extra-files/jetstream/dependency_resolvers_conf.xml
+    dest: "{{ galaxy_config_dir }}/dependency_resolvers_conf.xml"
 
 galaxy_mutable_configs:
   - src: "{{ galaxy_server_dir }}/config/shed_tool_conf.xml.sample"
@@ -112,7 +121,6 @@ galaxy_mutable_configs:
     dest: "{{ galaxy_config['app:main']['migrated_tools_config'] if galaxy_config is defined and 'app:main' in galaxy_config and 'migrated_tools_config' in galaxy_config['app:main'] else galaxy_config_default['app:main']['migrated_tools_config'] }}"
   - src: "{{ galaxy_server_dir }}/config/datatypes_conf.xml.sample"
     dest: "{{ galaxy_config['app:main']['datatypes_config_file'] if galaxy_config is defined and 'app:main' in galaxy_config and 'datatypes_config_file' in galaxy_config['app:main'] else galaxy_config_default['app:main']['datatypes_config_file'] }}"
-
 
 cvmfs_deb_url: "https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs_2.1.20_amd64.deb"
 cvmfs_deb_config_url: "https://ecsft.cern.ch/dist/cvmfs/cvmfs-config/cvmfs-config-default_latest_all.deb"
