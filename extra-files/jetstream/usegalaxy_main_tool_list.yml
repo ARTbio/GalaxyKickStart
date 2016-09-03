@@ -244,13 +244,13 @@ tools:
   tool_panel_section_label: 'NGS: QC and manipulation'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-- name: deeptools_plot_profile
-  owner: bgruening
-  revisions:
-  - f454a9fe7af9
-  tool_panel_section_label: 'NGS: DeepTools'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
+# - name: deeptools_plot_profile
+#   owner: bgruening
+#   revisions:
+#   - f454a9fe7af9
+#   tool_panel_section_label: 'NGS: DeepTools'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
 - name: deeptools_correct_gc_bias
   owner: bgruening
   revisions:
@@ -419,13 +419,13 @@ tools:
   tool_panel_section_label: 'NGS: RNA Analysis'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-- name: deseq2
-  owner: iuc
-  revisions:
-  - 8702e49e68b6
-  tool_panel_section_label: 'NGS: RNA Analysis'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
+# - name: deseq2
+#   owner: iuc
+#   revisions:
+#   - 8702e49e68b6
+#   tool_panel_section_label: 'NGS: RNA Analysis'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
 - name: htseq_count
   owner: lparsons
   revisions:
@@ -433,20 +433,20 @@ tools:
   tool_panel_section_label: 'NGS: RNA Analysis'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-- name: cummerbund
-  owner: devteam
-  revisions:
-  - ba8fde59843d
-  tool_panel_section_label: 'NGS: RNA Analysis'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: cummerbund_to_tabular
-  owner: devteam
-  revisions:
-  - 0761bbc0a4e7
-  tool_panel_section_label: 'NGS: RNA Analysis'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
+# - name: cummerbund
+#   owner: devteam
+#   revisions:
+#   - ba8fde59843d
+#   tool_panel_section_label: 'NGS: RNA Analysis'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: cummerbund_to_tabular
+#   owner: devteam
+#   revisions:
+#   - 0761bbc0a4e7
+#   tool_panel_section_label: 'NGS: RNA Analysis'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
 - name: cuffnorm
   owner: devteam
   revisions:
@@ -531,13 +531,13 @@ tools:
   tool_panel_section_label: 'NGS: SAMtools'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-- name: filter_on_md
-  owner: boris
-  revisions:
-  - ac70bfaf1224
-  tool_panel_section_label: 'NGS: SAMtools'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
+# - name: filter_on_md
+#   owner: boris
+#   revisions:
+#   - ac70bfaf1224
+#   tool_panel_section_label: 'NGS: SAMtools'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
 - name: sam_merge
   owner: devteam
   revisions:
@@ -986,27 +986,27 @@ tools:
   tool_panel_section_label: 'NGS: Variant Analysis'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-- name: phylorelatives
-  owner: boris
-  revisions:
-  - 06d6e56e8c2b
-  tool_panel_section_label: 'NGS: Variant Analysis'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: hetbox
-  owner: boris
-  revisions:
-  - 8d2c4c11fd8f
-  tool_panel_section_label: 'NGS: Variant Analysis'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: getalleleseq
-  owner: boris
-  revisions:
-  - 5a89151b5e82
-  tool_panel_section_label: 'NGS: Variant Analysis'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
+# - name: phylorelatives
+#   owner: boris
+#   revisions:
+#   - 06d6e56e8c2b
+#   tool_panel_section_label: 'NGS: Variant Analysis'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+#- name: hetbox
+  #owner: boris
+  #revisions:
+  #- 8d2c4c11fd8f
+  #tool_panel_section_label: 'NGS: Variant Analysis'
+  #tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  #install_resolver_dependencies: True
+# - name: getalleleseq
+#   owner: boris
+#   revisions:
+#   - 5a89151b5e82
+#   tool_panel_section_label: 'NGS: Variant Analysis'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
 - name: varscan_version_2
   owner: devteam
   revisions:
@@ -1028,188 +1028,188 @@ tools:
   tool_panel_section_label: 'NGS: Variant Analysis'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-- name: structurefold
-  owner: tyty
-  revisions:
-  - 7bb98e9296e9
-  tool_panel_section_label: 'NGS: RNA Structure'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: sequence_content_trimmer
-  owner: nick
-  revisions:
-  - 7f170cb06e2e
-  tool_panel_section_label: 'NGS: Du Novo'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: duplex
-  owner: nick
-  revisions:
-  - 7f513b9b1b1e
-  tool_panel_section_label: 'NGS: Du Novo'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_pathways
-  owner: iuc
-  revisions:
-  - 2bce41988d8e
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_roh
-  owner: iuc
-  revisions:
-  - e7ad2a721c4b
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_query
-  owner: iuc
-  revisions:
-  - 5596c2dc4218
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_fusions
-  owner: iuc
-  revisions:
-  - 37f9901b674d
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_dump
-  owner: iuc
-  revisions:
-  - c3da7c5f2141
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_gene_wise
-  owner: iuc
-  revisions:
-  - 0db31ae5295e
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_annotate
-  owner: iuc
-  revisions:
-  - 3859552a63d8
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_comp_hets
-  owner: iuc
-  revisions:
-  - 6192f3a2f96f
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_mendel_errors
-  owner: iuc
-  revisions:
-  - 009a8d614a83
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_region
-  owner: iuc
-  revisions:
-  - 0239bb5482c1
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_recessive_and_dominant
-  owner: iuc
-  revisions:
-  - a78bfd5264b1
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_load
-  owner: iuc
-  revisions:
-  - 9f74d7b0704a
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_qc
-  owner: iuc
-  revisions:
-  - 5d18dcbf2a0c
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_interactions
-  owner: iuc
-  revisions:
-  - 2ddee6cd4a5a
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_amend
-  owner: iuc
-  revisions:
-  - 2281967e7bc3
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_lof_sieve
-  owner: iuc
-  revisions:
-  - e1920f41a1ca
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_burden
-  owner: iuc
-  revisions:
-  - 95a149a9a75d
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_db_info
-  owner: iuc
-  revisions:
-  - b597e1cd14b1
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_windower
-  owner: iuc
-  revisions:
-  - 9b462be5a604
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_actionable_mutations
-  owner: iuc
-  revisions:
-  - 9f0f5e984ae3
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_stats
-  owner: iuc
-  revisions:
-  - a0ee6874a23b
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_set_somatic
-  owner: iuc
-  revisions:
-  - 5fd4a5f9ee31
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: gemini_de_novo
-  owner: iuc
-  revisions:
-  - 8850488002dc
-  tool_panel_section_label: 'NGS: Gemini'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
+# - name: structurefold
+#   owner: tyty
+#   revisions:
+#   - 7bb98e9296e9
+#   tool_panel_section_label: 'NGS: RNA Structure'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: sequence_content_trimmer
+#   owner: nick
+#   revisions:
+#   - 7f170cb06e2e
+#   tool_panel_section_label: 'NGS: Du Novo'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: duplex
+#   owner: nick
+#   revisions:
+#   - 7f513b9b1b1e
+#   tool_panel_section_label: 'NGS: Du Novo'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_pathways
+#   owner: iuc
+#   revisions:
+#   - 2bce41988d8e
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_roh
+#   owner: iuc
+#   revisions:
+#   - e7ad2a721c4b
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_query
+#   owner: iuc
+#   revisions:
+#   - 5596c2dc4218
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_fusions
+#   owner: iuc
+#   revisions:
+#   - 37f9901b674d
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_dump
+#   owner: iuc
+#   revisions:
+#   - c3da7c5f2141
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_gene_wise
+#   owner: iuc
+#   revisions:
+#   - 0db31ae5295e
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_annotate
+#   owner: iuc
+#   revisions:
+#   - 3859552a63d8
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_comp_hets
+#   owner: iuc
+#   revisions:
+#   - 6192f3a2f96f
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_mendel_errors
+#   owner: iuc
+#   revisions:
+#   - 009a8d614a83
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_region
+#   owner: iuc
+#   revisions:
+#   - 0239bb5482c1
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_recessive_and_dominant
+#   owner: iuc
+#   revisions:
+#   - a78bfd5264b1
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_load
+#   owner: iuc
+#   revisions:
+#   - 9f74d7b0704a
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_qc
+#   owner: iuc
+#   revisions:
+#   - 5d18dcbf2a0c
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_interactions
+#   owner: iuc
+#   revisions:
+#   - 2ddee6cd4a5a
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_amend
+#   owner: iuc
+#   revisions:
+#   - 2281967e7bc3
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_lof_sieve
+#   owner: iuc
+#   revisions:
+#   - e1920f41a1ca
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_burden
+#   owner: iuc
+#   revisions:
+#   - 95a149a9a75d
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_db_info
+#   owner: iuc
+#   revisions:
+#   - b597e1cd14b1
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_windower
+#   owner: iuc
+#   revisions:
+#   - 9b462be5a604
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_actionable_mutations
+#   owner: iuc
+#   revisions:
+#   - 9f0f5e984ae3
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_stats
+#   owner: iuc
+#   revisions:
+#   - a0ee6874a23b
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_set_somatic
+#   owner: iuc
+#   revisions:
+#   - 5fd4a5f9ee31
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: gemini_de_novo
+#   owner: iuc
+#   revisions:
+#   - 8850488002dc
+#   tool_panel_section_label: 'NGS: Gemini'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
 - name: merge
   owner: devteam
   revisions:
@@ -1499,62 +1499,62 @@ tools:
   tool_panel_section_label: BEDTools
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-- name: genome_diversity
-  owner: miller-lab
-  revisions:
-  - 9d0b1fa77047
-  tool_panel_section_label: Genome Diversity
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: genome_diversity
-  owner: miller-lab
-  revisions:
-  - 9d0b1fa77047
-  tool_panel_section_label: Genome Diversity
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: genome_diversity
-  owner: miller-lab
-  revisions:
-  - 9d0b1fa77047
-  tool_panel_section_label: Genome Diversity
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: genome_diversity
-  owner: miller-lab
-  revisions:
-  - 9d0b1fa77047
-  tool_panel_section_label: Genome Diversity
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: emboss_5
-  owner: devteam
-  revisions:
-  - 511429456d3c
-  tool_panel_section_label: EMBOSS
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: emboss_5
-  owner: devteam
-  revisions:
-  - 511429456d3c
-  tool_panel_section_label: EMBOSS
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: emboss_5
-  owner: devteam
-  revisions:
-  - 511429456d3c
-  tool_panel_section_label: EMBOSS
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: emboss_5
-  owner: devteam
-  revisions:
-  - 511429456d3c
-  tool_panel_section_label: EMBOSS
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
+#- name: genome_diversity
+  #owner: miller-lab
+  #revisions:
+  #- 9d0b1fa77047
+  #tool_panel_section_label: Genome Diversity
+  #tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  #install_resolver_dependencies: True
+#- name: genome_diversity
+  #owner: miller-lab
+  #revisions:
+  #- 9d0b1fa77047
+  #tool_panel_section_label: Genome Diversity
+  #tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  #install_resolver_dependencies: True
+#- name: genome_diversity
+  #owner: miller-lab
+  #revisions:
+  #- 9d0b1fa77047
+  #tool_panel_section_label: Genome Diversity
+  #tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  #install_resolver_dependencies: True
+#- name: genome_diversity
+  #owner: miller-lab
+  #revisions:
+  #- 9d0b1fa77047
+  #tool_panel_section_label: Genome Diversity
+  #tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  #install_resolver_dependencies: True
+# - name: emboss_5
+#   owner: devteam
+#   revisions:
+#   - 511429456d3c
+#   tool_panel_section_label: EMBOSS
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: emboss_5
+#   owner: devteam
+#   revisions:
+#   - 511429456d3c
+#   tool_panel_section_label: EMBOSS
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: emboss_5
+#   owner: devteam
+#   revisions:
+#   - 511429456d3c
+#   tool_panel_section_label: EMBOSS
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: emboss_5
+#   owner: devteam
+#   revisions:
+#   - 511429456d3c
+#   tool_panel_section_label: EMBOSS
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
 - name: quality_filter
   owner: devteam
   revisions:
@@ -1905,111 +1905,111 @@ tools:
   tool_panel_section_label: NCBI SRA Tools
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-- name: variant_select
-  owner: devteam
-  revisions:
-  - 227aa321a671
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: print_reads
-  owner: devteam
-  revisions:
-  - a8b94864fe35
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: variants_validate
-  owner: devteam
-  revisions:
-  - 7e1ecaa64370
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: variant_recalibrator
-  owner: devteam
-  revisions:
-  - cb7cf57397a7
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: variant_filtration
-  owner: devteam
-  revisions:
-  - da6e2503c62d
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: variant_eval
-  owner: devteam
-  revisions:
-  - fbca1c0956d2
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: variant_combine
-  owner: devteam
-  revisions:
-  - 1a6e16391727
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: variant_apply_recalibration
-  owner: devteam
-  revisions:
-  - 350a4d0d1678
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: variant_annotator
-  owner: devteam
-  revisions:
-  - ae9d0a543e9b
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: unified_genotyper
-  owner: devteam
-  revisions:
-  - 66dd4d4c1743
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: realigner_target_creator
-  owner: devteam
-  revisions:
-  - 5b8eaae854da
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: indel_realigner
-  owner: devteam
-  revisions:
-  - bb0beda6cf83
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: depth_of_coverage
-  owner: devteam
-  revisions:
-  - c3f08370fc82
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: count_covariates
-  owner: devteam
-  revisions:
-  - 14e304b70425
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: analyze_covariates
-  owner: devteam
-  revisions:
-  - 738bc749f9a3
-  tool_panel_section_label: 'NGS: GATK Tools (beta)'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
+# - name: variant_select
+#   owner: devteam
+#   revisions:
+#   - 227aa321a671
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: print_reads
+#   owner: devteam
+#   revisions:
+#   - a8b94864fe35
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: variants_validate
+#   owner: devteam
+#   revisions:
+#   - 7e1ecaa64370
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: variant_recalibrator
+#   owner: devteam
+#   revisions:
+#   - cb7cf57397a7
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: variant_filtration
+#   owner: devteam
+#   revisions:
+#   - da6e2503c62d
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: variant_eval
+#   owner: devteam
+#   revisions:
+#   - fbca1c0956d2
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: variant_combine
+#   owner: devteam
+#   revisions:
+#   - 1a6e16391727
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: variant_apply_recalibration
+#   owner: devteam
+#   revisions:
+#   - 350a4d0d1678
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: variant_annotator
+#   owner: devteam
+#   revisions:
+#   - ae9d0a543e9b
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: unified_genotyper
+#   owner: devteam
+#   revisions:
+#   - 66dd4d4c1743
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: realigner_target_creator
+#   owner: devteam
+#   revisions:
+#   - 5b8eaae854da
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: indel_realigner
+#   owner: devteam
+#   revisions:
+#   - bb0beda6cf83
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: depth_of_coverage
+#   owner: devteam
+#   revisions:
+#   - c3f08370fc82
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: count_covariates
+#   owner: devteam
+#   revisions:
+#   - 14e304b70425
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
+# - name: analyze_covariates
+#   owner: devteam
+#   revisions:
+#   - 738bc749f9a3
+#   tool_panel_section_label: 'NGS: GATK Tools (beta)'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
 - name: table_recalibration
   owner: devteam
   revisions:
