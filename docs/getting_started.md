@@ -1,19 +1,20 @@
 # Getting Started
 
-Make sure that you have a recent version of ansible installed.
-The playbook has been tested with version 2.1.
+Make sure that you have a recent version of Ansible installed;
+the playbook has been tested with version 2.1.2.0.
 
 # Getting the playbook
 
 [//]: # (TODO: Once we do releases, we include the submodules and hence users can just download the playbook without git)
 
-
-GalaxyKickStart is hosted on [github](https://github.com/ARTbio/GalaxyKickStart.git) and makes use of submodules, so care
-needs to be taken to also download the submodules. Cloning the repository for the first time can be done like this
-(note the `--recursive`):
+GalaxyKickStart is hosted on
+[github](https://github.com/ARTbio/GalaxyKickStart.git) and uses a number of
+dependent Ansible roles that need to be downloaded as part of the installation
+step:
 
 ```
-git clone --recursive https://github.com/ARTbio/GalaxyKickStart.git
+git clone https://github.com/ARTbio/GalaxyKickStart.git
+ansible-galaxy install -r requirements_roles.yml -p roles
 ```
 
 The playbook (here `galaxy.yml`) should be in the GalaxyKickStart folder.
@@ -22,7 +23,6 @@ ls GalaxyKickStart/
 CONTRIBUTORS.md  docs  extra-files  galaxy.yml  group_vars  hosts
 LICENSE.txt  mkdocs.yml  pre-commit.sh  README.md  roles  Vagrantfile
 ```
-
 
 # Deploying galaxy-kickstart on remote machines.
 ----

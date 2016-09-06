@@ -2,34 +2,39 @@
 
 # GalaxyKickStart
 
-GalaxyKickStart is an Ansible playbook designed to help you get one or more production-ready
- [Galaxy servers](https://usegalaxy.org/) based on Ubuntu within minutes, and to maintain these servers.
-
-# Required ansible version >= 2.1
-
+GalaxyKickStart is an Ansible playbook designed to help you get one or more
+production-ready  [Galaxy servers](https://usegalaxy.org/) based on Ubuntu
+within minutes, and to maintain these servers.
 Optionally, instances can be pre-loaded with tools and workflows.
 
-The playbook has been tested on 
+Detailed usage instructions are available in the
+[Documentation](https://artbio.github.io/GalaxyKickStart/).
+
+### Required Ansible version >= 2.1.2.0
+
+The playbook has been tested on
 
 - Cloud Machines
 - Vagrant Boxes
-- Physical Servers 
-- Docker.
+- Physical Servers
+- Docker
 
-Detailed instructions are available in the [Documentation](https://artbio.github.io/GalaxyKickStart/)
-
-
-GalaxyKickStart has been developed at the [ARTbio platform](http://artbio.fr) and contains roles developed
-by the [Galaxy team](https://github.com/galaxyproject/).
+GalaxyKickStart has been developed at the [ARTbio platform](http://artbio.fr)
+and contains roles developed by the [Galaxy
+team](https://github.com/galaxyproject/).
 
 List of roles included in this playbook
 ------
+- [ensure_postrgesql_up](https://github.com/mvdbeek/ensure_postgresql_up)
+- [galaxy-extras role](https://github.com/galaxyproject/ansible-galaxy-extras)
+- [galaxy-tools role](https://github.com/galaxyproject/ansible-galaxy-tools)
+- [galaxy-os role](https://github.com/galaxyproject/ansible-galaxy-os)
+- [galaxy role](https://github.com/galaxyproject/ansible-galaxy)
+- [galaxy-trackster role](https://github.com/galaxyproject/ansible-trackster)
+- [natefoo-postgresql_objects](https://github.com/natefoo/ansible-postgresql-objects)
 
-[galaxy-extras role](https://github.com/galaxyproject/ansible-galaxy-extras)  
-[galaxy-tools role](https://github.com/galaxyproject/ansible-galaxy-tools)  
-[galaxy-os role](https://github.com/galaxyproject/ansible-galaxy-os)  
-[galaxy role](https://github.com/galaxyproject/ansible-galaxy)  
- 
 # Troubleshooting
-The installation of postgresql might fail due to non-standard locale settings that can be propagated by ssh (found on ubuntu systems).
-If you are using Ubuntu on your ansible machine, make sure that you deactivate `SendEnv LANG LC_*` in /etc/ssh_config.
+### Installation of postgresql might fails due to non-standard locale ###
+If you are using Ubuntu on your Ansible machine, make sure that you deactivate
+`SendEnv LANG LC_*` in `/etc/ssh_config`. This will allow locale settings to
+be propagated by ssh.
