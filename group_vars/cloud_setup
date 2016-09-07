@@ -52,7 +52,7 @@ galaxy_config:
     cleanup_job: onsuccess
     allow_library_path_paste: True
     allow_user_dataset_purge: True
-    tool_config_file: "{{ galaxy_config_dir }}/tool_conf.xml,{{ galaxy_config_dir }}/shed_tool_conf_cloud.xml,{{ galaxy_shed_tool_conf_file }}"
+    tool_config_file: "{{ galaxy_config_dir }}/tool_conf.xml,{{ galaxy_shed_tool_conf_file }}"
     tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     nginx_x_accel_redirect_base: "{{ nginx_galaxy_location | default() }}/_x_accel_redirect"
     nginx_x_archive_files_base: "{{ nginx_galaxy_location | default() }}/_x_accel_redirect"
@@ -99,8 +99,6 @@ additional_files_list:
 galaxy_config_files:
   - src: extra-files/cloud_setup/builds.txt
     dest: "{{ galaxy_config['app:main']['builds_file_path'] }}"
-  - src: extra-files/cloud_setup/shed_tool_conf.xml.cloud
-    dest: "{{ galaxy_config_dir }}/shed_tool_conf_cloud.xml"
   - src: extra-files/cloud_setup/tool_data_table_conf.xml
     dest: "{{ galaxy_config_dir }}/tool_data_table_conf.xml"
   - src: extra-files/cloud_setup/dependency_resolvers_conf.xml

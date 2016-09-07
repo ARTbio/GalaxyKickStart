@@ -17,35 +17,28 @@ tools:
   owner: devteam
   revisions:
   - b334cd1095ea
-  tool_panel_section_label: Convert Formats
+  tool_panel_section_id: convert  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: fastq_to_tabular
   owner: devteam
   revisions:
   - bc9269529e88
-  tool_panel_section_label: Convert Formats
+  tool_panel_section_id: convert  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: fastq_to_fasta
   owner: devteam
   revisions:
   - 04614cf6ed39
-  tool_panel_section_label: Convert Formats
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-- name: fastqtofasta
-  owner: devteam
-  revisions:
-  - 3571553aeb20
-  tool_panel_section_label: Convert Formats
+  tool_panel_section_id: convert  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: subtract_query
   owner: devteam
   revisions:
   - 5f6ebef89722
-  tool_panel_section_label: Join, Subtract and Group
+  tool_panel_section_id: group  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: trim_galore
@@ -1060,91 +1053,91 @@ tools:
   owner: devteam
   revisions:
   - c2ffc9885b5a
-  tool_panel_section_label: Statistics
+  tool_panel_section_id: stats  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: count_gff_features
   owner: devteam
   revisions:
   - fabda887a71f
-  tool_panel_section_label: Statistics
+  tool_panel_section_id: stats  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: mine
   owner: devteam
   revisions:
   - 5e2c89443c44
-  tool_panel_section_label: Statistics
+  tool_panel_section_id: stats  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: plot_from_lda
   owner: devteam
   revisions:
   - c5ab37076128
-  tool_panel_section_label: Statistics
+  tool_panel_section_id: stats  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: lda_analysis
   owner: devteam
   revisions:
   - f38763b52f33
-  tool_panel_section_label: Statistics
+  tool_panel_section_id: stats  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: generate_pc_lda_matrix
   owner: devteam
   revisions:
   - 04cdbd00dcec
-  tool_panel_section_label: Statistics
+  tool_panel_section_id: stats  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: correlation
   owner: devteam
   revisions:
   - 24e01abf9e34
-  tool_panel_section_label: Statistics
+  tool_panel_section_id: stats  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: venn_list
   owner: peterjc
   revisions:
   - 26e35d5133a1
-  tool_panel_section_label: Graph/Display Data
+  tool_panel_section_id: plots  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: ucsc_custom_track
   owner: devteam
   revisions:
   - 618e56c3109b
-  tool_panel_section_label: Graph/Display Data
+  tool_panel_section_id: plots  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: scatterplot
   owner: devteam
   revisions:
   - c12b0759203b
-  tool_panel_section_label: Graph/Display Data
+  tool_panel_section_id: plots  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: histogram
   owner: devteam
   revisions:
   - 6ff47de059a0
-  tool_panel_section_label: Graph/Display Data
+  tool_panel_section_id: plots  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: xy_plot
   owner: devteam
   revisions:
   - 23657fcaaa5c
-  tool_panel_section_label: Graph/Display Data
+  tool_panel_section_id: plots  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: gmaj
   owner: devteam
   revisions:
   - 2cd5ee197ec7
-  tool_panel_section_label: Graph/Display Data
+  tool_panel_section_id: plots  # Use ID since the group is included w/ Galaxy
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
 - name: cloudmap_variant_discovery_mapping
