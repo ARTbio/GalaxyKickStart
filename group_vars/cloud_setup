@@ -1,4 +1,4 @@
-cloud: jetstream  # Available values are jetstream or gce
+cloud_setup: yes
 
 configure_docker: no
 install_apparmor: no
@@ -92,7 +92,7 @@ proftpd_files_dir: "{{ galaxyFS_base_dir }}/tmp/ftp"
 supervisor_slurm_config_dir: "{{ galaxyFS_base_dir }}/logs"
 additional_files_list:
   - { src: "extra-files/cloud_setup/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
-  - { src: "extra-files/cloud_setup/{{ cloud }}_text.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/cloud_setup/{{ banner_img }}", dest: "{{ galaxy_server_dir }}/static/images/" }
   - { src: "extra-files/cloud_setup/cloud.gif", dest: "{{ galaxy_server_dir }}/static/images/" }
   - { src: "extra-files/cloud_setup/vimrc", dest: "/etc/vim/" }
 
