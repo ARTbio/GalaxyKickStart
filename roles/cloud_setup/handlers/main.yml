@@ -1,4 +1,6 @@
 ---
+# Handlers are run in the order they are listed here, not in the order that
+# they are notified.
 
 - name: restart autofs
   service:

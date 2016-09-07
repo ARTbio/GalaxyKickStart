@@ -39,7 +39,7 @@
   file: path=/root/.ssh/authorized_keys state=absent
 
 - name: Place a custom history file into galaxy_user's home dir
-  copy: src=extra-files/jetstream/bash_history dest=~/.bash_history mode=0600
+  copy: src=extra-files/cloud_setup/bash_history dest=~/.bash_history mode=0600
   become_user: "{{ galaxy_user_name }}"
 
 - name: Create a symlink placeholder to the Galaxy app dir

@@ -15,8 +15,8 @@
         - install_galaxy
         - install_packages
 
-    - role: jetstream
-      when: jetstream is defined
+    - role: cloud_setup
+      when: cloud is defined
 
     - role: ensure_postgresql_up
       tags:

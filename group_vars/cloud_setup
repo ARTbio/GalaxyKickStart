@@ -1,4 +1,4 @@
-jetstream: true
+cloud: jetstream  # Available values are jetstream or gce
 
 configure_docker: no
 install_apparmor: no
@@ -23,7 +23,7 @@ galaxy_handler0_port: 9010
 galaxy_web_threadpool_workers: 5
 galaxy_handler_threadpool_workers: 5
 
-galaxy_tools_tool_list_files: ["extra-files/jetstream/usegalaxy_main_tool_list.yml"]
+galaxy_tools_tool_list_files: ["extra-files/cloud_setup/usegalaxy_main_tool_list.yml"]
 # galaxy_tools_delete_bootstrap_user: yes
 
 galaxyFS_base_dir: /opt/galaxy
@@ -34,7 +34,7 @@ galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
 galaxy_data: "{{ galaxyFS_base_dir }}/galaxy"
 galaxy_shed_tools_dir: "{{ galaxyFS_base_dir }}/shed_tools"
 tool_dependency_dir: "{{ galaxyFS_base_dir }}/tool_dependencies"
-data_manager_task_file: "extra-files/jetstream/jetstream_data_manager_tasks.yml"
+data_manager_task_file: "extra-files/cloud_setup/data_manager_tasks.yml"
 len_file_path: "{{ galaxy_config_dir }}/len"
 tool_data_table_config_path: "{{ galaxy_server_dir }}/config/tool_data_table_conf.xml,/cvmfs/data.galaxyproject.org/managed/location/tool_data_table_conf.xml"
 galaxy_custom_tools_dir: /usr/local/bin
@@ -91,20 +91,19 @@ galaxy_config:
 proftpd_files_dir: "{{ galaxyFS_base_dir }}/tmp/ftp"
 supervisor_slurm_config_dir: "{{ galaxyFS_base_dir }}/logs"
 additional_files_list:
-  - { src: "extra-files/jetstream/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
-  - { src: "extra-files/jetstream/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
-  - { src: "extra-files/jetstream/jetstream_text.png", dest: "{{ galaxy_server_dir }}/static/images/" }
-  - { src: "extra-files/jetstream/cloud.gif", dest: "{{ galaxy_server_dir }}/static/images/" }
-  - { src: "extra-files/jetstream/vimrc", dest: "/etc/vim/" }
+  - { src: "extra-files/cloud_setup/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+  - { src: "extra-files/cloud_setup/{{ cloud }}_text.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/cloud_setup/cloud.gif", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/cloud_setup/vimrc", dest: "/etc/vim/" }
 
 galaxy_config_files:
-  - src: extra-files/jetstream/builds.txt
+  - src: extra-files/cloud_setup/builds.txt
     dest: "{{ galaxy_config['app:main']['builds_file_path'] }}"
-  - src: extra-files/jetstream/shed_tool_conf.xml.cloud
+  - src: extra-files/cloud_setup/shed_tool_conf.xml.cloud
     dest: "{{ galaxy_config_dir }}/shed_tool_conf_cloud.xml"
-  - src: extra-files/jetstream/tool_data_table_conf.xml
+  - src: extra-files/cloud_setup/tool_data_table_conf.xml
     dest: "{{ galaxy_config_dir }}/tool_data_table_conf.xml"
-  - src: extra-files/jetstream/dependency_resolvers_conf.xml
+  - src: extra-files/cloud_setup/dependency_resolvers_conf.xml
     dest: "{{ galaxy_config_dir }}/dependency_resolvers_conf.xml"
 
 galaxy_mutable_configs:
@@ -122,6 +121,10 @@ galaxy_mutable_configs:
     dest: "{{ galaxy_config['app:main']['migrated_tools_config'] if galaxy_config is defined and 'app:main' in galaxy_config and 'migrated_tools_config' in galaxy_config['app:main'] else galaxy_config_default['app:main']['migrated_tools_config'] }}"
   - src: "{{ galaxy_server_dir }}/config/datatypes_conf.xml.sample"
     dest: "{{ galaxy_config['app:main']['datatypes_config_file'] if galaxy_config is defined and 'app:main' in galaxy_config and 'datatypes_config_file' in galaxy_config['app:main'] else galaxy_config_default['app:main']['datatypes_config_file'] }}"
+
+galaxy_config_templates:
+  - src: templates/galaxy_welcome.html.j2
+    dest: "{{ galaxy_server_dir }}/static/welcome.html"
 
 cvmfs_deb_url: "https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs_2.1.20_amd64.deb"
 cvmfs_deb_config_url: "https://ecsft.cern.ch/dist/cvmfs/cvmfs-config/cvmfs-config-default_latest_all.deb"
