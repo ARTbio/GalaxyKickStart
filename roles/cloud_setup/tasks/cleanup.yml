@@ -1,5 +1,8 @@
 ---
-
+# This task cleans up the unwanted files to free up disk space after the
+# installation process is complete, it also creates the required symlinks
+# from the reference data hosted by Galaxy project via CVMFS to the folder
+# `/galaxy/data` on the remote target.
 - name: Clean apt cache to recover some disk space
   shell: apt-get clean
 

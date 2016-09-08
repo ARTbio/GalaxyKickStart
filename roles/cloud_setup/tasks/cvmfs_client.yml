@@ -1,4 +1,6 @@
 ---
+# Setup of the CernVM-File system (CVMFS) and configure so that the reference
+# data hosted by Galaxy on usegalaxy.org is available to the remote target.
 
 # Install & setup CermVM-FS
 - name: Download cvmfs
