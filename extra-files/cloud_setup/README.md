@@ -1,4 +1,4 @@
-# Extra Files / Cloud Setup 
+# Extra Files / Cloud Setup
 
 The files described below are the ones the user can modify in order to meet their specifications.
 
@@ -12,7 +12,7 @@ The files described below are the ones the user can modify in order to meet thei
 └── vimrc
 ```
 
-* `vimrc` : The VIM configurations which are used the remote target.
+* `vimrc` : The VIM configurations used for the remote target.
 
 * `usegalaxy_main_tool_list.yml` : This is a replica of the Galaxy main tool list for the most part, but edited to fit the size of the instance. The Galaxy main tool list can be obtained using this ephemeris [script](https://github.com/galaxyproject/ephemeris/blob/master/ephemeris/get_tool_list_from_galaxy.py). This file can be changed in group_vars/cloud_setup if the user wishes to use a custom tool list. While making a new tool list, it is important to keep in mind the tags in the `yaml` file.
 

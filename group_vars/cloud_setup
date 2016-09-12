@@ -3,7 +3,6 @@ cloud_setup: yes
 configure_docker: no
 install_apparmor: no
 install_galaxy: yes
-run_extras: yes
 install_tools: yes
 run_data_manager: no
 import_genomes: no
@@ -68,7 +67,7 @@ galaxy_config:
     # Conda settings
     dependency_resolvers_config_file: "{{ galaxy_config_dir }}/dependency_resolvers_conf.xml"
     conda_prefix: "{{ galaxyFS_base_dir }}/tool_dependencies/_conda"
-    conda_debug: True
+    conda_debug: False
     conda_ensure_channels: r,bioconda,iuc
     conda_auto_install: False
     conda_auto_init: True
