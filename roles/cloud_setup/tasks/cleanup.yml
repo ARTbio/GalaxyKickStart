@@ -1,0 +1,55 @@
+---
+# This task cleans up the unwanted files to free up disk space after the
+# installation process is complete, it also creates the required symlinks
+# from the reference data hosted by Galaxy project via CVMFS to the folder
+# `/galaxy/data` on the remote target.
+
+# Dev only: due to hostname issues, explicitly start Slurm
+# - name: Run fix_hostname script
+#   shell: /etc/init.d/fix_hostname.sh && supervisorctl start slurmctld
+
+- name: Stop all supervisor tasks
+  shell: supervisorctl stop all
+
+- name: Delete unwanted files
+  shell: rm -rf {{ item }}
+  with_items:
+    - /var/log/syslog
+    - /var/log/nginx/*
+    - /var/log/supervisor/*
+    - "{{ galaxy_log_dir }}/*"
+    - "/home/{{ default_user_name }}/.bash_history"
+    - "/home/{{ galaxy_user_name }}/.bash_history"
+  ignore_errors: yes
+
+# After this task run, ssh will no longer be possible by specified users
+- name: Clear home dirs
+  shell: find /home/{{ item }}/ -type f -not -name ".*" -exec rm {} \;
+  with_items:
+    - "{{ default_user_name }}"
+    - "{{ galaxy_user_name }}"
+  ignore_errors: yes
+
+# After this task run, ssh by root will no longer be possible
+- name: Delete /root/.ssh/authorized_keys
+  file: path=/root/.ssh/authorized_keys state=absent
+
+- name: Place a custom history file into galaxy_user's home dir
+  copy: src=extra-files/cloud_setup/bash_history dest=~/.bash_history mode=0600
+  become_user: "{{ galaxy_user_name }}"
+
+- name: Create a symlink placeholder to the Galaxy app dir
+  file: src="{{ galaxy_server_dir }}" dest="~/galaxy-app" state=link
+  become_user: "{{ galaxy_user_name }}"
+
+# Create a symlink from the CVMFS to /galaxy/data because that is where the
+# .loc files from CVMFS point (and consequently tool_data_table_conf.xml)
+- name: List target CVMFS
+  command: ls /cvmfs/data.galaxyproject.org
+
+- name: Create /galaxy dir
+  file: path=/galaxy state=directory
+
+# This is required to be able to use Galaxy .len files from Main w/o mods
+- name: Create a symlink from CVMFS to /galaxy/data
+  file: src=/cvmfs/data.galaxyproject.org/byhand dest=/galaxy/data state=link

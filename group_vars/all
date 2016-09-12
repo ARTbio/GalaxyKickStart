@@ -65,6 +65,7 @@ galaxy_config:
     static_enabled: False
     nginx_upload_store: /tmp
     use_pbkdf2: "{{ use_pbkdf2 }}"
+    len_file_path: "{{ galaxy_config_dir }}/len"
     filter-with: proxy-prefix
   "uwsgi":
     master: True

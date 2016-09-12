@@ -1,0 +1,3 @@
+sudo su galaxy
+sudo -s
+cd /opt/galaxy/

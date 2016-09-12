@@ -1,0 +1,11 @@
+---
+# Handlers are run in the order they are listed here, not in the order that
+# they are notified.
+
+- name: restart autofs
+  service:
+    name: autofs
+    state: restarted
+
+- name: instance cleanup
+  include: cleanup.yml
