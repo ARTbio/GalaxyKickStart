@@ -75,3 +75,12 @@
       become: yes
       become_user: "{{ galaxy_user_name }}"
       tags: install_tools
+
+post_tasks:
+    - name: Clean apt cache to recover some disk space
+      shell: apt-get clean
+
+    # htop is a placeholder here; see bug report
+    # https://github.com/ansible/ansible-modules-core/issues/4029
+    - name: Apt autoremove
+      apt: autoremove=yes name=htop

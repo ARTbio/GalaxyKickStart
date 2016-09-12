@@ -3,13 +3,6 @@
 # installation process is complete, it also creates the required symlinks
 # from the reference data hosted by Galaxy project via CVMFS to the folder
 # `/galaxy/data` on the remote target.
-- name: Clean apt cache to recover some disk space
-  shell: apt-get clean
-
-# htop is a placeholder here; see bug report
-# https://github.com/ansible/ansible-modules-core/issues/4029
-- name: Apt autoremove
-  apt: autoremove=yes name=htop
 
 # Dev only: due to hostname issues, explicitly start Slurm
 # - name: Run fix_hostname script
