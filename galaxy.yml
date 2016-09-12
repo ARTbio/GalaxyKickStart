@@ -76,7 +76,7 @@
       become_user: "{{ galaxy_user_name }}"
       tags: install_tools
 
-post_tasks:
+  post_tasks:
     - name: Clean apt cache to recover some disk space
       shell: apt-get clean
 
