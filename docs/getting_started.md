@@ -1,7 +1,14 @@
 # Getting Started
 
-Make sure that you have a recent version of Ansible installed;
-the playbook has been tested with version 2.1.2.0.
+## You need [git](https://git-scm.com/) installed 
+## Make sure that you have a recent version of [Ansible](https://github.com/ansible/) installed
+The playbook has been tested with version 2.1.2.0.
+A simple way to install the latest ansible version is using [pip](https://pip.pypa.io/en/stable/quickstart/):
+
+```
+git clone --recursive -b stable-2.1 https://github.com/ansible/ansible
+pip install ansible/
+```
 
 # Getting the playbook
 
@@ -14,12 +21,13 @@ step:
 
 ```
 git clone https://github.com/ARTbio/GalaxyKickStart.git
+cd GalaxyKickStart
 ansible-galaxy install -r requirements_roles.yml -p roles
 ```
 
 The playbook (here `galaxy.yml`) should be in the GalaxyKickStart folder.
 ```bash
-ls GalaxyKickStart/
+ls
 CONTRIBUTORS.md  docs  extra-files  galaxy.yml  group_vars  hosts
 LICENSE.txt  mkdocs.yml  pre-commit.sh  README.md  roles  Vagrantfile
 ```
