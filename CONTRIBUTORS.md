@@ -5,6 +5,9 @@ The following individuals have contributed code to GalaxyKickStart:
 * Christophe Antoniewski <drosofff@gmail.com>
 * Fabio Rocha Jimenez Vieira <fabiorjvieira@gmail.com>
 * Marius van den Beek <m.vandenbeek@gmail.com>
+* Nitesh Turaga <nitesh.turaga@gmail.com>
+* Enis Afgan <afgane@gmail.com>
+* Juliana Pegoraro <juliana.a.pegoraro@gmail.com>
 
 # Institutional sponsors
 
