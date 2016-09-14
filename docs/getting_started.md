@@ -37,8 +37,8 @@ README.md		dockerfiles		group_vars		requirements_roles.yml	templates
 # Deploying galaxy-kickstart on remote machines.
 ----
 
-Inside the `inventory_files` folder, you will find a host files.
-This is an example of inventory in the `artimed` host file.
+Inside the `inventory_files` folder, you will find a number of inventory files.
+This is an example of inventory taken from the `artimed` inventory file.
 
 ```
 [artimed]
@@ -86,5 +86,4 @@ Specifications for each remote target:
 
 * AWS
     * Image needed to deploy galaxy-kickstart: `Ubuntu Server 14.04 LTS (HVM), SSD Volume Type - ami-2d39803a`
-    * Do not forget to install ansible as indicated [above](getting_started.md)
     * Inventory: `<target Amazon Web Services IP address> ansible_ssh_user="ubuntu" ansible_ssh_private_key_file="<path/to/your/aws/private/key>"`
