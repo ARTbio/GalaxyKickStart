@@ -31,6 +31,7 @@ tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
 
 additional_files_list:
     - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+    - { src: "extra-files/dependency_resolvers_conf.xml", dest: "{{ galaxy_config_dir }}/dependency_resolvers_conf.xml" }
 
 supervisor_env_vars:
     - export IP_ADDRESS=`curl --silent icanhazip.com`
@@ -72,6 +73,13 @@ galaxy_config:
     use_pbkdf2: "{{ use_pbkdf2 }}"
     len_file_path: "{{ galaxy_config_dir }}/len"
     filter-with: proxy-prefix
+    # Conda settings
+    dependency_resolvers_config_file: "{{ galaxy_config_dir }}/dependency_resolvers_conf.xml"
+    conda_prefix: "{{ galaxy_server_dir }}/tool_dependencies/_conda"
+    conda_debug: False
+    conda_ensure_channels: r,bioconda,iuc
+    conda_auto_install: False
+    conda_auto_init: True
   "uwsgi":
     master: True
   "filter:proxy-prefix":
