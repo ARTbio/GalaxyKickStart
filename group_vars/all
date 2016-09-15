@@ -28,7 +28,10 @@ galaxy_extras_apt_package_state: present
 tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
 shed_tools_dir: "{{ galaxy_server_dir }}/../shed_tools"
 tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
-additional_files_list: []
+
+additional_files_list:
+    - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+
 supervisor_env_vars:
     - export IP_ADDRESS=`curl --silent icanhazip.com`
     - export MASQUERADE_ADDRESS=$IP_ADDRESS
@@ -54,6 +57,7 @@ galaxy_manage_database: yes
 galaxy_fetch_eggs: yes
 galaxy_vcs: git
 galaxy_force_checkout: yes
+
 galaxy_config:
   "app:main":
     admin_users: "{{ galaxy_admin }}"
@@ -62,6 +66,7 @@ galaxy_config:
     ftp_upload_dir: "{{ proftpd_files_dir }}"
     allow_user_dataset_purge: True
     allow_user_impersonation: True
+    tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     static_enabled: False
     nginx_upload_store: /tmp
     use_pbkdf2: "{{ use_pbkdf2 }}"

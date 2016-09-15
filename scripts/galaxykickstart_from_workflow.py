@@ -67,7 +67,6 @@ def make_groupvars (workflow_file_list, path="../group_vars/gks_workflows",
 
 def make_extra_files (workflow_files, panel_label, tool_list_file, extra_files_dir="../extra-files/gks_workflows"):
     makedir(extra_files_dir)
-    copyfile("galaxykickstart_from_workflow_templates/tool_sheds_conf.xml.sample", extra_files_dir + "/tool_sheds_conf.xml.sample")
     generate_tool_list_from_workflow(workflow_files, panel_label, tool_list_file)
     copyfile(tool_list_file, extra_files_dir + "/" + tool_list_file)
     for workflow in workflow_files:

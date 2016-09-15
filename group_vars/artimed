@@ -4,4 +4,3 @@ additional_files_list:
   - { src: "extra-files/artimed/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
   - { src: "extra-files/artimed/ARTiMED_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
   - { src: "extra-files/artimed/logo_iuis_UPMC_UTC.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }
-  - { src: "extra-files/artimed/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
