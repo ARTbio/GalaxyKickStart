@@ -28,6 +28,10 @@ galaxy_extras_apt_package_state: present
 tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
 shed_tools_dir: "{{ galaxy_server_dir }}/../shed_tools"
 tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
+miniconda_python: 2
+miniconda_version: "3.19.0"
+miniconda_installer_checksum: ""
+miniconda_prefix: "{{ tool_dependency_dir }}/_conda"
 
 additional_files_list:
     - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
@@ -43,6 +47,7 @@ supervisor_env_vars:
     - export GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE="$NGINX_GALAXY_LOCATION/_x_accel_redirect"
     - export GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE="$NGINX_GALAXY_LOCATION/_x_accel_redirect"
     - export GALAXY_CONFIG_NGINX_UPLOAD_PATH="$NGINX_GALAXY_LOCATION/_upload"
+    - export GALAXY_CONFIG_CONDA_AUTO_INIT="True"
 
 # galaxy role variables
 
