@@ -2,3 +2,5 @@
   copy: src={{ item.src }} dest={{ item.dest }} owner={{ galaxy_user_name }}
   with_items:
     - "{{ additional_files_list }}"
+  tags:
+   - persists_galaxy
