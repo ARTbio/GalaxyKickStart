@@ -11,3 +11,4 @@ roles/galaxyprojectdotorg.galaxy-os
 roles/galaxyprojectdotorg.galaxy-tools
 roles/galaxyprojectdotorg.trackster
 roles/natefoo.postgresql_objects
+roles/miniconda-role

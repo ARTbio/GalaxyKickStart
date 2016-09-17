@@ -13,6 +13,7 @@
         banner_img: "{% if 'jetstream' in group_names %}jetstream_text.png{% else %}gce_text.png{% endif %}"
 
   roles:
+
     - role: galaxyprojectdotorg.galaxy-os
       tags:
         - install_galaxy
@@ -38,6 +39,11 @@
       tags:
         - install_galaxy
         - manage_postgres
+
+    - role: miniconda-role
+      tags: conda
+      become: yes
+      become_user: "{{ galaxy_user_name }}"
 
     - role: galaxyprojectdotorg.galaxy
       become: yes

@@ -11,5 +11,4 @@ galaxy_tools_tool_list_files:
 additional_files_list:
   - { src: "extra-files/galaxy-kickstart/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
   - { src: "extra-files/galaxy-kickstart/galaxy-kickstart_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
-  - { src: "extra-files/gks_workflows/tool_sheds_conf.xml.sample", dest: "{{ galaxy_server_dir }}/config/" }
 galaxy_tools_workflows:
