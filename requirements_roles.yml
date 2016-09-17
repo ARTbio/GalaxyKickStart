@@ -19,5 +19,5 @@
 - src: https://github.com/galaxyproject/ansible-galaxy-tools.git
   name: galaxyprojectdotorg.galaxy-tools
 
-- src: https://github.com/uchida/ansible-miniconda-role/archive/0.3.0.tar.gz
+- src: https://github.com/mvdbeek/ansible-miniconda-role/archive/0.3.1.tar.gz
   name: miniconda-role

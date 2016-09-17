@@ -32,6 +32,7 @@ miniconda_python: 2
 miniconda_version: "3.19.0"
 miniconda_installer_checksum: ""
 miniconda_prefix: "{{ tool_dependency_dir }}/_conda"
+miniconda_manage_dependencies: False
 
 supervisor_env_vars:
     - export IP_ADDRESS=`curl --silent icanhazip.com`
