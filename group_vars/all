@@ -10,11 +10,11 @@ postgres_user_gid: 1550
 galaxy_server_dir: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
 galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
 galaxy_data: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
-galaxy_config_dir: "{{ galaxy_data }}/config"
+galaxy_config_dir: "{{ galaxy_server_dir }}/config"
 galaxy_database: /home/galaxy_database
 galaxy_db: postgresql://{{ galaxy_user_name }}:{{ galaxy_user_name }}@localhost:5432/galaxy?client_encoding=utf8
-galaxy_git_repo: https://github.com/ARTbio/galaxy.git
-galaxy_changeset_id: galaxykickstarter
+galaxy_git_repo: https://github.com/galaxyproject/galaxy.git
+galaxy_changeset_id: release_16.07
 galaxy_admin: admin@galaxy.org
 galaxy_admin_pw: admin
 use_pbkdf2: true
@@ -28,7 +28,15 @@ galaxy_extras_apt_package_state: present
 tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
 shed_tools_dir: "{{ galaxy_server_dir }}/../shed_tools"
 tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
-additional_files_list: []
+miniconda_python: 2
+miniconda_version: "3.19.0"
+miniconda_installer_checksum: ""
+miniconda_prefix: "{{ tool_dependency_dir }}/_conda"
+miniconda_manage_dependencies: False
+
+additional_files_list:
+  - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+
 supervisor_env_vars:
     - export IP_ADDRESS=`curl --silent icanhazip.com`
     - export MASQUERADE_ADDRESS=$IP_ADDRESS
@@ -40,6 +48,7 @@ supervisor_env_vars:
     - export GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE="$NGINX_GALAXY_LOCATION/_x_accel_redirect"
     - export GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE="$NGINX_GALAXY_LOCATION/_x_accel_redirect"
     - export GALAXY_CONFIG_NGINX_UPLOAD_PATH="$NGINX_GALAXY_LOCATION/_upload"
+    - export GALAXY_CONFIG_CONDA_AUTO_INIT="True"
 
 # galaxy role variables
 
@@ -54,6 +63,7 @@ galaxy_manage_database: yes
 galaxy_fetch_eggs: yes
 galaxy_vcs: git
 galaxy_force_checkout: yes
+
 galaxy_config:
   "app:main":
     admin_users: "{{ galaxy_admin }}"
@@ -62,6 +72,7 @@ galaxy_config:
     ftp_upload_dir: "{{ proftpd_files_dir }}"
     allow_user_dataset_purge: True
     allow_user_impersonation: True
+    tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     static_enabled: False
     nginx_upload_store: /tmp
     use_pbkdf2: "{{ use_pbkdf2 }}"

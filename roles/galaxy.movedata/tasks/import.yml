@@ -3,6 +3,12 @@
   with_items: "{{ start_stop_items }}"
   tags: skip_supervisor_start_in_docker
 
+- name: Copy updated config files to export if they don't exist
+  command: |
+    "cp {{ galaxy_config['app:main']['tool_sheds_config_file'] }} \
+    {{ galaxy_persistent_directory }}/{{ galaxy_config['app:main']['tool_sheds_config_file'] }}"
+    creates="{{ galaxy_persistent_directory }}/{{ galaxy_config['app:main']['tool_sheds_config_file'] }}"
+
 - name: get exported paths
   shell: "grep -v \"#\" {{ galaxy_persistent_directory }}/exported_dirs.yml"
   register: exported_paths

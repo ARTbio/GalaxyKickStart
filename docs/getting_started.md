@@ -1,7 +1,14 @@
 # Getting Started
 
-Make sure that you have a recent version of Ansible installed;
-the playbook has been tested with version 2.1.2.0.
+## You need [git](https://git-scm.com/) installed 
+## Make sure that you have a recent version of [Ansible](https://github.com/ansible/) installed
+The playbook has been tested with version 2.1.2.0.
+A simple way to install the latest ansible version is using [pip](https://pip.pypa.io/en/stable/quickstart/):
+
+```
+git clone --recursive -b stable-2.1 https://github.com/ansible/ansible
+pip install ansible/
+```
 
 # Getting the playbook
 
@@ -14,21 +21,24 @@ step:
 
 ```
 git clone https://github.com/ARTbio/GalaxyKickStart.git
+cd GalaxyKickStart
 ansible-galaxy install -r requirements_roles.yml -p roles
 ```
 
 The playbook (here `galaxy.yml`) should be in the GalaxyKickStart folder.
 ```bash
-ls GalaxyKickStart/
-CONTRIBUTORS.md  docs  extra-files  galaxy.yml  group_vars  hosts
-LICENSE.txt  mkdocs.yml  pre-commit.sh  README.md  roles  Vagrantfile
+ls
+CONTRIBUTORS.md		Vagrantfile		docs			inventory_files		roles
+Dockerfile		ansible.cfg		extra-files		mkdocs.yml		scripts
+LICENSE.txt		deploy.sh		galaxy.yml		pre-commit.sh		startup.sh
+README.md		dockerfiles		group_vars		requirements_roles.yml	templates
 ```
 
 # Deploying galaxy-kickstart on remote machines.
 ----
 
-Inside the repository you will find a hosts file.
-This is an example inventory.
+Inside the `inventory_files` folder, you will find a number of inventory files.
+This is an example of inventory taken from the `artimed` inventory file.
 
 ```
 [artimed]
