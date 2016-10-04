@@ -11,6 +11,7 @@
 
 - name: Run the fix_hostname script (needed for CVMFS & Slurm)
   command: /etc/init.d/fix_hostname.sh
+  when: "'jetstream' in group_names"
   notify:
     - instance cleanup
 
