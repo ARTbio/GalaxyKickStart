@@ -1,4 +1,4 @@
-This role it primarily used to build Galaxy Standalone cloud images.
+This role is primarily used to build Galaxy Standalone cloud images.
 
 Due to the way the overall playbook and included roles are written, using
 this role is a multi-step process. Each of the runs can be invoked with the
