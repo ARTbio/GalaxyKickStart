@@ -1,6 +1,7 @@
 # Extra Files / Cloud Setup
 
-The files described below are the ones the user can modify in order to meet their specifications.
+The files described below are the ones the user can modify in order to meet
+their specifications.
 
 ```
 ├── data_manager_tasks.yml
@@ -12,12 +13,19 @@ The files described below are the ones the user can modify in order to meet thei
 └── vimrc
 ```
 
-* `vimrc` : The VIM configurations used for the remote target.
+* `vimrc`: The VIM configurations used for the remote target.
 
-* `usegalaxy_main_tool_list.yml` : This is a replica of the Galaxy main tool list for the most part, but edited to fit the size of the instance. The Galaxy Main tool list can be obtained using this ephemeris [script](https://github.com/galaxyproject/ephemeris/blob/master/ephemeris/get_tool_list_from_galaxy.py). This file can be changed in group_vars/cloud_setup if the user wishes to use a custom tool list. While making a new tool list, it is important to keep in mind the tags in the `yaml` file.
+* `usegalaxy_main_tool_list.yml`: This is largely a replica of the Galaxy Main
+tool list, but edited to include the tools that install cleanly. The Galaxy
+Main tool list can be obtained using this ephemeris [script](https://g
+ithub.com/galaxyproject/ephemeris/blob/master/ephemeris/get_tool_list_from_ga
+laxy.py). This file can be changed in `group_vars/cloud_setup` if the user
+wishes to use a custom tool list.
 
-This tool uses the `tool_panel_section_id` because it needs to be placed in a
-section which is shipped with the base Galaxy instance i.e default tool sections.
+If making a new tool list, it is important to keep in mind the following: if a
+tool is being installed into a tool section that exists natively in Galaxy
+code base, it is necessary to use `tool_panel_section_id` of the existing tool
+section. For example:
 
 ```
 - name: tabular_to_fastq
@@ -29,8 +37,9 @@ section which is shipped with the base Galaxy instance i.e default tool sections
   install_resolver_dependencies: True
 ```
 
-This tool uses `tool_panel_section_label` as we are making a new section in
-the tool panel.
+On the other hand, if you the tool is being added to a new section, use
+`tool_panel_section_label`. It is OK to specify the same label for multiple
+tools.
 
 ```
 - name: fastx_nucleotides_distribution
@@ -42,12 +51,12 @@ the tool panel.
   install_resolver_dependencies: True
 ```
 
- * `data_manager_tool_list.yml` : List of data managers installed.
+ * `data_manager_tool_list.yml`: List of data managers installed.
 
- * `data_manager_tasks.yml` : Run data manager tasks with dbkeys (organisms).
+ * `data_manager_tasks.yml`: Run data manager tasks with dbkeys (organisms).
 
- * `fix_hostname.sh` : Custom script to fix the hostname on Jetstream instances.
+ * `fix_hostname.sh`: Custom script to fix the hostname on Jetstream instances.
 
- * `tool_sheds_conf.xml` : Two tool sheds are available right now through this
-  file (Galaxy Main and Test ToolSheds); users can reference other toolsheds in
-  the file.
+ * `tool_sheds_conf.xml`: Two tool sheds are available right now through this
+  file (Galaxy Main and Test ToolSheds); users can reference other ToolSheds
+  via this file.
