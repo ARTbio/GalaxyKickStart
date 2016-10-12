@@ -15,10 +15,6 @@ ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
               echo "===> Updating TLS certificates..."         && \
               apt-get install -y openssl ca-certificates
 
-# TODO: install as a system package after v2.1.2.0 is released
-RUN git clone --recursive -b stable-2.1 https://github.com/ansible/ansible && \
-    pip install ansible/
-
 COPY  .  /setup
 WORKDIR /setup
 
@@ -28,14 +24,18 @@ LANG=en_US.UTF-8
 RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
 # work around for AUFS bug
 # as per https://github.com/docker/docker/issues/783#issuecomment-56013588
-RUN mkdir /var/lib/postgresql-copy; mv /var/lib/postgresql/* /var/lib/postgresql-copy; rm -R /var/lib/postgresql; mv /var/lib/postgresql-copy /var/lib/postgresql; \
-    chmod 0700 /var/lib/postgresql; chown -R 1550:1550 /var/lib/postgresql
+RUN mkdir /etc/ssl/private-copy /var/lib/postgresql-copy && \
+    mv /var/lib/postgresql/* /var/lib/postgresql-copy && \
+    mv /etc/ssl/private/* /etc/ssl/private-copy/ && \
+    rm -R /var/lib/postgresql /etc/ssl/private/ && \
+    mv /var/lib/postgresql-copy /var/lib/postgresql && \
+    mv /etc/ssl/private-copy /etc/ssl/private && \
+    chmod 0700 /var/lib/postgresql /etc/ssl/private && \
+    chown -R 1550:1550 /var/lib/postgresql /var/run/postgresql \
+    /var/log/postgresql /etc/ssl/private
+
 RUN ansible-galaxy install -r requirements_roles.yml -p roles && \
     ansible-playbook -i inventory_files/docker -c local galaxy.yml
-
-# work around for AUFS bug
-RUN mkdir /etc/ssl/private-copy; mv /etc/ssl/private/* /etc/ssl/private-copy/; rm -r /etc/ssl/private; mv /etc/ssl/private-copy /etc/ssl/private; chmod -R 0700 /etc/ssl/private; chown -R postgres /etc/ssl/private
-
 
 ENV NGINX_GALAXY_LOCATION="" \
 GALAXY_CONFIG_ADMIN_USERS="admin@galaxy.org" \
