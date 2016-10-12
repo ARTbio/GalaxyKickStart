@@ -881,13 +881,6 @@ tools:
   tool_panel_section_label: 'NGS: Peak Calling'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-- name: diffbind
-  owner: bgruening
-  revisions:
-  - 492d5ac7b2e2
-  tool_panel_section_label: 'NGS: Peak Calling'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
 - name: macs
   owner: devteam
   revisions:
@@ -1600,6 +1593,13 @@ tools:
 ##########
 # The Following list of tools in the commented section DO NOT install cleanly.
 ##########
+# - name: diffbind
+#   owner: bgruening
+#   revisions:
+#   - 492d5ac7b2e2
+#   tool_panel_section_label: 'NGS: Peak Calling'
+#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+#   install_resolver_dependencies: True
 # - name: weblogo3
 #   owner: devteam
 #   revisions:
