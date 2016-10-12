@@ -15,9 +15,7 @@ ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
               echo "===> Updating TLS certificates..."         && \
               apt-get install -y openssl ca-certificates
 
-# TODO: install as a system package after v2.1.2.0 is released
-RUN git clone --recursive -b stable-2.1 https://github.com/ansible/ansible && \
-    pip install ansible/
+RUN pip install ansible
 
 COPY  .  /setup
 WORKDIR /setup
