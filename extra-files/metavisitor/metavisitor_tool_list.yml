@@ -2,7 +2,7 @@ tools:
 - name: blast_to_scaffold
   owner: drosofff
   revisions:
-  - 3288cc5a57e5
+  - 81ffa74cf96e
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: bowtie2
@@ -14,7 +14,7 @@ tools:
 - name: cherry_pick_fasta
   owner: drosofff
   revisions:
-  - c7a0ec8263b4
+  - f7684171dab3
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: concatenate_multiple_datasets
@@ -62,19 +62,19 @@ tools:
 - name: fetch_fasta_from_ncbi
   owner: drosofff
   revisions:
-  - befdb392fece
+  - a9d8f69d59fb
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: khmer_normalize_by_median
   owner: iuc
   revisions:
-  - 6d8793a4923d
+  - ee081dc6c578
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_blastparser_and_hits
   owner: drosofff
   revisions:
-  - 6dfa79a6908a
+  - 1991c830504a
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_cap3
@@ -86,7 +86,7 @@ tools:
 - name: msp_fasta_tabular_converter
   owner: drosofff
   revisions:
-  - 330dd8a8c31a
+  - 36388b666bfc
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_oases
@@ -98,13 +98,13 @@ tools:
 - name: msp_sr_bowtie
   owner: drosofff
   revisions:
-  - c1bfa227bbb6
+  - 615d2550977f
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: msp_sr_readmap_and_size_histograms
   owner: drosofff
   revisions:
-  - 68f58363f1c6
+  - 92898cc3ea19
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: ncbi_blast_plus
@@ -123,7 +123,7 @@ tools:
 - name: sra_tools
   owner: iuc
   revisions:
-  - b723c120161a
+  - 62e4d56ebb6f
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: trinityrnaseq
@@ -135,6 +135,6 @@ tools:
 - name: yac_clipper
   owner: drosofff
   revisions:
-  - 91cce7c1436d
+  - a18edcf9c7ed
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
