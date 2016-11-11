@@ -107,6 +107,8 @@ tools:
   - 92898cc3ea19
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
 - name: ncbi_blast_plus
   owner: devteam
   revisions:
