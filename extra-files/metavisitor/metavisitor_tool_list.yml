@@ -148,6 +148,7 @@ tools:
   owner: nml
   revisions:
     - 35cb17bd8bf9
+  tool_panel_section_label: Metavisitor
   install_resolver_dependencies: True
 - name: yac_clipper
   owner: drosofff
