@@ -36,7 +36,7 @@ tools:
 - name: data_manager_bowtie_index_builder
   owner: iuc
   revisions:
-  - 0a0c648498e2
+  - 086edfff112b
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -44,7 +44,7 @@ tools:
 - name: data_manager_fetch_genome_dbkeys_all_fasta
   owner: devteam
   revisions:
-  - 776bb1b478a0
+  - 86fa71e9b427
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: fasta_filter_by_length
@@ -122,8 +122,9 @@ tools:
 - name: ncbi_blast_plus
   owner: devteam
   revisions:
-  - 7f3c448e119b
-  - 577d9c12411a
+  - 3034ce97dd33
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: regex_find_replace
