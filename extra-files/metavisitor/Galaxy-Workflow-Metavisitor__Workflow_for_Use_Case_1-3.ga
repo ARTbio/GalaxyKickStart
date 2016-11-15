@@ -113,7 +113,7 @@
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"queryString\": \"\\\"${ncbi_guide_ID}\\\"\", \"dbname\": \"\\\"nuccore\\\"\"}", 
-            "tool_version": null, 
+            "tool_version": "0.9.4", 
             "type": "tool", 
             "uuid": "7858036a-2e5d-4dc3-8ce4-819c746c742c", 
             "workflow_outputs": [

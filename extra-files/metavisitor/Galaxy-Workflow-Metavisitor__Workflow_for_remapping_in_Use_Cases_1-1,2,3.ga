@@ -223,7 +223,7 @@
         }, 
         "5": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2.1", 
             "id": 5, 
             "input_connections": {
                 "input": {
@@ -276,13 +276,13 @@
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2", 
             "tool_shed_repository": {
-                "changeset_revision": "c1bfa227bbb6", 
+                "changeset_revision": "615d2550977f", 
                 "name": "msp_sr_bowtie", 
                 "owner": "drosofff", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": 0, \"output_format\": \"\\\"tabular\\\"\", \"additional_fasta\": \"\\\"No\\\"\", \"v_mismatches\": \"\\\"0\\\"\", \"__rerun_remap_job_id__\": null, \"input\": \"null\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"history\\\", \\\"ownFile\\\": null, \\\"__current_case__\\\": 1}\", \"method\": \"\\\"multiple\\\"\"}", 
-            "tool_version": "1.1.2", 
+            "tool_version": "1.1.2.1", 
             "type": "tool", 
             "uuid": "a9880e4e-f47f-4a21-ad20-5aefb83b57ad", 
             "workflow_outputs": []
@@ -447,9 +447,9 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_readmap_and_size_histograms/Readmap/1.1.5", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_readmap_and_size_histograms/Readmap/1.2.0", 
             "tool_shed_repository": {
-                "changeset_revision": "68f58363f1c6", 
+                "changeset_revision": "92898cc3ea19", 
                 "name": "msp_sr_readmap_and_size_histograms", 
                 "owner": "drosofff", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
