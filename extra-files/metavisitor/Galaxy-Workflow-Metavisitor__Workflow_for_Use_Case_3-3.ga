@@ -317,7 +317,7 @@
                 "owner": "anmoljh", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"JM\": \"\\\"1G\\\"\", \"__rerun_remap_job_id__\": null, \"additional_params\": \"{\\\"use_additional\\\": \\\"no\\\", \\\"__current_case__\\\": 0}\", \"inputs\": \"{\\\"paired_or_single\\\": \\\"single\\\", \\\"input\\\": null, \\\"path_reinforcement_distance\\\": \\\"40\\\", \\\"__current_case__\\\": 1, \\\"library_type\\\": \\\"None\\\"}\"}", 
+            "tool_state": "{\"__page__\": 0, \"JM\": \"\\\"1G\\\"\", \"__rerun_remap_job_id__\": null, \"additional_params\": \"{\\\"use_additional\\\": \\\"no\\\", \\\"__current_case__\\\": 0}\", \"inputs\": \"{\\\"paired_or_single\\\": \\\"single\\\", \\\"input\\\": null, \\\"path_reinforcement_distance\\\": \\\"40\\\", \\\"__current_case__\\\": 1, \\\"library_type\\\": \\\"None\\\"}\", \"CPU\": \"\\\"2\\\"\"}", 
             "tool_version": "r20140717", 
             "type": "tool", 
             "uuid": "400add87-e5bc-470a-bc3c-6d7bbff41b78", 

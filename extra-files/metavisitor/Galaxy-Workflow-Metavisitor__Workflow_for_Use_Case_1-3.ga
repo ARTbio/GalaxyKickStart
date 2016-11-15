@@ -207,7 +207,7 @@
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": 0, \"mask_data_file\": \"null\", \"input_file\": \"null\", \"dbtype\": \"\\\"nucl\\\"\", \"__rerun_remap_job_id__\": null, \"hash_index\": \"\\\"true\\\"\", \"tax\": \"{\\\"__current_case__\\\": 0, \\\"taxselect\\\": \\\"\\\"}\", \"__workflow_invocation_uuid__\": \"\\\"ae5b2b58802911e5808df01fafdfc061\\\"\", \"title\": \"\\\"Blastn candidate database\\\"\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\", \"parse_seqids\": \"\\\"false\\\"\"}", 
-            "tool_version": null, 
+            "tool_version": "0.1.08", 
             "type": "tool", 
             "uuid": "ce29cdbe-653a-4d0e-b225-0d0762c28d4d", 
             "workflow_outputs": []
@@ -323,7 +323,7 @@
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"force_single_switch\": \"\\\"true\\\"\", \"cutoff\": \"\\\"20\\\"\", \"save_countgraph\": \"\\\"false\\\"\", \"parameters\": \"{\\\"type\\\": \\\"simple\\\", \\\"tablesize\\\": \\\"2e9\\\", \\\"__current_case__\\\": 0}\", \"inputs\": \"null\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"paired_switch\": \"\\\"false\\\"\", \"countgraph_to_load\": \"null\", \"unpaired_reads_filename\": \"null\"}", 
-            "tool_version": null, 
+            "tool_version": "2.0.0", 
             "type": "tool", 
             "uuid": "834cfd60-e0df-40e3-9d01-ecfa4296960b", 
             "workflow_outputs": [

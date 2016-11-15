@@ -393,7 +393,7 @@
         }, 
         "8": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_readmap_and_size_histograms/Readmap/1.1.5", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_readmap_and_size_histograms/Readmap/1.2.0", 
             "id": 8, 
             "input_connections": {
                 "refGenomeSource|ownFile": {
@@ -455,7 +455,7 @@
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"minquery\": \"\\\"18\\\"\", \"__page__\": 0, \"rows_per_page\": \"\\\"8\\\"\", \"yrange\": \"\\\"0\\\"\", \"title\": \"\\\"Readmaps and size distributions\\\"\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"history\\\", \\\"series\\\": [{\\\"__index__\\\": 0, \\\"norm\\\": \\\"1.0\\\", \\\"input\\\": null}], \\\"ownFile\\\": null, \\\"__current_case__\\\": 1}\", \"__rerun_remap_job_id__\": null, \"maxquery\": \"\\\"30\\\"\", \"xlabel\": \"\\\"Coordinates/read size\\\"\", \"ylabel\": \"\\\"Number of reads\\\"\", \"gff\": \"null\"}", 
-            "tool_version": "1.1.5", 
+            "tool_version": "1.2.0", 
             "type": "tool", 
             "uuid": "ebaf90ab-b8ea-428f-876c-8f9fabd1fbf9", 
             "workflow_outputs": [
