@@ -834,7 +834,7 @@
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": 0, \"guideSequence\": \"null\", \"blast_tab\": \"null\", \"__rerun_remap_job_id__\": null, \"sequences\": \"null\"}", 
-            "tool_version": null, 
+            "tool_version": "0.9.0", 
             "type": "tool", 
             "uuid": "031fbacb-303d-421d-84ee-24c9474c26d2", 
             "workflow_outputs": []
@@ -887,7 +887,7 @@
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"checks\": \"[{\\\"__index__\\\": 0, \\\"replacement\\\": \\\">Nora_Median-Norm-reads\\\", \\\"pattern\\\": \\\">.+\\\"}]\", \"__page__\": 0}", 
-            "tool_version": null, 
+            "tool_version": "0.1.0", 
             "type": "tool", 
             "uuid": "d804abd4-ad4e-4382-a81d-b592bec797cf", 
             "workflow_outputs": [
