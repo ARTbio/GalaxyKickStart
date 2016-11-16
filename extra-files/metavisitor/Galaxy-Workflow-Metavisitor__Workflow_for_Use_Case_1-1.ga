@@ -107,7 +107,7 @@
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/fetch_fasta_from_ncbi/retrieve_fasta_from_NCBI/0.9.4", 
             "tool_shed_repository": {
-                "changeset_revision": "befdb392fece", 
+                "changeset_revision": "a9d8f69d59fb", 
                 "name": "fetch_fasta_from_ncbi", 
                 "owner": "drosofff", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -156,7 +156,7 @@
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/yac_clipper/yac/1.3.6", 
             "tool_shed_repository": {
-                "changeset_revision": "91cce7c1436d", 
+                "changeset_revision": "a18edcf9c7ed", 
                 "name": "yac_clipper", 
                 "owner": "drosofff", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -175,7 +175,7 @@
         }, 
         "4": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.1.06", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.1.08", 
             "id": 4, 
             "input_connections": {
                 "input_file": {
@@ -213,15 +213,15 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.1.06", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.1.08", 
             "tool_shed_repository": {
-                "changeset_revision": "577d9c12411a", 
+                "changeset_revision": "3034ce97dd33", 
                 "name": "ncbi_blast_plus", 
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": 0, \"mask_data_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"dbtype\": \"\\\"nucl\\\"\", \"__rerun_remap_job_id__\": null, \"hash_index\": \"\\\"true\\\"\", \"tax\": \"{\\\"__current_case__\\\": 0, \\\"taxselect\\\": \\\"\\\"}\", \"__workflow_invocation_uuid__\": \"\\\"ae5b2b58802911e5808df01fafdfc061\\\"\", \"title\": \"\\\"Blastn candidate database\\\"\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\", \"parse_seqids\": \"\\\"false\\\"\"}", 
-            "tool_version": "0.1.06", 
+            "tool_version": "0.1.08", 
             "type": "tool", 
             "uuid": "ce29cdbe-653a-4d0e-b225-0d0762c28d4d", 
             "workflow_outputs": []
@@ -320,7 +320,7 @@
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.1.0", 
             "tool_shed_repository": {
-                "changeset_revision": "330dd8a8c31a", 
+                "changeset_revision": "36388b666bfc", 
                 "name": "msp_fasta_tabular_converter", 
                 "owner": "drosofff", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -371,7 +371,7 @@
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_fasta_tabular_converter/fasta_tabular_converter/1.1.0", 
             "tool_shed_repository": {
-                "changeset_revision": "330dd8a8c31a", 
+                "changeset_revision": "36388b666bfc", 
                 "name": "msp_fasta_tabular_converter", 
                 "owner": "drosofff", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -390,7 +390,7 @@
         }, 
         "8": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2.1", 
             "id": 8, 
             "input_connections": {
                 "input": {
@@ -444,15 +444,15 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2.1", 
             "tool_shed_repository": {
-                "changeset_revision": "c1bfa227bbb6", 
+                "changeset_revision": "615d2550977f", 
                 "name": "msp_sr_bowtie", 
                 "owner": "drosofff", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": 0, \"output_format\": \"\\\"tabular\\\"\", \"additional_fasta\": \"\\\"unal\\\"\", \"v_mismatches\": \"\\\"2\\\"\", \"__rerun_remap_job_id__\": null, \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"indexed\\\", \\\"index\\\": \\\"dm6\\\", \\\"__current_case__\\\": 0}\", \"method\": \"\\\"k_option\\\"\"}", 
-            "tool_version": "1.1.2", 
+            "tool_version": "1.1.2.1", 
             "type": "tool", 
             "uuid": "e22c6843-8125-49d6-9dcd-546155536f78", 
             "workflow_outputs": [
@@ -517,7 +517,7 @@
         }, 
         "10": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.06", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.08", 
             "id": 10, 
             "input_connections": {
                 "db_opts|histdb": {
@@ -559,15 +559,15 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.06", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.08", 
             "tool_shed_repository": {
-                "changeset_revision": "577d9c12411a", 
+                "changeset_revision": "3034ce97dd33", 
                 "name": "ncbi_blast_plus", 
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"evalue_cutoff\": \"\\\"0.001\\\"\", \"output\": \"{\\\"out_format\\\": \\\"cols\\\", \\\"std_cols\\\": [\\\"qseqid\\\", \\\"sseqid\\\", \\\"pident\\\", \\\"length\\\", \\\"mismatch\\\", \\\"gapopen\\\", \\\"qstart\\\", \\\"qend\\\", \\\"sstart\\\", \\\"send\\\", \\\"evalue\\\", \\\"bitscore\\\"], \\\"ids_cols\\\": null, \\\"tax_cols\\\": null, \\\"__current_case__\\\": 2, \\\"misc_cols\\\": null, \\\"ext_cols\\\": [\\\"slen\\\"]}\", \"adv_opts\": \"{\\\"adv_optional_id_files_opts\\\": {\\\"__current_case__\\\": 0, \\\"adv_optional_id_files_opts_selector\\\": \\\"none\\\"}, \\\"identity_cutoff\\\": \\\"0.0\\\", \\\"adv_opts_selector\\\": \\\"advanced\\\", \\\"ungapped\\\": \\\"false\\\", \\\"filter_query\\\": \\\"true\\\", \\\"word_size\\\": \\\"0\\\", \\\"__current_case__\\\": 1, \\\"parse_deflines\\\": \\\"false\\\", \\\"qcov_hsp_perc\\\": \\\"0.0\\\", \\\"strand\\\": \\\"-strand both\\\", \\\"max_hits\\\": \\\"5\\\"}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"__workflow_invocation_uuid__\": \"\\\"4dd2fde8802311e5bcddf01fafdfc061\\\"\", \"db_opts\": \"{\\\"db_opts_selector\\\": \\\"histdb\\\", \\\"subject\\\": \\\"\\\", \\\"histdb\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1, \\\"database\\\": \\\"\\\"}\", \"blast_type\": \"\\\"blastn\\\"\", \"query\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
-            "tool_version": "0.1.06", 
+            "tool_version": "0.1.08", 
             "type": "tool", 
             "uuid": "bf30a0ad-4ef9-49f0-b4c7-4aae52017748", 
             "workflow_outputs": []
@@ -635,7 +635,7 @@
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_blastparser_and_hits/BlastParser_and_hits/2.4.3", 
             "tool_shed_repository": {
-                "changeset_revision": "6dfa79a6908a", 
+                "changeset_revision": "1991c830504a", 
                 "name": "msp_blastparser_and_hits", 
                 "owner": "drosofff", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -772,7 +772,7 @@
         }, 
         "13": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.06", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.08", 
             "id": 13, 
             "input_connections": {
                 "db_opts|histdb": {
@@ -814,15 +814,15 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.06", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.08", 
             "tool_shed_repository": {
-                "changeset_revision": "577d9c12411a", 
+                "changeset_revision": "3034ce97dd33", 
                 "name": "ncbi_blast_plus", 
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"evalue_cutoff\": \"\\\"0.001\\\"\", \"output\": \"{\\\"out_format\\\": \\\"cols\\\", \\\"std_cols\\\": [\\\"qseqid\\\", \\\"sseqid\\\", \\\"pident\\\", \\\"length\\\", \\\"mismatch\\\", \\\"gapopen\\\", \\\"qstart\\\", \\\"qend\\\", \\\"sstart\\\", \\\"send\\\", \\\"evalue\\\", \\\"bitscore\\\"], \\\"ids_cols\\\": null, \\\"tax_cols\\\": null, \\\"__current_case__\\\": 2, \\\"misc_cols\\\": null, \\\"ext_cols\\\": [\\\"slen\\\"]}\", \"adv_opts\": \"{\\\"adv_opts_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"__workflow_invocation_uuid__\": \"\\\"ae5b2b58802911e5808df01fafdfc061\\\"\", \"db_opts\": \"{\\\"db_opts_selector\\\": \\\"histdb\\\", \\\"subject\\\": \\\"\\\", \\\"histdb\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1, \\\"database\\\": \\\"\\\"}\", \"blast_type\": \"\\\"blastn\\\"\", \"query\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
-            "tool_version": "0.1.06", 
+            "tool_version": "0.1.08", 
             "type": "tool", 
             "uuid": "c9f9c58a-f21d-46d2-a952-9e7b7d5bf939", 
             "workflow_outputs": []
@@ -881,7 +881,7 @@
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/blast_to_scaffold/blast2scaffold/0.9.0", 
             "tool_shed_repository": {
-                "changeset_revision": "3288cc5a57e5", 
+                "changeset_revision": "81ffa74cf96e", 
                 "name": "blast_to_scaffold", 
                 "owner": "drosofff", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"

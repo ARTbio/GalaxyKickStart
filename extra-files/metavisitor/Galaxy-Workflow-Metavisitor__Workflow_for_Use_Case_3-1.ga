@@ -261,7 +261,7 @@
         }, 
         "6": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2.1", 
             "id": 6, 
             "input_connections": {
                 "input": {
@@ -313,22 +313,22 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2.1", 
             "tool_shed_repository": {
-                "changeset_revision": "c1bfa227bbb6", 
+                "changeset_revision": "615d2550977f", 
                 "name": "msp_sr_bowtie", 
                 "owner": "drosofff", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": 0, \"output_format\": \"\\\"tabular\\\"\", \"additional_fasta\": \"\\\"unal\\\"\", \"v_mismatches\": \"\\\"2\\\"\", \"__rerun_remap_job_id__\": null, \"input\": \"null\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"indexed\\\", \\\"index\\\": \\\"hg19\\\", \\\"__current_case__\\\": 0}\", \"method\": \"\\\"k_option\\\"\"}", 
-            "tool_version": "1.1.2", 
+            "tool_version": "1.1.2.1", 
             "type": "tool", 
             "uuid": "41108f94-dbf9-4cbe-8bd4-acdc16c9c06c", 
             "workflow_outputs": []
         }, 
         "7": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2.1", 
             "id": 7, 
             "input_connections": {
                 "input": {
@@ -380,22 +380,22 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2.1", 
             "tool_shed_repository": {
-                "changeset_revision": "c1bfa227bbb6", 
+                "changeset_revision": "615d2550977f", 
                 "name": "msp_sr_bowtie", 
                 "owner": "drosofff", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": 0, \"output_format\": \"\\\"tabular\\\"\", \"additional_fasta\": \"\\\"al\\\"\", \"v_mismatches\": \"\\\"2\\\"\", \"__rerun_remap_job_id__\": null, \"input\": \"null\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"indexed\\\", \\\"index\\\": \\\"vir1\\\", \\\"__current_case__\\\": 0}\", \"method\": \"\\\"k_option\\\"\"}", 
-            "tool_version": "1.1.2", 
+            "tool_version": "1.1.2.1", 
             "type": "tool", 
             "uuid": "3d252e09-bbcc-45d3-9878-32e4fd8a43e5", 
             "workflow_outputs": []
         }, 
         "8": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_oases/oasesoptimiserv/1.1.4", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_oases/oasesoptimiserv/1.1.5", 
             "id": 8, 
             "input_connections": {
                 "inputs_0|input": {
@@ -426,15 +426,15 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_oases/oasesoptimiserv/1.1.4", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_oases/oasesoptimiserv/1.1.5", 
             "tool_shed_repository": {
-                "changeset_revision": "f08d9c814ffb", 
+                "changeset_revision": "dc684e37f668", 
                 "name": "msp_oases", 
                 "owner": "drosofff", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": 0, \"inputs\": \"[{\\\"__index__\\\": 0, \\\"input\\\": null}]\", \"end_hash_length\": \"\\\"27\\\"\", \"__rerun_remap_job_id__\": null, \"start_hash_length\": \"\\\"11\\\"\"}", 
-            "tool_version": "1.1.4", 
+            "tool_version": "1.1.5", 
             "type": "tool", 
             "uuid": "b73a2fa1-bf72-4ad3-b82c-e342a21a5275", 
             "workflow_outputs": [
@@ -447,7 +447,7 @@
         }, 
         "9": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.07", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.08", 
             "id": 9, 
             "input_connections": {
                 "db_opts|histdb": {
@@ -482,15 +482,15 @@
                 }
             }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.07", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.1.08", 
             "tool_shed_repository": {
-                "changeset_revision": "7f3c448e119b", 
+                "changeset_revision": "3034ce97dd33", 
                 "name": "ncbi_blast_plus", 
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"evalue_cutoff\": \"\\\"0.001\\\"\", \"__page__\": 0, \"adv_opts\": \"{\\\"adv_opts_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"__rerun_remap_job_id__\": null, \"blast_type\": \"\\\"blastn\\\"\", \"db_opts\": \"{\\\"db_opts_selector\\\": \\\"histdb\\\", \\\"subject\\\": \\\"\\\", \\\"histdb\\\": null, \\\"__current_case__\\\": 1, \\\"database\\\": \\\"\\\"}\", \"output\": \"{\\\"out_format\\\": \\\"cols\\\", \\\"std_cols\\\": [\\\"qseqid\\\", \\\"sseqid\\\", \\\"pident\\\", \\\"length\\\", \\\"mismatch\\\", \\\"gapopen\\\", \\\"qstart\\\", \\\"qend\\\", \\\"sstart\\\", \\\"send\\\", \\\"evalue\\\", \\\"bitscore\\\"], \\\"ids_cols\\\": null, \\\"tax_cols\\\": null, \\\"__current_case__\\\": 2, \\\"misc_cols\\\": null, \\\"ext_cols\\\": [\\\"slen\\\"]}\", \"query\": \"null\"}", 
-            "tool_version": "0.1.07", 
+            "tool_version": "0.1.08", 
             "type": "tool", 
             "uuid": "0e8b01bc-d919-4bc4-ba28-c2fde37de6b6", 
             "workflow_outputs": [
