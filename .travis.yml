@@ -1,88 +1,76 @@
----
 language: python
-python: "2.7"
+python: '2.7'
 sudo: required
 dist: trusty
-
 env:
   global:
-    - TOX_ENV=py27
-    - SITE_URL="https://artbio.github.io/GalaxyKickStart/"
-    - GH_USER_NAME="Christophe Antoniewski"
-    - GH_USER_EMAIL="drosofff@gmail.com"
-    - GH_REF="github.com/ARTbio/GalaxyKickStart.git"
-    # GH_TOKEN is secret, add in travis interface. Needed for pushing updated documentation.
-    # https://help.github.com/articles/creating-an-access-token-for-command-line-use/
-    # below, deprecated GH_REF value
-    # - GH_REF="github.com/ARTbio/ansible-artimed.git"
-    - secure: sKzkHCF+Ja4sHPgXQcnFmDT+5dGu3QaLilK8UBzDLSbhlavzMZMGUhacxdrn4fL03i0WP+B0PkIR6Nx/kteM71d3Un0NL9e2OmFmuHztRM/OGCQLyaakAWbLUVe3TCpoH9Bjuat4RNmTykm4DrfTvOFa1sRzsGeq4apSxKeObvKG7269zQRta6gmHfqEeF2S0iJk/8HOrPxyGzZNNsgptFwujtGIiUWV9w0hhPTGkmtWoSh8dShCn3j7WFfqCRtOAY33pS7minl5nF6ten+/Q9vW+73vMg4wv8+7Tdn4PzVuMxzQ1d6Qi424HSoDzBufLZeDzYD8Twy/PzUbm1EtKFrg5c4LwWwzasIR3hJ8xDUJX5iQHPGiAOLjwbeNwleaL9KQY915TKACwECk4EpOuL/KkRhPK3T5ixjhxiVrKm8hyC7ihh+E0lny7MgGaFjCJlqC3FhodMQmCsxV1XO6onCEnOnJ2LdEjg5T+yp7GPJjYI1lW+JzmqtaTXEpP9hLg3P2D/8aNdSS/DV+miaXm8zY8Zg6+PZnI+lm1XZxT6vqA6wnTNDEoxf/qSS4wWFsjURmKOOMS0plsgvuRrK16wCyfZVj8qUhUFl0eTtB1BBRB6l5JNgsF86NuxD7apc/8Ld9eIGGnNSQYUFPtZpBwjhnfY6yWyWYuv4iLyrl+xM=
-
+  - TOX_ENV=py27
+  - SITE_URL="https://artbio.github.io/GalaxyKickStart/"
+  - GH_USER_NAME="Christophe Antoniewski"
+  - GH_USER_EMAIL="drosofff@gmail.com"
+  - GH_REF="github.com/ARTbio/GalaxyKickStart.git"
+  - secure: HHwev92hRzXMCbNcLb10OPj6ZZAWHdIp4zm3YjVs8yAm3isKLR/odPPCeNihBIlYO+3oWdMGpNvt8jVHapp3aWIpsFR3a2YjMrX887A3e7kt2SFpwGgDP1lTefEWO06nMKc0Yl/sw4Cwmx88wsdaSHjC/rASwXdKa2K6bHx3SVoN7P4rtgtdT0z0gQifsH6tkLxv13ao8kRnki8mlN27XDJiGeocYBpP3/Ragg4eQVs8/i4+21HPqJhWbuGzvYWrUbR4FOUpdxS9kmbm5bimyxCZTGJzeasLv8G07uoDlbivMFKEnDwL6iql6ncNyaldkj9WlcpC900Y/AjSd07P++AibC60tg4HZXbqjeoV4g/TG/TsQDWmRhgBd82TecGgFsCjeA3NVkxBehzVieNyO1UslJxwQJjjiD7ucxWEoiBz79A/7pxLyefRVJg12MAMMBATR8VSTHA3DVvB4rA9m+RC0pI0jpBf2a7Uh1wCQT/+enxCerb3Zb52HEaJqBlihVnAPIDre1weEZFBrRZnNMRaFNmLWuUZJD33DROQAfdINcOo8m62mtUThknp/ov62kgdMimqBI+qGZy8cNeIzIVEppTVQHKPTXsZoAROHaeVtsvVEYcDkevYpYns4sM+DLJxniIdC+0DCA6eqtoop27Hxk4p2lZhey4JDVFs8Kw=
 before_install:
-  - export GALAXY_TRAVIS_USER=galaxy
-  - export GALAXY_UID=1450
-  - export GALAXY_GID=1450
-  - export GALAXY_HOME=/home/galaxy
-  - export GALAXY_USER=admin@galaxy.org
-  - export GALAXY_USER_EMAIL=admin@galaxy.org
-  - export GALAXY_USER_PASSWD=admin
-  - export BIOBLEND_GALAXY_API_KEY=admin
-  - export BIOBLEND_GALAXY_URL=http://localhost:8080
-  - docker --version
-  - docker info
-
-  - pip install ansible
-  - ansible-galaxy install -r requirements_roles.yml -p roles
-
-  - sudo groupadd -r $GALAXY_TRAVIS_USER -g $GALAXY_GID
-  - sudo useradd -u $GALAXY_UID -r -g $GALAXY_TRAVIS_USER -d $GALAXY_HOME -p travis_testing -c "Galaxy user" $GALAXY_TRAVIS_USER
-  - sudo mkdir $GALAXY_HOME
-  - sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
-  - docker build -t galaxy_kickstart .
-  - sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
-  - sudo mkdir /export2 && sudo chown $GALAXY_UID:$GALAXY_GID /export2
-  - CID1=`docker run -d --privileged=true -p 8181:80 -e NAT_MASQUERADE=true -e NGINX_GALAXY_LOCATION=/subdir -v /export2:/export galaxy_kickstart`
-  - |
-    CID2=`docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
-    --privileged=true \
-    -e GALAXY_CONFIG_ALLOW_USER_DATASET_PURGE=True \
-    -e GALAXY_CONFIG_ALLOW_LIBRARY_PATH_PASTE=True \
-    -e GALAXY_CONFIG_ENABLE_USER_DELETION=True \
-    -e GALAXY_CONFIG_ENABLE_BETA_WORKFLOW_MODULES=True \
-    -v /tmp/:/tmp/ \
-    -v /export/:/export \
-    galaxy_kickstart`
-  - docker ps
-  - cd $GALAXY_HOME
-  - sudo su $GALAXY_TRAVIS_USER -c 'wget https://github.com/bgruening/bioblend/archive/master.tar.gz'
-  - sudo su $GALAXY_TRAVIS_USER -c 'tar xfz master.tar.gz'
-
+- export GALAXY_TRAVIS_USER=galaxy
+- export GALAXY_UID=1450
+- export GALAXY_GID=1450
+- export GALAXY_HOME=/home/galaxy
+- export GALAXY_USER=admin@galaxy.org
+- export GALAXY_USER_EMAIL=admin@galaxy.org
+- export GALAXY_USER_PASSWD=admin
+- export BIOBLEND_GALAXY_API_KEY=admin
+- export BIOBLEND_GALAXY_URL=http://localhost:8080
+- docker --version
+- docker info
+- pip install ansible
+- ansible-galaxy install -r requirements_roles.yml -p roles
+- sudo groupadd -r $GALAXY_TRAVIS_USER -g $GALAXY_GID
+- sudo useradd -u $GALAXY_UID -r -g $GALAXY_TRAVIS_USER -d $GALAXY_HOME -p travis_testing
+  -c "Galaxy user" $GALAXY_TRAVIS_USER
+- sudo mkdir $GALAXY_HOME
+- sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
+- docker build -t galaxy_kickstart .
+- sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
+- sudo mkdir /export2 && sudo chown $GALAXY_UID:$GALAXY_GID /export2
+- CID1=`docker run -d --privileged=true -p 8181:80 -e NAT_MASQUERADE=true -e NGINX_GALAXY_LOCATION=/subdir
+  -v /export2:/export galaxy_kickstart`
+- |
+  CID2=`docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
+  --privileged=true \
+  -e GALAXY_CONFIG_ALLOW_USER_DATASET_PURGE=True \
+  -e GALAXY_CONFIG_ALLOW_LIBRARY_PATH_PASTE=True \
+  -e GALAXY_CONFIG_ENABLE_USER_DELETION=True \
+  -e GALAXY_CONFIG_ENABLE_BETA_WORKFLOW_MODULES=True \
+  -v /tmp/:/tmp/ \
+  -v /export/:/export \
+  galaxy_kickstart`
+- docker ps
+- cd $GALAXY_HOME
+- sudo su $GALAXY_TRAVIS_USER -c 'wget https://github.com/bgruening/bioblend/archive/master.tar.gz'
+- sudo su $GALAXY_TRAVIS_USER -c 'tar xfz master.tar.gz'
 install:
-  - cd $GALAXY_HOME/bioblend-master
-  - sudo su $GALAXY_TRAVIS_USER -c 'pip install --user --upgrade "tox>=1.8.0" "pep8<=1.6.2" '
-  - sudo su $GALAXY_TRAVIS_USER -c 'python setup.py install --user'
-  # remove flake8 testing for bioblend from tox
-  - sudo su $GALAXY_TRAVIS_USER -c 'sed -i.bak "s/commands.*$/commands =/" tox.ini'
-
+- cd $GALAXY_HOME/bioblend-master
+- sudo su $GALAXY_TRAVIS_USER -c 'pip install --user --upgrade "tox>=1.8.0" "pep8<=1.6.2"
+  '
+- sudo su $GALAXY_TRAVIS_USER -c 'python setup.py install --user'
+- sudo su $GALAXY_TRAVIS_USER -c 'sed -i.bak "s/commands.*$/commands =/" tox.ini'
 script:
-  - sleep 60s
-  - docker logs $CID2
-  # Test that galaxy served at subdir responds
-  - curl http://localhost:8181/subdir/api/version| grep version_major
-  # Run bioblend nosetests with the same UID and GID as the galaxy user inside if Docker
-  # this will guarantee that exchanged files between bioblend and Docker are read & writable from both sides
-  - sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH && cd $GALAXY_HOME/bioblend-master && tox -e $TOX_ENV -- -e 'test_download_dataset'"
-  - curl --fail $BIOBLEND_GALAXY_URL/api/version
-  - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
-  - curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
-  # test that proftpd is running when nat_masquerade=true
-  - docker exec -it $CID1 supervisorctl status | grep proftpd | grep RUNNING
-  - docker stop $CID1 $CID2 && docker rm $CID1 $CID2
-  # Start docker again with export2 but do not define a NGINX_GALAXY_LOCATION
-  - CID3=`docker run -d --privileged=true -p 8181:80 -e NAT_MASQUERADE=true -v /export2:/export galaxy_kickstart` && sleep 60s
-  - docker logs $CID3
-  - curl http://localhost:8181/api/version| grep version_major
-  # Change back to $TRAVIS_BUILD_DIR, since deployment will fail otherwise
-  - cd $TRAVIS_BUILD_DIR
+- sleep 60s
+- docker logs $CID2
+- curl http://localhost:8181/subdir/api/version| grep version_major
+- sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
+  cd $GALAXY_HOME/bioblend-master && tox -e $TOX_ENV -- -e 'test_download_dataset'"
+- curl --fail $BIOBLEND_GALAXY_URL/api/version
+- time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user
+  $GALAXY_USER:$GALAXY_USER_PASSWD
+- curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
+- docker exec -it $CID1 supervisorctl status | grep proftpd | grep RUNNING
+- docker stop $CID1 $CID2 && docker rm $CID1 $CID2
+- CID3=`docker run -d --privileged=true -p 8181:80 -e NAT_MASQUERADE=true -v /export2:/export
+  galaxy_kickstart` && sleep 60s
+- docker logs $CID3
+- curl http://localhost:8181/api/version| grep version_major
+- cd $TRAVIS_BUILD_DIR
 deploy:
   provider: script
   script: bash ./deploy.sh
