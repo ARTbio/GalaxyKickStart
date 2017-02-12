@@ -15,6 +15,7 @@ env:
     # https://help.github.com/articles/creating-an-access-token-for-command-line-use/
     # below, deprecated GH_REF value
     # - GH_REF="github.com/ARTbio/ansible-artimed.git"
+    - secure: sKzkHCF+Ja4sHPgXQcnFmDT+5dGu3QaLilK8UBzDLSbhlavzMZMGUhacxdrn4fL03i0WP+B0PkIR6Nx/kteM71d3Un0NL9e2OmFmuHztRM/OGCQLyaakAWbLUVe3TCpoH9Bjuat4RNmTykm4DrfTvOFa1sRzsGeq4apSxKeObvKG7269zQRta6gmHfqEeF2S0iJk/8HOrPxyGzZNNsgptFwujtGIiUWV9w0hhPTGkmtWoSh8dShCn3j7WFfqCRtOAY33pS7minl5nF6ten+/Q9vW+73vMg4wv8+7Tdn4PzVuMxzQ1d6Qi424HSoDzBufLZeDzYD8Twy/PzUbm1EtKFrg5c4LwWwzasIR3hJ8xDUJX5iQHPGiAOLjwbeNwleaL9KQY915TKACwECk4EpOuL/KkRhPK3T5ixjhxiVrKm8hyC7ihh+E0lny7MgGaFjCJlqC3FhodMQmCsxV1XO6onCEnOnJ2LdEjg5T+yp7GPJjYI1lW+JzmqtaTXEpP9hLg3P2D/8aNdSS/DV+miaXm8zY8Zg6+PZnI+lm1XZxT6vqA6wnTNDEoxf/qSS4wWFsjURmKOOMS0plsgvuRrK16wCyfZVj8qUhUFl0eTtB1BBRB6l5JNgsF86NuxD7apc/8Ld9eIGGnNSQYUFPtZpBwjhnfY6yWyWYuv4iLyrl+xM=
 
 before_install:
   - export GALAXY_TRAVIS_USER=galaxy
