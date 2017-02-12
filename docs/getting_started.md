@@ -2,12 +2,40 @@
 
 ## You need [git](https://git-scm.com/) installed 
 ## Make sure that you have a recent version of [Ansible](https://github.com/ansible/) installed
-The playbook has been tested with version 2.1.2.0.
-A simple way to install the latest ansible version is using [pip](https://pip.pypa.io/en/stable/quickstart/):
+The playbook has been tested with Ansible stable versions 2.1 and 2.2
+
+### Install Ansible with pip
+
+A simple way to install the latest Ansible version is using [pip](https://pip.pypa.io/en/stable/quickstart/):
+
+- Ensure you have recent pip version installed (sudo -i && pip install upgrade pip maybe necessary)
+```
+$ pip --version
+pip 9.0.1 from /usr/local/lib/python2.7/site-packages (python 2.7)
+```
+
+- Then 
 
 ```
-git clone --recursive -b stable-2.1 https://github.com/ansible/ansible
+git clone --recursive -b stable-2.2 https://github.com/ansible/ansible
 pip install ansible/
+```
+### Install Ansible with apt
+
+Alternatively, Ansible may be installed with the Apt package manager (Ubuntu):
+
+```
+sudo -i
+apt-get install software-properties-common
+apt-add-repository ppa:ansible/ansible
+apt-get update
+apt-get install ansible
+```
+
+### In some occasions, additional packages may be necessary for correct Ansible installation:
+
+```
+apt-get update && apt-get -y install build-essential libpq-dev python-dev libxml2-dev libxslt1-dev libldap2-dev libsasl2-dev libffi-dev 
 ```
 
 # Getting the playbook

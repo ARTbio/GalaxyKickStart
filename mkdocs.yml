@@ -11,18 +11,6 @@ pages:
  - Frequently asked questions: faq.md
  - Available roles: available_roles.md
  - Available variables: available_variables.md
- - Editing the readme: editing_help.md
- - Metavisitor: 
-   - about_metavisitor.md
-   - Installing with GalaxyKickStart: metavisitor_ansible.md
-   - Installing with Docker: metavisitor_docker.md
-   - Access and Control Metavisitor Galaxy instance: metavisitor_access_control.md
-   - Prepare Metavisitor Galaxy instance for analyses: metavisitor_configure_references.md
-   - Prepare input data histories: use_cases_input_data.md
-   - Use Cases 1-1 to 1-4: use_case_1.md
-   - Use Cases 2-1 and 2-2: use_case_2.md
-   - Use Case 3-1: use_case_3-1.md
-   - Use Case 3-2: use_case_3-2.md
-   - Use Case 3-3: use_case_3-3.md
- - development.md
+ - GalaxyKickStart Use Cases: 
+   - metavisitor.md
 theme: readthedocs
