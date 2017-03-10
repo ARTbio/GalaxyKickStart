@@ -12,6 +12,9 @@ galaxy_tools_workflows:
   - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_3-1.ga"
   - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_3-2.ga"
   - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_3-3.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_small_RNA_profiling_of_contigs.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Trinity_test_in_Use_Case_2-2.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Spades_test_in_Use_Case_2-2.ga"
 galaxy_web_processes: 2
 galaxy_handler_processes: 4
 postgres_user_uid: 1550

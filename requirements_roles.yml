@@ -4,7 +4,8 @@
 - src: https://github.com/mvdbeek/ensure_postgresql_up.git
   name: ensure_postgresql_up
 
-- src: https://github.com/natefoo/ansible-postgresql-objects.git
+- src: https://github.com/ARTbio/ansible-postgresql-objects.git
+  version: ansible_2.2
   name: natefoo.postgresql_objects
 
 - src: https://github.com/galaxyproject/ansible-galaxy.git
@@ -19,5 +20,5 @@
 - src: https://github.com/galaxyproject/ansible-galaxy-tools.git
   name: galaxyprojectdotorg.galaxy-tools
 
-- src: https://github.com/mvdbeek/ansible-miniconda-role/archive/0.3.1.tar.gz
+- src: https://github.com/ARTbio/ansible-miniconda-role.git
   name: miniconda-role

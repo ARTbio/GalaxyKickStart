@@ -26,7 +26,7 @@
     owner: "root"
     group: "root"
     mode: "0444"
-  with_items: "{{ cvmfs_keys }}"
+  with_items: "{{ cvmfs_keys|default([]) }}"
 
 - name: Perform AutoFS and FUSE configuration for CernVM-FS
   command: cvmfs_config setup
@@ -41,7 +41,7 @@
     owner: "root"
     group: "root"
     mode: "0644"
-  with_items: "{{ cvmfs_server_urls }}"
+  with_items: "{{ cvmfs_server_urls|default([]) }}"
 
 - name: Configure CernVM-FS client settings
   copy:
