@@ -1,5 +1,6 @@
 #!/bin/bash
-HN=$(cat /etc/hostname)
+# HN=$(cat /etc/hostname)
+HN=`hostname -s`
 
 cat<<EOF > /etc/hosts
 # This file was automatically created by fix_hostname.sh script
