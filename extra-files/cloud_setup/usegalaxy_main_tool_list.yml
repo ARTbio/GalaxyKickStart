@@ -429,7 +429,7 @@ tools:
 - name: stringtie
   owner: iuc
   revisions:
-  - f504b3b7e49d
+  - 1f23fc7df25c
   tool_panel_section_label: 'NGS: RNA Analysis'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -1590,6 +1590,110 @@ tools:
   tool_panel_section_label: 'NGS: GATK Tools (beta)'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
+- name: spades
+  owner: nml
+  tool_panel_section_label: 'NGS: Assembly'
+  install_resolver_dependencies: True
+- name: metaspades
+  owner: nml
+  tool_panel_section_label: 'NGS: Assembly'
+  install_resolver_dependencies: True
+- name: rnaspades
+  owner: iuc
+  tool_panel_section_label: 'NGS: Assembly'
+  install_resolver_dependencies: True
+- name: deseq2
+  owner: iuc
+  revisions:
+  - d38fd393402e
+  tool_panel_section_label: 'NGS: RNA Analysis'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+- name: cast
+  owner: moheydarian
+  revisions:
+  - d7e3814be68e
+  tool_panel_section_label: 'Text Manipulation'
+  tool_shed_url: https://testtoolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+- name: melt
+  owner: moheydarian
+  revisions:
+  - 3621af0e3ef7
+  tool_panel_section_label: 'Text Manipulation'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+- name: featurecounts
+  owner: iuc
+  revisions:
+  - de2c5e5a206c
+  tool_panel_section_label: 'NGS: RNA Analysis'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+- name: ggplot_scatterplot
+  owner: moheydarian
+  revisions:
+  - fed4e754376e
+  tool_panel_section_label: 'Graph/Display Data'
+  tool_shed_url: https://testtoolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+- name: ggplot_histogram
+  owner: moheydarian
+  revisions:
+  - 9673586abd7a
+  tool_panel_section_label: 'Graph/Display Data'
+  tool_shed_url: https://testtoolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+- name: ggplot_violin_plot
+  owner: moheydarian
+  revisions:
+  - 996c274d942d
+  tool_panel_section_label: 'Graph/Display Data'
+  tool_shed_url: https://testtoolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+- name: collection_column_join
+  owner: iuc
+  revisions:
+  - 9c8536c7ed42
+  tool_panel_section_label: 'Collection Operations'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+- name: bundle_collections
+  owner: nml
+  revisions:
+  - bae199dc511f
+  tool_panel_section_label: 'Collection Operations' 
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+- name: collapse_collections
+  owner: nml
+  revisions:
+  - 25136a2b0cfe
+  tool_panel_section_label: 'Collection Operations' 
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True 
+- name: datamash_ops
+  owner: iuc
+  revisions:
+  - 2f3c6f2dcf39
+  tool_panel_section_label: 'Text Manipulation' 
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True 
+- name: datamash_reverse
+  owner: iuc
+  revisions:
+  - 3234b2813413
+  tool_panel_section_label: 'Text Manipulation' 
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True  
+- name: datamash_transpose
+  owner: iuc
+  revisions:
+  - 1cb70a56fc89
+  tool_panel_section_label: 'Text Manipulation' 
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True 
+
 ##########
 # The Following list of tools in the commented section DO NOT install cleanly.
 ##########
@@ -1625,13 +1729,6 @@ tools:
 #   owner: devteam
 #   revisions:
 #   - 0761bbc0a4e7
-#   tool_panel_section_label: 'NGS: RNA Analysis'
-#   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-#   install_resolver_dependencies: True
-# - name: deseq2
-#   owner: iuc
-#   revisions:
-#   - 8702e49e68b6
 #   tool_panel_section_label: 'NGS: RNA Analysis'
 #   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 #   install_resolver_dependencies: True
