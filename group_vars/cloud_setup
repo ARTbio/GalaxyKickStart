@@ -1,6 +1,6 @@
 cloud_setup: yes
 
-configure_docker: no
+configure_docker: yes
 install_apparmor: no
 install_galaxy: yes
 install_tools: yes
@@ -23,6 +23,8 @@ galaxy_web_threadpool_workers: 5
 galaxy_handler_threadpool_workers: 5
 
 galaxy_tools_tool_list_files: ["extra-files/cloud_setup/usegalaxy_main_tool_list.yml"]
+# galaxy_tools_tool_list_files: []
+# galaxy_tools_tool_list_files: ["extra-files/cloud_setup/tools_file_sample.yml"]
 # galaxy_tools_delete_bootstrap_user: yes
 
 galaxyFS_base_dir: /opt/galaxy
@@ -39,12 +41,14 @@ tool_data_table_config_path: "{{ galaxy_server_dir }}/config/tool_data_table_con
 galaxy_custom_tools_dir: /usr/local/bin
 
 galaxy_git_repo: https://github.com/galaxyproject/galaxy.git
-galaxy_changeset_id: release_16.07
+galaxy_changeset_id: release_17.01
 
 galaxy_config:
   "app:main":
     admin_users: "{{ galaxy_admin }}"
     database_connection: "{{ galaxy_db }}"
+    retry_job_output_collection: 10
+    database_engine_option_server_side_cursors: True
     tool_dependency_dir: "{{ tool_dependency_dir }}"
     ftp_upload_dir: "{{ proftpd_files_dir }}"
     ftp_upload_site: ftp://[server IP address]
@@ -68,7 +72,7 @@ galaxy_config:
     conda_prefix: "{{ galaxyFS_base_dir }}/tool_dependencies/_conda"
     conda_debug: False
     conda_ensure_channels: r,bioconda,iuc
-    conda_auto_install: False
+    conda_auto_install: True
     conda_auto_init: True
   "uwsgi":
     master: True
