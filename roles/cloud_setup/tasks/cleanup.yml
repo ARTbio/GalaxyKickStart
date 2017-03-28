@@ -8,6 +8,7 @@
 # - name: Run fix_hostname script
 #   shell: /etc/init.d/fix_hostname.sh && supervisorctl start slurmctld
 
+# -------- During the first step of the build, comment from there -------------
 - name: Stop all supervisor tasks
   shell: supervisorctl stop all
 
@@ -33,6 +34,7 @@
 # After this task run, ssh by root will no longer be possible
 - name: Delete /root/.ssh/authorized_keys
   file: path=/root/.ssh/authorized_keys state=absent
+# -------------- Comment to there --------------
 
 - name: Place a custom history file into galaxy_user's home dir
   copy: src=extra-files/cloud_setup/bash_history dest=~/.bash_history mode=0600

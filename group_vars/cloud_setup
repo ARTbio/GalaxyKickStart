@@ -23,6 +23,8 @@ galaxy_web_threadpool_workers: 5
 galaxy_handler_threadpool_workers: 5
 
 galaxy_tools_tool_list_files: ["extra-files/cloud_setup/usegalaxy_main_tool_list.yml"]
+# galaxy_tools_tool_list_files: []
+# galaxy_tools_tool_list_files: ["extra-files/cloud_setup/tools_file_sample.yml"]
 # galaxy_tools_delete_bootstrap_user: yes
 
 galaxyFS_base_dir: /opt/galaxy
