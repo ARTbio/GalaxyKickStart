@@ -8,7 +8,7 @@ following command:
 
 ### Run #1: Build the core image and install the tools
 If installing the Main toolset, this process takes about 3 hours per server.
- * Comment out tasks in `cleanup.py` that stop processes and remove ssh keys
+ * Comment out tasks in `cleanup.yml` that stop processes and remove ssh keys
  * Launch a new VM and update inventory with the target instance addresses
  * Update the toolset to be installed (check variable `galaxy_tools_tool_list_files` in `cloud_setup`)
 
@@ -21,6 +21,6 @@ are installed.
    `galaxyprojectdotorg.galaxy-tools`
 
 ### Run #3: Cleanup the image for bundling
- * Revert changes from _Run #2_ and uncomment tasks from `cleanup.py`
+ * Revert changes from _Run #2_ and uncomment tasks from `cleanup.yml`
  * In `galaxy.yml`, comment out all the roles except `cloud_setup`
  * Create an image via the Dashboard or API
