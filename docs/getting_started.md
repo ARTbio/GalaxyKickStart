@@ -1,6 +1,6 @@
 # Getting Started
 
-## You need [git](https://git-scm.com/) installed 
+## You need [git](https://git-scm.com/) installed
 ## Make sure that you have a recent version of [Ansible](https://github.com/ansible/) installed
 The playbook has been tested with Ansible stable versions 2.1 and 2.2
 
@@ -14,11 +14,10 @@ $ pip --version
 pip 9.0.1 from /usr/local/lib/python2.7/site-packages (python 2.7)
 ```
 
-- Then 
+- Then
 
 ```
-git clone --recursive -b stable-2.2 https://github.com/ansible/ansible
-pip install ansible/
+pip install ansible==2.2.0.0
 ```
 ### Install Ansible with apt
 
@@ -35,7 +34,7 @@ apt-get install ansible
 ### In some occasions, additional packages may be necessary for correct Ansible installation:
 
 ```
-apt-get update && apt-get -y install build-essential libpq-dev python-dev libxml2-dev libxslt1-dev libldap2-dev libsasl2-dev libffi-dev 
+apt-get update && apt-get -y install build-essential libpq-dev python-dev libxml2-dev libxslt1-dev libldap2-dev libsasl2-dev libffi-dev
 ```
 
 # Getting the playbook
@@ -94,18 +93,21 @@ Whenever you change a variable (see [customizations](customizations.md)), you ne
 
 ## Deploying galaxy-kickstart on specified clouds
 
-Inside the repository you will find a [file](https://github.com/ARTbio/GalaxyKickStart/tree/master/inventory_files/cloud) called
-`inventory_files/cloud`. This file serves as an example hosts file
-for how to deploy galaxy-kickstart on Google Compute Engine(gce), Amazon Web Services(aws), and Jetstream. *Please note
-that the `ansible_ssh_user` variable in the file changes for each remote target*.
-
-
+Inside the repository you will find a [file](https://github.com/ARTbio/GalaxyKickStart/tree/master/inventory_files/cloud)
+called `inventory_files/cloud`. This file serves as an example hosts file for
+how to deploy galaxy-kickstart on Google Compute Engine (GCE),  Amazon Web
+Services(aws), and Jetstream (OpenStack). *Please note that the `ansible_user`
+variable in the file changes for each remote target*. If you are wanting to use
+this playbook on a cloud other than the ones listed  below, you will need to
+update the inventory to add a new section header for the respective target. If
+this happens to be a cloud setup, make sure to add the section header under
+`[cloud_setup:children]`.
 
 Specifications for each remote target:
 
-* Jetstream
-    * Image needed to deploy galaxy-kickstart:
-        `Ubuntu 14.04.3 Development (jetstream image id: 3c3db94e-377b-4583-83d7-082d1024d74a)`
+* OpenStack
+    * Image needed to deploy on [Jetstream](http://jetstream-cloud.org/):
+        `Ubuntu 14.04.3 Development (jetstream image id: d7fe3289-943f-4417-90e8-8a6b171677ca)`
     *  Inventory: `<remote host IP> anisble_ssh_user="root" ansible_ssh_private_key_file="<path/to/your/private/key>"`
 
 * GCE

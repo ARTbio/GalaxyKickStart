@@ -1,16 +1,22 @@
 This role is primarily used to build Galaxy Standalone cloud images.
 
 Due to the way the overall playbook and included roles are written, using
-this role is a multi-step process. Each of the runs can be invoked with the
-following command:
+this role is a multi-step process. Each of the image configuration runs can be
+invoked with the following command:
 
 ```ansible-playbook --inventory-file inventory_files/my_inventory galaxy.yml```
+
+### Step #0: Launch a target virtual machine
+Manually launch an instance on the target cloud. The instance should be based
+on a base Ubuntu 14.04 (16.04 should work as well but has not been tested).
+Also ensure the instance can be accessed via ssh (e.g., port 22 is opened and
+you have access to the private portion of the key pair used when launching).
 
 ### Run #1: Build the core image and install the tools
 If installing the Main toolset, this process takes about 3 hours per server.
  * Comment out tasks in `cleanup.yml` that stop processes and remove ssh keys
- * Launch a new VM and update inventory with the target instance addresses
- * Update the toolset to be installed (check variable `galaxy_tools_tool_list_files` in `cloud_setup`)
+ * Update the toolset to be installed (check variable
+   `galaxy_tools_tool_list_files` in `cloud_setup`)
 
 ### Run #2: Delete Galaxy bootstrap user
 This step is required because `galaxy-tools` role flushes all the handlers so
