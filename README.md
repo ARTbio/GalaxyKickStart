@@ -10,7 +10,7 @@ Optionally, instances can be pre-loaded with tools and workflows.
 Detailed usage instructions are available in the
 [Documentation](https://artbio.github.io/GalaxyKickStart/).
 
-### Required Ansible version >= 2.1.2.0
+### Required Ansible version >= 2.1.2.0 && <=2.2.0.0
 
 The playbook has been tested on
 
