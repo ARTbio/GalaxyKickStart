@@ -1,0 +1,4 @@
+cluster_ip_range: "10.132.0.0/24"
+# galaxy_persistent_directory is defined in group_vars/all
+nfs_export_dir: "/nfs_export"
+nfs_export_galaxy_dir: "/nfs_export/galaxy"
