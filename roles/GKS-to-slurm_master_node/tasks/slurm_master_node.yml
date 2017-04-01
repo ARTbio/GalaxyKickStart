@@ -10,7 +10,7 @@
     - { src: '/etc/munge/munge.key', dest: '/home/galaxy/munge.key' } 
 
 - name: reconfigure slurm.conf for cluster
-#  TO DO
+  template: src=configure_slurm.py.j2 dest=/usr/sbin/configure_slurm.py
 
 
 - name: restart slurmctld and slurmd
