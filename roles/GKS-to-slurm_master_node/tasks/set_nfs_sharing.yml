@@ -10,7 +10,7 @@
 - name: bind mount persitent directories in nfs_export/galaxy directory
   mount: opts=bind fstype=none state=mounted name={{ item.dest }} src={{ item.src }}
   with_items:
-    - { src: "name", dest: "/nfs_export/galaxy" }
+    - { src: "/home/galaxy", dest: "{{ nfs_export_dir }}" }
     - { src: "{{ galaxy_persistent_directory }}/home/galaxy/tool_dependencies", dest: "{{ nfs_export_galaxy_dir }}/tool_dependencies" }
     - { src: "{{ galaxy_persistent_directory }}/home/galaxy/shed_tools", dest: "{{ nfs_export_galaxy_dir }}/shed_tools" }
     - { src: "{{ galaxy_persistent_directory }}/home/galaxy/galaxy/tool-data", dest: "{{ nfs_export_galaxy_dir }}/galaxy/tool-data" }
