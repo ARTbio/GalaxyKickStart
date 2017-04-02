@@ -77,7 +77,10 @@ SlurmctldDebug=3
 SlurmdDebug=3
 #SlurmdLogFile=
 NodeName=$hostname CPUs=$cpus RealMemory=$memory State=UNKNOWN
-PartitionName=$partition_name Nodes=$hostname Default=YES MaxTime=INFINITE State=UP Shared=YES
+{% for host in slave_node_dict %}
+NodeName={{host.hostname}} CPUs={{host.CPUs}} RealMemory={{host.RealMemory}} State=UNKNOWN
+{% endfor %}
+PartitionName=$partition_name Nodes=$hostname{{hostname_slave_list}} Default=YES MaxTime=INFINITE State=UP Shared=FORCE
 '''
 
 try:

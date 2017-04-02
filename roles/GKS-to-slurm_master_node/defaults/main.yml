@@ -2,3 +2,10 @@ cluster_ip_range: "10.132.0.0/24"
 # galaxy_persistent_directory is defined in group_vars/all
 nfs_export_dir: "/nfs_export"
 nfs_export_galaxy_dir: "/nfs_export/galaxy"
+
+## adapt the following to your cluster slave nodes
+## <TODO> Gather facts using ansible !
+slave_node_dict:
+  - {hostname: "node1", CPUs: "2", RealMemory: "7500"}
+  - {hostname: "node2", CPUs: "2", RealMemory: "7500"}
+# extent or reduce the dictionnary
