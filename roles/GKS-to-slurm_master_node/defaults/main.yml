@@ -6,7 +6,6 @@ nfs_export_galaxy_dir: "/nfs_export/galaxy"
 ## adapt the following to your cluster slave nodes
 ## <TODO> Gather facts using ansible !
 slave_node_dict:
-  - {hostname: "vm0157", CPUs: "2", RealMemory: "8177"}
   - {hostname: "vm0158", CPUs: "2", RealMemory: "8177"}
 # extent or reduce the dictionnary
-hostname_slave_list: ",vm0157,vm0158" # this can be improved
+hostname_slave_list: ",vm0158" # this can be improved

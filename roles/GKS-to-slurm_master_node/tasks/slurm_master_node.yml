@@ -8,12 +8,16 @@
   with_items:
     - { src: '/etc/slurm-llnl/slurm.conf', dest: '/home/galaxy/slurm.conf' }
     - { src: '/etc/munge/munge.key', dest: '/home/galaxy/munge.key' } 
+
 - name: set permissions for munge.key
   file:
-    path: /home/galaxy/slurm.conf
+    path: /etc/munge/munge.key
+    state: file
+    follow: yes
     owner: 1450
     group: 100
     mode: 0600
+
 - name: reconfigure slurm.conf for cluster
   template: src=configure_slurm.py.j2 dest=/usr/sbin/configure_slurm.py
 
