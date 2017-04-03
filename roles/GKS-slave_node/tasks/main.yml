@@ -1,0 +1,16 @@
+
+- include: system_users.yml
+  tags:
+   - galaxy_user
+
+- include: mount_nfs.yml
+  tags:
+   - mount nfs
+
+- include: slurm.yml
+  tags:
+   - slurm
+
+- include: supervisor.yml
+  tags:
+   - supervisor
