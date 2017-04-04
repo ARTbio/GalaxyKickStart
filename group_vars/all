@@ -74,7 +74,7 @@ galaxy_config:
     allow_user_impersonation: True
     tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     static_enabled: False
-    nginx_upload_store: "{{ nginx_upload_store_path }}" # I think this variable should not be hardcoded, see below
+    nginx_upload_store: /tmp # "{{ nginx_upload_store_path }}" # This variable should not be hardcoded, see below
     use_pbkdf2: "{{ use_pbkdf2 }}"
     len_file_path: "{{ galaxy_config_dir }}/len"
     filter-with: proxy-prefix
@@ -111,7 +111,7 @@ supervisor_manage_nodeproxy: false
 supervisor_manage_ie_proxy: false
 proftpd_nat_masquerade: false
 supervisor_proftpd_autostart: true
-nginx_upload_store_path: "/home/galaxy/galaxy/database/tmp/upload_store" # is /tmp/upload_store by default in galaxy-extras role
+#nginx_upload_store_path: "/home/galaxy/galaxy/database/tmp/upload_store" # is /tmp/upload_store by default in galaxy-extras role
 
 # galaxy-tools role variables
 
