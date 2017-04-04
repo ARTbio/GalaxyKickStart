@@ -7,5 +7,7 @@ nfs_export_galaxy_dir: "/nfs_export/galaxy"
 ## <TODO> Gather facts using ansible !
 slave_node_dict:
   - {hostname: "vm0158", CPUs: "2", RealMemory: "8177"}
+  - {hostname: "vm0003", CPUs: "2", RealMemory: "8177"}
+  - {hostname: "vm0004", CPUs: "2", RealMemory: "8177"}
 # extent or reduce the dictionnary
-hostname_slave_list: ",vm0158" # this can be improved
+hostname_slave_list: ",vm0158,vm0003,vm0004" # this can be improved
