@@ -1,0 +1,27 @@
+# galaxy_persistent_directory is defined in group_vars/all. We must overwrite it here
+galaxy_persistent_directory: /export
+
+# nfs sharing
+cluster_ip_range: "192.54.201.0/24"
+
+## slurm.conf adaptation ##
+## adapt the following to your cluster slave nodes
+## <TODO> Gather facts using ansible !
+slave_node_dict:
+  - {hostname: "vm0158", CPUs: "2", RealMemory: "8177"}
+  - {hostname: "vm0003", CPUs: "2", RealMemory: "8177"}
+  - {hostname: "vm0004", CPUs: "2", RealMemory: "8177"}
+
+hostname_slave_list: ",vm0158,vm0003,vm0004" # this can be improved
+
+## Galaxy config
+galaxy_tools_tool_list_files:
+  - "extra-files/galaxy-kickstart/galaxy-kickstart_tool_list.yml"
+additional_files_list:
+  - { src: "extra-files/galaxy-kickstart/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
+  - { src: "extra-files/galaxy-kickstart/galaxy-kickstart_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+
+# to allow Galaxy uploads in cluster configuration
+nginx_upload_store_path: "/home/galaxy/galaxy/database/tmp/upload_store" # is /tmp/upload_store by default in galaxy-extras role
+nginx_upload_store: "{{ nginx_upload_store_path }}" # overwrite /tmp in group_vars/all

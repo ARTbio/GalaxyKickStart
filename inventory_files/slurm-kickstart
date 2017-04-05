@@ -1,0 +1,10 @@
+[slurm_master]
+localhost ansible_connection=local
+
+# if remote target, replace the above line by
+# <remote host IP> ansible_ssh_user=<ssh_login> ansible_ssh_private_key_file="<path/to/your/private/key>"
+
+[slurm_slave]
+# <remote host IP> ansible_ssh_user=<ssh_login> ansible_ssh_private_key_file="<path/to/your/private/key>"
+# <remote host IP> ansible_ssh_user=<ssh_login> ansible_ssh_private_key_file="<path/to/your/private/key>"
+# <remote host IP> ansible_ssh_user=<ssh_login> ansible_ssh_private_key_file="<path/to/your/private/key>"

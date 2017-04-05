@@ -1,0 +1,2 @@
+# adapt the following variable to the master slurm node IP address
+master_slurm_node_ip: "10.132.0.5"

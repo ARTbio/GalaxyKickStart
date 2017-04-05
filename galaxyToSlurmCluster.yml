@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: slurm_master
   become: yes
 
   handlers:
@@ -91,3 +91,10 @@
     # https://github.com/ansible/ansible-modules-core/issues/4029
     - name: Apt autoremove
       apt: autoremove=yes name=htop
+
+- hosts: slurm_slave
+  become: yes
+
+  - role: GKS-slave_node
+    tags:
+      - configure_slurm_slave_node
