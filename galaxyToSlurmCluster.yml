@@ -95,6 +95,7 @@
 - hosts: slurm_slave
   become: yes
 
-  - role: GKS-slave_node
-    tags:
-      - configure_slurm_slave_node
+  roles:
+    - role: GKS-slave_node
+      tags:
+        - configure_slurm_slave_node
