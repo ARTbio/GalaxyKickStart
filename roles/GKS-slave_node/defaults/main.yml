@@ -1,7 +1,7 @@
 # for sharing galaxy with the slurm master node
 galaxy_user_name: "galaxy"
-galaxy_user_uid: 1450
-galaxy_user_gid: 100
+galaxy_user_uid: 100
+galaxy_user_gid: 1450
 galaxy_home_dir: "/home/{{ galaxy_user_name }}"
 galaxy_log_dir: "{{ galaxy_home_dir }}/"
 
