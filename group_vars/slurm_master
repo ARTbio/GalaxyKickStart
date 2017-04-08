@@ -1,5 +1,5 @@
-# galaxy_persistent_directory is defined in group_vars/all. We must overwrite it here
-galaxy_persistent_directory: /root/mydisk
+#persistent data
+galaxy_persistent_directory: /root/mydisk # for IFB it's /root/mydisk, by default, /export
 
 # nfs sharing
 cluster_ip_range: "192.54.201.0/24"
@@ -8,43 +8,14 @@ cluster_ip_range: "192.54.201.0/24"
 ## adapt the following to your cluster slave nodes
 ## <TODO> Gather facts using ansible !
 slave_node_dict:
-  - {hostname: "vm0048", CPUs: "2", RealMemory: "7985"}
-  - {hostname: "vm0050", CPUs: "2", RealMemory: "7985"}
-  - {hostname: "vm0051", CPUs: "2", RealMemory: "7985"}
+  - {hostname: "vm0067", CPUs: "2", RealMemory: "7985"}
+  - {hostname: "vm0068", CPUs: "2", RealMemory: "7985"}
+  - {hostname: "vm0070", CPUs: "2", RealMemory: "7985"}
 
-hostname_slave_list: ",vm0048,vm0050,vm0051" # this can be improved
-
-## Galaxy config
-
-galaxy_tools_tool_list_files:
-  - "extra-files/galaxy-kickstart/galaxy-kickstart_tool_list.yml"
-
-additional_files_list:
-  - { src: "extra-files/galaxy-kickstart/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
-  - { src: "extra-files/galaxy-kickstart/galaxy-kickstart_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
-  - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
-
-galaxy_config:
-  "app:main":
-    admin_users: "{{ galaxy_admin }}"
-    database_connection: "{{ galaxy_db }}"
-    tool_dependency_dir: "{{ tool_dependency_dir }}"
-    ftp_upload_dir: "{{ proftpd_files_dir }}"
-    allow_user_dataset_purge: True
-    allow_user_impersonation: True
-    tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
-    static_enabled: False
-    nginx_upload_store: "{{ nginx_upload_store_path }}"
-    use_pbkdf2: "{{ use_pbkdf2 }}"
-    len_file_path: "{{ galaxy_config_dir }}/len"
-    filter-with: proxy-prefix
-  "uwsgi":
-    master: True
-  "filter:proxy-prefix":
-    use: "egg:PasteDeploy#prefix"
-    prefix: "{{ nginx_galaxy_location }}"
+hostname_slave_list: ",vm0067,vm0068,vm0070" # this can be improved
 
 
 # to allow Galaxy uploads in cluster configuration
-nginx_upload_store_path: "/home/galaxy/galaxy/database/tmp/upload_store" # is /tmp/upload_store by default in galaxy-extras role
-nginx_upload_store: "{{ nginx_upload_store_path }}" # overwrite /tmp in group_vars/all
+#nginx_upload_store_path: "/home/galaxy/galaxy/database/tmp/upload_store" # is /tmp/upload_store by default in galaxy-extras role
+#nginx_upload_store: "{{ nginx_upload_store_path }}" # overwrite /tmp in group_vars/all
+
