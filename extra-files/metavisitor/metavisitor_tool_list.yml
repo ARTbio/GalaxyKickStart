@@ -96,9 +96,10 @@ tools:
 - name: msp_oases
   owner: drosofff
   revisions:
-  - dc684e37f668
+  - 68ed36eed6c5
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
 - name: msp_sr_bowtie
   owner: drosofff
   revisions:
