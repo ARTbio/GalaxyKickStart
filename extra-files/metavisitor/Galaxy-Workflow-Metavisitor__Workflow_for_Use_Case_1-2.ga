@@ -374,7 +374,7 @@
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": 0, \"inputs\": \"[{\\\"__index__\\\": 0, \\\"input\\\": null}]\", \"end_hash_length\": \"\\\"29\\\"\", \"__rerun_remap_job_id__\": null, \"start_hash_length\": \"\\\"13\\\"\"}", 
-            "tool_version": "1.1.5", 
+            "tool_version": "1.2.1", 
             "type": "tool", 
             "uuid": "4290f9b9-2ea7-4634-a639-bc008f1eb90c", 
             "workflow_outputs": [
