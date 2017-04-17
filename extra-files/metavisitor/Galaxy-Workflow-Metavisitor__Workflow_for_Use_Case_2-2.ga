@@ -387,7 +387,7 @@
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": 0, \"end_hash_length\": \"\\\"69\\\"\", \"inputs\": \"[{\\\"__index__\\\": 0, \\\"input\\\": null}]\", \"__rerun_remap_job_id__\": null, \"chromInfo\": \"\\\"/home/galaxy/galaxy-dist/tool-data/shared/ucsc/chrom/?.len\\\"\", \"start_hash_length\": \"\\\"25\\\"\"}", 
-            "tool_version": "1.1.5", 
+            "tool_version": "1.2.1", 
             "type": "tool", 
             "uuid": "98ece8ec-729a-41a1-a61e-f6fcfce0e835", 
             "workflow_outputs": [
