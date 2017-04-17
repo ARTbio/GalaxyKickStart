@@ -33,7 +33,7 @@
   
 - name: adjust nginx_upload_store in galaxy.ini
   replace:
-    dest: {{ galaxy_config_dir }}/galaxy.ini
+    dest: "{{ galaxy_config_dir }}/galaxy.ini"
     regexp: '^nginx_upload_store = .+'
     replace: 'nginx_upload_store = /home/galaxy/galaxy/database/tmp/upload_store'
     backup: yes
@@ -43,12 +43,10 @@
     dest: /etc/nginx/nginx.conf
     regexp: 'upload_store .+;'
     replace: 'upload_store /home/galaxy/galaxy/database/tmp/upload_store;'
-    after: ' +location /_upload {'
-    before: ' +upload_store_access'
     backup: yes
     
-- name restart nginx and galaxy
+- name: restart nginx and galaxy
   supervisorctl: name={{ item }} state=restarted
   with_items:
     - 'galaxy:'
-    - nginx
+    - 'nginx'
