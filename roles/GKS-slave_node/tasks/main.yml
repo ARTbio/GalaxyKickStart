@@ -3,6 +3,10 @@
   tags:
    - galaxy_user
 
+- include: galaxy_system_packages.yml
+  tags:
+  - install required galaxy system packages
+
 - include: mount_nfs.yml
   tags:
    - mount nfs

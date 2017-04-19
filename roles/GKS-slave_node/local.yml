@@ -7,11 +7,4 @@
 - hosts: localhost
   connection: local
   tasks:
-  - include: tasks/system_users.yml
-    tags: galaxy_user
-  - include: tasks/mount_nfs.yml
-    tags: nfs
-  - include: tasks/slurm.yml
-    tags: slurm
-  - include: tasks/supervisor.yml
-    tags: start supervisor services
+  - include: tasks/main.yml
