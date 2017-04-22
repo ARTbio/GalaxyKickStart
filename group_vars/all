@@ -74,7 +74,7 @@ galaxy_config:
     allow_user_impersonation: True
     tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     static_enabled: False
-    nginx_upload_store: /tmp # "{{ nginx_upload_store_path }}"
+    nginx_upload_store: /tmp
     use_pbkdf2: "{{ use_pbkdf2 }}"
     len_file_path: "{{ galaxy_config_dir }}/len"
     filter-with: proxy-prefix

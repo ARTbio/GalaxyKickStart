@@ -1,21 +1,16 @@
 #persistent data
-galaxy_persistent_directory: /root/mydisk # for IFB it's /root/mydisk, by default, /export
+galaxy_persistent_directory: /persistent/volume
 
 # nfs sharing
-cluster_ip_range: "192.54.201.0/24"
+cluster_ip_range: "0.0.0.0/24"
 
 ## slurm.conf adaptation ##
 ## adapt the following to your cluster slave nodes
 ## <TODO> Gather facts using ansible !
 slave_node_dict:
-  - {hostname: "vm0067", CPUs: "2", RealMemory: "7985"}
-  - {hostname: "vm0068", CPUs: "2", RealMemory: "7985"}
-  - {hostname: "vm0070", CPUs: "2", RealMemory: "7985"}
+  - {hostname: "slave-1", CPUs: "2", RealMemory: "7985"}
+  - {hostname: "slave-2", CPUs: "2", RealMemory: "7985"}
+  - {hostname: "slave-3", CPUs: "2", RealMemory: "7985"}
 
-hostname_slave_list: ",vm0067,vm0068,vm0070" # this can be improved
-
-
-# to allow Galaxy uploads in cluster configuration
-#nginx_upload_store_path: "/home/galaxy/galaxy/database/tmp/upload_store" # is /tmp/upload_store by default in galaxy-extras role
-#nginx_upload_store: "{{ nginx_upload_store_path }}" # overwrite /tmp in group_vars/all
+hostname_slave_list: ",slave-1,slave-2,slave-3" # this can be improved
 
