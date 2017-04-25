@@ -7,7 +7,7 @@ The playbook GKS2slurm `galaxyToSlurmCluster.yml` was tested with multiple virtu
 ## Step 1: Install a Galaxy server with GalaxyKickStart
 
 
-- Report to the [Getting Started](getting_started.md) of this manual for the basics of GalaxyKickStart installation
+- Report to the [Getting Started](getting_started.md) section of this manual for the basics of GalaxyKickStart installation
 
 - install any GalaxyKickStart "flavor" by configuring the inventory file (in inventory_files folder) and the group_vars file (in the group_vars folder) of your choice.
 Flavors currently available are `kickstart`, `artimed` and `metavisitor` but other will come soon. Alternatively, you can build you own flavor by customizing a group_vars, extrafiles file and inventory file, which will install your Galaxy tools and workflows.
