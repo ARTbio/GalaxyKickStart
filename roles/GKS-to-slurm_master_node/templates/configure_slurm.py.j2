@@ -80,7 +80,6 @@ NodeName=$hostname CPUs=$cpus RealMemory=$memory State=UNKNOWN
 {% for host in slave_node_dict %}
 NodeName={{host.hostname}} CPUs={{host.CPUs}} RealMemory={{host.RealMemory}} State=UNKNOWN
 {% endfor %}
-#PartitionName=$partition_name Nodes=$hostname{{hostname_slave_list}} Default=YES MaxTime=INFINITE State=UP Shared=FORCE
 PartitionName=$partition_name Nodes=$hostname,{% for node in slave_node_dict -%}{{node.hostname}}{% if not loop.last -%}
 ,{% endif %}{% endfor %} Default=YES MaxTime=INFINITE State=UP Shared=FORCE
 '''
