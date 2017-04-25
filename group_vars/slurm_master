@@ -1,12 +1,7 @@
-#persistent data
-galaxy_persistent_directory: /persistent/volume
-
 # nfs sharing
 cluster_ip_range: "0.0.0.0/24"
 
-## slurm.conf adaptation ##
-## adapt the following to your cluster slave nodes
-## <TODO> Gather facts using ansible !
+# slave node specifications, adapt to your set of slave nodes
 slave_node_dict:
   - {hostname: "slave-1", CPUs: "2", RealMemory: "7985"}
   - {hostname: "slave-2", CPUs: "2", RealMemory: "7985"}
