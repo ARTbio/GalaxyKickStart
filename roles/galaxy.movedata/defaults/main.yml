@@ -6,6 +6,7 @@ galaxy_persist_directories:
   - { path: "{{ galaxy_config_dir }}", owner: "{{ galaxy_user_name }}" }
   - { path: "{{ galaxy_mutable_data_dir }}", owner: "{{ galaxy_user_name }}" }
   - { path: "{{ supervisor_postgres_database_path }}", owner: "postgres" }
+  - { path: "/tmp", owner: "root" }
 start_stop_items:
   - "galaxy:"
   - "proftpd"
