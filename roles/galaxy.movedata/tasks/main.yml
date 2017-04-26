@@ -1,3 +1,6 @@
+- name: Ensure galaxy_mutable_data_dir/tmp is owned by galaxy user
+  file: path="{{ galaxy_mutable_data_dir }}/tmp" state=directory owner={{ galaxy_user_name }} group={{ galaxy_user_gid }} recurse=yes
+
 - name: Check for persistent directory
   stat: path={{ galaxy_persistent_directory }}
   register: export_dir_exists

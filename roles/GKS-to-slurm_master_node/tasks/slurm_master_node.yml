@@ -28,23 +28,6 @@
     - slurmctld
     - slurmd
 
-- name: ensure upload_store directory in shared database/tmp
-  file: path=/home/galaxy/galaxy/database/tmp/upload_store state=directory owner={{ galaxy_user_name }} group={{ galaxy_user_gid }}
-  
-- name: adjust nginx_upload_store in galaxy.ini
-  replace:
-    dest: "{{ galaxy_config_dir }}/galaxy.ini"
-    regexp: '^nginx_upload_store = .+'
-    replace: 'nginx_upload_store = /home/galaxy/galaxy/database/tmp/upload_store'
-    backup: yes
-    
-- name: adjust nginx_upload_store in /etc/nginx/nginx.conf
-  replace:
-    dest: /etc/nginx/nginx.conf
-    regexp: 'upload_store .+;'
-    replace: 'upload_store /home/galaxy/galaxy/database/tmp/upload_store;'
-    backup: yes
-    
 - name: restart nginx and galaxy
   supervisorctl: name={{ item }} state=restarted
   with_items:
