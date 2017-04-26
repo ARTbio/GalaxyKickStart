@@ -28,9 +28,6 @@
 - include: check_psql_connection.yml
   tags: skip_supervisor_start_in_docker
 
-- name: Ensure galaxy_mutable_data_dir/tmp is owned by galaxy user
-  file: path="{{ galaxy_mutable_data_dir }}/tmp" state=directory owner={{ galaxy_user_name }} group={{ galaxy_user_gid }} recurse=yes
-
 - name: Start supervisor tasks after moving has finished.
   supervisorctl: name={{ item }} state=started
   with_items: "{{ start_stop_items }}"
