@@ -18,7 +18,7 @@ serverurl=unix:///var/run/supervisor.sock ; use a unix:// URL  for a unix socket
 
 [program:munge]
 user=root
-command=/usr/sbin/munged --key-file=/home/galaxy/munge.key -F --force
+command=/bin/bash -c "mkdir -p /var/run/munge && /usr/sbin/munged --key-file=/home/galaxy/munge.key -F --force"
 redirect_stderr = true
 priority        = 100
 stopasgroup     = true
