@@ -28,8 +28,14 @@
     - slurmctld
     - slurmd
 
-- name: restart nginx and galaxy
-  supervisorctl: name={{ item }} state=restarted
+- name: stop nginx and galaxy
+  supervisorctl: name={{ item }} state=stopped
+  with_items:
+    - 'galaxy:'
+    - 'nginx'
+
+- name: start nginx and galaxy
+  supervisorctl: name={{ item }} state=started
   with_items:
     - 'galaxy:'
     - 'nginx'
