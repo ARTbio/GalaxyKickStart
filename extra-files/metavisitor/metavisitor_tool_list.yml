@@ -74,7 +74,6 @@ tools:
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-  install_tool_dependencies: False
 
 
 - name: fetch_fasta_from_ncbi
