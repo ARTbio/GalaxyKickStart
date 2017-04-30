@@ -27,6 +27,7 @@ supervisor_postgres_database_config: /etc/postgresql/{{ postgresql_version }}/ma
 supervisor_postgres_options: "-D {{ supervisor_postgres_database_path }} -c \"config_file={{ supervisor_postgres_database_config }}\""
 apt_package_state: present
 galaxy_extras_apt_package_state: present
+install_apparmor: false
 tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
 shed_tools_dir: "{{ galaxy_server_dir }}/../shed_tools"
 tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
