@@ -22,7 +22,9 @@ proftpd_sql_auth_type: PBKDF2
 proftpd_files_dir: "{{ galaxy_data }}/database/ftp"
 default_admin_api_key: admin
 postgresql_version: 9.3
-supervisor_postgres_database_path: /etc/postgresql/{{ postgresql_version }}/main
+supervisor_postgres_database_path: /var/lib/postgresql/{{ postgresql_version }}/main
+supervisor_postgres_database_config: /etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
+supervisor_postgres_options: "-D {{ supervisor_postgres_database_path }} -c \"config_file={{ supervisor_postgres_database_config }}\""
 apt_package_state: present
 galaxy_extras_apt_package_state: present
 tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
