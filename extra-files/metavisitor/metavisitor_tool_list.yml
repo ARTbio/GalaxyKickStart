@@ -5,6 +5,7 @@ tools:
   - 81ffa74cf96e
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
 - name: bowtie2
   owner: devteam
   revisions:
@@ -12,18 +13,22 @@ tools:
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
+  install_tool_dependencies: False
+
 - name: cherry_pick_fasta
   owner: drosofff
   revisions:
   - f7684171dab3
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
 - name: concatenate_multiple_datasets
   owner: mvdbeek
   revisions:
   - 201c568972c3
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
 - name: data_manager_bowtie2_index_builder
   owner: devteam
   revisions:
@@ -31,6 +36,8 @@ tools:
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
+  install_tool_dependencies: False
+
 - name: data_manager_bowtie_index_builder
   owner: iuc
   revisions:
@@ -38,36 +45,48 @@ tools:
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
+  install_tool_dependencies: False
+
 - name: data_manager_fetch_genome_dbkeys_all_fasta
   owner: devteam
   revisions:
   - 86fa71e9b427
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
+
 - name: fasta_filter_by_length
   owner: devteam
   revisions:
   - c8cd0a03db49
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
 - name: fastq_to_fasta
   owner: devteam
   revisions:
   - 186b8d913e6c
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
 - name: fastx_trimmer
   owner: devteam
   revisions:
   - 377ac2829eac
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
+
+
 - name: fetch_fasta_from_ncbi
   owner: drosofff
   revisions:
   - a9d8f69d59fb
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
 - name: khmer_normalize_by_median
   owner: iuc
   revisions:
@@ -75,24 +94,32 @@ tools:
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
+  install_tool_dependencies: False
+
 - name: msp_blastparser_and_hits
   owner: drosofff
   revisions:
   - 1991c830504a
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
 - name: msp_cap3
   owner: drosofff
   revisions:
   - ddb463fdf57e
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
+
+
 - name: msp_fasta_tabular_converter
   owner: drosofff
   revisions:
   - 36388b666bfc
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
 - name: msp_oases
   owner: drosofff
   revisions:
@@ -100,6 +127,8 @@ tools:
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
+  install_tool_dependencies: False
+
 - name: msp_sr_bowtie
   owner: drosofff
   revisions:
@@ -107,6 +136,8 @@ tools:
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
+  install_tool_dependencies: False
+
 - name: msp_sr_readmap_and_size_histograms
   owner: drosofff
   revisions:
@@ -115,36 +146,49 @@ tools:
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
   install_tool_dependencies: False
+
 - name: ncbi_blast_plus
   owner: devteam
   revisions:
   - 3034ce97dd33
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
+
 - name: regex_find_replace
   owner: jjohnson
   revisions:
   - 9ea374bb0350
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
 - name: sra_tools
   owner: iuc
   revisions:
   - 62e4d56ebb6f
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
+
 - name: trinityrnaseq
   owner: anmoljh
   revisions:
   - 0a576a57a9eb
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
+
 - name: spades
   owner: nml
   revisions:
     - 35cb17bd8bf9
   tool_panel_section_label: Metavisitor
   install_resolver_dependencies: True
+  install_tool_dependencies: False
+
 - name: yac_clipper
   owner: drosofff
   revisions:
