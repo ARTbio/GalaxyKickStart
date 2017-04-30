@@ -13,7 +13,6 @@ tools:
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-  install_tool_dependencies: False
 
 - name: cherry_pick_fasta
   owner: drosofff
@@ -36,7 +35,6 @@ tools:
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-  install_tool_dependencies: False
 
 - name: data_manager_bowtie_index_builder
   owner: iuc
@@ -45,7 +43,6 @@ tools:
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-  install_tool_dependencies: False
 
 - name: data_manager_fetch_genome_dbkeys_all_fasta
   owner: devteam
@@ -94,7 +91,6 @@ tools:
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-  install_tool_dependencies: False
 
 - name: msp_blastparser_and_hits
   owner: drosofff
@@ -110,7 +106,6 @@ tools:
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-  install_tool_dependencies: False
 
 
 - name: msp_fasta_tabular_converter
@@ -136,7 +131,6 @@ tools:
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-  install_tool_dependencies: False
 
 - name: msp_sr_readmap_and_size_histograms
   owner: drosofff
@@ -154,7 +148,6 @@ tools:
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-  install_tool_dependencies: False
 
 - name: regex_find_replace
   owner: jjohnson
@@ -179,7 +172,6 @@ tools:
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-  install_tool_dependencies: False
 
 - name: spades
   owner: nml
@@ -187,7 +179,6 @@ tools:
     - 35cb17bd8bf9
   tool_panel_section_label: Metavisitor
   install_resolver_dependencies: True
-  install_tool_dependencies: False
 
 - name: yac_clipper
   owner: drosofff
