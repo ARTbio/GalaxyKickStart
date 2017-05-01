@@ -1,10 +1,32 @@
 import os
 import sys
-import textwrap
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
-from shutil import copyfile
+import shutil
 from generate_tool_list_from_ga_workflow_files import generate_tool_list_from_workflow
+from string import Template
 
+INVENTORY_FILE_TEMPLATE = '''
+[GKSfromWorkflow]
+localhost ansible_connection=local
+
+# if remote target, replace the above line by
+# <remote host IP> ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/somekey"
+'''
+
+GROUP_VAR_FILE_TEMPLATE = '''
+galaxy_tools_tool_list_files:
+  - "extra-files/GKSfromWorkflow/GKSfromWorkflow_tool_list.yml"
+
+galaxy_tools_workflows:
+$workflow_list
+
+galaxy_web_processes: 2
+
+additional_files_list:
+  - { src: "extra-files/galaxy-kickstart/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
+  - { src: "extra-files/galaxy-kickstart/galaxy-kickstart_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+'''
 
 def _parse_cli_options():
     """
@@ -20,7 +42,7 @@ def _parse_cli_options():
                         dest="workflow_files",
                         required=True,
                         nargs='+',
-                        help='A comma-separated of galaxy workflow description files in json format', )
+                        help='A space-separated list of galaxy workflow description files in json format', )
     parser.add_argument('-l', '--panel_label',
                         dest='panel_label',
                         default='Tools from workflows',
@@ -30,48 +52,39 @@ def _parse_cli_options():
 
 
 def makedir (path):
-    if not os.path.isdir(path):
-        os.makedirs(path)
+    if os.path.isdir(path):
+        shutil.rmtree(path)
+    os.makedirs(path)
 
 
-def make_inventory (path="../inventory_files/"):
-    file_path = path + "gks_workflows"
-    if os.path.exists (file_path):
-        sys.exit("gks_workflows inventory file already exists in ../inventory_files")
-    with open (file_path, "w") as f:
-    ## fill in the inventory file ##
-        print >> f, textwrap.dedent('''\
-                [gks_workflows]
-                localhost ansible_connection=local
+def make_inventory (file_path="../inventory_files/GKSfromWorkflow"):
+    if not os.path.exists (file_path):
+        open(file_path, "w").write(INVENTORY_FILE_TEMPLATE)
+    else:
+        print("GKSfromWorkflow inventory file exists, file unchanged")
 
-                # if remote target, replace the above line by
-                # <remote host IP> ansible_ssh_user="root" ansible_ssh_private_key_file="<path/to/your/private/key>"
-                ''')
-
-
-def make_groupvars (workflow_file_list, path="../group_vars/gks_workflows",
-                                  template="galaxykickstart_from_workflow_templates/group_vars_template.yml"):
-    if os.path.exists(path):
-        sys.exit("../group_vars/gks_workflows already exists.")
-    with open (template, "r") as f:
-        with open (path, "w") as o:
-            for line in f:
-                o.write(line)
-            for workflow in workflow_file_list:
-                workflow = os.path.basename(workflow)
-                workflow = "extra-files/gks_workflows/" + workflow
-                o.write ('  - "')
-                o.write (workflow)
-                o.write ('"\n')
-
-
-def make_extra_files (workflow_files, panel_label, tool_list_file, extra_files_dir="../extra-files/gks_workflows"):
+def make_groupvars (workflow_file_list, file_path="../group_vars/GKSfromWorkflow"):
+    if os.path.exists(file_path):
+        print("The GKSfromWorkflow group_vars file already existed and has been overwritten")
+    internal_workflow_list = []
+    for workflow in workflow_file_list:
+        workflow = os.path.basename(workflow)
+        workflow = '  - "extra-files/GKSfromWorkflow/' + workflow + '"'
+        internal_workflow_list.append(workflow)
+    workflow_list = "\n".join(internal_workflow_list)
+    template_params = {"workflow_list": workflow_list}
+    config_contents = Template(GROUP_VAR_FILE_TEMPLATE).substitute(template_params)
+    open(file_path, "w").write(config_contents)
+    
+def make_extra_files (workflow_files, panel_label, tool_list_file, extra_files_dir="../extra-files/GKSfromWorkflow"):
+    if os.path.exists(extra_files_dir):
+        print("The extra-files/GKSfromWorkflow directory already existed and has been overwritten")
     makedir(extra_files_dir)
     generate_tool_list_from_workflow(workflow_files, panel_label, tool_list_file)
-    copyfile(tool_list_file, extra_files_dir + "/" + tool_list_file)
+    os.rename(tool_list_file, extra_files_dir + "/" + tool_list_file)
     for workflow in workflow_files:
         workflow_basename = os.path.basename(workflow)
-        copyfile (workflow, extra_files_dir + "/" + workflow_basename)
+        shutil.copyfile (workflow, extra_files_dir + "/" + workflow_basename)
 
 
 def create_gks_flavor (workflow_file_list, panel_label, tool_list_file):
@@ -82,10 +95,12 @@ def create_gks_flavor (workflow_file_list, panel_label, tool_list_file):
     copy these files in and extra-files/gks_workflows folder
     """
     make_inventory()
-    make_groupvars(options.workflow_files)
+    make_groupvars(workflow_file_list)
     make_extra_files (workflow_file_list, panel_label, tool_list_file)
 
+def main():
+    options = _parse_cli_options()
+    create_gks_flavor (options.workflow_files, options.panel_label, "GKSfromWorkflow_tool_list.yml")
 
 if __name__ == "__main__":
-    options = _parse_cli_options()
-    create_gks_flavor (options.workflow_files, options.panel_label, "tool_list.yml")
+    main()

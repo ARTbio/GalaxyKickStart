@@ -1,0 +1,25 @@
+
+galaxy_tools_tool_list_files:
+  - "extra-files/GKSfromWorkflow/GKSfromWorkflow_tool_list.yml"
+
+galaxy_tools_workflows:
+  - "extra-files/GKSfromWorkflow/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_1-1.ga"
+  - "extra-files/GKSfromWorkflow/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_1-2.ga"
+  - "extra-files/GKSfromWorkflow/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_1-3.ga"
+  - "extra-files/GKSfromWorkflow/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_1-4.ga"
+  - "extra-files/GKSfromWorkflow/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_2-1.ga"
+  - "extra-files/GKSfromWorkflow/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_2-2.ga"
+  - "extra-files/GKSfromWorkflow/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_3-1.ga"
+  - "extra-files/GKSfromWorkflow/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_3-2.ga"
+  - "extra-files/GKSfromWorkflow/Galaxy-Workflow-Metavisitor__Spades_test_in_Use_Case_2-2.ga"
+  - "extra-files/GKSfromWorkflow/Galaxy-Workflow-Metavisitor__Trinity_test_in_Use_Case_2-2.ga"
+  - "extra-files/GKSfromWorkflow/Galaxy-Workflow-Metavisitor__Workflow_for_remapping_in_Use_Cases_1-1,2,3.ga"
+  - "extra-files/GKSfromWorkflow/Galaxy-Workflow-Metavisitor__Workflow_for_remapping_in_Use_Cases_2-1,2.ga"
+  - "extra-files/GKSfromWorkflow/Galaxy-Workflow-Metavisitor__Workflow_for_small_RNA_profiling_of_contigs.ga"
+
+galaxy_web_processes: 2
+
+additional_files_list:
+  - { src: "extra-files/galaxy-kickstart/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
+  - { src: "extra-files/galaxy-kickstart/galaxy-kickstart_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
