@@ -36,10 +36,3 @@ ansible-playbook -i inventory_files/GKSfromWorkflow galaxy.yml
 ```
 
 Check your running Galaxy instance after completion of the playbook. It contains the preinstalled tools as well as the workflow1, workflow2, etc....
-
-### Issue currently addressed
-
-In some occasions, running the playbook with GKSfromWorkflow may end up with tool versions that are not the ones specified in the generated `GKSfromWorkflow_tool_list.yml` tool list.
-
-This may cause the workflow(s) to crash. Should this happens, carefully check the installed tool version and install the exact version required. It is possible that some conda packages are used instead of the toolshed dependencies specified by some outdated tool versions.
-
