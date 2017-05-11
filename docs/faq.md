@@ -20,3 +20,20 @@ galaxy_admin_pw: new_password
 ```
 
 As with each change, run the playbook again.
+
+
+How can I set up GalaxyKickStart behind a proxy?
+----
+
+Many commandline utilities can be configured to use a proxy by setting the
+`http_proxy` and `https_proxy` environment variables. Tasks launched by ansible
+will only see these environment variables if ansible sets these variables for
+the task. We have included a global `proxy_env` variable in the galaxy.yml playbook.
+You can set the content of this variable in your inventory. To use the proxy at
+http://proxy.bos.example.com:8080 you can define
+```
+proxy_env:
+  http_proxy: http://proxy.bos.example.com:8080
+  https_proxy: http://proxy.bos.example.com:8080
+```
+in your inventory.
