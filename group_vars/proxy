@@ -1,5 +1,4 @@
-## Uses default settings defined in group_vars/all, but sets the `proxy_env`
-variable.
+## Uses default settings defined in group_vars/all, but sets the `proxy_env` variable.
 
 proxy_env:
   http_proxy: http://proxy.bos.example.com:8080
