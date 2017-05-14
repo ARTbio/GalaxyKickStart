@@ -1,37 +1,36 @@
+install_tool_dependencies: False
+install_repository_dependencies: False
+install_resolver_dependencies: True
+
 tools:
+
 - name: data_manager_fetch_genome_dbkeys_all_fasta
   owner: devteam
   revisions:
-  - 776bb1b478a0
+  - 16ab4dd6a0e5
   tool_panel_section_label: 'Data Managers'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: data_manager_bowtie_index_builder
   owner: iuc
   revisions:
-  - 0a0c648498e2
+  - ea5faedd0795
   tool_panel_section_label: 'Data Managers'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: data_manager_bowtie2_index_builder
   owner: devteam
   revisions:
-  - e87aeff2cf88
-  tool_panel_section_label: 'Data Managers'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-- name: data_manager_bwa_index_builder
-  owner: devteam
-  revisions:
-  - cc5ae94acf01
+  - 83da94c0e4a6
   tool_panel_section_label: 'Data Managers'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: data_manager_bwa_mem_index_builder
   owner: devteam
   revisions:
-  - e519769cdb9c
+  - 46066df8813d
   tool_panel_section_label: 'Data Managers'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: data_manager_twobit_builder
   owner: devteam
   revisions:
-  - 74b09c8e5f6e
+  - 9946bc39c834
   tool_panel_section_label: 'Data Managers'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
