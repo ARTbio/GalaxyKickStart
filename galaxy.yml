@@ -1,6 +1,8 @@
 - hosts: all
   become: yes
 
+  environment: "{{ proxy_env }}"
+
   handlers:
     - include: roles/handlers/galaxy.yml
       static: yes

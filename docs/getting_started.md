@@ -117,3 +117,7 @@ Specifications for each remote target:
 * AWS
     * Image needed to deploy galaxy-kickstart: `Ubuntu Server 14.04 LTS (HVM), SSD Volume Type - ami-2d39803a`
     * Inventory: `<target Amazon Web Services IP address> ansible_ssh_user="ubuntu" ansible_ssh_private_key_file="<path/to/your/aws/private/key>"`
+
+## Deploying galaxy-kickstart behind a proxy
+
+See [How can I set up GalaxyKickStart behind a proxy?](faq.md)
