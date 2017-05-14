@@ -37,5 +37,8 @@ To use the proxy at http://proxy.bos.example.com:8080 define the variable `proxy
 proxy_env:
   http_proxy: http://proxy.bos.example.com:8080
   https_proxy: http://proxy.bos.example.com:8080
+  no_proxy: localhost,127.0.0.0,127.0.1.1,127.0.1.1,local.home
 ```
+
+Adresses that should not be contacted through a proxy should be listed in the `no_proxy` variable.
 An example can be found in group_vars/proxy.

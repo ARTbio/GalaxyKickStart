@@ -3,3 +3,4 @@
 proxy_env:
   http_proxy: http://proxy.bos.example.com:8080
   https_proxy: http://proxy.bos.example.com:8080
+  no_proxy: localhost,127.0.0.0,127.0.1.1,127.0.1.1,local.home
