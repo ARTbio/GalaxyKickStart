@@ -22,15 +22,22 @@ tools:
   - 83da94c0e4a6
   tool_panel_section_label: 'Data Managers'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_tool_dependencies: False
+  install_repository_dependencies: False
 - name: data_manager_bwa_mem_index_builder
   owner: devteam
   revisions:
   - 46066df8813d
   tool_panel_section_label: 'Data Managers'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_tool_dependencies: False
+  install_repository_dependencies: False
 - name: data_manager_twobit_builder
   owner: devteam
   revisions:
   - 9946bc39c834
   tool_panel_section_label: 'Data Managers'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_tool_dependencies: False
+  install_repository_dependencies: False
+
