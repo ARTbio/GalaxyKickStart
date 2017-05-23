@@ -1,7 +1,7 @@
 proxy_env: {}
 install_galaxy: true
-install_maintainance_packages: true
-galaxy_manage_trackster: false
+install_maintainance_packages: false
+galaxy_manage_trackster: true
 galaxy_hostname: "{{ inventory_hostname }}"
 nginx_galaxy_location: ""
 galaxy_user_name: galaxy
