@@ -16,3 +16,4 @@
   service: name=supervisor state=restarted
   when: env_var_task.changed
   ignore_errors: yes
+  tags: skip_supervisor_start_in_docker

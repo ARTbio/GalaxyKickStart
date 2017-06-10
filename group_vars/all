@@ -48,17 +48,18 @@ additional_files_list:
   - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
 
 supervisor_env_vars:
-    - export IP_ADDRESS=`curl --silent icanhazip.com`
-    - export MASQUERADE_ADDRESS=$IP_ADDRESS
-    - export GALAXY_GID="{{ galaxy_user_gid }}"
-    - export GALAXY_UID="{{ galaxy_user_uid }}"
-    - export NATIVE_SPEC="--ntasks=`/usr/bin/nproc` --share"
-    - export NGINX_GALAXY_LOCATION="{{ nginx_galaxy_location }}"
-    - export GALAXY_CONFIG_FTP_UPLOAD_SITE="ftp://$IP_ADDRESS"
-    - export GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE="$NGINX_GALAXY_LOCATION/_x_accel_redirect"
-    - export GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE="$NGINX_GALAXY_LOCATION/_x_accel_redirect"
-    - export GALAXY_CONFIG_NGINX_UPLOAD_PATH="$NGINX_GALAXY_LOCATION/_upload"
-    - export GALAXY_CONFIG_CONDA_AUTO_INIT="True"
+    # Use pre-exsting env vars if they are defined
+    - export IP_ADDRESS=${IP_ADDRESS:-`curl --silent icanhazip.com`}
+    - export MASQUERADE_ADDRESS=${MASQUERADE_ADDRESS:-$IP_ADDRESS}
+    - export GALAXY_GID="${GALAXY_GID:-{{ galaxy_user_gid }}}"
+    - export GALAXY_UID="${GALAXY_UID:-{{ galaxy_user_uid }}}"
+    - export NATIVE_SPEC="${NATIVE_SPEC:---ntasks=`/usr/bin/nproc` --share}"
+    - export NGINX_GALAXY_LOCATION="${NGINX_GALAXY_LOCATION:-{{ nginx_galaxy_location }}}"
+    - export GALAXY_CONFIG_FTP_UPLOAD_SITE="${GALAXY_CONFIG_FTP_UPLOAD_SITE:-ftp://$IP_ADDRESS}"
+    - export GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE="${GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE:-$NGINX_GALAXY_LOCATION/_x_accel_redirect}"
+    - export GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE="{$GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE:-$NGINX_GALAXY_LOCATION/_x_accel_redirect}"
+    - export GALAXY_CONFIG_NGINX_UPLOAD_PATH="${GALAXY_CONFIG_NGINX_UPLOAD_PATH:-$NGINX_GALAXY_LOCATION/_upload}"
+    - export GALAXY_CONFIG_CONDA_AUTO_INIT="${GALAXY_CONFIG_CONDA_AUTO_INIT:-True}"
 
 # galaxy role variables
 
