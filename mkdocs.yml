@@ -4,7 +4,7 @@ pages:
  - What is GalaxyKickStart: about.md
  - Getting started: getting_started.md
  - customizations.md
- - installing tools and workflows.md
+ - Installing tools and workflows: installing_tools_and_workflows.md
  - Examples:
    - examples/docker.md
    - examples/vagrant.md

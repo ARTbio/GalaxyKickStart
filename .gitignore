@@ -2,6 +2,7 @@
 .vagrant/
 *.retry
 .DS_Store
+*.pyc
 docs/html
 
 roles/ensure_postgresql_up
