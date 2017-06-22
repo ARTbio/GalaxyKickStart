@@ -4,3 +4,6 @@
     - "{{ additional_files_list }}"
   tags:
    - persists_galaxy
+
+- name: install GKS welcome.html
+  template: src=gks_welcome.html.j2 dest="{{ galaxy_server_dir }}/static/welcome.html"
