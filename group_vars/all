@@ -1,6 +1,6 @@
 proxy_env: {}
 install_galaxy: true
-install_maintainance_packages: true
+install_maintainance_packages: false
 galaxy_manage_trackster: true
 galaxy_hostname: "{{ inventory_hostname }}"
 nginx_galaxy_location: ""
@@ -82,6 +82,8 @@ galaxy_config:
     ftp_upload_dir: "{{ proftpd_files_dir }}"
     allow_user_dataset_purge: True
     allow_user_impersonation: True
+    enable_quotas: True
+    allow_user_deletion: True
     tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     static_enabled: False
     nginx_upload_store: "{{ nginx_upload_store_path }}"
