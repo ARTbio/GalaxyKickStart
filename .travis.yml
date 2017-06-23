@@ -1,8 +1,7 @@
 language: python
 python: '2.7'
-sudo: required
+sudo: false
 dist: trusty
-group: deprecated-2017Q2
 env:
   global:
   - TOX_ENV=py27
