@@ -20,6 +20,7 @@ before_install:
 - export GALAXY_USER_PASSWD=admin
 - export BIOBLEND_GALAXY_API_KEY=admin
 - export BIOBLEND_GALAXY_URL=http://localhost:8080
+- export BIOBLEND_TEST_JOB_TIMEOUT=120
 - docker --version
 - docker info
 - pip install ansible
@@ -46,7 +47,7 @@ before_install:
   galaxy_kickstart`
 - docker ps
 install:
-- sudo su $GALAXY_TRAVIS_USER -c 'pip install --user bioblend[testing]'
+  - sudo su $GALAXY_TRAVIS_USER -c 'pip install --user https://github.com/mvdbeek/bioblend/archive/test_data.zip pytest'
 script:
 - sleep 60s
 - docker logs $CID2
