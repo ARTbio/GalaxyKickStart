@@ -45,20 +45,14 @@ before_install:
   -v /export/:/export \
   galaxy_kickstart`
 - docker ps
-- cd $GALAXY_HOME
-- sudo su $GALAXY_TRAVIS_USER -c 'wget https://github.com/galaxyproject/bioblend/archive/master.zip'
-- sudo su $GALAXY_TRAVIS_USER -c 'unzip master.zip'
 install:
-- cd $GALAXY_HOME/bioblend-master
-- sudo su $GALAXY_TRAVIS_USER -c 'pip install --user --upgrade "tox>=1.8.0" "pep8<=1.6.2" '
-- sudo su $GALAXY_TRAVIS_USER -c 'python setup.py install --user'
-- sudo su $GALAXY_TRAVIS_USER -c 'sed -i.bak "s/commands.*$/commands =/" tox.ini'
+- sudo su $GALAXY_TRAVIS_USER -c 'pip install --user bioblend[testing]'
 script:
 - sleep 60s
 - docker logs $CID2
 - curl http://localhost:8181/subdir/api/version| grep version_major
 - sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
-  cd $GALAXY_HOME/bioblend-master && tox -e $TOX_ENV -- -e 'test_download_dataset'"
+  bioblend-galaxy-tests $GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy*.py"
 - curl --fail $BIOBLEND_GALAXY_URL/api/version
 - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user
   $GALAXY_USER:$GALAXY_USER_PASSWD
