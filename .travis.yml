@@ -4,7 +4,6 @@ sudo: required
 dist: trusty
 env:
   global:
-  - TOX_ENV=py27
   - SITE_URL="https://artbio.github.io/GalaxyKickStart/"
   - GH_USER_NAME="Christophe Antoniewski"
   - GH_USER_EMAIL="drosofff@gmail.com"
@@ -20,6 +19,7 @@ before_install:
 - export GALAXY_USER_PASSWD=admin
 - export BIOBLEND_GALAXY_API_KEY=admin
 - export BIOBLEND_GALAXY_URL=http://localhost:8080
+- export BIOBLEND_TEST_JOB_TIMEOUT=120
 - docker --version
 - docker info
 - pip install ansible
@@ -32,8 +32,12 @@ before_install:
 - docker build -t galaxy_kickstart .
 - sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
 - sudo mkdir /export2 && sudo chown $GALAXY_UID:$GALAXY_GID /export2
-- CID1=`docker run -d --privileged=true -p 8181:80 -e NAT_MASQUERADE=true -e NGINX_GALAXY_LOCATION=/subdir
-  -v /export2:/export galaxy_kickstart`
+- |
+  CID1=`docker run -d --privileged=true -p 8181:80 \
+  -e NAT_MASQUERADE=true \
+  -e NGINX_GALAXY_LOCATION=/subdir \
+  -v /export2:/export \
+  galaxy_kickstart`
 - |
   CID2=`docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
   --privileged=true \
@@ -45,21 +49,15 @@ before_install:
   -v /export/:/export \
   galaxy_kickstart`
 - docker ps
-- cd $GALAXY_HOME
-- sudo su $GALAXY_TRAVIS_USER -c 'wget https://github.com/bgruening/bioblend/archive/master.tar.gz'
-- sudo su $GALAXY_TRAVIS_USER -c 'tar xfz master.tar.gz'
 install:
-- cd $GALAXY_HOME/bioblend-master
-- sudo su $GALAXY_TRAVIS_USER -c 'pip install --user --upgrade "tox>=1.8.0" "pep8<=1.6.2"
-  '
-- sudo su $GALAXY_TRAVIS_USER -c 'python setup.py install --user'
-- sudo su $GALAXY_TRAVIS_USER -c 'sed -i.bak "s/commands.*$/commands =/" tox.ini'
+  - sudo su $GALAXY_TRAVIS_USER -c 'pip install --user https://github.com/mvdbeek/bioblend/archive/test_data.zip pytest'
 script:
 - sleep 60s
 - docker logs $CID2
 - curl http://localhost:8181/subdir/api/version| grep version_major
 - sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
-  cd $GALAXY_HOME/bioblend-master && tox -e $TOX_ENV -- -e 'test_download_dataset'"
+  cd $GALAXY_HOME &&
+  bioblend-galaxy-tests -v $GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy*.py"
 - curl --fail $BIOBLEND_GALAXY_URL/api/version
 - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user
   $GALAXY_USER:$GALAXY_USER_PASSWD
