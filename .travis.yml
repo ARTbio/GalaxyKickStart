@@ -50,7 +50,7 @@ before_install:
   galaxy_kickstart`
 - docker ps
 install:
-  - sudo su $GALAXY_TRAVIS_USER -c 'pip install --user https://github.com/mvdbeek/bioblend/archive/test_data.zip pytest'
+  - sudo su $GALAXY_TRAVIS_USER -c 'pip install --user https://github.com/galaxyproject/bioblend/archive/master.zip pytest'
 script:
 - sleep 60s
 - docker logs $CID2
