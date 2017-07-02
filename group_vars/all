@@ -1,7 +1,7 @@
 proxy_env: {}
 install_galaxy: true
 install_maintainance_packages: false
-galaxy_manage_trackster: true
+galaxy_manage_trackster: false
 galaxy_hostname: "{{ inventory_hostname }}"
 nginx_galaxy_location: ""
 galaxy_user_name: galaxy
@@ -84,6 +84,7 @@ galaxy_config:
     allow_user_dataset_purge: True
     allow_user_impersonation: True
     enable_quotas: True
+    conda_auto_init = True
     allow_user_deletion: True
     tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     static_enabled: False
