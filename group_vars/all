@@ -84,7 +84,7 @@ galaxy_config:
     allow_user_dataset_purge: True
     allow_user_impersonation: True
     enable_quotas: True
-    conda_auto_init = True
+    conda_auto_init: True
     allow_user_deletion: True
     tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     static_enabled: False
