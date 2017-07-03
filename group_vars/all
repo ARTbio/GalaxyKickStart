@@ -38,8 +38,8 @@ install_apparmor: false
 tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
 shed_tools_dir: "{{ galaxy_server_dir }}/../shed_tools"
 tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
-miniconda_python: 2
-miniconda_version: "3.19.0"
+miniconda_python: 3
+miniconda_version: "4.2.12"
 miniconda_installer_checksum: ""
 miniconda_prefix: "{{ tool_dependency_dir }}/_conda"
 miniconda_manage_dependencies: False
