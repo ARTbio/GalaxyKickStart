@@ -1,3 +1,6 @@
+- name: install GKS welcome.html
+  template: src=gks_welcome.html.j2 dest="{{ galaxy_server_dir }}/static/welcome.html"
+
 - name:  Copy additional files
   copy: src={{ item.src }} dest={{ item.dest }} owner={{ galaxy_user_name }}
   with_items:
