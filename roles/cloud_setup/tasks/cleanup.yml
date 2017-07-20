@@ -16,6 +16,8 @@
   shell: rm -rf {{ item }}
   with_items:
     - /var/log/syslog
+    - /var/log/cloud-init.log
+    - /var/log/cloud-init-output.log
     - /var/log/nginx/*
     - /var/log/supervisor/*
     - "{{ galaxy_log_dir }}/*"
