@@ -1,3 +1,4 @@
+GKS: true
 proxy_env: {}
 install_galaxy: true
 install_maintainance_packages: false
