@@ -8,3 +8,28 @@
     - "{{ additional_files_list }}"
   tags:
    - persists_galaxy
+
+- name: Create nginx error files dirs
+  file:
+    path: "{{ galaxy_errordocs_dest }}/{{ item }}"
+    state: directory
+    mode: 0755
+  with_items:
+    - 413
+    - 500
+    - 502
+
+- name: Place nginx 500 error files
+  copy:
+    src: /usr/share/nginx/html/50x.html
+    dest: "{{ galaxy_errordocs_dest }}/502/index.shtml"
+    remote_src: true
+
+- name: Place nginx error files
+  copy:
+    src: /usr/share/nginx/html/index.html
+    dest: "{{ galaxy_errordocs_dest }}/{{ item }}/index.html"
+    remote_src: true
+  with_items:
+    - 413
+    - 500
