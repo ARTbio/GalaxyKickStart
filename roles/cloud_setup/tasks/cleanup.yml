@@ -45,15 +45,3 @@
 - name: Create a symlink placeholder to the Galaxy app dir
   file: src="{{ galaxy_server_dir }}" dest="~/galaxy-app" state=link
   become_user: "{{ galaxy_user_name }}"
-
-# Create a symlink from the CVMFS to /galaxy/data because that is where the
-# .loc files from CVMFS point (and consequently tool_data_table_conf.xml)
-- name: List target CVMFS
-  command: ls /cvmfs/data.galaxyproject.org
-
-- name: Create /galaxy dir
-  file: path=/galaxy state=directory
-
-# This is required to be able to use Galaxy .len files from Main w/o mods
-- name: Create a symlink from CVMFS to /galaxy/data
-  file: src=/cvmfs/data.galaxyproject.org/byhand dest=/galaxy/data state=link
