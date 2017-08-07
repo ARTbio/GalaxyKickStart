@@ -3,7 +3,7 @@
     This file is maintained by Ansible - CHANGES WILL BE OVERWRITTEN
 
     For Galaxy instances using this file, the file should be synced with
-    https://github.com/galaxyproject/usegalaxy-playbook/blob/master/files/galaxy/usegalaxy.org/config/tool_data_table_conf.xml
+    https://github.com/galaxyproject/usegalaxy-playbook/blob/master/env/main/files/galaxy/config/tool_data_table_conf.xml
 -->
 <tables>
     <!-- Locations of all fasta files under genome directory -->

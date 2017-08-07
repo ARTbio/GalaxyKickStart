@@ -1,3 +1,4 @@
+GKS: true
 proxy_env: {}
 install_galaxy: true
 install_maintainance_packages: false
@@ -99,12 +100,13 @@ galaxy_config:
 
 # galaxy-extras role variables
 galaxy_uwsgi_static_conf: true
-galaxy_web_processes: 1
+galaxy_web_processes: 2
 galaxy_handler_processes: 4
 supervisor_slurm_config_dir: "{{ galaxy_data }}"
 galaxy_root: "{{ galaxy_server_dir }}"
 galaxy_log_dir: "{{ galaxy_data }}"
 galaxy_database_connection: "{{ galaxy_db }}"
+galaxy_errordocs_dest: "/usr/share/nginx/html"
 galaxy_extras_config_scripts: true
 galaxy_extras_install_packages: true
 galaxy_extras_config_nginx: true

@@ -17,6 +17,7 @@ If installing the Main toolset, this process takes about 3 hours per server.
  * Comment out tasks in `cleanup.yml` that stop processes and remove ssh keys
  * Update the toolset to be installed (check variable
    `galaxy_tools_tool_list_files` in `cloud_setup`)
+ * Run `ansible-playbook -i inventory/cloud galaxy.yml`
 
 ### Run #2: Delete Galaxy bootstrap user
 This step is required because `galaxy-tools` role flushes all the handlers so

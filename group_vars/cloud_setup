@@ -1,4 +1,5 @@
 cloud_setup: yes
+GKS: no
 
 configure_docker: yes
 install_apparmor: no
@@ -12,13 +13,6 @@ supervisor_manage_reports: no
 
 default_user_name: ubuntu
 
-galaxy_uwsgi: no
-galaxy_uwsgi_static_conf: no
-galaxy_extras_config_uwsgi: no
-galaxy_web_processes: 1
-galaxy_handler_processes: 0
-galaxy_web0_port: 8080
-galaxy_handler0_port: 9010
 galaxy_web_threadpool_workers: 5
 galaxy_handler_threadpool_workers: 5
 
@@ -39,9 +33,10 @@ data_manager_task_file: "extra-files/cloud_setup/data_manager_tasks.yml"
 len_file_path: "{{ galaxy_config_dir }}/len"
 tool_data_table_config_path: "{{ galaxy_server_dir }}/config/tool_data_table_conf.xml,/cvmfs/data.galaxyproject.org/managed/location/tool_data_table_conf.xml"
 galaxy_custom_tools_dir: /usr/local/bin
+nginx_upload_store_path: /tmp
 
 galaxy_git_repo: https://github.com/galaxyproject/galaxy.git
-galaxy_changeset_id: release_17.01
+galaxy_changeset_id: release_17.05
 
 galaxy_config:
   "app:main":
@@ -76,16 +71,6 @@ galaxy_config:
     conda_auto_init: True
   "uwsgi":
     master: True
-  "server:web0":
-    use: "egg:Paste#http"
-    port: "{{ galaxy_web0_port + 0}}"
-    use_threadpool: "True"
-    threadpool_workers: "{{ galaxy_web_threadpool_workers }}"
-  "server:handler0":
-    use: "egg:Paste#http"
-    port: "{{ galaxy_handler0_port + 0}}"
-    use_threadpool: "True"
-    threadpool_workers: "{{ galaxy_handler_threadpool_workers }}"
   "filter:proxy-prefix":
     use: "egg:PasteDeploy#prefix"
     prefix: "{{ nginx_galaxy_location }}"

@@ -21,6 +21,3 @@
     - "alias 'lt=ls -ltr'"
     - "alias 'll=ls -l'"
     - "sh /etc/init.d/fix_hostname.sh > /dev/null 2>&1"
-
-# Install & setup CernVM-FS client used for Galaxy's reference data
-- include: cvmfs_client.yml
