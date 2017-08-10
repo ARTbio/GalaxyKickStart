@@ -10,7 +10,7 @@
 - src: https://github.com/galaxyproject/ansible-galaxy.git
   name: galaxyprojectdotorg.galaxy
 
-- src: https://github.com/galaxyproject/ansible-galaxy-extras.git
+- src: https://github.com/afgane/ansible-galaxy-extras.git
   name: galaxyprojectdotorg.galaxy-extras
 
 - src: https://github.com/galaxyproject/ansible-trackster.git

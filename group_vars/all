@@ -127,7 +127,7 @@ supervisor_manage_ie_proxy: false
 proftpd_nat_masquerade: false
 supervisor_proftpd_autostart: true
 nginx_upload_store_path: "/home/galaxy/galaxy/database/tmp/upload_store"
-galaxy_extras_config_cvmfs: false
+galaxy_extras_config_cvmfs: true
 
 # galaxy-tools role variables
 
