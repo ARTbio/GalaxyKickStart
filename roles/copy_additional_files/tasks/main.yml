@@ -19,12 +19,19 @@
     - 500
     - 502
 
-- name: Place nginx 500 error files
+- name: Place nginx 502 error file
   copy:
     src: /usr/share/nginx/html/50x.html
     dest: "{{ galaxy_errordocs_dest }}/502/index.shtml"
     remote_src: true
   when: ansible_distribution_version == '14.04'
+
+- name: Place nginx 502 error file
+  copy:
+    src: /usr/share/nginx/html/index.html
+    dest: "{{ galaxy_errordocs_dest }}/502/index.html"
+    remote_src: true
+  when: ansible_distribution_version == '16.04'
  
 - name: Place nginx error files
   copy:
@@ -34,15 +41,4 @@
   with_items:
     - 413
     - 500
-  when: ansible_distribution_version == '14.04'
 
-- name: Place nginx error files
-  copy:
-    src: /usr/share/nginx/html/index.html
-    dest: "{{ galaxy_errordocs_dest }}/{{ item }}/index.html"
-    remote_src: true
-  with_items:
-    - 413
-    - 500
-    - 502
-  when: ansible_distribution_version == '16.04'
