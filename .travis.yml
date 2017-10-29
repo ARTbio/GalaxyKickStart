@@ -24,51 +24,13 @@ before_install:
 - docker info
 - pip install ansible
 - ansible-galaxy install -r requirements_roles.yml -p roles
-- sudo groupadd -r $GALAXY_TRAVIS_USER -g $GALAXY_GID
-- sudo useradd -u $GALAXY_UID -r -g $GALAXY_TRAVIS_USER -d $GALAXY_HOME -p travis_testing
-  -c "Galaxy user" $GALAXY_TRAVIS_USER
-- sudo mkdir $GALAXY_HOME
-- sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
-- docker build -t galaxy_kickstart .
-- sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
-- sudo mkdir /export2 && sudo chown $GALAXY_UID:$GALAXY_GID /export2
-- |
-  CID1=`docker run -d --privileged=true -p 8181:80 \
-  -e NAT_MASQUERADE=true \
-  -e NGINX_GALAXY_LOCATION=/subdir \
-  -v /export2:/export \
-  galaxy_kickstart`
-- |
-  CID2=`docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
-  --privileged=true \
-  -e GALAXY_CONFIG_ALLOW_USER_DATASET_PURGE=True \
-  -e GALAXY_CONFIG_ALLOW_LIBRARY_PATH_PASTE=True \
-  -e GALAXY_CONFIG_ENABLE_USER_DELETION=True \
-  -e GALAXY_CONFIG_ENABLE_BETA_WORKFLOW_MODULES=True \
-  -v /tmp/:/tmp/ \
-  -v /export/:/export \
-  galaxy_kickstart`
-- docker ps
 install:
+  - ansible-playbook -i inventory_files/galaxy-kickstart galaxy.yml
   - sudo su $GALAXY_TRAVIS_USER -c 'pip install --user https://github.com/galaxyproject/bioblend/archive/master.zip pytest'
 script:
 - sleep 60s
 - docker logs $CID2
-- curl http://localhost:8181/subdir/api/version| grep version_major
-- sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
-  cd $GALAXY_HOME &&
-  bioblend-galaxy-tests -v $GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy*.py"
-- curl --fail $BIOBLEND_GALAXY_URL/api/version
-- time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:8021 --user
-  $GALAXY_USER:$GALAXY_USER_PASSWD
-- curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
-- docker exec -it $CID1 supervisorctl status | grep proftpd | grep RUNNING
-- docker stop $CID1 $CID2 && docker rm $CID1 $CID2
-- CID3=`docker run -d --privileged=true -p 8181:80 -e NAT_MASQUERADE=true -v /export2:/export
-  galaxy_kickstart` && sleep 60s
-- docker logs $CID3
-- curl http://localhost:8181/api/version| grep version_major
-- cd $TRAVIS_BUILD_DIR
+- curl http://localhost:80/api/version| grep version_major
 deploy:
   provider: script
   script: bash ./deploy.sh
