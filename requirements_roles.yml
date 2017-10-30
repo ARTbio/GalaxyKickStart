@@ -4,6 +4,7 @@
 # switch to ARTbio fork for testing
 # test which pg_isready binary is running
 # test the content of supervisor conf file for postgresql and also search /etc/supervisor/supervisord.conf
+# list content of /etc/supervisor/conf.d/
 - src: https://github.com/ARTbio/ensure_postgresql_up.git
   name: ensure_postgresql_up
   version: testmodule
