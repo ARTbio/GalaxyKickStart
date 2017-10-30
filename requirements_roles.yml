@@ -3,6 +3,7 @@
 
 - src: https://github.com/ARTbio/ensure_postgresql_up.git
   name: ensure_postgresql_up
+  version: testmodule
 
 - src: https://github.com/natefoo/ansible-postgresql-objects.git
   name: natefoo.postgresql_objects
