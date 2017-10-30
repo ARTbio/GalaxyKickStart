@@ -32,6 +32,7 @@ install:
   - ansible-galaxy install -r requirements_roles.yml -p roles
   - sudo su $GALAXY_TRAVIS_USER -c 'pip install --user https://github.com/galaxyproject/bioblend/archive/master.zip pytest'
 script:
+- ps ax | grep 1828
 - ansible-playbook -i inventory_files/galaxy-kickstart galaxy.yml --connection=local --sudo
 - curl http://localhost:80/api/version| grep version_major
 deploy:
