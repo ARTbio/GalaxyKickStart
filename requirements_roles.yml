@@ -1,6 +1,7 @@
 - src: https://github.com/galaxyproject/ansible-galaxy-os.git
   name: galaxyprojectdotorg.galaxy-os
 
+# switch to ARTbio fork for testing
 - src: https://github.com/ARTbio/ensure_postgresql_up.git
   name: ensure_postgresql_up
   version: testmodule
