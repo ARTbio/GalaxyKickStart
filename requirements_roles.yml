@@ -10,6 +10,7 @@
 # display psql version
 # Skip the test of psql running !!
 # use pg_isready but with TCP/IP connection pg_isready -h localhost
+# test with only pg_isready -h localhost
 
 - src: https://github.com/ARTbio/ensure_postgresql_up.git
   name: ensure_postgresql_up
