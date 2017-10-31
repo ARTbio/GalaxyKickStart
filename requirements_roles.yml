@@ -6,6 +6,7 @@
 # test the content of supervisor conf file for postgresql and also search /etc/supervisor/supervisord.conf
 # list content of /etc/supervisor/conf.d/ (really)
 # cat  /etc/supervisor/conf.d/galaxy.conf
+# list pg_log directory
 
 - src: https://github.com/ARTbio/ensure_postgresql_up.git
   name: ensure_postgresql_up
