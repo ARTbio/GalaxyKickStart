@@ -8,6 +8,7 @@
 # cat  /etc/supervisor/conf.d/galaxy.conf
 # list pg_log directory
 # display psql version
+# Skip the test of psql running !!
 
 - src: https://github.com/ARTbio/ensure_postgresql_up.git
   name: ensure_postgresql_up
