@@ -1,5 +1,6 @@
-- src: https://github.com/galaxyproject/ansible-galaxy-os.git
+- src: https://github.com/ARTbio/ansible-galaxy-os.git
   name: galaxyprojectdotorg.galaxy-os
+  version: postgresql
 
 # switch to ARTbio fork for testing
 # test which pg_isready binary is running
