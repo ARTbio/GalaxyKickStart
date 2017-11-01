@@ -11,36 +11,45 @@ env:
   - GH_REF="github.com/ARTbio/GalaxyKickStart.git"
   - secure: VM+MmxZP70z0LABwxm+qWOjXSzfOQB7FxL6rWCkWOz9wKqZtEme8iPuT8uXd3x+fk0rtgzhiwri4wky/AeSzUO2MHmUKUyaMoN3Whz5CcIH6LVPgAc2aiZj/tw22wTYGLmP+4F5kK6xNrRiB1zwl0gmt3muKHRF+KLnND1dpsFLByGlEeGUFuvU64t6hAi+gvORbmKlGgn1wdi0pbdtyLKGi+efG9HWkIefOt2gVobLxBNZT4HWqWHK9I40UjWY3GSjQDvj5xFz6JKFM1ZCc06xI/94Td2ZZIOtiM5fIy6HFbPA6AjVpQ8B0Y45q5UF+yx+Y910ko7giCD23qS8dAX2SfpHktwzqgjxNc+IKfCquihmgagLHZycaHfmqweTxk9Fn/nc9zAhYTKMSwdd2h4aMJGsjHkitUf1G3O9/Gd6D0A+3AijXyet9MJ2NbLuDhXycGRVmX2zNXwaWjSbLPuat94F38O0uzG8Q7oOPElfEwik28DhpHBrDsDQeJhvytG1Hfgw85IJJeNwPAzloq8+idqUwZ7fxaM2eT0WPEZG26Hooi1UYeXdpil1TFV1trFtS6JD2xl/3JSZA2Ls9ARIKgbIJw2WN8FzJc0rzGyCOjDHEur9eyw2MVbzEooAS2l95xzEZqdvb4pCe8LQZ5S4wBIX0xMSmBUTW/lBpK4Y=
 before_install:
-  # Make sure everything's up to date.
-  - psql --version
   - sudo /etc/init.d/postgresql stop
   - sudo apt-get -y --purge remove postgresql libpq-dev libpq5 postgresql-client-common postgresql-common
   - sudo rm -rf /var/lib/postgresql
   - sudo apt-get update -qq
-  - docker --version
-  - docker info
-  - export GALAXY_HOME=/home/galaxy
   - export GALAXY_TRAVIS_USER=galaxy
   - export GALAXY_UID=1450
   - export GALAXY_GID=1450
+  - export GALAXY_HOME=/home/galaxy
+  - export GALAXY_USER=admin@galaxy.org
+  - export GALAXY_USER_EMAIL=admin@galaxy.org
+  - export GALAXY_USER_PASSWD=admin
+  - export BIOBLEND_GALAXY_API_KEY=admin
+  - export BIOBLEND_GALAXY_URL=http://localhost:80
+  - export BIOBLEND_TEST_JOB_TIMEOUT=120
   - sudo groupadd -r $GALAXY_TRAVIS_USER -g $GALAXY_GID
   - sudo useradd -u $GALAXY_UID -r -g $GALAXY_TRAVIS_USER -d $GALAXY_HOME -p travis_testing -c "Galaxy user" $GALAXY_TRAVIS_USER
   - sudo mkdir $GALAXY_HOME
   - sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
-  - sudo dpkg-reconfigure locales
-  # - sudo service postgresql stop
+
 install:
   # Install Ansible.
-  - pip install ansible==2.2.0.0
+  - pip install ansible
   # Add ansible.cfg to pick up roles path.
   # - printf '[defaults]\nroles_path = ../' > ansible.cfg
   # Install remote roles with ansible-galaxy
   - ansible-galaxy install -r requirements_roles.yml -p roles
   - sudo su $GALAXY_TRAVIS_USER -c 'pip install --user https://github.com/galaxyproject/bioblend/archive/master.zip pytest'
+
 script:
-- ps ax | grep postgres
-- ansible-playbook -i inventory_files/galaxy-kickstart galaxy.yml --connection=local --sudo
-- curl http://localhost:80/api/version| grep version_major
+  - ansible-playbook -i inventory_files/galaxy-kickstart galaxy.yml --connection=local --sudo
+  - sleep 60s
+  - curl http://localhost:80/api/version| grep version_major
+  - time > $HOME/time.txt && curl --fail -T $HOME/time.txt ftp://localhost:21 --user
+    $GALAXY_USER:$GALAXY_USER_PASSWD
+  - sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
+    cd $GALAXY_HOME &&
+    bioblend-galaxy-tests -v $GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy*.py"
+  - curl --fail $BIOBLEND_GALAXY_URL/api/version
+
 deploy:
   provider: script
   script: bash ./deploy.sh
