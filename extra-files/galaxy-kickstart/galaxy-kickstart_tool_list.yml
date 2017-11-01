@@ -5,27 +5,3 @@ tools:
   tool_panel_section_label: 'Data Managers'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
-
-- name: data_manager_bowtie_index_builder
-  owner: iuc
-  tool_panel_section_label: 'Data Managers'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-
-- name: data_manager_bowtie2_index_builder
-  owner: devteam
-  tool_panel_section_label: 'Data Managers'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-
-- name: data_manager_bwa_mem_index_builder
-  owner: devteam
-  tool_panel_section_label: 'Data Managers'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-
-- name: data_manager_twobit_builder
-  owner: devteam
-  tool_panel_section_label: 'Data Managers'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
