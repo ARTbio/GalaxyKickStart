@@ -83,6 +83,7 @@ galaxy_config:
     database_connection: "{{ galaxy_db }}"
     tool_dependency_dir: "{{ tool_dependency_dir }}"
     ftp_upload_dir: "{{ proftpd_files_dir }}"
+    ftp_upload_site: ftp://[server IP address]
     allow_user_dataset_purge: True
     allow_user_impersonation: True
     enable_quotas: True
