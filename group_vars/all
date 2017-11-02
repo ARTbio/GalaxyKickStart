@@ -1,4 +1,3 @@
-ansible_distribution_version: 16.04
 GKS: true
 proxy_env: {}
 install_galaxy: true
