@@ -1,21 +1,8 @@
-- src: https://github.com/ARTbio/ansible-galaxy-os.git
+- src: https://github.com/galaxyproject/ansible-galaxy-os.git
   name: galaxyprojectdotorg.galaxy-os
-  version: postgresql
-
-# switch to ARTbio fork for testing
-# test which pg_isready binary is running
-# test the content of supervisor conf file for postgresql and also search /etc/supervisor/supervisord.conf
-# list content of /etc/supervisor/conf.d/ (really)
-# cat  /etc/supervisor/conf.d/galaxy.conf
-# list pg_log directory
-# display psql version
-# Skip the test of psql running !!
-# use pg_isready but with TCP/IP connection pg_isready -h localhost
-# test with only pg_isready -h localhost
 
 - src: https://github.com/ARTbio/ensure_postgresql_up.git
   name: ensure_postgresql_up
-  version: testmodule
 
 - src: https://github.com/natefoo/ansible-postgresql-objects.git
   name: natefoo.postgresql_objects
