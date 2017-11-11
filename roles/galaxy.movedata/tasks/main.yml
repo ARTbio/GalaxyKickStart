@@ -35,4 +35,5 @@
   supervisorctl: name={{ item }} state=restarted
   with_items:
     - proftpd
+    - galaxy:
   tags: skip_supervisor_start_in_docker
