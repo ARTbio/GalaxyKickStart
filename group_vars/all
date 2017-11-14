@@ -97,8 +97,8 @@ galaxy_config:
     nginx_x_accel_redirect_base: /_x_accel_redirect
     interactive_environment_plugins_directory: config/plugins/interactive_environments
     visualization_plugins_directory: config/plugins/visualizations
-    # interactive environments parameters #
-    dynamic_proxy_manage: true
+    # interactive environments - set dynamic_proxy_manage to true #
+    dynamic_proxy_manage: false
     dynamic_proxy_session_map: database/session_map.sqlite
     dynamic_proxy_bind_port: 8800
     dynamic_proxy_bind_ip: 0.0.0.0
