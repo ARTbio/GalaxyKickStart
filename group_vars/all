@@ -136,6 +136,7 @@ supervisor_manage_reports: true
 supervisor_manage_docker: false
 supervisor_manage_nodeproxy: false
 supervisor_manage_ie_proxy: true
+supervisor_ie_proxy_autostart: true
 proftpd_nat_masquerade: false
 supervisor_proftpd_autostart: true
 nginx_upload_store_path: "/home/galaxy/galaxy/database/tmp/upload_store"
