@@ -97,15 +97,14 @@ galaxy_config:
     nginx_x_accel_redirect_base: /_x_accel_redirect
     interactive_environment_plugins_directory: config/plugins/interactive_environments
     visualization_plugins_directory: config/plugins/visualizations
-# interactive environments installation
-#    dynamic_proxy_manage: true
-#    dynamic_proxy_session_map: database/session_map.sqlite
-#    dynamic_proxy_bind_port: 8800
-#    dynamic_proxy_bind_ip: 0.0.0.0
-#    dynamic_proxy_debug: True
-#    dynamic_proxy_external_proxy: true
-#    dynamic_proxy_prefix: gie_proxy
-
+    # interactive environments parameters #
+    dynamic_proxy_manage: true
+    dynamic_proxy_session_map: database/session_map.sqlite
+    dynamic_proxy_bind_port: 8800
+    dynamic_proxy_bind_ip: 0.0.0.0
+    dynamic_proxy_debug: True
+    dynamic_proxy_external_proxy: true
+    dynamic_proxy_prefix: gie_proxy
   "uwsgi":
     master: True
   "filter:proxy-prefix":
@@ -141,11 +140,10 @@ supervisor_proftpd_autostart: true
 nginx_upload_store_path: "/home/galaxy/galaxy/database/tmp/upload_store"
 galaxy_extras_config_cvmfs: false
 
-# interactive environments installation: switch to true
+# To enable interactive environments set the following variables to true
 galaxy_extras_config_ie_proxy: false
 supervisor_manage_ie_proxy: false
 supervisor_ie_proxy_autostart: false
-# end interactive environments
 
 # galaxy-tools role variables
 
