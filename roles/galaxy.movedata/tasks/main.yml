@@ -37,6 +37,7 @@
     - proftpd
   tags: skip_supervisor_start_in_docker
 
+# to do: get clean nodejs (auto)start
 #- name: Start nodejs proxy
 #  supervisorctl: name={{ item }} state=started
 #  with_items:
