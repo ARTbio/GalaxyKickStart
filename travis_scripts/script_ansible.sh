@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 ansible-playbook -i inventory_files/galaxy-kickstart galaxy.yml --connection=local --sudo
 sleep 60s
 curl http://localhost:80/api/version| grep version_major

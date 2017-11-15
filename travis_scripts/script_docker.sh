@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 sleep 60s
 docker logs $CID2
 curl http://localhost:8181/subdir/api/version| grep version_major
