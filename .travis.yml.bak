@@ -1,7 +1,6 @@
 # inspired from https://www.jeffgeerling.com/blog/testing-ansible-roles-travis-ci-github
-# multiple environments: https://gist.github.com/jamesarosen/e29076bd81a099f0f72e
 language: python
-# python: '2.7'
+python: '2.7'
 dist: trusty
 sudo: required
 
@@ -11,32 +10,22 @@ env:
   - GH_USER_NAME="Christophe Antoniewski"
   - GH_USER_EMAIL="drosofff@gmail.com"
   - GH_REF="github.com/ARTbio/GalaxyKickStart.git"
-  
-  - GALAXY_TRAVIS_USER="galaxy"
-  - export GALAXY_UID="1450"
-  - export GALAXY_GID="1450"
-  - export GALAXY_HOME="/home/galaxy"
-  - export GALAXY_USER="admin@galaxy.org"
-  - export GALAXY_USER_EMAIL="admin@galaxy.org"
-  - export GALAXY_USER_PASSWD="admin"
-  - export BIOBLEND_GALAXY_API_KEY="admin"
-  - export BIOBLEND_GALAXY_URL="http://localhost:8080"
-  - export BIOBLEND_TEST_JOB_TIMEOUT="120"
-
   - secure: VM+MmxZP70z0LABwxm+qWOjXSzfOQB7FxL6rWCkWOz9wKqZtEme8iPuT8uXd3x+fk0rtgzhiwri4wky/AeSzUO2MHmUKUyaMoN3Whz5CcIH6LVPgAc2aiZj/tw22wTYGLmP+4F5kK6xNrRiB1zwl0gmt3muKHRF+KLnND1dpsFLByGlEeGUFuvU64t6hAi+gvORbmKlGgn1wdi0pbdtyLKGi+efG9HWkIefOt2gVobLxBNZT4HWqWHK9I40UjWY3GSjQDvj5xFz6JKFM1ZCc06xI/94Td2ZZIOtiM5fIy6HFbPA6AjVpQ8B0Y45q5UF+yx+Y910ko7giCD23qS8dAX2SfpHktwzqgjxNc+IKfCquihmgagLHZycaHfmqweTxk9Fn/nc9zAhYTKMSwdd2h4aMJGsjHkitUf1G3O9/Gd6D0A+3AijXyet9MJ2NbLuDhXycGRVmX2zNXwaWjSbLPuat94F38O0uzG8Q7oOPElfEwik28DhpHBrDsDQeJhvytG1Hfgw85IJJeNwPAzloq8+idqUwZ7fxaM2eT0WPEZG26Hooi1UYeXdpil1TFV1trFtS6JD2xl/3JSZA2Ls9ARIKgbIJw2WN8FzJc0rzGyCOjDHEur9eyw2MVbzEooAS2l95xzEZqdvb4pCe8LQZ5S4wBIX0xMSmBUTW/lBpK4Y=
-
-matrix:
-  include:
-    - python: 2.7
-      env: TRAVIS_JOB=ansible-test
-    - python: 2.7
-      env: TRAVIS_JOB=docker-build
-      
 before_install:
   - sudo /etc/init.d/postgresql stop
   - sudo apt-get -y --purge remove postgresql libpq-dev libpq5 postgresql-client-common postgresql-common
   - sudo rm -rf /var/lib/postgresql
   - sudo apt-get update -qq
+  - export GALAXY_TRAVIS_USER=galaxy
+  - export GALAXY_UID=1450
+  - export GALAXY_GID=1450
+  - export GALAXY_HOME=/home/galaxy
+  - export GALAXY_USER=admin@galaxy.org
+  - export GALAXY_USER_EMAIL=admin@galaxy.org
+  - export GALAXY_USER_PASSWD=admin
+  - export BIOBLEND_GALAXY_API_KEY=admin
+  - export BIOBLEND_GALAXY_URL=http://localhost:80
+  - export BIOBLEND_TEST_JOB_TIMEOUT=120
   - sudo groupadd -r $GALAXY_TRAVIS_USER -g $GALAXY_GID
   - sudo useradd -u $GALAXY_UID -r -g $GALAXY_TRAVIS_USER -d $GALAXY_HOME -p travis_testing -c "Galaxy user" $GALAXY_TRAVIS_USER
   - sudo mkdir $GALAXY_HOME
