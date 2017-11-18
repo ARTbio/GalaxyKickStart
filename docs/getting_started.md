@@ -8,7 +8,17 @@ The playbook has been tested with Ansible stable versions 2.1 and 2.2
 
 A simple way to install the latest Ansible version is using [pip](https://pip.pypa.io/en/stable/quickstart/):
 
+##### Install pip
+
+```
+sudo apt-get update -y && sudo apt-get -y install python-pip python-dev
+```
+
 - Ensure you have recent pip version installed (sudo -i && pip install upgrade pip maybe necessary)
+
+pip upgrade:
+```
+sudo pip install -U pip
 ```
 $ pip --version
 pip 9.0.1 from /usr/local/lib/python2.7/site-packages (python 2.7)
@@ -29,12 +39,6 @@ apt-get install software-properties-common
 apt-add-repository ppa:ansible/ansible
 apt-get update
 apt-get install ansible
-```
-
-### In some occasions, additional packages may be necessary for correct Ansible installation:
-
-```
-apt-get update && apt-get -y install build-essential libpq-dev python-dev libxml2-dev libxslt1-dev libldap2-dev libsasl2-dev libffi-dev
 ```
 
 # Getting the playbook
