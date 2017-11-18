@@ -20,6 +20,7 @@ pip upgrade:
 ```
 sudo pip install -U pip
 ```
+```
 $ pip --version
 pip 9.0.1 from /usr/local/lib/python2.7/site-packages (python 2.7)
 ```
