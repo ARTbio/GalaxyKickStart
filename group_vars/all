@@ -82,16 +82,29 @@ galaxy_config:
     database_connection: "{{ galaxy_db }}"
     tool_dependency_dir: "{{ tool_dependency_dir }}"
     ftp_upload_dir: "{{ proftpd_files_dir }}"
+    ftp_upload_site: ftp://[server IP address]
     allow_user_dataset_purge: True
     allow_user_impersonation: True
     enable_quotas: True
     allow_user_deletion: True
+    allow_library_path_paste: True
     tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     static_enabled: False
     nginx_upload_store: "{{ nginx_upload_store_path }}"
     use_pbkdf2: "{{ use_pbkdf2 }}"
     len_file_path: "{{ galaxy_config_dir }}/len"
     filter-with: proxy-prefix
+    nginx_x_accel_redirect_base: /_x_accel_redirect
+    interactive_environment_plugins_directory: config/plugins/interactive_environments
+    visualization_plugins_directory: config/plugins/visualizations
+    # interactive environments - set dynamic_proxy_manage to true #
+    dynamic_proxy_manage: false
+    dynamic_proxy_session_map: database/session_map.sqlite
+    dynamic_proxy_bind_port: 8800
+    dynamic_proxy_bind_ip: 0.0.0.0
+    dynamic_proxy_debug: True
+    dynamic_proxy_external_proxy: true
+    dynamic_proxy_prefix: gie_proxy
   "uwsgi":
     master: True
   "filter:proxy-prefix":
@@ -116,18 +129,20 @@ galaxy_extras_config_uwsgi: true
 galaxy_extras_config_galaxy_job_metrics: true
 galaxy_extras_config_slurm: true
 galaxy_extras_config_galaxy_root: true
-galaxy_extras_config_ie_proxy: false
 supervisor_manage_nginx: true
 supervisor_manage_proftp: true
 supervisor_manage_slurm: true
 supervisor_manage_reports: true
 supervisor_manage_docker: false
-supervisor_manage_nodeproxy: false
-supervisor_manage_ie_proxy: false
 proftpd_nat_masquerade: false
 supervisor_proftpd_autostart: true
 nginx_upload_store_path: "/home/galaxy/galaxy/database/tmp/upload_store"
 galaxy_extras_config_cvmfs: false
+
+# To enable interactive environments set the following variables to true
+galaxy_extras_config_ie_proxy: false
+supervisor_manage_ie_proxy: false
+supervisor_ie_proxy_autostart: false
 
 # galaxy-tools role variables
 

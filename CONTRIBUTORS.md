@@ -8,6 +8,7 @@ The following individuals have contributed code to GalaxyKickStart:
 * Nitesh Turaga <nitesh.turaga@gmail.com>
 * Enis Afgan <afgane@gmail.com>
 * Juliana Pegoraro <juliana.a.pegoraro@gmail.com>
+* malloryfreeberg <mallory.freeberg@gmail.com>
 
 # Institutional sponsors
 
