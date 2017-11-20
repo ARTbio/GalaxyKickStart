@@ -47,6 +47,6 @@ script:
 
 deploy:
   provider: script
-  script: bash ./travis_scripts/deploy.sh
+  script: if [ "$TRAVIS_JOB" = "docker-build" ]; then . ./travis_scripts/deploy.sh; fi
   on:
     branch: master
