@@ -44,9 +44,3 @@ install:
 script:
   - if [ "$TRAVIS_JOB" = "ansible-test" ]; then . ./travis_scripts/script_ansible.sh; fi
   - if [ "$TRAVIS_JOB" = "docker-build" ]; then . ./travis_scripts/script_docker.sh; fi
-
-deploy:
-  provider: script
-  script: if [ "$TRAVIS_JOB" = "docker-build" ]; then . ./travis_scripts/deploy.sh; fi
-  on:
-    branch: master
