@@ -12,7 +12,7 @@
 
 - src: https://github.com/ARTbio/ansible-galaxy-extras.git
   name: galaxyprojectdotorg.galaxy-extras
-  version: ie-tunning
+  version: slurm_CPU_sharing
 
 - src: https://github.com/galaxyproject/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
