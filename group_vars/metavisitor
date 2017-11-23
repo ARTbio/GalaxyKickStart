@@ -19,6 +19,5 @@ galaxy_tools_workflows:
 galaxy_web_processes: 2
 
 additional_files_list:
-  - { src: "extra-files/metavisitor/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
-  - { src: "extra-files/metavisitor/metavisitor_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/metavisitor/logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
   - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
