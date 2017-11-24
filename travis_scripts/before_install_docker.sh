@@ -18,7 +18,7 @@ export CUSTOM=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
   -e NAT_MASQUERADE=true \
   -e NGINX_GALAXY_LOCATION=/subdir \
   -v /tmp/:/tmp/ \
-  -v /export/:/export
+  -v /export/:/export \
   metavisitor`
 
 export STANDARD=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
@@ -29,7 +29,7 @@ export STANDARD=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
   -e GALAXY_CONFIG_ENABLE_USER_DELETION=True \
   -e GALAXY_CONFIG_ENABLE_BETA_WORKFLOW_MODULES=True \
   -v /tmp/:/tmp/ \
-  -v /export/:/export
+  -v /export/:/export \
   metavisitor`
 docker ps
 
