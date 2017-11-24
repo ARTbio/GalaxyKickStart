@@ -24,6 +24,7 @@ export CUSTOM=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
 export STANDARD=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
   -p 80:80 -p 8021:21 -p 8800:8800 \
   --privileged=true \
+  -e NAT_MASQUERADE=true \
   -e GALAXY_CONFIG_ALLOW_USER_DATASET_PURGE=True \
   -e GALAXY_CONFIG_ALLOW_LIBRARY_PATH_PASTE=True \
   -e GALAXY_CONFIG_ENABLE_USER_DELETION=True \
