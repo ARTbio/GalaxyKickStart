@@ -1,1 +1,1 @@
-dockerfiles/galaxy-kickstart/Dockerfile
+dockerfiles/galaxy-kickstart-metavisitor/Dockerfile

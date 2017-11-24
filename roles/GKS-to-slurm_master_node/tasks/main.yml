@@ -1,5 +1,0 @@
-
-- include: set_nfs_sharing.yml
-  tags: nfs sharing
-- include: slurm_master_node.yml
-  tags: set slurm master node

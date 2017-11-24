@@ -1,5 +1,0 @@
----
-- name: Install nfs-common package
-  apt: pkg='nfs-common' state='present'
-- name: Mount NFS from slurm master node
-  mount: fstype=nfs4 opts="proto=tcp,port=2049" state=mounted name="/home/galaxy/" src="{{ master_slurm_node_ip }}:/galaxy/"

@@ -1,6 +1,0 @@
-# adapt the following variable to the master slurm node IP address
-master_slurm_node_ip: "192.54.201.102"
-
-# to overwrite group_vars/all where galaxy_user_uid and galaxy_user_gid are both to 1450
-galaxy_user_uid: 1450
-galaxy_user_gid: 100

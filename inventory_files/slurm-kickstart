@@ -1,9 +1,0 @@
-[slurm_master]
-# adapt the following line to IP address and ssh user of the slurm master node
-192.54.201.102 ansible_ssh_user=root ansible_ssh_private_key_file="~/.ssh/mysshkey"
-
-[slurm_slave]
-# adapt the following lnes to IP addresses and ssu users of the slum slave nodes
-192.54.201.98 ansible_ssh_user=root ansible_ssh_private_key_file="~/.ssh/mysshkey"
-192.54.201.99 ansible_ssh_user=root ansible_ssh_private_key_file="~/.ssh/mysshkey"
-192.54.201.101 ansible_ssh_user=root ansible_ssh_private_key_file="~/.ssh/mysshkey"

@@ -20,6 +20,7 @@ env:
   - GALAXY_USER_PASSWD="admin"
   - BIOBLEND_GALAXY_API_KEY="admin"
   - BIOBLEND_TEST_JOB_TIMEOUT="120"
+  - BIOBLEND_GALAXY_URL="http://localhost:80"
   - secure: VM+MmxZP70z0LABwxm+qWOjXSzfOQB7FxL6rWCkWOz9wKqZtEme8iPuT8uXd3x+fk0rtgzhiwri4wky/AeSzUO2MHmUKUyaMoN3Whz5CcIH6LVPgAc2aiZj/tw22wTYGLmP+4F5kK6xNrRiB1zwl0gmt3muKHRF+KLnND1dpsFLByGlEeGUFuvU64t6hAi+gvORbmKlGgn1wdi0pbdtyLKGi+efG9HWkIefOt2gVobLxBNZT4HWqWHK9I40UjWY3GSjQDvj5xFz6JKFM1ZCc06xI/94Td2ZZIOtiM5fIy6HFbPA6AjVpQ8B0Y45q5UF+yx+Y910ko7giCD23qS8dAX2SfpHktwzqgjxNc+IKfCquihmgagLHZycaHfmqweTxk9Fn/nc9zAhYTKMSwdd2h4aMJGsjHkitUf1G3O9/Gd6D0A+3AijXyet9MJ2NbLuDhXycGRVmX2zNXwaWjSbLPuat94F38O0uzG8Q7oOPElfEwik28DhpHBrDsDQeJhvytG1Hfgw85IJJeNwPAzloq8+idqUwZ7fxaM2eT0WPEZG26Hooi1UYeXdpil1TFV1trFtS6JD2xl/3JSZA2Ls9ARIKgbIJw2WN8FzJc0rzGyCOjDHEur9eyw2MVbzEooAS2l95xzEZqdvb4pCe8LQZ5S4wBIX0xMSmBUTW/lBpK4Y=
 
 matrix:
@@ -27,11 +28,9 @@ matrix:
     - python: 2.7
       env:
         - TRAVIS_JOB=ansible-test
-        - BIOBLEND_GALAXY_URL="http://localhost:80"
     - python: 2.7
       env:
         - TRAVIS_JOB=docker-build
-        - BIOBLEND_GALAXY_URL="http://localhost:8080"
       
 before_install:
   - if [ "$TRAVIS_JOB" = "ansible-test" ]; then . ./travis_scripts/before_install_ansible.sh; fi

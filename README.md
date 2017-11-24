@@ -1,6 +1,15 @@
 [![Build Status](https://travis-ci.org/ARTbio/GalaxyKickStart.svg?branch=master)](https://travis-ci.org/ARTbio/GalaxyKickStart)
 
-# GalaxyKickStart
+# Metavisitor Build branch
+
+Use this branch to build a Galaxy [Metavisitor](https://github.com/ARTbio/Metavisitor-manual)
+Instance.
+A corresponding Docker container may be pull by
+```
+docker pull artbio/metavisitor-1.2
+```
+
+## GalaxyKickStart
 
 GalaxyKickStart is an Ansible playbook designed to help you get one or more
 production-ready  [Galaxy servers](https://usegalaxy.org/) based on Ubuntu
@@ -15,7 +24,6 @@ Detailed usage instructions are available in the
 The playbook has been tested on
 
 - Cloud Machines
-- Vagrant Boxes
 - Physical Servers
 - Docker
 
@@ -35,7 +43,7 @@ List of roles included in this playbook
 - [miniconda-role](https://github.com/uchida/ansible-miniconda-role.git)
 
 
-# Troubleshooting
+## Troubleshooting
 ### Installation of postgresql might fails due to non-standard locale ###
 If you are using Ubuntu on your Ansible machine, make sure that you deactivate
 `SendEnv LANG LC_*` in `/etc/ssh_config`. This will allow locale settings to
