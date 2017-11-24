@@ -1,6 +1,6 @@
-FROM artbio/galaxy-kickstart-base
+FROM artbio/galaxykickstart
 
-MAINTAINER Marius van den Beek <m.vandenbeek@gmail.com>
+LABEL maintainer="Christophe Antoniewski <drosofff@gmail.com>"
 
 COPY  .  /setup
 WORKDIR /setup
