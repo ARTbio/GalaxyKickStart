@@ -11,7 +11,7 @@ sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
   bioblend-galaxy-tests -v $GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy*.py"
 date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 docker stop $CUSTOM $STANDARD && docker rm $CUSTOM $STANDARD
-CID3=`docker run -d --privileged=true -p 8181:80 -e NAT_MASQUERADE=true -v /export2:/export galaxy_kickstart` && sleep 60s
-docker logs $CID3
-curl http://localhost:8181/api/version| grep version_major
+#CID3=`docker run -d --privileged=true -p 8181:80 -e NAT_MASQUERADE=true -v /export2:/export galaxy_kickstart` && sleep 60s
+#docker logs $CID3
+#curl http://localhost:8181/api/version| grep version_major
 cd $TRAVIS_BUILD_DIR
