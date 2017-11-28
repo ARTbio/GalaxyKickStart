@@ -4,12 +4,11 @@ sleep 60s
 docker logs $STANDARD
 curl --fail $BIOBLEND_GALAXY_URL/api/version
 curl http://localhost:8181/subdir/api/version| grep version_major
-curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 docker exec -it $CUSTOM supervisorctl status | grep proftpd | grep RUNNING
 sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
   cd $GALAXY_HOME &&
   bioblend-galaxy-tests -v $GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy*.py"
-date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
+date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 docker stop $CUSTOM $STANDARD && docker rm $CUSTOM $STANDARD
 #CID3=`docker run -d --privileged=true -p 8181:80 -e NAT_MASQUERADE=true -v /export2:/export galaxy_kickstart` && sleep 60s
 #docker logs $CID3
