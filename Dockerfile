@@ -1,1 +1,1 @@
-dockerfiles/galaxy-kickstart-metavisitor/Dockerfile.noinstalltool
+dockerfiles/galaxy-kickstart-metavisitor/Dockerfile
