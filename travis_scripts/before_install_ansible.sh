@@ -4,6 +4,8 @@ sudo /etc/init.d/postgresql stop
 sudo apt-get -y --purge remove postgresql libpq-dev libpq5 postgresql-client-common postgresql-common
 sudo rm -rf /var/lib/postgresql
 sudo apt-get update -qq
+pip install -U pip
+pip --version
 pip install ansible
 ansible-galaxy install -r requirements_roles.yml -p roles
 sudo groupadd -r $GALAXY_TRAVIS_USER -g $GALAXY_GID

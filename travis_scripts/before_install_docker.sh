@@ -2,6 +2,8 @@
 set -e
 docker --version
 docker info
+pip install -U pip
+pip --version
 pip install ansible
 ansible-galaxy install -r requirements_roles.yml -p roles
 sudo groupadd -r $GALAXY_TRAVIS_USER -g $GALAXY_GID
