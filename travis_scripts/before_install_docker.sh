@@ -4,7 +4,7 @@ docker --version
 docker info
 pip install -U pip
 pip --version
-pip install ansible
+pip install ansible==2.2
 ansible-galaxy install -r requirements_roles.yml -p roles
 sudo groupadd -r $GALAXY_TRAVIS_USER -g $GALAXY_GID
 sudo useradd -u $GALAXY_UID -r -g $GALAXY_TRAVIS_USER -d $GALAXY_HOME -p travis_testing\
