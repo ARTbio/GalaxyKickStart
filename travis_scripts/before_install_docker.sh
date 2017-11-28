@@ -21,8 +21,6 @@ export STANDARD=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
   -e GALAXY_CONFIG_ALLOW_LIBRARY_PATH_PASTE=True \
   -e GALAXY_CONFIG_ENABLE_USER_DELETION=True \
   -e GALAXY_CONFIG_ENABLE_BETA_WORKFLOW_MODULES=True \
-  -v /tmp/:/tmp/ \
-  -v /export/:/export \
   metavisitor`
 docker ps
 export CUSTOM=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
@@ -30,8 +28,6 @@ export CUSTOM=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
   -p 8181:80 \
   -e NAT_MASQUERADE=true \
   -e NGINX_GALAXY_LOCATION=/subdir \
-  -v /tmp/:/tmp/ \
-  -v /export2/:/export \
   metavisitor`
 docker ps
 

@@ -2,7 +2,7 @@
 set -e
 sleep 60s
 docker logs $STANDARD
-curl --fail $BIOBLEND_GALAXY_URL/api/version
+curl http://localhost:80/api/version
 curl http://localhost:8181/subdir/api/version| grep version_major
 docker exec -it $CUSTOM supervisorctl status | grep proftpd | grep RUNNING
 #sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
