@@ -7,7 +7,6 @@ echo $GALAXY_TRAVIS_USER
 echo $GALAXY_HOME
 echo $PATH
 echo "export PATH=$GALAXY_HOME/.local/bin/:$PATH && cd $GALAXY_HOME && bioblend-galaxy-tests -v $GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy*.py"
-pip uninstall -y bioblend
 sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
   cd $GALAXY_HOME && pip uninstall -y bioblend &&
   bioblend-galaxy-tests -v $GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy*.py"
