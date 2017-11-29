@@ -1,5 +1,5 @@
 tools:
-- name:         
+- name: blast_to_scaffold
   owner: artbio
   revisions:
   - 7d96b28eec49
