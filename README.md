@@ -1,8 +1,5 @@
 [![Build Status](https://travis-ci.org/ARTbio/GalaxyKickStart.svg?branch=master)](https://travis-ci.org/ARTbio/GalaxyKickStart)
 
-This is a mirror of master, for test purpose.
-
-
 # GalaxyKickStart
 
 GalaxyKickStart is an Ansible playbook designed to help you get one or more
