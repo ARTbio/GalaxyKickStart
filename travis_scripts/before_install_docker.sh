@@ -25,12 +25,12 @@ export STANDARD=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
   -v /export/:/export \
   metavisitor`
 docker ps
-export CUSTOM=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
-  --privileged=true \
-  -p 8181:80 \
-  -e NAT_MASQUERADE=true \
-  -e NGINX_GALAXY_LOCATION=/subdir \
-  -v /export2:/export \
-  metavisitor`
-docker ps
+#export CUSTOM=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
+#  --privileged=true \
+#  -p 8181:80 \
+#  -e NAT_MASQUERADE=true \
+#  -e NGINX_GALAXY_LOCATION=/subdir \
+#  -v /export2:/export \
+#  metavisitor`
+#docker ps
 
