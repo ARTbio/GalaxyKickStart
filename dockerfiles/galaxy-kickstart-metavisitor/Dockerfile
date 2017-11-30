@@ -1,4 +1,4 @@
-FROM artbio/galaxykickstart
+FROM artbio/galaxy-kickstart-base
 
 LABEL maintainer="Christophe Antoniewski <drosofff@gmail.com>"
 
