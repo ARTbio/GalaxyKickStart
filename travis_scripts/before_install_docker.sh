@@ -2,7 +2,7 @@
 set -e
 docker --version
 docker info
-pip install -U pip
+# pip install -U pip
 pip --version
 pip install ansible==2.2
 ansible-galaxy install -r requirements_roles.yml -p roles
@@ -15,12 +15,14 @@ docker build -t metavisitor .
 sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
 sudo mkdir /export2 && sudo chown $GALAXY_UID:$GALAXY_GID /export2
 export STANDARD=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
-  -p 80:80 -p 21:21 -p 8800:8800 \
+  -p 8080:80 -p 8021:21 -p 8800:8800 \
   --privileged=true \
   -e GALAXY_CONFIG_ALLOW_USER_DATASET_PURGE=True \
   -e GALAXY_CONFIG_ALLOW_LIBRARY_PATH_PASTE=True \
   -e GALAXY_CONFIG_ENABLE_USER_DELETION=True \
   -e GALAXY_CONFIG_ENABLE_BETA_WORKFLOW_MODULES=True \
+  -v /tmp/:/tmp/ \
+  -v /export/:/export \
   metavisitor`
 docker ps
 export CUSTOM=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
@@ -28,6 +30,7 @@ export CUSTOM=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
   -p 8181:80 \
   -e NAT_MASQUERADE=true \
   -e NGINX_GALAXY_LOCATION=/subdir \
+  -v /export2:/export \
   metavisitor`
 docker ps
 
