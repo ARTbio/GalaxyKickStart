@@ -15,7 +15,7 @@ docker build -t metavisitor .
 sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
 sudo mkdir /export2 && sudo chown $GALAXY_UID:$GALAXY_GID /export2
 export STANDARD=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
-  -p 8080:80 -p 8021:21 -p 8800:8800 \
+  -p 80:80 -p 21:21 -p 8800:8800 \
   --privileged=true \
   -e GALAXY_CONFIG_ALLOW_USER_DATASET_PURGE=True \
   -e GALAXY_CONFIG_ALLOW_LIBRARY_PATH_PASTE=True \
