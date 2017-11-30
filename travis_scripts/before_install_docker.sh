@@ -24,7 +24,6 @@ export STANDARD=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
   -v /tmp/:/tmp/ \
   -v /export/:/export \
   metavisitor`
-docker ps
 #export CUSTOM=`docker run -d --tmpfs /var/run/ --tmpfs /tmp/ \
 #  --privileged=true \
 #  -p 8181:80 \
