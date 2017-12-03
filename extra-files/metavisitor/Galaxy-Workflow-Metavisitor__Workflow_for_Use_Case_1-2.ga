@@ -820,7 +820,7 @@
                 "owner": "galaxyp", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"checks\": \"[{\\\"__index__\\\": 0, \\\"replacement\\\": \\\">Nora_MV\\\", \\\"pattern\\\": \\\">.+\\\"}]\", \"__page__\": null}", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"checks\": \"[{\\\"__index__\\\": 0, \\\"replacement\\\": \\\">Nora_raw_reads\\\", \\\"pattern\\\": \\\">.+\\\"}]\", \"__page__\": null}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "c81173fb-317d-4c00-9da8-f0072b62a569", 
@@ -833,5 +833,5 @@
             ]
         }
     }, 
-    "uuid": "82b8ca6b-1c58-4520-b4c1-d45b4ceb1563"
+    "uuid": "1e024c57-7878-4594-aea1-511ded9c3b4f"
 }
