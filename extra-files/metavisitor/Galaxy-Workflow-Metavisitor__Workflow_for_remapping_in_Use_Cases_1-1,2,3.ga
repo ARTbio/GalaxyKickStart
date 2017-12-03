@@ -2,7 +2,7 @@
     "a_galaxy_workflow": "true", 
     "annotation": "", 
     "format-version": "0.1", 
-    "name": "Metavisitor: Workflow for remapping in Use Cases 1-1,2,3 (imported from API)", 
+    "name": "Metavisitor: Workflow for remapping in Use Cases 1-1,2,3", 
     "steps": {
         "0": {
             "annotation": "", 
