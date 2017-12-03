@@ -23,7 +23,13 @@
             "tool_version": null, 
             "type": "data_collection_input", 
             "uuid": "aa5c2a9c-0f52-4884-9f1c-74432b24af61", 
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "b5da90b2-1c4f-4646-8c70-fc9952f6cb94"
+                }
+            ]
         }, 
         "1": {
             "annotation": "", 
@@ -587,7 +593,12 @@
                     "output_name": "fastaOutput"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool cap3", 
+                    "name": "inputSequences"
+                }
+            ], 
             "label": null, 
             "name": "cap3", 
             "outputs": [
@@ -672,7 +683,7 @@
                 "owner": "artbio", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"overlapidentity\": \"\\\"90\\\"\", \"inputSequences\": \"null\", \"__rerun_remap_job_id__\": null, \"overlaplength\": \"\\\"40\\\"\", \"__page__\": null}", 
+            "tool_state": "{\"overlapidentity\": \"\\\"90\\\"\", \"inputSequences\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"overlaplength\": \"\\\"40\\\"\", \"__page__\": null}", 
             "tool_version": "2.0.0", 
             "type": "tool", 
             "uuid": "bd3f2dd0-b170-433d-b1e8-2b0f303006a7", 
@@ -760,7 +771,20 @@
                     "output_name": "contigsandsinglets"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool blast_to_scaffold", 
+                    "name": "guideSequence"
+                }, 
+                {
+                    "description": "runtime parameter for tool blast_to_scaffold", 
+                    "name": "blast_tab"
+                }, 
+                {
+                    "description": "runtime parameter for tool blast_to_scaffold", 
+                    "name": "sequences"
+                }
+            ], 
             "label": null, 
             "name": "blast_to_scaffold", 
             "outputs": [
@@ -787,7 +811,7 @@
                 "owner": "artbio", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"guideSequence\": \"null\", \"blast_tab\": \"null\", \"__rerun_remap_job_id__\": null, \"sequences\": \"null\"}", 
+            "tool_state": "{\"__page__\": null, \"guideSequence\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"blast_tab\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"sequences\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "7f0913f8-f7f9-4ba3-878c-9c502460331d", 
@@ -823,6 +847,13 @@
                 "top": 914
             }, 
             "post_job_actions": {
+                "ChangeDatatypeActionout_file1": {
+                    "action_arguments": {
+                        "newtype": "fasta"
+                    }, 
+                    "action_type": "ChangeDatatypeAction", 
+                    "output_name": "out_file1"
+                }, 
                 "RenameDatasetActionout_file1": {
                     "action_arguments": {
                         "newname": "Nora_MV_${ncbi_guide_ID}_guided"
@@ -851,5 +882,5 @@
             ]
         }
     }, 
-    "uuid": "ab687a9c-f1ee-4d64-80d4-2ee6d3918269"
+    "uuid": "5fd3e953-891a-43e1-b2d5-caf323eb2697"
 }
