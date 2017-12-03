@@ -2,11 +2,12 @@
     "a_galaxy_workflow": "true", 
     "annotation": "", 
     "format-version": "0.1", 
-    "name": "Metavisitor: Workflow for remapping in Use Cases 2-1,2", 
+    "name": "Metavisitor: Workflow for remapping in Use Cases 2-1,2 (imported from API)", 
     "steps": {
         "0": {
             "annotation": "", 
             "content_id": null, 
+            "errors": null, 
             "id": 0, 
             "input_connections": {}, 
             "inputs": [
@@ -15,14 +16,13 @@
                     "name": "Small Read fastq files"
                 }
             ], 
-            "label": null, 
+            "label": "Small Read fastq files", 
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
-                "left": 199.53128051757812, 
-                "top": 207.51737785339355
+                "left": 199.53125, 
+                "top": 338.515625
             }, 
-            "tool_errors": null, 
             "tool_id": null, 
             "tool_state": "{\"collection_type\": \"list\", \"name\": \"Small Read fastq files\"}", 
             "tool_version": null, 
@@ -39,6 +39,7 @@
         "1": {
             "annotation": "", 
             "content_id": null, 
+            "errors": null, 
             "id": 1, 
             "input_connections": {}, 
             "inputs": [
@@ -47,14 +48,13 @@
                     "name": "AnCV genome"
                 }
             ], 
-            "label": null, 
+            "label": "AnCV genome", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 639.982666015625, 
-                "top": 510.98963737487793
+                "left": 559.96875, 
+                "top": 368.984375
             }, 
-            "tool_errors": null, 
             "tool_id": null, 
             "tool_state": "{\"name\": \"AnCV genome\"}", 
             "tool_version": null, 
@@ -71,6 +71,7 @@
         "2": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/yac_clipper/yac/1.3.6", 
+            "errors": null, 
             "id": 2, 
             "input_connections": {
                 "input": {
@@ -78,7 +79,12 @@
                     "output_name": "output"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Clip adapter", 
+                    "name": "input"
+                }
+            ], 
             "label": null, 
             "name": "Clip adapter", 
             "outputs": [
@@ -88,8 +94,8 @@
                 }
             ], 
             "position": {
-                "left": 387.51739501953125, 
-                "top": 324.53126335144043
+                "left": 387.515625, 
+                "top": 455.53125
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -98,15 +104,14 @@
                     "output_name": "output"
                 }
             }, 
-            "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/yac_clipper/yac/1.3.6", 
             "tool_shed_repository": {
-                "changeset_revision": "91cce7c1436d", 
+                "changeset_revision": "a18edcf9c7ed", 
                 "name": "yac_clipper", 
                 "owner": "drosofff", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"out_format\": \"\\\"fasta\\\"\", \"__page__\": 0, \"min\": \"\\\"18\\\"\", \"max\": \"\\\"30\\\"\", \"__rerun_remap_job_id__\": null, \"clip_source\": \"{\\\"clip_source_list\\\": \\\"prebuilt\\\", \\\"clip_sequence\\\": \\\"TGGAATTCTCGGGTGCCAAG\\\", \\\"__current_case__\\\": 0}\", \"input\": \"null\", \"Nmode\": \"\\\"reject\\\"\"}", 
+            "tool_state": "{\"out_format\": \"\\\"fasta\\\"\", \"__page__\": 0, \"min\": \"\\\"18\\\"\", \"max\": \"\\\"30\\\"\", \"__rerun_remap_job_id__\": null, \"clip_source\": \"{\\\"clip_source_list\\\": \\\"prebuilt\\\", \\\"clip_sequence\\\": \\\"TGGAATTCTCGGGTGCCAAG\\\", \\\"__current_case__\\\": 0}\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"Nmode\": \"\\\"reject\\\"\"}", 
             "tool_version": "1.3.6", 
             "type": "tool", 
             "uuid": "4d773707-d5ed-48c2-b9d2-334f32e2e1f7", 
@@ -115,6 +120,7 @@
         "3": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/mvdbeek/concatenate_multiple_datasets/cat_multiple/0.2", 
+            "errors": null, 
             "id": 3, 
             "input_connections": {
                 "input": {
@@ -122,7 +128,12 @@
                     "output_name": "output"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Concatenate multiple datasets", 
+                    "name": "input"
+                }
+            ], 
             "label": null, 
             "name": "Concatenate multiple datasets", 
             "outputs": [
@@ -132,8 +143,8 @@
                 }
             ], 
             "position": {
-                "left": 552.5173950195312, 
-                "top": 226.5451488494873
+                "left": 521.515625, 
+                "top": 246.53125
             }, 
             "post_job_actions": {
                 "ChangeDatatypeActionout_file1": {
@@ -156,7 +167,6 @@
                     "output_name": "out_file1"
                 }
             }, 
-            "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/mvdbeek/concatenate_multiple_datasets/cat_multiple/0.2", 
             "tool_shed_repository": {
                 "changeset_revision": "201c568972c3", 
@@ -164,7 +174,7 @@
                 "owner": "mvdbeek", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
             "tool_version": "0.2", 
             "type": "tool", 
             "uuid": "c1d6a090-fc9b-4957-a952-4241216e082a", 
@@ -172,7 +182,8 @@
         }, 
         "4": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2.1", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/artbio/sr_bowtie/bowtieForSmallRNA/2.0.1", 
+            "errors": null, 
             "id": 4, 
             "input_connections": {
                 "input": {
@@ -184,9 +195,18 @@
                     "output_name": "output"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool sR_bowtie", 
+                    "name": "input"
+                }, 
+                {
+                    "description": "runtime parameter for tool sR_bowtie", 
+                    "name": "refGenomeSource"
+                }
+            ], 
             "label": null, 
-            "name": "sRbowtie", 
+            "name": "sR_bowtie", 
             "outputs": [
                 {
                     "name": "output", 
@@ -202,8 +222,8 @@
                 }
             ], 
             "position": {
-                "left": 846.545166015625, 
-                "top": 264.53126335144043
+                "left": 848.5, 
+                "top": 200
             }, 
             "post_job_actions": {
                 "HideDatasetActionaligned": {
@@ -222,24 +242,99 @@
                     "output_name": "unaligned"
                 }
             }, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2.1", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/artbio/sr_bowtie/bowtieForSmallRNA/2.0.1", 
             "tool_shed_repository": {
-                "changeset_revision": "615d2550977f", 
-                "name": "msp_sr_bowtie", 
-                "owner": "drosofff", 
+                "changeset_revision": "5f4fbba31b6a", 
+                "name": "sr_bowtie", 
+                "owner": "artbio", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"output_format\": \"\\\"tabular\\\"\", \"additional_fasta\": \"\\\"No\\\"\", \"v_mismatches\": \"\\\"0\\\"\", \"__rerun_remap_job_id__\": null, \"input\": \"null\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"history\\\", \\\"ownFile\\\": null, \\\"__current_case__\\\": 1}\", \"method\": \"\\\"multiple\\\"\"}", 
-            "tool_version": "1.1.2.1", 
+            "tool_state": "{\"__page__\": null, \"output_format\": \"\\\"tabular\\\"\", \"additional_fasta\": \"\\\"No\\\"\", \"v_mismatches\": \"\\\"0\\\"\", \"__rerun_remap_job_id__\": null, \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"history\\\", \\\"ownFile\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"method\": \"\\\"multiple\\\"\"}", 
+            "tool_version": "2.0.1", 
             "type": "tool", 
-            "uuid": "7c3b7910-0490-4b69-ad32-c4ab81d01046", 
+            "uuid": "a87803bc-5d35-429e-9489-3188cfb75917", 
             "workflow_outputs": []
         }, 
         "5": {
             "annotation": "", 
-            "content_id": "wc_gnu", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/artbio/sr_bowtie/bowtieForSmallRNA/2.0.1", 
+            "errors": null, 
             "id": 5, 
+            "input_connections": {
+                "input": {
+                    "id": 3, 
+                    "output_name": "out_file1"
+                }, 
+                "refGenomeSource|ownFile": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool sR_bowtie", 
+                    "name": "input"
+                }, 
+                {
+                    "description": "runtime parameter for tool sR_bowtie", 
+                    "name": "refGenomeSource"
+                }
+            ], 
+            "label": null, 
+            "name": "sR_bowtie", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "aligned", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "unaligned", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 851.5, 
+                "top": 516
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionaligned": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "aligned"
+                }, 
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }, 
+                "HideDatasetActionunaligned": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "unaligned"
+                }
+            }, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/artbio/sr_bowtie/bowtieForSmallRNA/2.0.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "5f4fbba31b6a", 
+                "name": "sr_bowtie", 
+                "owner": "artbio", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"output_format\": \"\\\"bam\\\"\", \"additional_fasta\": \"\\\"No\\\"\", \"v_mismatches\": \"\\\"0\\\"\", \"__rerun_remap_job_id__\": null, \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"history\\\", \\\"ownFile\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"method\": \"\\\"multiple\\\"\"}", 
+            "tool_version": "2.0.1", 
+            "type": "tool", 
+            "uuid": "b8542004-10c2-4a1c-ac21-8afcd3027642", 
+            "workflow_outputs": []
+        }, 
+        "6": {
+            "annotation": "", 
+            "content_id": "wc_gnu", 
+            "errors": null, 
+            "id": 6, 
             "input_connections": {
                 "input1": {
                     "id": 4, 
@@ -256,117 +351,90 @@
                 }
             ], 
             "position": {
-                "left": 1215.5208740234375, 
-                "top": 298.52430534362793
+                "left": 1207.5, 
+                "top": 329
             }, 
             "post_job_actions": {
-                "RenameDatasetActionout_file1": {
-                    "action_arguments": {
-                        "newname": "nbre of remapped reads"
-                    }, 
-                    "action_type": "RenameDatasetAction", 
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
                     "output_name": "out_file1"
                 }
             }, 
-            "tool_errors": null, 
             "tool_id": "wc_gnu", 
-            "tool_state": "{\"__page__\": 0, \"include_header\": \"\\\"true\\\"\", \"input1\": \"null\", \"options\": \"[\\\"lines\\\"]\", \"__rerun_remap_job_id__\": null}", 
+            "tool_state": "{\"__page__\": null, \"include_header\": \"\\\"true\\\"\", \"input1\": \"null\", \"options\": \"[\\\"lines\\\", \\\"words\\\", \\\"characters\\\"]\", \"__rerun_remap_job_id__\": null}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "5967713a-0548-48b9-a675-227ad48b420c", 
-            "workflow_outputs": [
-                {
-                    "label": null, 
-                    "output_name": "out_file1", 
-                    "uuid": "7545c393-0ac1-4c52-b1ba-b34c2ed5462f"
-                }
-            ]
+            "uuid": "2af514d7-4b04-422b-95da-06bd475076aa", 
+            "workflow_outputs": []
         }, 
-        "6": {
+        "7": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_readmap_and_size_histograms/Readmap/1.2.0", 
-            "id": 6, 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/artbio/small_rna_maps/small_rna_maps/2.4.1", 
+            "errors": null, 
+            "id": 7, 
             "input_connections": {
-                "refGenomeSource|ownFile": {
-                    "id": 1, 
-                    "output_name": "output"
-                }, 
-                "refGenomeSource|series_0|input": {
-                    "id": 4, 
+                "inputs": {
+                    "id": 5, 
                     "output_name": "output"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool small_rna_maps", 
+                    "name": "inputs"
+                }
+            ], 
             "label": null, 
-            "name": "Generate readmap and histograms from alignment files", 
+            "name": "small_rna_maps", 
             "outputs": [
                 {
-                    "name": "readmap_dataframe", 
+                    "name": "output_tab", 
                     "type": "tabular"
                 }, 
                 {
-                    "name": "size_distribution_dataframe", 
+                    "name": "extra_output_tab", 
                     "type": "tabular"
                 }, 
                 {
-                    "name": "readmap_PDF", 
-                    "type": "pdf"
-                }, 
-                {
-                    "name": "size_PDF", 
-                    "type": "pdf"
-                }, 
-                {
-                    "name": "combi_PDF", 
+                    "name": "output_pdf", 
                     "type": "pdf"
                 }
             ], 
             "position": {
-                "left": 1204.49658203125, 
-                "top": 412.98612785339355
+                "left": 1172.5, 
+                "top": 672
             }, 
             "post_job_actions": {
-                "HideDatasetActionreadmap_dataframe": {
+                "HideDatasetActionextra_output_tab": {
                     "action_arguments": {}, 
                     "action_type": "HideDatasetAction", 
-                    "output_name": "readmap_dataframe"
+                    "output_name": "extra_output_tab"
                 }, 
-                "HideDatasetActionsize_distribution_dataframe": {
+                "HideDatasetActionoutput_pdf": {
                     "action_arguments": {}, 
                     "action_type": "HideDatasetAction", 
-                    "output_name": "size_distribution_dataframe"
+                    "output_name": "output_pdf"
+                }, 
+                "HideDatasetActionoutput_tab": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_tab"
                 }
             }, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_readmap_and_size_histograms/Readmap/1.2.0", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/artbio/small_rna_maps/small_rna_maps/2.4.1", 
             "tool_shed_repository": {
-                "changeset_revision": "92898cc3ea19", 
-                "name": "msp_sr_readmap_and_size_histograms", 
-                "owner": "drosofff", 
+                "changeset_revision": "c3fb2a864526", 
+                "name": "small_rna_maps", 
+                "owner": "artbio", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"minquery\": \"\\\"18\\\"\", \"__page__\": 0, \"rows_per_page\": \"\\\"8\\\"\", \"yrange\": \"\\\"0\\\"\", \"title\": \"\\\"Readmaps and size distributions\\\"\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"history\\\", \\\"series\\\": [{\\\"__index__\\\": 0, \\\"norm\\\": \\\"1.0\\\", \\\"input\\\": null}], \\\"ownFile\\\": null, \\\"__current_case__\\\": 1}\", \"__rerun_remap_job_id__\": null, \"maxquery\": \"\\\"30\\\"\", \"xlabel\": \"\\\"Coordinates/read size\\\"\", \"ylabel\": \"\\\"Number of reads\\\"\", \"gff\": \"null\"}", 
-            "tool_version": "1.2.0", 
+            "tool_state": "{\"inputs\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__page__\": null, \"__rerun_remap_job_id__\": null, \"minsize\": \"\\\"0\\\"\", \"cluster\": \"\\\"0\\\"\", \"maxsize\": \"\\\"10000\\\"\", \"plots_options\": \"{\\\"extra_plot\\\": \\\"Size\\\", \\\"plots_options_selector\\\": \\\"two_plot\\\", \\\"first_plot\\\": \\\"Counts\\\", \\\"__current_case__\\\": 0}\", \"normalization\": \"\\\"\\\"\"}", 
+            "tool_version": "2.4.1", 
             "type": "tool", 
-            "uuid": "ebaf90ab-b8ea-428f-876c-8f9fabd1fbf9", 
-            "workflow_outputs": [
-                {
-                    "label": null, 
-                    "output_name": "size_PDF", 
-                    "uuid": "28a51c7e-58d9-4728-8ac0-04d252cd5943"
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "combi_PDF", 
-                    "uuid": "f9aaace3-8bdb-4b83-a40b-d6d9a26fd345"
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "readmap_PDF", 
-                    "uuid": "ad51fc18-9cdf-4068-bbee-269801cdbde3"
-                }
-            ]
+            "uuid": "11bc24a9-03a9-4d2a-b941-eaad0b4cdbfe", 
+            "workflow_outputs": []
         }
     }, 
-    "uuid": "e670f707-78ad-4128-8549-8a210c7dcbf1"
+    "uuid": "c34a1d9c-9373-44a8-a871-4a3cb447b6f6"
 }
