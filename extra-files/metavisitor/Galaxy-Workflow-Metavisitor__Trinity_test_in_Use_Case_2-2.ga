@@ -2,7 +2,7 @@
     "a_galaxy_workflow": "true", 
     "annotation": "", 
     "format-version": "0.1", 
-    "name": "Metavisitor: Trinity test in Use Case 2-2 (imported from API)", 
+    "name": "Metavisitor: Trinity test in Use Case 2-2", 
     "steps": {
         "0": {
             "annotation": "", 
