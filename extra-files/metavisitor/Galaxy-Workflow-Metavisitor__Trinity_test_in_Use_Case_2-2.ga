@@ -23,7 +23,13 @@
             "tool_version": null, 
             "type": "data_collection_input", 
             "uuid": "0d87966a-b55d-4640-b836-974f9d10c803", 
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "fd9eb437-3aab-45c5-aed8-c65a0449c090"
+                }
+            ]
         }, 
         "1": {
             "annotation": "", 
@@ -44,7 +50,13 @@
             "tool_version": null, 
             "type": "data_input", 
             "uuid": "5561c9ef-2dbd-49e0-a11f-f023c88ed10d", 
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "3aba6c38-d7f8-491b-90f4-5dbbb4b89ef1"
+                }
+            ]
         }, 
         "2": {
             "annotation": "", 
@@ -165,7 +177,12 @@
                     "output_name": "output_unaligned_reads_l"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FASTQ to FASTA", 
+                    "name": "input_file"
+                }
+            ], 
             "label": null, 
             "name": "FASTQ to FASTA", 
             "outputs": [
@@ -192,7 +209,7 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"input_file\": \"null\"}", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.1.1", 
             "type": "tool", 
             "uuid": "3ec02f8b-a0ef-4ab7-959d-228ea83a0cf3", 
@@ -209,7 +226,12 @@
                     "output_name": "output_file"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Concatenate multiple datasets", 
+                    "name": "input"
+                }
+            ], 
             "label": null, 
             "name": "Concatenate multiple datasets", 
             "outputs": [
@@ -223,6 +245,13 @@
                 "top": 383.5
             }, 
             "post_job_actions": {
+                "ChangeDatatypeActionout_file1": {
+                    "action_arguments": {
+                        "newtype": "fasta"
+                    }, 
+                    "action_type": "ChangeDatatypeAction", 
+                    "output_name": "out_file1"
+                }, 
                 "HideDatasetActionout_file1": {
                     "action_arguments": {}, 
                     "action_type": "HideDatasetAction", 
@@ -236,7 +265,7 @@
                 "owner": "mvdbeek", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"__page__\": null}", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": null}", 
             "tool_version": "0.2", 
             "type": "tool", 
             "uuid": "1852207a-6b57-47fd-b17d-0a96b869b8ff", 
@@ -253,7 +282,12 @@
                     "output_name": "out_file1"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool sequence_format_converter", 
+                    "name": "input"
+                }
+            ], 
             "label": null, 
             "name": "sequence_format_converter", 
             "outputs": [
@@ -280,7 +314,7 @@
                 "owner": "artbio", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"input\": \"null\", \"output_format\": \"\\\"tabular\\\"\", \"__rerun_remap_job_id__\": null, \"__page__\": null}", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"output_format\": \"\\\"tabular\\\"\", \"__rerun_remap_job_id__\": null, \"__page__\": null}", 
             "tool_version": "2.0.0", 
             "type": "tool", 
             "uuid": "da3de908-3d0f-444e-a68e-1ababd7623e4", 
@@ -625,5 +659,5 @@
             ]
         }
     }, 
-    "uuid": "e5f8e807-2d06-46c1-adb7-0d324be8c065"
+    "uuid": "b636826e-a5f3-46b1-8464-d29cc930a7f0"
 }
