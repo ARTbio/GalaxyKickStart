@@ -7,70 +7,49 @@
         "0": {
             "annotation": "", 
             "content_id": null, 
+            "errors": null, 
             "id": 0, 
             "input_connections": {}, 
-            "inputs": [
-                {
-                    "description": "", 
-                    "name": "Input Dataset Collection of fastq reads"
-                }
-            ], 
-            "label": null, 
+            "inputs": [], 
+            "label": "Input Dataset Collection of fastq reads", 
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
-                "left": 136, 
-                "top": 213
+                "left": 144, 
+                "top": 453
             }, 
-            "tool_errors": null, 
             "tool_id": null, 
-            "tool_state": "{\"collection_type\": \"list\", \"name\": \"Input Dataset Collection of fastq reads\"}", 
+            "tool_state": "{\"collection_type\": \"list\"}", 
             "tool_version": null, 
             "type": "data_collection_input", 
-            "uuid": "95c42be8-325b-48dc-b325-c8e8f9bf8720", 
-            "workflow_outputs": [
-                {
-                    "label": null, 
-                    "output_name": "output", 
-                    "uuid": "b0b38a3f-6467-4a79-8e6c-616befcfae74"
-                }
-            ]
+            "uuid": "ed07d831-9b23-4def-b883-f6fe24eb55a0", 
+            "workflow_outputs": []
         }, 
         "1": {
             "annotation": "", 
             "content_id": null, 
+            "errors": null, 
             "id": 1, 
             "input_connections": {}, 
-            "inputs": [
-                {
-                    "description": "", 
-                    "name": "de novo assembled Oases contigs"
-                }
-            ], 
-            "label": null, 
+            "inputs": [], 
+            "label": "de novo assembled Oases contigs", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 134.5, 
-                "top": 401
+                "left": 177, 
+                "top": 603
             }, 
-            "tool_errors": null, 
             "tool_id": null, 
-            "tool_state": "{\"name\": \"de novo assembled Oases contigs\"}", 
+            "tool_state": "{}", 
             "tool_version": null, 
             "type": "data_input", 
-            "uuid": "654820a8-188a-4b01-8e7f-4483c8df585f", 
-            "workflow_outputs": [
-                {
-                    "label": null, 
-                    "output_name": "output", 
-                    "uuid": "4918a4f9-037a-41c8-9881-3f91784b7666"
-                }
-            ]
+            "uuid": "9b24b7ef-5eb5-4c87-9272-42f9f05e109f", 
+            "workflow_outputs": []
         }, 
         "2": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/yac_clipper/yac/1.3.6", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/artbio/yac_clipper/yac/2.0.1", 
+            "errors": null, 
             "id": 2, 
             "input_connections": {
                 "input": {
@@ -89,12 +68,12 @@
             "outputs": [
                 {
                     "name": "output", 
-                    "type": "fasta"
+                    "type": "input"
                 }
             ], 
             "position": {
-                "left": 407.5, 
-                "top": 239
+                "left": 460, 
+                "top": 458
             }, 
             "post_job_actions": {
                 "RenameDatasetActionoutput": {
@@ -105,29 +84,29 @@
                     "output_name": "output"
                 }
             }, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/yac_clipper/yac/1.3.6", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/artbio/yac_clipper/yac/2.0.1", 
             "tool_shed_repository": {
-                "changeset_revision": "a18edcf9c7ed", 
+                "changeset_revision": "7c913274e22a", 
                 "name": "yac_clipper", 
-                "owner": "drosofff", 
+                "owner": "artbio", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"out_format\": \"\\\"fasta\\\"\", \"__page__\": 0, \"min\": \"\\\"18\\\"\", \"max\": \"\\\"30\\\"\", \"__rerun_remap_job_id__\": null, \"clip_source\": \"{\\\"clip_source_list\\\": \\\"prebuilt\\\", \\\"clip_sequence\\\": \\\"TGGAATTCTCGGGTGCCAAG\\\", \\\"__current_case__\\\": 0}\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"Nmode\": \"\\\"reject\\\"\"}", 
-            "tool_version": "1.3.6", 
+            "tool_state": "{\"out_format\": \"\\\"fasta\\\"\", \"__page__\": null, \"min\": \"\\\"18\\\"\", \"max\": \"\\\"30\\\"\", \"__rerun_remap_job_id__\": null, \"clip_source\": \"{\\\"clip_source_list\\\": \\\"prebuilt\\\", \\\"clip_sequence\\\": \\\"TGGAATTCTCGGGTGCCAAG\\\", \\\"__current_case__\\\": 0}\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"Nmode\": \"\\\"reject\\\"\"}", 
+            "tool_version": "2.0.1", 
             "type": "tool", 
-            "uuid": "98bb84f7-1199-4755-80e8-47e4cd8d7229", 
+            "uuid": "a07a6d78-bdd3-4092-b463-c0bd7f796efe", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "output", 
-                    "uuid": "69ef3522-aeb9-4145-a95b-74154c090d35"
+                    "uuid": "890a91ad-07e6-421d-a40f-b75aff18f95b"
                 }
             ]
         }, 
         "3": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fasta_filter_by_length/fasta_filter_by_length/1.1", 
+            "errors": null, 
             "id": 3, 
             "input_connections": {
                 "input": {
@@ -150,8 +129,8 @@
                 }
             ], 
             "position": {
-                "left": 364, 
-                "top": 387
+                "left": 442, 
+                "top": 615
             }, 
             "post_job_actions": {
                 "RenameDatasetActionoutput": {
@@ -162,29 +141,29 @@
                     "output_name": "output"
                 }
             }, 
-            "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fasta_filter_by_length/fasta_filter_by_length/1.1", 
             "tool_shed_repository": {
-                "changeset_revision": "c8cd0a03db49", 
+                "changeset_revision": "2fd6033d0e9c", 
                 "name": "fasta_filter_by_length", 
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"max_length\": \"\\\"0\\\"\", \"min_length\": \"\\\"300\\\"\"}", 
+            "tool_state": "{\"__page__\": null, \"min_length\": \"\\\"300\\\"\", \"__rerun_remap_job_id__\": null, \"max_length\": \"\\\"0\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.1", 
             "type": "tool", 
-            "uuid": "a66d2ce5-bb0a-433c-b8ea-ea612128ee09", 
+            "uuid": "88093ee6-2279-4398-8350-6c0e6f59720c", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "output", 
-                    "uuid": "cfc01174-02dc-457e-a178-493cef1813ea"
+                    "uuid": "7eaafc91-9c84-4307-bbff-6ad629170bdc"
                 }
             ]
         }, 
         "4": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/mvdbeek/concatenate_multiple_datasets/cat_multiple/0.2", 
+            "errors": null, 
             "id": 4, 
             "input_connections": {
                 "input": {
@@ -207,8 +186,8 @@
                 }
             ], 
             "position": {
-                "left": 627, 
-                "top": 247
+                "left": 715, 
+                "top": 449
             }, 
             "post_job_actions": {
                 "RenameDatasetActionout_file1": {
@@ -219,7 +198,6 @@
                     "output_name": "out_file1"
                 }
             }, 
-            "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/mvdbeek/concatenate_multiple_datasets/cat_multiple/0.2", 
             "tool_shed_repository": {
                 "changeset_revision": "201c568972c3", 
@@ -227,21 +205,22 @@
                 "owner": "mvdbeek", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": null}", 
             "tool_version": "0.2", 
             "type": "tool", 
-            "uuid": "c54ed9da-2b31-413b-94fc-3ebf21295d50", 
+            "uuid": "8e314f46-59d7-49fb-b207-bedbb6641796", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "out_file1", 
-                    "uuid": "308b80b9-5d82-4d46-865b-233498602a8a"
+                    "uuid": "822a62e7-ca19-47e1-8f51-9568276c4e05"
                 }
             ]
         }, 
         "5": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/jjohnson/regex_find_replace/regex1/0.1.0", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.0", 
+            "errors": null, 
             "id": 5, 
             "input_connections": {
                 "input": {
@@ -264,8 +243,8 @@
                 }
             ], 
             "position": {
-                "left": 649, 
-                "top": 381
+                "left": 715, 
+                "top": 607
             }, 
             "post_job_actions": {
                 "RenameDatasetActionout_file1": {
@@ -276,29 +255,29 @@
                     "output_name": "out_file1"
                 }
             }, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/jjohnson/regex_find_replace/regex1/0.1.0", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.0", 
             "tool_shed_repository": {
-                "changeset_revision": "9ea374bb0350", 
+                "changeset_revision": "209b7c5ee9d7", 
                 "name": "regex_find_replace", 
-                "owner": "jjohnson", 
+                "owner": "galaxyp", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"checks\": \"[{\\\"__index__\\\": 0, \\\"replacement\\\": \\\"\\\", \\\"pattern\\\": \\\"_Confidence_.+\\\"}]\", \"__page__\": 0}", 
-            "tool_version": "0.1.0", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"checks\": \"[{\\\"__index__\\\": 0, \\\"replacement\\\": \\\"\\\", \\\"pattern\\\": \\\"_Confidence_.+\\\"}]\", \"__page__\": null}", 
+            "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "4fd98d0b-2ffc-4636-b0dc-c52882a0bb70", 
+            "uuid": "a069c8db-14ef-4708-89be-3a5d5a926498", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "out_file1", 
-                    "uuid": "1d62f8d5-96b9-437b-96ef-51c809eeec5c"
+                    "uuid": "fa095644-f7e0-4c44-a555-4d24f8fddc85"
                 }
             ]
         }, 
         "6": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2.1", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/artbio/sr_bowtie/bowtieForSmallRNA/2.0.1", 
+            "errors": null, 
             "id": 6, 
             "input_connections": {
                 "input": {
@@ -312,16 +291,16 @@
             }, 
             "inputs": [
                 {
-                    "description": "runtime parameter for tool sRbowtie", 
+                    "description": "runtime parameter for tool sR_bowtie", 
                     "name": "input"
                 }, 
                 {
-                    "description": "runtime parameter for tool sRbowtie", 
+                    "description": "runtime parameter for tool sR_bowtie", 
                     "name": "refGenomeSource"
                 }
             ], 
             "label": null, 
-            "name": "sRbowtie", 
+            "name": "sR_bowtie", 
             "outputs": [
                 {
                     "name": "output", 
@@ -337,8 +316,8 @@
                 }
             ], 
             "position": {
-                "left": 942.5, 
-                "top": 287
+                "left": 1028, 
+                "top": 508
             }, 
             "post_job_actions": {
                 "HideDatasetActionaligned": {
@@ -352,120 +331,93 @@
                     "output_name": "unaligned"
                 }
             }, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_bowtie/bowtieForSmallRNA/1.1.2.1", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/artbio/sr_bowtie/bowtieForSmallRNA/2.0.1", 
             "tool_shed_repository": {
-                "changeset_revision": "615d2550977f", 
-                "name": "msp_sr_bowtie", 
-                "owner": "drosofff", 
+                "changeset_revision": "5f4fbba31b6a", 
+                "name": "sr_bowtie", 
+                "owner": "artbio", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"output_format\": \"\\\"tabular\\\"\", \"additional_fasta\": \"\\\"No\\\"\", \"v_mismatches\": \"\\\"0\\\"\", \"__rerun_remap_job_id__\": null, \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"history\\\", \\\"ownFile\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"method\": \"\\\"a_option\\\"\"}", 
-            "tool_version": "1.1.2.1", 
+            "tool_state": "{\"__page__\": null, \"output_format\": \"\\\"tabular\\\"\", \"additional_fasta\": \"\\\"No\\\"\", \"v_mismatches\": \"\\\"0\\\"\", \"__rerun_remap_job_id__\": null, \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"history\\\", \\\"ownFile\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"method\": \"\\\"a_option\\\"\"}", 
+            "tool_version": "2.0.1", 
             "type": "tool", 
-            "uuid": "b4d59da2-94c7-4607-8c51-6287b9dd6e6c", 
+            "uuid": "596e4e70-e6ed-4890-9992-35c508ea14b2", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "output", 
-                    "uuid": "400d7592-b9b5-4c70-ba7f-058c656bd305"
+                    "uuid": "ec0227e2-aced-497f-908a-6205185a3c66"
                 }
             ]
         }, 
         "7": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_readmap_and_size_histograms/Readmap/1.2.0", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/artbio/small_rna_maps/small_rna_maps/2.4.1", 
+            "errors": null, 
             "id": 7, 
             "input_connections": {
-                "refGenomeSource|ownFile": {
-                    "id": 5, 
-                    "output_name": "out_file1"
-                }, 
-                "refGenomeSource|series_0|input": {
+                "inputs": {
                     "id": 6, 
                     "output_name": "output"
                 }
             }, 
             "inputs": [
                 {
-                    "description": "runtime parameter for tool Generate readmap and histograms from alignment files", 
-                    "name": "gff"
-                }, 
-                {
-                    "description": "runtime parameter for tool Generate readmap and histograms from alignment files", 
-                    "name": "refGenomeSource"
+                    "description": "runtime parameter for tool small_rna_maps", 
+                    "name": "inputs"
                 }
             ], 
             "label": null, 
-            "name": "Generate readmap and histograms from alignment files", 
+            "name": "small_rna_maps", 
             "outputs": [
                 {
-                    "name": "readmap_dataframe", 
+                    "name": "output_tab", 
                     "type": "tabular"
                 }, 
                 {
-                    "name": "size_distribution_dataframe", 
+                    "name": "extra_output_tab", 
                     "type": "tabular"
                 }, 
                 {
-                    "name": "readmap_PDF", 
-                    "type": "pdf"
-                }, 
-                {
-                    "name": "size_PDF", 
-                    "type": "pdf"
-                }, 
-                {
-                    "name": "combi_PDF", 
+                    "name": "output_pdf", 
                     "type": "pdf"
                 }
             ], 
             "position": {
-                "left": 1243.5, 
-                "top": 273
+                "left": 1341.5, 
+                "top": 550
             }, 
             "post_job_actions": {
-                "HideDatasetActionreadmap_dataframe": {
+                "HideDatasetActionextra_output_tab": {
                     "action_arguments": {}, 
                     "action_type": "HideDatasetAction", 
-                    "output_name": "readmap_dataframe"
+                    "output_name": "extra_output_tab"
                 }, 
-                "HideDatasetActionsize_distribution_dataframe": {
+                "HideDatasetActionoutput_tab": {
                     "action_arguments": {}, 
                     "action_type": "HideDatasetAction", 
-                    "output_name": "size_distribution_dataframe"
+                    "output_name": "output_tab"
                 }
             }, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/drosofff/msp_sr_readmap_and_size_histograms/Readmap/1.2.0", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/artbio/small_rna_maps/small_rna_maps/2.4.1", 
             "tool_shed_repository": {
-                "changeset_revision": "92898cc3ea19", 
-                "name": "msp_sr_readmap_and_size_histograms", 
-                "owner": "drosofff", 
+                "changeset_revision": "c3fb2a864526", 
+                "name": "small_rna_maps", 
+                "owner": "artbio", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"minquery\": \"\\\"18\\\"\", \"__page__\": 0, \"rows_per_page\": \"\\\"8\\\"\", \"yrange\": \"\\\"0\\\"\", \"title\": \"\\\"Readmaps and size distributions\\\"\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"history\\\", \\\"series\\\": [{\\\"__index__\\\": 0, \\\"norm\\\": \\\"1.0\\\", \\\"input\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}], \\\"ownFile\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"__rerun_remap_job_id__\": null, \"maxquery\": \"\\\"30\\\"\", \"xlabel\": \"\\\"Coordinates/read size\\\"\", \"ylabel\": \"\\\"Number of reads\\\"\", \"gff\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
-            "tool_version": "1.2.0", 
+            "tool_state": "{\"inputs\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__page__\": null, \"__rerun_remap_job_id__\": null, \"minsize\": \"\\\"18\\\"\", \"cluster\": \"\\\"0\\\"\", \"maxsize\": \"\\\"30\\\"\", \"plots_options\": \"{\\\"extra_plot\\\": \\\"Size\\\", \\\"plots_options_selector\\\": \\\"two_plot\\\", \\\"first_plot\\\": \\\"Counts\\\", \\\"__current_case__\\\": 0}\", \"normalization\": \"\\\"1.0\\\"\"}", 
+            "tool_version": "2.4.1", 
             "type": "tool", 
-            "uuid": "87f9f9b5-5c71-465b-9422-c0696a3048a5", 
+            "uuid": "8a3f699b-2ca0-43c4-8fe4-a72b9fbe93f2", 
             "workflow_outputs": [
                 {
                     "label": null, 
-                    "output_name": "size_PDF", 
-                    "uuid": "91fa9c78-72dd-41e8-9937-c4b44682f79b"
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "combi_PDF", 
-                    "uuid": "68f021f3-087b-4f77-813f-74fa61877a0e"
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "readmap_PDF", 
-                    "uuid": "70966192-62e8-4dff-99b1-3f5dc8de8c28"
+                    "output_name": "output_pdf", 
+                    "uuid": "f6d14b30-b408-401e-8deb-b41a643f1cdb"
                 }
             ]
         }
     }, 
-    "uuid": "c3853e65-8d66-47fc-aad9-6a40f5517622"
+    "uuid": "b1265edc-4d32-4a48-ae4d-1ea357266a42"
 }
