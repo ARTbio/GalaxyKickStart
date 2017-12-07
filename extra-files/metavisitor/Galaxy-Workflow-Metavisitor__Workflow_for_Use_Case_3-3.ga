@@ -91,6 +91,13 @@
                     "action_arguments": {}, 
                     "action_type": "HideDatasetAction", 
                     "output_name": "outfile"
+                }, 
+                "RenameDatasetActionoutfile": {
+                    "action_arguments": {
+                        "newname": "${reference_virus}"
+                    }, 
+                    "action_type": "RenameDatasetAction", 
+                    "output_name": "outfile"
                 }
             }, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/artbio/fetch_fasta_from_ncbi/retrieve_fasta_from_NCBI/2.3.0", 
@@ -406,7 +413,15 @@
                 "left": 1217, 
                 "top": 746
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "RenameDatasetActionoutput1": {
+                    "action_arguments": {
+                        "newname": "blastN of oases contigs"
+                    }, 
+                    "action_type": "RenameDatasetAction", 
+                    "output_name": "output1"
+                }
+            }, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/0.2.01", 
             "tool_shed_repository": {
                 "changeset_revision": "6f386c5dc4fb", 
@@ -545,7 +560,15 @@
                 "left": 1838.5, 
                 "top": 449.5
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "RenameDatasetActionout_file1": {
+                    "action_arguments": {
+                        "newname": "Global report for ${target_virus}"
+                    }, 
+                    "action_type": "RenameDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/mvdbeek/concatenate_multiple_datasets/cat_multiple/0.2", 
             "tool_shed_repository": {
                 "changeset_revision": "201c568972c3", 
@@ -717,9 +740,11 @@
                 "top": 745.5
             }, 
             "post_job_actions": {
-                "HideDatasetActionout_file1": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
+                "RenameDatasetActionout_file1": {
+                    "action_arguments": {
+                        "newname": "Genome Reconstruction guided by ${reference_virus}"
+                    }, 
+                    "action_type": "RenameDatasetAction", 
                     "output_name": "out_file1"
                 }
             }, 
@@ -734,8 +759,14 @@
             "tool_version": "0.2", 
             "type": "tool", 
             "uuid": "6fb432ab-642f-4a5b-8dbe-816a0dbae410", 
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "out_file1", 
+                    "uuid": "ffac6c33-ef99-4199-8db9-83da4bfa378d"
+                }
+            ]
         }
     }, 
-    "uuid": "5c60c0e5-71d2-4f80-bc7a-3917686d0561"
+    "uuid": "3c095eb9-08d1-4103-80b2-3d64ea9fd8d2"
 }
