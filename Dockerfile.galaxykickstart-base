@@ -1,6 +1,7 @@
 FROM artbio/ansible-galaxy-os
 
-MAINTAINER Marius van den Beek <m.vandenbeek@gmail.com>
+LABEL multi.maintainer_1="Marius van den Beek <m.vandenbeek@gmail.com>"	\
+      multi.maintainer_2="Christophe Antoniewski <drosofff@gmail.com>"
 
 RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
     \

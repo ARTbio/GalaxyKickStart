@@ -1,0 +1,6 @@
+tools:
+- name: justdiff
+  owner: artbio
+  revisions:
+    - 9299a59defda
+  tool_panel_section_label: 'GalaxyKickStart'
