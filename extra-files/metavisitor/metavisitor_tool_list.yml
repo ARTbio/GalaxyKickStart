@@ -175,7 +175,7 @@ tools:
 - name: trinity
   owner: iuc
   revisions:
-  - 32b86cd8eb50
+  - d3b1249af60c
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
