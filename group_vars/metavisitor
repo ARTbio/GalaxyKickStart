@@ -1,5 +1,9 @@
 galaxy_tools_tool_list_files:
   - "extra-files/metavisitor/metavisitor_tool_list.yml"
+
+galaxy_tools_install_data_managers: yes
+galaxy_tools_data_managers_list: "extra-files/metavisitor/metavisitor_run_data_managers.yaml"
+
 galaxy_tools_workflows:
   - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_remapping_in_Use_Cases_1-1,2,3.ga"
   - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_remapping_in_Use_Cases_2-1,2.ga"
