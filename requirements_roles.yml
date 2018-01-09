@@ -16,8 +16,11 @@
 - src: https://github.com/galaxyproject/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
 
-- src: https://github.com/galaxyproject/ansible-galaxy-tools.git
-  name: galaxyprojectdotorg.galaxy-tools
+#- src: https://github.com/galaxyproject/ansible-galaxy-tools.git
+#  name: galaxyprojectdotorg.galaxy-tools
 
+- src: https://github.com/ARTbio/ansible-galaxy-tools.git
+  name: galaxyprojectdotorg.galaxy-tools
+  version: dev
 - src: https://github.com/uchida/ansible-miniconda-role.git
   name: miniconda-role
