@@ -1,27 +1,11 @@
 tools:
-- name: data_manager_bowtie_index_builder
-  owner: iuc
-  revisions:
-  - 86e9af693a33
-  tool_panel_section_label: null
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-  install_tool_dependencies: False
+
+- name: data_manager_sam_fasta_index_builder
+  owner: devteam
 
 - name: data_manager_fetch_genome_dbkeys_all_fasta
   owner: devteam
-  revisions:
-  - b1bc53e9bbc5
   tool_panel_section_label: null
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-  install_tool_dependencies: False
-
-- name: sr_bowtie
-  owner: artbio
-  revisions:
-  - 5f4fbba31b6a
-  tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
   install_tool_dependencies: False
