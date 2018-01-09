@@ -3,7 +3,7 @@ set -e
 docker --version
 docker info
 pip --version
-pip install ansible==2.2
+pip install ansible
 ansible-galaxy install -r requirements_roles.yml -p roles
 mv extra-files/metavisitor/metavisitor_tool_list.yml.fortestonly extra-files/metavisitor/metavisitor_tool_list.yml
 sudo groupadd -r $GALAXY_TRAVIS_USER -g $GALAXY_GID
