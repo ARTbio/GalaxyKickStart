@@ -92,6 +92,7 @@ galaxy_config:
     allow_library_path_paste: True
     tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     static_enabled: False
+    watch_tool_data_dir = True
     nginx_upload_store: "{{ nginx_upload_store_path }}"
     use_pbkdf2: "{{ use_pbkdf2 }}"
     len_file_path: "{{ galaxy_config_dir }}/len"
