@@ -1,87 +1,45 @@
 # configuration for fetch and index genomes
 
 genomes:
-    - accession: NC_001617.1
-      name: RhinoVirus A (NC_001617.1)
-      id: RhinoVirusA
-    - accession: AC_000007.1
-      name: Human adenovirus 2 (AC_000007.1)
-      id: HumAdeno2
-    - accession: KF039736.1
-      name: Norovirus Hu/GI.1/CHA7A011/2010/USA
-      id: NoroVirCHA7A011
+    - accession: dm6
+      name: Drosophila melanogaster Release 6
+      id: dm6
 
 
 data_managers:
     # Data manager ID
 
-    - id: toolshed.g2.bx.psu.edu/repos/devteam/data_manager_fetch_genome_dbkeys_all_fasta/data_manager_fetch_genome_all_fasta_dbkey/0.0.2
+    - id: fetch_genome_all_fasta_dbkeys
       params:
         - 'dbkey_source|dbkey_source_selector': 'new'
         - 'dbkey_source|dbkey': '{{ item.id }}'
         - 'dbkey_source|dbkey_name': '{{ item.name }}'
         - 'sequence_name': '{{ item.name }}'
         - 'sequence_id': '{{ item.id }}'
-        - 'reference_source|reference_source_selector': 'ncbi'
+        - 'reference_source|reference_source_selector': 'ucsc'
         - 'reference_source|requested_identifier': '{{ item.accession }}'
       items: "{{ genomes }}"
       data_table_reload:
         - all_fasta
         - __dbkeys__
 
-    - id: sam_fasta_index_builder
+    - id: bowtie_index_builder
       params:
         - 'all_fasta_source': '{{ item.id }}'
         - 'sequence_name': '{{ item.name }}'
         - 'sequence_id': '{{ item.id }}'
       items: "{{ genomes }}"
       data_table_reload:
-        - fasta_indexes
-#    - id: toolshed.g2.bx.psu.edu/repos/devteam/data_manager_fetch_genome_dbkeys_all_fasta/data_manager_fetch_genome_all_fasta_dbkey/0.0.2
-#      # tool parameters, nested parameters should be specified using a pipe (|)
-#      params:
-#        - 'dbkey_source|dbkey': '{{ item }}'
-#        - 'reference_source|reference_source_selector': 'ucsc'
-#        - 'reference_source|requested_dbkey': '{{ item }}'
-#      # Items refere to a list of variables you want to run this data manager. You can use them inside the param field with {{ item }}
-#      # In case of genome for example you can run this DM with multiple genomes, or you could give multiple URLs.
-#      items:
-#        - dm6
-        #- mm9
-      # Name of the data-tables you want to reload after your DM are finished. This can be important for subsequent data managers
-#      data_table_reload:
-#        - all_fasta
-#        - __dbkeys__
-
-#    - id: toolshed.g2.bx.psu.edu/repos/iuc/data_manager_bowtie_index_builder/bowtie_index_builder_data_manager/1.2.0
-#      params:
-#        - 'all_fasta_source': '{{ item.id }}'
-#        - 'sequence_name': '{{ item.name }}'
-#        - 'sequence_id': '{{ item.id }}'
-#      items:
-#        - id: dm6
-#          name: D. melanogaster Aug. 2014 (BDGP r6/dm6)
-#        - id: mm9
-#          name: M. musculus July 2007 (NCBI37/mm9)
-#      data_table_reload:
-#        # Bowtie creates indices for Bowtie and TopHat
-#        - bowtie_indexes
-
+        # Bowtie creates indices for Bowtie and TopHat
+        - bowtie_indexes
 
       
-#    - id: toolshed.g2.bx.psu.edu/repos/devteam/data_manager_bowtie2_index_builder/bowtie2_index_builder_data_manager/2.2.6
-#      params:
-#        - 'all_fasta_source': '{{ item.id }}'
-#        - 'sequence_name': '{{ item.name }}'
-#        - 'sequence_id': '{{ item.id }}'
-#      items:
-#        - id: ce8
-#          name: C. elegans (ce8)
-#        - id: dm3
-#          name: D. melanogaster Apr. 2006 (BDGP r5/dm3)
-#        - id: mm9
-#          name: M. musculus July 2007 (NCBI37/mm9)
-#      data_table_reload:
-#        # Bowtie creates indices for Bowtie and TopHat
-#        - bowtie2_indexes
-#        - tophat2_indexes
+    - id: bowtie2_index_builder
+      params:
+        - 'all_fasta_source': '{{ item.id }}'
+        - 'sequence_name': '{{ item.name }}'
+        - 'sequence_id': '{{ item.id }}'
+      items: "{{ genomes }}"
+      data_table_reload:
+        # Bowtie creates indices for Bowtie and TopHat
+        - bowtie2_indexes
