@@ -1,8 +1,8 @@
 galaxy_tools_tool_list_files:
   - "extra-files/metavisitor/metavisitor_tool_list.yml"
 
-galaxy_restart_handler_enabled: yes
-galaxy_tools_install_data_managers: yes
+galaxy_restart_handler_enabled: no
+galaxy_tools_install_data_managers: no
 galaxy_tools_data_managers_list: "extra-files/metavisitor/metavisitor_run_data_managers.yaml"
 
 galaxy_tools_workflows:
