@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 sleep 60s
-docker logs $STANDARD
+docker logs standard
 docker ps
 curl --fail $BIOBLEND_GALAXY_URL/api/version
 docker exec -it $STANDARD supervisorctl status

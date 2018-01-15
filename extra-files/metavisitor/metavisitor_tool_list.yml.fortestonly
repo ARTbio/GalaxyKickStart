@@ -1,65 +1,10 @@
 tools:
-- name: blast_to_scaffold
-  owner: artbio
-  revisions:
-  - 7d96b28eec49
-  tool_panel_section_label: Metavisitor
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
-- name: cherry_pick_fasta
-  owner: artbio
-  revisions:
-  - e3aee4ba49c6
-  tool_panel_section_label: Metavisitor
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: concatenate_multiple_datasets
-  owner: mvdbeek
-  revisions:
-  - 201c568972c3
-  tool_panel_section_label: Metavisitor
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: fasta_filter_by_length
+- name: data_manager_fetch_genome_dbkeys_all_fasta
   owner: devteam
-  revisions:
-  - 2fd6033d0e9c
-  tool_panel_section_label: Metavisitor
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
-- name: fastqtofasta
+- name: data_manager_bowtie_index_builder
+  owner: iuc
+
+- name: data_manager_bowtie2_index_builder
   owner: devteam
-  revisions:
-  - 4844c1810c16
-  tool_panel_section_label: Metavisitor
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-  install_resolver_dependencies: True
-  install_tool_dependencies: False
-
-- name: fetch_fasta_from_ncbi
-  owner: artbio
-  revisions:
-  - c667d0ee39f5
-  tool_panel_section_label: Metavisitor
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: blastparser_and_hits
-  owner: artbio
-  revisions:
-  - 9dfb65ebb02e
-  tool_panel_section_label: Metavisitor
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: sequence_format_converter
-  owner: artbio
-  revisions:
-  - a8aacccd79a3
-  tool_panel_section_label: Metavisitor
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: yac_clipper
-  owner: artbio
-  revisions:
-  - 7c913274e22a
-  tool_panel_section_label: Metavisitor
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
