@@ -1,0 +1,383 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "getting vir1 and clustering", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/drosofff/fetch_fasta_from_ncbi/retrieve_fasta_from_NCBI/1.0.0", 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Retrieve FASTA from NCBI", 
+            "outputs": [
+                {
+                    "name": "outfilename", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "logfile", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 200, 
+                "top": 345
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/drosofff/fetch_fasta_from_ncbi/retrieve_fasta_from_NCBI/1.0.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "639daa4c3c1a", 
+                "name": "fetch_fasta_from_ncbi", 
+                "owner": "drosofff", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"queryString\": \"\\\"txid10239[Organism] NOT txid131567[Organism] NOT phage[All Fields] NOT patent[All Fields] NOT unverified[Title] NOT chimeric[Title] NOT vector[Title] NOT method[Title] AND 301:10000[Sequence length]\\\"\", \"dbname\": \"\\\"nuccore\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "c19cd98f-e682-4c93-ba41-7cbc8a2ab48d", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/drosofff/fetch_fasta_from_ncbi/retrieve_fasta_from_NCBI/1.0.0", 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Retrieve FASTA from NCBI", 
+            "outputs": [
+                {
+                    "name": "outfilename", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "logfile", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 568, 
+                "top": 868
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/drosofff/fetch_fasta_from_ncbi/retrieve_fasta_from_NCBI/1.0.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "639daa4c3c1a", 
+                "name": "fetch_fasta_from_ncbi", 
+                "owner": "drosofff", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"queryString\": \"\\\"txid10239[Organism] NOT txid131567[Organism] NOT phage[All Fields] NOT patent[All Fields] NOT unverified[Title] NOT chimeric[Title] NOT vector[Title] NOT method[Title] AND 10001:1300000[Sequence length]\\\"\", \"dbname\": \"\\\"nuccore\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "8fa49a61-6934-464b-8084-675183f4ca0f", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fasta_filter_by_length/fasta_filter_by_length/1.1", 
+            "id": 2, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "outfilename"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Filter sequences by length", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Filter sequences by length", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 516, 
+                "top": 299
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fasta_filter_by_length/fasta_filter_by_length/1.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "16679a7f554a", 
+                "name": "fasta_filter_by_length", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"max_length\": \"\\\"10000\\\"\", \"min_length\": \"\\\"300\\\"\"}", 
+            "tool_version": "1.1", 
+            "type": "tool", 
+            "uuid": "341883d6-35c5-459c-a6be-a1bac68bf658", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fasta_filter_by_length/fasta_filter_by_length/1.1", 
+            "id": 3, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "outfilename"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Filter sequences by length", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Filter sequences by length", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 557, 
+                "top": 727
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fasta_filter_by_length/fasta_filter_by_length/1.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "16679a7f554a", 
+                "name": "fasta_filter_by_length", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"max_length\": \"\\\"0\\\"\", \"min_length\": \"\\\"10001\\\"\"}", 
+            "tool_version": "1.1", 
+            "type": "tool", 
+            "uuid": "991d8c67-4a15-4273-af52-3773f4896d7b", 
+            "workflow_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/vsearch/vsearch_clustering/1.9.7.0", 
+            "id": 4, 
+            "input_connections": {
+                "infile": {
+                    "id": 2, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool VSearch clustering", 
+                    "name": "infile"
+                }
+            ], 
+            "label": null, 
+            "name": "VSearch clustering", 
+            "outputs": [
+                {
+                    "name": "msaout", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "consout", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "centroids", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "alnout", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "notmatched", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "matched", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "blast6out", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "fastapairs", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "uc_outfile", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 816.5, 
+                "top": 293
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/vsearch/vsearch_clustering/1.9.7.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "4258854759ba", 
+                "name": "vsearch", 
+                "owner": "iuc", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"sizein\": \"\\\"false\\\"\", \"cons_truncate\": \"\\\"false\\\"\", \"__page__\": 0, \"maxrejects\": \"\\\"32\\\"\", \"usersort\": \"\\\"false\\\"\", \"qmask\": \"\\\"dust\\\"\", \"iddef\": \"\\\"2\\\"\", \"__rerun_remap_job_id__\": null, \"clustering_mode\": \"{\\\"clustering_mode_select\\\": \\\"cluster_fast\\\", \\\"__current_case__\\\": 0}\", \"id\": \"\\\"0.95\\\"\", \"sizeout\": \"\\\"false\\\"\", \"strand\": \"\\\"plus\\\"\", \"outputs\": \"[\\\"--centroids\\\"]\", \"maxaccepts\": \"\\\"1\\\"\", \"infile\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"uc\": \"\\\"false\\\"\"}", 
+            "tool_version": "1.9.7.0", 
+            "type": "tool", 
+            "uuid": "6fddbef5-bc89-4574-a0cf-335aee053e4c", 
+            "workflow_outputs": []
+        }, 
+        "5": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fasta_compute_length/fasta_compute_length/1.0.0", 
+            "id": 5, 
+            "input_connections": {
+                "input": {
+                    "id": 4, 
+                    "output_name": "centroids"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Compute sequence length", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Compute sequence length", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 1092, 
+                "top": 279
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fasta_compute_length/fasta_compute_length/1.0.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "d8cc2c8eef14", 
+                "name": "fasta_compute_length", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"keep_first\": \"\\\"0\\\"\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "eadb711e-4c25-4364-885c-5ef54f226797", 
+            "workflow_outputs": []
+        }, 
+        "6": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/mvdbeek/concatenate_multiple_datasets/cat_multiple/0.2", 
+            "id": 6, 
+            "input_connections": {
+                "input": [
+                    {
+                        "id": 1, 
+                        "output_name": "outfilename"
+                    }, 
+                    {
+                        "id": 3, 
+                        "output_name": "output"
+                    }, 
+                    {
+                        "id": 4, 
+                        "output_name": "centroids"
+                    }
+                ]
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Concatenate multiple datasets", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Concatenate multiple datasets", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 1084, 
+                "top": 751
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/mvdbeek/concatenate_multiple_datasets/cat_multiple/0.2", 
+            "tool_shed_repository": {
+                "changeset_revision": "201c568972c3", 
+                "name": "concatenate_multiple_datasets", 
+                "owner": "mvdbeek", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_version": "0.2", 
+            "type": "tool", 
+            "uuid": "7774e0ec-ce7a-44c9-93e8-20a42a9007a6", 
+            "workflow_outputs": []
+        }, 
+        "7": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/histogram/histogram_rpy/1.0.3", 
+            "id": 7, 
+            "input_connections": {
+                "input": {
+                    "id": 5, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Histogram", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Histogram", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "pdf"
+                }
+            ], 
+            "position": {
+                "left": 1391, 
+                "top": 321
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/histogram/histogram_rpy/1.0.3", 
+            "tool_shed_repository": {
+                "changeset_revision": "cdb9e89e2970", 
+                "name": "histogram", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"xlab\": \"\\\"Centroids length\\\"\", \"title\": \"\\\"Centroids length distribution \\\"\", \"__page__\": 0, \"density\": \"\\\"true\\\"\", \"breaks\": \"\\\"50\\\"\", \"numerical_column\": \"\\\"2\\\"\", \"frequency\": \"\\\"true\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "1.0.3", 
+            "type": "tool", 
+            "uuid": "21b07aa6-23b8-42b1-97f3-0758dc5c2534", 
+            "workflow_outputs": []
+        }
+    }, 
+    "uuid": "aa14f041-3783-4459-ac98-0cd4411785ab"
+}
