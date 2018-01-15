@@ -1,0 +1,45 @@
+# configuration for fetch and index genomes
+
+genomes:
+    - accession: dm6
+      name: Drosophila melanogaster Release 6
+      id: dm6
+
+
+data_managers:
+    # Data manager ID
+
+    - id: fetch_genome_all_fasta_dbkeys
+      params:
+        - 'dbkey_source|dbkey_source_selector': 'new'
+        - 'dbkey_source|dbkey': '{{ item.id }}'
+        - 'dbkey_source|dbkey_name': '{{ item.name }}'
+        - 'sequence_name': '{{ item.name }}'
+        - 'sequence_id': '{{ item.id }}'
+        - 'reference_source|reference_source_selector': 'ucsc'
+        - 'reference_source|requested_identifier': '{{ item.accession }}'
+      items: "{{ genomes }}"
+      data_table_reload:
+        - all_fasta
+        - __dbkeys__
+
+    - id: bowtie_index_builder
+      params:
+        - 'all_fasta_source': '{{ item.id }}'
+        - 'sequence_name': '{{ item.name }}'
+        - 'sequence_id': '{{ item.id }}'
+      items: "{{ genomes }}"
+      data_table_reload:
+        # Bowtie creates indices for Bowtie and TopHat
+        - bowtie_indexes
+
+      
+    - id: bowtie2_index_builder
+      params:
+        - 'all_fasta_source': '{{ item.id }}'
+        - 'sequence_name': '{{ item.name }}'
+        - 'sequence_id': '{{ item.id }}'
+      items: "{{ genomes }}"
+      data_table_reload:
+        # Bowtie creates indices for Bowtie and TopHat
+        - bowtie2_indexes
