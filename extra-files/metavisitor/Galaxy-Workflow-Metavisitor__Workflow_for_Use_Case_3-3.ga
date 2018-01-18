@@ -2,7 +2,7 @@
     "a_galaxy_workflow": "true", 
     "annotation": "", 
     "format-version": "0.1", 
-    "name": "Metavisitor: Workflow for Use Case 3-3", 
+    "name": "Metavisitor: Workflow for Use Case 3-3 old bowtie2", 
     "steps": {
         "0": {
             "annotation": "", 
@@ -115,7 +115,7 @@
         }, 
         "3": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.3.1", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.2.2", 
             "errors": null, 
             "id": 3, 
             "input_connections": {
@@ -208,15 +208,15 @@
                     "output_name": "output_unaligned_reads_r"
                 }
             }, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.3.1", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.2.2", 
             "tool_shed_repository": {
-                "changeset_revision": "121110a12cc9", 
+                "changeset_revision": "66f992977578", 
                 "name": "bowtie2", 
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"library\": \"{\\\"aligned_file\\\": \\\"true\\\", \\\"unaligned_file\\\": \\\"false\\\", \\\"type\\\": \\\"single\\\", \\\"__current_case__\\\": 0, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"reference_genome\": \"{\\\"source\\\": \\\"indexed\\\", \\\"__current_case__\\\": 0, \\\"index\\\": \\\"vir1\\\"}\", \"rg\": \"{\\\"rg_selector\\\": \\\"do_not_set\\\", \\\"__current_case__\\\": 3}\", \"save_mapping_stats\": \"\\\"false\\\"\", \"analysis_type\": \"{\\\"alignment_options\\\": {\\\"__current_case__\\\": 1, \\\"alignment_options_selector\\\": \\\"no\\\"}, \\\"effort_options\\\": {\\\"effort_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"sam_options\\\": {\\\"sam_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"other_options\\\": {\\\"other_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"analysis_type_selector\\\": \\\"full\\\", \\\"reporting_options\\\": {\\\"k\\\": \\\"1\\\", \\\"reporting_options_selector\\\": \\\"k\\\", \\\"__current_case__\\\": 1}, \\\"__current_case__\\\": 1, \\\"sam_opt\\\": \\\"true\\\", \\\"input_options\\\": {\\\"input_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}}\"}", 
-            "tool_version": "2.3.3.1", 
+            "tool_version": "2.3.2.2", 
             "type": "tool", 
             "uuid": "4d9c2aaa-0ae3-4c56-b055-303ae68dd839", 
             "workflow_outputs": []
@@ -768,5 +768,5 @@
             ]
         }
     }, 
-    "uuid": "3c095eb9-08d1-4103-80b2-3d64ea9fd8d2"
+    "uuid": "e04e98ab-fdc2-4e1d-b66d-80499f9932f5"
 }
