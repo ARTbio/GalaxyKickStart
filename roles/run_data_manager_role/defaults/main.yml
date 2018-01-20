@@ -1,0 +1,28 @@
+gks_run_data_managers: yes
+
+# A URL or an IP address for the Galaxy instance where the tools are to be
+# installed
+galaxy_tools_galaxy_instance_url: http://127.0.0.1:8080
+
+# A yml file that lists the data-managers and genomes to be installed
+# see `files/tool_list.yaml.sample`
+gks_data_managers_list: "run_data_managers_list.yaml"
+
+# A system path from where this role will be run
+galaxy_tools_base_dir: /tmp
+
+# Set this to yes and change galaxy_tools_api_key to a string to create a predefined api key for the bootstrap user.
+galaxy_tools_admin_user_preset_api_key: no
+
+# Blank variable to make sure it's defined
+galaxy_tools_api_key: ''
+
+# User name for the system galaxy user
+galaxy_user_name: galaxy
+
+# A system path where a virtualenv for Galaxy is installed
+galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
+
+# A system path for Galaxy's main configuration file
+galaxy_config_file: "{{ galaxy_server_dir }}/config/galaxy.ini"
+
