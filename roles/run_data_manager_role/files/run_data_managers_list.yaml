@@ -19,21 +19,21 @@ data_managers:
         - all_fasta
         - __dbkeys__
 
-#    - id: toolshed.g2.bx.psu.edu/repos/devteam/data_manager_bowtie2_index_builder/bowtie2_index_builder_data_manager/2.2.6
-#      params:
-#        - 'all_fasta_source': '{{ item.id }}'
-#        - 'sequence_name': '{{ item.name }}'
-#        - 'sequence_id': '{{ item.id }}'
-#      items:
-#        - id: ce8
-#          name: C. elegans (ce8)
+    - id: toolshed.g2.bx.psu.edu/repos/devteam/data_manager_bowtie2_index_builder/bowtie2_index_builder_data_manager/2.2.6
+      params:
+        - 'all_fasta_source': '{{ item.id }}'
+        - 'sequence_name': '{{ item.name }}'
+        - 'sequence_id': '{{ item.id }}'
+      items:
+        - id: ce6
+          name: C. elegans (ce6)
 #        - id: dm3
 #          name: D. melanogaster Apr. 2006 (BDGP r5/dm3)
 #        - id: mm9
 #          name: M. musculus July 2007 (NCBI37/mm9)
-#      data_table_reload:
-#        # Bowtie creates indices for Bowtie and TopHat
-#        - bowtie2_indexes
+      data_table_reload:
+        # Bowtie creates indices for Bowtie and TopHat
+        - bowtie2_indexes
 #        - tophat2_indexesimac-chris:run_data_manager_role
 
 
