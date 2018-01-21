@@ -19,7 +19,7 @@ data_managers:
         - all_fasta
         - __dbkeys__
 
-    - id: toolshed.g2.bx.psu.edu/repos/devteam/data_manager_bowtie2_index_builder/bowtie2_index_builder_data_manager/2.2.6
+    - id: toolshed.g2.bx.psu.edu/repos/devteam/data_manager_bowtie2_index_builder/bowtie2_index_builder_data_manager/2.3.0
       params:
         - 'all_fasta_source': '{{ item.id }}'
         - 'sequence_name': '{{ item.name }}'
