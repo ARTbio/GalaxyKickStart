@@ -184,7 +184,7 @@ tools:
 - name: spades
   owner: nml
   revisions:
-    - 9006e5836729
+  - 9006e5836729
   tool_panel_section_label: Metavisitor
   install_resolver_dependencies: True
   install_tool_dependencies: False
@@ -195,3 +195,12 @@ tools:
   - 7c913274e22a
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: vsearch_clustering
+  owner: iuc
+  revisions:
+  - 576963db5f1b
+  tool_panel_section_label: Metavisitor
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
