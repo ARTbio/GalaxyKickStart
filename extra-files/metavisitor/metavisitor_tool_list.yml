@@ -2,14 +2,14 @@ tools:
 - name: blast_to_scaffold
   owner: artbio
   revisions:
-  - 7d96b28eec49
+    - 7d96b28eec49
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: bowtie2
   owner: devteam
   revisions:
-  - 121110a12cc9
+    - 121110a12cc9
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -18,21 +18,21 @@ tools:
 - name: cherry_pick_fasta
   owner: artbio
   revisions:
-  - e3aee4ba49c6
+    - e3aee4ba49c6
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: concatenate_multiple_datasets
   owner: mvdbeek
   revisions:
-  - 201c568972c3
+    - 201c568972c3
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: data_manager_bowtie2_index_builder
   owner: devteam
   revisions:
-  - 83da94c0e4a6
+    - 83da94c0e4a6
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -41,7 +41,7 @@ tools:
 - name: data_manager_bowtie_index_builder
   owner: iuc
   revisions:
-  - 86e9af693a33
+    - 86e9af693a33
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -50,7 +50,7 @@ tools:
 - name: data_manager_fetch_genome_dbkeys_all_fasta
   owner: devteam
   revisions:
-  - b1bc53e9bbc5
+    - b1bc53e9bbc5
   tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -59,14 +59,14 @@ tools:
 - name: fasta_filter_by_length
   owner: devteam
   revisions:
-  - 2fd6033d0e9c
+    - 2fd6033d0e9c
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: fastqtofasta
   owner: devteam
   revisions:
-  - 4844c1810c16
+    - 4844c1810c16
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -75,7 +75,7 @@ tools:
 - name: fastx_trimmer
   owner: devteam
   revisions:
-  - 377ac2829eac
+    - 377ac2829eac
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -84,14 +84,14 @@ tools:
 - name: fetch_fasta_from_ncbi
   owner: artbio
   revisions:
-  - c667d0ee39f5
+    - c667d0ee39f5
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: khmer_normalize_by_median
   owner: iuc
   revisions:
-  - f0290a079720
+    - f0290a079720
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -100,14 +100,14 @@ tools:
 - name: blastparser_and_hits
   owner: artbio
   revisions:
-  - 9dfb65ebb02e
+    - 9dfb65ebb02e
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: cap3
   owner: artbio
   revisions:
-  - d76a0d8a9eac
+    - d76a0d8a9eac
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -116,14 +116,14 @@ tools:
 - name: sequence_format_converter
   owner: artbio
   revisions:
-  - a8aacccd79a3
+    - a8aacccd79a3
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: oases
   owner: artbio
   revisions:
-  - f7dd852c8f4c
+    - f7dd852c8f4c
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -132,7 +132,7 @@ tools:
 - name: sr_bowtie
   owner: artbio
   revisions:
-  - 5f4fbba31b6a
+    - 5f4fbba31b6a
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -141,7 +141,7 @@ tools:
 - name: small_rna_maps
   owner: artbio
   revisions:
-  - c3fb2a864526
+    - c3fb2a864526
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -150,7 +150,7 @@ tools:
 - name: ncbi_blast_plus
   owner: devteam
   revisions:
-  - 6f386c5dc4fb
+    - 6f386c5dc4fb
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -159,14 +159,14 @@ tools:
 - name: regex_find_replace
   owner: galaxyp
   revisions:
-  - 209b7c5ee9d7
+    - 209b7c5ee9d7
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: sra_tools
   owner: iuc
   revisions:
-  - 8c00bc7fd8de
+    - 8c00bc7fd8de
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -175,7 +175,7 @@ tools:
 - name: trinity
   owner: iuc
   revisions:
-  - d3b1249af60c
+    - d3b1249af60c
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
   install_resolver_dependencies: True
@@ -192,6 +192,42 @@ tools:
 - name: yac_clipper
   owner: artbio
   revisions:
-  - 7c913274e22a
+    - 7c913274e22a
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: vsearch
+  owner: iuc
+  revisions:
+    - 576963db5f1b
+  tool_panel_section_label: Metavisitor
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
+
+- name: blast_unmatched
+  owner: artbio
+  revisions:
+    - fffdb903f2d1
+  tool_panel_section_label: Metavisitor
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
+
+- name: fasta_compute_length
+  owner: devteam
+  revisions:
+    - de2db1bdfbf8
+  tool_panel_section_label: Metavisitor
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
+
+- name: histogram
+  owner: devteam
+  revisions:
+    - cdb9e89e2970
+  tool_panel_section_label: Metavisitor
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+  install_resolver_dependencies: True
+  install_tool_dependencies: False
