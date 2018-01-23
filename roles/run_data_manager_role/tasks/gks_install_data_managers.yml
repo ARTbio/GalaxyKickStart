@@ -1,0 +1,32 @@
+- name: Restart Supervisorctl Galaxy
+  supervisorctl: name="galaxy:" state=restarted
+  ignore_errors: yes
+  become: yes
+  become_user: root
+
+- pause:
+    seconds: 5
+
+- name: Create/invoke script virtualenv
+  pip: name={{ item }} virtualenv={{ galaxy_tools_base_dir }}/venv virtualenv_command="{{ pip_virtualenv_command | default( 'virtualenv' ) }}"
+  with_items:
+    - ephemeris==0.8.0  # Pinned version should make sure ephemeris version matches what the role has been tested with
+    - bioblend==0.10.0
+
+- name: Copy galaxy_tools_data_managers_list in venv
+  copy: src="{{ gks_data_managers_list }}" dest="{{ galaxy_tools_base_dir }}/venv/bin/data_managers_list.yaml"
+
+- name: Install Data-managers and Genomes
+  command: '{{ galaxy_tools_base_dir }}/venv/bin/run-data-managers -a "{{ galaxy_tools_api_key }}" -g "{{ galaxy_tools_galaxy_instance_url }}" --config "{{ galaxy_tools_base_dir }}/venv/bin/data_managers_list.yaml" '
+  register: install_result
+  changed_when: "install_result.stderr.find('Failed jobs: 0') != -1"
+  failed_when: "(install_result.stderr.find('Tool not found or not accessible') != -1) or not(install_result.stderr.find('Failed jobs: 0') != -1) or (install_result.rc != 0)"
+  ignore_errors: "{{ galaxy_tools_ignore_errors }}"
+#  notify:  # may have to notify something
+#    - ansible-galaxy-tools restart galaxy
+
+- name: Display data_managers results
+  debug:
+    msg:
+      - "{{ install_result.stderr }}"
+      - "{{ install_result.stdout }}"

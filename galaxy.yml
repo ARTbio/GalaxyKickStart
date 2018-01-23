@@ -96,6 +96,11 @@
       become_user: "{{ galaxy_user_name }}"
       tags: install_tools
 
+    - role: run_data_manager_role
+      tags:
+        - install_data_managers
+      when: gks_run_data_managers
+
   post_tasks:
     - name: Clean apt cache to recover some disk space
       shell: apt-get clean

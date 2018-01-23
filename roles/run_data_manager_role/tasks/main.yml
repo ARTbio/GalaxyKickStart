@@ -1,0 +1,2 @@
+- include: gks_install_data_managers.yml
+  when: gks_run_data_managers
