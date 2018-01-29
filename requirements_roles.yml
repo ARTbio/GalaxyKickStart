@@ -10,8 +10,9 @@
 - src: https://github.com/galaxyproject/ansible-galaxy.git
   name: galaxyprojectdotorg.galaxy
 
-- src: https://github.com/galaxyproject/ansible-galaxy-extras.git
+- src: https://github.com/ARTbio/ansible-galaxy-extras.git
   name: galaxyprojectdotorg.galaxy-extras
+  version: nginx_downloads
 
 - src: https://github.com/galaxyproject/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
