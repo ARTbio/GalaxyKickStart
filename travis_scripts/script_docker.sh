@@ -3,9 +3,10 @@ set -e
 echo -e "sleeping 120s, zzzzzz"
 sleep 120s
 # docker logs $CID2
-export $BIOBLEND_GALAXY_URL="http://localhost:8080/subdir"
+#export $BIOBLEND_GALAXY_URL="http://localhost:8080/subdir"
 curl http://localhost:8181/subdir/api/version| grep version_major
 sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
+  export $BIOBLEND_GALAXY_URL=http://localhost:8080/subdir &&
   cd $GALAXY_HOME &&
   bioblend-galaxy-tests -v $GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy*.py"
 curl --fail $BIOBLEND_GALAXY_URL/api/version
