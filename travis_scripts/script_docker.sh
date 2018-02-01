@@ -3,7 +3,7 @@ set -e
 echo -e "sleeping 120s, zzzzzz"
 sleep 120s
 # docker logs $CID2
-export $BIOBLEND_GALAXY_URL="http://localhost:8181/subdir/"
+export BIOBLEND_GALAXY_URL="http://localhost:8181/subdir/"
 curl http://localhost:8181/subdir/api/version| grep version_major
 sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
   cd $GALAXY_HOME &&
