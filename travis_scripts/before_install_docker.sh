@@ -14,9 +14,11 @@ sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
 sudo mkdir /export2 && sudo chown $GALAXY_UID:$GALAXY_GID /export2
 export CID1=`docker run -d --privileged=true -p 8181:80 \
   -e NAT_MASQUERADE=true \
-  -e NGINX_GALAXY_LOCATION=/subdir/ \
+  -e NGINX_GALAXY_LOCATION=/subdir \
   -v /export2:/export \
+  -v /tmp/:/tmp/ \
   galaxy_kickstart`
+
 export CID2=`docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
   --privileged=true \
   -e GALAXY_CONFIG_ALLOW_USER_DATASET_PURGE=True \
