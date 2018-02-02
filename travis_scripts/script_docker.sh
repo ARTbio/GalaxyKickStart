@@ -11,7 +11,7 @@ sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
 curl --fail ${BIOBLEND_GALAXY_URL}api/version
 date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 
-echo -e "Testing CID2 $CID2"
+echo -e "\nTesting CID2 $CID2\n"
 curl http://localhost:8080/api/version | grep version_major
 date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 curl --fail ftp://localhost:8021 --user $GALAXY_USER:$GALAXY_USER_PASSWD
