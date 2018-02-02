@@ -2,8 +2,9 @@
 set -e
 echo -e "sleeping 120s, zzzzzz"
 sleep 120s
+docker logs $CID1
 echo -e "Testing CID1 $CID1"
-curl http://localhost/subdir/api/version| grep version_major
+curl http://localhost:80/subdir/api/version| grep version_major
 sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
   cd $GALAXY_HOME &&
   bioblend-galaxy-tests -v $GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy*.py"
