@@ -2,7 +2,7 @@
     "a_galaxy_workflow": "true", 
     "annotation": "", 
     "format-version": "0.1", 
-    "name": "Metavisitor: Workflow for Use Case 3-3", 
+    "name": "Fix Metavisitor: Workflow for Use Case 3-3", 
     "steps": {
         "0": {
             "annotation": "", 
@@ -78,8 +78,8 @@
                 }
             ], 
             "position": {
-                "left": 1449.5, 
-                "top": 899.5
+                "left": 1256.5, 
+                "top": 961.5
             }, 
             "post_job_actions": {
                 "HideDatasetActionlogfile": {
@@ -115,7 +115,7 @@
         }, 
         "3": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.2.2", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.4", 
             "errors": null, 
             "id": 3, 
             "input_connections": {
@@ -208,15 +208,15 @@
                     "output_name": "output_unaligned_reads_r"
                 }
             }, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.2.2", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.4", 
             "tool_shed_repository": {
-                "changeset_revision": "66f992977578", 
+                "changeset_revision": "97d1923c8c4b", 
                 "name": "bowtie2", 
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"library\": \"{\\\"aligned_file\\\": \\\"true\\\", \\\"unaligned_file\\\": \\\"false\\\", \\\"type\\\": \\\"single\\\", \\\"__current_case__\\\": 0, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"reference_genome\": \"{\\\"source\\\": \\\"indexed\\\", \\\"__current_case__\\\": 0, \\\"index\\\": \\\"vir1\\\"}\", \"rg\": \"{\\\"rg_selector\\\": \\\"do_not_set\\\", \\\"__current_case__\\\": 3}\", \"save_mapping_stats\": \"\\\"false\\\"\", \"analysis_type\": \"{\\\"alignment_options\\\": {\\\"__current_case__\\\": 1, \\\"alignment_options_selector\\\": \\\"no\\\"}, \\\"effort_options\\\": {\\\"effort_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"sam_options\\\": {\\\"sam_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"other_options\\\": {\\\"other_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}, \\\"analysis_type_selector\\\": \\\"full\\\", \\\"reporting_options\\\": {\\\"k\\\": \\\"1\\\", \\\"reporting_options_selector\\\": \\\"k\\\", \\\"__current_case__\\\": 1}, \\\"__current_case__\\\": 1, \\\"sam_opt\\\": \\\"true\\\", \\\"input_options\\\": {\\\"input_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}}\"}", 
-            "tool_version": "2.3.2.2", 
+            "tool_version": "2.3.4", 
             "type": "tool", 
             "uuid": "4d9c2aaa-0ae3-4c56-b055-303ae68dd839", 
             "workflow_outputs": []
@@ -251,8 +251,8 @@
                 }
             ], 
             "position": {
-                "left": 1496, 
-                "top": 1037.5
+                "left": 1585, 
+                "top": 804.5
             }, 
             "post_job_actions": {}, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.2.01", 
@@ -276,55 +276,60 @@
         }, 
         "5": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/trinity/trinity/2.4.0.0", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/anmoljh/trinityrnaseq/trinityrnaseq/r20140717", 
             "errors": null, 
             "id": 5, 
             "input_connections": {
                 "inputs|input": {
                     "id": 3, 
-                    "output_name": "output_unaligned_reads_l"
+                    "output_name": "output_aligned_reads_l"
                 }
             }, 
             "inputs": [
                 {
                     "description": "runtime parameter for tool Trinity", 
                     "name": "inputs"
-                }, 
-                {
-                    "description": "runtime parameter for tool Trinity", 
-                    "name": "additional_params"
                 }
             ], 
             "label": null, 
             "name": "Trinity", 
             "outputs": [
                 {
+                    "name": "trinity_log", 
+                    "type": "txt"
+                }, 
+                {
                     "name": "assembled_transcripts", 
                     "type": "fasta"
                 }
             ], 
             "position": {
-                "left": 789.5, 
-                "top": 386
+                "left": 802, 
+                "top": 372
             }, 
             "post_job_actions": {
                 "HideDatasetActionassembled_transcripts": {
                     "action_arguments": {}, 
                     "action_type": "HideDatasetAction", 
                     "output_name": "assembled_transcripts"
+                }, 
+                "HideDatasetActiontrinity_log": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "trinity_log"
                 }
             }, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/trinity/trinity/2.4.0.0", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/anmoljh/trinityrnaseq/trinityrnaseq/r20140717", 
             "tool_shed_repository": {
-                "changeset_revision": "32b86cd8eb50", 
-                "name": "trinity", 
-                "owner": "iuc", 
+                "changeset_revision": "0a576a57a9eb", 
+                "name": "trinityrnaseq", 
+                "owner": "anmoljh", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"inputs\": \"{\\\"paired_or_single\\\": \\\"single\\\", \\\"input\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"strand\\\": {\\\"is_strand_specific\\\": \\\"false\\\", \\\"__current_case__\\\": 0}, \\\"__current_case__\\\": 1}\", \"__rerun_remap_job_id__\": null, \"additional_params\": \"{\\\"guided\\\": {\\\"__current_case__\\\": 0, \\\"is_guided\\\": \\\"no\\\"}, \\\"min_kmer_cov\\\": \\\"1\\\", \\\"long_reads\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"min_contig_length\\\": \\\"200\\\"}\", \"norm\": \"\\\"false\\\"\", \"__page__\": null}", 
-            "tool_version": "2.4.0.0", 
+            "tool_state": "{\"__page__\": null, \"additional_params\": \"{\\\"use_additional\\\": \\\"no\\\", \\\"__current_case__\\\": 0}\", \"inputs\": \"{\\\"paired_or_single\\\": \\\"single\\\", \\\"input\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"path_reinforcement_distance\\\": \\\"40\\\", \\\"__current_case__\\\": 1, \\\"library_type\\\": \\\"None\\\"}\", \"__rerun_remap_job_id__\": null, \"JM\": \"\\\"1G\\\"\", \"CPU\": \"\\\"2\\\"\"}", 
+            "tool_version": "r20140717", 
             "type": "tool", 
-            "uuid": "b6384203-b330-4337-9469-6d1df38aeaec", 
+            "uuid": "e9cc2108-d327-4823-b018-d980560dc695", 
             "workflow_outputs": []
         }, 
         "6": {
@@ -353,8 +358,8 @@
                 }
             ], 
             "position": {
-                "left": 1025.5, 
-                "top": 577
+                "left": 1053.5, 
+                "top": 498
             }, 
             "post_job_actions": {
                 "HideDatasetActionout_file1": {
@@ -622,8 +627,8 @@
                 }
             ], 
             "position": {
-                "left": 1890, 
-                "top": 994.5
+                "left": 1908, 
+                "top": 573.5
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput1": {
@@ -687,8 +692,8 @@
                 }
             ], 
             "position": {
-                "left": 2139, 
-                "top": 636.5
+                "left": 2179, 
+                "top": 776.5
             }, 
             "post_job_actions": {}, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/artbio/blast_to_scaffold/blast2scaffold/1.0.0", 
@@ -768,5 +773,5 @@
             ]
         }
     }, 
-    "uuid": "e04e98ab-fdc2-4e1d-b66d-80499f9932f5"
+    "uuid": "9ece9108-a8fb-44e8-939e-4f68332b2fce"
 }
