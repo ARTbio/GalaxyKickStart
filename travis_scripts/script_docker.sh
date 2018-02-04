@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
-echo -e "sleeping 120s, zzzzzz"
-sleep 120s
+echo -e "sleeping 180s, tools install zzzzzz"
+sleep 180s
 docker logs $CID1
 echo -e "Testing CID1 $CID1"
 curl http://localhost:80/subdir/api/version| grep version_major
