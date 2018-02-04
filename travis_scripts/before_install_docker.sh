@@ -9,7 +9,7 @@ sudo useradd -u $GALAXY_UID -r -g $GALAXY_TRAVIS_USER -d $GALAXY_HOME -p travis_
   -c "Galaxy user" $GALAXY_TRAVIS_USER
 sudo mkdir $GALAXY_HOME
 sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
-docker build -t galaxy_kickstart -f Dockerfile.noinstalltool .
+docker build -t metavisitor -f Dockerfile.test .
 sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
 sudo mkdir /export2 && sudo chown $GALAXY_UID:$GALAXY_GID /export2
 export CID1=`docker run -d --privileged=true -p 80:80 -p 21:21\
@@ -17,7 +17,7 @@ export CID1=`docker run -d --privileged=true -p 80:80 -p 21:21\
   -e NGINX_GALAXY_LOCATION=/subdir \
   -v /export:/export \
   -v /tmp/:/tmp/ \
-  galaxy_kickstart`
+  metavisitor`
 
 export CID2=`docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
   --privileged=true \
@@ -27,6 +27,7 @@ export CID2=`docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
   -e GALAXY_CONFIG_ENABLE_BETA_WORKFLOW_MODULES=True \
   -v /tmp/:/tmp/ \
   -v /export2/:/export \
-  galaxy_kickstart`
+  metavisitor`
+
 docker ps
 
