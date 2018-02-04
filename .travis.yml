@@ -31,7 +31,7 @@ matrix:
     - python: 2.7
       env:
         - TRAVIS_JOB=docker-build
-        - BIOBLEND_GALAXY_URL="http://localhost:8080"
+        - BIOBLEND_GALAXY_URL="http://localhost:80/subdir/"
       
 before_install:
   - if [ "$TRAVIS_JOB" = "ansible-test" ]; then . ./travis_scripts/before_install_ansible.sh; fi
