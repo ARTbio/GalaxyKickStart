@@ -2,7 +2,7 @@
     "a_galaxy_workflow": "true", 
     "annotation": "", 
     "format-version": "0.1", 
-    "name": "Fix Metavisitor: Workflow for Use Case 3-3", 
+    "name": "Metavisitor: Workflow for Use Case 3-3", 
     "steps": {
         "0": {
             "annotation": "", 
