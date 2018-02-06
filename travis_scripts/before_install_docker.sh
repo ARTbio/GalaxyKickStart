@@ -12,11 +12,15 @@ sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
 docker build -t metavisitor -f Dockerfile.test .
 sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
 sudo mkdir /export2 && sudo chown $GALAXY_UID:$GALAXY_GID /export2
-export CID1=`docker run -d --privileged=true -p 80:80 -p 21:21\
-  -e NAT_MASQUERADE=true \
+export CID1=`docker run -d -p 80:80 -p 21:21 -p 8800:8800 \
+  --privileged=true \
+  -e GALAXY_CONFIG_ALLOW_USER_DATASET_PURGE=True \
+  -e GALAXY_CONFIG_ALLOW_LIBRARY_PATH_PASTE=True \
+  -e GALAXY_CONFIG_ENABLE_USER_DELETION=True \
+  -e GALAXY_CONFIG_ENABLE_BETA_WORKFLOW_MODULES=True \
   -e NGINX_GALAXY_LOCATION=/subdir \
-  -v /export:/export \
   -v /tmp/:/tmp/ \
+  -v /export:/export \
   metavisitor`
 
 docker ps
