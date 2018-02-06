@@ -7,5 +7,5 @@ WORKDIR /setup
 RUN ansible-galaxy install -r requirements_roles.yml -p roles -f && \
     ansible-playbook -i inventory_files/docker -c local galaxy.yml && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
+ENV NGINX_GALAXY_LOCATION=""
 CMD ["/startup.sh", "/setup/inventory_files/docker"]
