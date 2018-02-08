@@ -9,6 +9,8 @@ sudo useradd -u $GALAXY_UID -r -g $GALAXY_TRAVIS_USER -d $GALAXY_HOME -p travis_
   -c "Galaxy user" $GALAXY_TRAVIS_USER
 sudo mkdir $GALAXY_HOME
 sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
+echo "Pulling quietly artbio/galaxykickstart docker image\n"
+travis_wait docker pull artbio/galaxykickstart
 docker build -t metavisitor -f Dockerfile.test .
 sudo mkdir /export && sudo chown $GALAXY_UID:$GALAXY_GID /export
 sudo mkdir /export2 && sudo chown $GALAXY_UID:$GALAXY_GID /export2
