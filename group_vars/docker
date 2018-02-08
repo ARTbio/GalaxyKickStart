@@ -1,0 +1,31 @@
+galaxy_tools_tool_list_files:
+  - "extra-files/docker/metavisitor_docker_tool_list.yml"
+galaxy_web_processes: 2
+galaxy_handler_processes: 4
+postgres_user_uid: 1550
+postgres_user_gid: 1550
+install_apparmor: false
+
+galaxy_restart_handler_enabled: no
+galaxy_tools_install_data_managers: no
+galaxy_tools_data_managers_list: "extra-files/metavisitor/metavisitor_run_data_managers.yaml"
+
+galaxy_tools_workflows:
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_remapping_in_Use_Cases_1-1,2,3.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_remapping_in_Use_Cases_2-1,2.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_1-1.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_1-2.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_1-3.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_1-4.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_2-1.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_2-2.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_3-1.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_3-2.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_Use_Case_3-3.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Workflow_for_small_RNA_profiling_of_contigs.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Trinity_test_in_Use_Case_2-2.ga"
+  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor__Spades_test_in_Use_Case_2-2.ga"
+
+additional_files_list:
+  - { src: "extra-files/metavisitor/logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
