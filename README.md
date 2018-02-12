@@ -6,7 +6,7 @@ Use this branch to build a Galaxy [Metavisitor](https://github.com/ARTbio/Metavi
 Instance.
 A corresponding Docker container may be pull by
 ```
-docker pull artbio/metavisitor-1.2
+docker pull artbio/metavisitor-2.0
 ```
 
 ## GalaxyKickStart
