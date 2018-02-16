@@ -100,7 +100,7 @@ tools:
 - name: blastparser_and_hits
   owner: artbio
   revisions:
-    - 9dfb65ebb02e
+    - 9beb85dba280
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
@@ -116,7 +116,7 @@ tools:
 - name: sequence_format_converter
   owner: artbio
   revisions:
-    - a8aacccd79a3
+    - 9ce7ccd468aa
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
