@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -e
 docker exec -it $CID1 service --status-all
-echo "sleeping 120s, moving data to /export directory zzzzzz"
-sleep 120s
+echo "sleeping 180s, moving data to /export directory zzzzzz"
+sleep 180s
+docker exec -it $CID1 supervisorctl status
 docker logs $CID1
 echo -e "Testing CID1 $CID1"
 curl http://localhost:80/subdir/api/version| grep version_major
