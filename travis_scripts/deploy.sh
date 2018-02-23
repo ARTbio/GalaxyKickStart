@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
+set -e
 
-if [ "$TRAVIS_JOB" = "ansible-test" ] && [ "$TRAVIS_EVENT_TYPE" = "pull_request"]; then
+if [ $TRAVIS_JOB = "ansible-test" ] && [ $TRAVIS_EVENT_TYPE = "pull_request"]; then
     echo "Deploy mkdocs"
     SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd -P)"
     sudo pip install mkdocs
