@@ -18,6 +18,8 @@
 
 - name: Install Data-managers and Genomes
   command: '{{ galaxy_tools_base_dir }}/venv/bin/run-data-managers -a "{{ galaxy_tools_api_key }}" -g "{{ galaxy_tools_galaxy_instance_url }}" --config "{{ galaxy_tools_base_dir }}/venv/bin/data_managers_list.yaml" '
+  become: yes
+  become_user: root
   register: install_result
   changed_when: "install_result.stderr.find('Failed jobs: 0') != -1"
   failed_when: "(install_result.stderr.find('Tool not found or not accessible') != -1) or not(install_result.stderr.find('Failed jobs: 0') != -1) or (install_result.rc != 0)"
