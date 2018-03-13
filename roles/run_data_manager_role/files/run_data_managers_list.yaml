@@ -1,3 +1,4 @@
+
 # configuration for fetch and index genomes
 
 data_managers:
@@ -11,9 +12,7 @@ data_managers:
       # Items refere to a list of variables you want to run this data manager. You can use them inside the param field with {{ item }}
       # In case of genome for example you can run this DM with multiple genomes, or you could give multiple URLs.
       items:
-        - ce6
-        #- dm3
-        #- mm9
+        - sacCer3
       # Name of the data-tables you want to reload after your DM are finished. This can be important for subsequent data managers
       data_table_reload:
         - all_fasta
@@ -25,15 +24,10 @@ data_managers:
         - 'sequence_name': '{{ item.name }}'
         - 'sequence_id': '{{ item.id }}'
       items:
-        - id: ce6
-          name: C. elegans (ce6)
-#        - id: dm3
-#          name: D. melanogaster Apr. 2006 (BDGP r5/dm3)
-#        - id: mm9
-#          name: M. musculus July 2007 (NCBI37/mm9)
+        - id: sacCer3
+          name: S. cerevisiae (sacCer3)
       data_table_reload:
         # Bowtie creates indices for Bowtie and TopHat
         - bowtie2_indexes
-#        - tophat2_indexesimac-chris:run_data_manager_role
 
 
