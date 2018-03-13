@@ -16,7 +16,6 @@ export CID1=`docker run -d --privileged=true -p 80:80 -p 21:21\
   -e NAT_MASQUERADE=true \
   -e NGINX_GALAXY_LOCATION=/subdir \
   -v /export:/export \
-  -v /tmp/:/tmp/ \
   galaxy_kickstart`
 
 export CID2=`docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
@@ -25,8 +24,8 @@ export CID2=`docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
   -e GALAXY_CONFIG_ALLOW_LIBRARY_PATH_PASTE=True \
   -e GALAXY_CONFIG_ENABLE_USER_DELETION=True \
   -e GALAXY_CONFIG_ENABLE_BETA_WORKFLOW_MODULES=True \
-  -v /tmp/:/tmp/ \
   -v /export2/:/export \
   galaxy_kickstart`
 docker ps
 
+# test without   -v /tmp/:/tmp/ \
