@@ -11,7 +11,7 @@
   name: galaxyprojectdotorg.galaxy
 
 - src: https://github.com/ARTbio/ansible-galaxy-extras.git
-  name: artbio.galaxy-extras
+  name: galaxyprojectdotorg.galaxy-extras
 
 - src: https://github.com/galaxyproject/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
