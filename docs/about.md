@@ -3,7 +3,7 @@
 GalaxyKickStart is an Ansible [playbook](https://github.com/ARTbio/GalaxyKickStart) designed to help you get one or more production-ready
  [Galaxy servers](https://usegalaxy.org/) based on Ubuntu within minutes, and to maintain these servers.
 
-# Required ansible version >= 2.1.2.0
+# Required ansible version >= 2.4.0.0
 
 Optionally, instances can be pre-loaded with tools and workflows.
 
@@ -21,10 +21,10 @@ List of roles included in this playbook
 ------
 
 - [ensure_postrgesql_up](https://github.com/ARTbio/ensure_postgresql_up.git)
-- [galaxy-extras role](https://github.com/galaxyproject/ansible-galaxy-extras)
-- [galaxy-tools role](https://github.com/galaxyproject/ansible-galaxy-tools)
-- [galaxy-os role](https://github.com/galaxyproject/ansible-galaxy-os)
-- [galaxy role](https://github.com/galaxyproject/ansible-galaxy)
+- [natefoo-postgresql_objects](https://github.com/ARTbio/ansible-postgresql-objects)
+- [galaxy-os role](https://github.com/ARTbio/ansible-galaxy-os)
+- [galaxy role](https://github.com/ARTbio/ansible-galaxy)
+- [miniconda-role](https://github.com/ARTbio/ansible-miniconda-role.git)
+- [galaxy-extras role](https://github.com/ARTbio/ansible-galaxy-extras)
 - [galaxy-trackster role](https://github.com/galaxyproject/ansible-trackster)
-- [natefoo-postgresql_objects](https://github.com/natefoo/ansible-postgresql-objects)
-- [miniconda-role](https://github.com/uchida/ansible-miniconda-role.git)
+- [galaxy-tools role](https://github.com/ARTbio/ansible-galaxy-tools)
