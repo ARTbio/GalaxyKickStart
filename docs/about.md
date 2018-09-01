@@ -1,6 +1,6 @@
 # GalaxyKickStart
 
-GalaxyKickStart is an Ansible playbook designed to help you get one or more production-ready
+GalaxyKickStart is an Ansible [playbook](https://github.com/ARTbio/GalaxyKickStart) designed to help you get one or more production-ready
  [Galaxy servers](https://usegalaxy.org/) based on Ubuntu within minutes, and to maintain these servers.
 
 # Required ansible version >= 2.1.2.0
@@ -20,7 +20,7 @@ by the [Galaxy team](https://github.com/galaxyproject/).
 List of roles included in this playbook
 ------
 
-- [ensure_postgresql_up](https://github.com/ARTbio/ensure_postgresql_up.git)
+- [ensure_postrgesql_up](https://github.com/ARTbio/ensure_postgresql_up.git)
 - [galaxy-extras role](https://github.com/galaxyproject/ansible-galaxy-extras)
 - [galaxy-tools role](https://github.com/galaxyproject/ansible-galaxy-tools)
 - [galaxy-os role](https://github.com/galaxyproject/ansible-galaxy-os)
