@@ -10,12 +10,11 @@ Optionally, instances can be pre-loaded with tools and workflows.
 Detailed usage instructions are available in the
 [Documentation](https://artbio.github.io/GalaxyKickStart/).
 
-### Required Ansible version >= 2.1.2.0 && <=2.2.0.0
+### Required Ansible version >= 2.4
 
 The playbook has been tested on
 
 - Cloud Machines
-- Vagrant Boxes
 - Physical Servers
 - Docker
 
@@ -26,13 +25,13 @@ team](https://github.com/galaxyproject/).
 List of roles included in this playbook
 ------
 - [ensure_postrgesql_up](https://github.com/ARTbio/ensure_postgresql_up.git)
-- [galaxy-extras role](https://github.com/galaxyproject/ansible-galaxy-extras)
-- [galaxy-tools role](https://github.com/galaxyproject/ansible-galaxy-tools)
-- [galaxy-os role](https://github.com/galaxyproject/ansible-galaxy-os)
-- [galaxy role](https://github.com/galaxyproject/ansible-galaxy)
+- [natefoo-postgresql_objects](https://github.com/ARTbio/ansible-postgresql-objects)
+- [galaxy-os role](https://github.com/ARTbio/ansible-galaxy-os)
+- [galaxy role](https://github.com/ARTbio/ansible-galaxy)
+- [miniconda-role](https://github.com/ARTbio/ansible-miniconda-role.git)
+- [galaxy-extras role](https://github.com/ARTbio/ansible-galaxy-extras)
 - [galaxy-trackster role](https://github.com/galaxyproject/ansible-trackster)
-- [natefoo-postgresql_objects](https://github.com/natefoo/ansible-postgresql-objects)
-- [miniconda-role](https://github.com/uchida/ansible-miniconda-role.git)
+- [galaxy-tools role](https://github.com/ARTbio/ansible-galaxy-tools)
 
 
 # Troubleshooting

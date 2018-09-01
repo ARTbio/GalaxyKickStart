@@ -2,7 +2,7 @@
 
 ## You need [git](https://git-scm.com/) installed
 ## Make sure that you have a recent version of [Ansible](https://github.com/ansible/) installed
-The playbook has been tested with Ansible stable versions 2.1 and 2.2
+The playbook has been tested with the Ansible stable version 2.4
 
 ### Install Ansible with pip
 
@@ -28,7 +28,7 @@ pip 9.0.1 from /usr/local/lib/python2.7/site-packages (python 2.7)
 - Then
 
 ```
-pip install ansible==2.2.0.0
+pip install ansible==2.4
 ```
 ### Install Ansible with apt
 
