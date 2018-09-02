@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-if [ "${TRAVIS_JOB}" = "ansible-test" ] && [ "${TRAVIS_EVENT_TYPE}" = "pull_request" ]; then
+# if [ "${TRAVIS_EVENT_TYPE}" = "pull_request" ]; then
     echo "Deploy mkdocs"
     SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd -P)"
     sudo pip install mkdocs
@@ -14,4 +14,4 @@ if [ "${TRAVIS_JOB}" = "ansible-test" ] && [ "${TRAVIS_EVENT_TYPE}" = "pull_requ
     echo "https://${GH_TOKEN}:@github.com" > .git/credentials
     mkdocs gh-deploy --clean -m "gh-deployed by travis $DATE"
     cd $SCRIPT_PATH
-fi
+# fi
