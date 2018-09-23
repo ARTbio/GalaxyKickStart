@@ -1,27 +1,31 @@
 - src: https://github.com/ARTbio/ansible-galaxy-os.git
   name: galaxyprojectdotorg.galaxy-os
-  version: galaxyproject
+  version: galaxykickstart
 
 - src: https://github.com/ARTbio/ensure_postgresql_up.git
   name: ensure_postgresql_up
+  version: galaxykickstart
 
 - src: https://github.com/ARTbio/ansible-postgresql-objects.git
   name: natefoo.postgresql_objects
+  version: galaxykickstart
 
 - src: https://github.com/ARTbio/ansible-galaxy.git
   name: galaxyprojectdotorg.galaxy
-  version: galaxyproject
+  version: galaxykickstart
 
 - src: https://github.com/ARTbio/ansible-galaxy-extras.git
   name: galaxyprojectdotorg.galaxy-extras
-  version: galaxyproject
+  version: galaxykickstart
 
 - src: https://github.com/ARTbio/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
+  version: galaxykickstart
 
 - src: https://github.com/ARTbio/ansible-galaxy-tools.git
   name: galaxyprojectdotorg.galaxy-tools
-  version: galaxyproject
+  version: galaxykickstart
 
 - src: https://github.com/ARTbio/ansible-miniconda-role.git
   name: miniconda-role
+  version: galaxykickstart
