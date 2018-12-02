@@ -1,8 +1,6 @@
-# inspired from https://www.jeffgeerling.com/blog/testing-ansible-roles-travis-ci-github
-# multiple environments: https://gist.github.com/jamesarosen/e29076bd81a099f0f72e
 language: python
 python: 2.7
-dist: trusty
+dist: xenial
 sudo: required
 
 env:
