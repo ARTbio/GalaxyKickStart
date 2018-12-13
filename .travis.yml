@@ -1,6 +1,6 @@
 language: python
 python: 2.7
-dist: xenial
+dist: trusty
 sudo: required
 
 env:
@@ -34,6 +34,8 @@ jobs:
         - BIOBLEND_GALAXY_URL="http://localhost:80"
 
 before_install:
+  - sudo apt-get update -y
+  - sudo apt-get install ansible -y
   - if [ "$TRAVIS_JOB" = "ansible-test" ]; then . ./travis_scripts/before_install_ansible.sh; fi
   - if [ "$TRAVIS_JOB" = "docker-build" ]; then . ./travis_scripts/before_install_docker.sh; fi
 
