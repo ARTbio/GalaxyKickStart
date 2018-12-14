@@ -1,6 +1,6 @@
 - src: https://github.com/ARTbio/ansible-galaxy-os.git
   name: galaxyprojectdotorg.galaxy-os
-  version: dev-galaxyproject
+  version: galaxykickstart
 
 - src: https://github.com/ARTbio/ensure_postgresql_up.git
   name: ensure_postgresql_up
@@ -22,8 +22,9 @@
   name: galaxyprojectdotorg.trackster
   version: galaxykickstart
 
-- src: https://github.com/galaxyproject/ansible-galaxy-tools.git
+- src: https://github.com/ARTbio/ansible-galaxy-tools.git
   name: galaxyprojectdotorg.galaxy-tools
+  version: galaxykickstart
 
 - src: https://github.com/ARTbio/ansible-miniconda-role.git
   name: miniconda-role
