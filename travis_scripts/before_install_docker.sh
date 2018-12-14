@@ -28,5 +28,3 @@ export CID2=`docker run -d -p 8080:80 -p 8021:21 -p 8800:8800 \
   -v /export2/:/export \
   galaxy_kickstart`
 docker ps
-
-# test without   -v /tmp/:/tmp/ \
