@@ -4,7 +4,7 @@
 
 - src: https://github.com/ARTbio/ensure_postgresql_up.git
   name: ensure_postgresql_up
-  version: GalaxyKickStart
+  version: galaxykickstart
 
 - src: https://github.com/ARTbio/ansible-postgresql-objects.git
   name: natefoo.postgresql_objects
