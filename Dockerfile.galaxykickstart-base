@@ -14,7 +14,8 @@ RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
 
 ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
               echo "===> Updating TLS certificates..."         && \
-              apt-get install -y openssl ca-certificates
+              apt-get install -y openssl ca-certificates       && \
+              pip install ansible==2.4.0.0
 
 COPY  .  /setup
 WORKDIR /setup
