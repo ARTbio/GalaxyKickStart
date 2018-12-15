@@ -5,6 +5,6 @@ galaxy_tools_tool_list_files:
   - "extra-files/docker/galaxykickstart_docker_tool_list.yml"
 galaxy_web_processes: 2
 galaxy_handler_processes: 4
-postgres_user_uid: 1550
-postgres_user_gid: 1550
+postgres_user_uid: 121
+postgres_user_gid: 221
 install_apparmor: false
