@@ -9,8 +9,8 @@ nginx_galaxy_location: ""
 galaxy_user_name: galaxy
 galaxy_user_gid: 1450
 galaxy_user_uid: 1450
-postgres_user_uid: 1550
-postgres_user_gid: 1550
+postgres_user_uid: 211
+postgres_user_gid: 221
 galaxy_server_dir: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
 galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
 galaxy_data: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
