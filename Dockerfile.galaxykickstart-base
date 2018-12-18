@@ -25,20 +25,17 @@ LANG=en_US.UTF-8
 RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
 # work around for AUFS bug
 # as per https://github.com/docker/docker/issues/783#issuecomment-56013588
-#RUN mkdir /etc/ssl/private-copy /var/lib/postgresql-copy && \
-#    mv /var/lib/postgresql/* /var/lib/postgresql-copy && \
-#    mv /etc/ssl/private/* /etc/ssl/private-copy/ && \
-#    rm -R /var/lib/postgresql /etc/ssl/private/ && \
-#    mv /var/lib/postgresql-copy /var/lib/postgresql && \
-#    mv /etc/ssl/private-copy /etc/ssl/private && \
-#    chmod 0700 /var/lib/postgresql /etc/ssl/private && \
-#    chown -R 211:221 /var/lib/postgresql /var/run/postgresql \
-#    /var/log/postgresql /etc/ssl/private
+RUN mkdir /etc/ssl/private-copy /var/lib/postgresql-copy && \
+    mv /var/lib/postgresql/* /var/lib/postgresql-copy && \
+    mv /etc/ssl/private/* /etc/ssl/private-copy/ && \
+    rm -R /var/lib/postgresql /etc/ssl/private/ && \
+    mv /var/lib/postgresql-copy /var/lib/postgresql && \
+    mv /etc/ssl/private-copy /etc/ssl/private && \
+    chmod 0700 /var/lib/postgresql /etc/ssl/private && \
+    chown -R 1450:1450 /var/lib/postgresql /var/run/postgresql \
+    /var/log/postgresql /etc/ssl/private /etc/postgresql
 
-RUN sudo service postgresql start
-# RUN pip install -U setuptools && pip install ansible==2.4.0.0
-
-RUN ansible --version
+RUN echo $(ansible --version)
 
 RUN ansible-galaxy install -r requirements_roles.yml -p roles -f && \
     ansible-playbook -i inventory_files/docker -c local galaxy.yml
