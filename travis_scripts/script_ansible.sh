@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-ansible-playbook -i inventory_files/galaxy-kickstart galaxy.yml --connection=local --sudo
+ansible-playbook -i inventory_files/galaxy-kickstart galaxy.yml
 sleep 60s
 curl http://localhost:80/api/version| grep version_major
 date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
