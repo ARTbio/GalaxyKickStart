@@ -37,6 +37,7 @@ before_install:
   - sudo apt-add-repository -y ppa:ansible/ansible
   - sudo apt-get -qq update
   - sudo apt-get -qq install ansible
+  - if [[ "$TRAVIS_BRANCH" == *"test_upstream_ansibles"* ]]; then mv upstream_requirements_roles.yml requirements_roles.yml; fi
   - if [ "$TRAVIS_JOB" = "ansible-test" ]; then . ./travis_scripts/before_install_ansible.sh; fi
   - if [ "$TRAVIS_JOB" = "docker-build" ]; then . ./travis_scripts/before_install_docker.sh; fi
 
