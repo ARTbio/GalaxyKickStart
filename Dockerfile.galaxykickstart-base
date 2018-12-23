@@ -1,6 +1,6 @@
-LABEL maintainer_2="Christophe Antoniewski <drosofff@gmail.com>"
-
 FROM artbio/ansible-galaxy-os:1604
+
+LABEL maintainer_2="Christophe Antoniewski <drosofff@gmail.com>"
 
 RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
     \
