@@ -5,9 +5,9 @@
 
 - name: Copy updated config files to export if they don't exist
   command: |
-    "cp {{ galaxy_config['app:main']['tool_sheds_config_file'] }} \
-    {{ galaxy_persistent_directory }}/{{ galaxy_config['app:main']['tool_sheds_config_file'] }}"
-    creates="{{ galaxy_persistent_directory }}/{{ galaxy_config['app:main']['tool_sheds_config_file'] }}"
+    "cp {{ galaxy_config['galaxy']['tool_sheds_config_file'] }} \
+    {{ galaxy_persistent_directory }}/{{ galaxy_config['galaxy']['tool_sheds_config_file'] }}"
+    creates="{{ galaxy_persistent_directory }}/{{ galaxy_config['galaxy']['tool_sheds_config_file'] }}"
 
 - name: get exported paths
   shell: "grep -v \"#\" {{ galaxy_persistent_directory }}/exported_dirs.yml"

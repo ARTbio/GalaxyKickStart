@@ -19,8 +19,16 @@
 - include: export.yml
   when: export_dir_exists.stat.exists and not export_exists.stat.exists
 
+- include: update_yaml_config.yml
+  tags: galaxy_config_files
 
-# The following task should be dropped too.
+- name: Restart supervisor proftpd.
+  supervisorctl: name={{ item }} state=restarted
+  with_items:
+    - proftpd
+  tags: skip_supervisor_start_in_docker
+
+# to do: test whether this task is still required
 - name: Start nodejs proxy if installed
   supervisorctl: name={{ item }} state=started
   with_items:

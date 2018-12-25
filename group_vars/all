@@ -68,25 +68,33 @@ supervisor_env_vars:
 # galaxy role variables
 
 #persistent data
-galaxy_persistent_directory: /export # for IFB it's /root/mydisk, by default, /export
+galaxy_persistent_directory: /export # default value
 galaxy_manage_mutable_setup: yes
 galaxy_mutable_config_dir: "{{ galaxy_config_dir }}"
-galaxy_config_style: "ini-paste"
-galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.ini"
+galaxy_config_style: "yaml"
+galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.yml"
 #other vars
 galaxy_manage_database: yes
 # does not actually fetch eggs if galaxy uses pip
 galaxy_fetch_eggs: yes
 galaxy_vcs: git
 galaxy_force_checkout: yes
-
+# galaxykickstart adopts the yml standard for config file `galaxy.yml`
 galaxy_config:
-  "app:main":
+  "uwsgi":
+    # other uwsgi option are defaulted in ansible-galaxy-os role
+    module: galaxy.webapps.galaxy.buildapp:uwsgi_app()
+    # warning the above line should be dropped when prefixing
+    # upon guide-lines in  https://docs.galaxyproject.org/en/latest/admin/nginx.html
+    logfile-chmod: 644
+  'galaxy':
+    filter-with: proxy-prefix
+    prefix: '' # this is not clear from the galaxy.yml.sample which in addition is not consistent with https://docs.galaxyproject.org/en/latest/admin/nginx.html
     admin_users: "{{ galaxy_admin }}"
     database_connection: "{{ galaxy_db }}"
     tool_dependency_dir: "{{ tool_dependency_dir }}"
     ftp_upload_dir: "{{ proftpd_files_dir }}"
-    ftp_upload_site: ftp://[server IP address]
+    ftp_upload_site: "ftp://{{ ipify_public_ip }}"
     allow_user_dataset_purge: True
     allow_user_impersonation: True
     enable_quotas: True
@@ -98,7 +106,6 @@ galaxy_config:
     nginx_upload_store: "{{ nginx_upload_store_path }}"
     use_pbkdf2: "{{ use_pbkdf2 }}"
     len_file_path: "{{ galaxy_config_dir }}/len"
-    filter-with: proxy-prefix
     nginx_x_accel_redirect_base: /_x_accel_redirect
     interactive_environment_plugins_directory: config/plugins/interactive_environments
     visualization_plugins_directory: config/plugins/visualizations
@@ -110,11 +117,6 @@ galaxy_config:
     dynamic_proxy_debug: True
     dynamic_proxy_external_proxy: true
     dynamic_proxy_prefix: gie_proxy
-  "uwsgi":
-    master: True
-  "filter:proxy-prefix":
-    use: "egg:PasteDeploy#prefix"
-    prefix: "{{ nginx_galaxy_location }}"
 
 # galaxy-extras role variables
 galaxy_uwsgi_static_conf: true
@@ -150,12 +152,12 @@ supervisor_manage_ie_proxy: false
 supervisor_ie_proxy_autostart: false
 
 # galaxy-tools role variables
-
+galaxy_tools_install_tools: true
 galaxy_tools_admin_user: "{{ galaxy_admin }}"
 galaxy_tools_admin_user_password: "{{ galaxy_admin_pw }}"
-galaxy_tools_admin_user_preset_api_key: yes
+galaxy_tools_admin_user_preset_api_key: true
 galaxy_tools_api_key: "{{ default_admin_api_key }}"
-galaxy_tools_create_bootstrap_user: yes
+galaxy_tools_create_bootstrap_user: true
 galaxy_tools_galaxy_instance_url: http://"{{ galaxy_hostname }}{{ nginx_galaxy_location }}"/
 galaxy_tools_tool_list_files: []
 galaxy_tools_install_workflows: true

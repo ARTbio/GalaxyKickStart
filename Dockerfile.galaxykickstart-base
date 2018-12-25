@@ -1,7 +1,6 @@
-FROM artbio/ansible-galaxy-os
+FROM artbio/ansible-galaxy-os:1604
 
-LABEL multi.maintainer_1="Marius van den Beek <m.vandenbeek@gmail.com>"	\
-      multi.maintainer_2="Christophe Antoniewski <drosofff@gmail.com>"
+LABEL maintainer_2="Christophe Antoniewski <drosofff@gmail.com>"
 
 RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
     \
@@ -9,8 +8,10 @@ RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
     echo "===> Allow start of services"  && \
     echo "exit 0" > /usr/sbin/policy-rc.d  && \
     \
-    apt-get install -y --no-install-recommends \
+    apt-get install -qq --no-install-recommends \
     apt-transport-https software-properties-common
+
+RUN apt-get install sudo -o Dpkg::Options::="--force-confold"
 
 ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
               echo "===> Updating TLS certificates..."         && \
@@ -19,10 +20,11 @@ ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
 COPY  .  /setup
 WORKDIR /setup
 
-ENV LC_ALL=en_US.UTF-8 \
-LANG=en_US.UTF-8
+RUN sed -i -e 's/^# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/'  /etc/locale.gen && locale-gen
 
-RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
+ENV LC_ALL=en_US.UTF-8 \
+    LANG=en_US.UTF-8
+
 # work around for AUFS bug
 # as per https://github.com/docker/docker/issues/783#issuecomment-56013588
 RUN mkdir /etc/ssl/private-copy /var/lib/postgresql-copy && \
@@ -31,12 +33,15 @@ RUN mkdir /etc/ssl/private-copy /var/lib/postgresql-copy && \
     rm -R /var/lib/postgresql /etc/ssl/private/ && \
     mv /var/lib/postgresql-copy /var/lib/postgresql && \
     mv /etc/ssl/private-copy /etc/ssl/private && \
-    chmod 0700 /var/lib/postgresql /etc/ssl/private && \
+    chmod -R 0700 /var/lib/postgresql /etc/ssl/private && \
     chown -R 1550:1550 /var/lib/postgresql /var/run/postgresql \
     /var/log/postgresql /etc/ssl/private /etc/postgresql
 
-RUN echo $(ansible --version)
+RUN echo 'root ALL=(ALL:ALL) ALL' >> /etc/sudoers && echo 'postgres ALL=(ALL:ALL) ALL' >> /etc/sudoers
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+# Warning: The following requirements pull down requires an ansible-galaxy-os compatible with ubuntu-xenial and postgresql 9.5
+# see for instance https://github.com/ARTbio/ansible-galaxy-os/tree/ubuntu-xenial, if not already merged
 RUN ansible-galaxy install -r requirements_roles.yml -p roles -f && \
     ansible-playbook -i inventory_files/docker -c local galaxy.yml
 
@@ -46,7 +51,6 @@ NAT_MASQUERADE=false
 
 ONBUILD  WORKDIR  /setup
 ONBUILD  COPY  .  /setup
-
 ADD startup.sh /startup.sh
 RUN chmod +x /startup.sh
 

@@ -1,6 +1,6 @@
 - src: https://github.com/ARTbio/ansible-galaxy-os.git
   name: galaxyprojectdotorg.galaxy-os
-  version: galaxykickstart
+  version: ubuntu-xenial
 
 - src: https://github.com/ARTbio/ensure_postgresql_up.git
   name: ensure_postgresql_up
@@ -24,4 +24,4 @@
 
 - src: https://github.com/ARTbio/ansible-galaxy-tools.git
   name: galaxyprojectdotorg.galaxy-tools
-  version: galaxykickstart
+  version: manage_bootstrap_user_for_yml
