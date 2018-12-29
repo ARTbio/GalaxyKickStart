@@ -18,7 +18,7 @@ galaxy_config_dir: "{{ galaxy_server_dir }}/config"
 galaxy_database: /home/galaxy_database
 galaxy_db: postgresql://{{ galaxy_user_name }}:{{ galaxy_user_name }}@localhost:5432/galaxy?client_encoding=utf8
 galaxy_git_repo: https://github.com/galaxyproject/galaxy.git
-galaxy_changeset_id: release_18.05
+galaxy_changeset_id: release_18.09
 galaxy_reports_config_file: "{{ galaxy_config_dir }}/reports.yml.sample"  # Change this to "{{ galaxy_config_dir }}/reports.ini.sample" for galaxy < 17.09
 galaxy_admin: admin@galaxy.org
 galaxy_admin_pw: admin
