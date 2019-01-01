@@ -25,7 +25,3 @@
 - src: https://github.com/ARTbio/ansible-galaxy-tools.git
   name: galaxyprojectdotorg.galaxy-tools
   version: galaxykickstart
-
-- src: https://github.com/ARTbio/ansible-miniconda-role.git
-  name: miniconda-role
-  version: galaxykickstart

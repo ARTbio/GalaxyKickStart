@@ -53,11 +53,6 @@
         - install_galaxy
         - manage_postgres
 
-    - role: miniconda-role
-      tags: conda
-      become: yes
-      become_user: "{{ galaxy_user_name }}"
-
     - role: galaxyprojectdotorg.galaxy
       become: yes
       become_user: "{{ galaxy_user_name }}"
