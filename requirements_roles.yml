@@ -16,7 +16,7 @@
 
 - src: https://github.com/ARTbio/ansible-galaxy-extras.git
   name: galaxyprojectdotorg.galaxy-extras
-  version: galaxykickstart
+  version: trust-yarn-key
 
 - src: https://github.com/ARTbio/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
