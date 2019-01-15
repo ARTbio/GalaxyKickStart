@@ -19,16 +19,7 @@
 - include: export.yml
   when: export_dir_exists.stat.exists and not export_exists.stat.exists
 
-- name: Adjust proxy prefix in galaxy.ini
-  replace: dest={{ galaxy_config_dir }}/galaxy.ini regexp='(.*)prefix = (?!{{ nginx_galaxy_location }}).*' replace='\1prefix = {{ nginx_galaxy_location }}' backup=yes
-  tags: galaxy_config_files
-
-- name: Get host's external IP address
-  shell: curl --silent --fail http://icanhazip.com
-  register: host_external_ip
-
-- name: Adjust ftp_upload_site IP address in galaxy.ini
-  replace: dest={{ galaxy_config_dir }}/galaxy.ini regexp='\[server IP address\]' replace='{{ host_external_ip.stdout }}' backup=yes
+- include: update_yaml_config.yml
   tags: galaxy_config_files
 
 - name: Restart supervisor proftpd.
@@ -37,6 +28,7 @@
     - proftpd
   tags: skip_supervisor_start_in_docker
 
+# to do: test whether this task is still required
 - name: Start nodejs proxy if installed
   supervisorctl: name={{ item }} state=started
   with_items:

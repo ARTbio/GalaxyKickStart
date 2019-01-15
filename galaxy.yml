@@ -24,6 +24,10 @@
     - set_fact:
         banner_img: "{% if 'jetstream' in group_names %}jetstream_text.png{% else %}gce_text.png{% endif %}"
 
+    - ipify_facts: # get host ip in "{{ ipify_public_ip }}"
+      tags:
+        - always
+
   roles:
 
     - role: galaxyprojectdotorg.galaxy-os
@@ -52,11 +56,6 @@
       tags:
         - install_galaxy
         - manage_postgres
-
-    - role: miniconda-role
-      tags: conda
-      become: yes
-      become_user: "{{ galaxy_user_name }}"
 
     - role: galaxyprojectdotorg.galaxy
       become: yes

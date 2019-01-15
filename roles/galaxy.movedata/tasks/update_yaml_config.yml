@@ -1,0 +1,35 @@
+- name: update proxy prefix in uwsgi section of galaxy.yml
+  replace:
+    dest: '{{ galaxy_config_dir }}/galaxy.yml'
+    regexp: '( *).+galaxy.webapps.galaxy.buildapp:uwsgi_app().*'
+    replace: '\1mount{{ ":" }} {{ nginx_galaxy_location }}=galaxy.webapps.galaxy.buildapp:uwsgi_app()\n\1manage-script-name{{ ":" }} true'
+    backup: yes
+  when: nginx_galaxy_location != ""
+
+- name: update proxy prefix in uwsgi section of galaxy.yml
+  replace:
+    dest: '{{ galaxy_config_dir }}/galaxy.yml'
+    regexp: '( *).+galaxy.webapps.galaxy.buildapp:uwsgi_app().*?(\n.+manage-script-name.+)'
+    replace: '\1module{{ ":" }} galaxy.webapps.galaxy.buildapp:uwsgi_app()'
+    backup: yes
+  when: nginx_galaxy_location == ""
+
+- name: update proxy prefix in galaxy section of galaxy.yml
+  replace:
+    dest: '{{ galaxy_config_dir }}/galaxy.yml'
+    regexp: '(.*)prefix{{ ":" }}.+'
+    replace: '\1prefix{{ ":" }} "{{ nginx_galaxy_location }}"'
+    backup: yes
+
+- name: update ftp_upload_site IP address in galaxy.yml
+  replace:
+    dest: '{{ galaxy_config_dir }}/galaxy.yml'
+    regexp: '(.*)ftp_upload_site? {{ ":" }}.+'
+    replace: '\1ftp_upload_site{{ ":" }} "ftp://{{ ipify_public_ip }}"'
+    backup: yes
+
+- name: Restart supervisor tasks after prefix and ftp ip are updated in config file
+  supervisorctl: name={{ item }} state=restarted
+  with_items: "{{ start_stop_items }}"
+  when: nginx_galaxy_location != ""
+  tags: skip_supervisor_start_in_docker
