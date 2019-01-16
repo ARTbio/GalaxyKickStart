@@ -24,4 +24,4 @@
 
 - src: https://github.com/ARTbio/ansible-galaxy-tools.git
   name: galaxyprojectdotorg.galaxy-tools
-  version: manage_bootstrap_user_for_yml
+  version: galaxykickstart
