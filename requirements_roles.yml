@@ -1,7 +1,7 @@
 - src: https://github.com/galaxyproject/ansible-galaxy-os.git
   name: galaxyprojectdotorg.galaxy-os
 
-- src: https://github.com/galaxyproject/ensure_postgresql_up.git
+- src: https://github.com/mvdbeek/ensure_postgresql_up.git
   name: ensure_postgresql_up
 
 - src: https://github.com/natefoo/ansible-postgresql-objects.git
