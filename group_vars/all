@@ -132,7 +132,7 @@ galaxy_extras_install_packages: true
 galaxy_extras_config_nginx: true
 galaxy_extras_config_supervisor: true
 galaxy_extras_config_proftpd: true
-galaxy_extras_config_uwsgi: true
+galaxy_extras_config_uwsgi: false
 galaxy_extras_config_galaxy_job_metrics: true
 galaxy_extras_config_slurm: true
 galaxy_extras_config_galaxy_root: false
