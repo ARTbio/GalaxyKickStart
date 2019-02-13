@@ -6,6 +6,7 @@ galaxy_manage_trackster: false
 gks_run_data_managers: false
 galaxy_hostname: "{{ inventory_hostname }}"
 nginx_galaxy_location: ""
+galaxy_become_users: {} # for compatibility with ansible.galaxy. as doc seems to say
 galaxy_user_name: galaxy
 galaxy_user_gid: 1450
 galaxy_user_uid: 1450
