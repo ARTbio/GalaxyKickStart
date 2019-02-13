@@ -7,12 +7,12 @@
 - src: https://github.com/natefoo/ansible-postgresql-objects.git
   name: natefoo.postgresql_objects
 
-- src: https://github.com/artbio/ansible-galaxy.git
+- src: https://github.com/galaxyproject/ansible-galaxy.git
   name: galaxyprojectdotorg.galaxy
-  version: galaxykickstart
 
 - src: https://github.com/galaxyproject/ansible-galaxy-extras.git
   name: galaxyprojectdotorg.galaxy-extras
+  version: "18.09"
 
 - src: https://github.com/galaxyproject/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
