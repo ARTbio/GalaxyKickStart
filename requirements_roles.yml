@@ -17,6 +17,5 @@
 - src: https://github.com/galaxyproject/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
 
-- src: https://github.com/artbio/ansible-galaxy-tools.git
+- src: https://github.com/galaxyproject/ansible-galaxy-tools.git
   name: galaxyprojectdotorg.galaxy-tools
-  version: fixforansiblegalaxy
