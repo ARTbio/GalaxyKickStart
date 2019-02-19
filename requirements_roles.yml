@@ -12,7 +12,6 @@
 
 - src: https://github.com/galaxyproject/ansible-galaxy-extras.git
   name: galaxyprojectdotorg.galaxy-extras
-  version: "18.09"
 
 - src: https://github.com/galaxyproject/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
