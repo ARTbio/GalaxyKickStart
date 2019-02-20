@@ -3,9 +3,19 @@ proxy_env: {}
 install_galaxy: true
 install_maintainance_packages: false
 galaxy_manage_trackster: false
+
+galaxy_create_user: true
+# Privilege separation mode switch
+galaxy_separate_privileges: true
+# User that Galaxy runs as
+galaxy_user: "{{ galaxy_user_name }}"
+# User that owns Galaxy code, configs, and virutalenv, and that runs `pip install` for dependencies
+galaxy_privsep_user: "{{ galaxy_user_name }}"
+
 gks_run_data_managers: false
 galaxy_hostname: "{{ inventory_hostname }}"
 nginx_galaxy_location: ""
+# galaxy_become_users: {} # for compatibility with ansible.galaxy. as doc seems to say
 galaxy_user_name: galaxy
 galaxy_user_gid: 1450
 galaxy_user_uid: 1450
@@ -13,6 +23,7 @@ postgres_user_uid: 1550
 postgres_user_gid: 1550
 galaxy_server_dir: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
 galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
+galaxy_local_tools_dir: "{{ galaxy_server_dir }}/tools"
 galaxy_data: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
 galaxy_config_dir: "{{ galaxy_server_dir }}/config"
 galaxy_database: /home/galaxy_database
@@ -132,7 +143,7 @@ galaxy_extras_install_packages: true
 galaxy_extras_config_nginx: true
 galaxy_extras_config_supervisor: true
 galaxy_extras_config_proftpd: true
-galaxy_extras_config_uwsgi: true
+galaxy_extras_config_uwsgi: false
 galaxy_extras_config_galaxy_job_metrics: true
 galaxy_extras_config_slurm: true
 galaxy_extras_config_galaxy_root: true
