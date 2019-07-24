@@ -71,6 +71,12 @@
       tags:
         - install_extras
 
+    # The return of miniconda !
+    - role: miniconda-role
+      become: yes
+      become_user: "{{ galaxy_user_name }}"
+      tags: conda
+      
     # Installs supervisor, nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
       tags:
