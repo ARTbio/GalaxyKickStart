@@ -114,7 +114,6 @@ galaxy_config:
     tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     static_enabled: False
     watch_tool_data_dir: True
-    nginx_upload_store: "{{ nginx_upload_store_path }}"
     use_pbkdf2: "{{ use_pbkdf2 }}"
     len_file_path: "{{ galaxy_config_dir }}/len"
     nginx_x_accel_redirect_base: /_x_accel_redirect
@@ -154,7 +153,6 @@ supervisor_manage_reports: true
 supervisor_manage_docker: false
 proftpd_nat_masquerade: false
 supervisor_proftpd_autostart: true
-nginx_upload_store_path: "/home/galaxy/galaxy/database/tmp/upload_store"
 galaxy_extras_config_cvmfs: false
 
 # To enable interactive environments set the following variables to true
