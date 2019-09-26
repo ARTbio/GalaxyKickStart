@@ -1,31 +1,24 @@
 - src: https://github.com/galaxyproject/ansible-galaxy-os.git
   name: galaxyprojectdotorg.galaxy-os
-  version: master
 
-- src: https://github.com/mvdbeek/ensure_postgresql_up.git
+- src: https://github.com/galaxyproject/ensure_postgresql_up.git
   name: ensure_postgresql_up
-  version: master
 
-- src: https://github.com/natefoo/ansible-postgresql-objects.git
+- src: https://github.com/galaxyproject/ansible-postgresql-objects.git
   name: natefoo.postgresql_objects
-  version: master
 
 - src: https://github.com/galaxyproject/ansible-galaxy.git
   name: galaxyprojectdotorg.galaxy
-  version: master
 
 - src: https://github.com/galaxyproject/ansible-galaxy-extras.git
   name: galaxyprojectdotorg.galaxy-extras
-  version: master
 
 - src: https://github.com/galaxyproject/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
-  version: master
-
-- src: https://github.com/galaxyproject/ansible-galaxy-tools.git
-  name: galaxyprojectdotorg.galaxy-tools
-  version: master
 
 - src: https://github.com/uchida/ansible-miniconda-role.git
   name: miniconda-role
-  version: master
+
+- src: https://github.com/artbio/ansible-galaxy-tools.git
+  name: galaxyprojectdotorg.galaxy-tools
+  version: security
