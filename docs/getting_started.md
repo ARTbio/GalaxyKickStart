@@ -28,7 +28,7 @@ pip 9.0.1 from /usr/local/lib/python2.7/site-packages (python 2.7)
 - Then
 
 ```
-pip install ansible==2.4
+sudo pip install ansible==2.7.4
 ```
 ### Install Ansible with apt
 

@@ -55,7 +55,7 @@ shed_tools_dir: "{{ galaxy_server_dir }}/../shed_tools"
 tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
 galaxy_mutable_data_dir: "{{ galaxy_server_dir  }}/database"
 miniconda_python: 3
-miniconda_version: "4.5.4"
+miniconda_version: "4.6.14"
 miniconda_installer_checksum: ""
 miniconda_prefix: "{{ tool_dependency_dir }}/_conda"
 miniconda_manage_dependencies: False
@@ -74,7 +74,6 @@ supervisor_env_vars:
     - export GALAXY_CONFIG_FTP_UPLOAD_SITE="${GALAXY_CONFIG_FTP_UPLOAD_SITE:-ftp://$IP_ADDRESS}"
     - export GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE="${GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE:-$NGINX_GALAXY_LOCATION/_x_accel_redirect}"
     - export GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE="{$GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE:-$NGINX_GALAXY_LOCATION/_x_accel_redirect}"
-    - export GALAXY_CONFIG_NGINX_UPLOAD_PATH="${GALAXY_CONFIG_NGINX_UPLOAD_PATH:-$NGINX_GALAXY_LOCATION/_upload}"
     - export GALAXY_CONFIG_CONDA_AUTO_INIT="${GALAXY_CONFIG_CONDA_AUTO_INIT:-True}"
 
 # galaxy role variables
@@ -115,7 +114,6 @@ galaxy_config:
     tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
     static_enabled: False
     watch_tool_data_dir: True
-    nginx_upload_store: "{{ nginx_upload_store_path }}"
     use_pbkdf2: "{{ use_pbkdf2 }}"
     len_file_path: "{{ galaxy_config_dir }}/len"
     nginx_x_accel_redirect_base: /_x_accel_redirect
@@ -155,7 +153,6 @@ supervisor_manage_reports: true
 supervisor_manage_docker: false
 proftpd_nat_masquerade: false
 supervisor_proftpd_autostart: true
-nginx_upload_store_path: "/home/galaxy/galaxy/database/tmp/upload_store"
 galaxy_extras_config_cvmfs: false
 
 # To enable interactive environments set the following variables to true
