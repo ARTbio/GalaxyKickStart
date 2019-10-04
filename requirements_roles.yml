@@ -18,4 +18,3 @@
 
 - src: https://github.com/artbio/ansible-galaxy-tools.git
   name: galaxyprojectdotorg.galaxy-tools
-  version: security
