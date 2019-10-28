@@ -160,7 +160,7 @@ supervisor_manage_ie_proxy: false
 supervisor_ie_proxy_autostart: false
 # specific ie for ipython and rstudio
 galaxy_extras_ie_fetch_jupyter: false
-galaxy_extras_ie_jupyter_image: quay.io/bgruening/docker-jupyter-notebook:19.05
+galaxy_extras_ie_jupyter_image: quay.io/bgruening/docker-jupyter-notebook:17.09
 galaxy_extras_ie_fetch_rstudio: false
 galaxy_extras_ie_rstudio_image: artbio/rstudio-notebook:19.05
 
