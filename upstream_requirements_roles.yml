@@ -18,9 +18,9 @@
   name: galaxyprojectdotorg.galaxy-extras
   version: master
 
-- src: https://github.com/galaxyproject/ansible-trackster.git
+- src: https://github.com/artbio/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
-  version: master
+  version: artbio
 
 - src: https://github.com/galaxyproject/ansible-galaxy-tools.git
   name: galaxyprojectdotorg.galaxy-tools
