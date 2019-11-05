@@ -20,7 +20,7 @@
 
 - src: https://github.com/artbio/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
-  version: artbio
+  version: master
 
 - src: https://github.com/galaxyproject/ansible-galaxy-tools.git
   name: galaxyprojectdotorg.galaxy-tools
