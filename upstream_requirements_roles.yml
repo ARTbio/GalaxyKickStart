@@ -13,7 +13,7 @@
 - src: https://github.com/galaxyproject/ansible-galaxy-extras.git
   name: galaxyprojectdotorg.galaxy-extras
 
-- src: https://github.com/galaxyproject/ansible-trackster.git
+- src: https://github.com/artbio/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
 
 - src: https://github.com/uchida/ansible-miniconda-role.git
