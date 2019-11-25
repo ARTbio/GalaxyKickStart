@@ -13,9 +13,9 @@
     - { src: "/home/galaxy", dest: "{{ nfs_export_galaxy_dir }}" }
     - { src: "{{ galaxy_persistent_directory }}/home/galaxy/tool_dependencies", dest: "{{ nfs_export_galaxy_dir }}/tool_dependencies" }
     - { src: "{{ galaxy_persistent_directory }}/home/galaxy/shed_tools", dest: "{{ nfs_export_galaxy_dir }}/shed_tools" }
-    - { src: "{{ galaxy_persistent_directory }}/home/galaxy/galaxy/tool-data", dest: "{{ nfs_export_galaxy_dir }}/galaxy/tool-data" }
-    - { src: "{{ galaxy_persistent_directory }}/home/galaxy/galaxy/config", dest: "{{ nfs_export_galaxy_dir }}/galaxy/config" }
-    - { src: "{{ galaxy_persistent_directory }}/home/galaxy/galaxy/database", dest: "{{ nfs_export_galaxy_dir }}/galaxy/database" }
+    - { src: "{{ galaxy_persistent_directory }}{{ galaxy_server_dir }}/tool-data", dest: "{{ nfs_export_galaxy_dir }}/galaxy/tool-data" }
+    - { src: "{{ galaxy_persistent_directory }}{{ galaxy_server_dir }}/config", dest: "{{ nfs_export_galaxy_dir }}/galaxy/config" }
+    - { src: "{{ galaxy_persistent_directory }}{{ galaxy_server_dir }}/database", dest: "{{ nfs_export_galaxy_dir }}/galaxy/database" }
 
 - name: export galaxy data for nfs sharing with slurm slave nodes
   template: src=exports dest=/etc/exports
