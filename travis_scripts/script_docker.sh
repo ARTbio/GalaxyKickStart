@@ -7,17 +7,20 @@ echo -e "Testing CID1 $CID1"
 docker exec $CID1 tail /var/log/nginx/error.log
 curl http://localhost:80/subdir/api/version| grep version_major
 
+# sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
+# cd $GALAXY_HOME &&
+# bioblend-galaxy-tests -v $GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy*.py"
+
+
 # skipping tests
 # .local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxyLibraries.py::TestGalaxyLibraries::test_upload_from_galaxy_filesystem FAILED
 # .local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxyObjects.py::TestLibrary::test_datasets_from_fs FAILED
 # .local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxyObjects.py::TestLibrary::test_get_datasets FAILED
 # .local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxyObjects.py::TestHistory::test_get_datasets FAILED
-sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
-                                   cd $GALAXY_HOME &&
-                                   for test in DatasetCollections Datasets Folders Groups Histories Quotas Roles ToolData ToolInputs Tools Users Workflows
-                                   do
-                                   bioblend-galaxy-tests -v $GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy${test}.py
-                                   done"
+
+cp $TRAVIS_BUILD_DIR/travis_scripts/testingalaxy.sh $GALAXY_HOME/
+chmod 777 $GALAXY_HOME/testingalaxy.sh
+su $GALAXY_TRAVIS_USER $GALAXY_HOME/testingalaxy.sh
 
 curl --fail ${BIOBLEND_GALAXY_URL}api/version
 date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
