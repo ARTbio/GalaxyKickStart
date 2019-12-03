@@ -7,7 +7,7 @@ echo -e "Testing CID1 $CID1"
 docker exec $CID1 tail /var/log/nginx/error.log
 curl http://localhost:80/subdir/api/version| grep version_major
 
-# test not run:
+# skipping tests
 # .local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxyLibraries.py::TestGalaxyLibraries::test_upload_from_galaxy_filesystem FAILED
 # .local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxyObjects.py::TestLibrary::test_datasets_from_fs FAILED
 # .local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxyObjects.py::TestLibrary::test_get_datasets FAILED
