@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 echo -e "sleeping 120s, zzzzzz"
-sleep 60s
+sleep 120s
 docker logs $CID1
 echo -e "Testing CID1 $CID1"
 docker exec $CID1 tail /var/log/nginx/error.log
