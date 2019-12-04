@@ -9,7 +9,7 @@ curl http://localhost:80/subdir/api/version| grep version_major
 
 sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
 cd $GALAXY_HOME &&
-bioblend-galaxy-tests -v -k 'not workflow and not datasets and not from_galaxy_filesystem'$GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy*.py"
+bioblend-galaxy-tests -v -k 'not workflow and not datasets and not from_galaxy_filesystem' $GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy*.py"
 
 
 # skipping tests
