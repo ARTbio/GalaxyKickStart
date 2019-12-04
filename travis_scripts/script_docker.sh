@@ -18,9 +18,9 @@ curl http://localhost:80/subdir/api/version| grep version_major
 # .local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxyObjects.py::TestLibrary::test_get_datasets FAILED
 # .local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxyObjects.py::TestHistory::test_get_datasets FAILED
 
-cp $TRAVIS_BUILD_DIR/travis_scripts/testingalaxy.sh $GALAXY_HOME/
-chmod 777 $GALAXY_HOME/testingalaxy.sh
-su $GALAXY_TRAVIS_USER $GALAXY_HOME/testingalaxy.sh
+sudo chmod 777 $TRAVIS_BUILD_DIR/travis_scripts/testingalaxy.sh
+sudo cp $TRAVIS_BUILD_DIR/travis_scripts/testingalaxy.sh $GALAXY_HOME/
+sudo -E su $GALAXY_TRAVIS_USER $GALAXY_HOME/testingalaxy.sh
 
 curl --fail ${BIOBLEND_GALAXY_URL}api/version
 date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
