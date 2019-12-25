@@ -16,7 +16,7 @@
 
 - src: https://github.com/artbio/ansible-galaxy-extras.git
   name: galaxyprojectdotorg.galaxy-extras
-  version: patch_broken_wheels.galaxyproject.org 
+  version: galaxykickstart 
 
 - src: https://github.com/artbio/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
