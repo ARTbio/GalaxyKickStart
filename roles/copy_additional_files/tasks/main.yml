@@ -32,7 +32,7 @@
     dest: "{{ galaxy_errordocs_dest }}/502/index.html"
     remote_src: true
   when: ansible_distribution_version == '16.04'
- 
+
 - name: Place nginx error files
   copy:
     src: /usr/share/nginx/html/index.html
