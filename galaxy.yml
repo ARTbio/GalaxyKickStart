@@ -14,7 +14,10 @@
       tags:
         - always
 
-    - raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    - name: Install python if absent
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      register: output
+      changed_when: output.stdout != ""
       tags:
         - always
 
