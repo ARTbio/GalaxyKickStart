@@ -10,7 +10,9 @@
 
 # -------- During the first step of the build, comment from there -------------
 - name: Stop all supervisor tasks
-  shell: supervisorctl stop all
+  supervisorctl:
+    name: all
+    state: stopped
 
 - name: Delete unwanted files
   shell: rm -rf {{ item }}
