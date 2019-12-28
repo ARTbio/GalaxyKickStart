@@ -31,7 +31,8 @@
         banner_img: "{% if 'jetstream' in group_names %}jetstream_text.png{% else %}gce_text.png{% endif %}"
 
     - name: get host ip in ipify_public_ip variable
-      ipify_facts: # get host ip in "{{ ipify_public_ip }}"
+      ipify_facts:
+        timeout: 20
       tags:
         - always
 
