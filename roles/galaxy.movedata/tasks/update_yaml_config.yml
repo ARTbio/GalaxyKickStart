@@ -4,7 +4,8 @@
     regexp: '( *).+galaxy.webapps.galaxy.buildapp:uwsgi_app().*'
     replace: '\1mount{{ ":" }} {{ nginx_galaxy_location }}=galaxy.webapps.galaxy.buildapp:uwsgi_app()\n\1manage-script-name{{ ":" }} true'
     backup: yes
-  when: nginx_galaxy_location | length # eq. to when nginx_galaxy_location != "" see https://github.com/ansible/ansible-lint/issues/457#issuecomment-455038475
+  # eq. to when nginx_galaxy_location != "" see https://github.com/ansible/ansible-lint/issues/457#issuecomment-455038475
+  when: nginx_galaxy_location | length
 
 - name: update proxy prefix in uwsgi section of galaxy.yml
   replace:
