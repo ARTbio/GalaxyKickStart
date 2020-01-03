@@ -155,14 +155,14 @@ supervisor_proftpd_autostart: true
 galaxy_extras_config_cvmfs: false
 
 # To enable interactive environments set the following 3 variables to true
-galaxy_extras_config_ie_proxy: false
-supervisor_manage_ie_proxy: false
-supervisor_ie_proxy_autostart: false
+galaxy_extras_config_ie_proxy: true
+supervisor_manage_ie_proxy: true
+supervisor_ie_proxy_autostart: true
 # specific ie for ipython and rstudio
 galaxy_extras_ie_fetch_jupyter: false
 galaxy_extras_ie_jupyter_image: quay.io/bgruening/docker-jupyter-notebook:17.09
 galaxy_extras_ie_fetch_rstudio: false
-galaxy_extras_ie_rstudio_image: artbio/rstudio-notebook:19.05
+galaxy_extras_ie_rstudio_image: artbio/rstudio-notebook:latest
 
 
 # galaxy-tools role variables
