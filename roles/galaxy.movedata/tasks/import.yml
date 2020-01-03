@@ -12,8 +12,10 @@
 - name: get exported paths
   shell: "grep -v \"#\" {{ galaxy_persistent_directory }}/exported_dirs.yml"
   register: exported_paths
+  changed_when: exported_paths
 
-- set_fact: importable_paths={{ exported_paths.stdout | from_yaml }}
+- name: get importable paths
+  set_fact: importable_paths={{ exported_paths.stdout | from_yaml }}
 
 - name: Link files from their new location
   mount: opts=bind fstype=none state=mounted name={{ item.path }} src="{{ galaxy_persistent_directory }}/{{ item.path }}"

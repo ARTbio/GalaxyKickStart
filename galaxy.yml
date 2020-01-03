@@ -8,23 +8,31 @@
     - include_tasks: roles/handlers/galaxy.yml
 
   pre_tasks:
-    - fail: msg="Installed ansible version {{ ansible_version.full }}, but ansible version >= 2.7 required"
-      when: ansible_version.full is version_compare('2.7', '<')
+    - name: Check ansible version
+      fail: msg="Installed ansible version {{ ansible_version.full }}, but ansible version >= 2.7.4 required"
+      when: ansible_version.full is version('2.7', '<')
       tags:
         - always
 
-    - raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    - name: Install python if absent
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      register: output
+      changed_when: output.stdout
       tags:
         - always
 
-    - setup: # aka gather_facts
+    - name: gather facts
+      setup:
       tags:
         - always
 
-    - set_fact:
+    - name: set jetstream banner image variable
+      set_fact:
         banner_img: "{% if 'jetstream' in group_names %}jetstream_text.png{% else %}gce_text.png{% endif %}"
 
-    - ipify_facts: # get host ip in "{{ ipify_public_ip }}"
+    - name: get host ip in ipify_public_ip variable
+      ipify_facts:
+        timeout: 20
       tags:
         - always
 
@@ -76,7 +84,7 @@
       become: yes
       become_user: "{{ galaxy_user_name }}"
       tags: conda
-      
+
     # Installs supervisor, nginx and proftpd
     - role: galaxyprojectdotorg.galaxy-extras
       tags:
@@ -106,10 +114,11 @@
       when: gks_run_data_managers
 
   post_tasks:
-    - name: Clean apt cache to recover some disk space
-      shell: apt-get clean
 
-    # htop is a placeholder here; see bug report
-    # https://github.com/ansible/ansible-modules-core/issues/4029
-    - name: Apt autoremove
-      apt: autoremove=yes name=htop
+    - name: Remove useless packages from the cache
+      apt:
+        autoclean: yes
+
+    - name: Remove dependencies that are no longer required
+      apt:
+        autoremove: yes

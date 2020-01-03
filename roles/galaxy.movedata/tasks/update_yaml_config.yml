@@ -4,7 +4,8 @@
     regexp: '( *).+galaxy.webapps.galaxy.buildapp:uwsgi_app().*'
     replace: '\1mount{{ ":" }} {{ nginx_galaxy_location }}=galaxy.webapps.galaxy.buildapp:uwsgi_app()\n\1manage-script-name{{ ":" }} true'
     backup: yes
-  when: nginx_galaxy_location != ""
+  # eq. to when nginx_galaxy_location != "" see https://github.com/ansible/ansible-lint/issues/457#issuecomment-455038475
+  when: nginx_galaxy_location | length
 
 - name: update proxy prefix in uwsgi section of galaxy.yml
   replace:
@@ -12,7 +13,7 @@
     regexp: '( *).+galaxy.webapps.galaxy.buildapp:uwsgi_app().*?(\n.+manage-script-name.+)'
     replace: '\1module{{ ":" }} galaxy.webapps.galaxy.buildapp:uwsgi_app()'
     backup: yes
-  when: nginx_galaxy_location == ""
+  when: not nginx_galaxy_location
 
 - name: update proxy prefix in galaxy section of galaxy.yml
   replace:
@@ -29,7 +30,8 @@
     backup: yes
 
 - name: Restart supervisor tasks after prefix and ftp ip are updated in config file
-  supervisorctl: name={{ item }} state=restarted
+  supervisorctl: name="{{ item }}" state=restarted
   with_items: "{{ start_stop_items }}"
-  when: nginx_galaxy_location != ""
+  # eq. to when nginx_galaxy_location != "" see https://github.com/ansible/ansible-lint/issues/457#issuecomment-455038475
+  when: nginx_galaxy_location | length
   tags: skip_supervisor_start_in_docker
