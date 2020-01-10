@@ -12,11 +12,11 @@
 
 - src: https://github.com/artbio/ansible-galaxy.git
   name: galaxyprojectdotorg.galaxy
-  version: galaxykickstart
+  version: add_conf_file_templates
 
 - src: https://github.com/artbio/ansible-galaxy-extras.git
   name: galaxyprojectdotorg.galaxy-extras
-  version: galaxykickstart 
+  version: fix_nginx_conf
 
 - src: https://github.com/artbio/ansible-trackster.git
   name: galaxyprojectdotorg.trackster
