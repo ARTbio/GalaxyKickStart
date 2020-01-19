@@ -75,10 +75,6 @@
     - role: set_supervisor_env_vars
       tags: env_vars
 
-    - role: copy_additional_files
-      tags:
-        - install_extras
-
     # The return of miniconda !
     - role: miniconda-role
       become: yes
@@ -95,6 +91,10 @@
       tags:
         - manage_postgres
         - install_tools
+
+    - role: copy_additional_files
+      tags:
+        - install_extras
 
     - role: galaxy.movedata
       tags:
