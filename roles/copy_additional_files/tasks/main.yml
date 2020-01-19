@@ -42,3 +42,10 @@
     - 413
     - 500
 
+- name: Install rstudio interactive environment config files
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - {src: "rstudio.ini.j2", dest: "{{ galaxy_config_dir }}/plugin/rstudio/config/rstudio.ini"}
+    - {src: "allowed_images.yml.j2", dest: "{{ galaxy_config_dir }}/plugin/rstudio/config/allowed_images.yml"}
