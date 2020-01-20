@@ -49,5 +49,5 @@
   with_items:
     - {src: "rstudio.ini.j2", dest: "{{ galaxy_config_dir }}/plugins/interactive_environments/rstudio/config/rstudio.ini"}
     - {src: "rstudio_allowed_images.yml.j2", dest: "{{ galaxy_config_dir }}/plugins/interactive_environments/rstudio/config/allowed_images.yml"}
-    - {src: "jupyter.ini.j2", dest: "{{ galaxy_config_dir }}/plugins/interactive_environments/jupyter/config/jupiter.ini"}
+    - {src: "jupyter.ini.j2", dest: "{{ galaxy_config_dir }}/plugins/interactive_environments/jupyter/config/jupyter.ini"}
     - {src: "jupyter_allowed_images.yml.j2", dest: "{{ galaxy_config_dir }}/plugins/interactive_environments/jupyter/config/allowed_images.yml"}

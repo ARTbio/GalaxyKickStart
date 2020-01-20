@@ -1,6 +1,6 @@
 [main]
 # This CANNOT be changed. Eventually will be deprecated
-password_auth = True
+# password_auth = True
 # Following options are ignored if using the Galaxy dynamic proxy but
 # are useful if mapping a range of ports for environment consumption.
 #apache_urls = False
@@ -45,7 +45,7 @@ command = docker {docker_args}
 # If your Docker container exposes more then one port, Galaxy needs to know to
 # which ports it needs to connect. With this option you can specify the port number
 # inside your container to which Galaxy should connect the UI.
-docker_connect_port = 80
+# docker_connect_port = 80
 
 # Set the following value to false if Docker volumes between Galaxy server and Docker
 # container cannot or should not be used.
