@@ -1,4 +1,5 @@
 GKS: true
+galaxy_venv_python: "2.7"
 proxy_env: {}
 install_galaxy: true
 install_maintainance_packages: false
@@ -119,11 +120,11 @@ galaxy_config:
     interactive_environment_plugins_directory: config/plugins/interactive_environments
     visualization_plugins_directory: config/plugins/visualizations
     # interactive environments - set dynamic_proxy_manage to true #
-    dynamic_proxy_manage: false
+    dynamic_proxy_manage: true
     dynamic_proxy_session_map: database/session_map.sqlite
     dynamic_proxy_bind_port: 8800
     dynamic_proxy_bind_ip: 0.0.0.0
-    dynamic_proxy_debug: True
+    dynamic_proxy_debug: true
     dynamic_proxy_external_proxy: true
     dynamic_proxy_prefix: gie_proxy
 
