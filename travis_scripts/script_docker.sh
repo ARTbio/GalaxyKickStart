@@ -7,6 +7,7 @@ echo -e "Testing CID1 $CID1"
 docker exec $CID1 tail /var/log/nginx/error.log
 curl http://localhost:80/subdir/api/version| grep version_major
 
+sudo su $GALAXY_TRAVIS_USER -c 'pip install --ignore-installed --user "bioblend==0.13.0" pytest'
 sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
 cd $GALAXY_HOME &&
 bioblend-galaxy-tests -v -k 'not workflow and not _from_fs and not get_datasets and not create_local_user and not from_galaxy_filesystem' $GALAXY_HOME/.local/lib/python2.7/site-packages/bioblend/_tests/TestGalaxy*.py"

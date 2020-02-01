@@ -41,9 +41,6 @@ before_install:
   - if [ "$TRAVIS_JOB" = "docker-build" ]; then . ./travis_scripts/before_install_docker.sh; fi
 
 
-install:
-    - sudo su $GALAXY_TRAVIS_USER -c 'pip install --ignore-installed --user https://github.com/galaxyproject/bioblend/archive/master.zip pytest'
-
 script:
   - if [ "$TRAVIS_JOB" = "ansible-test" ]; then . ./travis_scripts/script_ansible.sh; fi
   - if [ "$TRAVIS_JOB" = "docker-build" ]; then . ./travis_scripts/script_docker.sh; bash ./travis_scripts/deploy.sh; fi
