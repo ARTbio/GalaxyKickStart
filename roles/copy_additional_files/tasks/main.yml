@@ -32,7 +32,7 @@
     dest: "{{ galaxy_errordocs_dest }}/502/index.html"
     remote_src: true
   when: ansible_distribution_version == '16.04'
- 
+
 - name: Place nginx error files
   copy:
     src: /usr/share/nginx/html/index.html
@@ -42,3 +42,12 @@
     - 413
     - 500
 
+- name: Install rstudio interactive environment config files
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - {src: "rstudio.ini.j2", dest: "{{ galaxy_config_dir }}/plugins/interactive_environments/rstudio/config/rstudio.ini"}
+    - {src: "rstudio_allowed_images.yml.j2", dest: "{{ galaxy_config_dir }}/plugins/interactive_environments/rstudio/config/allowed_images.yml"}
+    - {src: "jupyter.ini.j2", dest: "{{ galaxy_config_dir }}/plugins/interactive_environments/jupyter/config/jupyter.ini"}
+    - {src: "jupyter_allowed_images.yml.j2", dest: "{{ galaxy_config_dir }}/plugins/interactive_environments/jupyter/config/allowed_images.yml"}
