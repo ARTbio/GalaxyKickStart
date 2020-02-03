@@ -15,12 +15,12 @@
     backup: yes
   when: not nginx_galaxy_location
 
-- name: update proxy prefix in galaxy section of galaxy.yml
-  replace:
-    dest: '{{ galaxy_config_dir }}/galaxy.yml'
-    regexp: '(.*)prefix{{ ":" }}.+'
-    replace: '\1prefix{{ ":" }} "{{ nginx_galaxy_location }}"'
-    backup: yes
+# - name: update nginx prefix in galaxy section of galaxy.yml
+#   replace:
+#     dest: '{{ galaxy_config_dir }}/galaxy.yml'
+#     regexp: '( +)prefix{{ ":" }}.+'
+#     replace: '\1prefix{{ ":" }} "{{ nginx_galaxy_location }}"'
+#     backup: yes
 
 - name: update ftp_upload_site IP address in galaxy.yml
   replace:
