@@ -1,0 +1,18 @@
+galaxy_changeset_id: release_20.01
+
+#persistent data
+galaxy_persistent_directory: /mnt/data/mississippi_galaxy_persist
+
+galaxy_tools_tool_list_files: 
+  - "extra-files/Mississippi/mississippi_tool_list.yml"
+additional_files_list:
+  - { src: "extra-files/Mississippi/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
+  - { src: "extra-files/Mississippi/ARTbio_plastisipi_screen.jpg", dest: "{{ galaxy_server_dir }}/static/" }
+  - { src: "extra-files/Mississippi/IBPS_logo.jpg", dest: "{{ galaxy_server_dir }}/static/" }
+  - { src: "extra-files/Mississippi/job_conf.xml", dest: "{{ galaxy_config_dir }}" }
+
+# specific ie for ipython and rstudio
+galaxy_extras_ie_fetch_jupyter: true
+galaxy_extras_ie_jupyter_image: quay.io/bgruening/docker-jupyter-notebook:17.09
+galaxy_extras_ie_fetch_rstudio: true
+galaxy_extras_ie_rstudio_image: artbio/rstudio-notebook:latest
