@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<job_conf>
+    <plugins>
+        <plugin id="slurm" type="runner" load="galaxy.jobs.runners.slurm:SlurmJobRunner" workers="20">
+            <param id="drmaa_library_path">/usr/lib/slurm-drmaa/lib/libdrmaa.so</param>
+        </plugin>
+    </plugins>
+    <handlers default="handlers">
+        <handler id="handler0" tags="handlers"/>
+        <handler id="handler1" tags="handlers"/>
+        <handler id="handler2" tags="handlers"/>
+        <handler id="handler3" tags="handlers"/>
+    </handlers>
+    <destinations default="single">
+            <destination id="single" runner="slurm">
+               <env file="/home/galaxy/galaxy-dist/.venv/bin/activate" />
+               <param id="nativeSpecification">--partition=debug --ntasks=1 --share </param>
+            </destination>
+            <destination id="double" runner="slurm">
+               <env file="/home/galaxy/galaxy-dist/.venv/bin/activate" />
+               <param id="nativeSpecification">--partition=debug --ntasks=2 --share</param>
+            </destination>
+           <destination id="eight" runner="slurm">
+               <env file="/home/galaxy/galaxy-dist/.venv/bin/activate" />
+               <param id="nativeSpecification">--partition=debug --ntasks=8 --share</param>
+            </destination>
+    </destinations>
+    <limits>
+        <limit type="anonymous_user_concurrent_jobs">1</limit>
+        <limit type="destination_user_concurrent_jobs" id="single">16</limit>
+        <limit type="destination_user_concurrent_jobs" id="double">8</limit>
+        <limit type="destination_user_concurrent_jobs" id="eight">3</limit>
+
+        <limit type="destination_total_concurrent_jobs" id="single">50</limit>
+        <limit type="destination_total_concurrent_jobs" id="double">14</limit>
+        <limit type="destination_total_concurrent_jobs" id="eight">7</limit>
+    </limits>
+   <tools>
+        <tool id="sambamba_filter" destination="single"/>
+        <tool id="retrieve_fasta_from_NCBI" destination="double"/>
+        <tool id="picard_MergeSamFiles" destination="eight"/>
+        <tool id="rsembowtie" destination="eight"/>
+        <tool id="rsembowtie2" destination="eight"/>
+        <tool id="tp_grep_tool" destination="single"/>
+        <tool id="circgraph" destination="double"/>
+        <tool id="deeptools_bam_coverage" destination="eight"/>
+        <tool id="deeptools_multi_bam_summary" destination="eight"/>
+        <tool id="deeptools_multi_bigwig_summary" destination="eight"/>
+        <tool id="deeptools_compute_gc_bias" destination="eight"/>
+        <tool id="deeptools_bam_compare" destination="eight"/>
+        <tool id="deeptools_compute_matrix" destination="eight"/>
+        <tool id="deeptools_bigwig_compare" destination="eight"/>
+        <tool id="tophat2" destination="eight"/>
+        <tool id="hisat2" destination="eight"/>
+        <tool id="bowtie2" destination="eight"/>
+        <tool id="macs2_callpeak" destination="eight"/>
+        <tool id="bowtieForSmallRNA" destination="eight"/>
+        <tool id="bowtie-align" destination="eight"/>
+        <tool id="dexseq" destination="eight"/>
+        <tool id="trinity" destination="eight"/>
+        <tool id="oases" destination="eight"/>
+        <tool id="rnaspades" destination="eight"/>
+        <tool id="megahit" destination="double"/>
+        <tool id="spades" destination="eight"/>
+        <tool id="rna_star" destination="eight"/>
+        <tool id="rgrnastar" destination="eight"/>
+        <tool id="picard_SortSam" destination="eight"/>
+        <tool id="ncbi_blastn_wrapper" destination="eight"/>
+        <tool id="ncbi_blastx_wrapper" destination="eight"/>
+        <tool id="ncbi_tblastx_wrapper" destination="eight"/>
+        <tool id="ncbi_tblastn_wrapper" destination="eight"/>
+        <tool id="abyss-pe" destination="eight"/>
+        <tool id="oaseoptimiserv" destination="eight"/>
+        <tool id="cuffdiff" destination="eight"/>
+        <tool id="run_TEMP" destination="eight"/>
+        <tool id="bwa_mem" destination="eight"/>
+        <tool id="bwa" destination="eight"/>
+        <tool id="breakdancer_max" destination="eight"/>
+        <tool id="salmon" destination="eight"/>
+        <tool id="sr_bowtie_dataset_annotation" destination="eight"/>
+        <tool id="ngsplot" destination="eight" />
+        <tool id="repenrich" destination="eight"/>
+        <tool id="mircounts" destination="eight"/>
+        <tool id="hicexplorer_hicmergematrixbins" destination="eight"/>
+   </tools>
+</job_conf>
+

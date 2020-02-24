@@ -7,7 +7,7 @@ galaxy_tools_tool_list_files:
   - "extra-files/Mississippi/mississippi_tool_list.yml"
 additional_files_list:
   - { src: "extra-files/Mississippi/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
-  - { src: "extra-files/Mississippi/ARTbio_plastisipi_screen.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/Mississippi/ARTbio_mississippi_screen.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }
   - { src: "extra-files/Mississippi/IBPS_logo.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }
   - { src: "extra-files/Mississippi/job_conf.xml", dest: "{{ galaxy_config_dir }}" }
 
