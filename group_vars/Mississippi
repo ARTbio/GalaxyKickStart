@@ -1,4 +1,5 @@
 galaxy_changeset_id: release_20.01
+configure_docker: no
 
 #persistent data
 galaxy_persistent_directory: /mnt/data/mississippi_galaxy_persist
