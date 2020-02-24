@@ -931,10 +931,10 @@ tools:
   owner: peterjc
   tool_panel_section_label: Graph/Display Data
   tool_shed_url: toolshed.g2.bx.psu.edu
-- name: cuffdiff
-  owner: devteam
-  tool_panel_section_label: 'NGS: RNA Analysis'
-  tool_shed_url: toolshed.g2.bx.psu.edu
+#- name: cuffdiff
+#  owner: devteam
+#  tool_panel_section_label: 'NGS: RNA Analysis'
+#  tool_shed_url: toolshed.g2.bx.psu.edu
 - name: trinity_samples_qccheck
   owner: iuc
   tool_panel_section_label: 'NGS: Assembly'
