@@ -1,39 +1,45 @@
 <?xml version="1.0"?>
 <job_conf>
-    <plugins>
-        <plugin id="slurm" type="runner" load="galaxy.jobs.runners.slurm:SlurmJobRunner" workers="20">
+    <plugins workers="4">
+        <plugin id="slurm" type="runner" load="galaxy.jobs.runners.slurm:SlurmJobRunner">
             <param id="drmaa_library_path">/usr/lib/slurm-drmaa/lib/libdrmaa.so</param>
         </plugin>
+        <plugin id="local" type="runner" load="galaxy.jobs.runners.local:LocalJobRunner"/>
     </plugins>
+    <!-- The default handler can be changed by specifying the GALAXY_HANDLERS_DEFAULT environment variable. -->
     <handlers default="handlers">
         <handler id="handler0" tags="handlers"/>
         <handler id="handler1" tags="handlers"/>
         <handler id="handler2" tags="handlers"/>
         <handler id="handler3" tags="handlers"/>
     </handlers>
-    <destinations default="single">
-            <destination id="single" runner="slurm">
-               <env file="/home/galaxy/galaxy-dist/.venv/bin/activate" />
-               <param id="nativeSpecification">--partition=debug --ntasks=1 --share </param>
-            </destination>
-            <destination id="double" runner="slurm">
-               <env file="/home/galaxy/galaxy-dist/.venv/bin/activate" />
-               <param id="nativeSpecification">--partition=debug --ntasks=2 --share</param>
-            </destination>
-           <destination id="eight" runner="slurm">
-               <env file="/home/galaxy/galaxy-dist/.venv/bin/activate" />
-               <param id="nativeSpecification">--partition=debug --ntasks=8 --share</param>
-            </destination>
+
+    <destinations default_from_environ="GALAXY_DESTINATIONS_DEFAULT" default="single">
+        <destination id="single" runner="slurm">
+            <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
+            <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
+            <param id="nativeSpecification">--ntasks=1 --share</param>
+        </destination>
+        <destination id="double" runner="slurm">
+            <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
+            <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
+            <param id="nativeSpecification">--ntasks=2 --share</param>
+        </destination>
+        <destination id="eight" runner="slurm">
+            <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
+            <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
+            <param id="nativeSpecification">--ntasks=8 --share</param>
+        </destination>
     </destinations>
     <limits>
         <limit type="anonymous_user_concurrent_jobs">1</limit>
-        <limit type="destination_user_concurrent_jobs" id="single">16</limit>
-        <limit type="destination_user_concurrent_jobs" id="double">8</limit>
+        <limit type="destination_user_concurrent_jobs" id="single">8</limit>
+        <limit type="destination_user_concurrent_jobs" id="double">4</limit>
         <limit type="destination_user_concurrent_jobs" id="eight">3</limit>
 
-        <limit type="destination_total_concurrent_jobs" id="single">50</limit>
-        <limit type="destination_total_concurrent_jobs" id="double">14</limit>
-        <limit type="destination_total_concurrent_jobs" id="eight">7</limit>
+        <limit type="destination_total_concurrent_jobs" id="single">25</limit>
+        <limit type="destination_total_concurrent_jobs" id="double">12</limit>
+        <limit type="destination_total_concurrent_jobs" id="eight">9</limit>
     </limits>
    <tools>
         <tool id="sambamba_filter" destination="single"/>
