@@ -85,6 +85,7 @@
         <tool id="salmon" destination="eight"/>
         <tool id="sr_bowtie_dataset_annotation" destination="eight"/>
         <tool id="sr_bowtie" destination="eight"/>
+        <tool id="bowtieForSmallRNA" destination="eight"/>
         <tool id="ngsplot" destination="eight" />
         <tool id="repenrich" destination="eight"/>
         <tool id="mircounts" destination="eight"/>
