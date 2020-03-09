@@ -35,7 +35,7 @@
         <limit type="anonymous_user_concurrent_jobs">1</limit>
         <limit type="destination_user_concurrent_jobs" id="single">8</limit>
         <limit type="destination_user_concurrent_jobs" id="double">4</limit>
-        <limit type="destination_user_concurrent_jobs" id="eight">3</limit>
+        <limit type="destination_user_concurrent_jobs" id="eight">5</limit>
 
         <limit type="destination_total_concurrent_jobs" id="single">25</limit>
         <limit type="destination_total_concurrent_jobs" id="double">12</limit>
@@ -86,6 +86,7 @@
         <tool id="sr_bowtie_dataset_annotation" destination="eight"/>
         <tool id="sr_bowtie" destination="eight"/>
         <tool id="bowtieForSmallRNA" destination="eight"/>
+        <tool id="bowtie" destination="eight"/>
         <tool id="ngsplot" destination="eight" />
         <tool id="repenrich" destination="eight"/>
         <tool id="mircounts" destination="eight"/>
