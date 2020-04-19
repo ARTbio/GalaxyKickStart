@@ -62,7 +62,7 @@
         <tool id="macs2_callpeak" destination="eight"/>
         <tool id="bowtieForSmallRNA" destination="eight"/>
         <tool id="bowtie-align" destination="eight"/>
-        <tool id="dexseq" destination="eight"/>
+        <tool id="dexseq" destination="double"/>
         <tool id="trinity" destination="eight"/>
         <tool id="oases" destination="eight"/>
         <tool id="rnaspades" destination="eight"/>
