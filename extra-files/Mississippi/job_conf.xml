@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<!-- Do not modify this file, it will we overwritten by ansible galaxykickstart -->
 <job_conf>
     <plugins workers="4">
         <plugin id="slurm" type="runner" load="galaxy.jobs.runners.slurm:SlurmJobRunner">
@@ -25,6 +26,12 @@
             <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
             <param id="nativeSpecification">--ntasks=2 --share</param>
         </destination>
+        <destination id="four" runner="slurm">
+            <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
+            <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
+            <param id="nativeSpecification">--ntasks=4 --share</param>
+        </destination>
+        </destinations>
         <destination id="eight" runner="slurm">
             <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
             <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
@@ -33,16 +40,19 @@
     </destinations>
     <limits>
         <limit type="anonymous_user_concurrent_jobs">1</limit>
-        <limit type="destination_user_concurrent_jobs" id="single">8</limit>
-        <limit type="destination_user_concurrent_jobs" id="double">4</limit>
-        <limit type="destination_user_concurrent_jobs" id="eight">5</limit>
+        <limit type="destination_user_concurrent_jobs" id="single">10</limit>
+        <limit type="destination_user_concurrent_jobs" id="double">6</limit>
+        <limit type="destination_user_concurrent_jobs" id="four">5</limit>
+        <limit type="destination_user_concurrent_jobs" id="eight">4</limit>
 
-        <limit type="destination_total_concurrent_jobs" id="single">25</limit>
-        <limit type="destination_total_concurrent_jobs" id="double">12</limit>
-        <limit type="destination_total_concurrent_jobs" id="eight">9</limit>
+        <limit type="destination_total_concurrent_jobs" id="single">40</limit>
+        <limit type="destination_total_concurrent_jobs" id="double">20</limit>
+        <limit type="destination_total_concurrent_jobs" id="four">16</limit>
+        <limit type="destination_total_concurrent_jobs" id="eight">10</limit>
     </limits>
    <tools>
         <tool id="sambamba_filter" destination="single"/>
+        <tool id="sambamba_sample_or_filter" destination="eight"/>
         <tool id="retrieve_fasta_from_NCBI" destination="double"/>
         <tool id="picard_MergeSamFiles" destination="eight"/>
         <tool id="rsembowtie" destination="eight"/>
@@ -56,6 +66,7 @@
         <tool id="deeptools_bam_compare" destination="eight"/>
         <tool id="deeptools_compute_matrix" destination="eight"/>
         <tool id="deeptools_bigwig_compare" destination="eight"/>
+        <tool id="deeptools_plot_coverage" destination="eight"/>
         <tool id="tophat2" destination="eight"/>
         <tool id="hisat2" destination="eight"/>
         <tool id="bowtie2" destination="eight"/>
