@@ -172,7 +172,7 @@ galaxy_tools_admin_user: "{{ galaxy_admin }}"
 galaxy_tools_admin_user_password: "{{ galaxy_admin_pw }}"
 galaxy_tools_admin_user_preset_api_key: true
 galaxy_tools_api_key: "{{ default_admin_api_key }}"
-galaxy_tools_create_bootstrap_user: true
+galaxy_tools_create_bootstrap_user: false
 galaxy_tools_galaxy_instance_url: http://"{{ galaxy_hostname }}{{ nginx_galaxy_location }}"/
 galaxy_tools_tool_list_files: []
 galaxy_tools_install_workflows: true
