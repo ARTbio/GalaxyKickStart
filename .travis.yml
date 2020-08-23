@@ -24,10 +24,10 @@ env:
 jobs:
   include:
 
-    - stage: docker
-      env:
-        - TRAVIS_JOB=docker-build
-        - BIOBLEND_GALAXY_URL="http://localhost:80/subdir/"
+#    - stage: docker
+#      env:
+#        - TRAVIS_JOB=docker-build
+#        - BIOBLEND_GALAXY_URL="http://localhost:80/subdir/"
       
     - stage: ansible
       env:
