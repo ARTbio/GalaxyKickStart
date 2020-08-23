@@ -22,9 +22,9 @@
   name: galaxyprojectdotorg.trackster
   version: master
 
-- src: https://github.com/galaxyproject/ansible-galaxy-tools.git
+- src: https://github.com/artbio/ansible-galaxy-tools.git
   name: galaxyprojectdotorg.galaxy-tools
-  version: master
+  version: galaxykickstart
 
 - src: https://github.com/uchida/ansible-miniconda-role.git
   name: miniconda-role
