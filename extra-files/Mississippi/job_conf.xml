@@ -77,7 +77,8 @@
         <tool id="trinity" destination="eight"/>
         <tool id="oases" destination="eight"/>
         <tool id="rnaspades" destination="eight"/>
-        <tool id="megahit" destination="double"/>
+        <tool id="metaspades" destination="eight"/>
+        <tool id="megahit" destination="eight"/>
         <tool id="spades" destination="eight"/>
         <tool id="rna_star" destination="eight"/>
         <tool id="rgrnastar" destination="eight"/>
