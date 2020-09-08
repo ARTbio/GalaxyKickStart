@@ -31,7 +31,6 @@
             <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
             <param id="nativeSpecification">--ntasks=4 --share</param>
         </destination>
-        </destinations>
         <destination id="eight" runner="slurm">
             <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
             <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
