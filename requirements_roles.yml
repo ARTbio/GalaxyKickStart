@@ -24,7 +24,7 @@
 
 - src: https://github.com/artbio/ansible-galaxy-tools.git
   name: galaxyprojectdotorg.galaxy-tools
-  version: newgks
+  version: fixtests
 
 - src: https://github.com/uchida/ansible-miniconda-role.git
   name: miniconda-role
