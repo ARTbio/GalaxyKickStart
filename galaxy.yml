@@ -2,7 +2,6 @@
   become: yes
   gather_facts: no
   check_mode: no
-  ansible_check_mode: no # these 2 last variables are redundant and/or maybe useless
 
   environment: "{{ proxy_env }}"
 
@@ -73,6 +72,9 @@
       tags:
         - configure_galaxy
         - install_galaxy
+      vars:
+        - ansible_check_mode: no # test tests
+
 
     - role: set_supervisor_env_vars
       tags: env_vars
