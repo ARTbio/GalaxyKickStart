@@ -1,6 +1,6 @@
 - hosts: all
   become: yes
-  gather_facts: True
+  gather_facts: no
 
   environment: "{{ proxy_env }}"
 
