@@ -1,7 +1,9 @@
 language: python
 python: 3.6
-dist: xenial
-sudo: required
+
+services:
+  - docker
+  - pip3
 
 env:
   global:
@@ -35,7 +37,9 @@ jobs:
         - BIOBLEND_GALAXY_URL="http://localhost:80"
 
 before_install:
-  - pip install ansible==2.7.4
+  - pip  --version
+  - pip3 --version
+  - pip3 install ansible==2.7.4
   - if [[ "$TRAVIS_BRANCH" == *"test_upstream_ansibles"* ]]; then mv upstream_requirements_roles.yml requirements_roles.yml; fi
   - if [ "$TRAVIS_JOB" = "ansible-test" ]; then . ./travis_scripts/before_install_ansible.sh; fi
   - if [ "$TRAVIS_JOB" = "docker-build" ]; then . ./travis_scripts/before_install_docker.sh; fi
