@@ -1,5 +1,9 @@
 GKS: true
-galaxy_venv_python: "2.7"
+galaxy_virtualenv_python: python3
+
+# default: 'virtualenv': The command used to create Galaxy's virtualenv. Set to pyvenv to use Python 3 on Galaxy >= 20.01
+# galaxy_virtualenv_command: 'pyvenv'
+
 proxy_env: {}
 install_galaxy: true
 install_maintainance_packages: false
