@@ -2,6 +2,7 @@
   become: yes
   gather_facts: no
   check_mode: no
+  ansible_check_mode: no # these 2 last variables are redundant and/or maybe useless
 
   environment: "{{ proxy_env }}"
 
