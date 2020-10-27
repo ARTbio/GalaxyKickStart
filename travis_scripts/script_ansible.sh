@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 set -e
 ansible-galaxy install -r requirements_roles.yml -p roles
-sed -i '34d' roles/galaxyprojectdotorg.galaxy/tasks/database.yml  # remove temporary a line to unlock galaxy db build
-ansible-playbook -i inventory_files/galaxy-kickstart galaxy.yml
+# sed -i '34d' roles/galaxyprojectdotorg.galaxy/tasks/database.yml  # remove temporary a line to unlock galaxy db build
+ansible-playbook -i inventory_files/galaxy-kickstart --skip-tags install_tools galaxy.yml
+time 60
+ansible-playbook -i inventory_files/galaxy-kickstart --tasks install_tools galaxy.yml
 
 curl --fail $BIOBLEND_GALAXY_URL/api/version
 

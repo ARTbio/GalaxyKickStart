@@ -17,7 +17,7 @@ env:
   - GALAXY_HOME="/home/galaxy"
   - GALAXY_USER="admin@galaxy.org"
   - GALAXY_USER_EMAIL="admin@galaxy.org"
-  - GALAXY_USER_PASSWD="admin"
+  - GALAXY_USER_PASSWD="artbio2020"
   - GALAXY_VERSION=release_18.09
   - BIOBLEND_GALAXY_API_KEY="admin"
   - BIOBLEND_TEST_JOB_TIMEOUT="200"
