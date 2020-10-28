@@ -41,7 +41,7 @@ galaxy_admin_pw: artbio2020
 use_pbkdf2: true
 proftpd_sql_auth_type: PBKDF2
 proftpd_files_dir: "{{ galaxy_data }}/database/ftp"
-default_admin_api_key: admin
+default_admin_api_key: artbio2020
 postgresql_version: "{{ '9.3' if ansible_distribution=='Ubuntu'
                                  and ansible_distribution_version is version('15.04', '<=')
                               else '9.5' if ansible_distribution=='Ubuntu'
