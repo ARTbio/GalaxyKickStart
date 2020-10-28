@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 set -e
+export GALAXY_USER="admin@galaxy.org"
+export GALAXY_USER_EMAIL="admin@galaxy.org"
+export GALAXY_USER_PASSWD="administrator"
+export GALAXY_HOME=/home/galaxy
+export GALAXY_TRAVIS_USER=galaxy
+export GALAXY_UID=1450
+export GALAXY_GID=1450
+export BIOBLEND_GALAXY_API_KEY=administrator
+export BIOBLEND_GALAXY_URL=http://127.0.0.1:80
+export BIOBLEND_TEST_JOB_TIMEOUT=240
+
 ansible-galaxy install -r requirements_roles.yml -p roles
 ansible-playbook -i inventory_files/galaxy-kickstart --skip-tags install_tools galaxy.yml
 sleep 60
