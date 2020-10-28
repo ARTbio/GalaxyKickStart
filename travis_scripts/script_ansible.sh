@@ -19,7 +19,7 @@ ansible-playbook -i inventory_files/galaxy-kickstart --tags install_tools galaxy
 sudo supervisorctl status
 curl http://localhost:80/api/version| grep version_major
 curl --fail $BIOBLEND_GALAXY_URL/api/version
-date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
+# date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 
 # install bioblend testing, GKS way.
 pip --version
