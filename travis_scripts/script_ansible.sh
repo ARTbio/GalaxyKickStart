@@ -7,7 +7,6 @@ sleep 60
 ansible-playbook -i inventory_files/galaxy-kickstart --tags install_tools galaxy.yml
 
 # curl --fail $BIOBLEND_GALAXY_URL/api/version
-ls -la /home/galaxy/.local/lib/
 # Galaxy test user (may be dispensable)
 # sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
 
@@ -18,6 +17,7 @@ ls -la /home/galaxy/.local/lib/
 
 # install test environement :
 sudo su $GALAXY_TRAVIS_USER -c 'pip install --ignore-installed --user "bioblend==0.13.0" pytest'
+ls -la /home/galaxy/.local/lib/
 
 # test
 sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
