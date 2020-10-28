@@ -2,12 +2,12 @@
 set -e
 export GALAXY_USER="admin@galaxy.org"
 export GALAXY_USER_EMAIL="admin@galaxy.org"
-export GALAXY_USER_PASSWD="administrator"
+export GALAXY_USER_PASSWD="artbio2020"
 export GALAXY_HOME=/home/galaxy
 export GALAXY_TRAVIS_USER=galaxy
 export GALAXY_UID=1450
 export GALAXY_GID=1450
-export BIOBLEND_GALAXY_API_KEY=administrator
+export BIOBLEND_GALAXY_API_KEY=artbio2020
 export BIOBLEND_GALAXY_URL=http://127.0.0.1:80
 export BIOBLEND_TEST_JOB_TIMEOUT=240
 
@@ -18,7 +18,7 @@ ansible-playbook -i inventory_files/galaxy-kickstart --tags install_tools galaxy
 # simple pings to galaxy server
 sudo supervisorctl status
 curl http://localhost:80/api/version| grep version_major
-echo "curl --fail $BIOBLEND_GALAXY_URL/api/version"
+curl --fail $BIOBLEND_GALAXY_URL/api/version
 date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 
 # install bioblend testing, GKS way.
