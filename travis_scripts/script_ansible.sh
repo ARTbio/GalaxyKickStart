@@ -1,25 +1,31 @@
 #!/usr/bin/env bash
 set -e
 ansible-galaxy install -r requirements_roles.yml -p roles
-# sed -i '34d' roles/galaxyprojectdotorg.galaxy/tasks/database.yml  # remove temporary a line to unlock galaxy db build
 ansible-playbook -i inventory_files/galaxy-kickstart --skip-tags install_tools galaxy.yml
 sleep 60
 ansible-playbook -i inventory_files/galaxy-kickstart --tags install_tools galaxy.yml
+# simple pings to galaxy server
+sudo supervisorctl status
+curl http://localhost:80/api/version| grep version_major
+curl --fail $BIOBLEND_GALAXY_URL/api/version
+date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 
-# curl --fail $BIOBLEND_GALAXY_URL/api/version
-# Galaxy test user (may be dispensable)
-# sudo chown -R $GALAXY_TRAVIS_USER:$GALAXY_TRAVIS_USER $GALAXY_HOME
+# install bioblend testing, GKS way.
+pip --version
+sudo rm -f /etc/boto.cfg
+pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/master.zip pytest
 
-# ftp test
-# date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://localhost:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
-
-####     bioblend tests    #####
-
-# install test environement :
-sudo su $GALAXY_TRAVIS_USER -c 'pip install --ignore-installed --user "bioblend==0.13.0" pytest'
-sudo ls -la /home/galaxy/.local/lib/
-
-# test
-sudo -E su $GALAXY_TRAVIS_USER -c "export PATH=$GALAXY_HOME/.local/bin/:$PATH &&
+chmod a+rx /home/travis/
+sudo -E su $GALAXY_TRAVIS_USER -c "source /home/travis/virtualenv/python3.7/bin/activate &&
 cd $GALAXY_HOME &&
-bioblend-galaxy-tests -v $GALAXY_HOME/.local/lib/python3.6/site-packages/bioblend/_tests/TestGalaxy*.py"
+bioblend-galaxy-tests -v -k 'not download_dataset and \
+              not download_history and \
+              not export_and_download and \
+              not test_show_nonexistent_dataset and \
+              not test_invocation and \
+              not test_update_dataset_tags and \
+              not test_upload_file_contents_with_tags and \
+              not test_create_local_user and \
+              not test_show_workflow_versions' \
+              /home/travis/virtualenv/python3.7/lib/python3.7/site-packages/bioblend/_tests/TestGalaxy*.py"
+cd $TRAVIS_BUILD_DIR
