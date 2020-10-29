@@ -1,6 +1,6 @@
 dist: bionic
 language: python
-python: 3.6
+python: 3.7
 
 services:
   - docker
@@ -32,7 +32,7 @@ jobs:
 #        - BIOBLEND_GALAXY_URL="http://localhost:80/subdir/"
       
     - stage: ansible
-      python: "3.6"
+      python: "3.7"
       env:
         - TRAVIS_JOB=ansible-test
         - BIOBLEND_GALAXY_URL="http://localhost:80"
