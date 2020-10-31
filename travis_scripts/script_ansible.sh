@@ -12,9 +12,9 @@ export BIOBLEND_GALAXY_URL=http://127.0.0.1:80
 export BIOBLEND_TEST_JOB_TIMEOUT=240
 
 ansible-galaxy install -r requirements_roles.yml -p roles
-ansible-playbook -i inventory_files/galaxy-kickstart --skip-tags install_tools galaxy.yml
+ansible-playbook -i inventory_files/galaxy-kickstart galaxy.yml
 sleep 60
-ansible-playbook -i inventory_files/galaxy-kickstart --tags install_tools galaxy.yml
+ansible-playbook -i inventory_files/galaxy-kickstart galaxy_tool_install.yml
 
 # simple pings to galaxy server
 sudo supervisorctl status

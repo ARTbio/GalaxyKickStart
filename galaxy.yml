@@ -106,16 +106,6 @@
     - role: galaxyprojectdotorg.trackster
       tags: configure_galaxy
 
-    - role: galaxyprojectdotorg.galaxy-tools
-      become: yes
-      become_user: "{{ galaxy_user_name }}"
-      tags: install_tools
-
-    - role: run_data_manager_role
-      tags:
-        - install_data_managers
-      when: gks_run_data_managers
-
   post_tasks:
 
     - name: Remove useless packages from the cache
