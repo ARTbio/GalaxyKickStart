@@ -13,6 +13,7 @@ export BIOBLEND_TEST_JOB_TIMEOUT=240
 
 ansible-galaxy install -r requirements_roles.yml -p roles
 ansible-playbook -i inventory_files/galaxy-kickstart --skip-tags install_tools galaxy.yml
+/home/galaxy/galaxy/.venv/pip --version
 sleep 60
 ansible-playbook -i inventory_files/galaxy-kickstart --tags install_tools galaxy.yml
 # simple pings to galaxy server
