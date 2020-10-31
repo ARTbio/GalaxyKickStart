@@ -13,9 +13,9 @@ export BIOBLEND_TEST_JOB_TIMEOUT=240
 
 ansible-galaxy install -r requirements_roles.yml -p roles
 ansible-playbook -i inventory_files/galaxy-kickstart --skip-tags install_tools galaxy.yml
-sudo -E su $GALAXY_TRAVIS_USER -c "$GALAXY_HOME/galaxy/.venv/bin/pip --version"
 sleep 60
 ansible-playbook -i inventory_files/galaxy-kickstart --tags install_tools galaxy.yml
+
 # simple pings to galaxy server
 sudo supervisorctl status
 curl http://localhost:80/api/version| grep version_major
