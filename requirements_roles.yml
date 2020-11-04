@@ -10,9 +10,9 @@
   name: natefoo.postgresql_objects
   version: master
 
-- src: https://github.com/artbio/ansible-galaxy.git
+- src: https://github.com/galaxyproject/ansible-galaxy.git
   name: galaxyprojectdotorg.galaxy
-  version: newgks
+  version: master
 
 - src: https://github.com/artbio/ansible-galaxy-extras.git
   name: galaxyprojectdotorg.galaxy-extras
