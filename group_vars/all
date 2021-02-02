@@ -50,6 +50,8 @@ postgresql_version: "{{ '9.3' if ansible_distribution=='Ubuntu'
                                             and ansible_distribution_version is version('17.04', '<')
                               else '10' if ansible_distribution=='Ubuntu'
                                            and ansible_distribution_version is version('18.04', '<=')
+                              else '12' if ansible_distribution=='Ubuntu'
+                                           and ansible_distribution_version is version('20.04', '<=')
                               else '9.4' if ansible_distribution=='Debian'
                                             and ansible_distribution_version is version('8.0', '>=') }}"
 supervisor_postgres_database_path: /var/lib/postgresql/{{ postgresql_version }}/main
