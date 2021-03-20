@@ -1,6 +1,4 @@
 tools:
-
-tools:
 - name: deeptools_correct_gc_bias
   owner: bgruening
   tool_panel_section_label: DeepTools
