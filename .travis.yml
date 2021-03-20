@@ -1,7 +1,9 @@
+dist: bionic
 language: python
-python: 2.7
-dist: xenial
-sudo: required
+python: 3.7
+
+services:
+  - docker
 
 env:
   global:
@@ -15,7 +17,7 @@ env:
   - GALAXY_HOME="/home/galaxy"
   - GALAXY_USER="admin@galaxy.org"
   - GALAXY_USER_EMAIL="admin@galaxy.org"
-  - GALAXY_USER_PASSWD="admin"
+  - GALAXY_USER_PASSWD="artbio2020"
   - GALAXY_VERSION=release_18.09
   - BIOBLEND_GALAXY_API_KEY="admin"
   - BIOBLEND_TEST_JOB_TIMEOUT="200"
@@ -24,23 +26,26 @@ env:
 jobs:
   include:
 
-    - stage: docker
-      env:
-        - TRAVIS_JOB=docker-build
-        - BIOBLEND_GALAXY_URL="http://localhost:80/subdir/"
+#    - stage: docker
+#      env:
+#        - TRAVIS_JOB=docker-build
+#        - BIOBLEND_GALAXY_URL="http://localhost:80/subdir/"
       
     - stage: ansible
+      python: "3.7"
       env:
         - TRAVIS_JOB=ansible-test
         - BIOBLEND_GALAXY_URL="http://localhost:80"
 
 before_install:
-  - pip install ansible==2.7.4
+  - pip  --version
+  - pip3 --version
+  - pip3 install ansible==2.7.4
   - if [[ "$TRAVIS_BRANCH" == *"test_upstream_ansibles"* ]]; then mv upstream_requirements_roles.yml requirements_roles.yml; fi
   - if [ "$TRAVIS_JOB" = "ansible-test" ]; then . ./travis_scripts/before_install_ansible.sh; fi
   - if [ "$TRAVIS_JOB" = "docker-build" ]; then . ./travis_scripts/before_install_docker.sh; fi
 
 
 script:
-  - if [ "$TRAVIS_JOB" = "ansible-test" ]; then . ./travis_scripts/script_ansible.sh; fi
-  - if [ "$TRAVIS_JOB" = "docker-build" ]; then . ./travis_scripts/script_docker.sh; bash ./travis_scripts/deploy.sh; fi
+  - if [ "$TRAVIS_JOB" = "ansible-test" ]; then bash ./travis_scripts/script_ansible.sh; fi
+  - if [ "$TRAVIS_JOB" = "docker-build" ]; then bash ./travis_scripts/script_docker.sh; bash ./travis_scripts/deploy.sh; fi

@@ -1,54 +1,52 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>Homepage</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="style/base.css" type="text/css" />
-</head>
-<body>
-    <div class="document">
-        <p align="center">
-            <img src="images/logo.png" width="400" />
-        </p>
-    </div>
-    <div class="jumbotron">
-        <div class="container">
-            <center>
-            <h4>
-            GalaxyKickStart launched Galaxy
-                <code>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style/base.css" type="text/css" />
+    </head>
+    <body  class="m-0">
+        <div class="py-4">
+            <div class="container">
+                <p align="center">
+                    <img src="images/logo.png" width="400" />
+                </p>
+                <h2>Hello, <strong>GalaxyKickStart</strong> has launch <strong>Galaxy</strong> 
                     <a href="https://github.com/galaxyproject/galaxy/tree/{{ galaxy_changeset_id }}" target="_blank">
-                        {{ galaxy_changeset_id }}
+                    {{ galaxy_changeset_id }}
                     </a>
-                </code>
-            </h4>
-            <a target="_blank" href="https://artbio.github.io/GalaxyKickStart/" class="btn btn-primary btn-lg">GalaxyKickStart Documentation »</a>
-            <a target="_blank" href="https://github.com/ARTbio/GalaxyKickStart" class="btn btn-primary btn-lg">GalaxyKickStart Repository »</a>
+                </h2>
+                To customize this page edit <code>static/welcome.html</code>
+                <br>
+                <a target="_blank" href="https://artbio.github.io/GalaxyKickStart/" class="btn btn-primary">GalaxyKickStart Documentation »</a>
+                <a target="_blank" href="https://github.com/ARTbio/GalaxyKickStart" class="btn btn-primary">GalaxyKickStart Repository »</a>
+                <br>
+                <a target="_blank" href="https://docs.galaxyproject.org/en/latest/admin/config.html" class="btn btn-primary">Configuring Galaxy »</a>
+                <a target="_blank" href="https://galaxyproject.org/admin/tools/add-tool-from-toolshed-tutorial/" class="btn btn-primary">Installing Tools »</a>
+            </div>
             <br>
-            <a target="_blank" href="https://wiki.galaxyproject.org/Admin/Config" class="btn btn-primary btn-lg">Configuring Galaxy »</a>
-            <a target="_blank" href="https://wiki.galaxyproject.org/Admin/Tools/AddToolFromToolShedTutorial" class="btn btn-primary btn-lg">Installing Tools »</a>
-            </center>
+        <div class="container">
+                <p>Take an interactive tour:
+                    <a target="_parent" href="../tours/core.galaxy_ui" class="btn btn-secondary btn-sm">Galaxy UI</a>
+                    <a target="_parent" href="../tours/core.history" class="btn btn-secondary btn-sm">History</a>
+                    <a target="_parent" href="../tours/core.scratchbook" class="btn btn-secondary btn-sm">Scratchbook</a>
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="container">
-        <p class="lead">
-            <a target="_blank" class="reference" href="http://galaxyproject.org/">
-            Galaxy</a> is an open platform for supporting data intensive
-            research. Galaxy is developed by <a target="_blank" class="reference" href="http://wiki.galaxyproject.org/GalaxyTeam">The Galaxy Team</a>
-            with the support of  <a target="_blank" class="reference" href="https://github.com/galaxyproject/galaxy/blob/dev/CONTRIBUTORS.md">many contributors</a>.
-        </p>
-        <footer>
-            The <a target="_blank" class="reference" href="http://galaxyproject.org/">Galaxy Project</a>
-            is supported in part by <a target="_blank" class="reference" href="http://www.genome.gov">NHGRI</a>,
-            <a target="_blank" class="reference" href="http://www.nsf.gov">NSF</a>,
-            <a target="_blank" class="reference" href="http://www.huck.psu.edu">The Huck Institutes of the Life Sciences</a>,
-            <a target="_blank" class="reference" href="http://www.ics.psu.edu">The Institute for CyberScience at Penn State</a>,
-            and <a target="_blank" class="reference" href="http://www.jhu.edu/">Johns Hopkins University</a>.
-        </footer>
-
-    </div>
-
-
-</body>
+        <div class="container">
+            <p class="lead">
+                <a target="_blank" class="reference" href="http://galaxyproject.org/">
+                Galaxy</a> is an open platform for supporting data intensive
+                research. Galaxy is developed by <a target="_blank" class="reference" href="http://wiki.galaxyproject.org/GalaxyTeam">The Galaxy Team</a>
+                with the support of  <a target="_blank" class="reference" href="https://github.com/galaxyproject/galaxy/blob/dev/CONTRIBUTORS.md">many contributors</a>.
+            </p>
+            <footer>
+                The <a target="_blank" class="reference" href="http://galaxyproject.org/">Galaxy Project</a>
+                is supported in part by <a target="_blank" class="reference" href="http://www.genome.gov">NHGRI</a>,
+                <a target="_blank" class="reference" href="http://www.nsf.gov">NSF</a>,
+                <a target="_blank" class="reference" href="http://www.huck.psu.edu">The Huck Institutes of the Life Sciences</a>,
+                <a target="_blank" class="reference" href="http://www.ics.psu.edu">The Institute for CyberScience at Penn State</a>,
+                and <a target="_blank" class="reference" href="http://www.jhu.edu/">Johns Hopkins University</a>.
+            </footer>
+        </div>
+    </body>
 </html>

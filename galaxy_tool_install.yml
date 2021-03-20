@@ -1,0 +1,33 @@
+- hosts: all
+  become: yes
+  gather_facts: yes
+
+  environment: "{{ proxy_env }}"
+
+  handlers:
+    - include_tasks: roles/handlers/galaxy.yml
+
+  pre_tasks:
+    - name: Check ansible version
+      fail: msg="Installed ansible version {{ ansible_version.full }}, but ansible version >= 2.7.4 required"
+      when: ansible_version.full is version('2.7', '<')
+      tags:
+        - always
+
+    - name: gather facts
+      setup:
+      tags:
+        - always
+
+  roles:
+
+    - role: galaxyprojectdotorg.galaxy-tools
+      become: yes
+      become_user: "{{ galaxy_user_name }}"
+      tags: install_tools
+
+    - role: run_data_manager_role
+      tags:
+        - install_data_managers
+      when: gks_run_data_managers
+

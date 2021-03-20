@@ -1,5 +1,9 @@
 GKS: true
-galaxy_venv_python: "2.7"
+galaxy_virtualenv_python: python3
+
+# default: 'virtualenv': The command used to create Galaxy's virtualenv. Set to pyvenv to use Python 3 on Galaxy >= 20.01
+# galaxy_virtualenv_command: 'pyvenv'
+
 proxy_env: {}
 install_galaxy: true
 install_maintainance_packages: false
@@ -17,6 +21,7 @@ gks_run_data_managers: false
 galaxy_hostname: "{{ inventory_hostname }}"
 nginx_galaxy_location: ""
 # galaxy_become_users: {} # for compatibility with ansible.galaxy. as doc seems to say
+pip_virtualenv_command: virtualenv
 galaxy_user_name: galaxy
 galaxy_user_gid: 1450
 galaxy_user_uid: 1450
@@ -30,18 +35,23 @@ galaxy_config_dir: "{{ galaxy_server_dir }}/config"
 galaxy_database: /home/galaxy_database
 galaxy_db: postgresql://{{ galaxy_user_name }}:{{ galaxy_user_name }}@localhost:5432/galaxy?client_encoding=utf8
 galaxy_git_repo: https://github.com/galaxyproject/galaxy.git
-galaxy_changeset_id: release_19.09
+galaxy_changeset_id: release_20.05
 galaxy_reports_config_file: "{{ galaxy_config_dir }}/reports.yml.sample"  # Change this to "{{ galaxy_config_dir }}/reports.ini.sample" for galaxy < 17.09
 galaxy_admin: admin@galaxy.org
-galaxy_admin_pw: admin
+galaxy_admin_pw: artbio2020
+# use the most recent PBKDF2 function for galaxy (and proftpd) authentication
 use_pbkdf2: true
 proftpd_sql_auth_type: PBKDF2
 proftpd_files_dir: "{{ galaxy_data }}/database/ftp"
-default_admin_api_key: admin
+default_admin_api_key: artbio2020
 postgresql_version: "{{ '9.3' if ansible_distribution=='Ubuntu'
                                  and ansible_distribution_version is version('15.04', '<=')
                               else '9.5' if ansible_distribution=='Ubuntu'
-                                            and ansible_distribution_version is version('15.04', '>')
+                                            and ansible_distribution_version is version('17.04', '<')
+                              else '10' if ansible_distribution=='Ubuntu'
+                                           and ansible_distribution_version is version('18.04', '<=')
+                              else '12' if ansible_distribution=='Ubuntu'
+                                           and ansible_distribution_version is version('20.04', '<=')
                               else '9.4' if ansible_distribution=='Debian'
                                             and ansible_distribution_version is version('8.0', '>=') }}"
 supervisor_postgres_database_path: /var/lib/postgresql/{{ postgresql_version }}/main
