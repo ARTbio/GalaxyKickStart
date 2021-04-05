@@ -50,6 +50,7 @@
       tags:
         - install_galaxy
         - manage_postgres
+        - postgres_up
 
     - role: natefoo.postgresql_objects
       postgresql_objects_users:
