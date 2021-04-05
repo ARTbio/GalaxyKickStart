@@ -2,8 +2,7 @@
 # this script in github actions is accessible at the env variable $GITHUB_WORKSPACE
 # if executed avec action checkout
 
-set -o pipefail
-set -e
+set -euo pipefail
 
 export GALAXY_TRAVIS_USER="galaxy"
 export GALAXY_UID="1450"
