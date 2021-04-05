@@ -11,4 +11,6 @@ jobs:
         python-version: '3.7'
     - uses: actions/checkout@v2
     - name: Ansible deploy
-      run: 'sudo ./test.sh'
+      run:
+        - export RUNNER_ALLOW_RUNASROOT="1"
+        - sudo ./test.sh
