@@ -32,7 +32,7 @@ ansible-galaxy install -r requirements_roles.yml -p roles
 
 # tests
 
-ansible-playbook -i inventory_files/galaxy-kickstart --skip_tags=postgres_up galaxy.yml
+ansible-playbook -i inventory_files/galaxy-kickstart --skip-tags=postgres_up galaxy.yml
 sleep 15
 # ansible-playbook -i inventory_files/galaxy-kickstart galaxy_tool_install.yml
 
