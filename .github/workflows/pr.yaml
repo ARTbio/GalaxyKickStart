@@ -11,4 +11,4 @@ jobs:
         python-version: '3.7'
     - uses: actions/checkout@v2
     - name: Ansible deploy
-      run: './test.sh'
+      run: 'sudo ./test.sh'
