@@ -2,6 +2,7 @@
 # this script in github actions is accessible at the env variable $GITHUB_WORKSPACE
 # if executed avec action checkout
 
+set -o pipefail
 set -e
 
 export GALAXY_TRAVIS_USER="galaxy"
@@ -15,6 +16,11 @@ export GALAXY_VERSION=release_20.01
 export BIOBLEND_GALAXY_API_KEY="artbio2020"
 export BIOBLEND_TEST_JOB_TIMEOUT="240"
 export BIOBLEND_GALAXY_URL="http://127.0.0.1:80"
+
+/etc/init.d/postgresql stop || true
+apt-get -y --purge remove postgresql libpq-dev libpq5 postgresql-client-common postgresql-common || true
+rm -rf /var/lib/postgresql || true
+
 
 which pip3
 python3 -m pip install -U pip setuptools 
