@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install Postgresql Packages
-      run: sudo apt-get install lpostgresql-10 postgresql-client-10 postgresql-plpython-10 postgresql-server-dev-10 virtualenv
+      run: sudo apt-get install postgresql-10 postgresql-client-10 postgresql-plpython-10 postgresql-server-dev-10 virtualenv
 
     - name: Ansible deploy
       run: |
