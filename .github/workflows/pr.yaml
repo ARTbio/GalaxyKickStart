@@ -13,4 +13,4 @@ jobs:
     - name: Ansible deploy
       run: |
         export RUNNER_ALLOW_RUNASROOT="1"
-        sh ./test.sh
+        ./test.sh
