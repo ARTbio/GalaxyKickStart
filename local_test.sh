@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # this script in github actions is accessible at the env variable $GITHUB_WORKSPACE
 # if executed avec action checkout
 
