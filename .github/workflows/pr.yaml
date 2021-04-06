@@ -31,6 +31,9 @@ jobs:
     - name: Start Postgresql
       run: sudo pg_ctlcluster 10 main start && sudo service postgresql stop
 
+    - name: Which Postgresql
+      run: sudo ps axf
+    
     - name: Ansible deploy
       run: |
         export RUNNER_ALLOW_RUNASROOT="1"
