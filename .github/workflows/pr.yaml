@@ -5,17 +5,17 @@ jobs:
     name: Ansible
     runs-on: ubuntu-16.04
 
-    services:
-      postgres:
-        image: postgres:10.8
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: github_actions
-        ports:
-          - 5432:5432
-        # needed because the postgres container does not provide a healthcheck
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+#     services:
+#       postgres:
+#         image: postgres:10.8
+#         env:
+#           POSTGRES_USER: postgres
+#           POSTGRES_PASSWORD: postgres
+#           POSTGRES_DB: github_actions
+#         ports:
+#           - 5432:5432
+#         # needed because the postgres container does not provide a healthcheck
+#         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
 
     steps:
@@ -25,11 +25,11 @@ jobs:
         python-version: '3.7'
     - uses: actions/checkout@v2
 
-#     - name: Install Postgresql Packages
-#       run: sudo apt-get install postgresql-10 postgresql-client-10 postgresql-plpython-10 postgresql-server-dev-10 virtualenv
-# 
-#     - name: Start Postgresql
-#       run: sudo pg_ctlcluster 10 main start && sudo service postgresql stop
+    - name: Install Postgresql Packages
+      run: sudo apt-get install postgresql-10 postgresql-client-10 postgresql-plpython-10 postgresql-server-dev-10 virtualenv
+
+    - name: Start Postgresql
+      run: sudo pg_ctlcluster 10 main start && sudo service postgresql stop
 
     - name: Ansible deploy
       run: |

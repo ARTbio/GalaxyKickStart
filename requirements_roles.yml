@@ -1,6 +1,6 @@
-- src: https://github.com/galaxyproject/ansible-galaxy-os.git
+- src: https://github.com/artbio/ansible-galaxy-os.git
   name: galaxyprojectdotorg.galaxy-os
-  version: main
+  version: galaxykickstart
 
 - src: https://github.com/mvdbeek/ensure_postgresql_up.git
   name: ensure_postgresql_up
