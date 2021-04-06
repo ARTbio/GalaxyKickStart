@@ -25,11 +25,14 @@ jobs:
         python-version: '3.7'
     - uses: actions/checkout@v2
 
+    - name: reconfigure
+      run: sudo dpkg-reconfigure --frontend=noninteractive tzdata
+
     - name: Install Postgresql Packages
       run: sudo apt-get install postgresql-10 postgresql-client-10 postgresql-plpython-10 postgresql-server-dev-10 virtualenv
 
     - name: Start Postgresql
-      run: sudo service postgresql restart
+      run: sudo service postgresql stop
 
     - name: Which Postgresql
       run: sudo ps axf
