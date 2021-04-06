@@ -14,12 +14,8 @@ jobs:
     - name: Install Postgresql Packages
       run: sudo apt-get install postgresql-10 postgresql-client-10 postgresql-plpython-10 postgresql-server-dev-10 virtualenv
 
-    - name: Setup database
-      run: psql -h postgres -U postgres -c 'CREATE DATABASE "postgres_db";'
-      env:
-        PGPASSWORD: postgres
-
-
+    - name: Start Postgresql
+      run: sudo pg_ctlcluster 10 main start
 
     - name: Ansible deploy
       run: |
