@@ -35,4 +35,5 @@ jobs:
       run: |
         export RUNNER_ALLOW_RUNASROOT="1"
         which pg_isready
-        sudo ./test.sh
+        sudo -s
+        ./test.sh
