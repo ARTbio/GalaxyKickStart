@@ -15,7 +15,7 @@ jobs:
       run: sudo apt-get install postgresql-10 postgresql-client-10 postgresql-plpython-10 postgresql-server-dev-10 virtualenv
 
     - name: Start Postgresql
-      run: sudo pg_ctlcluster 10 main start
+      run: sudo pg_ctlcluster 10 main start && sudo service postgresql stop
 
     - name: Ansible deploy
       run: |
