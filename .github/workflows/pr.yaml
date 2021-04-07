@@ -47,6 +47,5 @@ jobs:
     
     - name: Ansible deploy
       run: |
-        which pg_isready
         sudo -s
         ./test.sh
