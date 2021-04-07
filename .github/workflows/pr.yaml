@@ -23,7 +23,6 @@ jobs:
         sudo rm -rf /var/log/postgresql/  # directory log postgresql
         sudo rm -rf /etc/postgresql/  # directory base postgresql
         sudo deluser postgres
-        sudo delgroup postgres
 
 
 #    - name: Create scheduler user
