@@ -32,7 +32,7 @@ ansible-galaxy install -r requirements_roles.yml -p roles
 
 # tests
 
-ansible-playbook -i inventory_files/galaxy-kickstart galaxy.yml
+ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy.yml
 sleep 15
 # ansible-playbook -i inventory_files/galaxy-kickstart galaxy_tool_install.yml
 

@@ -24,7 +24,7 @@ jobs:
         sudo rm -rf /etc/postgresql/  # directory base postgresql
         sudo deluser postgres
         sudo apt-get update -y
-        # sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8 7FCC7D46ACCC4CF8
+        # sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8 7FCC7D46ACCC4CF8 7FCC7D46ACCC4CF8
 
     - uses: actions/checkout@v2
 
@@ -49,4 +49,6 @@ jobs:
     
     - name: Ansible deploy
       run: |
-        export RUNNER_ALLOW_RUNASROOT="1" && ./test.sh
+        sudo apt-get update -y
+        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
+        ./test.sh
