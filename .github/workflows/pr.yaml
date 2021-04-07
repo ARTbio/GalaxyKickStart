@@ -47,4 +47,4 @@ jobs:
     
     - name: Ansible deploy
       run: |
-        export RUNNER_ALLOW_RUNASROOT="1" sudo bash ./test.sh
+        export RUNNER_ALLOW_RUNASROOT="1" && sudo bash ./test.sh
