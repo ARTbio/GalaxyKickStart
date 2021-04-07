@@ -5,17 +5,6 @@ jobs:
     name: Ansible
     runs-on: ubuntu-18.04
 
-#     services:
-#       postgres:
-#         image: postgres:10.8
-#         env:
-#           POSTGRES_USER: postgres
-#           POSTGRES_PASSWORD: postgres
-#           POSTGRES_DB: github_actions
-#         ports:
-#           - 5432:5432
-#         # needed because the postgres container does not provide a healthcheck
-#         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
 
     steps:
@@ -25,15 +14,26 @@ jobs:
         python-version: '3.7'
     - uses: actions/checkout@v2
 
-    - name: reconfigure
-      run: sudo dpkg-reconfigure --frontend=noninteractive tzdata
+    - name: Start PostgreSQL on Ubuntu
+      run: |
+        sudo systemctl start postgresql.service
+        pg_isready
+    - name: Create scheduler user
+      run: |
+        sudo -u postgres psql --command="CREATE USER scheduler PASSWORD 'somestrong'" --command="\du"
 
-    - name: Install Postgresql Packages
-      run: sudo apt-get install postgresql-10 postgresql-client-10 postgresql-plpython-10 postgresql-server-dev-10 virtualenv
 
-    - name: Start Postgresql
-      run: sudo service postgresql stop
 
+
+#    - name: reconfigure
+#      run: sudo dpkg-reconfigure --frontend=noninteractive tzdata
+#
+#    - name: Install Postgresql Packages
+#      run: sudo apt-get install postgresql-10 postgresql-client-10 postgresql-plpython-10 postgresql-server-dev-10 virtualenv
+#
+#    - name: Start Postgresql
+#      run: sudo service postgresql stop
+#
     - name: Which Postgresql
       run: sudo ps axf
     
