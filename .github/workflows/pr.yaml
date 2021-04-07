@@ -47,6 +47,6 @@ jobs:
     
     - name: Ansible deploy
       run: |
-        sudo -s
+        export RUNNER_ALLOW_RUNASROOT="1"
         sudo apt update -y
-        sudo bash ./test.sh
+        bash ./test.sh
