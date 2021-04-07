@@ -15,6 +15,7 @@ jobs:
 
     - name: Remove PostgreSQL on VM
       run: |
+        export RUNNER_ALLOW_RUNASROOT="1"
         sudo apt-get --purge remove postgresql
         dpkg -l | grep postgres
         sudo apt-get --purge remove pgdg-keyring postgresql*
