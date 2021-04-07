@@ -49,4 +49,4 @@ jobs:
       run: |
         sudo -s
         sudo apt update -y
-        bash ./test.sh
+        sudo bash ./test.sh
