@@ -3,7 +3,7 @@ on: [push, pull_request]
 jobs:
   test:
     name: Ansible
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-18.04
 
 
 
@@ -24,7 +24,7 @@ jobs:
         sudo rm -rf /etc/postgresql/  # directory base postgresql
         sudo deluser postgres
         sudo apt-get update -y
-        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
+        # sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8 7FCC7D46ACCC4CF8
 
     - uses: actions/checkout@v2
 
