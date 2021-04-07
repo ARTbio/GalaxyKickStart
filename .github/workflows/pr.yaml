@@ -47,7 +47,6 @@ jobs:
     
     - name: Ansible deploy
       run: |
-#        export RUNNER_ALLOW_RUNASROOT="1"
         which pg_isready
         sudo -s
         ./test.sh
