@@ -14,13 +14,21 @@ jobs:
         python-version: '3.7'
     - uses: actions/checkout@v2
 
-    - name: Start PostgreSQL on Ubuntu
+    - name: Remove PostgreSQL on VM
       run: |
-        sudo systemctl start postgresql.service
-        pg_isready
-    - name: Create scheduler user
-      run: |
-        sudo -u postgres psql --command="CREATE USER scheduler PASSWORD 'somestrong'" --command="\du"
+        sudo apt-get --purge remove postgresql
+        dpkg -l | grep postgres
+        sudo apt-get --purge remove pgdg-keyring postgresql*
+        sudo rm -rf /var/lib/postgresql/  # directory data postgresql
+        sudo rm -rf /var/log/postgresql/  # directory log postgresql
+        sudo rm -rf /etc/postgresql/  # directory base postgresql
+        sudo deluser postgres
+        sudo delgroup postgres
+
+
+#    - name: Create scheduler user
+#      run: |
+#        sudo -u postgres psql --command="CREATE USER scheduler PASSWORD 'somestrong'" --command="\du"
 
 
 
@@ -34,8 +42,6 @@ jobs:
 #    - name: Start Postgresql
 #      run: sudo service postgresql stop
 #
-    - name: Which Postgresql
-      run: sudo ps axf
     
     - name: Ansible deploy
       run: |
