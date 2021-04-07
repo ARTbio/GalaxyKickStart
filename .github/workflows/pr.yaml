@@ -48,4 +48,5 @@ jobs:
     - name: Ansible deploy
       run: |
         sudo -s
-        ./test.sh
+        apt update -y
+        bash ./test.sh
