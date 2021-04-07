@@ -48,7 +48,8 @@ jobs:
     - name: Ansible deploy
       run: |
         export RUNNER_ALLOW_RUNASROOT="1"
-        sudo -s
+        pwd
+        sudo -i
         whoami
         pwd
         sudo apt update -y
