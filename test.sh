@@ -23,6 +23,8 @@ python3 -m pip install ansible==2.7.4
 python3 -m pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
 
 pip freeze
+pip show pytest
+pip show bioblend
 
 #debug
 pwd
@@ -51,8 +53,7 @@ date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://127.0.0.1:21 --user
 sudo rm -f /etc/boto.cfg # to do: understand the purpose of this step
 
 
-bioblend-galaxy-tests -v /opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/_tests/TestGalaxy*.py || true
-
+bioblend-galaxy-tests -v /opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/bioblend/_tests/TestGalaxy*.py || true
 
 # chmod a+rx /home/runner/
 # sudo -E su $GALAXY_TRAVIS_USER -c "source GALAXY_HOME/virtualenv/python3.7/bin/activate &&
