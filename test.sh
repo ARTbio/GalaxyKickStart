@@ -41,6 +41,7 @@ sudo supervisorctl status
 curl http://localhost:80/api/version| grep version_major
 curl --fail $BIOBLEND_GALAXY_URL/api/version
 # test proftpd
+# to do: touch disposable_email_whitelist.conf in galaxy config folder
 date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 
 # install bioblend testing, GKS way.
