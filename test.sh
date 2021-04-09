@@ -40,14 +40,17 @@ ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_R
 sudo supervisorctl status
 curl http://localhost:80/api/version| grep version_major
 curl --fail $BIOBLEND_GALAXY_URL/api/version
+
 # test proftpd
-# to do: touch disposable_email_whitelist.conf in galaxy config folder
+echo "test ftp transfer to proftpd server"
 date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 
 # install bioblend testing, GKS way.
-# pip --version
-# sudo rm -f /etc/boto.cfg
-# pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/master.zip pytest
+pip --version
+sudo rm -f /etc/boto.cfg
+pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/master.zip pytest
+pwd
+
 # 
 # chmod a+rx /home/runner/
 # sudo -E su $GALAXY_TRAVIS_USER -c "source /home/travis/virtualenv/python3.7/bin/activate &&
