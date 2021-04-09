@@ -2,11 +2,8 @@ name: Ansible Testing
 on: [push, pull_request]
 jobs:
   test:
-    name: Ansible
+    name: Ansible - Ubuntu 18.04
     runs-on: ubuntu-18.04
-
-
-
     steps:
     - name: Set up Python 3.7
       uses: actions/setup-python@v2
@@ -24,28 +21,37 @@ jobs:
         sudo rm -rf /etc/postgresql/  # directory base postgresql
         sudo deluser postgres
         sudo apt-get update -y
-        # sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8 7FCC7D46ACCC4CF8 7FCC7D46ACCC4CF8
 
     - uses: actions/checkout@v2
+    
+    - name: Ansible deploy
+      run: |
+        sudo apt-get update -y
+        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
+        ./test.sh
 
+  test:
+    name: Ansible - Ubuntu 16.04
+    runs-on: ubuntu-16.04
+    steps:
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.7'
 
+    - name: Remove PostgreSQL on VM
+      run: |
+        export RUNNER_ALLOW_RUNASROOT="1"
+        sudo apt-get --purge remove postgresql
+        dpkg -l | grep postgres
+        sudo apt-get --purge remove pgdg-keyring postgresql*
+        sudo rm -rf /var/lib/postgresql/  # directory data postgresql
+        sudo rm -rf /var/log/postgresql/  # directory log postgresql
+        sudo rm -rf /etc/postgresql/  # directory base postgresql
+        sudo deluser postgres
+        sudo apt-get update -y
 
-#    - name: Create scheduler user
-#      run: |
-#        sudo -u postgres psql --command="CREATE USER scheduler PASSWORD 'somestrong'" --command="\du"
-
-
-
-
-#    - name: reconfigure
-#      run: sudo dpkg-reconfigure --frontend=noninteractive tzdata
-#
-#    - name: Install Postgresql Packages
-#      run: sudo apt-get install postgresql-10 postgresql-client-10 postgresql-plpython-10 postgresql-server-dev-10 virtualenv
-#
-#    - name: Start Postgresql
-#      run: sudo service postgresql stop
-#
+    - uses: actions/checkout@v2
     
     - name: Ansible deploy
       run: |
