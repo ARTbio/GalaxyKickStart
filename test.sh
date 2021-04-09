@@ -25,18 +25,17 @@ which pip3
 python3 -m pip install -U pip setuptools 
 python3 -m pip install ansible==2.7.4
 
-# git clone https://github.com/artbio/galaxykickstart -b actions 
-# cd galaxykickstart
+# run playbooks
 
 ansible-galaxy install -r requirements_roles.yml -p roles
 
-# tests
-
 ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy.yml
+
 sleep 15
+
 ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy_tool_install.yml
 
-# simple pings to galaxy server
+# pings galaxy server
 sudo supervisorctl status
 curl http://localhost:80/api/version| grep version_major
 curl --fail $BIOBLEND_GALAXY_URL/api/version
@@ -45,15 +44,20 @@ curl --fail $BIOBLEND_GALAXY_URL/api/version
 echo "test ftp transfer to proftpd server"
 date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 
-# install bioblend testing, GKS way.
+# install bioblend testing environnement
+
 pip --version
-sudo rm -f /etc/boto.cfg
+sudo rm -f /etc/boto.cfg # to do: understand the purpose of this step
 pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
+
+#debug
 pwd
 
-# 
+bioblend-galaxy-tests -v /opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/_tests/TestGalaxy*.py || true
+
+
 # chmod a+rx /home/runner/
-# sudo -E su $GALAXY_TRAVIS_USER -c "source /home/travis/virtualenv/python3.7/bin/activate &&
+# sudo -E su $GALAXY_TRAVIS_USER -c "source GALAXY_HOME/virtualenv/python3.7/bin/activate &&
 # cd $GALAXY_HOME &&
 # bioblend-galaxy-tests -v -k 'not download_dataset and \
 #               not download_history and \
