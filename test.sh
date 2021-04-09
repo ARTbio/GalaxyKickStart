@@ -52,7 +52,6 @@ date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://127.0.0.1:21 --user
 
 sudo rm -f /etc/boto.cfg # to do: understand the purpose of this step
 
-
 bioblend-galaxy-tests -v /opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/bioblend/_tests/TestGalaxy*.py || true
 
 # chmod a+rx /home/runner/
