@@ -20,6 +20,12 @@ export BIOBLEND_GALAXY_URL="http://127.0.0.1:80"
 which pip3
 python3 -m pip install -U pip setuptools 
 python3 -m pip install ansible==2.7.4
+python3 -m pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
+
+pip freeze
+
+#debug
+pwd
 
 # run playbooks
 
@@ -37,17 +43,13 @@ curl http://localhost:80/api/version| grep version_major
 curl --fail $BIOBLEND_GALAXY_URL/api/version
 
 # test proftpd
-echo "test ftp transfer to proftpd server"
+echo "\ntest ftp transfer to proftpd server\n"
 date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 
 # install bioblend testing environnement
 
-pip --version
 sudo rm -f /etc/boto.cfg # to do: understand the purpose of this step
-pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
 
-#debug
-pwd
 
 bioblend-galaxy-tests -v /opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/_tests/TestGalaxy*.py || true
 
