@@ -48,7 +48,7 @@ date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://127.0.0.1:21 --user
 # install bioblend testing, GKS way.
 pip --version
 sudo rm -f /etc/boto.cfg
-pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/master.zip pytest
+pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
 pwd
 
 # 
