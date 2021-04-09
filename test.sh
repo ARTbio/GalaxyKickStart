@@ -52,19 +52,6 @@ date > $HOME/date.txt && curl --fail -T $HOME/date.txt ftp://127.0.0.1:21 --user
 
 sudo rm -f /etc/boto.cfg # to do: understand the purpose of this step
 
-bioblend-galaxy-tests -v /opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/bioblend/_tests/TestGalaxy*.py || true
+cd /opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/bioblend/_tests/
 
-# chmod a+rx /home/runner/
-# sudo -E su $GALAXY_TRAVIS_USER -c "source GALAXY_HOME/virtualenv/python3.7/bin/activate &&
-# cd $GALAXY_HOME &&
-# bioblend-galaxy-tests -v -k 'not download_dataset and \
-#               not download_history and \
-#               not export_and_download and \
-#               not test_show_nonexistent_dataset and \
-#               not test_invocation and \
-#               not test_update_dataset_tags and \
-#               not test_upload_file_contents_with_tags and \
-#               not test_create_local_user and \
-#               not test_show_workflow_versions' \
-#               /home/travis/virtualenv/python3.7/lib/python3.7/site-packages/bioblend/_tests/TestGalaxy*.py"
-# cd $TRAVIS_BUILD_DIR
+bioblend-galaxy-tests -v --color=yes TestGalaxy*.py || true
