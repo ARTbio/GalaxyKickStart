@@ -22,7 +22,6 @@ python3 -m pip install -U pip setuptools
 python3 -m pip install ansible==2.7.4
 python3 -m pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
 
-pip freeze
 pip show pytest
 pip show bioblend
 
