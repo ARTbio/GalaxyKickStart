@@ -32,7 +32,7 @@ pwd
 
 ansible-galaxy install -r requirements_roles.yml -p roles
 
-sudo sed '/- nginx-extras/d' roles/galaxyprojectdotorg.galaxy-os/tasks/ubuntu/packages.yml
+sudo sed -i '/- nginx-extras/d' roles/galaxyprojectdotorg.galaxy-os/tasks/ubuntu/packages.yml
 
 cat roles/galaxyprojectdotorg.galaxy-os/tasks/ubuntu/packages.yml
 
