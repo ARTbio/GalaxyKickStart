@@ -34,7 +34,7 @@ jobs:
       run: |
         sudo add-apt-repository ppa:galaxyproject/nginx
         sudo apt update -y
-        sudo apt install nginx
+        sudo apt install nginx nginx-common
       if: matrix.os == 'ubuntu-16.04'
 
     - name: Galaxykickstart
