@@ -16,6 +16,8 @@ export BIOBLEND_GALAXY_API_KEY="artbio2020"
 export BIOBLEND_TEST_JOB_TIMEOUT="240"
 export BIOBLEND_GALAXY_URL="http://127.0.0.1:80"
 
+ln -sf /usr/bin/python3.7 python3
+ln -sf /usr/bin/python3.7 python
 
 which pip3
 python3 -m pip install -U pip setuptools 
@@ -24,6 +26,7 @@ python3 -m pip install --ignore-installed https://github.com/galaxyproject/biobl
 
 pip show pytest
 pip show bioblend
+
 
 #debug
 pwd
