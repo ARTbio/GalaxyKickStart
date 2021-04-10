@@ -40,7 +40,6 @@ jobs:
 
     - name: Galaxykickstart
       run: |
-        sudo sed '/- nginx-extras/d' roles/galaxyprojectdotorg.galaxy-os/tasks/ubuntu/packages.yml 
         sudo apt-get update -y
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
         ./test.sh
