@@ -1,0 +1,45 @@
+name: Ansible Testing
+on: [push, pull_request]
+
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-16.04]
+
+    steps:
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.7'
+  
+    - name: Remove PostgreSQL on VM
+      run: |
+        export RUNNER_ALLOW_RUNASROOT="1"
+        sudo apt-get --purge remove postgresql
+        dpkg -l | grep postgres
+        sudo apt-get --purge remove pgdg-keyring postgresql*
+        sudo rm -rf /var/lib/postgresql/  # directory data postgresql
+        sudo rm -rf /var/log/postgresql/  # directory log postgresql
+        sudo rm -rf /etc/postgresql/  # directory base postgresql
+        sudo deluser postgres
+        sudo apt-get update -y
+  
+    - uses: actions/checkout@v2
+    
+    - name: Add custom Galaxy PPA (used for nginx package)
+      run: |
+        sudo add-apt-repository ppa:galaxyproject/nginx
+        sudo apt update -y
+        sudo apt install nginx nginx-common tree
+        sudo tree /etc/apt/
+      if: matrix.os == 'ubuntu-16.04'
+
+    - name: Galaxykickstart
+      run: |
+        sudo apt-get update -y
+        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
+        ./test.sh
