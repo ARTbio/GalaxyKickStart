@@ -74,7 +74,6 @@ jobs:
         sudo apt-get update -y
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
         sudo apt-get --purge remove nginx*
-        # sudo apt-get install nginx-common
         ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy.yml
 
     - name: ansible installs galaxy tools
@@ -96,7 +95,7 @@ jobs:
       
     - name: Bioblend tests
       run: |
-        cd /home/runner/.local/lib/python2.7/site-packages
+        cd /home/runner/.local/lib/python2.7/site-packages/bioblend/_tests/
         bioblend-galaxy-tests --color=yes TestGalaxy*.py || true
       if: matrix.os == 'ubuntu-16.04'
       
