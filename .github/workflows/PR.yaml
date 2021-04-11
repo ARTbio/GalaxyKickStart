@@ -41,6 +41,7 @@ jobs:
 
     - name: Set up pip and ansible in ubuntu 16.04
       run: |
+        whoami
         sudo apt install -y python python-dev python-pip python-virtualenv
         sudo chown -R worker:worker /usr/local/lib/python2.7
         python -m pip install --user -U 'pip<20.0.0'
