@@ -9,11 +9,11 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-16.04, ubuntu-18.04]
-  env:
-    GALAXY_USER: admin@galaxy.org
-    GALAXY_USER_PASSWD: artbio2020
+    env:
+      GALAXY_USER: admin@galaxy.org
+      GALAXY_USER_PASSWD: artbio2020
+    
     steps:
-
     - name: Remove PostgreSQL on VM
       run: |
         export RUNNER_ALLOW_RUNASROOT="1"
