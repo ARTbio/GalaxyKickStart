@@ -79,7 +79,7 @@ jobs:
     - name: check Galaxy API is alive
       uses: mydea/action-wait-for-api@v1
       with:
-        url: "https://api.example.com/status"
+        url: "http://localhost/api/version"
 
 
     - name: ansible installs galaxy tools
