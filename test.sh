@@ -35,11 +35,6 @@ pwd
 
 ansible-galaxy install -r requirements_roles.yml -p roles
 
-sudo sed -i '/- nginx-extras/d' roles/galaxyprojectdotorg.galaxy-os/tasks/ubuntu/packages.yml
-
-cat roles/galaxyprojectdotorg.galaxy-os/tasks/ubuntu/packages.yml
-
-
 ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy.yml
 
 sleep 15
