@@ -78,6 +78,7 @@ jobs:
 
     - name: ansible installs galaxy tools
       run: |
+        sleep 60
         ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy_tool_install.yml
 
     - name: run basic tests
