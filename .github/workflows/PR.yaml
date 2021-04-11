@@ -30,6 +30,6 @@ jobs:
     
     - name: Galaxykickstart
       run: |
-        # sudo apt-get update -y
-        # sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
+        sudo apt-get update -y
+        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
         ./test.sh
