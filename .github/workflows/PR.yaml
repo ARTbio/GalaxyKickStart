@@ -91,12 +91,12 @@ jobs:
     - name: Bioblend tests
       run: |
         cd /opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/bioblend/_tests/
-        bioblend-galaxy-tests --color=yes TestGalaxy*.py --no-summary || true
+        bioblend-galaxy-tests --color=yes -v TestGalaxy*.py --no-summary || true
       if: matrix.os == 'ubuntu-18.04'
       
     - name: Bioblend tests
       run: |
         cd /home/runner/.local/lib/python2.7/site-packages/bioblend/_tests/
-        bioblend-galaxy-tests --color=yes TestGalaxy*.py || true
+        bioblend-galaxy-tests --color=yes -v TestGalaxy*.py || true
       if: matrix.os == 'ubuntu-16.04'
       
