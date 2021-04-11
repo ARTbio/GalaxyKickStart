@@ -70,6 +70,7 @@ jobs:
       run: |
         sudo apt-get update -y
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
+        sudo apt-install nginx-common
         ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy.yml
 
     - name: ansible installs galaxy tools
