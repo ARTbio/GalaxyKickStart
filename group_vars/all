@@ -43,7 +43,6 @@ galaxy_admin_pw: artbio2020
 use_pbkdf2: true
 proftpd_sql_auth_type: PBKDF2
 proftpd_files_dir: "{{ galaxy_data }}/database/ftp"
-default_admin_api_key: artbio2020
 postgresql_version: "{{ '9.3' if ansible_distribution=='Ubuntu'
                                  and ansible_distribution_version is version('15.04', '<=')
                               else '9.5' if ansible_distribution=='Ubuntu'
@@ -180,8 +179,10 @@ galaxy_extras_ie_rstudio_image: artbio/rstudio-notebook:latest
 # galaxy-tools role variables
 galaxy_tools_install_tools: true
 galaxy_tools_admin_user: "{{ galaxy_admin }}"
+galaxy_tools_admin_username: admin
 galaxy_tools_admin_user_password: "{{ galaxy_admin_pw }}"
 galaxy_tools_admin_user_preset_api_key: true
+default_admin_api_key: artbio2020
 galaxy_tools_api_key: "{{ default_admin_api_key }}"
 galaxy_tools_create_bootstrap_user: true
 galaxy_tools_delete_bootstrap_user: false
