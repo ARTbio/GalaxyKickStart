@@ -15,7 +15,8 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.7.6'
-  
+      if: matrix.os == 'ubuntu-18.04'
+
     - name: Remove PostgreSQL on VM
       run: |
         export RUNNER_ALLOW_RUNASROOT="1"
@@ -40,6 +41,8 @@ jobs:
 
     - name: Galaxykickstart
       run: |
+        python --version
+        python3 --version
         sudo apt-get update -y
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
         ./test.sh
