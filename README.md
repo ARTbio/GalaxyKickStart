@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/ARTbio/GalaxyKickStart.svg?branch=master)](https://travis-ci.org/ARTbio/GalaxyKickStart)
-
+[![Ansible Testing](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/PR.yaml/badge.svg)](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/PR.yaml)
+[![Readthedocs Published](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/readthedocs.yaml/badge.svg)](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/readthedocs.yaml)
 # GalaxyKickStart
 
 GalaxyKickStart is an Ansible playbook designed to help you get one or more
