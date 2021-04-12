@@ -76,15 +76,21 @@ jobs:
         sudo apt-get --purge remove nginx*
         ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy.yml
 
+    - name: Sleep for 30 seconds
+      uses: kibertoad/wait-action@1.0.1
+      with:
+        time: '30s'
+            
     - name: check supervisor services
       run: |
         sudo supervisorctl status
-        curl http://localhost:80/api/version| grep version_major 
+        curl http://localhost:80/api/version| grep version_major || true
 
     - name: check Galaxy API is alive
       uses: mydea/action-wait-for-api@v1
       with:
         url: "http://localhost/api/version"
+        timeout: 120
 
 
     - name: ansible installs galaxy tools
