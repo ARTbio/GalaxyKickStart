@@ -82,7 +82,7 @@ jobs:
             
     - name: restart galaxy services with supervisorctl
       run: |
-        sudo supervisorct restart galaxy:
+        sudo supervisorctl restart galaxy:
 
     - name: Sleep for 15 seconds
       run: |
