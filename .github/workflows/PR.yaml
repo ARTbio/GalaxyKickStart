@@ -77,7 +77,7 @@ jobs:
         ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy.yml
 
     - name: Sleep for 30 seconds
-      uses: kibertoad/wait-action@1.0.1
+      uses: whatnick/wait-action@master
       with:
         time: '30s'
             
