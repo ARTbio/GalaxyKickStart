@@ -1,5 +1,10 @@
 site_name: GalaxyKickStart
-pages:
+site_url: https://artbio.github.io/galaxykickstart/
+repo_url: https://github.com/artbio/galaxykickstart
+theme: 'material'
+
+
+nav:
  - Home: index.md
  - What is GalaxyKickStart: about.md
  - Getting started: getting_started.md
@@ -15,4 +20,28 @@ pages:
    - metavisitor.md
    - GKS2slurm.md
    - GKSfromWorflows.md
-theme: readthedocs
+
+markdown_extensions:
+  - attr_list
+  - codehilite:
+      linenums: true
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+#  - pymdownx.betterem:
+#      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+#  - pymdownx.inlinehilite # compete with codehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
