@@ -43,9 +43,6 @@
         - install_galaxy
         - install_packages
 
-    - role: cloud_setup
-      when: cloud_setup is defined
-
     - role: ensure_postgresql_up
       tags:
         - install_galaxy
@@ -74,7 +71,6 @@
         - install_galaxy
       vars:
         - ansible_check_mode: no # test tests
-
 
     - role: set_supervisor_env_vars
       tags: env_vars
