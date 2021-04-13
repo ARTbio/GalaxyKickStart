@@ -84,8 +84,8 @@ jobs:
     name: GalaxyKickStart in ubuntu16.04
     needs: Ubuntu_18
     runs-on: ubuntu-16.04
-    env:
-      BIOBLEND_TEST_JOB_TIMEOUT: "120"
+#    env:
+#      BIOBLEND_TEST_JOB_TIMEOUT: "120"
     
     steps:
     - name: Remove PostgreSQL on VM
