@@ -4,16 +4,13 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-16.04, ubuntu-18.04]
+    name: GalaxyKickStart in ubuntu16.04
+    runs-on: ubuntu-16.04
     env:
       GALAXY_USER: admin@galaxy.org
       GALAXY_USER_PASSWD: artbio2020
       BIOBLEND_GALAXY_API_KEY: "artbio2020"
-      # BIOBLEND_TEST_JOB_TIMEOUT: "240"
+      BIOBLEND_TEST_JOB_TIMEOUT: "120"
       BIOBLEND_GALAXY_URL: "http://127.0.0.1:80"
     
     steps:
@@ -28,29 +25,14 @@ jobs:
         sudo rm -rf /etc/postgresql/  # directory base postgresql
         sudo deluser postgres
         sudo apt-get update -y
-
-    - name: Set up Python 3.7 in ubuntu 18.04
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.7'
-      if: matrix.os == 'ubuntu-18.04'
     
-    - name: Set up pip and ansible in ubuntu 18.04
-      run: |
-        python3 -m pip install -U pip setuptools 
-        python3 -m pip install ansible==2.7.4
-        python3 -m pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
-      if: matrix.os == 'ubuntu-18.04'
-
     - name: Set up pip and ansible in ubuntu 16.04
       run: |
-        whoami
         sudo apt install -y python python-dev python-pip python-virtualenv
         sudo chown -R runner:runner /usr/local/lib/python2.7
         python -m pip install --user -U 'pip<20.0.0'
         python -m pip install --user ansible==2.7.4
         python -m pip install --user --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.10.0.zip 'pytest<6.1.0'
-      if: matrix.os == 'ubuntu-16.04'
     
     - name: Display pip python and ansible settings
       run: |
@@ -67,7 +49,6 @@ jobs:
     - name: install ansible roles
       run: |
         ansible-galaxy install -r requirements_roles.yml -p roles
-        pwd
 
     - name: ansible installs galaxy
       run: |
@@ -76,7 +57,7 @@ jobs:
         sudo apt-get --purge remove nginx*
         ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy.yml
 
-    - name: Sleep for 15 seconds
+    - name: Sleep for 10 seconds
       run: |
         echo "waiting 15 sec" && sleep 30
             
@@ -84,7 +65,7 @@ jobs:
       run: |
         sudo supervisorctl restart galaxy:
 
-    - name: Sleep for 15 seconds
+    - name: Sleep for 10 seconds
       run: |
         echo "waiting 15 sec" && sleep 30
 
@@ -109,16 +90,9 @@ jobs:
         curl http://localhost:80/api/version| grep version_major
         echo "\ntest ftp transfer to proftpd server\n"
         date > date.txt && curl --fail -T date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
-
-    - name: Bioblend tests
-      run: |
-        cd /opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/bioblend/_tests/
-        bioblend-galaxy-tests --color=yes -v TestGalaxy*.py --no-summary || true
-      if: matrix.os == 'ubuntu-18.04'
       
     - name: Bioblend tests
       run: |
         cd /home/runner/.local/lib/python2.7/site-packages/bioblend/_tests/
         bioblend-galaxy-tests --color=yes -v TestGalaxy*.py || true
-      if: matrix.os == 'ubuntu-16.04'
       

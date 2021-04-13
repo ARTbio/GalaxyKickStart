@@ -4,6 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
+    name: GalaxyKickStart in ubuntu18.04
     runs-on: ubuntu-18.04
     env:
       GALAXY_USER: admin@galaxy.org
