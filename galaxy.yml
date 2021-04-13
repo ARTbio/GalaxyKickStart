@@ -105,6 +105,13 @@
 
   post_tasks:
 
+    - name: Restart supervisor galaxy service
+      supervisorctl:
+        name: "galaxy:"
+        state: restarted
+        config: /etc/supervisor/conf.d/galaxy.conf
+
+
     - name: Remove useless packages from the cache
       apt:
         autoclean: yes
