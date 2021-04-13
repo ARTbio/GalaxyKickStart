@@ -109,7 +109,7 @@
       supervisorctl:
         name: "galaxy:"
         state: restarted
-        config: /etc/supervisor/conf.d/galaxy.conf
+        config: /etc/supervisor/supervisord.conf
 
 
     - name: Remove useless packages from the cache
