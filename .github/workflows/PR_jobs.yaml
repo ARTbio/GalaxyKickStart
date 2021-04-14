@@ -199,8 +199,12 @@ jobs:
         echo "\ntest ftp transfer to proftpd server\n"
         date > date.txt && curl --fail -T date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
       
+#    - name: Bioblend tests
+#      run: |
+#        cd /home/runner/.local/lib/python2.7/site-packages/bioblend/_tests/
+#        bioblend-galaxy-tests --color=yes -v TestGalaxyHistories.py TestGalaxyTools.py || true
+   
     - name: Bioblend tests
       run: |
-        cd /home/runner/.local/lib/python2.7/site-packages/bioblend/_tests/
-        bioblend-galaxy-tests --color=yes -v TestGalaxyHistories.py TestGalaxyTools.py || true
-   
+        cd /opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/bioblend/_tests/
+        bioblend-galaxy-tests --color=yes -v TestGalaxyHistories.py TestGalaxyTools.py --no-summary || true
