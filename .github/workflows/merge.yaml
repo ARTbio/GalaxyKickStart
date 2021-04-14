@@ -1,5 +1,9 @@
 name: Ansible Testing
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  
 env:
   GALAXY_USER: admin@galaxy.org
   GALAXY_USER_PASSWD: artbio2020
@@ -11,8 +15,6 @@ jobs:
   Ubuntu_18:
     name: GalaxyKickStart in ubuntu18.04
     runs-on: ubuntu-18.04
-#    env:
-#        BIOBLEND_TEST_JOB_TIMEOUT: "120"
     
     steps:
     - name: Remove PostgreSQL on VM
@@ -90,19 +92,11 @@ jobs:
         echo "\ntest ftp transfer to proftpd server\n"
         date > date.txt && curl --fail -T date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 
-    - name: Bioblend tests
-      run: |
-        cd /opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/bioblend/_tests/
-        bioblend-galaxy-tests --color=yes -v TestGalaxyHistories.py TestGalaxyTools.py --no-summary || true
-
-
 
   Ubuntu_16:
     name: GalaxyKickStart in ubuntu16.04
     needs: Ubuntu_18
     runs-on: ubuntu-16.04
-#    env:
-#      BIOBLEND_TEST_JOB_TIMEOUT: "120"
     
     steps:
     - name: Remove PostgreSQL on VM
@@ -181,9 +175,4 @@ jobs:
         curl http://localhost:80/api/version| grep version_major
         echo "\ntest ftp transfer to proftpd server\n"
         date > date.txt && curl --fail -T date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
-      
-    - name: Bioblend tests
-      run: |
-        cd /home/runner/.local/lib/python2.7/site-packages/bioblend/_tests/
-        bioblend-galaxy-tests --color=yes -v TestGalaxyHistories.py TestGalaxyTools.py || true
    
