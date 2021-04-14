@@ -99,7 +99,7 @@ jobs:
 
   Ubuntu_16:
     name: GalaxyKickStart in ubuntu16.04
-    needs: Ubuntu_18
+#    needs: Ubuntu_18
     runs-on: ubuntu-16.04
 #    env:
 #      BIOBLEND_TEST_JOB_TIMEOUT: "120"
@@ -124,8 +124,8 @@ jobs:
 
     - name: Set up pip and ansible in ubuntu 16.04
       run: |
-        sudo apt install -y python python-dev python-pip python-virtualenv
-        sudo chown -R runner:runner /usr/local/lib/python2.7
+        # sudo apt install -y python python-dev python-pip python-virtualenv
+        # sudo chown -R runner:runner /usr/local/lib/python2.7
         python -m pip install --user -U 'pip<20.0.0'
         python -m pip install --user ansible==2.7.4
         python -m pip install --user --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.10.0.zip 'pytest<6.1.0'
