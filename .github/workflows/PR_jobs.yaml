@@ -129,17 +129,6 @@ jobs:
         python3 -m pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
 
 
-#    - name: Set up pip and ansible in ubuntu 16.04
-#      run: |
-#        sudo apt install -y python python-dev python-pip python-virtualenv
-#        # sudo chown -R runner:runner /usr/local/lib/python2.7
-#        # curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-#        # python3 get-pip.py --force-reinstall
-#        sudo sed -i -e 's/from pip._internal.cli.main import main/from pip import main/g' /opt/hostedtoolcache/Python/3.6.13/x64/bin/pip
-#        python -m pip install --user -U 'pip<20.0.0'
-#        python -m pip install --user ansible==2.7.4
-#        python -m pip install --user --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.10.0.zip 'pytest<6.1.0'
-    
     - name: Display pip python and ansible settings
       run: |
         which python
@@ -199,11 +188,6 @@ jobs:
         echo "\ntest ftp transfer to proftpd server\n"
         date > date.txt && curl --fail -T date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
       
-#    - name: Bioblend tests
-#      run: |
-#        cd /home/runner/.local/lib/python2.7/site-packages/bioblend/_tests/
-#        bioblend-galaxy-tests --color=yes -v TestGalaxyHistories.py TestGalaxyTools.py || true
-   
     - name: Bioblend tests
       run: |
         cd /opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/bioblend/_tests/
