@@ -127,9 +127,9 @@ jobs:
         # sudo apt install -y python python-dev python-pip python-virtualenv
         # sudo chown -R runner:runner /usr/local/lib/python2.7
         which pip
-        python -m pip install --user -U 'pip<20.0.0'
-        python -m pip install --user ansible==2.7.4
-        python -m pip install --user --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.10.0.zip 'pytest<6.1.0'
+        pip install --user -U 'pip<20.0.0'
+        pip install --user ansible==2.7.4
+        pip install --user --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.10.0.zip 'pytest<6.1.0'
     
     - name: Display pip python and ansible settings
       run: |
