@@ -126,11 +126,12 @@ jobs:
       run: |
         # sudo apt install -y python python-dev python-pip python-virtualenv
         # sudo chown -R runner:runner /usr/local/lib/python2.7
-        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-        python3 get-pip.py --force-reinstall
-        pip3 install --user -U 'pip<20.0.0'
-        pip3 install --user ansible==2.7.4
-        pip3 install --user --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.10.0.zip 'pytest<6.1.0'
+        # curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+        # python3 get-pip.py --force-reinstall
+        sudo sed -i -e 's/from pip._internal import main/from pip import main/g' /opt/hostedtoolcache/Python/3.6.13/x64/bin/pip
+        python -m pip install --user -U 'pip<20.0.0'
+        python -m pip install --user ansible==2.7.4
+        python -m pip install --user --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.10.0.zip 'pytest<6.1.0'
     
     - name: Display pip python and ansible settings
       run: |
