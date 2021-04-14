@@ -130,7 +130,7 @@ galaxy_config:
     interactive_environment_plugins_directory: config/plugins/interactive_environments
     visualization_plugins_directory: config/plugins/visualizations
     # interactive environments - set dynamic_proxy_manage to true #
-    dynamic_proxy_manage: true
+    dynamic_proxy_manage: false
     dynamic_proxy_session_map: database/session_map.sqlite
     dynamic_proxy_bind_port: 8800
     dynamic_proxy_bind_ip: 0.0.0.0
@@ -153,7 +153,7 @@ galaxy_extras_config_nginx: true
 galaxy_extras_config_supervisor: true
 galaxy_extras_config_proftpd: true
 galaxy_extras_config_uwsgi: false
-galaxy_extras_config_galaxy_job_metrics: true
+galaxy_extras_config_galaxy_job_metrics: false
 galaxy_extras_config_slurm: true
 galaxy_extras_config_galaxy_root: true
 supervisor_manage_nginx: true
@@ -166,9 +166,9 @@ supervisor_proftpd_autostart: true
 galaxy_extras_config_cvmfs: false
 
 # To enable interactive environments set the following 3 variables to true
-galaxy_extras_config_ie_proxy: true
-supervisor_manage_ie_proxy: true
-supervisor_ie_proxy_autostart: true
+galaxy_extras_config_ie_proxy: false
+supervisor_manage_ie_proxy: false
+supervisor_ie_proxy_autostart: false
 # specific ie for ipython and rstudio
 galaxy_extras_ie_fetch_jupyter: false
 galaxy_extras_ie_jupyter_image: quay.io/bgruening/docker-jupyter-notebook:17.09
