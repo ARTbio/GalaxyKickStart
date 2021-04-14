@@ -1,4 +1,4 @@
-[![Ansible Testing](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/PR.yaml/badge.svg)](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/PR.yaml)
+[![Ansible Testing](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/PR_jobs.yaml/badge.svg)](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/PR_jobs.yaml)
 [![Readthedocs Published](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/readthedocs.yaml/badge.svg)](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/readthedocs.yaml)
 # GalaxyKickStart
 
