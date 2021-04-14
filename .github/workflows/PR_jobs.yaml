@@ -117,6 +117,11 @@ jobs:
         sudo deluser postgres
         sudo apt-get update -y
     
+    - name: Set up Python 3.6 in ubuntu 16.04
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.6'
+
     - name: Set up pip and ansible in ubuntu 16.04
       run: |
         sudo apt install -y python python-dev python-pip python-virtualenv
