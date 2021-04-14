@@ -128,7 +128,7 @@ jobs:
         # sudo chown -R runner:runner /usr/local/lib/python2.7
         # curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
         # python3 get-pip.py --force-reinstall
-        sudo sed -i -e 's/from pip._internal import main/from pip import main/g' /opt/hostedtoolcache/Python/3.6.13/x64/bin/pip
+        sudo sed -i -e 's/from pip._internal.cli.main import main/from pip import main/g' /opt/hostedtoolcache/Python/3.6.13/x64/bin/pip
         python -m pip install --user -U 'pip<20.0.0'
         python -m pip install --user ansible==2.7.4
         python -m pip install --user --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.10.0.zip 'pytest<6.1.0'
