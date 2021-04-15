@@ -13,6 +13,7 @@ env:
 
 jobs:
   Ubuntu_18:
+    needs: Ubuntu_16
     name: GalaxyKickStart in ubuntu18.04
     runs-on: ubuntu-18.04
 #    env:
@@ -162,13 +163,14 @@ jobs:
       run: |
         echo "waiting 10 sec" && sleep 10
             
-    - name: restart galaxy services with supervisorctl
+    - name: restart supervisor
       run: |
-        sudo supervisorctl restart galaxy:
+        sudo service supervisor restart
 
-    - name: Sleep for 10 seconds
+    - name: Sleep for 40 seconds
       run: |
         echo "waiting 10 sec" && sleep 10
+        sudo supervisorctl status
 
     - name: check Galaxy API is alive
       uses: mydea/action-wait-for-api@v1
