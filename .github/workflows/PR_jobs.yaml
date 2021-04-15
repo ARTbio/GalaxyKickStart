@@ -168,16 +168,16 @@ jobs:
         echo "waiting 40 sec" && sleep 40
         sudo supervisorctl status
 
+    - name: check supervisor services
+      run: |
+        sudo supervisorctl status
+        curl http://localhost:80/api/version| grep version_major || true
+
     - name: check Galaxy API is alive
       uses: mydea/action-wait-for-api@v1
       with:
         url: "http://localhost/api/version"
         timeout: 120
-
-    - name: check supervisor services
-      run: |
-        sudo supervisorctl status
-        curl http://localhost:80/api/version| grep version_major || true
 
     - name: ansible installs galaxy tools
       run: |
