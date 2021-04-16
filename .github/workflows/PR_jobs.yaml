@@ -167,9 +167,9 @@ jobs:
       run: |
         sudo service supervisor restart
 
-    - name: Sleep for 40 seconds
+    - name: Sleep for 10 seconds
       run: |
-        echo "waiting 40 sec" && sleep 40
+        echo "waiting 10 sec" && sleep 10
         sudo supervisorctl status
 
     - name: check supervisor services
