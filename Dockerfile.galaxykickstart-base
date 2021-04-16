@@ -1,4 +1,4 @@
-FROM artbio/ansible-galaxy-os:1604
+FROM artbio/ansible-galaxy-os:1804
 
 LABEL maintainer_2="Christophe Antoniewski <drosofff@gmail.com>"
 
