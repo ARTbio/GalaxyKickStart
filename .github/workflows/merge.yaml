@@ -1,5 +1,9 @@
 name: Ansible Testing
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  
 env:
   GALAXY_USER: admin@galaxy.org
   GALAXY_USER_PASSWD: artbio2020
@@ -198,3 +202,4 @@ jobs:
       run: |
         cd /home/runner/.local/lib/python3.7/site-packages/bioblend/_tests/
         bioblend-galaxy-tests --color=yes -v TestGalaxyHistories.py TestGalaxyTools.py --no-summary || true
+

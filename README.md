@@ -1,4 +1,4 @@
-[![Ansible Testing](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/PR.yaml/badge.svg)](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/PR.yaml)
+[![Ansible Testing](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/merge.yaml/badge.svg)](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/PR_jobs.yaml)
 [![Readthedocs Published](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/readthedocs.yaml/badge.svg)](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/readthedocs.yaml)
 # GalaxyKickStart
 
@@ -16,7 +16,7 @@ The playbook has been tested on
 
 - Cloud Machines
 - Physical Servers
-- Docker
+- Docker (transiently disabled)
 
 GalaxyKickStart has been developed at the [ARTbio platform](http://artbio.fr)
 and contains roles developed by the [Galaxy
