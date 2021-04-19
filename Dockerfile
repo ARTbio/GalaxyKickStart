@@ -1,1 +1,1 @@
-dockerfiles/galaxy-kickstart/Dockerfile
+Dockerfile.galaxykickstart-base
