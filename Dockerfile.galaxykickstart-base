@@ -2,6 +2,9 @@ FROM artbio/ansible-galaxy-os:1804
 
 LABEL maintainer_2="Christophe Antoniewski <drosofff@gmail.com>"
 
+# prevent stalled proftpd install by ansible later on
+RUN apt-get update && apt-get -qq install proftpd proftpd-mod-pgsql
+
 RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
     \
     \
