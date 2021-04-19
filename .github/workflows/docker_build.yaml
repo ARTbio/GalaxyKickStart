@@ -1,8 +1,8 @@
 name: Build galaxykickstart docker image
 on:
   push:
-    branches:
-      - '!master'   # excludes master
+    branches-ignore:
+      - master   # excludes master
   
 jobs:
   buildx:
