@@ -46,7 +46,9 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 # Warning: The following requirements pull down requires an ansible-galaxy-os compatible with ubuntu-xenial and postgresql 9.5
 # see for instance https://github.com/ARTbio/ansible-galaxy-os/tree/ubuntu-xenial, if not already merged
 RUN ansible-galaxy install -r requirements_roles.yml -p roles -f && \
-    ansible-playbook -i inventory_files/docker -c local galaxy.yml
+    ansible-playbook -i inventory_files/docker -c local galaxy.yml && \
+    sleep 120 && \
+    ansible-playbook -i inventory_files/docker -c local galaxy_tool_install.yml
 
 ENV NGINX_GALAXY_LOCATION="" \
 GALAXY_CONFIG_ADMIN_USERS="admin@galaxy.org" \
