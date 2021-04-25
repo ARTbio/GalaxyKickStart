@@ -14,21 +14,21 @@
       tags:
         - always
 
-    - name: Install python if absent
-      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
-      register: output
-      changed_when: output.stdout
-      tags:
-        - always
+#    - name: Install python if absent
+#      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+#      register: output
+#      changed_when: output.stdout
+#      tags:
+#        - always
 
     - name: gather facts
       setup:
       tags:
         - always
 
-    - name: set jetstream banner image variable
-      set_fact:
-        banner_img: "{% if 'jetstream' in group_names %}jetstream_text.png{% else %}gce_text.png{% endif %}"
+#    - name: set jetstream banner image variable
+#      set_fact:
+#        banner_img: "{% if 'jetstream' in group_names %}jetstream_text.png{% else %}gce_text.png{% endif %}"
 
     - name: get host ip in ipify_public_ip variable
       ipify_facts:
