@@ -27,7 +27,7 @@
           - python3-psycopg2
         state: installed
         install_recommends: no
-      become: yes
+        become: yes
       when: ansible_distribution_version is version( '20.04', '==')
 
     - name: gather facts
