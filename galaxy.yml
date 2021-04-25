@@ -41,9 +41,6 @@
           - python3-psycopg2
         state: present
       when: ansible_distribution_version == '16.04'
-#    - name: set jetstream banner image variable
-#      set_fact:
-#        banner_img: "{% if 'jetstream' in group_names %}jetstream_text.png{% else %}gce_text.png{% endif %}"
 
     - name: get host ip in ipify_public_ip variable
       ipify_facts:
