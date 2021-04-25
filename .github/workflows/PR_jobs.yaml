@@ -28,7 +28,7 @@ jobs:
 
     - name: Install software-properties-common package
       run: |
-        sudo apt-get install -y software-properties-common python-boto
+        sudo apt-get install -y software-properties-common python3-boto
 
 
 #    - name: Set up Python 3.8 in ubuntu 18.04
