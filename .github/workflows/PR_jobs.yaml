@@ -218,7 +218,7 @@ jobs:
       run: |
         python3 -m pip install -U pip setuptools 
         python3 -m pip install ansible==2.9.4
-        python3 -m pip install python3-apt
+        python3 -m pip install apt-wrapper
         python3 -m pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
 
 
