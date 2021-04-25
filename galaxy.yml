@@ -43,7 +43,6 @@
       tags:
         - always
 
-  tasks:
     - name: Ansible​ fact OS 
       debug:
         msg: "{{ ansible_distribution_version }}"
