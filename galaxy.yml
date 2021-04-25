@@ -36,7 +36,9 @@
     - name: Install psycopg2
       become: yes
       apt:
-        name: python-psycopg2
+        name:
+          - python3-apt
+          - python3-psycopg2
         state: present
       when: ansible_distribution_version == '16.04'
 #    - name: set jetstream banner image variable
