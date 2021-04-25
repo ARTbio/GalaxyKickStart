@@ -36,7 +36,7 @@ jobs:
         sudo apt -qq remove ansible
         sudo apt -qq purge python2.7-minimal
         python3 -m pip install -U pip setuptools
-        python3 -m pip install -U ansible==2.9.4
+        python3 -m pip install -U ansible==2.7.4
         python3 -m pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
     
     - name: Display pip python and ansible settings
@@ -58,9 +58,9 @@ jobs:
 
     - name: ansible installs galaxy
       run: |
-        sudo apt-get update -y
+        sudo apt-get -qq update -y
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
-        sudo apt-get --purge remove nginx*
+        sudo apt-get -qq --purge remove nginx*
         ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy.yml
 
     - name: Sleep for 10 seconds
