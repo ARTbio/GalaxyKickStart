@@ -33,7 +33,7 @@ jobs:
     
     - name: Set up pip, ansible and bioblend in ubuntu 20.04
       run: |
-        python3 -m pip install -U pip setuptools
+        python3 -m pip install -U pip setuptools boto
         python3 -m pip install -U ansible==2.9.6
         python3 -m pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
     
