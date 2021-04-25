@@ -31,12 +31,12 @@ jobs:
       with:
         python-version: '3.8'
     
-    - name: Set up pip and ansible in ubuntu 20.04
+    - name: Set up pip and bioblend in ubuntu 20.04
       run: |
-        python3 -m pip install -U pip setuptools importlib
+        python3 -m pip install -U pip setuptools
         python3 -m pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
     
-    - name: Set up pip and ansible in ubuntu 20.04
+    - name: Set up ansible in ubuntu 20.04
       run: |
         sudo apt install ansible
 
