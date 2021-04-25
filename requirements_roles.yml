@@ -8,7 +8,7 @@
 
 - src: https://github.com/artbio/ansible-postgresql-objects.git
   name: natefoo.postgresql_objects
-  version: galaxykickstart
+  version: dev
 
 - src: https://github.com/artbio/ansible-galaxy.git
   name: galaxyprojectdotorg.galaxy
