@@ -1,6 +1,6 @@
 GKS: true
 galaxy_virtualenv_python: python3
-ansible_python_interpreter: "{{'python3' if ansible_distribution_version is version('16.04', '>') else 'python' }}"
+## ansible_python_interpreter: "{{'python3' if ansible_distribution_version is version('16.04', '>') else 'python' }}"
 
 # default: 'virtualenv': The command used to create Galaxy's virtualenv. Set to pyvenv to use Python 3 on Galaxy >= 20.01
 # galaxy_virtualenv_command: 'pyvenv'
