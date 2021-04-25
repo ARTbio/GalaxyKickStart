@@ -26,10 +26,10 @@ jobs:
         sudo deluser postgres
         sudo apt-get update -y
 
-#    - name: Set up Python 3.8 in ubuntu 18.04
-#      uses: actions/setup-python@v2
-#      with:
-#        python-version: '3.8'
+    - name: Set up Python 3.8 in ubuntu 18.04
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
     
     - name: Set up pip, ansible and bioblend in ubuntu 20.04
       run: |
