@@ -33,15 +33,6 @@
         state: present
       when: ansible_distribution_version == '20.04' or ansible_distribution_version == '18.04'
 
-#    - name: Install psycopg2
-#      become: yes
-#      apt:
-#        name:
-#          - python3-apt
-#          - python3-psycopg2
-#        state: present
-#      when: ansible_distribution_version == '16.04'
-
     - name: get host ip in ipify_public_ip variable
       ipify_facts:
         timeout: 20
