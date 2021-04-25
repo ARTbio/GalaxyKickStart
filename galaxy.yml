@@ -22,8 +22,10 @@
         - always
 
     - name: Install psycopg2
-      apt: pkg=python3-psycopg2 state=installed
       become: yes
+      apt:
+        name: python3-psycopg2
+        state: present
       when: "ansible_distribution_version is version( '20.04', '==')"
 
     - name: gather facts
