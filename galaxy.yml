@@ -44,6 +44,9 @@
         - always
 
   roles:
+    vars:
+      ansible_python_interpreter: "{{ 'python3' if ansible_distribution_version is version('16.04', '>') else 'python' }}"
+
 
     - role: galaxyprojectdotorg.galaxy-os
       tags:
