@@ -34,9 +34,12 @@ jobs:
     - name: Set up pip and ansible in ubuntu 20.04
       run: |
         python3 -m pip install -U pip setuptools importlib
-        python3 -m pip install ansible==2.7.4
         python3 -m pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
     
+    - name: Set up pip and ansible in ubuntu 20.04
+      run: |
+        sudo apt install ansible
+
     - name: Display pip python and ansible settings
       run: |
         which python
