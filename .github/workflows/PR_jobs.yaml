@@ -60,7 +60,6 @@ jobs:
       run: |
         sudo apt-get update -y
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
-        sudo apt-get install python3-psycopg2
         sudo apt-get --purge remove nginx*
         ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy.yml
 

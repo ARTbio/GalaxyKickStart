@@ -23,9 +23,10 @@
 
     - name: Install psycopg2
       apt:
-        name:
+        pkg:
           - python3-psycopg2
         state: installed
+        install_recommends: no
       become: yes
       when: ansible_distribution_version is version( '20.04', '==')
 
