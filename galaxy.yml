@@ -43,8 +43,12 @@
       tags:
         - always
 
-  vars:
-    ansible_python_interpreter: "{{ 'python3' if ansible_distribution_version is version('16.04', '>') else 'python' }}"
+  tasks:
+    - name: Ansible​ fact OS 
+      debug:
+        msg: "{{ ansible_distribution_version }}"
+
+    # ansible_python_interpreter: "{{ 'python3' if ansible_distribution_version is version('16.04', '>') else 'python' }}"
 
   roles:
 
