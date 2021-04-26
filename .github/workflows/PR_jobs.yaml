@@ -36,7 +36,7 @@ jobs:
         sudo apt -qq remove ansible
         sudo apt -qq purge python2.7-minimal
         python3 -m pip install -U pip setuptools
-        python3 -m pip install -U ansible==2.9.4
+        python3 -m pip install -U ansible==2.9.6
         python3 -m pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
     
     - name: Display pip python and ansible settings
@@ -125,7 +125,7 @@ jobs:
     - name: Set up pip and ansible in ubuntu 18.04
       run: |
         python3 -m pip install -U pip setuptools 
-        python3 -m pip install ansible==2.9.4
+        python3 -m pip install ansible==2.9.6
         python3 -m pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
     
     - name: Display pip python and ansible settings
@@ -213,7 +213,7 @@ jobs:
     - name: Set up pip and ansible in ubuntu 16.04
       run: |
         python3 -m pip install -U pip setuptools 
-        python3 -m pip install ansible==2.9.4
+        python3 -m pip install ansible==2.9.6
         python3 -m pip install apt-wrapper
         python3 -m pip install --ignore-installed https://github.com/galaxyproject/bioblend/archive/refs/tags/v0.15.0.zip pytest
 
