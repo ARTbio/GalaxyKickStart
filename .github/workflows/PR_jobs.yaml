@@ -67,14 +67,14 @@ jobs:
       run: |
         echo "waiting 31 sec" && sleep 31
             
-    - name: restart galaxy services with supervisorctl
-      run: |
-        sudo supervisorctl restart galaxy:
+#    - name: restart galaxy services with supervisorctl
+#      run: |
+#        sudo supervisorctl restart galaxy:
 
     - name: Sleep for 30 seconds
       run: |
         echo "waiting 30 sec" && sleep 30
-        sudo supervisorctl status
+        # sudo supervisorctl status
 
     - name: check Galaxy API is alive
       uses: mydea/action-wait-for-api@v1
@@ -155,14 +155,14 @@ jobs:
       run: |
         echo "waiting 30 sec" && sleep 30
             
-    - name: restart galaxy services with supervisorctl
-      run: |
-        sudo supervisorctl restart galaxy:
+#    - name: restart galaxy services with supervisorctl
+#      run: |
+#        sudo supervisorctl restart galaxy:
 
     - name: Sleep for 30 seconds
       run: |
         echo "waiting 30 sec" && sleep 30
-        sudo supervisorctl status
+        # sudo supervisorctl status
 
     - name: check Galaxy API is alive
       uses: mydea/action-wait-for-api@v1
@@ -246,9 +246,9 @@ jobs:
       run: |
         echo "waiting 30 sec" && sleep 30
             
-    - name: restart supervisor
-      run: |
-        sudo service supervisor restart
+#    - name: restart supervisor
+#      run: |
+#        sudo service supervisor restart
 
     - name: Sleep for 30 seconds
       run: |
