@@ -65,7 +65,7 @@ jobs:
 
     - name: Sleep for 30 seconds
       run: |
-        echo "waiting 30 sec" && sleep 30
+        echo "waiting 31 sec" && sleep 31
             
     - name: restart galaxy services with supervisorctl
       run: |
