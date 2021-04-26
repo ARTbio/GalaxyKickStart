@@ -29,7 +29,7 @@
     - name: Install psycopg2
       become: yes
       apt:
-        name: 
+        name: python3-psycopg2
         state: present
 
     - name: get host ip in ipify_public_ip variable
@@ -37,10 +37,6 @@
         timeout: 20
       tags:
         - always
-
-    - name: Ansible​ fact OS 
-      debug:
-        msg: "{{ ansible_distribution_version }}"
 
 
   roles:
