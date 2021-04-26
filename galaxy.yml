@@ -20,7 +20,7 @@
         - always
 
     - name: Install python if absent
-      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3-minimal)
       register: output
       changed_when: output.stdout
       tags:
@@ -29,9 +29,8 @@
     - name: Install psycopg2
       become: yes
       apt:
-        name: python3-psycopg2
+        name: 
         state: present
-#      when: ansible_distribution_version == '20.04' or ansible_distribution_version == '18.04'
 
     - name: get host ip in ipify_public_ip variable
       ipify_facts:
@@ -43,7 +42,6 @@
       debug:
         msg: "{{ ansible_distribution_version }}"
 
-    # ansible_python_interpreter: "{{ 'python3' if ansible_distribution_version is version('16.04', '>') else 'python' }}"
 
   roles:
 
@@ -84,7 +82,7 @@
     - role: set_supervisor_env_vars
       tags: env_vars
 
-    # The return of miniconda !
+    # Installs miniconda
     - role: miniconda-role
       become: yes
       become_user: "{{ galaxy_user_name }}"
