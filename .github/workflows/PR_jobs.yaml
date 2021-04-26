@@ -74,7 +74,7 @@ jobs:
     - name: Sleep for 30 seconds
       run: |
         echo "waiting 30 sec" && sleep 30
-        # sudo supervisorctl status
+        sudo supervisorctl status || true
 
     - name: check Galaxy API is alive
       uses: mydea/action-wait-for-api@v1
@@ -88,7 +88,6 @@ jobs:
 
     - name: run basic tests
       run: |
-        sudo supervisorctl status
         curl http://localhost:80/api/version| grep version_major
         echo "\ntest ftp transfer to proftpd server\n"
         date > date.txt && curl --fail -T date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
@@ -162,7 +161,7 @@ jobs:
     - name: Sleep for 30 seconds
       run: |
         echo "waiting 30 sec" && sleep 30
-        # sudo supervisorctl status
+        sudo supervisorctl status || true
 
     - name: check Galaxy API is alive
       uses: mydea/action-wait-for-api@v1
@@ -176,7 +175,6 @@ jobs:
 
     - name: run basic tests
       run: |
-        sudo supervisorctl status
         curl http://localhost:80/api/version| grep version_major
         echo "\ntest ftp transfer to proftpd server\n"
         date > date.txt && curl --fail -T date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
@@ -253,11 +251,10 @@ jobs:
     - name: Sleep for 30 seconds
       run: |
         echo "waiting 30 sec" && sleep 30
-        sudo supervisorctl status
+        sudo supervisorctl status || true
 
     - name: check supervisor services
       run: |
-        sudo supervisorctl status
         curl http://localhost:80/api/version| grep version_major || true
 
     - name: check Galaxy API is alive
@@ -272,7 +269,6 @@ jobs:
 
     - name: run basic tests
       run: |
-        sudo supervisorctl status
         curl http://localhost:80/api/version| grep version_major
         echo "\ntest ftp transfer to proftpd server\n"
         date > date.txt && curl --fail -T date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
