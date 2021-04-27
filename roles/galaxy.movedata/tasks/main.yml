@@ -27,6 +27,7 @@
   with_items:
     - proftpd
   tags: skip_supervisor_start_in_docker
+  when: ansible_distribution_version is version('20.04', '!=')
 
 # to do: test whether this task is still required
 - name: Start nodejs proxy if installed
