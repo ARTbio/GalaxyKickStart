@@ -2,12 +2,16 @@
   supervisorctl: name=postgresql state=started
   tags: skip_supervisor_start_in_docker
 
-- name: Wait for postgresql ready
-  action: shell /usr/bin/pg_isready
-  register: result
-  until: result.stdout.find("accepting connections") != -1
-  retries: 10
-  delay: 5
-  changed_when: result.stdout
-  tags: skip_supervisor_start_in_docker
+#- name: Wait for postgresql ready
+#  action: shell /usr/bin/pg_isready
+#  register: result
+#  until: result.stdout.find("accepting connections") != -1
+#  retries: 10
+#  delay: 5
+#  changed_when: result.stdout
+#  tags: skip_supervisor_start_in_docker
 
+- name: hold until Postgresql is up and running
+  wait_for:
+    host: 127.0.0.1
+    port: 5432

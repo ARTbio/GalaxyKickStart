@@ -11,8 +11,16 @@
   file: path={{ galaxy_persistent_directory }}/{{ item.path }} state=directory owner="{{ item.owner }}" group="{{ item.owner }}"
   with_items: "{{ galaxy_persist_directories }}"
 
+#- name: Copy galaxy data/config directories to permanent directories
+#  shell: "rsync --exclude \".original\" -a {{ item.path }}/ {{ galaxy_persistent_directory }}/{{ item.path }}"
+#  with_items: "{{ galaxy_persist_directories }}"
+
 - name: Copy galaxy data/config directories to permanent directories
-  shell: "rsync --exclude \".original\" -a {{ item.path }}/ {{ galaxy_persistent_directory }}/{{ item.path }}"
+  synchronize:
+    src: "{{ item.path }}/"
+    dest: "{{ galaxy_persistent_directory }}/{{ item.path }}"
+    rsync_opts:
+      - "--exclude=.original"
   with_items: "{{ galaxy_persist_directories }}"
 
 - name: Mark original folders as such  # This allows us to detect if a folder has been imported.
