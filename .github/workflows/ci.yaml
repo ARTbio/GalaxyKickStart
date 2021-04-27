@@ -9,8 +9,29 @@ env:
 
 jobs:
 
+
+  ansible_lint:
+    # see ansible_lint.yaml.lock for additional parameters
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Lint Ansible Playbook
+        uses: iranzo/ansible-lint-action/@master
+        with:
+          targets: |
+            galaxy.yml
+            galaxy_tool_install.yml
+          override-deps: |
+            ansible==2.9.2
+            ansible-lint==4.2.0
+          args: ""
+
+
   Ubuntu_20-04:
     name: GalaxyKickStart in ubuntu 20.04
+    needs: ansible_lint
     runs-on: ubuntu-20.04
     
     steps:
@@ -90,9 +111,9 @@ jobs:
         bioblend-galaxy-tests --color=yes -v TestGalaxyHistories.py TestGalaxyTools.py --no-summary || true
 
 
-
   Ubuntu_18-04:
     name: GalaxyKickStart in ubuntu18.04
+    needs: ansible_lint
     runs-on: ubuntu-18.04
     
     steps:
@@ -169,9 +190,9 @@ jobs:
         bioblend-galaxy-tests --color=yes -v TestGalaxyHistories.py TestGalaxyTools.py --no-summary || true
 
 
-
   Ubuntu_16-04:
     name: GalaxyKickStart in ubuntu16.04
+    needs: ansible_lint
     runs-on: ubuntu-16.04
     
     steps:
