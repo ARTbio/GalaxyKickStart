@@ -1,6 +1,9 @@
 name: Ansible Lint # feel free to pick your own name
 
-on: [push, pull_request]
+on:
+  push:
+    branches-ignore:
+      - master   # excludes master
 
 jobs:
   build:
