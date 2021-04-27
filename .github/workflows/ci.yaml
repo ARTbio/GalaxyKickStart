@@ -26,7 +26,7 @@ jobs:
           override-deps: |
             ansible==2.9.2
             ansible-lint==4.2.0
-          args: ""
+          args: "-q"
 
 
   Ubuntu_20-04:
