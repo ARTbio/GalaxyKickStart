@@ -4,8 +4,3 @@ tools:
   owner: artbio
   tool_panel_section_label: 'ARTBIO'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: samtools_depth
-  owner: iuc
-  tool_panel_section_label: 'IUC'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/

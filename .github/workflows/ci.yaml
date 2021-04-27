@@ -63,17 +63,9 @@ jobs:
         sudo apt-get -qq --purge remove nginx*
         ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy.yml
 
-    - name: Sleep for 30 seconds
+    - name: Sleep for 60 seconds
       run: |
-        echo "waiting 31 sec" && sleep 31
-            
-#    - name: restart galaxy services with supervisorctl
-#      run: |
-#        sudo supervisorctl restart galaxy:
-
-    - name: Sleep for 30 seconds
-      run: |
-        echo "waiting 30 sec" && sleep 30
+        echo "waiting 60 sec" && sleep 60
         sudo supervisorctl status || true
 
     - name: check Galaxy API is alive
@@ -150,17 +142,9 @@ jobs:
         sudo apt-get --purge remove nginx*
         ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy.yml
 
-    - name: Sleep for 30 seconds
+    - name: Sleep for 60 seconds
       run: |
-        echo "waiting 30 sec" && sleep 30
-            
-#    - name: restart galaxy services with supervisorctl
-#      run: |
-#        sudo supervisorctl restart galaxy:
-
-    - name: Sleep for 30 seconds
-      run: |
-        echo "waiting 30 sec" && sleep 30
+        echo "waiting 60 sec" && sleep 60
         sudo supervisorctl status || true
 
     - name: check Galaxy API is alive
@@ -242,15 +226,7 @@ jobs:
 
     - name: Sleep for 30 seconds
       run: |
-        echo "waiting 30 sec" && sleep 30
-            
-#    - name: restart supervisor
-#      run: |
-#        sudo service supervisor restart
-
-    - name: Sleep for 30 seconds
-      run: |
-        echo "waiting 30 sec" && sleep 30
+        echo "waiting 60 sec" && sleep 60
         sudo supervisorctl status || true
 
     - name: check supervisor services
