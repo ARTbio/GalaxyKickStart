@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - readthedocs
 
 jobs:
   build:
