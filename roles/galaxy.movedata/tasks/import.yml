@@ -15,8 +15,9 @@
 #  changed_when: exported_paths
 
 - name: get exported paths
-  command: grep
+  command:
     argv:
+      - grep
       - "-v"
       - "#"
       - "{{ galaxy_persistent_directory }}/exported_dirs.yml"
