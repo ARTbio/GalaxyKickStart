@@ -2,7 +2,8 @@ name: Build galaxykickstart docker image
 on:
   push:
     branches-ignore:
-      - master   # excludes master
+      - master
+      - readthedocs
   
 jobs:
   buildx:
