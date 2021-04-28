@@ -9,8 +9,17 @@
     {{ galaxy_persistent_directory }}/{{ galaxy_config['galaxy']['tool_sheds_config_file'] }}"
     creates="{{ galaxy_persistent_directory }}/{{ galaxy_config['galaxy']['tool_sheds_config_file'] }}"
 
+#- name: get exported paths
+#  shell: "grep -v \"#\" {{ galaxy_persistent_directory }}/exported_dirs.yml"
+#  register: exported_paths
+#  changed_when: exported_paths
+
 - name: get exported paths
-  shell: "grep -v \"#\" {{ galaxy_persistent_directory }}/exported_dirs.yml"
+  command: grep
+    argv:
+      - "-v"
+      - "#"
+      - "{{ galaxy_persistent_directory }}/exported_dirs.yml"
   register: exported_paths
   changed_when: exported_paths
 
