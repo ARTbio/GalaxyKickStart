@@ -1,7 +1,8 @@
 # GalaxyKickStart
 
 GalaxyKickStart is an [Ansible](http://www.ansible.com/) playbook designed for installing,
-testing, deploying and  maintaining production-grade Galaxy server instances. GalaxyKickStart
+testing, deploying and  maintaining production-grade [Galaxy
+server](https://galaxyproject.org/admin/get-galaxy/) instances. GalaxyKickStart
 playbook code is available in [GitHub](https://github.com/ARTbio/GalaxyKickStart). 
 
 In the basic configuration, the deployed Galaxy servers include:
