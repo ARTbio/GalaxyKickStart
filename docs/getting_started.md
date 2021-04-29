@@ -10,22 +10,25 @@
 - **Python >= 3.6**
 
 !!! tips "Note"    
-    Note that if this requirement is not satisfied, Ansible will try to  install Python 3
+    If this requirement is not satisfied, Ansible will try to install Python 3 on the
+    target machine
 
 ## Requirements on the Ansible machine
 
 - **Ansible**
     
+!!! tips "Note"    
     Ansible uses ssh to send its commands. Thus, Ansible can be installed **remotely** (ie, on a
     machine that *will not* contain the Galaxy server at the end of the deployment), or **locally**
     (ie on the machine that *will* contain the Galaxy server, also called the target machine in
     this tutorial). In the latest case, ssh is used locally on the localhost 127.0.0.1 to chanel
     the commands sent by Ansible.
     
-    Whether remote or local, the **Ansible version must be >= 2.9.6**
+Whether remote or local, the **Ansible version must be >= 2.9.6**
 
-- git
+- **git**
     
+!!! tips "Note"    
     To clone the GalaxyKickStart GitHub repository
 
 
