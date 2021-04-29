@@ -2,13 +2,14 @@
 
 ## Requirements on the target machine (where ansible will deploy GalaxyKickStart)
 
-- Ubuntu 16.04, 18.04 or 20.04.
+- **Ubuntu 16.04, 18.04 or 20.04**.
 !!! tips "Note"    
     Other systems (eg, debian) may work but they are not tested for the GalaxyKickStart
     development.
 
-- Python >= 3.6
+- **Python >= 3.6**
 
+!!! tips "Note"    
     Note that if this requirement is not satisfied, Ansible will try to  install Python 3
 
 ## Requirements on the Ansible machine
