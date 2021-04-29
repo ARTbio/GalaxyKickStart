@@ -6,7 +6,7 @@
   Other systems (eg, debian) may work but they are not tested for the GalaxyKickStart
   development.
 - Python >= 3.6
-  * Note that if this requirement is not satisfied, Ansible will try to  install Python 3
+  Note that if this requirement is not satisfied, Ansible will try to  install Python 3
 
 ## Requirements on the Ansible machine
 
