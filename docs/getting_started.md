@@ -1,8 +1,28 @@
 # Getting Started
 
-## You need [git](https://git-scm.com/) installed
-## Make sure that you have a recent version of [Ansible](https://github.com/ansible/) installed
-The playbook has been tested with the Ansible stable version 2.4
+## Requirements on the target machine (where ansible will deploy GalaxyKickStart)
+
+- Ubuntu 16.04, 18.04 or 20.04.
+  Other systems (eg, debian) may work but they are not tested for the GalaxyKickStart
+  development.
+- Python >= 3.6
+  * Note that if this requirement is not satisfied, Ansible will try to  install Python 3
+
+## Requirements on the Ansible machine
+
+- **Ansible**
+
+  Ansible uses ssh to send its commands. Thus, Ansible can be installed **remotely** (ie, on a
+  machine that *will not* contain the Galaxy server at the end of the deployment), or **locally**
+  (ie on the machine that *will* contain the Galaxy server, also called the target machine in
+  this tutorial). In the latest case, ssh is used locally on the localhost 127.0.0.1 to chanel
+  the commands sent by Ansible.
+  
+  Whether remote or local, the **Ansible version must be >= 2.9.6**
+
+- git
+  To clone the GalaxyKickStart GitHub repository
+
 
 ### Install Ansible with pip
 
