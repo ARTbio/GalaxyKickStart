@@ -1,76 +1,49 @@
 # Getting Started
 
-## Requirements on the target machine (where ansible will deploy GalaxyKickStart)
+### 1. Requirements on the target machine (where ansible will deploy GalaxyKickStart)
 
 - **Ubuntu 16.04, 18.04 or 20.04**.
-!!! tips "Note"    
+??? tips "Note"    
     Other systems (eg, debian) may work but they are not tested for the GalaxyKickStart
     development.
 
 - **Python >= 3.6**
 
-!!! tips "Note"    
+??? tips "Note"    
     If this requirement is not satisfied, Ansible will try to install Python 3 on the
     target machine
 
-## Requirements on the Ansible machine
+### 2. Requirements on the Ansible machine
 
 - **Ansible**
-    
-!!! tips "Note"    
+Whether used remotely or locally, the **Ansible version must be >= 2.9.6**
+??? tips "Note"    
     Ansible uses ssh to send its commands. Thus, Ansible can be installed **remotely** (ie, on a
     machine that *will not* contain the Galaxy server at the end of the deployment), or **locally**
     (ie on the machine that *will* contain the Galaxy server, also called the target machine in
     this tutorial). In the latest case, ssh is used locally on the localhost 127.0.0.1 to chanel
     the commands sent by Ansible.
     
-Whether remote or local, the **Ansible version must be >= 2.9.6**
+    Ansible may be installed using [pip](https://pip.pypa.io/en/stable/installing/)
+    ```
+    pip install ansible==2.9.2
+    ```
+    or **[apt](https://help.ubuntu.com/community/AptGet/Howto)**
+    ```
+    sudo apt-get install software-properties-common
+    sudo apt-add-repository ppa:ansible/ansible
+    sudo apt-get update
+    sudo apt-get install ansible
+    ```
 
+    
 - **git**
     
-!!! tips "Note"    
+??? tips "Note"    
     To clone the GalaxyKickStart GitHub repository
 
 
-### Install Ansible with pip
-
-A simple way to install the latest Ansible version is using [pip](https://pip.pypa.io/en/stable/quickstart/):
-
-##### Install pip
-
-```
-sudo apt-get update -y && sudo apt-get -y install python-pip python-dev
-```
-
-- Ensure you have recent pip version installed (sudo -i && pip install upgrade pip maybe necessary)
-
-pip upgrade:
-```
-sudo pip install -U pip
-```
-```
-$ pip --version
-pip 9.0.1 from /usr/local/lib/python2.7/site-packages (python 2.7)
-```
-
-- Then
-
-```
-sudo pip install ansible==2.7.4
-```
-### Install Ansible with apt
-
-Alternatively, Ansible may be installed with the Apt package manager (Ubuntu):
-
-```
-sudo -i
-apt-get install software-properties-common
-apt-add-repository ppa:ansible/ansible
-apt-get update
-apt-get install ansible
-```
-
-# Getting the playbook
+### 3. Getting the playbook
 
 [//]: # (TODO: Once we do releases, we include the submodules and hence users can just download the playbook without git)
 
@@ -80,18 +53,19 @@ dependent Ansible roles that need to be downloaded as part of the installation
 step:
 
 ```
-git clone https://github.com/ARTbio/GalaxyKickStart.git
+git clone https://github.com/artbio/galaxyKickstart.git
 cd GalaxyKickStart
 ansible-galaxy install -r requirements_roles.yml -p roles
 ```
 
-The playbook (here `galaxy.yml`) should be in the GalaxyKickStart folder.
+The playbooks `galaxy.yml` and `galaxy_tool_install.yml` are in the galaxykickstart folder.
 ```bash
-ls
-CONTRIBUTORS.md		Vagrantfile		docs			inventory_files		roles
-Dockerfile		ansible.cfg		extra-files		mkdocs.yml		scripts
-LICENSE.txt		deploy.sh		galaxy.yml		pre-commit.sh		startup.sh
-README.md		dockerfiles		group_vars		requirements_roles.yml	templates
+CONTRIBUTORS.md			dockerfiles			group_vars			slurm_slave_node.yml
+Dockerfile			docs				inventory_files			startup.sh
+Dockerfile.galaxykickstart-base	extra-files			mkdocs.yml			templates
+LICENSE.txt			galaxy.yml			requirements_roles.yml
+README.md			galaxyToSlurmCluster.yml	roles
+ansible.cfg			galaxy_tool_install.yml		scripts
 ```
 
 # Deploying galaxy-kickstart on remote machines.
