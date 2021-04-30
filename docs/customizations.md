@@ -7,7 +7,7 @@ documentation first.
 Most settings should be editable without modifying the playbook directly,
 instead variables can be set in group_vars and host vars.
 
-The playbook comes with an example inventory file `hosts`.
+The playbook comes with an example inventory file `example_hosts`.
 ```
 [artimed]
 localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
@@ -47,7 +47,7 @@ ansible-playbook --inventory-file=<your_inventory_file> galaxy.yml
 # Important variables
 
 We aimed for this playbook to be reusable. We therefore made most variables configurable.
-The group_vars/all file contains the variables we have chosen as defaults. You may override them either in this file
+The `group_vars/all` file contains the variables we have chosen as defaults. You may override them either in this file
 or you can use ansible group variables to selectively set the variables for certain hosts/groups. See the [ansible documentation
 about group variables](http://docs.ansible.com/ansible/intro_inventory.html#splitting-out-host-and-group-specific-data) for details.
 
@@ -57,11 +57,7 @@ These most important variables are:
 
 - ansible_ssh_private_key_file - The ssh private key used to access the target.
 
-- install_galaxy - True for install a Galaxy instance.
-
-- install_tools - True for install the NGS tools.
-
-- run_data_manager - True for run the data manager procedure.
+- install_galaxy - True for install a Galaxy server instance.
 
 - galaxy_user_name - The Operating System user name for galaxy process.
 
@@ -75,12 +71,10 @@ These most important variables are:
 
 - galaxy_tool_list - The files that constants the list of tools to be installed.
 
-- galaxy_data_managers - The reference genomes and indexes to be load and build.
-
 - galaxy_data - The persistent directory where the galaxy config and database directories will be installed or will be recovered.
 
 - galaxy_database - The persistent directory where postgresql will be installed or will be recovered.
 
 - galaxy_db - Connection string for galaxy-postgresql.
 
-- galaxy_changeset_id - The release of Galaxy to be installed (master, dev or release_xx_xx).
+- galaxy_changeset_id - The release of Galaxy to be installed (master, dev or release_YY_MM).

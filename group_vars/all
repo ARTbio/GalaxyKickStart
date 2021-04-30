@@ -1,27 +1,26 @@
-GKS: true
+# default: 'virtualenv': The command used to create Galaxy's virtualenv. Set to pyvenv to use Python 3 on Galaxy >= 20.01
+# galaxy_virtualenv_command: 'pyvenv'
 galaxy_virtualenv_python: python3
 ansible_python_interpreter: python3
 
-# default: 'virtualenv': The command used to create Galaxy's virtualenv. Set to pyvenv to use Python 3 on Galaxy >= 20.01
-# galaxy_virtualenv_command: 'pyvenv'
+# set to false if you don't want to install the GalaxyKickStart Galaxy welcome page
+GKS: true
 
 proxy_env: {}
 install_galaxy: true
 install_maintainance_packages: false
 galaxy_manage_trackster: true
-
 galaxy_create_user: true
+
 # Privilege separation mode switch
 galaxy_separate_privileges: true
 # User that Galaxy runs as
 galaxy_user: "{{ galaxy_user_name }}"
 # User that owns Galaxy code, configs, and virutalenv, and that runs `pip install` for dependencies
 galaxy_privsep_user: "{{ galaxy_user_name }}"
-
 gks_run_data_managers: false
 galaxy_hostname: "{{ inventory_hostname }}"
 nginx_galaxy_location: ""
-# galaxy_become_users: {} # for compatibility with ansible.galaxy. as doc seems to say
 pip_virtualenv_command: virtualenv
 galaxy_user_name: galaxy
 galaxy_user_gid: 1450
@@ -40,6 +39,7 @@ galaxy_changeset_id: release_20.05
 galaxy_reports_config_file: "{{ galaxy_config_dir }}/reports.yml.sample"  # Change this to "{{ galaxy_config_dir }}/reports.ini.sample" for galaxy < 17.09
 galaxy_admin: admin@galaxy.org
 galaxy_admin_pw: artbio2020
+
 # use the most recent PBKDF2 function for galaxy (and proftpd) authentication
 use_pbkdf2: true
 proftpd_sql_auth_type: PBKDF2
@@ -101,6 +101,7 @@ galaxy_manage_database: yes
 galaxy_fetch_eggs: yes
 galaxy_vcs: git
 galaxy_force_checkout: yes
+
 # galaxykickstart adopts the yml standard for config file `galaxy.yml`
 galaxy_config:
   "uwsgi":
