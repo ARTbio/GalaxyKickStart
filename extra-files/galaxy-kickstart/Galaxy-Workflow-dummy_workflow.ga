@@ -1,0 +1,124 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "to test galaxykickstart",
+    "format-version": "0.1",
+    "name": "dummy_workflow",
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [],
+            "label": null,
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "left": 131.5,
+                "top": 152.5
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "319d850b-6622-433a-bab2-477c67fbd9b7",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "e21653eb-453a-4dde-bf41-010613b29ea0"
+                }
+            ]
+        },
+        "1": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [],
+            "label": null,
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "left": 147.5,
+                "top": 278.5
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "03b27233-6256-4553-88ec-e83f2cfbc1cd",
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/artbio/justdiff/justdiff/0.6.0",
+            "errors": null,
+            "id": 2,
+            "input_connections": {
+                "input1": {
+                    "id": 0,
+                    "output_name": "output"
+                },
+                "input2": {
+                    "id": 1,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Differences between two files",
+                    "name": "input1"
+                },
+                {
+                    "description": "runtime parameter for tool Differences between two files",
+                    "name": "input2"
+                }
+            ],
+            "label": null,
+            "name": "Differences between two files",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 460.5,
+                "top": 199.5
+            },
+            "post_job_actions": {
+                "RenameDatasetActionoutput": {
+                    "action_arguments": {
+                        "newname": "diff between two files"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "output"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/artbio/justdiff/justdiff/0.6.0",
+            "tool_shed_repository": {
+                "changeset_revision": "9299a59defda",
+                "name": "justdiff",
+                "owner": "artbio",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"input1\": {\"__class__\": \"RuntimeValue\"}, \"input2\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.6.0",
+            "type": "tool",
+            "uuid": "4f26e283-2eab-472c-9ad7-570b7c345dbe",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "0a71861e-1e17-4565-86b1-f027a6490b06"
+                }
+            ]
+        }
+    },
+    "tags": [],
+    "uuid": "7f43246e-3e32-416e-ac1a-84c8aa9da1fd",
+    "version": 1
+}
