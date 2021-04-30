@@ -5,16 +5,21 @@ This playbook includes the [ansible-galaxy-tools](https://github.com/galaxyproje
 role which can be used to install tools and workflows into galaxy instances using the
 [bioblend](https://bioblend.readthedocs.org/en/latest/) API.
 
-Importantly, in the latest GalaxyKickStart version (`v20.05`) tool installation is performed
+Importantly, in the latest GalaxyKickStart version (`v20.05`), tool installation is performed
 using a separate `ansible-playbook` run, typically:
 
 ```
-# these steps have already be performed
+# these steps have should have already been performed
+
 # ansible-galaxy install -r requirements_roles.yml -p roles/
 # ansible-playbook -i inventory_files/galaxy-kickstart galaxy.yml
 
 ansible-playbook -i inventory_files/galaxy-kickstart galaxy_tool_install.yml
 ```
+!!! note ""
+    Note that this is during the galaxy_tool_install.yml ansible play that
+    a Galaxy admin user account is created with the credentials admin@galaxy.org:artbio2020
+
 ### Creating a tool_list.yml file
 Before running the `galaxy_tool_install.yml` playbook script as shown above, you need to
 prepare a `tool_list.yml` file with a list of tools in yaml format and with the following
