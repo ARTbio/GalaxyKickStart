@@ -1,13 +1,25 @@
 # Installing tools
 ----
 
-This playbook includes the [ansible-galaxy-tools](https://github.com/galaxyproject/ansible-galaxy-tools) role which can be used
-to install tools and workflows into galaxy instances using the [bioblend](https://bioblend.readthedocs.org/en/latest/) api.  
+This playbook includes the [ansible-galaxy-tools](https://github.com/galaxyproject/ansible-galaxy-tools)
+role which can be used to install tools and workflows into galaxy instances using the
+[bioblend](https://bioblend.readthedocs.org/en/latest/) API.
 
+Importantly, in the latest GalaxyKickStart version (`v20.05`) tool installation is performed
+using a separate `ansible-playbook` run, typically:
 
-# Creating a tool_list.yml file
-To install tools, you will need to prepare a list of tools in yaml format.
-A an example of a a tool list can be found in [here](https://github.com/ARTbio/GalaxyKickStart/blob/master/extra-files/metavisitor/metavisitor_tool_list.yml)
+```
+# these steps have already be performed
+# ansible-galaxy install -r requirements_roles.yml -p roles/
+# ansible-playbook -i inventory_files/galaxy-kickstart galaxy.yml
+
+ansible-playbook -i inventory_files/galaxy-kickstart galaxy_tool_install.yml
+```
+### Creating a tool_list.yml file
+Before running the `galaxy_tool_install.yml` playbook script as shown above, you need to
+prepare a `tool_list.yml` file with a list of tools in yaml format and with the following
+example content:
+
 ```
 tools:
 - name: blast_to_scaffold
@@ -27,13 +39,21 @@ tools:
   tool_panel_section_label: Metavisitor
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 ```
-when the revision is empty, the latest available revision will be installed.  
-tool_panel_section_label will determine the tool panel section where the tools will be found.
+
+If the `revisions` key is empty, the latest available in the Galaxy toolshed revision will
+be installed.  
+
+The `tool_panel_section_label` key sets the tool panel section where the tools will show up
+in the Galaxy tool bar.
+
+Another example of a a tool list can be found in [here](https://github.com/ARTbio/GalaxyKickStart/blob/master/extra-files/metavisitor/metavisitor_tool_list.yml)
 
 # Obtaining a tool_list.yml file 
 
-We can also obtain a tool list from a runnning galaxy instance.
-Note that for server running a galaxy release <16.04, you need a galaxy API keys and bioblend.
+We can also the list of tools running in a specific galaxy instance.
+Note you will need a galaxy API keys and bioblend to access the galaxy server with the bioblend
+API.
+
 A script is included in the extra-files directory.
 ```
 python get_tool_yml_from_gi.py --galaxy <my_galaxy_url> --api-key <my_admin_api_key> --output-file <my_tool_list.yml>
