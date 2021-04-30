@@ -135,12 +135,10 @@ Specifications for each remote target:
     * Image needed to deploy galaxykickstart: `Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-013f17f36f8b1fefb (64 bits x86) / ami-02ed82f3a38303e6f (64 bits Arm)`
     * Inventory: `<target Amazon Web Services IP address> ansible_ssh_user="ubuntu" ansible_ssh_private_key_file="<path/to/your/aws/private/key>"`
 
-??? issue "Jetstream, update required"    
-    
-    * Jetstream (OpenStack)
-        * Image needed to deploy galaxykickstart on [Jetstream](http://jetstream-cloud.org/):
-            `Ubuntu 14.04.3 Development (jetstream image id: d7fe3289-943f-4417-90e8-8a6b171677ca)`
-        *  Inventory: `<remote host IP> ansible_ssh_user="root" ansible_ssh_private_key_file="<path/to/your/private/key>"`
+* Jetstream (OpenStack)
+    * Image needed to deploy galaxykickstart on [Jetstream](http://jetstream-cloud.org/):
+        `Ubuntu 18.04 LTS Development + GUI support + Docker (jetstream image id: 15ff25f6-6ac5-4c12-b6ce-c08615ba32be)`
+    *  Inventory: `<remote host IP> ansible_ssh_user="root" ansible_ssh_private_key_file="<path/to/your/private/key>"`
 
 ### 5. Deploying galaxy-kickstart behind a proxy
 
