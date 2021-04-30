@@ -1,4 +1,4 @@
-# Installing tools
+# Installing tools and workflows
 ----
 
 This playbook includes the [ansible-galaxy-tools](https://github.com/galaxyproject/ansible-galaxy-tools)
@@ -6,7 +6,7 @@ role which can be used to install tools and workflows into galaxy instances usin
 [bioblend](https://bioblend.readthedocs.org/en/latest/) API.
 
 Importantly, in the latest GalaxyKickStart version (`v20.05`), tool installation is performed
-using a separate `ansible-playbook` run, typically:
+using a separate run of `ansible-playbook`, typically:
 
 ```
 # these steps have should have already been performed
@@ -53,16 +53,40 @@ in the Galaxy tool bar.
 
 Another example of a a tool list can be found in [here](https://github.com/ARTbio/GalaxyKickStart/blob/master/extra-files/metavisitor/metavisitor_tool_list.yml)
 
-# Obtaining a tool_list.yml file 
+### Obtaining a tool_list.yml file from a running Galaxy server
 
-We can also the list of tools running in a specific galaxy instance.
-Note you will need a galaxy API keys and bioblend to access the galaxy server with the bioblend
-API.
+You can also retrieve the list of tools running in a specific Galaxy instance using the
+[ephemeris](https://github.com/galaxyproject/ephemeris) script `workflow-to-tools`.
 
-A script is included in the extra-files directory.
-```
-python get_tool_yml_from_gi.py --galaxy <my_galaxy_url> --api-key <my_admin_api_key> --output-file <my_tool_list.yml>
-```
+1. First Install ephememeris using pip
+    ```
+    pip install ephemeris
+    ```
+2. This will bring several scripts in your pip environment:
+    ```
+    run-data-managers --help
+    shed-tools install --help
+    shed-tools update --help
+    workflow-install --help
+    setup-data-libraries --help
+    get-tool-list --help
+    workflow-to-tools --help
+    ```
+3. use `get-tool-list` to retrieve a yml list of tools using the command:
+    ```
+    get-tool-list -g https://usegalaxy.org -u <main galaxy username> -p <user password> --get_data_managers -o main_tools_list.yml
+    ``` 
+### Obtaining a tool_list.yml file from a workflow.ga galaxy file.
+
+You can also retrieve a list of tools used in one or more workflow galaxy files (.ga extension).
+
+These .ga files can be obtain in Galaxy server instances (menu "download workflow file") and
+in some other repositories
+
+1. use `workflow-to-tools` to retrieve a yml list of tools using the command:
+    ```
+    workflow-to-tools -w <Galaxy-Workflow-File.ga> -l <menu_label> -o <tool_list.yml>
+    ```
 
 # Adding a tool_list.yml file to a group_variable files
 
