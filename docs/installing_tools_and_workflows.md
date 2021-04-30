@@ -90,7 +90,7 @@ or other repositories
     workflow-to-tools -w <Galaxy-Workflow-File.ga> -l <menu_label> -o <tool_list.yml>
     ```
 
-# Adding a tool_list.yml file to a group_variable files
+### Adding a tool_list.yml file to a group_variable files
 
 Group variable files are in the group_vars directory.
 
