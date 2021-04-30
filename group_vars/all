@@ -179,7 +179,11 @@ galaxy_extras_ie_rstudio_image: artbio/rstudio-notebook:latest
 
 
 # galaxy-tools role variables
+
+# this is currently ineffective, since tool and workflow installation is ran in a separate ansible play
 galaxy_tools_install_tools: true
+galaxy_tools_install_workflows: true
+
 galaxy_tools_admin_user: "{{ galaxy_admin }}"
 galaxy_tools_admin_username: admin
 galaxy_tools_admin_user_password: "{{ galaxy_admin_pw }}"
@@ -190,5 +194,4 @@ galaxy_tools_create_bootstrap_user: true
 galaxy_tools_delete_bootstrap_user: false
 galaxy_tools_galaxy_instance_url: http://"{{ galaxy_hostname }}{{ nginx_galaxy_location }}"/
 galaxy_tools_tool_list_files: []
-galaxy_tools_install_workflows: true
 galaxy_tools_workflows: []

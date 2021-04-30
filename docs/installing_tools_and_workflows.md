@@ -21,6 +21,7 @@ ansible-playbook -i inventory_files/galaxy-kickstart galaxy_tool_install.yml
     a Galaxy admin user account is created with the credentials admin@galaxy.org:artbio2020
 
 ### Creating a tool_list.yml file
+
 Before running the `galaxy_tool_install.yml` playbook script as shown above, you need to
 prepare a `tool_list.yml` file with a list of tools in yaml format and with the following
 example content:
@@ -72,7 +73,8 @@ You can also retrieve the list of tools running in a specific Galaxy instance us
     get-tool-list --help
     workflow-to-tools --help
     ```
-3. use `get-tool-list` to retrieve a yml list of tools using the command:
+3. Use the ephemeris `get-tool-list` to retrieve a yml list of tools installed in the
+Galaxy server using the command:
     ```
     get-tool-list -g https://usegalaxy.org -u <main galaxy username> -p <user password> --get_data_managers -o main_tools_list.yml
     ``` 
@@ -80,10 +82,10 @@ You can also retrieve the list of tools running in a specific Galaxy instance us
 
 You can also retrieve a list of tools used in one or more workflow galaxy files (.ga extension).
 
-These .ga files can be obtain in Galaxy server instances (menu "download workflow file") and
-in some other repositories
+These .ga files can be obtain from Galaxy server instances (menu "download workflow file")
+or other repositories
 
-1. use `workflow-to-tools` to retrieve a yml list of tools using the command:
+1. Use the ephemeris `workflow-to-tools` to retrieve a yml list of tools using the command:
     ```
     workflow-to-tools -w <Galaxy-Workflow-File.ga> -l <menu_label> -o <tool_list.yml>
     ```
@@ -93,35 +95,39 @@ in some other repositories
 Group variable files are in the group_vars directory.
 
 If you would like to install tools, you need to reference the tool_list.yml in the group variable file.
+
 We typically place additional files in the `extra-files/<hostname>/<hostname>_tool_list.yml` file.
 
-If you would like to add tools to a group that is called metavisitor edit `group_vars/metavisitor` and add these lines:
+For instance, if you would like to add tools to a group that is called metavisitor,
+edit `group_vars/metavisitor` and add these lines:
+
 ```
 install_tools: true
 galaxy_tools_tool_list: "extra-files/metavisitor/metavisitor_tool_list.yml"
 ```
 
-# Installing workflows
+### Installing workflows
 
-You can also make sure that workflows are available after running the playbook.
+You can also add workflows in the Galaxy server modified by playbook script galaxy_tool_install.yml.
+
 As with tools, place the workflows in `extra-files/<hostname>/<hostname><workflow_name>.ga`
-Add these lines to the corresponding group_var file:
+and add these lines to the corresponding group_var file:
+
 ```
 galaxy_tools_install_workflows: true
 galaxy_tools_workflows:
-  - "extra-files/metavisitor/Galaxy-Workflow-create_model.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-separate_host_and_virus_reads.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-standart_metavisitor_workflow_(input__clipped_dataset).ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-1_Guided.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-2_Guided.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-Metavisitor_Test_case_1-3_Guided.ga"
-  - "extra-files/metavisitor/Galaxy-Workflow-Meta-visitor__test_case_Nora_virus,_REMAPPING.ga"
+  - "extra-files/metavisitor/my_workflow_1.ga"
+  - "extra-files/metavisitor/my_workflow_2.ga"
+  - "extra-files/metavisitor/my_workflow_3.ga"
 ```
 
-# Running the playbook
+### Running the playbook
 
-As per usual, run the playbook with an inventory file that maps your target machine to the metavisitor group.
-If the target is localhost, your inventory file should look ike this:
+As mentioned earlier, after these preparation steps, you can run the playbook script
+`galaxy_tool_install.yml` with an inventory file that maps your target machine to the
+metavisitor group (in this example).
+
+If the target is localhost, your inventory file should look like this:
 
 ```
 [metavisitor]
@@ -131,5 +137,5 @@ localhost
 then run the playbook like so:
 
 ```
-ansible-playbook --inventory-file=<your_inventory_file> galaxy.yml
+ansible-playbook -i inventory_files/galaxy-kickstart galaxy_tool_install.yml
 ```
