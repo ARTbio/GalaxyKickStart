@@ -23,7 +23,7 @@ docker build -t mygalaxykickstart .
 
 Pull the docker image:
 ```
-docker pull artbio/galaxy-kickstart-base
+docker pull artbio/galaxykickstart:18.04
 ```
 
 Start the image and serve it on port 8080 of your local machine in the standard docker way:
