@@ -1,0 +1,194 @@
+Most of the available ansible variables used by the galaxykickstart playbook scripts
+`galaxy.yml` and `galaxy_tool_install.yml` can be found in the `group_vars/all` file
+and are reproduced below, with there default values:
+
+```
+GKS: true
+galaxy_virtualenv_python: python3
+ansible_python_interpreter: python3
+proxy_env: {}
+install_galaxy: true
+install_maintainance_packages: false
+galaxy_manage_trackster: true
+galaxy_create_user: true
+# Privilege separation mode switch
+galaxy_separate_privileges: true
+# User that Galaxy runs as
+galaxy_user: "{{ galaxy_user_name }}"
+# User that owns Galaxy code, configs, and virutalenv, and that runs `pip install` for dependencies
+galaxy_privsep_user: "{{ galaxy_user_name }}"
+gks_run_data_managers: false
+galaxy_hostname: "{{ inventory_hostname }}"
+nginx_galaxy_location: ""
+# galaxy_become_users: {} # for compatibility with ansible.galaxy. as doc seems to say
+pip_virtualenv_command: virtualenv
+galaxy_user_name: galaxy
+galaxy_user_gid: 1450
+galaxy_user_uid: 1450
+postgres_user_uid: 1550
+postgres_user_gid: 1550
+galaxy_server_dir: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
+galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
+galaxy_local_tools_dir: "{{ galaxy_server_dir }}/tools"
+galaxy_data: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
+galaxy_config_dir: "{{ galaxy_server_dir }}/config"
+galaxy_database: /home/galaxy_database
+galaxy_db: postgresql://{{ galaxy_user_name }}:{{ galaxy_user_name }}@localhost:5432/galaxy?client_encoding=utf8
+galaxy_git_repo: https://github.com/galaxyproject/galaxy.git
+galaxy_changeset_id: release_20.05
+galaxy_reports_config_file: "{{ galaxy_config_dir }}/reports.yml.sample"  # Change this to "{{ galaxy_config_dir }}/reports.ini.sample" for galaxy < 17.09
+galaxy_admin: admin@galaxy.org
+galaxy_admin_pw: artbio2020
+# use the most recent PBKDF2 function for galaxy (and proftpd) authentication
+use_pbkdf2: true
+proftpd_sql_auth_type: PBKDF2
+proftpd_files_dir: "{{ galaxy_data }}/database/ftp"
+postgresql_version: "{{ '9.3' if ansible_distribution=='Ubuntu'
+                                 and ansible_distribution_version is version('15.04', '<=')
+                              else '9.5' if ansible_distribution=='Ubuntu'
+                                            and ansible_distribution_version is version('17.04', '<')
+                              else '10' if ansible_distribution=='Ubuntu'
+                                           and ansible_distribution_version is version('18.04', '<=')
+                              else '12' if ansible_distribution=='Ubuntu'
+                                           and ansible_distribution_version is version('20.04', '<=')
+                              else '9.4' if ansible_distribution=='Debian'
+                                            and ansible_distribution_version is version('8.0', '>=') }}"
+supervisor_postgres_database_path: /var/lib/postgresql/{{ postgresql_version }}/main
+supervisor_postgres_database_config: /etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
+supervisor_postgres_options: "-D {{ supervisor_postgres_database_path }} -c \"config_file={{ supervisor_postgres_database_config }}\""
+
+# set to 'no' to skip reinitialisation and clear docker images (docker must then be already installed)
+configure_docker: yes
+galaxy_extras_apt_package_state: present
+install_apparmor: false
+tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
+shed_tools_dir: "{{ galaxy_server_dir }}/../shed_tools"
+tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
+galaxy_mutable_data_dir: "{{ galaxy_server_dir  }}/database"
+miniconda_python: 3
+miniconda_version: "4.6.14"
+miniconda_installer_checksum: ""
+miniconda_prefix: "{{ tool_dependency_dir }}/_conda"
+miniconda_manage_dependencies: False
+
+additional_files_list:
+  - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+
+supervisor_env_vars:
+    # Use pre-exsting env vars if they are defined
+    - export IP_ADDRESS=${IP_ADDRESS:-`curl --silent icanhazip.com`}
+    - export MASQUERADE_ADDRESS=${MASQUERADE_ADDRESS:-$IP_ADDRESS}
+    - export GALAXY_GID="${GALAXY_GID:-{{ galaxy_user_gid }}}"
+    - export GALAXY_UID="${GALAXY_UID:-{{ galaxy_user_uid }}}"
+    - export NATIVE_SPEC="${NATIVE_SPEC:---ntasks=`/usr/bin/nproc` --share}"
+    - export NGINX_GALAXY_LOCATION="${NGINX_GALAXY_LOCATION:-{{ nginx_galaxy_location }}}"
+    - export GALAXY_CONFIG_FTP_UPLOAD_SITE="${GALAXY_CONFIG_FTP_UPLOAD_SITE:-ftp://$IP_ADDRESS}"
+    - export GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE="${GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE:-$NGINX_GALAXY_LOCATION/_x_accel_redirect}"
+    - export GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE="{$GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE:-$NGINX_GALAXY_LOCATION/_x_accel_redirect}"
+    - export GALAXY_CONFIG_CONDA_AUTO_INIT="${GALAXY_CONFIG_CONDA_AUTO_INIT:-True}"
+
+# galaxy role variables
+
+#persistent data
+galaxy_persistent_directory: /export # default value
+galaxy_manage_mutable_setup: yes
+galaxy_mutable_config_dir: "{{ galaxy_config_dir }}"
+galaxy_config_style: "yaml"
+galaxy_config_file: "{{ galaxy_config_dir }}/galaxy.yml"
+#other vars
+galaxy_manage_database: yes
+# does not actually fetch eggs if galaxy uses pip
+galaxy_fetch_eggs: yes
+galaxy_vcs: git
+galaxy_force_checkout: yes
+# galaxykickstart adopts the yml standard for config file `galaxy.yml`
+galaxy_config:
+  "uwsgi":
+    # other uwsgi option are defaulted in ansible-galaxy-os role
+    module: galaxy.webapps.galaxy.buildapp:uwsgi_app()
+    # warning the above line should be dropped when prefixing
+    # upon guide-lines in  https://docs.galaxyproject.org/en/latest/admin/nginx.html
+    logfile-chmod: 644
+  'galaxy':
+    filter-with: proxy-prefix
+    prefix: "{{ nginx_galaxy_location }}" # this is not clear from the galaxy.yml.sample which in addition is not consistent with https://docs.galaxyproject.org/en/latest/admin/nginx.html
+    admin_users: "{{ galaxy_admin }}"
+    database_connection: "{{ galaxy_db }}"
+    tool_dependency_dir: "{{ tool_dependency_dir }}"
+    ftp_upload_dir: "{{ proftpd_files_dir }}"
+    ftp_upload_site: "ftp://{{ ipify_public_ip }}"
+    allow_user_dataset_purge: True
+    allow_user_impersonation: True
+    enable_quotas: True
+    allow_user_deletion: True
+    allow_library_path_paste: True
+    tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
+    static_enabled: False
+    watch_tool_data_dir: True
+    use_pbkdf2: "{{ use_pbkdf2 }}"
+    len_file_path: "{{ galaxy_config_dir }}/len"
+    nginx_x_accel_redirect_base: /_x_accel_redirect
+    interactive_environment_plugins_directory: config/plugins/interactive_environments
+    visualization_plugins_directory: config/plugins/visualizations
+    # interactive environments - set dynamic_proxy_manage to true #
+    dynamic_proxy_manage: false
+    dynamic_proxy_session_map: database/session_map.sqlite
+    dynamic_proxy_bind_port: 8800
+    dynamic_proxy_bind_ip: 0.0.0.0
+    dynamic_proxy_debug: true
+    dynamic_proxy_external_proxy: true
+    dynamic_proxy_prefix: gie_proxy
+
+# galaxy-extras role variables
+galaxy_uwsgi_static_conf: true
+galaxy_web_processes: 2
+galaxy_handler_processes: 4
+supervisor_slurm_config_dir: "{{ galaxy_data }}"
+galaxy_root: "{{ galaxy_server_dir }}"
+galaxy_log_dir: "{{ galaxy_data }}"
+galaxy_database_connection: "{{ galaxy_db }}"
+galaxy_errordocs_dest: "/usr/share/nginx/html"
+galaxy_extras_config_scripts: true
+galaxy_extras_install_packages: true
+galaxy_extras_config_nginx: true
+galaxy_extras_config_supervisor: true
+galaxy_extras_config_proftpd: true
+galaxy_extras_config_uwsgi: false
+galaxy_extras_config_galaxy_job_metrics: false
+galaxy_extras_config_slurm: true
+galaxy_extras_config_galaxy_root: true
+supervisor_manage_nginx: true
+supervisor_manage_proftp: true
+supervisor_manage_slurm: true
+supervisor_manage_reports: true
+supervisor_manage_docker: false
+proftpd_nat_masquerade: false
+supervisor_proftpd_autostart: true
+galaxy_extras_config_cvmfs: false
+
+# To enable interactive environments set the following 3 variables to true
+galaxy_extras_config_ie_proxy: false
+supervisor_manage_ie_proxy: false
+supervisor_ie_proxy_autostart: false
+# specific ie for ipython and rstudio
+galaxy_extras_ie_fetch_jupyter: false
+galaxy_extras_ie_jupyter_image: quay.io/bgruening/docker-jupyter-notebook:17.09
+galaxy_extras_ie_fetch_rstudio: false
+galaxy_extras_ie_rstudio_image: artbio/rstudio-notebook:latest
+
+
+# galaxy-tools role variables
+galaxy_tools_install_tools: true
+galaxy_tools_admin_user: "{{ galaxy_admin }}"
+galaxy_tools_admin_username: admin
+galaxy_tools_admin_user_password: "{{ galaxy_admin_pw }}"
+galaxy_tools_admin_user_preset_api_key: true
+default_admin_api_key: artbio2020
+galaxy_tools_api_key: "{{ default_admin_api_key }}"
+galaxy_tools_create_bootstrap_user: true
+galaxy_tools_delete_bootstrap_user: false
+galaxy_tools_galaxy_instance_url: http://"{{ galaxy_hostname }}{{ nginx_galaxy_location }}"/
+galaxy_tools_tool_list_files: []
+galaxy_tools_install_workflows: true
+galaxy_tools_workflows: []
+```
