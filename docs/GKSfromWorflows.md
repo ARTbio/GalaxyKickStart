@@ -2,6 +2,7 @@
 
 ------------
 ### GKSfromWorflows
+
 GKSfromWorflows uses the python script `scripts/galaxykickstart_from_workflow.py` to quickly
 generate a GalaxyKickStart use case from one or several workflow files (`.ga`, note that
 these files must have been generated with galaxy >= release_16.04)

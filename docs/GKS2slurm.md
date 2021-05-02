@@ -7,9 +7,9 @@
 GKS2slurm is a playbook that is played to install a multinode slurm cluster over a GalaxyKickStart single-node installation.
 The playbook GKS2slurm `galaxyToSlurmCluster.yml` was tested with multiple virtual machines (VMs) in `Stratuslab`, `Google Cloud Engine (GCE)` and `Amazon Web Services (AWS)` clouds.
 
-# Installation of a Galaxy slurm cluster with GKS2slurm
+### Installation of a Galaxy slurm cluster with GKS2slurm
 
-## Step 1: Install a Galaxy server with GalaxyKickStart
+#### Step 1: Install a Galaxy server with GalaxyKickStart
 
 
 - Report to the [Getting Started](getting_started.md) section of this manual for the basics of GalaxyKickStart installation
@@ -46,11 +46,11 @@ and run the galaxy.yml playbook:
 ansible-playbook --inventory-file inventory_files/<your_inventory_file> galaxy.yml
 ```
 
-## Step 2: Check the single node Galaxy installation
+### Step 2: Check the single node Galaxy installation
 
 If the playbook was run successfully, connect to your Galaxy instance through http and check that you can login (admin@galaxy.org:admin), and that tools and workflows are correctly installed.
 
-## Step 3: Moving your single node configuration to a multinode slurm configuration
+### Step 3: Moving your single node configuration to a multinode slurm configuration
 
 - Start as many compute nodes you want for the slurm cluster and gather information from each node:
     - IP address (all slurm nodes should must be accessible in the same network, ie nodes can be ping-ed from any nodes)
@@ -58,7 +58,7 @@ If the playbook was run successfully, connect to your Galaxy instance through ht
     - number of CPUs
     - memory (in MB)
 
-### Step 3-1
+#### Step 3-1
 Adapt the inventory file `slurm-kickstart` in the inventory_files folder.
 ```
 [slurm_master]
@@ -72,7 +72,8 @@ Adapt the inventory file `slurm-kickstart` in the inventory_files folder.
 192.54.201.101 ansible_ssh_user=root ansible_ssh_private_key_file="~/.ssh/mysshkey"
 ```
 
-### Step 3-2
+#### Step 3-2
+
 Adapt the group_vars file `slurm_master` in the `group_vars` folder.
 This is done using the information gathered in step 3
 
@@ -86,7 +87,8 @@ slave_node_dict:
   - {hostname: "slave-2", CPUs: "2", RealMemory: "7985"}
   - {hostname: "slave-3", CPUs: "2", RealMemory: "7985"}
 ```
-### Step 3-3
+
+#### Step 3-3
 Adapt the group_vars file `slurm_slave` in the `group_vars` folder
 
 ```
@@ -94,20 +96,21 @@ Adapt the group_vars file `slurm_slave` in the `group_vars` folder
 master_slurm_node_ip: "192.54.201.102"
 ```
 
-### Step 3-4
+#### Step 3-4
 Run the playbook `galaxyToSlurmCluster.yml` playbook.
 from the GalaxyKickStart directory:
 ```
 ansible-playbook -i inventory_files/slurm-kickstart galaxyToSlurmCluster.yml
 ```
 
-Note that if you configure multiple slave nodes without prior ssh key authentification, you can run the same command with the variable ANSIBLE_HOST_KEY_CHECKING put to False:
+- Note that if you configure multiple slave nodes without prior ssh key authentification,
+you can run the same command with the variable ANSIBLE_HOST_KEY_CHECKING put to False:
 
 ```
 ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventory_files/slurm-kickstart galaxyToSlurmCluster.yml
 ```
 
-# Checking slurm installation
+### Checking slurm installation
 
 Connect to your master node as root and type `sinfo`
 Refer to slurm documentation for more investigation/control
