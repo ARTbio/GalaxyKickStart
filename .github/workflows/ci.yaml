@@ -1,5 +1,9 @@
 name: Ansible Testing
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - readthedocs
+      - master
 env:
   GALAXY_USER: admin@galaxy.org
   GALAXY_USER_PASSWD: artbio2020

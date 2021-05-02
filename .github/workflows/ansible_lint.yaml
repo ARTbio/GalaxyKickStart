@@ -3,7 +3,8 @@ name: Ansible Lint # feel free to pick your own name
 on:
   push:
     branches-ignore:
-      - master   # excludes master
+      - master
+      - readthedocs
 
 jobs:
   build:

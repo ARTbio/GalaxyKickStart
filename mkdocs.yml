@@ -10,16 +10,14 @@ nav:
  - Getting started: getting_started.md
  - customizations.md
  - Installing tools and workflows: installing_tools_and_workflows.md
- - Examples:
-   - examples/docker.md
-   - examples/vagrant.md
+ - Docker GalaxyKickStart: docker.md
  - Frequently asked questions: faq.md
  - Available roles: available_roles.md
  - Available variables: available_variables.md
  - GalaxyKickStart Use Cases: 
    - metavisitor.md
-   - GKS2slurm.md
    - GKSfromWorflows.md
+   - GKS2slurm.md
 
 markdown_extensions:
   - attr_list
