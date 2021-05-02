@@ -2,8 +2,6 @@
 
 ------------
 
-### What is GKS2slurm ?
-
 GKS2slurm is a playbook that is played to install a multinode slurm cluster over a GalaxyKickStart single-node installation.
 The playbook GKS2slurm `galaxyToSlurmCluster.yml` was tested with multiple virtual machines (VMs) in `Stratuslab`, `Google Cloud Engine (GCE)` and `Amazon Web Services (AWS)` clouds.
 
