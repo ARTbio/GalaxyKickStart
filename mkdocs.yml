@@ -16,8 +16,8 @@ nav:
  - Available variables: available_variables.md
  - GalaxyKickStart Use Cases: 
    - metavisitor.md
-   - GKS2slurm.md
    - GKSfromWorflows.md
+   - GKS2slurm.md
 
 markdown_extensions:
   - attr_list
