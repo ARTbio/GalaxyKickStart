@@ -102,6 +102,7 @@
         <tool id="repenrich" destination="eight"/>
         <tool id="mircounts" destination="eight"/>
         <tool id="hicexplorer_hicmergematrixbins" destination="eight"/>
+        <tool id="freebayes" destination="eight"/>
    </tools>
 </job_conf>
 
