@@ -65,9 +65,11 @@ tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
 shed_tools_dir: "{{ galaxy_server_dir }}/../shed_tools"
 tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
 galaxy_mutable_data_dir: "{{ galaxy_server_dir  }}/database"
-miniconda_python: 3
-miniconda_version: "4.9.2"
-miniconda_installer_checksum: "3143b1116f2d466d9325c206b7de88f7"
+# miniconda_python: 3
+# miniconda_version: "4.9.2"
+# miniconda_installer_checksum: ""
+# starting 2021-06-22, bypass the construction of the miniconda installer name
+miniconda_installer: "Miniconda3-py37_4.8.2-Linux-ppc64le.sh"
 miniconda_prefix: "{{ tool_dependency_dir }}/_conda"
 miniconda_manage_dependencies: False
 
