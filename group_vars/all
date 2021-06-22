@@ -66,7 +66,7 @@ shed_tools_dir: "{{ galaxy_server_dir }}/../shed_tools"
 tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
 galaxy_mutable_data_dir: "{{ galaxy_server_dir  }}/database"
 miniconda_python: 3
-miniconda_version: "4.6.14"
+miniconda_version: "4.10.1"
 miniconda_installer_checksum: ""
 miniconda_prefix: "{{ tool_dependency_dir }}/_conda"
 miniconda_manage_dependencies: False

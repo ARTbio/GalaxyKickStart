@@ -103,6 +103,8 @@
         <tool id="mircounts" destination="eight"/>
         <tool id="hicexplorer_hicmergematrixbins" destination="eight"/>
         <tool id="freebayes" destination="eight"/>
+        <tool id="lofreq_call" destination="eight"/>
+        <tool id="samtools_view" destination="four"/>
    </tools>
 </job_conf>
 
