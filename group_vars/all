@@ -67,7 +67,7 @@ tool_data_dir: "{{ galaxy_server_dir  }}/tool-data"
 galaxy_mutable_data_dir: "{{ galaxy_server_dir  }}/database"
 miniconda_python: 3
 miniconda_version: "4.9.2"
-miniconda_installer_checksum: ""
+miniconda_installer_checksum: "3143b1116f2d466d9325c206b7de88f7"
 miniconda_prefix: "{{ tool_dependency_dir }}/_conda"
 miniconda_manage_dependencies: False
 
