@@ -39,10 +39,10 @@
     </destinations>
     <limits>
         <limit type="anonymous_user_concurrent_jobs">1</limit>
-        <limit type="destination_user_concurrent_jobs" id="single">10</limit>
-        <limit type="destination_user_concurrent_jobs" id="double">6</limit>
-        <limit type="destination_user_concurrent_jobs" id="four">5</limit>
-        <limit type="destination_user_concurrent_jobs" id="eight">4</limit>
+        <limit type="destination_user_concurrent_jobs" id="single">40</limit>
+        <limit type="destination_user_concurrent_jobs" id="double">20</limit>
+        <limit type="destination_user_concurrent_jobs" id="four">8</limit>
+        <limit type="destination_user_concurrent_jobs" id="eight">6</limit>
 
         <limit type="destination_total_concurrent_jobs" id="single">40</limit>
         <limit type="destination_total_concurrent_jobs" id="double">20</limit>
