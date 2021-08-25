@@ -256,5 +256,5 @@ jobs:
       
     - name: Bioblend tests
       run: |
-        cd /opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/bioblend/_tests/
+        cd /opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/bioblend/_tests/
         bioblend-galaxy-tests --color=yes -v TestGalaxyHistories.py TestGalaxyTools.py --no-summary || true
