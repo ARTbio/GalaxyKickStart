@@ -1,0 +1,121 @@
+galaxy_changeset_id: release_21.05
+configure_docker: no
+
+galaxy_hostname: "usegalaxy.sorbonne-universite.fr"
+
+#persistent data
+galaxy_persistent_directory: /mnt/data # for conect server
+
+galaxy_tools_tool_list_files:
+  - "extra-files/Conect/conect_tool_list.yml"
+additional_files_list:
+  - { src: "extra-files/Conect/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
+  - { src: "extra-files/Conect/ARTbio_mississippi_screen.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/Conect/conect_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/Conect/IBPS_logo.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/Conect/job_conf.xml", dest: "{{ galaxy_config_dir }}" }
+  - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+# specific ie for ipython and rstudio
+galaxy_extras_ie_fetch_jupyter: false
+galaxy_extras_ie_jupyter_image: quay.io/bgruening/docker-jupyter-notebook:17.09
+galaxy_extras_ie_fetch_rstudio: false
+galaxy_extras_ie_rstudio_image: artbio/rstudio-notebook:latest
+
+galaxy_admin: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          31323763303265376538343934663531613836656264386631326563636561326630323930636232
+          3236316536396165656238383866613937623063666532620a616436343937646266363166636531
+          35643164323264646265363063356338653432343464663831663439303933336437643362613335
+          3565366638616333650a366335343834306434333165636337353935316564643264343338636530
+          64303531303335323666656531653266633238313731386435303731663334316338
+
+galaxy_admin_pw: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          39623564376139343531623334313131386665623432363439643862623961363864663366363933
+          3062383838346562383963636464663532613463336234660a306362633665326166616163663965
+          35666535626538303063353333393863373566363163376535643630393063363164346162373639
+          3530396362303833640a393531333961303539326230343435336131633332313439653161653666
+          3162
+
+# extras to galaxy-config
+# galaxy_config['galaxy']['shed_tool_config_file']: shed_tool_conf.xml
+
+galaxy_config:
+  "uwsgi":
+    # other uwsgi option are defaulted in ansible-galaxy-os role
+    module: galaxy.webapps.galaxy.buildapp:uwsgi_app()
+    # warning the above line should be dropped when prefixing
+    # upon guide-lines in  https://docs.galaxyproject.org/en/latest/admin/nginx.html
+    logfile-chmod: 644
+  'galaxy':
+    filter-with: proxy-prefix
+    prefix: "{{ nginx_galaxy_location }}" # this is not clear from the galaxy.yml.sample which in addition is not consistent with https://docs.galaxyproject.org/en/latest/admin/nginx.html
+    admin_users: "{{ galaxy_admin }}"
+    database_connection: "{{ galaxy_db }}"
+    tool_dependency_dir: "{{ tool_dependency_dir }}"
+    ftp_upload_dir: "{{ proftpd_files_dir }}"
+    ftp_upload_site: "ftp://{{ ipify_public_ip }}"
+    allow_user_dataset_purge: True
+    allow_user_impersonation: True
+    enable_quotas: True
+    allow_user_deletion: True
+    allow_library_path_paste: True
+    tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
+    static_enabled: False
+    watch_tool_data_dir: True
+    use_pbkdf2: "{{ use_pbkdf2 }}"
+    len_file_path: "{{ galaxy_config_dir }}/len"
+    nginx_x_accel_redirect_base: /_x_accel_redirect
+    interactive_environment_plugins_directory: config/plugins/interactive_environments
+    visualization_plugins_directory: config/plugins/visualizations
+    # interactive environments - set dynamic_proxy_manage to true #
+    dynamic_proxy_manage: true
+    dynamic_proxy_session_map: database/session_map.sqlite
+    dynamic_proxy_bind_port: 8800
+    dynamic_proxy_bind_ip: 0.0.0.0
+    dynamic_proxy_debug: true
+    dynamic_proxy_external_proxy: true
+    dynamic_proxy_prefix: gie_proxy
+    expose_potentially_sensitive_job_metrics: true
+    require_login: true
+    smtp_server: 'smtp.gmail.com:587'
+    smtp_username: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          35613265613034653134363437376237316266363032326264343135363936336661633235303766
+          3635383033626138383966313439386433396630356464370a323332306232356239366434306631
+          35633934393832353530383830646339333163353036626637643831626339653134333464646330
+          6233623063666562630a653339613835386466303663383838613165366533333566353630303731
+          32346266666631383331373731366139393638353837656339363535363566303937
+    smtp_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          32633165396362626537616561353234643532373061343630663035396363316262356239653861
+          3835396136356537366363363837336464343464356562310a653134613662313161306566653365
+          33356336306530336662353661373863353261343963306466643631363039356161623562323061
+          6463633335353930380a336366386334613864303330396165386435336632656161313565633236
+          3736
+    error_email_to: gedserver@gmail.com
+
+# ssl certificate (from Renater) for https
+galaxy_extras_config_ssl: true
+galaxy_extras_config_ssl_method: own
+src_nginx_ssl_certificate_key: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          61356138393362343134373961313566636435646338626330303961653234613162643365323132
+          6637616534653136623938613237653765656261323632310a376432633265623762363564636633
+          62323338636361323139653533333630316236306330306664383930363834633638313261313039
+          6533643436303533630a653136643734356330323832616165376433383432653830346535393630
+          64306236306561336365353632386436353730383863313836386461613366616532386238313466
+          61383534633234646432643236306363393732373163366366613833306137306366316238623938
+          363863373730363464333939623265353165
+src_nginx_ssl_certificate: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          33363230326139346666386464636139653939393931396537346239373461393265386538653965
+          3965303261346437346365323730386536326165353831660a383330326261613532363438653330
+          35396664356562316235333761383162323738376535663265613738383564306338343231613063
+          6162336439623066330a343335363332343631303330393933643831386264376137623161633134
+          30323165656336373837363034643262343639306263383035353265656363326138316263343931
+          33653064366562663165333065393965313136336366356431383839663937323061303862616363
+          373731303736363738393764653765346630
+nginx_ssl_certificate_key: "{{ src_nginx_ssl_certificate_key }}"
+nginx_ssl_certificate: "{{ src_nginx_ssl_certificate }}"
+
