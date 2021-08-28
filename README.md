@@ -3,7 +3,7 @@
 # GalaxyKickStart
 
 GalaxyKickStart is an Ansible playbook designed to help you get one or more
-production-ready  [Galaxy servers](https://usegalaxy.org/) based on Ubuntu
+production-ready [Galaxy servers](https://usegalaxy.org/) based on Ubuntu
 within minutes, and to maintain these servers.
 Optionally, GalaxyKickStart can install tools and workflows in the deployed
 Galaxy server.
@@ -17,7 +17,7 @@ Detailed usage instructions are available in the
 
 - Cloud Machines
 - Physical Servers
-- Docker Images)
+- Docker Images
 
 GalaxyKickStart is developed by the [ARTbio platform](http://artbio.fr)
 and uses roles developed by the [Galaxy team](https://github.com/galaxyproject/),
