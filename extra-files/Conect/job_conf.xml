@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<job_conf>
+    <plugins workers="2">
+        <plugin id="slurm" type="runner" load="galaxy.jobs.runners.slurm:SlurmJobRunner">
+            <param id="drmaa_library_path">/usr/lib/slurm-drmaa/lib/libdrmaa.so</param>
+            <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
+        </plugin>
+        <plugin id="local" type="runner" load="galaxy.jobs.runners.local:LocalJobRunner"/>
+    </plugins>
+    <!-- The default handler can be changed by specifying the GALAXY_HANDLERS_DEFAULT environment variable. -->
+    <handlers default_from_environ="GALAXY_HANDLERS_DEFAULT" default="handlers">
+              <handler id="handler0" tags="handlers"/>
+            <handler id="handler1" tags="handlers"/>
+            <handler id="handler2" tags="handlers"/>
+            <handler id="handler3" tags="handlers"/>
+          </handlers>
+    <!-- The default destination can be changed by specifying the GALAXY_DESTINATIONS_DEFAULT environment variable. -->
+    <destinations default_from_environ="GALAXY_DESTINATIONS_DEFAULT" default="slurm_cluster">
+        <destination id="docker_dispatch" runner="dynamic">
+            <!-- Allow different default destinations based on whether the tool
+                 supports Docker or not. -->
+            <param id="type">docker_dispatch</param>
+            <param id="docker_destination_id" from_environ="GALAXY_DESTINATIONS_DOCKER_DEFAULT">slurm_cluster</param>
+            <param id="default_destination_id" from_environ="GALAXY_DESTINATIONS_NO_DOCKER_DEFAULT">slurm_cluster</param>
+        </destination>
+        <!--destination id="singularity_dispatch" runner="dynamic">
+            <param id="type">singularity_dispatch</param>
+            <param id="singularity_destination_id" from_environ="GALAXY_DESTINATIONS_DOCKER_DEFAULT">slurm_cluster</param>
+            <param id="default_destination_id" from_environ="GALAXY_DESTINATIONS_NO_DOCKER_DEFAULT">slurm_cluster</param>
+        </destination-->
+        <destination id="local_no_container" runner="local">
+        <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
+                <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_LOCAL">true</param>
+
+        
+        
+        
+    </destination>        <destination id="local_docker" runner="local">
+        <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
+                <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_LOCAL">true</param>
+
+                    <param id="docker_enabled">true</param>
+            <param id="docker_sudo" from_environ="GALAXY_DOCKER_SUDO">False</param>
+            <!-- The empty volumes from shouldn't affect Galaxy, set GALAXY_DOCKER_VOLUMES_FROM to use. -->
+            <param id="docker_volumes_from" from_environ="GALAXY_DOCKER_VOLUMES_FROM"></param>
+            <!-- For a stock Galaxy instance and traditional job runner $defaults will expand out as: $galaxy_root:ro,$tool_directory:ro,$working_directory:rw,$default_file_path:rw -->
+            <param id="docker_volumes" from_environ="GALAXY_DOCKER_VOLUMES">$defaults</param>
+                    
+        
+        
+    </destination>        <destination id="local_force_docker" runner="local">
+        <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
+                <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_LOCAL">true</param>
+
+                    <param id="docker_enabled">true</param>
+            <param id="docker_sudo" from_environ="GALAXY_DOCKER_SUDO">False</param>
+            <!-- The empty volumes from shouldn't affect Galaxy, set GALAXY_DOCKER_VOLUMES_FROM to use. -->
+            <param id="docker_volumes_from" from_environ="GALAXY_DOCKER_VOLUMES_FROM"></param>
+            <!-- For a stock Galaxy instance and traditional job runner $defaults will expand out as: $galaxy_root:ro,$tool_directory:ro,$working_directory:rw,$default_file_path:rw -->
+            <param id="docker_volumes" from_environ="GALAXY_DOCKER_VOLUMES">$defaults</param>
+                            <param id="docker_default_container_id" from_environ="GALAXY_DOCKER_DEFAULT_CONTAINER">busybox:ubuntu-14.04</param>
+                    
+        
+        
+    </destination>        <destination id="slurm_cluster" runner="slurm">
+        <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
+                <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
+
+        
+        
+                    <param id="nativeSpecification" from_environ="NATIVE_SPEC">--ntasks=1 --share</param>
+        
+    </destination>        <!-- Docker -->
+        <destination id="slurm_cluster_docker" runner="slurm">
+        <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
+                <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
+
+                    <param id="docker_enabled">true</param>
+            <param id="docker_sudo" from_environ="GALAXY_DOCKER_SUDO">False</param>
+            <!-- The empty volumes from shouldn't affect Galaxy, set GALAXY_DOCKER_VOLUMES_FROM to use. -->
+            <param id="docker_volumes_from" from_environ="GALAXY_DOCKER_VOLUMES_FROM"></param>
+            <!-- For a stock Galaxy instance and traditional job runner $defaults will expand out as: $galaxy_root:ro,$tool_directory:ro,$working_directory:rw,$default_file_path:rw -->
+            <param id="docker_volumes" from_environ="GALAXY_DOCKER_VOLUMES">$defaults</param>
+                    
+        
+                    <param id="nativeSpecification" from_environ="NATIVE_SPEC">--ntasks=1 --share</param>
+        
+    </destination>        <destination id="slurm_cluster_force_docker" runner="slurm">
+        <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
+                <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
+
+                    <param id="docker_enabled">true</param>
+            <param id="docker_sudo" from_environ="GALAXY_DOCKER_SUDO">False</param>
+            <!-- The empty volumes from shouldn't affect Galaxy, set GALAXY_DOCKER_VOLUMES_FROM to use. -->
+            <param id="docker_volumes_from" from_environ="GALAXY_DOCKER_VOLUMES_FROM"></param>
+            <!-- For a stock Galaxy instance and traditional job runner $defaults will expand out as: $galaxy_root:ro,$tool_directory:ro,$working_directory:rw,$default_file_path:rw -->
+            <param id="docker_volumes" from_environ="GALAXY_DOCKER_VOLUMES">$defaults</param>
+                            <param id="docker_default_container_id" from_environ="GALAXY_DOCKER_DEFAULT_CONTAINER">busybox:ubuntu-14.04</param>
+                    
+        
+                    <param id="nativeSpecification" from_environ="NATIVE_SPEC">--ntasks=1 --share</param>
+        
+    </destination>        <!-- Singularity -->
+        <destination id="slurm_cluster_singularity" runner="slurm">
+        <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
+                <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
+
+        
+                    <param id="singularity_enabled">true</param>
+            <param id="singularity_sudo" from_environ="GALAXY_SINGULARITY_SUDO">False</param>
+            <!-- The empty volumes from shouldn't affect Galaxy, set GALAXY_SINGULARITY_VOLUMES_FROM to use. -->
+            <param id="singularity_volumes_from" from_environ="GALAXY_SINGULARITY_VOLUMES_FROM"></param>
+            <!-- For a stock Galaxy instance and traditional job runner $defaults will expand out as: $galaxy_root:ro,$tool_directory:ro,$working_directory:rw,$default_file_path:rw -->
+            <param id="singularity_volumes" from_environ="GALAXY_SINGULARITY_VOLUMES">$defauls</param>
+            
+        
+                    <param id="nativeSpecification" from_environ="NATIVE_SPEC">--ntasks=1 --share</param>
+        
+    </destination>
+    </destinations>
+    <limits>
+    </limits>
+</job_conf>

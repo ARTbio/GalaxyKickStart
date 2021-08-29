@@ -1,6 +1,6 @@
 - hosts: all
   become: yes
-  gather_facts: yes
+  gather_facts: true
 
   environment: "{{ proxy_env }}"
 
@@ -8,6 +8,11 @@
     - include_tasks: roles/handlers/galaxy.yml
 
   pre_tasks:
+    - name: gather facts
+      setup:
+      tags:
+        - always
+
     - name: Check ansible version
       fail: msg="Installed ansible version {{ ansible_version.full }}, but ansible version >= 2.7.4 required"
       when: ansible_version.full is version('2.7', '<')
@@ -15,26 +20,24 @@
         - always
 
     - name: Install python if absent
-      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3-minimal)
       register: output
       changed_when: output.stdout
       tags:
         - always
 
-    - name: gather facts
-      setup:
-      tags:
-        - always
-
-    - name: set jetstream banner image variable
-      set_fact:
-        banner_img: "{% if 'jetstream' in group_names %}jetstream_text.png{% else %}gce_text.png{% endif %}"
+    - name: Install psycopg2
+      become: yes
+      apt:
+        name: python3-psycopg2
+        state: present
 
     - name: get host ip in ipify_public_ip variable
       ipify_facts:
         timeout: 20
       tags:
         - always
+
 
   roles:
 
@@ -43,13 +46,11 @@
         - install_galaxy
         - install_packages
 
-    - role: cloud_setup
-      when: cloud_setup is defined
-
     - role: ensure_postgresql_up
       tags:
         - install_galaxy
         - manage_postgres
+        - postgres_up
 
     - role: natefoo.postgresql_objects
       postgresql_objects_users:
@@ -74,11 +75,10 @@
       vars:
         - ansible_check_mode: no # test tests
 
-
     - role: set_supervisor_env_vars
       tags: env_vars
 
-    # The return of miniconda !
+    # Installs miniconda
     - role: miniconda-role
       become: yes
       become_user: "{{ galaxy_user_name }}"

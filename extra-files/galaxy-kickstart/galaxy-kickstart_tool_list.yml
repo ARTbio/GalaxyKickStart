@@ -1,11 +1,6 @@
 tools:
 
-- name: yac_clipper
-  owner: artbio
-  tool_panel_section_label: 'ARTBIO'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: lumpy_smoove
+- name: justdiff
   owner: artbio
   tool_panel_section_label: 'ARTBIO'
   tool_shed_url: https://toolshed.g2.bx.psu.edu/

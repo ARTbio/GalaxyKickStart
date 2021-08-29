@@ -1,48 +1,49 @@
 # Getting Started
 
-## You need [git](https://git-scm.com/) installed
-## Make sure that you have a recent version of [Ansible](https://github.com/ansible/) installed
-The playbook has been tested with the Ansible stable version 2.4
+### 1. Requirements on the target machine (where ansible will deploy GalaxyKickStart)
 
-### Install Ansible with pip
+- **Ubuntu 16.04, 18.04 or 20.04**.
+??? tips "Note"    
+    Other systems (eg, debian) may work but they are not tested for the GalaxyKickStart
+    development.
 
-A simple way to install the latest Ansible version is using [pip](https://pip.pypa.io/en/stable/quickstart/):
+- **Python >= 3.6**
 
-##### Install pip
+??? tips "Note"    
+    If this requirement is not satisfied, Ansible will try to install Python 3 on the
+    target machine
 
-```
-sudo apt-get update -y && sudo apt-get -y install python-pip python-dev
-```
+### 2. Requirements on the Ansible machine
 
-- Ensure you have recent pip version installed (sudo -i && pip install upgrade pip maybe necessary)
+- **Ansible**
+Whether used remotely or locally, the **Ansible version must be >= 2.9.6**
+??? tips "Note"    
+    Ansible uses ssh to send its commands. Thus, Ansible can be installed **remotely** (ie, on a
+    machine that *will not* contain the Galaxy server at the end of the deployment), or **locally**
+    (ie on the machine that *will* contain the Galaxy server, also called the target machine in
+    this tutorial). In the latest case, ssh is used locally on the localhost 127.0.0.1 to chanel
+    the commands sent by Ansible.
+    
+    Ansible may be installed using **[pip](https://pip.pypa.io/en/stable/installing/)**
+    ```
+    pip install ansible==2.9.2
+    ```
+    or **[apt](https://help.ubuntu.com/community/AptGet/Howto)**
+    ```
+    sudo apt-get install software-properties-common
+    sudo apt-add-repository ppa:ansible/ansible
+    sudo apt-get update
+    sudo apt-get install ansible
+    ```
 
-pip upgrade:
-```
-sudo pip install -U pip
-```
-```
-$ pip --version
-pip 9.0.1 from /usr/local/lib/python2.7/site-packages (python 2.7)
-```
+    
+- **git**
+    
+??? tips "Note"    
+    To clone the GalaxyKickStart GitHub repository
 
-- Then
 
-```
-sudo pip install ansible==2.7.4
-```
-### Install Ansible with apt
-
-Alternatively, Ansible may be installed with the Apt package manager (Ubuntu):
-
-```
-sudo -i
-apt-get install software-properties-common
-apt-add-repository ppa:ansible/ansible
-apt-get update
-apt-get install ansible
-```
-
-# Getting the playbook
+### 3. Getting the playbook
 
 [//]: # (TODO: Once we do releases, we include the submodules and hence users can just download the playbook without git)
 
@@ -52,21 +53,22 @@ dependent Ansible roles that need to be downloaded as part of the installation
 step:
 
 ```
-git clone https://github.com/ARTbio/GalaxyKickStart.git
+git clone https://github.com/artbio/galaxyKickstart.git
 cd GalaxyKickStart
 ansible-galaxy install -r requirements_roles.yml -p roles
 ```
 
-The playbook (here `galaxy.yml`) should be in the GalaxyKickStart folder.
+The playbooks scripts `galaxy.yml` and `galaxy_tool_install.yml` are in the galaxykickstart folder.
 ```bash
-ls
-CONTRIBUTORS.md		Vagrantfile		docs			inventory_files		roles
-Dockerfile		ansible.cfg		extra-files		mkdocs.yml		scripts
-LICENSE.txt		deploy.sh		galaxy.yml		pre-commit.sh		startup.sh
-README.md		dockerfiles		group_vars		requirements_roles.yml	templates
+CONTRIBUTORS.md			dockerfiles			group_vars			slurm_slave_node.yml
+Dockerfile			docs				inventory_files			startup.sh
+Dockerfile.galaxykickstart-base	extra-files			mkdocs.yml			templates
+LICENSE.txt			galaxy.yml			requirements_roles.yml
+README.md			galaxyToSlurmCluster.yml	roles
+ansible.cfg			galaxy_tool_install.yml		scripts
 ```
 
-# Deploying galaxy-kickstart on remote machines.
+### 3. Deploying galaxy-kickstart on remote machines.
 ----
 
 Inside the `inventory_files` folder, you will find a number of inventory files.
@@ -74,29 +76,44 @@ This is an example of inventory taken from the `artimed` inventory file.
 
 ```
 [artimed]
-localhost ansible_ssh_user="root" ansible_ssh_private_key_file="~/.ssh/id_rsa"
-...
+localhost ansible_connection=local
+
+# change to the line below if remote target host
+# <remote host IP> ansible_ssh_user="root" ansible_ssh_private_key_file="<path/to/your/private/key>"
 ```
 
 Here `[artimed]` is a group, that contains a machine called localhost.
-The variables defined in `group_vars/artimed` will be applied to this host.
-Ansible will connect by ssh to this machine, using the ssh key in `~/.ssh/id_rsa`.
 
-If you would like to run this playbook on a remote machine by ssh (currently needs to be a debian-type machine),
-create a new inventory, and change `localhost` to the IP address of that machine.
-`ansible_ssh_user=<user>` controls under which username to connect to this machine.
-This user needs to have sudo rights.
+The variables defined in `group_vars/artimed` will be applied to this host,
+in addition to, or overwriting, the variables defined in group_vars which apply to any host.
+
+In this example, Ansible is acting locally on the localhost target.
+
+If  instead you want to use Ansible remotely, replace `localhost ansible_connection=local`
+by `<remote host IP> ansible_ssh_user="root" ansible_ssh_private_key_file="<path/to/your/private/key>"`
+
+Ansible will connect by ssh to the target `remote host IP`, using the ssh key in `path/to/your/private/key`.
+
+The user specified by `ansible_ssh_user=<user>` may be an other user than `root` but needs
+in any case to to have sudo rights.
 
 Then, run the plabook by typing:
 ```
 ansible-playbook --inventory-file inventory_files/<your_inventory_file> galaxy.yml
 ```
+Typically, you can test using:
+```
+ansible-playbook -i inventory_files/galaxy-kickstart galaxy.yml
+```
 
-You can put multiple machines in your inventory.
-If you run the playbook a second time, the process will be much faster, since steps that have already been executed will be skipped.
-Whenever you change a variable (see [customizations](customizations.md)), you need to run the playbook again.
 
-## Deploying galaxy-kickstart on specified clouds
+You can put multiple machines in your inventory file.
+If you run the playbook a second time, the process will be much faster, since steps that
+have already been executed will be skipped. Whenever you change a variable (see
+[customizations](customizations.md)) in group_vars/<your inventory> or in group_vars/all,
+you will need to run the playbook again.
+
+### 4. Deploying galaxy-kickstart on specified clouds
 
 Inside the repository you will find a [file](https://github.com/ARTbio/GalaxyKickStart/tree/master/inventory_files/cloud)
 called `inventory_files/cloud`. This file serves as an example hosts file for
@@ -110,19 +127,19 @@ this happens to be a cloud setup, make sure to add the section header under
 
 Specifications for each remote target:
 
-* OpenStack
-    * Image needed to deploy on [Jetstream](http://jetstream-cloud.org/):
-        `Ubuntu 14.04.3 Development (jetstream image id: d7fe3289-943f-4417-90e8-8a6b171677ca)`
-    *  Inventory: `<remote host IP> anisble_ssh_user="root" ansible_ssh_private_key_file="<path/to/your/private/key>"`
-
 * GCE
-    * Image needed to deploy galaxy-kickstart: `Ubuntu 14.04 LTS`
+    * Image needed to deploy galaxykickstart: `Ubuntu 18.04 LTS` > `Ubuntu 20.04 LTS` > `Ubuntu 16.04 LTS`
     * Inventory: ` <remote host IP> anisble_ssh_user="ubuntu" ansible_ssh_private_key_file="<path/to/your/private/key>"`
 
 * AWS
-    * Image needed to deploy galaxy-kickstart: `Ubuntu Server 14.04 LTS (HVM), SSD Volume Type - ami-2d39803a`
+    * Image needed to deploy galaxykickstart: `Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-013f17f36f8b1fefb (64 bits x86) / ami-02ed82f3a38303e6f (64 bits Arm)`
     * Inventory: `<target Amazon Web Services IP address> ansible_ssh_user="ubuntu" ansible_ssh_private_key_file="<path/to/your/aws/private/key>"`
 
-## Deploying galaxy-kickstart behind a proxy
+* Jetstream (OpenStack)
+    * Image needed to deploy galaxykickstart on [Jetstream](http://jetstream-cloud.org/):
+        `Ubuntu 18.04 LTS Development + GUI support + Docker (jetstream image id: 15ff25f6-6ac5-4c12-b6ce-c08615ba32be)`
+    *  Inventory: `<remote host IP> ansible_ssh_user="root" ansible_ssh_private_key_file="<path/to/your/private/key>"`
+
+### 5. Deploying galaxy-kickstart behind a proxy
 
 See [How can I set up GalaxyKickStart behind a proxy?](faq.md)

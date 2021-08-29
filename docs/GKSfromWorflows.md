@@ -1,7 +1,12 @@
-# GKSfromWorflows
-GKSfromWorflows uses the python script `galaxykickstart_from_workflow.py` to quickly generate a GalaxyKickStart use case from one or several workflow files (`.ga`, note that these files must have been generated with galaxy >= release_16.04)
+### Unstable development
 
-### From GalaxyKickStart/scripts, run
+------------
+
+GKSfromWorflows uses the python script `scripts/galaxykickstart_from_workflow.py` to quickly
+generate a GalaxyKickStart use case from one or several workflow files (`.ga`, note that
+these files must have been generated with galaxy >= release_16.04)
+
+#### From `GalaxyKickStart/scripts`, run
 
 ```
 python galaxykickstart_from_workflow.py --help
@@ -15,11 +20,14 @@ python galaxykickstart_from_workflow.py -w <workflow1.ga> <workflow2.ga> ... -l 
 
 This creates:
 
-- An inventory file `GKSfromWorkflow` in the `inventory_files`folder
-- A group_vars file `GKSfromWorkflow` in the `group_vars`folder
-- A folder `GKSfromWorkflow`in the folder `extra-files` which will contain a copy of the workflow1.ga, workflow2.ga, ... files, plus a `GKSfromWorkflow_tool_list.yml` file that contains a yml description of all tools used in the workflows.
+- An inventory file `GKSfromWorkflow` in the `inventory_files` folder
+- A group_vars file `GKSfromWorkflow` in the `group_vars` folder
+- A folder `GKSfromWorkflow`in the folder `extra-files` which will contain a copy of the
+workflow1.ga, workflow2.ga, ... files, plus a `GKSfromWorkflow_tool_list.yml` file that
+contains a yml description of all tools used in the workflows.
 
-Note that running `galaxykickstart_from_workflow.py` overwrites these folders and files if they exist from a previous script run.
+Note that running `galaxykickstart_from_workflow.py` overwrites these folders and files if
+they exist from a previous script run.
 
 ### Adapt the created inventory file
 

@@ -1,7 +1,13 @@
 Why does the playbook fail?
 ----
+Most generally, the playbook fails because of environment issues in local or remote host.
 
-Make sure that you are on ansible version >=2.1.
+Make sure that you use ansible version >=`2.9.6` in a python3 environment, that your ansible
+targets are under ubuntu 16.04, 18.04 or 20.04 (support to ubuntu 14.04 is dropped).
+Ensure also that the ssh connection ansible is relying on is appropriately specified in
+you inventory file (whether your run ansible locally or remotely), and that you have the root
+rights.
+
 You can check your ansible version by typing:
 
 ```
@@ -11,9 +17,12 @@ ansible --version
 What is the username and password of the galaxy admin account ?
 ----
 
-Username and password of the galaxy account are controlled by the variables `galaxy_admin` and `galaxy_admin_pw` and
-default to `admin@galaxy.org` and `admin` (Defaults are defined in group_vars/all). This should be changed in the group or host variables for the host you are working on.
+Username and password of the galaxy account are controlled by the variables `galaxy_admin`
+and `galaxy_admin_pw` and default to `admin@galaxy.org` and `artbio2020` (Defaults are
+defined in group_vars/all). This should be changed in the group or host variables for the
+host you are working on.
 If you have a host in the `mygroup` group, you can edit group_vars/my_group and set
+
 ```
 galaxy_admin: new_admin@email.com
 galaxy_admin_pw: new_password
