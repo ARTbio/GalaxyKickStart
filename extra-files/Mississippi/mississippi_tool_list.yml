@@ -723,6 +723,13 @@ tools:
   tool_panel_section_id: differential_expression
   tool_panel_section_label: Differential Expression
   tool_shed_url: toolshed.g2.bx.psu.edu
+- name: ruvseq
+  owner: iuc
+  revisions:
+  - d1f7fa5bb3cb
+  tool_panel_section_id: differential_expression
+  tool_panel_section_label: Differential Expression
+  tool_shed_url: toolshed.g2.bx.psu.edu
 - name: cufflinks
   owner: devteam
   revisions:
