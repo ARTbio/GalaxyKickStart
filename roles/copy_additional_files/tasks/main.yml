@@ -42,6 +42,12 @@
     - 413
     - 500
 
+- name: Restart supervisor nginx.
+  supervisorctl: name={{ item }} state=restarted
+  with_items:
+    - nginx
+  tags: skip_supervisor_start_in_docker
+
 - name: Install rstudio interactive environment config files
   template:
     src: "{{ item.src }}"
