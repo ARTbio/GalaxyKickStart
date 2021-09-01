@@ -16,6 +16,7 @@ additional_files_list:
   - { src: "extra-files/Conect/IBPS_logo.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }
   - { src: "extra-files/Conect/job_conf.xml", dest: "{{ galaxy_config_dir }}" }
   - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+  - { src: "extra-files/Conect/nginx.conf", dest: "/etc/nginx/" }
 # specific ie for ipython and rstudio
 galaxy_extras_ie_fetch_jupyter: false
 galaxy_extras_ie_jupyter_image: quay.io/bgruening/docker-jupyter-notebook:17.09
