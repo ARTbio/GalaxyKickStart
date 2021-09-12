@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<job_conf>
+    <plugins>
+        <plugin id="slurm" type="runner" load="galaxy.jobs.runners.slurm:SlurmJobRunner" workers="40">
+            <param id="drmaa_library_path">/usr/lib/slurm-drmaa/lib/libdrmaa.so</param>
+        </plugin>
+    </plugins>
+    <handlers default="handlers">
+        <handler id="handler0" tags="handlers"/>
+        <handler id="handler1" tags="handlers"/>
+        <handler id="handler2" tags="handlers"/>
+        <handler id="handler3" tags="handlers"/>
+    </handlers>
+    <destinations default="single">
+            <destination id="single" runner="slurm">
+               <env file="/home/galaxy/galaxy/.venv/bin/activate" />
+               <param id="type">python</param>
+               <param id="nativeSpecification">--partition=debug --ntasks=1</param>
+               <param id="docker_sudo">false</param>
+               <param id="docker_volumes_from">galaxy</param>
+            </destination>
+            <destination id="double" runner="slurm">
+               <env file="/home/galaxy/galaxy/.venv/bin/activate" />
+               <param id="type">python</param>
+               <param id="nativeSpecification">--partition=debug --ntasks=2</param>
+               <param id="docker_sudo">false</param>
+               <param id="docker_volumes_from">galaxy</param>
+            </destination>
+            <destination id="cluster_4" runner="slurm">
+               <env file="/home/galaxy/galaxy/.venv/bin/activate" />
+               <param id="type">python</param>
+               <param id="nativeSpecification">--partition=debug --ntasks=4</param>
+               <param id="docker_sudo">false</param>
+               <param id="docker_volumes_from">galaxy</param>
+            </destination>
+            <destination id="cluster" runner="slurm">
+               <env file="/home/galaxy/galaxy/.venv/bin/activate" />
+               <param id="type">python</param>
+               <param id="nativeSpecification">--partition=debug --ntasks=8</param>
+               <param id="docker_sudo">false</param>
+               <param id="docker_volumes_from">galaxy</param>
+            </destination>
+            <destination id="cluster_heavy" runner="slurm">
+               <param id="type">python</param>
+               <env file="/home/galaxy/galaxy/.venv/bin/activate" />
+               <param id="nativeSpecification">--partition=debug --ntasks=16</param>
+               <param id="docker_sudo">false</param>
+               <param id="docker_volumes_from">galaxy</param>
+            </destination>
+            <destination id="cluster_superheavy" runner="slurm">
+               <param id="type">python</param>
+               <env file="/home/galaxy/galaxy/.venv/bin/activate" />
+               <param id="nativeSpecification">--partition=debug --ntasks=64</param>
+               <param id="docker_sudo">false</param>
+               <param id="docker_volumes_from">galaxy</param>
+            </destination>
+            <destination id="samtools_fastx" runner="slurm">
+               <param id="type">python</param>
+               <env file="/home/galaxy/galaxy/.venv/bin/activate" />
+               <param id="nativeSpecification">--partition=debug --ntasks=5</param>
+               <param id="docker_sudo">false</param>
+               <param id="docker_volumes_from">galaxy</param>
+            </destination>
+            <destination id="lumpy_smoove" runner="slurm">
+               <param id="type">python</param>
+               <env file="/home/galaxy/galaxy/.venv/bin/activate" />
+               <param id="nativeSpecification">--partition=debug --ntasks=32</param>
+               <param id="docker_sudo">false</param>
+               <param id="docker_volumes_from">galaxy</param>
+            </destination>
+            <destination id="java_cluster" runner="slurm">
+            <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
+            <env id="_JAVA_OPTIONS">-Xmx40g</env>
+            <env id="_JAVA_OPTIONS">-Xms512m</env>
+            <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
+            <param id="nativeSpecification">--ntasks=4 --share</param>
+        </destination>
+    </destinations>
+    <limits>
+    	<limit type="destination_total_concurrent_jobs" id="lumpy_smoove">32</limit>
+        <limit type="destination_total_concurrent_jobs" id="cluster">4</limit>
+        <limit type="destination_total_concurrent_jobs" id="cluster_4">20</limit>
+        <limit type="destination_total_concurrent_jobs" id="cluster_heavy">4</limit>
+        <limit type="destination_total_concurrent_jobs" id="cluster_superheavy">1</limit>
+        <limit type="destination_total_concurrent_jobs" id="single">30</limit>
+        <limit type="destination_total_concurrent_jobs" id="double">30</limit>
+        <limit type="destination_total_concurrent_jobs" id="samtools_fastx">30</limit>
+        <limit type="destination_user_concurrent_jobs" id="java_cluster">4</limit>
+
+
+        <limit type="anonymous_user_concurrent_jobs">1</limit>
+
+    	<limit type="destination_user_concurrent_jobs" id="lumpy_smoove">32</limit>
+        <limit type="destination_user_concurrent_jobs" id="cluster">4</limit>
+        <limit type="destination_user_concurrent_jobs" id="cluster_4">20</limit>
+        <limit type="destination_user_concurrent_jobs" id="cluster_heavy">6</limit>
+        <limit type="destination_user_concurrent_jobs" id="cluster_superheavy">1</limit>
+        <limit type="destination_user_concurrent_jobs" id="single">30</limit>
+        <limit type="destination_user_concurrent_jobs" id="double">30</limit>
+        <limit type="destination_user_concurrent_jobs" id="samtools_fastx">30</limit>
+        <limit type="destination_user_concurrent_jobs" id="java_cluster">4</limit>
+
+    </limits>
+   <tools>
+        <tool id="bcftools_annotate" destination="cluster" />
+	<tool id="bcftools_norm" destination="cluster" />
+	<tool id="bowtie" destination="cluster_heavy"/>
+        <tool id="bowtie2" destination="cluster_heavy"/>
+	<tool id="bowtieForSmallRNA" destination="cluster_heavy"/>
+        <tool id="bowtie_wrapper" destination="cluster_heavy"/>
+	<tool id="bwa" destination="cluster_heavy"/>
+        <tool id="bwa_mem" destination="cluster_heavy"/>        
+        <tool id="bwa_wrappers" destination="cluster_heavy"/>
+        <tool id="cuffdiff" destination="cluster_heavy"/>
+	<tool id="cutadapt" destination="cluster_heavy" />
+        <tool id="deeptools_multi_bam_summary" destination="cluster_heavy"/>
+        <tool id="deeptools_plot_correlation" destination="cluster_heavy"/>
+        <tool id="deeptools_compute_matrix" destination="cluster_heavy"/>
+        <tool id="deeptools_bam_coverage" destination="cluster_heavy"/>
+        <tool id="deeptools_plot_coverage" destination="cluster"/>
+        <tool id="deeptools_plot_fingerprint" destination="cluster_heavy"/>
+        <tool id="dexseq_count" destination="double"/>
+        <tool id="dexseq" destination="double"/>
+        <tool id="fastq_dump" destination="double" />
+	<tool id="freebayes" destination="cluster" />
+	<tool id="Group" destination="single" />
+        <tool id="guppy-basecaller" destination="cluster"/>
+	<tool id="hisat2" destination="cluster_heavy"/>
+        <tool id="hisat2_index_builder_data_manager" destination="cluster_4"/>
+ 	<tool id="lumpy_smoove" destination="lumpy_smoove" />
+        <tool id="lumpy_sv" destination="cluster"/>
+        <tool id="macs2_callpeak" destination="cluster_heavy"/>
+        <tool id="manta" destination="cluster"/>
+        <tool id="minimap2" destination="cluster"/>
+        <tool id="mircounts" destination="cluster"/>
+        <tool id="nanopolish_eventalign" destination="cluster_heavy"/>
+        <tool id="ncbi_blastx_wrapper" destination="cluster_heavy"/>
+        <tool id="ncbi_blastn_wrapper" destination="cluster_heavy"/>
+        <tool id="ncbi_blastp_wrapper" destination="cluster_heavy"/>
+        <tool id="ngsplot" destination="cluster"/>
+ 	<tool id="picard_SamToFastq" destination="single" />
+        <tool id="repenrich" destination="cluster_heavy"/>
+        <tool id="rna_star" destination="cluster"/>
+        <tool id="rna_starsolo" destination="cluster"/>
+        <tool id="rsembowtie" destination="cluster"/>
+        <tool id="rsembowtie2" destination="cluster_heavy"/>
+        <tool id="samtools_cram_to_bam" destination="cluster"/>
+        <tool id="samtools_slice_bam" destination="cluster"/>
+        <tool id="samtools_view" destination="cluster"/>
+        <tool id="samtools_rmdup" destination="cluster"/>
+        <tool id="samtools_fastx" destination="cluster_4"/>
+        <tool id="samtool_filter2" destination="cluster_4"/>
+        <tool id="small_rna_maps" destination="double"/>
+        <tool id="snpSift_annotate" destination="java_cluster"/>
+        <tool id="snpSift_filter" destination="java_cluster"/>
+	<tool id="snpEff" destination="java_cluster"/>
+        <tool id="sr_bowtie_dataset_annotation" destination="cluster_heavy"/>
+        <tool id="tarfast5" destination="cluster"/>
+        <tool id="table_annovar" destination="cluster"/>
+        <tool id="tp_grep_tool" destination="single" />
+        <tool id="tophat2" destination="cluster_heavy"/>
+	<tool id="vsearch_clustering" destination="cluster_superheavy"/>
+        <tool id="xpore_dataprep" destination="cluster_heavy"/>
+        <tool id="xpore_diffmod" destination="cluster_heavy"/>
+        
+   </tools>
+</job_conf>

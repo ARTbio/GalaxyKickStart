@@ -1,0 +1,109 @@
+galaxy_virtualenv_python: python3.7
+ansible_python_interpreter: python2.7 # delete after ubuntu upgrade
+
+
+galaxy_changeset_id: release_21.01
+configure_docker: no
+
+galaxy_hostname: "artbio.snv.jussieu.fr"
+install_maintainance_packages: true
+
+#persistent data
+galaxy_persistent_directory: /mnt/data # for artbio server
+
+galaxy_tools_tool_list_files:
+  - "extra-files/Artbio/artbio_tool_list.yml"
+additional_files_list:
+  - { src: "extra-files/Artbio/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
+  - { src: "extra-files/Artbio/artbio_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/Artbio/job_conf.xml", dest: "{{ galaxy_config_dir }}" }
+  - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+  - { src: "extra-files/Artbio/nginx.conf", dest: "/etc/nginx/" }
+# specific ie for ipython and rstudio
+galaxy_extras_ie_fetch_jupyter: false
+galaxy_extras_ie_jupyter_image: quay.io/bgruening/docker-jupyter-notebook:17.09
+galaxy_extras_ie_fetch_rstudio: false
+galaxy_extras_ie_rstudio_image: artbio/rstudio-notebook:latest
+
+galaxy_admin: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          66616166613833326361393562646635653735373431303134386238326163343961373535616261
+          3936353563646236343939333134306231373361623463650a373230643738393137636530386335
+          30336361313233643530356236663361323766393331643233366261316233383437656661356665
+          6538663861356434630a653832623063326264656262303536383833623630623337353530666239
+          35306333326163636632646563333534383561663338336534306535343433356163
+
+galaxy_admin_pw: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          37326530336262656638353732363062323538313530343463666562393439616433366362306163
+          3666663636393030366366636135303932363232646232380a646461333531633538616163373764
+          37633533343966306435616139316437396463656266386230363934643261646335646130343439
+          3335356531303361650a306435353364303465346635363762363766303835323062666639313735
+          3235
+
+# extras to galaxy-config
+# galaxy_config['galaxy']['shed_tool_config_file']: shed_tool_conf.xml
+
+galaxy_config:
+  "uwsgi":
+    # other uwsgi option are defaulted in ansible-galaxy-os role
+    module: galaxy.webapps.galaxy.buildapp:uwsgi_app()
+    # warning the above line should be dropped when prefixing
+    # upon guide-lines in  https://docs.galaxyproject.org/en/latest/admin/nginx.html
+    logfile-chmod: 644
+  'galaxy':
+    filter-with: proxy-prefix
+    prefix: "{{ nginx_galaxy_location }}" # this is not clear from the galaxy.yml.sample which in addition is not consistent with https://docs.galaxyproject.org/en/latest/admin/nginx.html
+    admin_users: "{{ galaxy_admin }},naira.naouar@upmc.fr,bellenger.lea@gmail.com"
+    database_connection: "{{ galaxy_db }}"
+    tool_dependency_dir: "{{ tool_dependency_dir }}"
+    ftp_upload_dir: "{{ proftpd_files_dir }}"
+    ftp_upload_site: "ftp://{{ ipify_public_ip }}"
+    allow_user_dataset_purge: True
+    allow_user_impersonation: True
+    enable_quotas: True
+    allow_user_deletion: True
+    allow_library_path_paste: True
+    tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
+    static_enabled: False
+    watch_tool_data_dir: True
+    use_pbkdf2: "{{ use_pbkdf2 }}"
+    len_file_path: "{{ galaxy_config_dir }}/len"
+    nginx_x_accel_redirect_base: /_x_accel_redirect
+    interactive_environment_plugins_directory: config/plugins/interactive_environments
+    visualization_plugins_directory: config/plugins/visualizations
+    # interactive environments - set dynamic_proxy_manage to true #
+    dynamic_proxy_manage: false
+    dynamic_proxy_session_map: database/session_map.sqlite
+    dynamic_proxy_bind_port: 8800
+    dynamic_proxy_bind_ip: 0.0.0.0
+    dynamic_proxy_debug: true
+    dynamic_proxy_external_proxy: true
+    dynamic_proxy_prefix: gie_proxy
+    expose_potentially_sensitive_job_metrics: true
+    require_login: true
+    smtp_server: 'smtp.gmail.com:587'
+    smtp_username: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          64356566373430393165373139666137666238353766663934626236333839646139353334393964
+          3036343466303031306461306230303339616266663236330a393664366536386465343362663431
+          36373035653837323331326332613337656434623734646536373839616638623562613439653033
+          3530336235643939630a633535623338386533633739303864366264376239396261643332323731
+          62393938636331646365306430626632396265653237306539363539653139323666
+    smtp_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          39623263303631633036356661316562323235323461656236623036613563623961633864366230
+          6366303665343233323836623038343736353161343437340a643535663732386431633064326431
+          33303536346338396365396435313337613863663933623932613765393133333262393933343364
+          3033636161616636390a333462616364363364616636323032663431363762353534623165363938
+          3036
+    error_email_to: gedserver@gmail.com
+
+# ssl certificate (from Renater) for https
+galaxy_extras_config_ssl: true
+galaxy_extras_config_ssl_method: own
+src_nginx_ssl_certificate_key: /etc/ssl/private/artbio.snv.jussieu.fr.key
+src_nginx_ssl_certificate: /etc/ssl/private/artbio.snv.jussieu.fr.crt
+nginx_ssl_certificate_key: "{{ src_nginx_ssl_certificate_key }}"
+nginx_ssl_certificate: "{{ src_nginx_ssl_certificate }}"
+
