@@ -2,7 +2,7 @@ galaxy_virtualenv_python: python3.7
 ansible_python_interpreter: python2.7 # delete after ubuntu upgrade
 
 
-galaxy_changeset_id: release_21.01
+galaxy_changeset_id: release_21.05
 configure_docker: no
 
 galaxy_hostname: "artbio.snv.jussieu.fr"
