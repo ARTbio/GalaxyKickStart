@@ -346,8 +346,8 @@ tools:
 - name: bedtools
   owner: iuc
   revisions:
-  - 87ee588b3d45
   - 0a5c785ac6db
+  - 87ee588b3d45
   tool_panel_section_id: bedtools
   tool_panel_section_label: BEDtools
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -361,8 +361,8 @@ tools:
 - name: picard
   owner: devteam
   revisions:
-  - a1f0b3f4b781
   - f6ced08779c4
+  - a1f0b3f4b781
   tool_panel_section_id: picardtools
   tool_panel_section_label: PICARD tools
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -447,8 +447,8 @@ tools:
 - name: lumpy_smoove
   owner: artbio
   revisions:
-  - ad8853ee9909
   - 8b0005fdfd04
+  - ad8853ee9909
   tool_panel_section_id: variant
   tool_panel_section_label: Variant Analyses
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -602,8 +602,8 @@ tools:
 - name: snpeff
   owner: iuc
   revisions:
-  - 74aebe30fb52
   - 268d162b9c49
+  - 74aebe30fb52
   tool_panel_section_id: genomic_variants
   tool_panel_section_label: Genomic Variants
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -1679,4 +1679,81 @@ tools:
   - 6f134426c2b0
   tool_panel_section_id: ''
   tool_panel_section_label: ''
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: data_manager_bowtie_index_builder
+  owner: iuc
+  revisions:
+  - 08a3583826fa
+  tool_panel_section_id: None
+  tool_panel_section_label: None
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: data_manager_fetch_gene_annotation
+  owner: scottx611x
+  revisions:
+  - 9346d2955707
+  tool_panel_section_id: None
+  tool_panel_section_label: None
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: data_manager_picard_index_builder
+  owner: devteam
+  revisions:
+  - e1a567161eab
+  tool_panel_section_id: None
+  tool_panel_section_label: None
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: data_manager_gatk_picard_index_builder
+  owner: devteam
+  revisions:
+  - 6287d0ee459e
+  tool_panel_section_id: None
+  tool_panel_section_label: None
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: data_manager_twobit_builder
+  owner: devteam
+  revisions:
+  - 625fd9476402
+  tool_panel_section_id: None
+  tool_panel_section_label: None
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: data_manager_sam_fasta_index_builder
+  owner: devteam
+  revisions:
+  - 3e4d45aca422
+  tool_panel_section_id: None
+  tool_panel_section_label: None
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: data_manager_gemini_database_downloader
+  owner: iuc
+  revisions:
+  - 52b6a4d98009
+  tool_panel_section_id: None
+  tool_panel_section_label: None
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: data_manager_bowtie2_index_builder
+  owner: devteam
+  revisions:
+  - 1586b111d2a3
+  tool_panel_section_id: None
+  tool_panel_section_label: None
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: data_manager_bwa_mem_index_builder
+  owner: devteam
+  revisions:
+  - 63d5652be07a
+  tool_panel_section_id: None
+  tool_panel_section_label: None
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: data_manager_fetch_genome_dbkeys_all_fasta
+  owner: devteam
+  revisions:
+  - 4d3eff1bc421
+  tool_panel_section_id: None
+  tool_panel_section_label: None
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: data_manager_hisat2_index_builder
+  owner: iuc
+  revisions:
+  - a04cebcd77f4
+  tool_panel_section_id: None
+  tool_panel_section_label: None
   tool_shed_url: toolshed.g2.bx.psu.edu
