@@ -311,8 +311,8 @@ tools:
 - name: snpeff
   owner: iuc
   revisions:
-  - 74aebe30fb52
   - ce135864629c
+  - 74aebe30fb52
   tool_panel_section_id: genomic_variants
   tool_panel_section_label: Genomic Variants
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -326,9 +326,9 @@ tools:
 - name: snpsift
   owner: iuc
   revisions:
-  - 5fab4f81391d
-  - b04635ebfab0
   - 09d6806c609e
+  - b04635ebfab0
+  - 5fab4f81391d
   tool_panel_section_id: genomic_variants
   tool_panel_section_label: Genomic Variants
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -1364,8 +1364,8 @@ tools:
 - name: repenrich
   owner: artbio
   revisions:
-  - 6f4143893463
   - db32bb7bda01
+  - 6f4143893463
   tool_panel_section_id: differential_expression
   tool_panel_section_label: Differential Expression
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -1428,8 +1428,8 @@ tools:
 - name: macs2
   owner: iuc
   revisions:
-  - f5d67c722d67
   - 424aefbd7777
+  - f5d67c722d67
   tool_panel_section_id: chip-seq
   tool_panel_section_label: ChIP-seq
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -1772,8 +1772,8 @@ tools:
 - name: sra_tools
   owner: iuc
   revisions:
-  - 83c7d564b128
   - 1790dcf3c32d
+  - 83c7d564b128
   tool_panel_section_id: sra_tools
   tool_panel_section_label: SRA tools
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -2151,8 +2151,8 @@ tools:
 - name: bedtools
   owner: iuc
   revisions:
-  - 87ee588b3d45
   - a68aa6c1204a
+  - 87ee588b3d45
   tool_panel_section_id: bedtools
   tool_panel_section_label: BEDtools
   tool_shed_url: toolshed.g2.bx.psu.edu

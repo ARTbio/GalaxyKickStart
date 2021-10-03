@@ -172,8 +172,8 @@ tools:
 - name: text_processing
   owner: bgruening
   revisions:
-  - 0a8c6b61f0f4
   - f46f0e4f75c4
+  - 0a8c6b61f0f4
   tool_panel_section_id: textutil
   tool_panel_section_label: Text Manipulation
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -1126,7 +1126,7 @@ tools:
 - name: trinity_run_de_analysis
   owner: iuc
   revisions:
-  - 04936df18de3
+  - 3bff7c3cf63c
   tool_panel_section_id: ngs:_assembly
   tool_panel_section_label: 'NGS: Assembly'
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -1316,7 +1316,7 @@ tools:
   owner: iuc
   revisions:
   - 2b3e65a4252f
-  - 2e497a770bca
+  - 5fab4f81391d
   tool_panel_section_id: genomic_variants
   tool_panel_section_label: Genomic Variants
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -1373,7 +1373,7 @@ tools:
 - name: gemini_load
   owner: iuc
   revisions:
-  - 64132aa2d62a
+  - 45296e47d565
   tool_panel_section_id: genomic_variants
   tool_panel_section_label: Genomic Variants
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -1541,8 +1541,8 @@ tools:
 - name: bwa
   owner: devteam
   revisions:
-  - 64f11cf59c6e
   - 3fe632431b68
+  - 64f11cf59c6e
   tool_panel_section_id: covid_19
   tool_panel_section_label: COVID-19
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -1750,9 +1750,16 @@ tools:
   tool_panel_section_label: 'NGS: RNA Analysis'
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: pindel
+  owner: artbio
+  revisions:
+  - decc6b5631dc
+  tool_panel_section_id: transposon_detection
+  tool_panel_section_label: Transposon Detection
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: pindel2vcf
   owner: portiahollyoak
   revisions:
-  - 374bb08157ca
+  - f8f8dbf89999
   tool_panel_section_id: transposon_detection
   tool_panel_section_label: Transposon Detection
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -1774,13 +1781,6 @@ tools:
   owner: portiahollyoak
   revisions:
   - 9672fe07a232
-  tool_panel_section_id: transposon_detection
-  tool_panel_section_label: Transposon Detection
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: pindel2vcf
-  owner: portiahollyoak
-  revisions:
-  - f8f8dbf89999
   tool_panel_section_id: transposon_detection
   tool_panel_section_label: Transposon Detection
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -1829,8 +1829,8 @@ tools:
 - name: picard
   owner: devteam
   revisions:
-  - a1f0b3f4b781
   - 7d34178f2812
+  - a1f0b3f4b781
   tool_panel_section_id: covid_19
   tool_panel_section_label: COVID-19
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -1893,14 +1893,14 @@ tools:
 - name: ncbi_eutils_esearch
   owner: iuc
   revisions:
-  - e88866c4f3e7
+  - 79bc38fca3d9
   tool_panel_section_id: metavisitor_2
   tool_panel_section_label: METAVISITOR_2
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: ncbi_eutils_efetch
   owner: iuc
   revisions:
-  - 4194e47b45d4
+  - 08b4f9ddee36
   tool_panel_section_id: metavisitor_2
   tool_panel_section_label: METAVISITOR_2
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -2061,8 +2061,8 @@ tools:
 - name: emboss_5
   owner: devteam
   revisions:
-  - dba489bfcd62
   - 63dd26468588
+  - dba489bfcd62
   tool_panel_section_id: covid_19
   tool_panel_section_label: COVID-19
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -2167,14 +2167,14 @@ tools:
 - name: ivar_variants
   owner: iuc
   revisions:
-  - 252dfb042563
+  - 3888bbe7a9ca
   tool_panel_section_id: covid_19
   tool_panel_section_label: COVID-19
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: ivar_consensus
   owner: iuc
   revisions:
-  - d1459d85ff18
+  - 731182d54f78
   tool_panel_section_id: covid_19
   tool_panel_section_label: COVID-19
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -2258,8 +2258,8 @@ tools:
 - name: data_manager_star_index_builder
   owner: iuc
   revisions:
-  - d3879aceba04
   - 64deddb6a8ec
+  - c520a52b5174
   tool_panel_section_id: None
   tool_panel_section_label: None
   tool_shed_url: toolshed.g2.bx.psu.edu
