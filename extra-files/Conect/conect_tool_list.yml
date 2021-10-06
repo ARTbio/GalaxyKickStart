@@ -441,8 +441,8 @@ tools:
   owner: iuc
   revisions:
   - 17ad142b56e6
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
+  tool_panel_section_id: aligners
+  tool_panel_section_label: Aligners
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: bbtools_callvariants
   owner: iuc
