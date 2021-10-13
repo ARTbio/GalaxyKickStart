@@ -61,7 +61,7 @@
         <destination id="varscan" runner="slurm">
             <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
             <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
-            <param id="nativeSpecification">--ntasks=3 --share</param>
+            <param id="nativeSpecification">--ntasks=4 --share</param>
         </destination>
         <destination id="smoove" runner="slurm">
             <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
@@ -90,7 +90,7 @@
         <limit type="destination_user_concurrent_jobs" id="slurm_upload">4</limit>
         <limit type="destination_user_concurrent_jobs" id="java_cluster">4</limit>
         <limit type="destination_user_concurrent_jobs" id="disk_intensive">4</limit>
-        <limit type="destination_user_concurrent_jobs" id="varscan">10</limit>
+        <limit type="destination_user_concurrent_jobs" id="varscan">30</limit>
         <limit type="destination_user_concurrent_jobs" id="smoove">8</limit>
         <limit type="destination_user_concurrent_jobs" id="vcfvcfintersect">2</limit>
         <limit type="destination_user_concurrent_jobs" id="artbio_bam_cleaning">10</limit>
@@ -103,7 +103,7 @@
         <limit type="destination_total_concurrent_jobs" id="slurm_upload">8</limit>
         <limit type="destination_user_concurrent_jobs" id="java_cluster">4</limit>
         <limit type="destination_total_concurrent_jobs" id="disk_intensive">4</limit>
-        <limit type="destination_total_concurrent_jobs" id="varscan">12</limit>
+        <limit type="destination_total_concurrent_jobs" id="varscan">30</limit>
         <limit type="destination_total_concurrent_jobs" id="smoove">12</limit>
         <limit type="destination_total_concurrent_jobs" id="vcfvcfintersect">2</limit>
         <limit type="destination_total_concurrent_jobs" id="artbio_bam_cleaning">12</limit>
