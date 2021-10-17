@@ -1543,8 +1543,15 @@ tools:
   revisions:
   - 3fe632431b68
   - 64f11cf59c6e
-  tool_panel_section_id: covid_19
-  tool_panel_section_label: COVID-19
+  tool_panel_section_id: ngs:_mapping
+  tool_panel_section_label: 'NGS: Mapping'
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: bwa_mem2
+  owner: iuc
+  revisions:
+  - 88bcfaea2fb6
+  tool_panel_section_id: ngs:_mapping
+  tool_panel_section_label: 'NGS: Mapping'
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: chipseeker
   owner: rnateam
