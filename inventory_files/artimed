@@ -1,5 +1,0 @@
-[artimed]
-localhost ansible_connection=local
-
-# change to the line below if remote target host
-# <remote host IP> ansible_ssh_user="root" ansible_ssh_private_key_file="<path/to/your/private/key>"

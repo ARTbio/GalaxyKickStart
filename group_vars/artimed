@@ -1,5 +1,0 @@
-galaxy_tools_tool_list_files:
-  - "extra-files/artimed/artimed_tool_list.yml"
-additional_files_list:
-  - { src: "extra-files/artimed/logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
-  - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
