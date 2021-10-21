@@ -146,7 +146,7 @@
         <tool id="samtools_slice_bam" destination="slurm_cluster_8"/>
         <tool id="samtools_fastx" destination="slurm_cluster_4"/>
         <tool id="samtool_filter2" destination="slurm_cluster_4"/>
-        <tool id="mutational_patterns" destination="slurm_cluster_4"/>
+        <tool id="mutational_patterns" destination="slurm_cluster_2"/>
         <tool id="samtools_calmd" destination="slurm_cluster_4"/>
         <tool id="vcfvcfintersect" destination="vcfvcfintersect"/>
     </tools>
