@@ -5,6 +5,11 @@ tools:
   tool_panel_section_label: biologie des genomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu
 
+- name: small_rna_maps
+  owner: artbio
+  tool_panel_section_label: Pasteur
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
 - name: column_regex_substitution
   owner: blankenberg
   tool_panel_section_label: biologie des genomes
@@ -26,11 +31,6 @@ tools:
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: sr_bowtie
-  owner: artbio
-  tool_panel_section_label: Pasteur
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: small_rna_maps
   owner: artbio
   tool_panel_section_label: Pasteur
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
