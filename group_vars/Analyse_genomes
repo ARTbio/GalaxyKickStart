@@ -9,7 +9,7 @@ configure_docker: yes
 install_maintainance_packages: true
 
 #persistent data
-galaxy_persistent_directory: /mnt/mydata # for IFB cloud
+galaxy_persistent_directory: /mnt/mydatalocal # for IFB cloud - IFB core zone
 
 galaxy_tools_tool_list_files:
   - "extra-files/Analyse_genomes/analyse_genomes_tool_list.yml"
