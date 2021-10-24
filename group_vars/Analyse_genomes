@@ -11,8 +11,6 @@ install_maintainance_packages: true
 #persistent data
 galaxy_persistent_directory: /mnt/mydatalocal # for IFB cloud - IFB core zone
 
-galaxy_tools_tool_list_files:
-  - "extra-files/Analyse_genomes/analyse_genomes_tool_list.yml"
 additional_files_list:
   - { src: "extra-files/Analyse_genomes/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
   - { src: "extra-files/Analyse_genomes/analyse_genomes_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
@@ -73,3 +71,8 @@ galaxy_config:
 # nginx_ssl_certificate_key: "{{ src_nginx_ssl_certificate_key }}"
 # nginx_ssl_certificate: "{{ src_nginx_ssl_certificate }}"
 
+# Install tools
+
+galaxy_tools_galaxy_instance_url: "http://localhost"
+galaxy_tools_tool_list_files:
+  - "extra-files/Analyse_genomes/analyse_genomes_tool_list.yml"
