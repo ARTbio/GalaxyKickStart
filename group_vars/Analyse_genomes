@@ -3,7 +3,7 @@
 
 
 galaxy_changeset_id: release_21.09
-configure_docker: yes
+configure_docker: false
 
 # galaxy_hostname: "artbio.snv.jussieu.fr"
 install_maintainance_packages: true
