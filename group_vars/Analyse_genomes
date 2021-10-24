@@ -2,7 +2,7 @@
 # ansible_python_interpreter: python3
 
 
-galaxy_changeset_id: release_21.09
+galaxy_changeset_id: release_21.05
 configure_docker: false
 
 # galaxy_hostname: "artbio.snv.jussieu.fr"
