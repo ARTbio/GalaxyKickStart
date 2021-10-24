@@ -17,8 +17,7 @@ additional_files_list:
   - { src: "extra-files/Analyse_genomes/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
   - { src: "extra-files/Analyse_genomes/analyse_genomes_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
   - { src: "extra-files/Analyse_genomes/job_conf.xml", dest: "{{ galaxy_config_dir }}" }
-  - { src: "extra-files/Analyse_genomes/job_conf.xml", dest: "{{ galaxy_config_dir }}"}
-  - { src: "extra-files/Analyse_genomes/tool_sheds_conf.xml", dest: "/etc/nginx/conf.d/" }
+  - { src: "extra-files/Analyse_genomes/galaxy_web.conf", dest: "/etc/nginx/conf.d/" }
 # specific ie for ipython and rstudio
 galaxy_extras_ie_fetch_jupyter: false
 galaxy_extras_ie_jupyter_image: quay.io/bgruening/docker-jupyter-notebook:17.09
