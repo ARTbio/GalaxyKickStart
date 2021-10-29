@@ -5,6 +5,11 @@ tools:
   tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu
 
+- name: cherry_pick_fasta
+  owner: artbio
+  tool_panel_section_label: Biologie des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+
 - name: small_rna_maps
   owner: artbio
   tool_panel_section_label: Biologie des Génomes
@@ -46,11 +51,6 @@ tools:
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: bowtie_wrappers
-  owner: devteam
-  tool_panel_section_label: Biologie des Génomes
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: sam_to_bam
   owner: devteam
   tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
@@ -158,6 +158,11 @@ tools:
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 - name: samtools_coverage
   owner: iuc
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: sam_to_bam
+  owner: devteam
   tool_panel_section_label: SAMTOOLS
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
