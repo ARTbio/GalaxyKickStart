@@ -55,16 +55,6 @@ tools:
   tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
-- name: bam_to_sam
-  owner: devteam
-  tool_panel_section_label: SAMTOOLS
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: samtool_filter2
-  owner: devteam
-  tool_panel_section_label: Biologie des Génomes
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
 - name: featurecounts
   owner: iuc
   tool_panel_section_label: Biologie des Génomes
@@ -162,6 +152,16 @@ tools:
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: sam_to_bam
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: bam_to_sam
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: samtool_filter2
   owner: devteam
   tool_panel_section_label: SAMTOOLS
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
