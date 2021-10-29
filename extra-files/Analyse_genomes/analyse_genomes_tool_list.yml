@@ -1,38 +1,28 @@
 tools:
 
-- name: regex_replace
-  owner: kellrott
-  tool_panel_section_label: biologie des genomes
+- name: regex_find_replace
+  owner: galaxyp
+  tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu
 
 - name: small_rna_maps
   owner: artbio
-  tool_panel_section_label: Pasteur
+  tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: column_regex_substitution
-  owner: blankenberg
-  tool_panel_section_label: biologie des genomes
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-
-- name: regex_find_replace
-  owner: jjohnson
-  tool_panel_section_label: biologie des genomes
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
 
 - name: fastqc
   owner: devteam
-  tool_panel_section_label: Pasteur
+  tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: yac_clipper
   owner: artbio
-  tool_panel_section_label: Pasteur
+  tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: sr_bowtie
   owner: artbio
-  tool_panel_section_label: Pasteur
+  tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: data_manager_bowtie2_index_builder
@@ -57,17 +47,12 @@ tools:
 
 - name: bowtie_wrappers
   owner: devteam
-  tool_panel_section_label: Pasteur
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: samtools_flagstat
-  owner: devteam
-  tool_panel_section_label: Pasteur
+  tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: sam_to_bam
   owner: devteam
-  tool_panel_section_label: Pasteur
+  tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: bam_to_sam
@@ -77,27 +62,27 @@ tools:
 
 - name: samtool_filter2
   owner: devteam
-  tool_panel_section_label: Pasteur
+  tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: featurecounts
   owner: iuc
-  tool_panel_section_label: Pasteur
+  tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: sr_bowtie_dataset_annotation
   owner: artbio
-  tool_panel_section_label: Pasteur
+  tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: small_rna_signatures
   owner: artbio
-  tool_panel_section_label: Pasteur
+  tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: deseq2
   owner: iuc
-  tool_panel_section_label: Pasteur
+  tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: picard
@@ -105,9 +90,74 @@ tools:
   tool_panel_section_label: Picard Tools
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
-- name: suite_samtools
+# Fresh Samtools
+
+- name: samtools_bedcov
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_calmd
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_depth
   owner: iuc
   tool_panel_section_label: SAMTOOLS
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
+- name: samtools_fastx
+  owner: iuc
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_fixmate
+  owner: iuc
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_flagstat
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_idxstats
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_markdup
+  owner: iuc
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_merge
+  owner: iuc
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_mpileup
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_phase
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_reheader
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_sort
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_split
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_stats
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_view
+  owner: iuc
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_coverage
+  owner: iuc
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
