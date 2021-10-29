@@ -18,9 +18,7 @@ additional_files_list:
   - { src: "extra-files/Analyse_genomes/galaxy_web.conf", dest: "/etc/nginx/conf.d/" }
 # specific ie for ipython and rstudio
 galaxy_extras_ie_fetch_jupyter: false
-galaxy_extras_ie_jupyter_image: quay.io/bgruening/docker-jupyter-notebook:17.09
 galaxy_extras_ie_fetch_rstudio: false
-galaxy_extras_ie_rstudio_image: artbio/rstudio-notebook:latest
 
 
 galaxy_config:
