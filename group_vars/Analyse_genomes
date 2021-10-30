@@ -74,3 +74,23 @@ galaxy_config:
 galaxy_tools_galaxy_instance_url: "http://localhost"
 galaxy_tools_tool_list_files:
   - "extra-files/Analyse_genomes/analyse_genomes_tool_list.yml"
+
+### Developpement
+# Client build settings
+# Below are the default option in ansible-galaxy
+galaxy_build_client: yes
+
+# Options include: client / client-production / client-production-maps (default). Set to null to invoke each step of the
+# build separately, but this is not guaranteed to work for all version of Galaxy - using `make` is the safer choice.
+galaxy_client_make_target: client-production-maps
+
+# If galaxy_client_make_target is null, you can set this to `development` to build the client for development
+galaxy_client_node_env: production
+galaxy_client_build_steps:
+  default:
+    - client
+    - plugins
+  "19.09":
+    - fonts
+    - stageLibs
+    - plugins
