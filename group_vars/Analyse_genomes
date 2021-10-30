@@ -59,7 +59,6 @@ galaxy_config:
     dynamic_proxy_debug: true
     dynamic_proxy_external_proxy: true
     dynamic_proxy_prefix: gie_proxy
-    expose_potentially_sensitive_job_metrics: true
     require_login: true
 # ssl certificate (from Renater) for https
 # galaxy_extras_config_ssl: true
