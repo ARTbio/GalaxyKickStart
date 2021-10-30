@@ -1,5 +1,30 @@
 tools:
 
+- name: sr_bowtie_dataset_annotation
+  owner: artbio
+  tool_panel_section_label: Biologie des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: small_rna_maps
+  owner: artbio
+  tool_panel_section_label: Biologie des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: small_rna_signatures
+  owner: artbio
+  tool_panel_section_label: Biologie des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: deseq2
+  owner: iuc
+  tool_panel_section_label: Biologie des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: picard
+  owner: devteam
+  tool_panel_section_label: Picard Tools
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
 - name: regex_find_replace
   owner: galaxyp
   tool_panel_section_label: Biologie des Génomes
@@ -9,11 +34,6 @@ tools:
   owner: artbio
   tool_panel_section_label: Biologie des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu
-
-- name: small_rna_maps
-  owner: artbio
-  tool_panel_section_label: Biologie des Génomes
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: fastqc
   owner: devteam
@@ -58,26 +78,6 @@ tools:
 - name: featurecounts
   owner: iuc
   tool_panel_section_label: Biologie des Génomes
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: sr_bowtie_dataset_annotation
-  owner: artbio
-  tool_panel_section_label: Biologie des Génomes
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: small_rna_signatures
-  owner: artbio
-  tool_panel_section_label: Biologie des Génomes
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: deseq2
-  owner: iuc
-  tool_panel_section_label: Biologie des Génomes
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: picard
-  owner: devteam
-  tool_panel_section_label: Picard Tools
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 # Fresh Samtools
