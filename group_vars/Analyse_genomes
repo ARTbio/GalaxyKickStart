@@ -69,8 +69,14 @@ galaxy_config:
 # nginx_ssl_certificate_key: "{{ src_nginx_ssl_certificate_key }}"
 # nginx_ssl_certificate: "{{ src_nginx_ssl_certificate }}"
 
-# Install tools
+# Install tools, actually just install galaxy admin user in Docker
+# and delegate the task to `shed-tools install`
 
+galaxy_tools_install_tools: no
+galaxy_tools_install_data_managers: no 
+galaxy_tools_install_workflows: no
+galaxy_tools_create_bootstrap_user: yes
+galaxy_tools_delete_bootstrap_user: no
 galaxy_tools_galaxy_instance_url: "http://localhost"
 galaxy_tools_tool_list_files:
   - "extra-files/Analyse_genomes/analyse_genomes_tool_list.yml"

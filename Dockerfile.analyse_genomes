@@ -1,5 +1,4 @@
-FROM artbio/ansible-galaxy-os:1804
-
+FROM artbio/ansible-galaxy-os:2004
 LABEL maintainer_2="Christophe Antoniewski <drosofff@gmail.com>"
 
 # prevent stalled proftpd install by ansible later on
@@ -47,8 +46,12 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 # see for instance https://github.com/ARTbio/ansible-galaxy-os/tree/ubuntu-xenial, if not already merged
 RUN ansible-galaxy install -r requirements_roles.yml -p roles -f && \
     ansible-playbook -i inventory_files/Analyse_genomes -c local galaxy.yml && \
-    sleep 120 && \
-    ansible-playbook -i inventory_files/Analyse_genomes -c local galaxy_tool_install.yml &&\
+    sleep 60 && \
+    ansible-playbook -i inventory_files/galaxy-kickstart -c local galaxy_tool_install.yml &&\
+    pip3 install bioblend ephemeris && \
+    shed-tools install -u admin@galaxy.org -a artbio2020 \
+        -t extra-files/Analyse_genomes/analyse_genomes_tool_list.yml \
+        -g http://localhost:80 && \
     # wait until all errored tools install with conda
     sleep 600
 
