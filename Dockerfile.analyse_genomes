@@ -46,14 +46,14 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 # see for instance https://github.com/ARTbio/ansible-galaxy-os/tree/ubuntu-xenial, if not already merged
 RUN ansible-galaxy install -r requirements_roles.yml -p roles -f && \
     ansible-playbook -i inventory_files/Analyse_genomes -c local galaxy.yml && \
-    sleep 60 && \
-    ansible-playbook -i inventory_files/galaxy-kickstart -c local galaxy_tool_install.yml &&\
-    pip3 install bioblend ephemeris && \
+    sleep 120 && \
+    # ansible-playbook -i inventory_files/galaxy-kickstart -c local galaxy_tool_install.yml && \ # avoid magics
+    pip3 install ephemeris && \
+    sed -i 's/uwsgi_read_timeout 300;/uwsgi_read_timeout 3000;/g' /etc/nginx/nginx.conf && \
+    nginx -s reload # restart nginx to extend the timeout
     shed-tools install -u admin@galaxy.org -a artbio2020 \
         -t extra-files/Analyse_genomes/analyse_genomes_tool_list.yml \
         -g http://localhost:80 && \
-    # wait until all errored tools install with conda
-    sleep 600
 
 ENV NGINX_GALAXY_LOCATION="" \
 GALAXY_CONFIG_ADMIN_USERS="admin@galaxy.org" \
