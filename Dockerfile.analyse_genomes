@@ -47,13 +47,12 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN ansible-galaxy install -r requirements_roles.yml -p roles -f && \
     ansible-playbook -i inventory_files/Analyse_genomes -c local galaxy.yml && \
     sleep 120 && \
-    # ansible-playbook -i inventory_files/galaxy-kickstart -c local galaxy_tool_install.yml && \ # avoid magics
     pip3 install ephemeris && \
     sed -i 's/uwsgi_read_timeout 300;/uwsgi_read_timeout 3000;/g' /etc/nginx/nginx.conf && \
-    nginx -s reload # restart nginx to extend the timeout && \
+    nginx -s reload  && \
     shed-tools install -u admin@galaxy.org -a artbio2020 \
         -t extra-files/Analyse_genomes/analyse_genomes_tool_list.yml \
-        -g http://localhost:80 && \
+        -g http://localhost:80
 
 ENV NGINX_GALAXY_LOCATION="" \
 GALAXY_CONFIG_ADMIN_USERS="admin@galaxy.org" \
