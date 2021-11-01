@@ -47,7 +47,7 @@ RUN ansible-galaxy install -r requirements_roles.yml -p roles -f && \
     sleep 120 && \
     ansible-playbook -i inventory_files/galaxy-kickstart -c local galaxy_tool_install.yml && \
     pip3 install ephemeris && \
-    sed -i 's/uwsgi_read_timeout 300;/uwsgi_read_timeout 3000;/g' /etc/nginx/nginx.conf && \
+    sed -i 's/uwsgi_read_timeout 300;/uwsgi_read_timeout 1200;/g' /etc/nginx/nginx.conf && \
     nginx -s reload  && \
     shed-tools install -u admin@galaxy.org -a artbio2020 \
         -t extra-files/Analyse_genomes/analyse_genomes_tool_list.yml \
@@ -68,4 +68,4 @@ EXPOSE :21
 EXPOSE :8800
 EXPOSE :9002
 
-CMD ["/startup.sh", "/setup/inventory_files/docker"]
+CMD ["/startup.sh", "/setup/inventory_files/Analyse_genomes"]
