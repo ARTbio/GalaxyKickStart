@@ -9,7 +9,7 @@ configure_docker: false
 install_maintainance_packages: true
 
 #persistent data
-galaxy_persistent_directory: /mnt/mydatalocal # for IFB cloud - IFB core zone
+galaxy_persistent_directory: /export # for docker build ! /mnt/mydatalocal # for IFB cloud - IFB core zone
 
 additional_files_list:
   - { src: "extra-files/Analyse_genomes/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
