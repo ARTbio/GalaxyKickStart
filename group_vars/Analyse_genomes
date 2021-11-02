@@ -1,7 +1,6 @@
 # galaxy_virtualenv_python: python3
 # ansible_python_interpreter: python3
 
-
 galaxy_changeset_id: release_21.05
 configure_docker: false
 
@@ -67,10 +66,8 @@ galaxy_config:
 # nginx_ssl_certificate_key: "{{ src_nginx_ssl_certificate_key }}"
 # nginx_ssl_certificate: "{{ src_nginx_ssl_certificate }}"
 
-# Install tools, actually just install galaxy admin user in Docker
-# and delegate the task to `shed-tools install`
-
-galaxy_tools_install_tools: no
+# Install tools using ansible role
+galaxy_tools_install_tools: yes
 galaxy_tools_install_data_managers: no 
 galaxy_tools_install_workflows: no
 galaxy_tools_create_bootstrap_user: yes
@@ -86,7 +83,7 @@ galaxy_build_client: yes
 
 # Options include: client / client-production / client-production-maps (default). Set to null to invoke each step of the
 # build separately, but this is not guaranteed to work for all version of Galaxy - using `make` is the safer choice.
-galaxy_client_make_target: client # client-production-maps
+galaxy_client_make_target: client-production-maps # client-production-maps
 
 # If galaxy_client_make_target is null, you can set this to `development` to build the client for development
 galaxy_client_node_env: production
