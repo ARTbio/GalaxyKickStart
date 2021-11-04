@@ -1,8 +1,7 @@
 #!/bin/bash
 
-
 rm -rf /mnt/galaxy_export /mnt/galaxy_tmp
-mkdir /mnt/galaxy_export /mnt/galaxy_tmp && chown 1450:1450 /mnt/galaxy_export /mnt/galaxy_tmp
+mkdir -p /mnt/galaxy_export /mnt/galaxy_tmp && chown 1450:1450 /mnt/galaxy_export /mnt/galaxy_tmp
 
 export DOCKER_INSTANCE=`docker run -d -p 80:80 -p 21:21 -p 8800:8800 \
           --privileged=true \
@@ -14,5 +13,6 @@ export DOCKER_INSTANCE=`docker run -d -p 80:80 -p 21:21 -p 8800:8800 \
           -v /mnt/galaxy_export:/export \
           artbio/analyse_genomes:2021`
 
+echo "Warning: export of data folder may take more than 15 min"
 echo "Ctl-C to interrupt logging of the docker instance"
 docker logs -f $DOCKER_INSTANCE
