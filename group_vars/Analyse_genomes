@@ -8,7 +8,7 @@ configure_docker: false
 install_maintainance_packages: true
 
 #persistent data
-galaxy_persistent_directory: /export # for docker build ! /mnt/mydatalocal # for IFB cloud - IFB core zone
+galaxy_persistent_directory: /mnt/mydatalocal # export/ for docker build ! /mnt/mydatalocal # for IFB cloud - IFB core zone
 
 additional_files_list:
   - { src: "extra-files/Analyse_genomes/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
@@ -59,13 +59,6 @@ galaxy_config:
     dynamic_proxy_external_proxy: true
     dynamic_proxy_prefix: gie_proxy
     require_login: true
-# ssl certificate (from Renater) for https
-# galaxy_extras_config_ssl: true
-# galaxy_extras_config_ssl_method: own
-# src_nginx_ssl_certificate_key: /etc/ssl/private/domain.name.fr.key
-# src_nginx_ssl_certificate: /etc/ssl/private/domain.name.fr.crt
-# nginx_ssl_certificate_key: "{{ src_nginx_ssl_certificate_key }}"
-# nginx_ssl_certificate: "{{ src_nginx_ssl_certificate }}"
 
 # Install tools using ansible role
 galaxy_tools_install_tools: yes
@@ -76,23 +69,3 @@ galaxy_tools_delete_bootstrap_user: no
 galaxy_tools_galaxy_instance_url: "http://localhost"
 galaxy_tools_tool_list_files:
   - "extra-files/Analyse_genomes/analyse_genomes_tool_list.yml"
-
-### Developpement
-# Client build settings
-# Below are the default option in ansible-galaxy
-galaxy_build_client: yes
-
-# Options include: client / client-production / client-production-maps (default). Set to null to invoke each step of the
-# build separately, but this is not guaranteed to work for all version of Galaxy - using `make` is the safer choice.
-galaxy_client_make_target: client-production-maps # client-production-maps
-
-# If galaxy_client_make_target is null, you can set this to `development` to build the client for development
-galaxy_client_node_env: production
-galaxy_client_build_steps:
-  default:
-    - client
-    - plugins
-  "19.09":
-    - fonts
-    - stageLibs
-    - plugins

@@ -35,6 +35,11 @@ tools:
   tool_panel_section_label: Analyse des Génomes
   tool_shed_url: https://toolshed.g2.bx.psu.edu
 
+- name: sra_tools
+  owner: iuc
+  tool_panel_section_label: Analyse des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+
 - name: fastqc
   owner: devteam
   tool_panel_section_label: Analyse des Génomes
@@ -165,4 +170,3 @@ tools:
   owner: devteam
   tool_panel_section_label: SAMTOOLS
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
-

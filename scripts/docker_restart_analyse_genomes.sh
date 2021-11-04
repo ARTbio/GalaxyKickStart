@@ -1,8 +1,5 @@
 #!/bin/bash
 
-rm -rf /mnt/galaxy_export /mnt/galaxy_tmp
-mkdir -p /mnt/galaxy_export /mnt/galaxy_tmp && chown 1450:1450 /mnt/galaxy_export /mnt/galaxy_tmp
-
 export DOCKER_INSTANCE=`docker run -d -p 80:80 -p 21:21 -p 8800:8800 \
           --privileged=true \
           -e GALAXY_CONFIG_ALLOW_USER_DATASET_PURGE=True \
