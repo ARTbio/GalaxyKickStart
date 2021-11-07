@@ -42,23 +42,23 @@
             </destination>
     </destinations>
     <limits>
-        <limit type="destination_total_concurrent_jobs" id="single">8</limit>
-        <limit type="destination_total_concurrent_jobs" id="double">4</limit>
-        <limit type="destination_total_concurrent_jobs" id="cluster_4">2</limit>
-        <limit type="destination_total_concurrent_jobs" id="cluster_8">1</limit>
+        <limit type="destination_total_concurrent_jobs" id="single">16</limit>
+        <limit type="destination_total_concurrent_jobs" id="double">8</limit>
+        <limit type="destination_total_concurrent_jobs" id="cluster_4">4</limit>
+        <limit type="destination_total_concurrent_jobs" id="cluster_8">2</limit>
 
 
         <limit type="anonymous_user_concurrent_jobs">1</limit>
 
-        <limit type="destination_user_concurrent_jobs" id="single">8</limit>
-        <limit type="destination_user_concurrent_jobs" id="double">4</limit>
-        <limit type="destination_user_concurrent_jobs" id="cluster_4">2</limit>
-        <limit type="destination_user_concurrent_jobs" id="cluster_8">1</limit>
+        <limit type="destination_user_concurrent_jobs" id="single">16</limit>
+        <limit type="destination_user_concurrent_jobs" id="double">8</limit>
+        <limit type="destination_user_concurrent_jobs" id="cluster_4">4</limit>
+        <limit type="destination_user_concurrent_jobs" id="cluster_8">2</limit>
 
     </limits>
    <tools>
         <tool id="bowtie" destination="cluster_8"/>
-        <tool id="bowtie2" destination="cluster_heavy"/>
+        <tool id="bowtie2" destination="cluster_8"/>
         <tool id="bowtieForSmallRNA" destination="cluster_8"/>
         <tool id="bowtie_wrapper" destination="cluster_8"/>
         <tool id="bwa" destination="cluster_8"/>

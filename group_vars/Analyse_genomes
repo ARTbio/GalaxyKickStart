@@ -4,7 +4,6 @@
 galaxy_changeset_id: release_21.05
 configure_docker: false
 
-# galaxy_hostname: "artbio.snv.jussieu.fr"
 install_maintainance_packages: true
 
 #persistent data
@@ -16,6 +15,7 @@ additional_files_list:
   - { src: "extra-files/Analyse_genomes/job_conf.xml", dest: "{{ galaxy_config_dir }}" }
   - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
   - { src: "extra-files/Analyse_genomes/nginx.conf", dest: "/etc/nginx/" }
+
 # specific ie for ipython and rstudio
 galaxy_extras_ie_fetch_jupyter: false
 galaxy_extras_ie_fetch_rstudio: false
