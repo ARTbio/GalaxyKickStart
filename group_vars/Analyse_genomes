@@ -72,7 +72,6 @@ galaxy_tools_tool_list_files:
   - "extra-files/Analyse_genomes/analyse_genomes_tool_list.yml"
 
 ## Speed up deployment
-galaxy_build_client: no
-galaxy_extras_config_galaxy_root: no
+use_client_cache: true
 galaxy_manage_trackster: false
 GKS: false

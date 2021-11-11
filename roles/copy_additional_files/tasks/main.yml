@@ -2,13 +2,6 @@
   template: src=gks_welcome.html.j2 dest="{{ galaxy_server_dir }}/static/welcome.html"
   when: GKS
 
-- name:  Copy additional files
-  copy: src={{ item.src }} dest={{ item.dest }} owner={{ galaxy_user_name }}
-  with_items:
-    - "{{ additional_files_list }}"
-  tags:
-   - persists_galaxy
-
 - name: Install watchdog in GKS
   pip:
     name: watchdog
@@ -16,6 +9,21 @@
   environment:
     PYTHONPATH: null
     VIRTUAL_ENV: "{{ galaxy_venv_dir }}"
+  when: use_client_cache
+
+- name: Download and Unpack client and static cached folders
+  ansible.builtin.unarchive: src: len.tar.gz={item} dest={{ galaxy_server_dir }} mode=0755
+  with_items:
+    - https://mydeepseqbucket.s3.amazonaws.com/client.tar.gz
+    - https://mydeepseqbucket.s3.amazonaws.com/static.tar.gz
+  when: use_client_cache
+
+- name:  Copy additional files
+  copy: src={{ item.src }} dest={{ item.dest }} owner={{ galaxy_user_name }}
+  with_items:
+    - "{{ additional_files_list }}"
+  tags:
+   - persists_galaxy
 
 - name: Create nginx error files dirs
   file:

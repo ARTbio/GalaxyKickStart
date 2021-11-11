@@ -74,6 +74,8 @@ miniconda_manage_dependencies: False
 additional_files_list:
   - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
 
+#use_client_cache: true  # default to false in roles/copy_additional_files/tasks/main.yml
+
 supervisor_env_vars:
     # Use pre-exsting env vars if they are defined
     - export IP_ADDRESS=${IP_ADDRESS:-`curl --silent icanhazip.com`}
@@ -180,7 +182,6 @@ galaxy_extras_ie_rstudio_image: artbio/rstudio-notebook:latest
 
 # galaxy-tools role variables
 
-# this is currently ineffective, since tool and workflow installation is ran in a separate ansible play
 galaxy_tools_install_tools: true
 galaxy_tools_install_workflows: true
 
