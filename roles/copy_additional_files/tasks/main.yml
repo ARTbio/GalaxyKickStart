@@ -12,7 +12,7 @@
   when: use_client_cache
 
 - name: Download and Unpack client and static cached folders
-  ansible.builtin.unarchive: src: len.tar.gz={item} dest={{ galaxy_server_dir }} mode=0755
+  ansible.builtin.unarchive: src=len.tar.gz={item} dest={{ galaxy_server_dir }} mode=0755
   with_items:
     - https://mydeepseqbucket.s3.amazonaws.com/client.tar.gz
     - https://mydeepseqbucket.s3.amazonaws.com/static.tar.gz
