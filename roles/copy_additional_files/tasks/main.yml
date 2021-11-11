@@ -9,6 +9,14 @@
   tags:
    - persists_galaxy
 
+- name: Install watchdog in GKS
+  pip:
+    name: watchdog
+    virtualenv: "{{ galaxy_venv_dir }}"
+  environment:
+    PYTHONPATH: null
+    VIRTUAL_ENV: "{{ galaxy_venv_dir }}"
+
 - name: Create nginx error files dirs
   file:
     path: "{{ galaxy_errordocs_dest }}/{{ item }}"

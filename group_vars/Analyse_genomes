@@ -74,5 +74,5 @@ galaxy_tools_tool_list_files:
 ## Speed up deployment
 galaxy_build_client: no
 galaxy_extras_config_galaxy_root: no
-galaxy_manage_trackster: true
-GKS: no
+galaxy_manage_trackster: false
+GKS: false
