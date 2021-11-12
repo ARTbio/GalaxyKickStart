@@ -73,8 +73,7 @@ galaxy_tools_tool_list_files:
 
 ## Speed up deployment
 use_client_cache: true
-galaxy_build_client: "{{ 'no' if use_client_cache else 'yes' }}"
-galaxy_extras_config_galaxy_root: "{{ 'no' if use_client_cache else 'yes' }}"
-
+galaxy_build_client: "{{ false if use_client_cache else true }}"
+galaxy_extras_config_galaxy_root: "{{ false if use_client_cache else true }}"
 galaxy_manage_trackster: false
 GKS: false
