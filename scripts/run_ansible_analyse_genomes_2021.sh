@@ -16,6 +16,7 @@ wget https://mydeepseqbucket.s3.amazonaws.com/_conda.pigz.tar.gz
 apt install -y pigz
 tar -I pigz -xf _conda.pigz.tar.gz
 # rm -rf _conda_tar.gz
+chown -R galaxy:galaxy _conda
 cd ~/galaxykickstart
 ansible-playbook -i inventory_files/Analyse_genomes galaxy_tool_install.yml
 echo "end of deployment\n"
