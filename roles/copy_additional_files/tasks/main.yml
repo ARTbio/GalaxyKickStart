@@ -21,8 +21,8 @@
 - name: Unpack client and static cached folders
   ansible.builtin.unarchive: src="{{ galaxy_server_dir }}/{{ item }}" dest={{ galaxy_server_dir }} remote_src=yes
   with_items:
-    - client.tar.gz
-    - static.tar.gz
+    - ansible.client.tar.gz
+    - ansible.static.tar.gz
   when: use_client_cache
 
 - name:  Copy additional files
