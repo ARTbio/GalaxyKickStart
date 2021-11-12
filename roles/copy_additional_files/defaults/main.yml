@@ -1,5 +1,5 @@
 galaxy_user_name: galaxy
 additional_files_list: []
 use_client_cache: false
-galaxy_build_client: "{{ 'no' if use_client_cache }}"
-galaxy_extras_config_galaxy_root: "{{ 'no' if use_client_cache }}"
+galaxy_build_client: "{{ 'no' if use_client_cache else 'true' }}"
+galaxy_extras_config_galaxy_root: "{{ 'no' if use_client_cache else 'true' }}"
