@@ -1,5 +1,25 @@
 tools:
 
+- name: rseqc
+  owner: nilesh
+  tool_panel_section_label: "Analyse des Génomes"
+  tool_shed_url: toolshed.g2.bx.psu.edu
+
+- name: volcanoplot
+  owner: iuc
+  tool_panel_section_label: "Analyse des Génomes"
+  tool_shed_url: toolshed.g2.bx.psu.edu
+
+- name: gtftobed12
+  owner: iuc
+  tool_panel_section_label: "Analyse des Génomes"
+  tool_shed_url: toolshed.g2.bx.psu.edu
+
+- name: multiqc
+  owner: iuc
+  tool_panel_section_label: "Analyse des Génomes"
+  tool_shed_url: toolshed.g2.bx.psu.edu
+
 - name: sr_bowtie_dataset_annotation
   owner: artbio
   tool_panel_section_label: Analyse des Génomes
@@ -53,11 +73,6 @@ tools:
 - name: sr_bowtie
   owner: artbio
   tool_panel_section_label: Analyse des Génomes
-  tool_shed_url: https://toolshed.g2.bx.psu.edu/
-
-- name: data_manager_bowtie2_index_builder
-  owner: devteam
-  tool_panel_section_label: null
   tool_shed_url: https://toolshed.g2.bx.psu.edu/
 
 - name: data_manager_bowtie_index_builder
