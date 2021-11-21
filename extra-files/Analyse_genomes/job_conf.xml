@@ -57,29 +57,11 @@
 
     </limits>
    <tools>
+        <tool id="sam_to_bam" destination="cluster_4"/>
         <tool id="bowtie" destination="cluster_8"/>
-        <tool id="bowtie2" destination="cluster_8"/>
         <tool id="bowtieForSmallRNA" destination="cluster_8"/>
         <tool id="bowtie_wrapper" destination="cluster_8"/>
-        <tool id="bwa" destination="cluster_8"/>
-        <tool id="bwa_mem" destination="cluster_8"/>        
-        <tool id="bwa_wrappers" destination="cluster_8"/>
-        <tool id="cutadapt" destination="cluster_8" />
-        <tool id="deeptools_multi_bam_summary" destination="cluster_8"/>
-        <tool id="deeptools_plot_correlation" destination="cluster_8"/>
-        <tool id="deeptools_compute_matrix" destination="cluster_8"/>
-        <tool id="deeptools_bam_coverage" destination="cluster_8"/>
-        <tool id="deeptools_plot_coverage" destination="cluster_8"/>
-        <tool id="deeptools_plot_fingerprint" destination="cluster_8"/>
-        <tool id="dexseq_count" destination="double"/>
-        <tool id="dexseq" destination="double"/>
-        <tool id="fastq_dump" destination="double" />
-        <tool id="hisat2" destination="cluster_8"/>
-        <tool id="hisat2_index_builder_data_manager" destination="cluster_4"/>
         <tool id="mircounts" destination="double"/>
-        <tool id="ncbi_blastx_wrapper" destination="cluster_8"/>
-        <tool id="ncbi_blastn_wrapper" destination="cluster_8"/>
-        <tool id="ncbi_blastp_wrapper" destination="cluster_8"/>
         <tool id="picard_SamToFastq" destination="cluster_2" />
         <tool id="rna_star" destination="cluster_8"/>
         <tool id="rna_starsolo" destination="cluster_8"/>
