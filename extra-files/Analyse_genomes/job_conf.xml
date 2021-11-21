@@ -70,7 +70,7 @@
         <tool id="samtools_view" destination="cluster_4"/>
         <tool id="samtools_rmdup" destination="cluster_4"/>
         <tool id="samtools_fastx" destination="cluster_4"/>
-        <tool id="samtool_filter2" destination="cluster_2"/>
+        <tool id="samtool_filter2" destination="double"/>
         <tool id="small_rna_maps" destination="double"/>
         <tool id="sr_bowtie_dataset_annotation" destination="cluster_8"/>
         <tool id="tp_grep_tool" destination="single" />
