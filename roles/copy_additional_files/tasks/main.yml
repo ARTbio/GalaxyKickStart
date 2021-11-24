@@ -14,8 +14,8 @@
 - name: Download client and static cached folders
   get_url: url={{ item }} dest={{ galaxy_server_dir }}
   with_items:
-    - https://mydeepseqbucket.s3.amazonaws.com/ansible.client.tar.gz
-    - https://mydeepseqbucket.s3.amazonaws.com/ansible.static.tar.gz
+    - https://analyse-genomes.s3.eu-west-3.amazonaws.com/ansible.client.tar.gz
+    - https://analyse-genomes.s3.eu-west-3.amazonaws.com/ansible.static.tar.gz
   when: use_client_cache
 
 - name: Unpack client and static cached folders

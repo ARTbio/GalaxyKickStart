@@ -35,30 +35,30 @@ https://usegalaxy.sorbonne-universite.fr/nextcloud/index.php/s/B433xtdmdQqdFYd/d
 # Amazon S3 share
 
 # smRNAseq
-https://mydeepseqbucket.s3.amazonaws.com/smRNAseq/GRH-103_R1.fastq.gz	GRH-103_R1.fastq.gz
-https://mydeepseqbucket.s3.amazonaws.com/smRNAseq/GRH-104_R1.fastq.gz	GRH-104_R1.fastq.gz
-https://mydeepseqbucket.s3.amazonaws.com/smRNAseq/GRH-105_R1.fastq.gz	GRH-105_R1.fastq.gz
-https://mydeepseqbucket.s3.amazonaws.com/smRNAseq/GRH-106_R1.fastq.gz	GRH-106_R1.fastq.gz
-https://mydeepseqbucket.s3.amazonaws.com/smRNAseq/GRH-111_R1.fastq.gz	GRH-111_R1.fastq.gz
-https://mydeepseqbucket.s3.amazonaws.com/smRNAseq/GRH-112_R1.fastq.gz	GRH-112_R1.fastq.gz
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/smRNAseq/GRH-103_R1.fastq.gz	GRH-103_R1.fastq.gz
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/smRNAseq/GRH-104_R1.fastq.gz	GRH-104_R1.fastq.gz
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/smRNAseq/GRH-105_R1.fastq.gz	GRH-105_R1.fastq.gz
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/smRNAseq/GRH-106_R1.fastq.gz	GRH-106_R1.fastq.gz
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/smRNAseq/GRH-111_R1.fastq.gz	GRH-111_R1.fastq.gz
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/smRNAseq/GRH-112_R1.fastq.gz	GRH-112_R1.fastq.gz
 
 # RNAseq
-https://mydeepseqbucket.s3.amazonaws.com/RNAseq/SF1_R1.fastq.gz	SF1_R1.fastq.gz
-https://mydeepseqbucket.s3.amazonaws.com/RNAseq/SF2_R1.fastq.gz	SF2_R1.fastq.gz
-https://mydeepseqbucket.s3.amazonaws.com/RNAseq/SF3_R1.fastq.gz	SF3_R1.fastq.gz
-https://mydeepseqbucket.s3.amazonaws.com/RNAseq/WT1_R1.fastq.gz	WT1_R1.fastq.gz
-https://mydeepseqbucket.s3.amazonaws.com/RNAseq/WT2_R1.fastq.gz	WT2_R1.fastq.gz
-https://mydeepseqbucket.s3.amazonaws.com/RNAseq/WT3_R1.fastq.gz	WT3_R1.fastq.gz
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/RNAseq/SF1_R1.fastq.gz	SF1_R1.fastq.gz
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/RNAseq/SF2_R1.fastq.gz	SF2_R1.fastq.gz
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/RNAseq/SF3_R1.fastq.gz	SF3_R1.fastq.gz
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/RNAseq/WT1_R1.fastq.gz	WT1_R1.fastq.gz
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/RNAseq/WT2_R1.fastq.gz	WT2_R1.fastq.gz
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/RNAseq/WT3_R1.fastq.gz	WT3_R1.fastq.gz
 
 # annotation files
-https://mydeepseqbucket.s3.amazonaws.com/References/PlacW.fasta	PlacW
-https://mydeepseqbucket.s3.amazonaws.com/References/dmel-all-ncRNA-r6.18.fasta	ncRNA-r6.18
-https://mydeepseqbucket.s3.amazonaws.com/References/dmel-all-miscRNA-r6.18.fasta	miscRNA-r6.18
-https://mydeepseqbucket.s3.amazonaws.com/References/dmel-all-miRNA-r6.18.fasta	dmiRNA-r6.18
-https://mydeepseqbucket.s3.amazonaws.com/References/dmel-all-intron-r6.18.fasta	intron-r6.18
-https://mydeepseqbucket.s3.amazonaws.com/References/dmel-all-gene-r6.18.fasta	gene-r6.18
-https://mydeepseqbucket.s3.amazonaws.com/References/dmel-all-chromosome-r6.18.fasta	dmel-r6.18
-https://mydeepseqbucket.s3.amazonaws.com/References/Dmel_piRNA_clusters.fasta	piRNA_clusters
-https://mydeepseqbucket.s3.amazonaws.com/References/Dmel_all-transposon_merge.fasta	Dmel_all-transposon_merge
-https://mydeepseqbucket.s3.amazonaws.com/References/dmel-all-r6.18.gtf	dmel-all-r6.18.gtf
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/References/PlacW.fasta	PlacW
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/References/dmel-all-ncRNA-r6.18.fasta	ncRNA-r6.18
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/References/dmel-all-miscRNA-r6.18.fasta	miscRNA-r6.18
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/References/dmel-all-miRNA-r6.18.fasta	dmiRNA-r6.18
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/References/dmel-all-intron-r6.18.fasta	intron-r6.18
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/References/dmel-all-gene-r6.18.fasta	gene-r6.18
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/References/dmel-all-chromosome-r6.18.fasta	dmel-r6.18
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/References/Dmel_piRNA_clusters.fasta	piRNA_clusters
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/References/Dmel_all-transposon_merge.fasta	Dmel_all-transposon_merge
+https://analyse-genomes.s3.eu-west-3.amazonaws.com/References/dmel-all-r6.18.gtf	dmel-all-r6.18.gtf
 
