@@ -14,9 +14,12 @@
 - name: Download client and static cached folders
   get_url: url={{ item }} dest={{ galaxy_server_dir }}
   with_items:
-    - https://analyse-genomes.s3.eu-west-3.amazonaws.com/ansible.client.tar.gz
-    - https://analyse-genomes.s3.eu-west-3.amazonaws.com/ansible.static.tar.gz
+    - https://storage.googleapis.com/analyse-genome-coupon-1/ansible.client.tar.gz
+    - https://storage.googleapis.com/analyse-genome-coupon-1/ansible.static.tar.gz
   when: use_client_cache
+
+#    - https://analyse-genomes.s3.eu-west-3.amazonaws.com/ansible.client.tar.gz
+#    - https://analyse-genomes.s3.eu-west-3.amazonaws.com/ansible.static.tar.gz
 
 - name: Unpack client and static cached folders
   ansible.builtin.unarchive: src="{{ galaxy_server_dir }}/{{ item }}" dest={{ galaxy_server_dir }} remote_src=yes
