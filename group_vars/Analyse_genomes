@@ -71,6 +71,8 @@ galaxy_tools_delete_bootstrap_user: no
 galaxy_tools_galaxy_instance_url: "http://localhost"
 galaxy_tools_tool_list_files:
   - "extra-files/Analyse_genomes/analyse_genomes_tool_list.yml"
+galaxy_tools_workflows:
+  - "extra-files/Analyse_genomes/Galaxy-Workflow-Analyse_RNAseq.ga"
 
 ## Speed up deployment
 use_client_cache: true
