@@ -65,7 +65,7 @@ galaxy_config:
 # Install tools using ansible role
 galaxy_tools_install_tools: yes
 galaxy_tools_install_data_managers: no 
-galaxy_tools_install_workflows: no
+galaxy_tools_install_workflows: yes
 galaxy_tools_create_bootstrap_user: yes
 galaxy_tools_delete_bootstrap_user: no
 galaxy_tools_galaxy_instance_url: "http://localhost"
