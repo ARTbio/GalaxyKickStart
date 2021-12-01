@@ -1,0 +1,445 @@
+<toolbox>
+    <!--
+    This is Galaxy's integrated tool panel and should be modified directly only for
+    reordering tools inside a section. Each time Galaxy starts up, this file is
+    synchronized with the various tool config files: tools, sections and labels
+    added to one of these files, will be added also here in the appropriate place,
+    while elements removed from the tool config files will be correspondingly
+    deleted from this file.
+    To modify locally managed tools (e.g. from tool_conf.xml) modify that file
+    directly and restart Galaxy. Whenever possible Tool Shed managed tools (e.g.
+    from shed_tool_conf.xml) should be managed from within the Galaxy interface or
+    via its API - but if changes are necessary (such as to hide a tool or re-assign
+    its section) modify that file and restart Galaxy.
+    -->
+    <section id="analyse_des_génomes" name="Analyse des Génomes" version="">
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/bowtie_wrappers/bowtie_wrapper/1.2.0" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/artbio/sr_bowtie/bowtieForSmallRNA/2.2.0" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/artbio/yac_clipper/yac/2.4.0" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fasterq_dump/2.11.0+galaxy1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/sam_dump/2.11.0+galaxy0" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fastq_dump/2.11.0+galaxy0" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/artbio/cherry_pick_fasta/cherry_pick_fasta/3.0.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/deseq2/deseq2/2.11.40.7+galaxy0" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/artbio/small_rna_signatures/overlapping_reads/3.3" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/artbio/small_rna_signatures/signature/3.3>" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/artbio/small_rna_maps/small_rna_maps/3.1.0" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/artbio/sr_bowtie_dataset_annotation/sr_bowtie_dataset_annotation/2.5.0" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy0" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/gtftobed12/gtftobed12/357" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/volcanoplot/volcanoplot/0.0.5" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_bam2wig/2.6.4" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_geneBody_coverage2/2.6.4.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_RNA_fragment_size/2.6.4.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_FPKM_count/2.6.4.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_read_GC/2.6.4" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_deletion_profile/2.6.4" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_infer_experiment/2.6.4.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_read_quality/2.6.4" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_junction_annotation/2.6.4.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_read_NVC/2.6.4" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_inner_distance/2.6.4.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_read_hexamer/2.6.4" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_read_distribution/2.6.4.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_tin/2.6.4.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_insertion_profile/2.6.4" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_RPKM_saturation/2.6.4.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_bam_stat/2.6.4" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_clipping_profile/2.6.4" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_geneBody_coverage/2.6.4.3" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_mismatch_profile/2.6.4" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_read_duplication/2.6.4" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_junction_saturation/2.6.4.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/featurecounts/featurecounts/2.0.1+galaxy1" />
+
+    </section>
+
+    <section id="picard_tools" name="Picard Tools" version="">
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_CASM/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_AddCommentsToBam/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/2.18.2.2" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_DownsampleSam/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_BedToIntervalList/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_QualityScoreDistribution/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_RevertSam/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_CollectWgsMetrics/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_SortSam/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MergeSamFiles/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicatesWithMateCigar/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_RevertOriginalBaseQualitiesAndAddMateCigar/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_artifact_metrics/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MergeBamAlignment/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_SamToFastq/2.18.2.2" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_CleanSam/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_ValidateSamFile/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_CollectGcBiasMetrics/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_FixMateInformation/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_FastqToSam/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_ReorderSam/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_CollectRnaSeqMetrics/2.18.2.2" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_CollectHsMetrics/2.18.2" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_AddOrReplaceReadGroups/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_EstimateLibraryComplexity/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_CollectInsertSizeMetrics/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_CollectBaseDistributionByCycle/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_NormalizeFasta/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_FilterSamReads/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MeanQualityByCycle/2.18.2.1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_ReplaceSamHeader/2.18.2.1" />
+
+    </section>
+
+    <section id="samtools" name="SAMTOOLS" version="">
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/samtool_filter2/samtool_filter2/1.8+galaxy1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/bam_to_sam/bam_to_sam/2.0.2" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/sam_to_bam/sam_to_bam/2.1.2" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/samtools_coverage/samtools_coverage/1.13" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/samtools_view/samtools_view/1.13+galaxy1" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/samtools_stats/samtools_stats/2.0.3" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/samtools_split/samtools_split/1.13" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/samtools_sort/samtools_sort/2.0.4" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/samtools_reheader/samtools_reheader/2.0.2" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/samtools_phase/samtools_phase/2.0.2" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/samtools_mpileup/samtools_mpileup/2.1.5" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/samtools_merge/samtools_merge/1.13" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/samtools_markdup/samtools_markdup/1.13" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/samtools_idxstats/samtools_idxstats/2.0.4" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.4" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/samtools_fixmate/samtools_fixmate/1.13" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/samtools_fastx/samtools_fastx/1.13" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/iuc/samtools_depth/samtools_depth/1.13" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/samtools_calmd/samtools_calmd/2.0.3" />
+
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/samtools_bedcov/samtools_bedcov/2.0.3" />
+
+    </section>
+
+    <section id="getext" name="Get Data" version="">
+
+        <tool id="upload1" />
+
+        <tool id="ucsc_table_direct1" />
+
+        <tool id="ucsc_table_direct_archaea1" />
+
+        <tool id="sra_source" />
+
+        <tool id="ebi_sra_main" />
+
+        <tool id="modENCODEfly" />
+
+        <tool id="intermine" />
+
+        <tool id="flymine" />
+
+        <tool id="modmine" />
+
+        <tool id="mousemine" />
+
+        <tool id="ratmine" />
+
+        <tool id="yeastmine" />
+
+        <tool id="modENCODEworm" />
+
+        <tool id="wormbase" />
+
+        <tool id="zebrafishmine" />
+
+        <tool id="eupathdb" />
+
+        <tool id="hbvar" />
+
+    </section>
+
+    <section id="send" name="Send Data" version="">
+
+        <tool id="send_to_cloud" />
+
+    </section>
+
+    <section id="collection_operations" name="Collection Operations" version="">
+
+        <tool id="__UNZIP_COLLECTION__" />
+
+        <tool id="__ZIP_COLLECTION__" />
+
+        <tool id="__FILTER_FAILED_DATASETS__" />
+
+        <tool id="__FILTER_EMPTY_DATASETS__" />
+
+        <tool id="__FLATTEN__" />
+
+        <tool id="__MERGE_COLLECTION__" />
+
+        <tool id="__RELABEL_FROM_FILE__" />
+
+        <tool id="__FILTER_FROM_FILE__" />
+
+        <tool id="__SORTLIST__" />
+
+        <tool id="__TAG_FROM_FILE__" />
+
+        <tool id="__APPLY_RULES__" />
+
+        <tool id="__BUILD_LIST__" />
+
+        <tool id="__EXTRACT_DATASET__" />
+
+    </section>
+
+    <section id="expression_tools" name="Expression Tools" version="">
+
+        <tool id="param_value_from_file" />
+
+    </section>
+
+    <section id="liftOver" name="Lift-Over" version="">
+
+        <tool id="liftOver1" />
+
+    </section>
+
+    <section id="textutil" name="Text Manipulation" version="">
+
+        <tool id="addValue" />
+
+        <tool id="cat1" />
+
+        <tool id="Cut1" />
+
+        <tool id="mergeCols1" />
+
+        <tool id="Convert characters1" />
+
+        <tool id="createInterval" />
+
+        <tool id="ChangeCase" />
+
+        <tool id="Paste1" />
+
+        <tool id="Remove beginning1" />
+
+        <tool id="random_lines1" />
+
+        <tool id="Show beginning1" />
+
+        <tool id="Show tail1" />
+
+        <tool id="trimmer" />
+
+        <tool id="wc_gnu" />
+
+        <tool id="secure_hash_message_digest" />
+
+    </section>
+
+    <section id="convert" name="Convert Formats" version="">
+
+        <tool id="bed2gff1" />
+
+        <tool id="gff2bed1" />
+
+        <tool id="MAF_To_BED1" />
+
+        <tool id="MAF_To_Interval1" />
+
+        <tool id="MAF_To_Fasta1" />
+
+        <tool id="Sff_extractor" />
+
+        <tool id="wig_to_bigWig" />
+
+        <tool id="bed_to_bigBed" />
+
+    </section>
+
+    <section id="filter" name="Filter and Sort" version="">
+
+        <tool id="Filter1" />
+
+        <tool id="sort1" />
+
+        <tool id="Grep1" />
+
+        <label id="gff" text="GFF" version="" />
+
+        <tool id="Extract_features1" />
+
+        <tool id="gff_filter_by_attribute" />
+
+        <tool id="gff_filter_by_feature_count" />
+
+        <tool id="gtf_filter_by_attribute_values_list" />
+
+    </section>
+
+    <section id="group" name="Join, Subtract and Group" version="">
+
+        <tool id="join1" />
+
+        <tool id="comp1" />
+
+        <tool id="Grouping1" />
+
+    </section>
+
+    <section id="fetchAlignSeq" name="Fetch Alignments/Sequences" version="">
+
+        <tool id="Interval2Maf_pairwise1" />
+
+        <tool id="Interval2Maf1" />
+
+        <tool id="MAF_split_blocks_by_species1" />
+
+        <tool id="Interval_Maf_Merged_Fasta2" />
+
+        <tool id="GeneBed_Maf_Fasta2" />
+
+        <tool id="maf_stats1" />
+
+        <tool id="MAF_Thread_For_Species1" />
+
+        <tool id="MAF_Limit_To_Species1" />
+
+        <tool id="maf_limit_size1" />
+
+        <tool id="maf_by_block_number1" />
+
+        <tool id="MAF_Reverse_Complement_1" />
+
+        <tool id="MAF_filter" />
+
+    </section>
+
+    <section id="bxops" name="Operate on Genomic Intervals" version="">
+
+        <tool id="wiggle2simple1" />
+
+        <tool id="aggregate_scores_in_intervals2" />
+
+        <tool id="gene2exon1" />
+
+    </section>
+
+    <section id="stats" name="Statistics" version="">
+
+        <tool id="Summary_Statistics1" />
+
+        <tool id="Count1" />
+
+    </section>
+
+    <section id="plots" name="Graph/Display Data" version="">
+
+        <tool id="vcf_to_maf_customtrack1" />
+
+    </section>
+
+    <section id="hgv" name="Phenotype Association" version="">
+
+        <tool id="hgv_linkToGProfile" />
+
+        <tool id="hgv_david" />
+
+        <tool id="hgv_ldtools" />
+
+        <tool id="master2pgSnp" />
+
+    </section>
+
+</toolbox>

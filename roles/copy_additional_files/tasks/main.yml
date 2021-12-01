@@ -2,6 +2,32 @@
   template: src=gks_welcome.html.j2 dest="{{ galaxy_server_dir }}/static/welcome.html"
   when: GKS
 
+- name: Install watchdog in GKS
+  pip:
+    name: watchdog
+    virtualenv: "{{ galaxy_venv_dir }}"
+  environment:
+    PYTHONPATH: null
+    VIRTUAL_ENV: "{{ galaxy_venv_dir }}"
+  when: use_client_cache
+
+- name: Download client and static cached folders
+  get_url: url={{ item }} dest={{ galaxy_server_dir }}
+  with_items:
+    - https://storage.googleapis.com/analyse-genome-coupon-1/ansible.client.tar.gz
+    - https://storage.googleapis.com/analyse-genome-coupon-1/ansible.static.tar.gz
+  when: use_client_cache
+
+#    - https://analyse-genomes.s3.eu-west-3.amazonaws.com/ansible.client.tar.gz
+#    - https://analyse-genomes.s3.eu-west-3.amazonaws.com/ansible.static.tar.gz
+
+- name: Unpack client and static cached folders
+  ansible.builtin.unarchive: src="{{ galaxy_server_dir }}/{{ item }}" dest={{ galaxy_server_dir }} remote_src=yes
+  with_items:
+    - ansible.client.tar.gz
+    - ansible.static.tar.gz
+  when: use_client_cache
+
 - name:  Copy additional files
   copy: src={{ item.src }} dest={{ item.dest }} owner={{ galaxy_user_name }}
   with_items:
