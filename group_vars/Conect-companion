@@ -1,7 +1,7 @@
 galaxy_changeset_id: release_21.05
 configure_docker: no
 
-galaxy_hostname: "usegalaxy.sorbonne-universite.fr"
+galaxy_hostname: "glide.snv.jussieu.fr"
 install_maintainance_packages: true
 
 #persistent data
@@ -80,4 +80,4 @@ galaxy_config:
     expose_potentially_sensitive_job_metrics: true
     require_login: true
 
-galaxy_extras_config_nginx: false
+galaxy_extras_config_nginx: true
