@@ -16,7 +16,6 @@ additional_files_list:
   - { src: "extra-files/Conect-companion/IBPS_logo.jpg", dest: "{{ galaxy_server_dir }}/static/images/" }
   - { src: "extra-files/Conect-companion/job_conf.xml", dest: "{{ galaxy_config_dir }}" }
   - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
-  - { src: "extra-files/Conect-companion/nginx.conf", dest: "/etc/nginx/" }
 # specific ie for ipython and rstudio
 galaxy_extras_ie_fetch_jupyter: false
 galaxy_extras_ie_fetch_rstudio: false
@@ -67,11 +66,11 @@ galaxy_config:
     watch_tool_data_dir: True
     use_pbkdf2: "{{ use_pbkdf2 }}"
     len_file_path: "{{ galaxy_config_dir }}/len"
-    nginx_x_accel_redirect_base: /_x_accel_redirect
+    # nginx_x_accel_redirect_base: /_x_accel_redirect
     interactive_environment_plugins_directory: config/plugins/interactive_environments
     visualization_plugins_directory: config/plugins/visualizations
     # interactive environments - set dynamic_proxy_manage to true #
-    dynamic_proxy_manage: true
+    dynamic_proxy_manage: false
     dynamic_proxy_session_map: database/session_map.sqlite
     dynamic_proxy_bind_port: 8800
     dynamic_proxy_bind_ip: 0.0.0.0
@@ -81,3 +80,4 @@ galaxy_config:
     expose_potentially_sensitive_job_metrics: true
     require_login: true
 
+galaxy_extras_config_nginx: false
