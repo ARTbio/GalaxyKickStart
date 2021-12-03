@@ -78,6 +78,6 @@ galaxy_config:
     dynamic_proxy_external_proxy: true
     dynamic_proxy_prefix: gie_proxy
     expose_potentially_sensitive_job_metrics: true
-    require_login: true
+    require_login: true    
 
-galaxy_extras_config_nginx: true
+nginx_galaxy_location: "/galaxy"
