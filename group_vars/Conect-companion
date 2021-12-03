@@ -80,4 +80,4 @@ galaxy_config:
     expose_potentially_sensitive_job_metrics: true
     require_login: true    
 
-nginx_galaxy_location: "/galaxy"
+nginx_galaxy_location: "/galaxyglide"
