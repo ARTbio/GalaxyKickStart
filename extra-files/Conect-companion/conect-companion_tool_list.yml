@@ -1,4 +1,164 @@
 tools:
+- name: sra_tools
+  owner: iuc
+  tool_panel_section_id: getext
+  tool_panel_section_label: Get Data
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: show_metadata
+  owner: yhoogstrate
+  tool_panel_section_id: getext
+  tool_panel_section_label: Get Data
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: get_reference_fasta
+  owner: artbio
+  tool_panel_section_id: getext
+  tool_panel_section_label: Get Data
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: split_file_to_collection
+  owner: bgruening
+  tool_panel_section_id: collection_operations
+  tool_panel_section_label: Collection Operations
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: collection_element_identifiers
+  owner: iuc
+  tool_panel_section_id: collection_operations
+  tool_panel_section_label: Collection Operations
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: extract_element_from_collection
+  owner: erasmus-medical-center
+  tool_panel_section_id: collection_operations
+  tool_panel_section_label: Collection Operations
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: concatenate_multiple_datasets
+  owner: artbio
+  tool_panel_section_id: collection_operations
+  tool_panel_section_label: Collection Operations
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: collection_column_join
+  owner: iuc
+  tool_panel_section_id: collection_operations
+  tool_panel_section_label: Collection Operations
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: bundle_collections
+  owner: nml
+  tool_panel_section_id: collection_operations
+  tool_panel_section_label: Collection Operations
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: printenv
+  owner: mvdbeek
+  tool_panel_section_id: textutil
+  tool_panel_section_label: Text Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: datamash_reverse
+  owner: iuc
+  tool_panel_section_id: textutil
+  tool_panel_section_label: Text Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: datamash_transpose
+  owner: iuc
+  tool_panel_section_id: textutil
+  tool_panel_section_label: Text Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: datamash_ops
+  owner: iuc
+  tool_panel_section_id: textutil
+  tool_panel_section_label: Text Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: replace_chromosome_names
+  owner: earlhaminst
+  tool_panel_section_id: textutil
+  tool_panel_section_label: Text Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: filter_tabular
+  owner: iuc
+  tool_panel_section_id: textutil
+  tool_panel_section_label: Text Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: column_maker
+  owner: devteam
+  tool_panel_section_id: textutil
+  tool_panel_section_label: Text Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: text_processing
+  owner: bgruening
+  tool_panel_section_id: textutil
+  tool_panel_section_label: Text Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: add_input_name_as_column
+  owner: mvdbeek
+  tool_panel_section_id: textutil
+  tool_panel_section_label: Text Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: transpose
+  owner: jmsong
+  tool_panel_section_id: textutil
+  tool_panel_section_label: Text Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: tables_arithmetic_operations
+  owner: devteam
+  tool_panel_section_id: textutil
+  tool_panel_section_label: Text Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: regex_find_replace
+  owner: galaxyp
+  tool_panel_section_id: textutil
+  tool_panel_section_label: Text Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: bigwig_to_bedgraph
+  owner: artbio
+  tool_panel_section_id: convert
+  tool_panel_section_label: Convert Formats
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: gtftobed12
+  owner: iuc
+  tool_panel_section_id: convert
+  tool_panel_section_label: Convert Formats
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: sequence_format_converter
+  owner: artbio
+  tool_panel_section_id: convert
+  tool_panel_section_label: Convert Formats
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: crossmap_wig
+  owner: iuc
+  tool_panel_section_id: convert
+  tool_panel_section_label: Convert Formats
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: ucsc_twobittofa
+  owner: iuc
+  tool_panel_section_id: convert
+  tool_panel_section_label: Convert Formats
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: proteore_venn_diagram
+  owner: proteore
+  tool_panel_section_id: group
+  tool_panel_section_label: Join, Subtract and Group
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: deseq2
+  owner: iuc
+  tool_panel_section_id: stats
+  tool_panel_section_label: Statistics
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: ggplot2_histogram
+  owner: iuc
+  tool_panel_section_id: plots
+  tool_panel_section_label: Graph/Display Data
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: fasta_filter_by_length
+  owner: devteam
+  tool_panel_section_id: fasta_manipulation
+  tool_panel_section_label: Fasta Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: tabular_to_fasta
+  owner: devteam
+  tool_panel_section_id: fasta_manipulation
+  tool_panel_section_label: Fasta Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: fasta_to_tabular
+  owner: devteam
+  tool_panel_section_id: fasta_manipulation
+  tool_panel_section_label: Fasta Manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
 - name: bamparse
   owner: artbio
   tool_panel_section_id: artbio_tools
@@ -19,8 +179,163 @@ tools:
   tool_panel_section_id: artbio_tools
   tool_panel_section_label: ARTbio tools
   tool_shed_url: toolshed.g2.bx.psu.edu
+- name: gatk4_mutect2
+  owner: iuc
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: freebayes
+  owner: devteam
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
 - name: varscan_version_2
   owner: devteam
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: mutational_patterns
+  owner: artbio
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: pindel
+  owner: artbio
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: lumpy_smoove
+  owner: artbio
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: snvtocnv
+  owner: artbio
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: snpsift
+  owner: iuc
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: vcfbedintersect
+  owner: devteam
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: vcfannotate
+  owner: devteam
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: crossmap_vcf
+  owner: iuc
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: gemini_burden
+  owner: iuc
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: svtyper
+  owner: hepcat72
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: vcfhethom
+  owner: devteam
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: manta
+  owner: artbio
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: lumpy_sv
+  owner: artbio
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: vcftools_annotate
+  owner: devteam
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: vcftools_merge
+  owner: devteam
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: varscan_somatic
+  owner: iuc
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: strelka
+  owner: mini
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: qualimap2_bamqc
+  owner: refinery-platform
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: snpeff
+  owner: iuc
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: delly_
+  owner: jeremie
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: varscan_mpileup
+  owner: iuc
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: vcftools_subset
+  owner: devteam
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: vcffilter
+  owner: devteam
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: vcfallelicprimitives
+  owner: devteam
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: vcf2tsv
+  owner: devteam
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: variant_select
+  owner: devteam
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: table_annovar
+  owner: devteam
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: gvcftools_extract_variants
+  owner: iuc
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: vcftools_filter_stats_diversity
+  owner: dereeper
   tool_panel_section_id: variant
   tool_panel_section_label: Variant Analyses
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -43,6 +358,41 @@ tools:
   owner: iuc
   tool_panel_section_id: aligners
   tool_panel_section_label: Aligners
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: crossmap_bam
+  owner: iuc
+  tool_panel_section_id: sam/bam_manipulation
+  tool_panel_section_label: SAM/BAM manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: pe_histogram
+  owner: iuc
+  tool_panel_section_id: sam/bam_manipulation
+  tool_panel_section_label: SAM/BAM manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: sambamba
+  owner: artbio
+  tool_panel_section_id: sam/bam_manipulation
+  tool_panel_section_label: SAM/BAM manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: bamtools
+  owner: devteam
+  tool_panel_section_id: sam/bam_manipulation
+  tool_panel_section_label: SAM/BAM manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: bamtools_filter
+  owner: devteam
+  tool_panel_section_id: sam/bam_manipulation
+  tool_panel_section_label: SAM/BAM manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: bamtools_split
+  owner: devteam
+  tool_panel_section_id: sam/bam_manipulation
+  tool_panel_section_label: SAM/BAM manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: sambamba_filter
+  owner: lomereiter
+  tool_panel_section_id: sam/bam_manipulation
+  tool_panel_section_label: SAM/BAM manipulation
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: samtools_split
   owner: devteam
@@ -209,175 +559,10 @@ tools:
   tool_panel_section_id: ngs:_qc_and_manipulation
   tool_panel_section_label: 'NGS: QC and manipulation'
   tool_shed_url: toolshed.g2.bx.psu.edu
-- name: mutational_patterns
-  owner: artbio
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: pindel
-  owner: artbio
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: lumpy_smoove
-  owner: artbio
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: snvtocnv
-  owner: artbio
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: artbio_mutect2
-  owner: artbio
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: snpsift
-  owner: iuc
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: vcfbedintersect
+- name: fasta_compute_length
   owner: devteam
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: vcfannotate
-  owner: devteam
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: crossmap_vcf
-  owner: iuc
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: gemini_burden
-  owner: iuc
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: svtyper
-  owner: hepcat72
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: sigmut
-  owner: artbio
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: vcfhethom
-  owner: devteam
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: manta
-  owner: artbio
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: lumpy_sv
-  owner: artbio
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: vcftools_annotate
-  owner: devteam
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: vcftools_merge
-  owner: devteam
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: varscan_somatic
-  owner: iuc
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: strelka
-  owner: mini
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: freebayes
-  owner: devteam
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: qualimap2_bamqc
-  owner: refinery-platform
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: snpeff
-  owner: iuc
-  tool_panel_section_id: genomic_variants
-  tool_panel_section_label: Genomic Variants
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: snpeff
-  owner: iuc
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: delly_
-  owner: jeremie
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: varscan_mpileup
-  owner: iuc
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: vcftools_subset
-  owner: devteam
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: vcffilter
-  owner: devteam
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: vcfallelicprimitives
-  owner: devteam
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: vcf2tsv
-  owner: devteam
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: variant_select
-  owner: devteam
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: table_annovar
-  owner: devteam
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: gvcftools_extract_variants
-  owner: iuc
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: vcftools_filter_stats_diversity
-  owner: dereeper
-  tool_panel_section_id: variant
-  tool_panel_section_label: Variant Analyses
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: ggplot2_histogram
-  owner: iuc
-  tool_panel_section_id: plots
-  tool_panel_section_label: Graph/Display Data
+  tool_panel_section_id: metavisitor_2
+  tool_panel_section_label: Metavisitor-2
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: cherry_pick_fasta
   owner: artbio
@@ -393,101 +578,6 @@ tools:
   owner: artbio
   tool_panel_section_id: metavisitor_2
   tool_panel_section_label: Metavisitor-2
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: deseq2
-  owner: iuc
-  tool_panel_section_id: stats
-  tool_panel_section_label: Statistics
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: datamash_reverse
-  owner: iuc
-  tool_panel_section_id: textutil
-  tool_panel_section_label: Text Manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: datamash_transpose
-  owner: iuc
-  tool_panel_section_id: textutil
-  tool_panel_section_label: Text Manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: datamash_ops
-  owner: iuc
-  tool_panel_section_id: textutil
-  tool_panel_section_label: Text Manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: replace_chromosome_names
-  owner: earlhaminst
-  tool_panel_section_id: textutil
-  tool_panel_section_label: Text Manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: filter_tabular
-  owner: iuc
-  tool_panel_section_id: textutil
-  tool_panel_section_label: Text Manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: column_maker
-  owner: devteam
-  tool_panel_section_id: textutil
-  tool_panel_section_label: Text Manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: text_processing
-  owner: bgruening
-  tool_panel_section_id: textutil
-  tool_panel_section_label: Text Manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: add_input_name_as_column
-  owner: mvdbeek
-  tool_panel_section_id: textutil
-  tool_panel_section_label: Text Manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: transpose
-  owner: jmsong
-  tool_panel_section_id: textutil
-  tool_panel_section_label: Text Manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: tables_arithmetic_operations
-  owner: devteam
-  tool_panel_section_id: textutil
-  tool_panel_section_label: Text Manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: regex_find_replace
-  owner: galaxyp
-  tool_panel_section_id: textutil
-  tool_panel_section_label: Text Manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: crossmap_bam
-  owner: iuc
-  tool_panel_section_id: sam/bam_manipulation
-  tool_panel_section_label: SAM/BAM manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: pe_histogram
-  owner: iuc
-  tool_panel_section_id: sam/bam_manipulation
-  tool_panel_section_label: SAM/BAM manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: sambamba
-  owner: artbio
-  tool_panel_section_id: sam/bam_manipulation
-  tool_panel_section_label: SAM/BAM manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: bamtools
-  owner: devteam
-  tool_panel_section_id: sam/bam_manipulation
-  tool_panel_section_label: SAM/BAM manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: bamtools_filter
-  owner: devteam
-  tool_panel_section_id: sam/bam_manipulation
-  tool_panel_section_label: SAM/BAM manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: bamtools_split
-  owner: devteam
-  tool_panel_section_id: sam/bam_manipulation
-  tool_panel_section_label: SAM/BAM manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: sambamba_filter
-  owner: lomereiter
-  tool_panel_section_id: sam/bam_manipulation
-  tool_panel_section_label: SAM/BAM manipulation
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: deeptools_bam_coverage
   owner: bgruening
@@ -694,210 +784,90 @@ tools:
   tool_panel_section_id: bcftools
   tool_panel_section_label: BCFtools
   tool_shed_url: toolshed.g2.bx.psu.edu
-- name: split_file_to_collection
-  owner: bgruening
-  tool_panel_section_id: collection_operations
-  tool_panel_section_label: Collection Operations
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: collection_element_identifiers
-  owner: iuc
-  tool_panel_section_id: collection_operations
-  tool_panel_section_label: Collection Operations
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: extract_element_from_collection
-  owner: erasmus-medical-center
-  tool_panel_section_id: collection_operations
-  tool_panel_section_label: Collection Operations
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: concatenate_multiple_datasets
-  owner: artbio
-  tool_panel_section_id: collection_operations
-  tool_panel_section_label: Collection Operations
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: collection_column_join
-  owner: iuc
-  tool_panel_section_id: collection_operations
-  tool_panel_section_label: Collection Operations
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: bundle_collections
-  owner: nml
-  tool_panel_section_id: collection_operations
-  tool_panel_section_label: Collection Operations
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: sra_tools
-  owner: iuc
-  tool_panel_section_id: getext
-  tool_panel_section_label: Get Data
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: show_metadata
-  owner: yhoogstrate
-  tool_panel_section_id: getext
-  tool_panel_section_label: Get Data
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: get_reference_fasta
-  owner: artbio
-  tool_panel_section_id: getext
-  tool_panel_section_label: Get Data
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: gatk4_mutect2
-  owner: iuc
-  tool_panel_section_id: gatktools
-  tool_panel_section_label: GATKtools
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: cherry_pick_fasta
-  owner: artbio
-  tool_panel_section_id: filter
-  tool_panel_section_label: Filter and Sort
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: fasta_compute_length
-  owner: devteam
-  tool_panel_section_id: ''
-  tool_panel_section_label: ''
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: bigwig_to_bedgraph
-  owner: artbio
-  tool_panel_section_id: convert
-  tool_panel_section_label: Convert Formats
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: gtftobed12
-  owner: iuc
-  tool_panel_section_id: convert
-  tool_panel_section_label: Convert Formats
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: sequence_format_converter
-  owner: artbio
-  tool_panel_section_id: convert
-  tool_panel_section_label: Convert Formats
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: crossmap_wig
-  owner: iuc
-  tool_panel_section_id: convert
-  tool_panel_section_label: Convert Formats
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: proteore_venn_diagram
-  owner: proteore
-  tool_panel_section_id: group
-  tool_panel_section_label: Join, Subtract and Group
-  tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_inheritance
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_stats
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_query
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_db_info
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_actionable_mutations
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_annotate
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_roh
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_gene_wise
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_amend
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_interactions
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_windower
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_qc
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_lof_sieve
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_pathways
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_fusions
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_load
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gemini_set_somatic
   owner: iuc
   tool_panel_section_id: gemini
-  tool_panel_section_label: Gemini suite
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: fasta_filter_by_length
-  owner: devteam
-  tool_panel_section_id: fasta_manipulation
-  tool_panel_section_label: Fasta Manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: tabular_to_fasta
-  owner: devteam
-  tool_panel_section_id: fasta_manipulation
-  tool_panel_section_label: Fasta Manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: fasta_to_tabular
-  owner: devteam
-  tool_panel_section_id: fasta_manipulation
-  tool_panel_section_label: Fasta Manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: vcfallelicprimitives
-  owner: devteam
-  tool_panel_section_id: genomic_variants
-  tool_panel_section_label: Genomic Variants
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: yac_clipper
-  owner: artbio
-  tool_panel_section_id: mississippi_tool_suite
-  tool_panel_section_label: Mississippi Tool Suite
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: probecoverage
-  owner: artbio
-  tool_panel_section_id: ngs:_mapping
-  tool_panel_section_label: 'NGS: Mapping'
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: samtools_flagstat
-  owner: devteam
-  tool_panel_section_id: ngs:_sam_tools
-  tool_panel_section_label: 'NGS: SAM Tools'
+  tool_panel_section_label: Gemini Suite
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: data_manager_bowtie_index_builder
   owner: iuc
@@ -914,18 +884,8 @@ tools:
   tool_panel_section_id: None
   tool_panel_section_label: None
   tool_shed_url: toolshed.g2.bx.psu.edu
-- name: data_manager_twobit_builder
-  owner: devteam
-  tool_panel_section_id: None
-  tool_panel_section_label: None
-  tool_shed_url: toolshed.g2.bx.psu.edu
 - name: data_manager_sam_fasta_index_builder
   owner: devteam
-  tool_panel_section_id: None
-  tool_panel_section_label: None
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: data_manager_gemini_database_downloader
-  owner: iuc
   tool_panel_section_id: None
   tool_panel_section_label: None
   tool_shed_url: toolshed.g2.bx.psu.edu

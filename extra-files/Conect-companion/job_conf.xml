@@ -82,11 +82,11 @@
     </destinations>
     <limits>
         <limit type="anonymous_user_concurrent_jobs">1</limit>
-        <limit type="destination_user_concurrent_jobs" id="slurm_cluster">40</limit>
-        <limit type="destination_user_concurrent_jobs" id="slurm_cluster_2">30</limit>
-        <limit type="destination_user_concurrent_jobs" id="slurm_cluster_4">18</limit>
-        <limit type="destination_user_concurrent_jobs" id="slurm_cluster_8">8</limit>
-        <limit type="destination_user_concurrent_jobs" id="slurm_cluster_16">4</limit>
+        <limit type="destination_user_concurrent_jobs" id="slurm_cluster">94</limit>
+        <limit type="destination_user_concurrent_jobs" id="slurm_cluster_2">47</limit>
+        <limit type="destination_user_concurrent_jobs" id="slurm_cluster_4">23</limit>
+        <limit type="destination_user_concurrent_jobs" id="slurm_cluster_8">11</limit>
+        <limit type="destination_user_concurrent_jobs" id="slurm_cluster_16">5</limit>
         <limit type="destination_user_concurrent_jobs" id="slurm_upload">4</limit>
         <limit type="destination_user_concurrent_jobs" id="java_cluster">4</limit>
         <limit type="destination_user_concurrent_jobs" id="disk_intensive">4</limit>
@@ -132,7 +132,7 @@
         <tool id="deeptools_plot_coverage" destination="slurm_cluster_16"/>
         <tool id="lumpy" destination="disk_intensive"/>
         <tool id="lumpy_smoove" destination="smoove"/>
-        <tool id="varscan_somatic" destination="varscan"/>
+        <tool id="varscan_somatic" destination="slurm_cluster"/>
         <tool id="freebayes" destination="slurm_cluster_16"/>
         <tool id="manta" destination="slurm_cluster_8"/>
         <tool id="sam_to_bam" destination="slurm_cluster_8"/>
@@ -142,7 +142,7 @@
         <tool id="snpsift" destination="java_cluster"/>
         <tool id="snpSift_annotate" destination="java_cluster"/>
         <tool id="snpEff" destination="java_cluster"/>
-        <tool id="artbio_mutect2" destination="java_cluster"/>
+        <tool id="gatk4_mutect2" destination="slurm_cluster_2"/>
         <tool id="samtools_slice_bam" destination="slurm_cluster_8"/>
         <tool id="samtools_fastx" destination="slurm_cluster_4"/>
         <tool id="samtool_filter2" destination="slurm_cluster_4"/>

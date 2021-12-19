@@ -1,4 +1,4 @@
-galaxy_changeset_id: release_21.05
+galaxy_changeset_id: release_21.09
 configure_docker: no
 
 galaxy_hostname: "glide.snv.jussieu.fr"
@@ -80,4 +80,4 @@ galaxy_config:
     expose_potentially_sensitive_job_metrics: true
     require_login: true    
 
-nginx_galaxy_location: "/galaxyglide"
+nginx_galaxy_location: ""
