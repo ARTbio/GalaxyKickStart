@@ -1,0 +1,107 @@
+tools:
+
+- name: volcanoplot
+  owner: iuc
+  tool_panel_section_label: "Analyse des Génomes"
+  tool_shed_url: toolshed.g2.bx.psu.edu
+
+- name: multiqc
+  owner: iuc
+  tool_panel_section_label: "Analyse des Génomes"
+  tool_shed_url: toolshed.g2.bx.psu.edu
+
+- name: sr_bowtie_dataset_annotation
+  owner: artbio
+  tool_panel_section_label: Analyse des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: small_rna_maps
+  owner: artbio
+  tool_panel_section_label: Analyse des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: small_rna_signatures
+  owner: artbio
+  tool_panel_section_label: Analyse des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: deseq2
+  owner: iuc
+  tool_panel_section_label: Analyse des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: regex_find_replace
+  owner: galaxyp
+  tool_panel_section_label: Analyse des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+
+- name: cherry_pick_fasta
+  owner: artbio
+  tool_panel_section_label: Analyse des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+
+- name: fastqc
+  owner: devteam
+  tool_panel_section_label: Analyse des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: yac_clipper
+  owner: artbio
+  tool_panel_section_label: Analyse des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: sr_bowtie
+  owner: artbio
+  tool_panel_section_label: Analyse des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: data_manager_bowtie_index_builder
+  owner: iuc
+  tool_panel_section_label: null
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: data_manager_fetch_genome_dbkeys_all_fasta
+  owner: devteam
+  tool_panel_section_label: null
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: data_manager_sam_fasta_index_builder
+  owner: devteam
+  tool_panel_section_label: null
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: bowtie_wrappers
+  owner: devteam
+  tool_panel_section_label: Analyse des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: featurecounts
+  owner: iuc
+  tool_panel_section_label: Analyse des Génomes
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+# Fresh Samtools
+
+- name: samtools_sort
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: samtools_stats
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_view
+  owner: iuc
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: sam_to_bam
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+
+- name: samtool_filter2
+  owner: devteam
+  tool_panel_section_label: SAMTOOLS
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/

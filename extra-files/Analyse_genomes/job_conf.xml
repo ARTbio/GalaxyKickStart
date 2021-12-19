@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<job_conf>
+    <plugins>
+        <plugin id="slurm" type="runner" load="galaxy.jobs.runners.slurm:SlurmJobRunner" workers="4">
+            <param id="drmaa_library_path">/usr/lib/slurm-drmaa/lib/libdrmaa.so</param>
+        </plugin>
+    </plugins>
+    <handlers default="handlers">
+        <handler id="handler0" tags="handlers"/>
+        <handler id="handler1" tags="handlers"/>
+        <handler id="handler2" tags="handlers"/>
+        <handler id="handler3" tags="handlers"/>
+    </handlers>
+    <destinations default="single">
+            <destination id="single" runner="slurm">
+               <env file="/home/galaxy/galaxy/.venv/bin/activate" />
+               <param id="type">python</param>
+               <param id="nativeSpecification">--partition=debug --ntasks=1</param>
+               <param id="docker_sudo">false</param>
+               <param id="docker_volumes_from">galaxy</param>
+            </destination>
+            <destination id="double" runner="slurm">
+               <env file="/home/galaxy/galaxy/.venv/bin/activate" />
+               <param id="type">python</param>
+               <param id="nativeSpecification">--partition=debug --ntasks=2</param>
+               <param id="docker_sudo">false</param>
+               <param id="docker_volumes_from">galaxy</param>
+            </destination>
+            <destination id="cluster_4" runner="slurm">
+               <env file="/home/galaxy/galaxy/.venv/bin/activate" />
+               <param id="type">python</param>
+               <param id="nativeSpecification">--partition=debug --ntasks=4</param>
+               <param id="docker_sudo">false</param>
+               <param id="docker_volumes_from">galaxy</param>
+            </destination>
+            <destination id="cluster_8" runner="slurm">
+               <env file="/home/galaxy/galaxy/.venv/bin/activate" />
+               <param id="type">python</param>
+               <param id="nativeSpecification">--partition=debug --ntasks=8</param>
+               <param id="docker_sudo">false</param>
+               <param id="docker_volumes_from">galaxy</param>
+            </destination>
+    </destinations>
+    <limits>
+        <limit type="destination_total_concurrent_jobs" id="single">8</limit>
+        <limit type="destination_total_concurrent_jobs" id="double">4</limit>
+        <limit type="destination_total_concurrent_jobs" id="cluster_4">2</limit>
+        <limit type="destination_total_concurrent_jobs" id="cluster_8">1</limit>
+
+
+        <limit type="anonymous_user_concurrent_jobs">1</limit>
+
+        <limit type="destination_user_concurrent_jobs" id="single">8</limit>
+        <limit type="destination_user_concurrent_jobs" id="double">4</limit>
+        <limit type="destination_user_concurrent_jobs" id="cluster_4">2</limit>
+        <limit type="destination_user_concurrent_jobs" id="cluster_8">1</limit>
+
+    </limits>
+   <tools>
+        <tool id="sam_to_bam" destination="double"/>
+        <tool id="bowtie" destination="cluster_8"/>
+        <tool id="bowtieForSmallRNA" destination="cluster_8"/>
+        <tool id="bowtie_wrapper" destination="cluster_8"/>
+        <tool id="mircounts" destination="double"/>
+        <tool id="picard_SamToFastq" destination="cluster_2" />
+        <tool id="rna_star" destination="cluster_8"/>
+        <tool id="rna_starsolo" destination="cluster_8"/>
+        <tool id="samtools_cram_to_bam" destination="double"/>
+        <tool id="samtools_slice_bam" destination="double"/>
+        <tool id="samtools_view" destination="cluster_4"/>
+        <tool id="samtools_rmdup" destination="cluster_4"/>
+        <tool id="samtools_fastx" destination="cluster_4"/>
+        <tool id="samtool_filter2" destination="double"/>
+        <tool id="small_rna_maps" destination="double"/>
+        <tool id="sr_bowtie_dataset_annotation" destination="cluster_8"/>
+        <tool id="tp_grep_tool" destination="single" />
+   </tools>
+</job_conf>

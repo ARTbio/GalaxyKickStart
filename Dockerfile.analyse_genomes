@@ -1,0 +1,67 @@
+FROM artbio/ansible-galaxy-os:2004
+LABEL maintainer_2="Christophe Antoniewski <drosofff@gmail.com>"
+
+# prevent stalled proftpd install by ansible later on
+RUN apt-get update && apt-get -qq install proftpd proftpd-mod-pgsql
+
+RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
+    \
+    \
+    echo "===> Allow start of services"  && \
+    echo "exit 0" > /usr/sbin/policy-rc.d  && \
+    \
+    apt-get install -qq --no-install-recommends \
+    apt-transport-https software-properties-common
+
+RUN apt-get install sudo -o Dpkg::Options::="--force-confold"
+
+ONBUILD  RUN  DEBIAN_FRONTEND=noninteractive  apt-get update   && \
+              echo "===> Updating TLS certificates..."         && \
+              apt-get install -y openssl ca-certificates
+
+COPY  .  /setup
+WORKDIR /setup
+
+RUN sed -i -e 's/^# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/'  /etc/locale.gen && locale-gen
+
+ENV LC_ALL=en_US.UTF-8 \
+    LANG=en_US.UTF-8
+
+# work around for AUFS bug
+# as per https://github.com/docker/docker/issues/783#issuecomment-56013588
+RUN mkdir /etc/ssl/private-copy /var/lib/postgresql-copy && \
+    mv /var/lib/postgresql/* /var/lib/postgresql-copy && \
+    mv /etc/ssl/private/* /etc/ssl/private-copy/ && \
+    rm -R /var/lib/postgresql /etc/ssl/private/ && \
+    mv /var/lib/postgresql-copy /var/lib/postgresql && \
+    mv /etc/ssl/private-copy /etc/ssl/private && \
+    chmod -R 0700 /var/lib/postgresql /etc/ssl/private && \
+    chown -R 1550:1550 /var/lib/postgresql /var/run/postgresql \
+    /var/log/postgresql /etc/ssl/private /etc/postgresql
+
+RUN echo 'root ALL=(ALL:ALL) ALL' >> /etc/sudoers && echo 'postgres ALL=(ALL:ALL) ALL' >> /etc/sudoers
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+RUN ansible-galaxy install -r requirements_roles.yml -p roles -f && \
+    ansible-playbook -i inventory_files/Analyse_genomes -c local galaxy.yml && \
+    sleep 120 && \
+    sed -i 's/uwsgi_read_timeout 300;/uwsgi_read_timeout 1200;/g' /etc/nginx/nginx.conf && \
+    nginx -s reload  && \
+    ansible-playbook -i inventory_files/Analyse_genomes -c local galaxy_tool_install.yml
+
+ENV NGINX_GALAXY_LOCATION="" \
+GALAXY_CONFIG_ADMIN_USERS="admin@galaxy.org" \
+NAT_MASQUERADE=false
+
+ONBUILD  WORKDIR  /setup
+ONBUILD  COPY  .  /setup
+ADD startup.sh /startup.sh
+RUN chmod +x /startup.sh
+
+# Expose port 80 (webserver), 21 (FTP server), 8800 (Proxy), 9002 (supvisord web app)
+EXPOSE :80
+EXPOSE :21
+EXPOSE :8800
+EXPOSE :9002
+
+CMD ["/startup.sh", "/setup/inventory_files/Analyse_genomes"]

@@ -70,8 +70,8 @@
             </destination>
             <destination id="java_cluster" runner="slurm">
             <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
-            <env id="_JAVA_OPTIONS">-Xmx8192m</env>
-            <env id="_JAVA_OPTIONS">-Xms8192m</env>
+            <env id="_JAVA_OPTIONS">-Xmx40g</env>
+            <env id="_JAVA_OPTIONS">-Xms512m</env>
             <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
             <param id="nativeSpecification">--ntasks=4 --share</param>
         </destination>
