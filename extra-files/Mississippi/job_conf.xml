@@ -107,4 +107,3 @@
         <tool id="samtools_view" destination="four"/>
    </tools>
 </job_conf>
-
