@@ -159,6 +159,11 @@ tools:
   tool_panel_section_id: fasta_manipulation
   tool_panel_section_label: Fasta Manipulation
   tool_shed_url: toolshed.g2.bx.psu.edu
+- name: prokka
+  owner: crs4
+  tool_panel_section_id: artbio_tools
+  tool_panel_section_label: ARTbio tools
+  tool_shed_url: toolshed.g2.bx.psu.edu
 - name: bamparse
   owner: artbio
   tool_panel_section_id: artbio_tools
@@ -178,6 +183,11 @@ tools:
   owner: artbio
   tool_panel_section_id: artbio_tools
   tool_panel_section_label: ARTbio tools
+  tool_shed_url: toolshed.g2.bx.psu.edu
+- name: gatk4
+  owner: artbio
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: gatk4_mutect2
   owner: iuc
@@ -359,6 +369,11 @@ tools:
   tool_panel_section_id: aligners
   tool_panel_section_label: Aligners
   tool_shed_url: toolshed.g2.bx.psu.edu
+- name: sambamba
+  owner: artbio
+  tool_panel_section_id: sam/bam_manipulation
+  tool_panel_section_label: SAM/BAM manipulation
+  tool_shed_url: toolshed.g2.bx.psu.edu
 - name: crossmap_bam
   owner: iuc
   tool_panel_section_id: sam/bam_manipulation
@@ -366,11 +381,6 @@ tools:
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: pe_histogram
   owner: iuc
-  tool_panel_section_id: sam/bam_manipulation
-  tool_panel_section_label: SAM/BAM manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: sambamba
-  owner: artbio
   tool_panel_section_id: sam/bam_manipulation
   tool_panel_section_label: SAM/BAM manipulation
   tool_shed_url: toolshed.g2.bx.psu.edu
@@ -386,11 +396,6 @@ tools:
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: bamtools_split
   owner: devteam
-  tool_panel_section_id: sam/bam_manipulation
-  tool_panel_section_label: SAM/BAM manipulation
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: sambamba_filter
-  owner: lomereiter
   tool_panel_section_id: sam/bam_manipulation
   tool_panel_section_label: SAM/BAM manipulation
   tool_shed_url: toolshed.g2.bx.psu.edu
