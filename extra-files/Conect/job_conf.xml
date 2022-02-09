@@ -46,7 +46,7 @@
             <env id="_JAVA_OPTIONS">-Xmx40g</env>
             <env id="_JAVA_OPTIONS">-Xms512m</env>
             <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
-            <param id="nativeSpecification">--ntasks=4 --share</param>
+            <param id="nativeSpecification">--ntasks=1 --share</param>
         </destination>
         <destination id="slurm_upload" runner="slurm">
             <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
@@ -61,7 +61,7 @@
         <destination id="varscan" runner="slurm">
             <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
             <param id="enabled" from_environ="GALAXY_RUNNERS_ENABLE_SLURM">true</param>
-            <param id="nativeSpecification">--ntasks=3 --share</param>
+            <param id="nativeSpecification">--ntasks=1 --share</param>
         </destination>
         <destination id="smoove" runner="slurm">
             <env file="/home/galaxy/galaxy/.venv/bin/activate"/>
@@ -82,31 +82,31 @@
     </destinations>
     <limits>
         <limit type="anonymous_user_concurrent_jobs">1</limit>
-        <limit type="destination_user_concurrent_jobs" id="slurm_cluster">40</limit>
-        <limit type="destination_user_concurrent_jobs" id="slurm_cluster_2">30</limit>
+        <limit type="destination_user_concurrent_jobs" id="slurm_cluster">60</limit>
+        <limit type="destination_user_concurrent_jobs" id="slurm_cluster_2">50</limit>
         <limit type="destination_user_concurrent_jobs" id="slurm_cluster_4">18</limit>
         <limit type="destination_user_concurrent_jobs" id="slurm_cluster_8">8</limit>
         <limit type="destination_user_concurrent_jobs" id="slurm_cluster_16">4</limit>
         <limit type="destination_user_concurrent_jobs" id="slurm_upload">4</limit>
-        <limit type="destination_user_concurrent_jobs" id="java_cluster">4</limit>
+        <limit type="destination_user_concurrent_jobs" id="java_cluster">35</limit>
         <limit type="destination_user_concurrent_jobs" id="disk_intensive">4</limit>
-        <limit type="destination_user_concurrent_jobs" id="varscan">10</limit>
+        <limit type="destination_user_concurrent_jobs" id="varscan">25</limit>
         <limit type="destination_user_concurrent_jobs" id="smoove">8</limit>
-        <limit type="destination_user_concurrent_jobs" id="vcfvcfintersect">2</limit>
-        <limit type="destination_user_concurrent_jobs" id="artbio_bam_cleaning">10</limit>
+        <limit type="destination_user_concurrent_jobs" id="vcfvcfintersect">6</limit>
+        <limit type="destination_user_concurrent_jobs" id="artbio_bam_cleaning">16</limit>
 
-        <limit type="destination_total_concurrent_jobs" id="slurm_cluster">40</limit>
-        <limit type="destination_total_concurrent_jobs" id="slurm_cluster_2">30</limit>
+        <limit type="destination_total_concurrent_jobs" id="slurm_cluster">60</limit>
+        <limit type="destination_total_concurrent_jobs" id="slurm_cluster_2">50</limit>
         <limit type="destination_total_concurrent_jobs" id="slurm_cluster_4">18</limit>
         <limit type="destination_total_concurrent_jobs" id="slurm_cluster_8">8</limit>
         <limit type="destination_total_concurrent_jobs" id="slurm_cluster_16">4</limit>
         <limit type="destination_total_concurrent_jobs" id="slurm_upload">8</limit>
-        <limit type="destination_user_concurrent_jobs" id="java_cluster">4</limit>
+        <limit type="destination_user_concurrent_jobs" id="java_cluster">35</limit>
         <limit type="destination_total_concurrent_jobs" id="disk_intensive">4</limit>
-        <limit type="destination_total_concurrent_jobs" id="varscan">12</limit>
+        <limit type="destination_total_concurrent_jobs" id="varscan">25</limit>
         <limit type="destination_total_concurrent_jobs" id="smoove">12</limit>
-        <limit type="destination_total_concurrent_jobs" id="vcfvcfintersect">2</limit>
-        <limit type="destination_total_concurrent_jobs" id="artbio_bam_cleaning">12</limit>
+        <limit type="destination_total_concurrent_jobs" id="vcfvcfintersect">6</limit>
+        <limit type="destination_total_concurrent_jobs" id="artbio_bam_cleaning">16</limit>
     </limits>
     <tools>
         <tool id="upload1" destination="slurm_upload"/>
@@ -139,10 +139,11 @@
         <tool id="sambamba_sample_or_filter" destination="slurm_cluster_8"/>
         <tool id="artbio_bam_cleaning" destination="artbio_bam_cleaning"/>
         <tool id="picard_MarkDuplicates" destination="java_cluster"/>
+        <tool id="picard_ReplaceSamHeader" destination="java_cluster"/>
         <tool id="snpsift" destination="java_cluster"/>
         <tool id="snpSift_annotate" destination="java_cluster"/>
         <tool id="snpEff" destination="java_cluster"/>
-        <tool id="artbio_mutect2" destination="java_cluster"/>
+        <tool id="mutect2" destination="java_cluster"/>
         <tool id="samtools_slice_bam" destination="slurm_cluster_8"/>
         <tool id="samtools_fastx" destination="slurm_cluster_4"/>
         <tool id="samtool_filter2" destination="slurm_cluster_4"/>
