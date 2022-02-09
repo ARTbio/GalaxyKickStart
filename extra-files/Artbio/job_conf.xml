@@ -77,7 +77,7 @@
         </destination>
     </destinations>
     <limits>
-    	<limit type="destination_total_concurrent_jobs" id="lumpy_smoove">32</limit>
+        <limit type="destination_total_concurrent_jobs" id="lumpy_smoove">32</limit>
         <limit type="destination_total_concurrent_jobs" id="cluster">4</limit>
         <limit type="destination_total_concurrent_jobs" id="cluster_4">20</limit>
         <limit type="destination_total_concurrent_jobs" id="cluster_heavy">4</limit>
@@ -90,7 +90,7 @@
 
         <limit type="anonymous_user_concurrent_jobs">1</limit>
 
-    	<limit type="destination_user_concurrent_jobs" id="lumpy_smoove">32</limit>
+        <limit type="destination_user_concurrent_jobs" id="lumpy_smoove">32</limit>
         <limit type="destination_user_concurrent_jobs" id="cluster">4</limit>
         <limit type="destination_user_concurrent_jobs" id="cluster_4">20</limit>
         <limit type="destination_user_concurrent_jobs" id="cluster_heavy">6</limit>
@@ -103,16 +103,16 @@
     </limits>
    <tools>
         <tool id="bcftools_annotate" destination="cluster" />
-	<tool id="bcftools_norm" destination="cluster" />
-	<tool id="bowtie" destination="cluster_heavy"/>
+    <tool id="bcftools_norm" destination="cluster" />
+    <tool id="bowtie" destination="cluster_heavy"/>
         <tool id="bowtie2" destination="cluster_heavy"/>
-	<tool id="bowtieForSmallRNA" destination="cluster_heavy"/>
+    <tool id="bowtieForSmallRNA" destination="cluster_heavy"/>
         <tool id="bowtie_wrapper" destination="cluster_heavy"/>
-	<tool id="bwa" destination="cluster_heavy"/>
-        <tool id="bwa_mem" destination="cluster_heavy"/>        
+    <tool id="bwa" destination="cluster_heavy"/>
+        <tool id="bwa_mem" destination="cluster_heavy"/>
         <tool id="bwa_wrappers" destination="cluster_heavy"/>
         <tool id="cuffdiff" destination="cluster_heavy"/>
-	<tool id="cutadapt" destination="cluster_heavy" />
+    <tool id="cutadapt" destination="cluster_heavy" />
         <tool id="deeptools_multi_bam_summary" destination="cluster_heavy"/>
         <tool id="deeptools_plot_correlation" destination="cluster_heavy"/>
         <tool id="deeptools_compute_matrix" destination="cluster_heavy"/>
@@ -122,12 +122,13 @@
         <tool id="dexseq_count" destination="double"/>
         <tool id="dexseq" destination="double"/>
         <tool id="fastq_dump" destination="double" />
-	<tool id="freebayes" destination="cluster" />
-	<tool id="Group" destination="single" />
+    <tool id="freebayes" destination="cluster" />
+        <tool id="featurecounts" destination="cluster_4" />
+    <tool id="Group" destination="single" />
         <tool id="guppy-basecaller" destination="cluster"/>
-	<tool id="hisat2" destination="cluster_heavy"/>
+    <tool id="hisat2" destination="cluster_heavy"/>
         <tool id="hisat2_index_builder_data_manager" destination="cluster_4"/>
- 	<tool id="lumpy_smoove" destination="lumpy_smoove" />
+     <tool id="lumpy_smoove" destination="lumpy_smoove" />
         <tool id="lumpy_sv" destination="cluster"/>
         <tool id="macs2_callpeak" destination="cluster_heavy"/>
         <tool id="manta" destination="cluster"/>
@@ -138,9 +139,10 @@
         <tool id="ncbi_blastn_wrapper" destination="cluster_heavy"/>
         <tool id="ncbi_blastp_wrapper" destination="cluster_heavy"/>
         <tool id="ngsplot" destination="cluster"/>
- 	<tool id="picard_SamToFastq" destination="single" />
+     <tool id="picard_SamToFastq" destination="single" />
         <tool id="repenrich" destination="cluster_heavy"/>
         <tool id="rna_star" destination="cluster"/>
+        <tool id="rna_star_index_builder_data_manager" destination="cluster"/>
         <tool id="rna_starsolo" destination="cluster"/>
         <tool id="rsembowtie" destination="cluster"/>
         <tool id="rsembowtie2" destination="cluster_heavy"/>
@@ -153,15 +155,15 @@
         <tool id="small_rna_maps" destination="double"/>
         <tool id="snpSift_annotate" destination="java_cluster"/>
         <tool id="snpSift_filter" destination="java_cluster"/>
-	<tool id="snpEff" destination="java_cluster"/>
+    <tool id="snpEff" destination="java_cluster"/>
         <tool id="sr_bowtie_dataset_annotation" destination="cluster_heavy"/>
         <tool id="tarfast5" destination="cluster"/>
         <tool id="table_annovar" destination="cluster"/>
         <tool id="tp_grep_tool" destination="single" />
         <tool id="tophat2" destination="cluster_heavy"/>
-	<tool id="vsearch_clustering" destination="cluster_superheavy"/>
+    <tool id="vsearch_clustering" destination="cluster_superheavy"/>
         <tool id="xpore_dataprep" destination="cluster_heavy"/>
         <tool id="xpore_diffmod" destination="cluster_heavy"/>
-        
+
    </tools>
 </job_conf>
