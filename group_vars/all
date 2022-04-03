@@ -118,6 +118,7 @@ galaxy_config:
     admin_users: "{{ galaxy_admin }}"
     database_connection: "{{ galaxy_db }}"
     tool_dependency_dir: "{{ tool_dependency_dir }}"
+    galaxy_infrastructure_url: "http://localhost"
     ftp_upload_dir: "{{ proftpd_files_dir }}"
     ftp_upload_site: "ftp://{{ ipify_public_ip }}"
     allow_user_dataset_purge: True
