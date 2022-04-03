@@ -7,7 +7,3 @@ galaxy_tools_workflows:
 additional_files_list:
   - { src: "extra-files/galaxy-kickstart/logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
   - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
-
-galaxy_config:
-  'galaxy':
-    galaxy_infrastructure_url: http://localhost
