@@ -1269,3 +1269,8 @@ tools:
   tool_panel_section_id: None
   tool_panel_section_label: None
   tool_shed_url: toolshed.g2.bx.psu.edu
+ - name: suite_arriba
+  owner: jjohnson
+  tool_panel_section_id: genefusion
+  tool_panel_section_label: Gene fusion
+  tool_shed_url: toolshed.g2.bx.psu.edu
