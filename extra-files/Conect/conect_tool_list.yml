@@ -1289,3 +1289,8 @@ tools:
   tool_panel_section_id: genefusions
   tool_panel_section_label: Gene fusions
   tool_shed_url: toolshed.g2.bx.psu.edu
+- name: star_fusion
+  owner: iuc
+  tool_panel_section_id: genefusions
+  tool_panel_section_label: Gene fusions
+  tool_shed_url: toolshed.g2.bx.psu.edu
