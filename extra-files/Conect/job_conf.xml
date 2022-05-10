@@ -122,7 +122,7 @@
         <tool id="bwa_mem" destination="slurm_cluster_16"/>
         <tool id="bwa" destination="slurm_cluster_16"/>
         <tool id="hisat2" destination="slurm_cluster_8"/>
-        <tool id="rgrnastar" destination="slurm_cluster_8"/>
+        <tool id="rna_star" destination="slurm_cluster_8"/>
         <tool id="featurecounts" destination="slurm_cluster_8"/>
         <tool id="ncbi_blastn_wrapper" destination="slurm_cluster_16"/>
         <tool id="ncbi_blastx_wrapper" destination="slurm_cluster_16"/>
