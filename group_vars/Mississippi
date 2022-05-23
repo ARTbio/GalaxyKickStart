@@ -99,8 +99,8 @@ galaxy_config:
 # ssl certificate (from Renater) for https
 galaxy_extras_config_ssl: true
 galaxy_extras_config_ssl_method: own
-src_nginx_ssl_certificate_key: mississippi_sorbonne-universite_fr.key
-src_nginx_ssl_certificate: mississippi_sorbonne-universite_fr_bundle.crt
+src_nginx_ssl_certificate_key: /etc/ssl/private/mississippi_sorbonne-universite_fr.key
+src_nginx_ssl_certificate: /etc/ssl/private/mississippi_sorbonne-universite_fr_bundle.crt
 nginx_ssl_certificate_key: "{{ src_nginx_ssl_certificate_key }}"
 nginx_ssl_certificate: "{{ src_nginx_ssl_certificate }}"
 
