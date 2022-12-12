@@ -1,0 +1,66 @@
+galaxy_virtualenv_python: python3
+galaxy_changeset_id: release_21.05
+configure_docker: no
+
+#persistent data
+galaxy_persistent_directory: no # export/ for docker build ! /mnt/mydatalocal # for IFB cloud - IFB core zone
+
+additional_files_list:
+  - { src: "extra-files/biotechno_M2/welcome.html", dest: "{{ galaxy_server_dir }}/static/" }
+  - { src: "extra-files/biotechno_M2/biotechno_M2_logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
+  - { src: "extra-files/biotechno_M2/job_conf.xml", dest: "{{ galaxy_config_dir }}" }
+  - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
+  - { src: "extra-files/biotechno_M2/nginx.conf", dest: "/etc/nginx/" }
+
+# specific ie for ipython and rstudio
+galaxy_extras_ie_fetch_jupyter: false
+galaxy_extras_ie_fetch_rstudio: false
+
+
+galaxy_config:
+  "uwsgi":
+    # other uwsgi option are defaulted in ansible-galaxy-os role
+    module: galaxy.webapps.galaxy.buildapp:uwsgi_app()
+    # warning the above line should be dropped when prefixing
+    # upon guide-lines in  https://docs.galaxyproject.org/en/latest/admin/nginx.html
+    logfile-chmod: 644
+  'galaxy':
+    filter-with: proxy-prefix
+    prefix: "{{ nginx_galaxy_location }}" # this is not clear from the galaxy.yml.sample which in addition is not consistent with https://docs.galaxyproject.org/en/latest/admin/nginx.html
+    admin_users: "{{ galaxy_admin }}"
+    database_connection: "{{ galaxy_db }}"
+    tool_dependency_dir: "{{ tool_dependency_dir }}"
+    ftp_upload_dir: "{{ proftpd_files_dir }}"
+    ftp_upload_site: "ftp://{{ ipify_public_ip }}"
+    allow_user_dataset_purge: True
+    allow_user_impersonation: True
+    enable_quotas: True
+    allow_user_deletion: True
+    allow_library_path_paste: True
+    expose_dataset_path: True
+    expose_potentially_sensitive_job_metrics: True
+    tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
+    static_enabled: False
+    watch_tool_data_dir: True
+    use_pbkdf2: "{{ use_pbkdf2 }}"
+    len_file_path: "{{ galaxy_config_dir }}/len"
+    nginx_x_accel_redirect_base: /_x_accel_redirect
+    interactive_environment_plugins_directory: config/plugins/interactive_environments
+    visualization_plugins_directory: config/plugins/visualizations
+    # interactive environments - set dynamic_proxy_manage to true #
+    dynamic_proxy_manage: false
+    dynamic_proxy_session_map: database/session_map.sqlite
+    dynamic_proxy_bind_port: 8800
+    dynamic_proxy_bind_ip: 0.0.0.0
+    dynamic_proxy_debug: true
+    dynamic_proxy_external_proxy: true
+    dynamic_proxy_prefix: gie_proxy
+    require_login: true
+
+# ssl certificates for https
+galaxy_extras_config_ssl: true
+galaxy_extras_config_ssl_method: own
+src_nginx_ssl_certificate_key: /etc/ssl/mississippi_snv_jussieu_fr.key
+src_nginx_ssl_certificate: /etc/ssl/mississippi_snv_jussieu_fr.crt
+nginx_ssl_certificate_key: "{{ src_nginx_ssl_certificate_key }}"
+nginx_ssl_certificate: "{{ src_nginx_ssl_certificate }}"
