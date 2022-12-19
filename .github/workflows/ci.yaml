@@ -73,7 +73,7 @@ jobs:
         sudo supervisorctl status || true
 
     - name: check Galaxy API is alive
-      uses: mydea/action-wait-for-api@v1.0.0
+      uses: mydea/action-wait-for-api@main
       with:
         url: "http://localhost/api/version"
         timeout: 120
