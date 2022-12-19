@@ -1,3 +1,4 @@
+galaxy_changeset_id: release_21.05
 additional_files_list:
   - { src: "extra-files/galaxy-kickstart/logo.png", dest: "{{ galaxy_server_dir }}/static/images/" }
   - { src: "extra-files/tool_sheds_conf.xml", dest: "{{ galaxy_config_dir }}" }
