@@ -1,5 +1,0 @@
-# use this inventory file to target a VM set up using vagrant
-# adapt the group variable (here [kickstart]) as you wish
-
-[kickstart]
-localhost ansible_ssh_user="vagrant" ansible_port=2222 ansible_private_key_file="~/GalaxyKickStart/.vagrant/machines/default/virtualbox/private_key"
