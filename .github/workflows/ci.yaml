@@ -31,7 +31,7 @@ jobs:
         sudo apt-get -qq update -y
 
     - name: Set up Python 3.7 in ubuntu 20.04
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4.3.1
       with:
         python-version: '3.7'
     
@@ -54,7 +54,7 @@ jobs:
         pip show bioblend
         pip3 --version || true
 
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3.2.0
 
     - name: install ansible roles
       run: |
@@ -73,7 +73,7 @@ jobs:
         sudo supervisorctl status || true
 
     - name: check Galaxy API is alive
-      uses: mydea/action-wait-for-api@v1
+      uses: mydea/action-wait-for-api@v1.0.0
       with:
         url: "http://localhost/api/version"
         timeout: 120
