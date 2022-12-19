@@ -91,14 +91,7 @@ jobs:
 #        echo "\ntest ftp transfer to proftpd server\n"
 #        date > date.txt && curl --fail -T date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 
-    - name: Bioblend tests
-      run: |
-        cd /opt/hostedtoolcache/Python/3.7.*/x64/lib/python3.7/site-packages/bioblend/_tests/
-        bioblend-galaxy-tests --color=yes -v TestGalaxyHistories.py TestGalaxyTools.py --no-summary || true
-
-
-# Support to Ubuntu_16 is dropped (2021-08-25)
-#  Ubuntu_16-04:
-#    name: GalaxyKickStart in ubuntu16.04
-#    needs: Ubuntu_18-04
-#    runs-on: ubuntu-16.04
+#    - name: Bioblend tests
+#      run: |
+#        cd /opt/hostedtoolcache/Python/3.7.*/x64/lib/python3.7/site-packages/bioblend/_tests/
+#        bioblend-galaxy-tests --color=yes -v TestGalaxyHistories.py TestGalaxyTools.py --no-summary || true
