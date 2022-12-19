@@ -84,11 +84,12 @@ jobs:
 #      run: |
 #        ansible-playbook -i inventory_files/galaxy-kickstart --extra-vars RUNNER_ALLOW_RUNASROOT="1" galaxy_tool_install.yml
 
-    - name: run basic tests
-      run: |
-        curl http://localhost:80/api/version| grep version_major
-        echo "\ntest ftp transfer to proftpd server\n"
-        date > date.txt && curl --fail -T date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
+# without galaxy_tool_install.yml, we are lacking a registered user !
+#    - name: run basic tests
+#      run: |
+#        curl http://localhost:80/api/version| grep version_major
+#        echo "\ntest ftp transfer to proftpd server\n"
+#        date > date.txt && curl --fail -T date.txt ftp://127.0.0.1:21 --user $GALAXY_USER:$GALAXY_USER_PASSWD
 
     - name: Bioblend tests
       run: |
