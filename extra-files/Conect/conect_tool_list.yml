@@ -1,4 +1,3 @@
-
 tools:
 - name: yac_clipper
   owner: artbio
@@ -330,6 +329,11 @@ tools:
   tool_panel_section_id: ngs:_qc_and_manipulation
   tool_panel_section_label: 'NGS: QC and manipulation'
   tool_shed_url: toolshed.g2.bx.psu.edu
+- name: vcftools_isec
+  owner: devteam
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
+  tool_shed_url: toolshed.g2.bx.psu.edu
 - name: vcffixup
   owner: devteam
   tool_panel_section_id: variant
@@ -342,43 +346,8 @@ tools:
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: snpsift
   owner: iuc
-  tool_panel_section_id: tool_toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpSift_int/4.3+t.galaxy0
-  tool_panel_section_label: SnpSift Intervals
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: snpsift
-  owner: iuc
-  tool_panel_section_id: tool_toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpSift_rmInfo/4.3+t.galaxy0
-  tool_panel_section_label: SnpSift rmInfo
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: snpsift
-  owner: iuc
-  tool_panel_section_id: tool_toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpsift_vartype/4.3+t.galaxy0
-  tool_panel_section_label: SnpSift Variant Type
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: snpsift
-  owner: iuc
-  tool_panel_section_id: tool_toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpSift_annotate/4.3+t.galaxy1
-  tool_panel_section_label: SnpSift Annotate
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: snpsift
-  owner: iuc
-  tool_panel_section_id: tool_toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpSift_caseControl/4.3+t.galaxy0
-  tool_panel_section_label: SnpSift CaseControl
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: snpsift
-  owner: iuc
-  tool_panel_section_id: tool_toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpSift_extractFields/4.3+t.galaxy0
-  tool_panel_section_label: SnpSift Extract Fields
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: snpsift
-  owner: iuc
-  tool_panel_section_id: tool_toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpSift_filter/4.3+t.galaxy1
-  tool_panel_section_label: SnpSift Filter
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: snpsift
-  owner: iuc
-  tool_panel_section_id: tool_toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpSift_vcfCheck/4.3+t.galaxy0
-  tool_panel_section_label: SnpSift vcfCheck
+  tool_panel_section_id: variant
+  tool_panel_section_label: Variant Analyses
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: snpsift_dbnsfp_generic
   owner: iuc
@@ -1274,11 +1243,6 @@ tools:
   owner: devteam
   tool_panel_section_id: vcftools
   tool_panel_section_label: vcftools
-  tool_shed_url: toolshed.g2.bx.psu.edu
-- name: vcftools_isec
-  owner: devteam
-  tool_panel_section_id: tool_toolshed.g2.bx.psu.edu/repos/devteam/vcftools_isec/vcftools_isec/0.1.1
-  tool_panel_section_label: Intersect
   tool_shed_url: toolshed.g2.bx.psu.edu
 - name: star_fusion
   owner: iuc
