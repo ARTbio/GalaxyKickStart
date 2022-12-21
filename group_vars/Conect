@@ -80,7 +80,6 @@ galaxy_config:
     dynamic_proxy_debug: true
     dynamic_proxy_external_proxy: true
     dynamic_proxy_prefix: gie_proxy
-    expose_potentially_sensitive_job_metrics: true
     require_login: true
     smtp_server: 'smtp.gmail.com:587'
     smtp_username: !vault |
