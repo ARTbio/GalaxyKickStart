@@ -1,5 +1,8 @@
 [![Ansible Testing](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/ci.yaml/badge.svg)](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/ci.yaml.yaml)
 [![Readthedocs Published](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/readthedocs.yaml/badge.svg)](https://github.com/ARTbio/GalaxyKickStart/actions/workflows/readthedocs.yaml)
+
+### Starting 2023, we have switched the development of our Ansible Galaxy servers deployment to [GalaxyXpand](https://github.com/ARTbio/galaxyXpand) 
+
 # GalaxyKickStart
 
 GalaxyKickStart is an Ansible playbook designed to help you get one or more
