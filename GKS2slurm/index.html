@@ -1,0 +1,791 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://artbio.github.io/galaxykickstart/GKS2slurm/">
+      
+      
+        <link rel="prev" href="../GKSfromWorflows/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>GKS2slurm - GalaxyKickStart</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unstable-development" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="GalaxyKickStart" class="md-header__button md-logo" aria-label="GalaxyKickStart" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GalaxyKickStart
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GKS2slurm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/artbio/galaxykickstart" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="GalaxyKickStart" class="md-nav__button md-logo" aria-label="GalaxyKickStart" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    GalaxyKickStart
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/artbio/galaxykickstart" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        What is GalaxyKickStart
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customizations/" class="md-nav__link">
+        Customising the playbook
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installing_tools_and_workflows/" class="md-nav__link">
+        Installing tools and workflows
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        Docker GalaxyKickStart
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        Frequently asked questions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../available_roles/" class="md-nav__link">
+        Available roles
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../available_variables/" class="md-nav__link">
+        Available variables
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_10" type="checkbox" id="__nav_10" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10" tabindex="0" aria-expanded="true">
+          GalaxyKickStart Use Cases
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="GalaxyKickStart Use Cases" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          GalaxyKickStart Use Cases
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metavisitor/" class="md-nav__link">
+        Metavisitor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GKSfromWorflows/" class="md-nav__link">
+        GKSfromWorflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          GKS2slurm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        GKS2slurm
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unstable-development" class="md-nav__link">
+    Unstable development
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-of-a-galaxy-slurm-cluster-with-gks2slurm" class="md-nav__link">
+    Installation of a Galaxy slurm cluster with GKS2slurm
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation of a Galaxy slurm cluster with GKS2slurm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-install-a-galaxy-server-with-galaxykickstart" class="md-nav__link">
+    Step 1: Install a Galaxy server with GalaxyKickStart
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-check-the-single-node-galaxy-installation" class="md-nav__link">
+    Step 2: Check the single node Galaxy installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-moving-your-single-node-configuration-to-a-multinode-slurm-configuration" class="md-nav__link">
+    Step 3: Moving your single node configuration to a multinode slurm configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Moving your single node configuration to a multinode slurm configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-3-1" class="md-nav__link">
+    Step 3-1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-2" class="md-nav__link">
+    Step 3-2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-3" class="md-nav__link">
+    Step 3-3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-4" class="md-nav__link">
+    Step 3-4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-slurm-installation" class="md-nav__link">
+    Checking slurm installation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unstable-development" class="md-nav__link">
+    Unstable development
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-of-a-galaxy-slurm-cluster-with-gks2slurm" class="md-nav__link">
+    Installation of a Galaxy slurm cluster with GKS2slurm
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation of a Galaxy slurm cluster with GKS2slurm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-install-a-galaxy-server-with-galaxykickstart" class="md-nav__link">
+    Step 1: Install a Galaxy server with GalaxyKickStart
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-check-the-single-node-galaxy-installation" class="md-nav__link">
+    Step 2: Check the single node Galaxy installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-moving-your-single-node-configuration-to-a-multinode-slurm-configuration" class="md-nav__link">
+    Step 3: Moving your single node configuration to a multinode slurm configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Moving your single node configuration to a multinode slurm configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-3-1" class="md-nav__link">
+    Step 3-1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-2" class="md-nav__link">
+    Step 3-2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-3" class="md-nav__link">
+    Step 3-3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-4" class="md-nav__link">
+    Step 3-4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-slurm-installation" class="md-nav__link">
+    Checking slurm installation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+  <h1>GKS2slurm</h1>
+
+<h3 id="unstable-development">Unstable development<a class="headerlink" href="#unstable-development" title="Permanent link">&para;</a></h3>
+<hr />
+<p>GKS2slurm is a playbook that is played to install a multinode slurm cluster over a GalaxyKickStart single-node installation.
+The playbook GKS2slurm <code>galaxyToSlurmCluster.yml</code> was tested with multiple virtual machines (VMs) in <code>Stratuslab</code>, <code>Google Cloud Engine (GCE)</code> and <code>Amazon Web Services (AWS)</code> clouds.</p>
+<h3 id="installation-of-a-galaxy-slurm-cluster-with-gks2slurm">Installation of a Galaxy slurm cluster with GKS2slurm<a class="headerlink" href="#installation-of-a-galaxy-slurm-cluster-with-gks2slurm" title="Permanent link">&para;</a></h3>
+<h4 id="step-1-install-a-galaxy-server-with-galaxykickstart">Step 1: Install a Galaxy server with GalaxyKickStart<a class="headerlink" href="#step-1-install-a-galaxy-server-with-galaxykickstart" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Report to the <a href="../getting_started/">Getting Started</a> section of this manual for the basics of GalaxyKickStart installation</p>
+</li>
+<li>
+<p>install any GalaxyKickStart "flavor" by configuring the inventory file (in inventory_files folder) and the group_vars file (in the group_vars folder) of your choice.
+Flavors currently available are <code>kickstart</code>, <code>artimed</code> and <code>metavisitor</code> but other will come soon. Alternatively, you can build you own flavor by customizing a group_vars, extrafiles file and inventory file, which will install your Galaxy tools and workflows.</p>
+<p><strong>in Step 1, the most important thing to keep track with is to configure your target machine with an extra volume</strong></p>
+<p>Indeed GKS2slurm has be designed so that the Galaxy slurm cluster can accumulate large amount of data in the long term, which can be more easily shared with the cluster nodes and more importantly backed up.</p>
+<p>Thus in addition of all the adaptations you will do for your own purpose (tools, workflows, etc), edit the <code>group_vars/all</code> file and adapt the <code>galaxy_persistent_directory</code> variable to your extra volume which should be already formatted and mounted:</p>
+<p>Change</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>#persistent data
+galaxy_persistent_directory: /export # for IFB it&#39;s /root/mydisk, by default, /export
+</code></pre></div>
+<p>To</p>
+<div class="highlight"><pre><span></span><code>#persistent data
+galaxy_persistent_directory: /pathto/mounted/extravolume
+</code></pre></div>
+<ul>
+<li>Having configured your GalaxyKickStart installation, import the extra roles (if not already done)
+<div class="highlight"><pre><span></span><code>ansible-galaxy install -r requirements_roles.yml -p roles
+</code></pre></div>
+and run the galaxy.yml playbook:
+<div class="highlight"><pre><span></span><code>ansible-playbook --inventory-file inventory_files/&lt;your_inventory_file&gt; galaxy.yml
+</code></pre></div></li>
+</ul>
+<h3 id="step-2-check-the-single-node-galaxy-installation">Step 2: Check the single node Galaxy installation<a class="headerlink" href="#step-2-check-the-single-node-galaxy-installation" title="Permanent link">&para;</a></h3>
+<p>If the playbook was run successfully, connect to your Galaxy instance through http and check that you can login (<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#100;&#109;&#105;&#110;&#64;&#103;&#97;&#108;&#97;&#120;&#121;&#46;&#111;&#114;&#103;">&#97;&#100;&#109;&#105;&#110;&#64;&#103;&#97;&#108;&#97;&#120;&#121;&#46;&#111;&#114;&#103;</a>:admin), and that tools and workflows are correctly installed.</p>
+<h3 id="step-3-moving-your-single-node-configuration-to-a-multinode-slurm-configuration">Step 3: Moving your single node configuration to a multinode slurm configuration<a class="headerlink" href="#step-3-moving-your-single-node-configuration-to-a-multinode-slurm-configuration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Start as many compute nodes you want for the slurm cluster and gather information from each node:<ul>
+<li>IP address (all slurm nodes should must be accessible in the same network, ie nodes can be ping-ed from any nodes)</li>
+<li>hostname</li>
+<li>number of CPUs</li>
+<li>memory (in MB)</li>
+</ul>
+</li>
+</ul>
+<h4 id="step-3-1">Step 3-1<a class="headerlink" href="#step-3-1" title="Permanent link">&para;</a></h4>
+<p>Adapt the inventory file <code>slurm-kickstart</code> in the inventory_files folder.
+<div class="highlight"><pre><span></span><code>[slurm_master]
+# adapt the following line to IP address and ssh user of the slurm master node
+192.54.201.102 ansible_ssh_user=root ansible_ssh_private_key_file=&quot;~/.ssh/mysshkey&quot;
+
+[slurm_slave]
+# adapt the following lnes to IP addresses and ssu users of the slum slave nodes
+192.54.201.98 ansible_ssh_user=root ansible_ssh_private_key_file=&quot;~/.ssh/mysshkey&quot;
+192.54.201.99 ansible_ssh_user=root ansible_ssh_private_key_file=&quot;~/.ssh/mysshkey&quot;
+192.54.201.101 ansible_ssh_user=root ansible_ssh_private_key_file=&quot;~/.ssh/mysshkey&quot;
+</code></pre></div></p>
+<h4 id="step-3-2">Step 3-2<a class="headerlink" href="#step-3-2" title="Permanent link">&para;</a></h4>
+<p>Adapt the group_vars file <code>slurm_master</code> in the <code>group_vars</code> folder.
+This is done using the information gathered in step 3</p>
+<div class="highlight"><pre><span></span><code># nfs sharing
+cluster_ip_range: &quot;0.0.0.0/24&quot; # replace by your ip network range
+
+# slave node specifications, adapt to your set of slave nodes
+slave_node_dict:
+  - {hostname: &quot;slave-1&quot;, CPUs: &quot;2&quot;, RealMemory: &quot;7985&quot;}
+  - {hostname: &quot;slave-2&quot;, CPUs: &quot;2&quot;, RealMemory: &quot;7985&quot;}
+  - {hostname: &quot;slave-3&quot;, CPUs: &quot;2&quot;, RealMemory: &quot;7985&quot;}
+</code></pre></div>
+<h4 id="step-3-3">Step 3-3<a class="headerlink" href="#step-3-3" title="Permanent link">&para;</a></h4>
+<p>Adapt the group_vars file <code>slurm_slave</code> in the <code>group_vars</code> folder</p>
+<div class="highlight"><pre><span></span><code># adapt the following variable to the master slurm node IP address
+master_slurm_node_ip: &quot;192.54.201.102&quot;
+</code></pre></div>
+<h4 id="step-3-4">Step 3-4<a class="headerlink" href="#step-3-4" title="Permanent link">&para;</a></h4>
+<p>Run the playbook <code>galaxyToSlurmCluster.yml</code> playbook.
+from the GalaxyKickStart directory:
+<div class="highlight"><pre><span></span><code>ansible-playbook -i inventory_files/slurm-kickstart galaxyToSlurmCluster.yml
+</code></pre></div></p>
+<ul>
+<li>Note that if you configure multiple slave nodes without prior ssh key authentification,
+you can run the same command with the variable ANSIBLE_HOST_KEY_CHECKING put to False:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventory_files/slurm-kickstart galaxyToSlurmCluster.yml
+</code></pre></div>
+<h3 id="checking-slurm-installation">Checking slurm installation<a class="headerlink" href="#checking-slurm-installation" title="Permanent link">&para;</a></h3>
+<p>Connect to your master node as root and type <code>sinfo</code>
+Refer to slurm documentation for more investigation/control</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>

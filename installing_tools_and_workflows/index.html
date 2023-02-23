@@ -1,0 +1,731 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://artbio.github.io/galaxykickstart/installing_tools_and_workflows/">
+      
+      
+        <link rel="prev" href="../customizations/">
+      
+      
+        <link rel="next" href="../docker/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Installing tools and workflows - GalaxyKickStart</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installing-tools-and-workflows" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="GalaxyKickStart" class="md-header__button md-logo" aria-label="GalaxyKickStart" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GalaxyKickStart
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Installing tools and workflows
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/artbio/galaxykickstart" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="GalaxyKickStart" class="md-nav__button md-logo" aria-label="GalaxyKickStart" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    GalaxyKickStart
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/artbio/galaxykickstart" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        What is GalaxyKickStart
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customizations/" class="md-nav__link">
+        Customising the playbook
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Installing tools and workflows
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Installing tools and workflows
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-tool_listyml-file" class="md-nav__link">
+    Creating a tool_list.yml file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obtaining-a-tool_listyml-file-from-a-running-galaxy-server" class="md-nav__link">
+    Obtaining a tool_list.yml file from a running Galaxy server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obtaining-a-tool_listyml-file-from-a-workflowga-galaxy-file" class="md-nav__link">
+    Obtaining a tool_list.yml file from a workflow.ga galaxy file.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-tool_listyml-file-to-a-group_variable-files" class="md-nav__link">
+    Adding a tool_list.yml file to a group_variable files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-workflows" class="md-nav__link">
+    Installing workflows
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-playbook" class="md-nav__link">
+    Running the playbook
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        Docker GalaxyKickStart
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        Frequently asked questions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../available_roles/" class="md-nav__link">
+        Available roles
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../available_variables/" class="md-nav__link">
+        Available variables
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10" tabindex="0" aria-expanded="false">
+          GalaxyKickStart Use Cases
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="GalaxyKickStart Use Cases" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          GalaxyKickStart Use Cases
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metavisitor/" class="md-nav__link">
+        Metavisitor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GKSfromWorflows/" class="md-nav__link">
+        GKSfromWorflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GKS2slurm/" class="md-nav__link">
+        GKS2slurm
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-tool_listyml-file" class="md-nav__link">
+    Creating a tool_list.yml file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obtaining-a-tool_listyml-file-from-a-running-galaxy-server" class="md-nav__link">
+    Obtaining a tool_list.yml file from a running Galaxy server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obtaining-a-tool_listyml-file-from-a-workflowga-galaxy-file" class="md-nav__link">
+    Obtaining a tool_list.yml file from a workflow.ga galaxy file.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-tool_listyml-file-to-a-group_variable-files" class="md-nav__link">
+    Adding a tool_list.yml file to a group_variable files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-workflows" class="md-nav__link">
+    Installing workflows
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-playbook" class="md-nav__link">
+    Running the playbook
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<h1 id="installing-tools-and-workflows">Installing tools and workflows<a class="headerlink" href="#installing-tools-and-workflows" title="Permanent link">&para;</a></h1>
+<hr />
+<p>This playbook includes the <a href="https://github.com/galaxyproject/ansible-galaxy-tools">ansible-galaxy-tools</a>
+role which can be used to install tools and workflows into galaxy instances using the
+<a href="https://bioblend.readthedocs.org/en/latest/">bioblend</a> API.</p>
+<p>Importantly, in the latest GalaxyKickStart version (<code>v20.05</code>), tool installation is performed
+using a separate run of <code>ansible-playbook</code>, typically:</p>
+<div class="highlight"><pre><span></span><code># these steps have should have already been performed
+
+# ansible-galaxy install -r requirements_roles.yml -p roles/
+# ansible-playbook -i inventory_files/galaxy-kickstart galaxy.yml
+
+ansible-playbook -i inventory_files/galaxy-kickstart galaxy_tool_install.yml
+</code></pre></div>
+<div class="admonition note">
+<p>Note that this is during the galaxy_tool_install.yml ansible play that
+a Galaxy admin user account is created with the credentials <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#100;&#109;&#105;&#110;&#64;&#103;&#97;&#108;&#97;&#120;&#121;&#46;&#111;&#114;&#103;">&#97;&#100;&#109;&#105;&#110;&#64;&#103;&#97;&#108;&#97;&#120;&#121;&#46;&#111;&#114;&#103;</a>:artbio2020</p>
+</div>
+<h3 id="creating-a-tool_listyml-file">Creating a tool_list.yml file<a class="headerlink" href="#creating-a-tool_listyml-file" title="Permanent link">&para;</a></h3>
+<p>Before running the <code>galaxy_tool_install.yml</code> playbook script as shown above, you need to
+prepare a <code>tool_list.yml</code> file with a list of tools in yaml format and with the following
+example content:</p>
+<div class="highlight"><pre><span></span><code>tools:
+- name: blast_to_scaffold
+  owner: drosofff
+  revisions:
+  tool_panel_section_label: Metavisitor
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: blastx_to_scaffold
+  owner: drosofff
+  revisions:
+  tool_panel_section_label: Metavisitor
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bowtie2
+  owner: devteam
+  revisions:
+  - 019c2a81547a
+  tool_panel_section_label: Metavisitor
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+<p>If the <code>revisions</code> key is empty, the latest available in the Galaxy toolshed revision will
+be installed.  </p>
+<p>The <code>tool_panel_section_label</code> key sets the tool panel section where the tools will show up
+in the Galaxy tool bar.</p>
+<p>Another example of a a tool list can be found in <a href="https://github.com/ARTbio/GalaxyKickStart/blob/master/extra-files/metavisitor/metavisitor_tool_list.yml">here</a></p>
+<h3 id="obtaining-a-tool_listyml-file-from-a-running-galaxy-server">Obtaining a tool_list.yml file from a running Galaxy server<a class="headerlink" href="#obtaining-a-tool_listyml-file-from-a-running-galaxy-server" title="Permanent link">&para;</a></h3>
+<p>You can also retrieve the list of tools running in a specific Galaxy instance using the
+<a href="https://github.com/galaxyproject/ephemeris">ephemeris</a> script <code>workflow-to-tools</code>.</p>
+<ol>
+<li>First Install ephememeris using pip
+    <div class="highlight"><pre><span></span><code>pip install ephemeris
+</code></pre></div></li>
+<li>This will bring several scripts in your pip environment:
+    <div class="highlight"><pre><span></span><code>run-data-managers --help
+shed-tools install --help
+shed-tools update --help
+workflow-install --help
+setup-data-libraries --help
+get-tool-list --help
+workflow-to-tools --help
+</code></pre></div></li>
+<li>Use the ephemeris <code>get-tool-list</code> to retrieve a yml list of tools installed in the
+Galaxy server using the command:
+    <div class="highlight"><pre><span></span><code>get-tool-list -g https://usegalaxy.org -u &lt;main galaxy username&gt; -p &lt;user password&gt; --get_data_managers -o main_tools_list.yml
+</code></pre></div></li>
+</ol>
+<h3 id="obtaining-a-tool_listyml-file-from-a-workflowga-galaxy-file">Obtaining a tool_list.yml file from a workflow.ga galaxy file.<a class="headerlink" href="#obtaining-a-tool_listyml-file-from-a-workflowga-galaxy-file" title="Permanent link">&para;</a></h3>
+<p>You can also retrieve a list of tools used in one or more workflow galaxy files (.ga extension).</p>
+<p>These .ga files can be obtain from Galaxy server instances (menu "download workflow file")
+or other repositories</p>
+<ol>
+<li>Use the ephemeris <code>workflow-to-tools</code> to retrieve a yml list of tools using the command:
+    <div class="highlight"><pre><span></span><code>workflow-to-tools -w &lt;Galaxy-Workflow-File.ga&gt; -l &lt;menu_label&gt; -o &lt;tool_list.yml&gt;
+</code></pre></div></li>
+</ol>
+<h3 id="adding-a-tool_listyml-file-to-a-group_variable-files">Adding a tool_list.yml file to a group_variable files<a class="headerlink" href="#adding-a-tool_listyml-file-to-a-group_variable-files" title="Permanent link">&para;</a></h3>
+<p>Group variable files are in the group_vars directory.</p>
+<p>If you would like to install tools, you need to reference the tool_list.yml in the group variable file.</p>
+<p>We typically place additional files in the <code>extra-files/&lt;hostname&gt;/&lt;hostname&gt;_tool_list.yml</code> file.</p>
+<p>For instance, if you would like to add tools to a group that is called metavisitor,
+edit <code>group_vars/metavisitor</code> and add these lines:</p>
+<div class="highlight"><pre><span></span><code>install_tools: true
+galaxy_tools_tool_list: &quot;extra-files/metavisitor/metavisitor_tool_list.yml&quot;
+</code></pre></div>
+<h3 id="installing-workflows">Installing workflows<a class="headerlink" href="#installing-workflows" title="Permanent link">&para;</a></h3>
+<p>You can also add workflows in the Galaxy server modified by playbook script galaxy_tool_install.yml.</p>
+<p>As with tools, place the workflows in <code>extra-files/&lt;hostname&gt;/&lt;hostname&gt;&lt;workflow_name&gt;.ga</code>
+and add these lines to the corresponding group_var file:</p>
+<div class="highlight"><pre><span></span><code>galaxy_tools_install_workflows: true
+galaxy_tools_workflows:
+  - &quot;extra-files/metavisitor/my_workflow_1.ga&quot;
+  - &quot;extra-files/metavisitor/my_workflow_2.ga&quot;
+  - &quot;extra-files/metavisitor/my_workflow_3.ga&quot;
+</code></pre></div>
+<h3 id="running-the-playbook">Running the playbook<a class="headerlink" href="#running-the-playbook" title="Permanent link">&para;</a></h3>
+<p>As mentioned earlier, after these preparation steps, you can run the playbook script
+<code>galaxy_tool_install.yml</code> with an inventory file that maps your target machine to the
+metavisitor group (in this example).</p>
+<p>If the target is localhost, your inventory file should look like this:</p>
+<div class="highlight"><pre><span></span><code>[metavisitor]
+localhost
+</code></pre></div>
+<p>then run the playbook like so:</p>
+<div class="highlight"><pre><span></span><code>ansible-playbook -i inventory_files/galaxy-kickstart galaxy_tool_install.yml
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>

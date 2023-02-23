@@ -1,0 +1,693 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://artbio.github.io/galaxykickstart/available_variables/">
+      
+      
+        <link rel="prev" href="../available_roles/">
+      
+      
+        <link rel="next" href="../metavisitor/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Available variables - GalaxyKickStart</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="GalaxyKickStart" class="md-header__button md-logo" aria-label="GalaxyKickStart" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GalaxyKickStart
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Available variables
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/artbio/galaxykickstart" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="GalaxyKickStart" class="md-nav__button md-logo" aria-label="GalaxyKickStart" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    GalaxyKickStart
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/artbio/galaxykickstart" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        What is GalaxyKickStart
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customizations/" class="md-nav__link">
+        Customising the playbook
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installing_tools_and_workflows/" class="md-nav__link">
+        Installing tools and workflows
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        Docker GalaxyKickStart
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        Frequently asked questions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../available_roles/" class="md-nav__link">
+        Available roles
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Available variables
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10" tabindex="0" aria-expanded="false">
+          GalaxyKickStart Use Cases
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="GalaxyKickStart Use Cases" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          GalaxyKickStart Use Cases
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metavisitor/" class="md-nav__link">
+        Metavisitor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GKSfromWorflows/" class="md-nav__link">
+        GKSfromWorflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GKS2slurm/" class="md-nav__link">
+        GKS2slurm
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<p>Most of the available ansible variables used by the galaxykickstart playbook scripts
+<code>galaxy.yml</code> and <code>galaxy_tool_install.yml</code> can be found in the <code>group_vars/all</code> file
+and are reproduced below, with there default values:</p>
+<div class="highlight"><pre><span></span><code>GKS: true
+galaxy_virtualenv_python: python3
+ansible_python_interpreter: python3
+proxy_env: {}
+install_galaxy: true
+install_maintainance_packages: false
+galaxy_manage_trackster: true
+galaxy_create_user: true
+# Privilege separation mode switch
+galaxy_separate_privileges: true
+# User that Galaxy runs as
+galaxy_user: &quot;{{ galaxy_user_name }}&quot;
+# User that owns Galaxy code, configs, and virutalenv, and that runs `pip install` for dependencies
+galaxy_privsep_user: &quot;{{ galaxy_user_name }}&quot;
+gks_run_data_managers: false
+galaxy_hostname: &quot;{{ inventory_hostname }}&quot;
+nginx_galaxy_location: &quot;&quot;
+# galaxy_become_users: {} # for compatibility with ansible.galaxy. as doc seems to say
+pip_virtualenv_command: virtualenv
+galaxy_user_name: galaxy
+galaxy_user_gid: 1450
+galaxy_user_uid: 1450
+postgres_user_uid: 1550
+postgres_user_gid: 1550
+galaxy_server_dir: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
+galaxy_venv_dir: &quot;{{ galaxy_server_dir }}/.venv&quot;
+galaxy_local_tools_dir: &quot;{{ galaxy_server_dir }}/tools&quot;
+galaxy_data: /home/{{ galaxy_user_name }}/{{ galaxy_user_name }}
+galaxy_config_dir: &quot;{{ galaxy_server_dir }}/config&quot;
+galaxy_database: /home/galaxy_database
+galaxy_db: postgresql://{{ galaxy_user_name }}:{{ galaxy_user_name }}@localhost:5432/galaxy?client_encoding=utf8
+galaxy_git_repo: https://github.com/galaxyproject/galaxy.git
+galaxy_changeset_id: release_20.05
+galaxy_reports_config_file: &quot;{{ galaxy_config_dir }}/reports.yml.sample&quot;  # Change this to &quot;{{ galaxy_config_dir }}/reports.ini.sample&quot; for galaxy &lt; 17.09
+galaxy_admin: admin@galaxy.org
+galaxy_admin_pw: artbio2020
+# use the most recent PBKDF2 function for galaxy (and proftpd) authentication
+use_pbkdf2: true
+proftpd_sql_auth_type: PBKDF2
+proftpd_files_dir: &quot;{{ galaxy_data }}/database/ftp&quot;
+postgresql_version: &quot;{{ &#39;9.3&#39; if ansible_distribution==&#39;Ubuntu&#39;
+                                 and ansible_distribution_version is version(&#39;15.04&#39;, &#39;&lt;=&#39;)
+                              else &#39;9.5&#39; if ansible_distribution==&#39;Ubuntu&#39;
+                                            and ansible_distribution_version is version(&#39;17.04&#39;, &#39;&lt;&#39;)
+                              else &#39;10&#39; if ansible_distribution==&#39;Ubuntu&#39;
+                                           and ansible_distribution_version is version(&#39;18.04&#39;, &#39;&lt;=&#39;)
+                              else &#39;12&#39; if ansible_distribution==&#39;Ubuntu&#39;
+                                           and ansible_distribution_version is version(&#39;20.04&#39;, &#39;&lt;=&#39;)
+                              else &#39;9.4&#39; if ansible_distribution==&#39;Debian&#39;
+                                            and ansible_distribution_version is version(&#39;8.0&#39;, &#39;&gt;=&#39;) }}&quot;
+supervisor_postgres_database_path: /var/lib/postgresql/{{ postgresql_version }}/main
+supervisor_postgres_database_config: /etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
+supervisor_postgres_options: &quot;-D {{ supervisor_postgres_database_path }} -c \&quot;config_file={{ supervisor_postgres_database_config }}\&quot;&quot;
+
+# set to &#39;no&#39; to skip reinitialisation and clear docker images (docker must then be already installed)
+configure_docker: yes
+galaxy_extras_apt_package_state: present
+install_apparmor: false
+tool_dependency_dir: /home/{{ galaxy_user_name }}/tool_dependencies
+shed_tools_dir: &quot;{{ galaxy_server_dir }}/../shed_tools&quot;
+tool_data_dir: &quot;{{ galaxy_server_dir  }}/tool-data&quot;
+galaxy_mutable_data_dir: &quot;{{ galaxy_server_dir  }}/database&quot;
+miniconda_python: 3
+miniconda_version: &quot;4.6.14&quot;
+miniconda_installer_checksum: &quot;&quot;
+miniconda_prefix: &quot;{{ tool_dependency_dir }}/_conda&quot;
+miniconda_manage_dependencies: False
+
+additional_files_list:
+  - { src: &quot;extra-files/tool_sheds_conf.xml&quot;, dest: &quot;{{ galaxy_config_dir }}&quot; }
+
+supervisor_env_vars:
+    # Use pre-exsting env vars if they are defined
+    - export IP_ADDRESS=${IP_ADDRESS:-`curl --silent icanhazip.com`}
+    - export MASQUERADE_ADDRESS=${MASQUERADE_ADDRESS:-$IP_ADDRESS}
+    - export GALAXY_GID=&quot;${GALAXY_GID:-{{ galaxy_user_gid }}}&quot;
+    - export GALAXY_UID=&quot;${GALAXY_UID:-{{ galaxy_user_uid }}}&quot;
+    - export NATIVE_SPEC=&quot;${NATIVE_SPEC:---ntasks=`/usr/bin/nproc` --share}&quot;
+    - export NGINX_GALAXY_LOCATION=&quot;${NGINX_GALAXY_LOCATION:-{{ nginx_galaxy_location }}}&quot;
+    - export GALAXY_CONFIG_FTP_UPLOAD_SITE=&quot;${GALAXY_CONFIG_FTP_UPLOAD_SITE:-ftp://$IP_ADDRESS}&quot;
+    - export GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE=&quot;${GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE:-$NGINX_GALAXY_LOCATION/_x_accel_redirect}&quot;
+    - export GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE=&quot;{$GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE:-$NGINX_GALAXY_LOCATION/_x_accel_redirect}&quot;
+    - export GALAXY_CONFIG_CONDA_AUTO_INIT=&quot;${GALAXY_CONFIG_CONDA_AUTO_INIT:-True}&quot;
+
+# galaxy role variables
+
+#persistent data
+galaxy_persistent_directory: /export # default value
+galaxy_manage_mutable_setup: yes
+galaxy_mutable_config_dir: &quot;{{ galaxy_config_dir }}&quot;
+galaxy_config_style: &quot;yaml&quot;
+galaxy_config_file: &quot;{{ galaxy_config_dir }}/galaxy.yml&quot;
+#other vars
+galaxy_manage_database: yes
+# does not actually fetch eggs if galaxy uses pip
+galaxy_fetch_eggs: yes
+galaxy_vcs: git
+galaxy_force_checkout: yes
+# galaxykickstart adopts the yml standard for config file `galaxy.yml`
+galaxy_config:
+  &quot;uwsgi&quot;:
+    # other uwsgi option are defaulted in ansible-galaxy-os role
+    module: galaxy.webapps.galaxy.buildapp:uwsgi_app()
+    # warning the above line should be dropped when prefixing
+    # upon guide-lines in  https://docs.galaxyproject.org/en/latest/admin/nginx.html
+    logfile-chmod: 644
+  &#39;galaxy&#39;:
+    filter-with: proxy-prefix
+    prefix: &quot;{{ nginx_galaxy_location }}&quot; # this is not clear from the galaxy.yml.sample which in addition is not consistent with https://docs.galaxyproject.org/en/latest/admin/nginx.html
+    admin_users: &quot;{{ galaxy_admin }}&quot;
+    database_connection: &quot;{{ galaxy_db }}&quot;
+    tool_dependency_dir: &quot;{{ tool_dependency_dir }}&quot;
+    ftp_upload_dir: &quot;{{ proftpd_files_dir }}&quot;
+    ftp_upload_site: &quot;ftp://{{ ipify_public_ip }}&quot;
+    allow_user_dataset_purge: True
+    allow_user_impersonation: True
+    enable_quotas: True
+    allow_user_deletion: True
+    allow_library_path_paste: True
+    tool_sheds_config_file: &quot;{{ galaxy_config_dir }}/tool_sheds_conf.xml&quot;
+    static_enabled: False
+    watch_tool_data_dir: True
+    use_pbkdf2: &quot;{{ use_pbkdf2 }}&quot;
+    len_file_path: &quot;{{ galaxy_config_dir }}/len&quot;
+    nginx_x_accel_redirect_base: /_x_accel_redirect
+    interactive_environment_plugins_directory: config/plugins/interactive_environments
+    visualization_plugins_directory: config/plugins/visualizations
+    # interactive environments - set dynamic_proxy_manage to true #
+    dynamic_proxy_manage: false
+    dynamic_proxy_session_map: database/session_map.sqlite
+    dynamic_proxy_bind_port: 8800
+    dynamic_proxy_bind_ip: 0.0.0.0
+    dynamic_proxy_debug: true
+    dynamic_proxy_external_proxy: true
+    dynamic_proxy_prefix: gie_proxy
+
+# galaxy-extras role variables
+galaxy_uwsgi_static_conf: true
+galaxy_web_processes: 2
+galaxy_handler_processes: 4
+supervisor_slurm_config_dir: &quot;{{ galaxy_data }}&quot;
+galaxy_root: &quot;{{ galaxy_server_dir }}&quot;
+galaxy_log_dir: &quot;{{ galaxy_data }}&quot;
+galaxy_database_connection: &quot;{{ galaxy_db }}&quot;
+galaxy_errordocs_dest: &quot;/usr/share/nginx/html&quot;
+galaxy_extras_config_scripts: true
+galaxy_extras_install_packages: true
+galaxy_extras_config_nginx: true
+galaxy_extras_config_supervisor: true
+galaxy_extras_config_proftpd: true
+galaxy_extras_config_uwsgi: false
+galaxy_extras_config_galaxy_job_metrics: false
+galaxy_extras_config_slurm: true
+galaxy_extras_config_galaxy_root: true
+supervisor_manage_nginx: true
+supervisor_manage_proftp: true
+supervisor_manage_slurm: true
+supervisor_manage_reports: true
+supervisor_manage_docker: false
+proftpd_nat_masquerade: false
+supervisor_proftpd_autostart: true
+galaxy_extras_config_cvmfs: false
+
+# To enable interactive environments set the following 3 variables to true
+galaxy_extras_config_ie_proxy: false
+supervisor_manage_ie_proxy: false
+supervisor_ie_proxy_autostart: false
+# specific ie for ipython and rstudio
+galaxy_extras_ie_fetch_jupyter: false
+galaxy_extras_ie_jupyter_image: quay.io/bgruening/docker-jupyter-notebook:17.09
+galaxy_extras_ie_fetch_rstudio: false
+galaxy_extras_ie_rstudio_image: artbio/rstudio-notebook:latest
+
+
+# galaxy-tools role variables
+galaxy_tools_install_tools: true
+galaxy_tools_admin_user: &quot;{{ galaxy_admin }}&quot;
+galaxy_tools_admin_username: admin
+galaxy_tools_admin_user_password: &quot;{{ galaxy_admin_pw }}&quot;
+galaxy_tools_admin_user_preset_api_key: true
+default_admin_api_key: artbio2020
+galaxy_tools_api_key: &quot;{{ default_admin_api_key }}&quot;
+galaxy_tools_create_bootstrap_user: true
+galaxy_tools_delete_bootstrap_user: false
+galaxy_tools_galaxy_instance_url: http://&quot;{{ galaxy_hostname }}{{ nginx_galaxy_location }}&quot;/
+galaxy_tools_tool_list_files: []
+galaxy_tools_install_workflows: true
+galaxy_tools_workflows: []
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>
